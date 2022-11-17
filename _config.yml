@@ -2,4 +2,4 @@
 theme: minima
 markdown: kramdown
 
-exclude: ["Rakefile", "README.md"]
+exclude: ["README.md"]
