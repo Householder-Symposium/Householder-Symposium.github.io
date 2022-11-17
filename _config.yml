@@ -1,5 +1,5 @@
 # build settings
-theme: minima
+theme: Caymen
 markdown: kramdown
 
 exclude: ["README.md"]
