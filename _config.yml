@@ -1,3 +1,5 @@
 # build settings
 theme: minima
 markdown: kramdown
+
+exclude: ["Rakefile", "README.md"]
