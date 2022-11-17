@@ -1,5 +1,10 @@
+title: [Householder Symposium]
+description: [Website for the Householder Symposium on Numerical Linear Algebra]
+
 # build settings
-theme: caymen
+theme: minima
 markdown: kramdown
 
 exclude: ["README.md"]
+
+
