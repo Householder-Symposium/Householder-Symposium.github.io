@@ -1,5 +1,8 @@
-title: [Householder Symposium]
-description: [Website for the Householder Symposium on Numerical Linear Algebra]
+title: Householder Symposium
+author:
+  name: Anil Damle
+  email: damle@cornell.edu
+# description: The Householder Symposium on Numerical Linear Algebra is held every three years
 
 # build settings
 theme: minima
