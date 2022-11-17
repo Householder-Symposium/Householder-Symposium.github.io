@@ -1,1 +1,4 @@
-Householder Symposium
+layout: home
+---
+
+Householder Symposium webpage
