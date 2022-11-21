@@ -1,8 +1,7 @@
 ---
+title: Householder Symposium XXII
 layout: home
 ---
-
-## Householder Symposium XXII
 ### June 8 &ndash; June 13, 2025; Cornell University &mdash; Ithaca, NY USA
 
 ![](images/UP_2016_1413_089_select.jpg)
