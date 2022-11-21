@@ -38,5 +38,4 @@ The meeting is also the occasion for the award of the Householder prize for the 
 | XVIII |	2011 |	Tahoe City, U.S.A. |	Esmond G. Ng, M. Overton |
 | XIX |	2014 |	Spa, Belgium |	I. Ipsen, P. Van Dooren |
 | XX |	2017 |	Blacksburg, U.S.A. |	J. Nagy, M. Embree |
-| XXI | 2022 | Selva di Fasano, ITALY |  D. A. Bini, F. Diele, B. Meini, T. Laudadio, C. Marangi, 
-N. Mastronardi, S. Serra Capizzano, V. Simoncini |
+| XXI | 2022 | Selva di Fasano, ITALY |  D. A. Bini, F. Diele, B. Meini, T. Laudadio, C. Marangi, N. Mastronardi, S. Serra Capizzano, V. Simoncini |
