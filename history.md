@@ -1,5 +1,5 @@
 
-## The Householder Prize
+## The Householder Symposium
 
 The Householder Symposia originated in a series of meetings organized by Alston Householder, Director of the Mathematics Division of Oak Ridge National Laboratory and Ford Professor at the University of Tennessee. These international meetings were devoted to matrix computations and linear algebra and were held in Gatlinburg, Tennessee. They had a profound influence on the subject.
 
@@ -9,7 +9,7 @@ The meetings, which last for five days, are by invitation only. They are intensi
 
 The conferences are run in tandem by a permanent organizing committee and a local arrangements committee. Although attendance is restricted, anyone - including students - can apply. Selection is made by the organizing committee, generally by ballot.
 
-The meeting is also the occasion for the award of the Householder prize for the best thesis in numerical linear algebra. This prize is entirely (and well) supported by contributions solicited at the Symposium banquet.
+The meeting is also the occasion for the award of the Householder prize for the best thesis in numerical linear algebra. This prize is entirely (and well) supported by contributions solicited at the Symposium banquet. 
 
 ## Previous Householder Symposia
 
