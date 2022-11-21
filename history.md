@@ -4,8 +4,6 @@ title: History
 permalink: /history/
 ---
 
-## The Householder Symposium
-
 The Householder Symposia originated in a series of meetings organized by Alston Householder, Director of the Mathematics Division of Oak Ridge National Laboratory and Ford Professor at the University of Tennessee. These international meetings were devoted to matrix computations and linear algebra and were held in Gatlinburg, Tennessee. They had a profound influence on the subject.
 
 The last "Gatlinburg" conference held at Gatlinburg was in 1969 on the occasion of Householder's retirement. At the time, it was decided to continue the meetings but vary the place. Since then meetings have been held at three-year intervals in a variety of venues and the series has been renamed in honor of Alston Householder.
@@ -40,3 +38,5 @@ The meeting is also the occasion for the award of the Householder prize for the 
 | XVIII |	2011 |	Tahoe City, U.S.A. |	Esmond G. Ng, M. Overton |
 | XIX |	2014 |	Spa, Belgium |	I. Ipsen, P. Van Dooren |
 | XX |	2017 |	Blacksburg, U.S.A. |	J. Nagy, M. Embree |
+| XXI | 2022 | Selva di Fasano, ITALY |  D. A. Bini, F. Diele, B. Meini, T. Laudadio, C. Marangi, 
+N. Mastronardi, S. Serra Capizzano, V. Simoncini |
