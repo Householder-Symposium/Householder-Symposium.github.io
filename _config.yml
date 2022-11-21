@@ -11,7 +11,7 @@ description: >
 show_excerpts: false
 
 header_pages:
- - about.md
+ - history.md
 
 
 # build settings
