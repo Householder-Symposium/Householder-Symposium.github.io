@@ -1,7 +1,7 @@
-title: Householder Symposium on Numerical Linear Algebra
-# author:
-#  name: Name
-#  email: email@email.com
+title: Householder Symposium
+author:
+ name: 
+ email: 
 description: >
  The Householder Symposium on Numerical Linear Algebra is held every three years and 
  provides a venue for established and junior researchers to share their work in an 
@@ -17,7 +17,7 @@ header_pages:
 
 # build settings
 theme: minima
-markdown: kramdown
+# markdown: kramdown
 
 exclude: ["README.md"]
 
