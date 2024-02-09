@@ -1,0 +1,32 @@
+hh:
+  - name: Zhaojun Bai
+    where: University of California Davis, USA
+  - name: David Bindel
+    where: Cornell University, USA
+  - name: Julianne Chung
+    where: Emory University, USA
+  - name: James Demmel
+    where: University of California Berkeley, USA
+    role: Chair
+  - name: Froilan Dopico
+    where: Universidad Carlos III de Madrid, Spain
+  - name: Zlatko Drmac
+    where: University of Zagreb, Croatia
+  - name: Heike Fassbender
+    where: Technical University of Braunschweig, Germany
+  - name: Sherry Li
+    where: Lawrence Berkeley National Laboratory, USA
+  - name: James Nagy
+    where: Emory University, USA
+  - name: Alison Ramage
+    where: University of Strathclyde, UK
+
+loc:
+  - name: David Bindel
+    where: Cornell University, USA
+  - name: Anil Damle
+    where: Cornell University, USA
+    role: Chair
+  - name: Alex Townsend
+    where: Cornell University, USA
+  

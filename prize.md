@@ -19,6 +19,23 @@ Entries will be assessed by an international committee consisting of:
 
 ## Previous Householder Prize winners
 
+<table>
+    <thead>
+        <tr>
+            <td>Year</td>
+            <td>Winner(s)</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for prize in site.data.prizes reversed %}{% for winner in prize.winners %}
+    <tr>
+      <td>{% if forloop.first %}{{ prize.year }}{% endif %}</td>
+      <td>{{ winner.name }}</td>
+      <td>{{ winner.where }}</td>
+    </tr>
+    {% endfor %}{% endfor %}
+    </tbody>
+</table>
 
 | Year |	Winners (s) |
 |-------|--------|

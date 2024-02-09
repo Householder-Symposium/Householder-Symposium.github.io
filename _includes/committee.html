@@ -1,0 +1,5 @@
+<ul style="list-style: none; padding-left: 0;">
+  {% for member in site.data.committees.hh %}
+  <li>{{ member.name }}{% if member.role %} ({{ member.role }}){% endif %}, {{ member.where }}</div></li>
+  {% endfor %}
+</li>

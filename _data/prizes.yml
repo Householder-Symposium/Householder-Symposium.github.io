@@ -1,0 +1,106 @@
+-
+  year: 1971
+  winner:
+    name: F. Robert
+    where: Grenoble
+-
+  year: 1974
+  winner:
+    name: Ole Hald
+    where: New York University
+-
+  year: 1977
+  winners:
+    - name: Daniel D. Warner
+      where: University of California, San Diego
+-
+  year: 1981
+  winners:
+    - name: E. Marques de Sa'
+      where: Coimbra
+    - name: Paul Van Dooren
+      where: K. U. Leuven
+-
+  year: 1984
+  winners:
+    - name: Ralph Byers
+      where: Cornell University
+    - name: James W. Demmel
+      where: University of California, Berkeley
+-
+  year: 1987
+  winners:
+    - name: Nicholas J. Higham
+      where: University of Manchester
+-
+  year: 1990
+  winners:
+    - name: Alan Edelman
+      where: Massachusetts Institute of Technology
+    - name: Maria Beth Ong
+      where: University of Washington
+-
+  year: 1993
+  winners:
+    - name: Hong-Guo Xu
+      where: Fudan University
+    - name: Barry Smith
+      where: New York University
+-
+  year: 1996
+  winners:
+    - name: Ming Gu
+      where: Yale University
+-
+  year: 1999
+  winners:
+    - name: Jorg Liesen
+      where: Bielefeld
+-
+  year: 2002
+  winners:
+    - name: Jing-Rebecca Li
+      where: Massachusetts Institute of Technology
+-
+  year: 2005
+  winners:
+    - name: Jasper van den Eshof
+      where: Utrecht University
+-
+  year: 2008
+  winners:
+    - name: David S. Bindel
+      where: University of California, Berkeley
+-
+  year: 2011
+  winners:
+    - name: Bart Vandereycken
+      where: KU Leuven
+    - name: Paul Willems
+      where: Bergische Universitat Wuppertal
+-
+  year: 2014
+  winners:
+    - name: Nicolas Gillis
+      where: UC Louvain
+    - name: Yuji Nakatsukasa
+      where: UC Davis
+-
+  year: 2017
+  winners:
+    - name: Marcel Schweitzer
+      where: Ecole Polytechnique Federale de Lausanne
+    - name: Edgar Solomonik
+      where: University of California, Berkeley
+-
+  year: 2020
+  winners:
+    - name: Estelle Massart
+      where: UC Louvain
+    - name: Stefano Massei
+      where: Scuola Normale Superiore di Pisa
+-
+  year: 2022
+  winners:
+    - name: Heather Wilber
+      where: Cornell University
