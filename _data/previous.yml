@@ -93,75 +93,61 @@
   number: xv
   year: 2002
   place: Peebles, Scotland
+  url: http://personal.strath.ac.uk/a.ramage/householder/
   organizers:
     - P. Knight
     - A. Ramage
     - A. Wathen
     - N.J. Higham
-  links:
-    - text: Meeting site
-      link: http://personal.strath.ac.uk/a.ramage/householder/
 -
   number: xvi
   year: 2005
   place: Seven Springs, USA
+  url: https://www.cse.psu.edu/~b58/hh2005/
   organizers:
     - J. Barlow
     - D. Szyld
     - H. Zha
     - C. Van Loan
-  links:
-    - text: Meeting site
-      link: https://www.cse.psu.edu/~b58/hh2005/
 -
   number: xvii
   year: 2008
   place: Zeuthen, Germany
+  url: https://www3.math.tu-berlin.de/numerik/householder_2008/
   organizers:
     - J. Liesen
     - V. Mehrmann
     - R. Nabben
     - A. Bunse-Gerstner
-  links:
-    - text: Meeting site
-      link: https://www3.math.tu-berlin.de/numerik/householder_2008/
 -
   number: xviii
   year: 2011
   place: Tahoe City, USA
+  url: https://web.archive.org/web/20150928020621/https://sites.google.com/a/lbl.gov/hh11/home
   organizers:
     - Esmond G. Ng
     - M. Overton
-  links:
-    - text: Meeting site (Wayback)
-      link: https://web.archive.org/web/20150928020621/https://sites.google.com/a/lbl.gov/hh11/home
 -
   number: xix
   year: 2014
   place: Spa, Belgium
+  url: https://sites.uclouvain.be/HHXIX/
   organizers:
     - I. Ipsen
     - P. Van Dooren
-  links:
-    - text: Meeting site
-      link: https://sites.uclouvain.be/HHXIX/
 -
   number: xx
   year: 2017
   place: Blacksburg, USA
+  url: https://web.archive.org/web/20190621111449/http://www.math.vt.edu/HHXX/
   organizers:
     - J. Nagy
     - M. Embree
-  links:
-    - text: Meeting site (Wayback)
-      link: https://web.archive.org/web/20190621111449/http://www.math.vt.edu/HHXX/
 -
   number: xxi
   year: 2022
   place: Selva di Fasano, italy
+  url:  https://users.ba.cnr.it/iac/irmanm21/HHXXI/about.html
   organizers:
     - H. Fassbender
     - N. Mastronardi
-  links:
-    - text: Meeting site
-      link: https://users.ba.cnr.it/iac/irmanm21/HHXXI/about.html
