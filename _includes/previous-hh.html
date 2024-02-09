@@ -15,11 +15,15 @@
       <td>{{ hh.year }}</td>
       <td>{{ hh.place }}</td>
       <td>{{ hh.organizers | join: ", " }}</td>
-      <td>{% if hh.links %}<ul>{% for link in hh.links %}
+      <td>{% if hh.links %}
+        <ul>
+          {% for link in hh.links %}
           <li><a href="{{ link.link }}">{{ link.text }}</li>
-        {% endfor %}</ul>{% endif %}</td>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-
