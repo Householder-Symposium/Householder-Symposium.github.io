@@ -12,7 +12,7 @@
     <tr>
       <td>{{ hh.number | upcase }}</td>
       <td>{{ hh.year }}</td>
-      <td>{% if hh.url %}[{{ hh.place }}]({{ hh.url }}){% else %}{{ hh.place }}{% endif %}</td>
+      <td>{% if hh.url %}<a href="{{ hh.url }}">{{ hh.place }}</a>{% else %}{{ hh.place }}{% endif %}</td>
       <td>{{ hh.organizers | join: ", " }}</td>
     </tr>
     {% endfor %}
