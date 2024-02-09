@@ -22,8 +22,9 @@ Entries will be assessed by an international committee consisting of:
 <table>
     <thead>
         <tr>
-            <td>Year</td>
-            <td>Winner(s)</td>
+            <th>Year</th>
+            <th>Winner(s)</th>
+            <th>Institution</th>
         </tr>
     </thead>
     <tbody>
