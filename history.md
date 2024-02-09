@@ -16,28 +16,4 @@ The meeting is also the occasion for the award of the Householder prize for the 
 
 ## Previous Householder Symposia
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Year</th>
-      <th>Place</th>
-      <th>Organizers</th>
-      <th>Links</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for hh in site.data.previous reversed %}
-    <tr>
-      <td>{{ hh.number | upcase }}</td>
-      <td>{{ hh.year }}</td>
-      <td>{{ hh.place }}</td>
-      <td>{{ hh.organizers | join: ", " }}</td>
-      <td>{% if hh.links %}<ul>{% for link in hh.links %}
-          <li><a href="{{ link.link }}">{{ link.text }}</li>
-        {% endfor %}</ul>{% endif %}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
-
+{% include previous-hh.html %}
