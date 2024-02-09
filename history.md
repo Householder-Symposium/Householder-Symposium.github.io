@@ -41,26 +41,3 @@ The meeting is also the occasion for the award of the Householder prize for the 
   </tbody>
 </table>
 
-| Number | Year |	Location |	Organizer(s) |
-|-------|--------|---------|---------|
-| I |	1961 |	Gatlinburg, U.S.A. |	A.S. Householder |
-| II |	1963 |	Gatlinburg, U.S.A. |	A.S. Householder, F.W.J. Olver |
-| III |	1964 |	Gatlinburg, U.S.A. |	A.S. Householder |
-| IV |	1969 |	Gatlinburg, U.S.A. |	A.S. Householder |
-| V |	1972 |	Los Alamos, U.S.A. |	R.S. Varga |
-| VI |	1974 |	Hopfen am See, GERMANY |	F.L. Bauer |
-| VII |	1977 |	Asilomar, U.S.A. |	G.H. Golub |
-| VIII |	1981 |	Oxford, ENGLAND |	L. Fox, J.H. Wilkinson |
-| IX |	1984 |	Waterloo, CANADA |	J.A. George |
-| X |	1987 |	Fairfield Glade, U.S.A. |	R.C. Ward, G.W. Stewart |
-| XI |	1990 |	Tylosand, SWEDEN |	A. Bjorck |
-| XII |	1993 |	Lake Arrowhead, U.S.A. |	T.F. Chan, G.H. Golub |
-| XIII |	1996 |	Pontresina, SWITZERLAND |	W. Gander, M.H. Gutknecht, D.P. O'Leary |
-| XIV |	1999 |	Whistler, B.C., CANADA |	J.M. Varah, G. W. Stewart |
-| XV |	2002 |	Peebles, SCOTLAND |	P. Knight, A. Ramage, A. Wathen, N.J. Higham |
-| XVI |	2005 |	Seven Springs, U.S.A. |	J. Barlow, D. Szyld, H. Zha, C. Van Loan |
-| XVII |	2008 |	Zeuthen, GERMANY |	J. Liesen, V. Mehrmann, R. Nabben, A. Bunse-Gerstner |
-| XVIII |	2011 |	Tahoe City, U.S.A. |	Esmond G. Ng, M. Overton |
-| XIX |	2014 |	Spa, BELGIUM |	I. Ipsen, P. Van Dooren |
-| XX |	2017 |	Blacksburg, U.S.A. |	J. Nagy, M. Embree |
-| XXI | 2022 | Selva di Fasano, ITALY |  D. A. Bini, F. Diele, B. Meini, T. Laudadio, C. Marangi, N. Mastronardi, S. Serra Capizzano, V. Simoncini |
