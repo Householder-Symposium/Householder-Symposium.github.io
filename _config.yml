@@ -13,6 +13,7 @@ show_excerpts: false
 header_pages:
  - history.md
  - prize.md
+ - policies.md
 
 
 # build settings
