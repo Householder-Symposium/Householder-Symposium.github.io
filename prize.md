@@ -12,9 +12,11 @@ Nominations are solicited for the Alston S. Householder Prize. The award will be
 
 Entries will be assesed by the Householder Prize committee consisting of:
 
-{% for member in site.data.committees.prize %}
+<ul style="list-style: none; padding-left: 0;">
+  {% for member in site.data.committees.prize %}
   <li>{{ member.name }}{% if member.role %} ({{ member.role }}){% endif %}, {{ member.where }}</li>
   {% endfor %}
+</li>
 
 ## Prize details
 
