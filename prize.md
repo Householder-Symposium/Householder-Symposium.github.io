@@ -6,6 +6,14 @@ permalink: /prize/
 
 The Alston S. Householder Prize is awarded to the the author of the best dissertation in numerical linear algebra and is awarded at the symposium for dissertations submitted over the previous three years.
 
+## Prize nominations
+
+Nominations are solicited for the Alston S. Householder Prize. The award will be presented to the author of the best dissertation in numerical linear algebra submitted between 1 January 2022, and 31 December 2024. The system for submitting nominations will open in late 2024.
+
+Entries will be assesed by the Householder Prize committee consisting of:
+
+
+
 ## Prize details
 
 The term numerical linear algebra is intended to describe those parts of mathematical research that have both linear algebraic aspects and numerical content or implications. Thus, for example, a dissertation concerned with the numerical solution of differential equations or the numerical solution of an optimization problem would be eligible if linear algebra is central to the research contribution.
@@ -16,6 +24,9 @@ Candidates from countries in which a formal dissertation is not normally written
 
 Entries will be assessed by an international committee consisting of:
 
+{% for member in site.data.committees.prize %}
+  <li>{{ member.name }}{% if member.role %} ({{ member.role }}){% endif %}, {{ member.where }}</li>
+  {% endfor %}
 
 ## Previous Householder Prize winners
 
