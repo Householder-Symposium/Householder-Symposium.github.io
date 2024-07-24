@@ -29,4 +29,19 @@ loc:
     role: Chair
   - name: Alex Townsend
     where: Cornell University, USA
-  
+
+prize:
+  - name: Raymond Chan
+    where: City University of Hong Kong, Hong Kong
+  - name: Petros Drineas
+    where: Purdue University, USA
+  - name: Alan Edelman
+    where: Massachusetts Institute of Technology, USA
+  - name: Melina Freitag
+    where: University of Potsdam, Germany
+  - name: Andreas Frommer
+    where: Wuppertal University, Germany
+  - name: Misha Kilmer
+    where: Tufts University, USA
+  - name: Bart Vandereycken
+    where: University of Geneva, Switzerland
