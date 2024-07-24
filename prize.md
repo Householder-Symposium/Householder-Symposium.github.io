@@ -16,7 +16,7 @@ Entries will be assesed by the Householder Prize committee consisting of:
   {% for member in site.data.committees.prize %}
   <li>{{ member.name }}{% if member.role %} ({{ member.role }}){% endif %}, {{ member.where }}</li>
   {% endfor %}
-</li>
+</ul>
 
 ## Prize details
 
