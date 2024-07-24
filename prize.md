@@ -12,7 +12,9 @@ Nominations are solicited for the Alston S. Householder Prize. The award will be
 
 Entries will be assesed by the Householder Prize committee consisting of:
 
-
+{% for member in site.data.committees.prize %}
+  <li>{{ member.name }}{% if member.role %} ({{ member.role }}){% endif %}, {{ member.where }}</li>
+  {% endfor %}
 
 ## Prize details
 
@@ -21,12 +23,6 @@ The term numerical linear algebra is intended to describe those parts of mathema
 To qualify, the dissertation must have been examined and deemed to have passed during the period of the prize. However, the PhD degree or equivalent need not have been officially awarded during this period.
 
 Candidates from countries in which a formal dissertation is not normally written at that level may submit an equivalent piece of work. The Householder Prize, given every three years, was established at the 1969 Gatlinburg Symposium (now renamed the Householder Symposium) to recognize the outstanding contributions of Alston S. Householder, 1904-1993, to numerical analysis and linear algebra.
-
-Entries will be assessed by an international committee consisting of:
-
-{% for member in site.data.committees.prize %}
-  <li>{{ member.name }}{% if member.role %} ({{ member.role }}){% endif %}, {{ member.where }}</li>
-  {% endfor %}
 
 ## Previous Householder Prize winners
 
