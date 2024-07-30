@@ -35,7 +35,7 @@ To apply, please folow these instructions:
 8. Click "Submit" to submit your form for review by the Householder
    Committee. If you do not receive a confirmation email, or have any
    other questions, please contact the Local Organizing Committee at
-   hhxx@vt.edu.
+   bindel@cornell.edu.
 
 *Early career researchers are encouraged to apply.  The organizers
 hope to offer some travel support for such attendees, pending the
