@@ -12,6 +12,7 @@ show_excerpts: false
 
 header_pages:
  - history.md
+ - apply.md
  - prize.md
  - policies.md
 
