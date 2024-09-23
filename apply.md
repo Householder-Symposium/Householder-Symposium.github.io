@@ -23,16 +23,14 @@ To apply, please folow these instructions:
    information will only be used for communication about the 
    Householder Symposium.
 
-4. Log in to your EasyChair account via this [link](https://easychair.org/my/login_author?sum=8f5c01c016c71c2ffe0d1dcdaf8acf58&conference=287960).
+4. Log in to your EasyChair account via this [link](https://easychair.org/my/conference?conf=hh2025).
 
-5. Click "New Submission" on the menu bar at the top.
+5. Click "make a new submission."
 
-6. Select "Apply to attend the Householder Symposium" and click
-   "Continue".
-
-7. Complete the form, uploading your application in .tex AND .pdf/.ps
+6. Complete the form, uploading your application in .tex AND .pdf/.ps
    formats. Early career applicants are encouraged to also upload a CV.
-8. Click "Submit" to submit your form for review by the Householder
+   
+7. Click "Submit" to submit your form for review by the Householder
    Committee. If you do not receive a confirmation email, or have any
    other questions, please contact the Local Organizing Committee at
    bindel@cornell.edu.
