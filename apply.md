@@ -6,7 +6,7 @@ permalink: /apply/
 
 Invitations to the Householder Symposium are based on applications
 that describe a talk you could present at the meeting.  Applications
-must be submitted by *31 October 2024*.
+must be submitted by *8 November 2024 at 11:59 pm US ET* (extended due to EasyChair system maintenance).  
 
 To apply, please folow these instructions:
 
