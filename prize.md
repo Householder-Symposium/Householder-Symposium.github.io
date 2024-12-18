@@ -10,7 +10,7 @@ The Alston S. Householder Prize is awarded to the the author of the best dissert
 
 Nominations are solicited for the Alston S. Householder Prize. The award will be presented to the author of the best dissertation in numerical linear algebra submitted between 1 January 2022, and 31 December 2024. 
 
-The submission process for the Householder Prize is now open. The supervisor of a candidate recipient of a PhD, earned between January 1, 2022 and December 31, 2024, must submit a copy of the PhD dissertation and an appraisal. One or more external letters of recommendation supporting the nomination are also required. Nomminations may be submitted online using the form availalbe [here](https://forms.gle/dniHd1f6eZuhFAoNA). Nomminations must be submitted by February 16, 2025.
+The submission process for the Householder Prize is now open. The supervisor of a candidate recipient of a PhD, earned between January 1, 2022 and December 31, 2024, must submit a copy of the PhD dissertation and an appraisal. One or more external letters of recommendation supporting the nomination are also required. Nomminations may be submitted online using the form available [here](https://forms.gle/dniHd1f6eZuhFAoNA). Nomminations must be submitted by February 16, 2025.
 
 
 
