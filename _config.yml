@@ -13,6 +13,7 @@ show_excerpts: false
 header_pages:
  - history.md
  - apply.md
+ - travel.md
  - prize.md
  - policies.md
 
