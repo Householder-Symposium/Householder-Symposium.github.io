@@ -28,7 +28,7 @@ Cornell runs a bus service from New York City to Ithaca. Information on the sche
 
 ### Driving
 
-For those located in the Northeast United States driving may be a convenient option. The Statler Hotel provides valet parking for a small fee.
+For those located in the northeast United States driving may be a convenient option. The Statler Hotel provides valet parking for a small fee.
 
 ## Local Information
 
