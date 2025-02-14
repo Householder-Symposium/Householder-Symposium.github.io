@@ -10,7 +10,7 @@ Those invited to attend the symposium should plan to arrive on Sunday, 8 June, a
 
 The symposium will be held at the [Statler Hotel](https://statlerhotel.cornell.edu). Check-in time for the hotel is 16:00 on 8 June and the check-out time is 12:00 on 13 June.
 
-## Getting to Ithaca
+## Getting to the symposium
 
 There are several options for how to travel to Ithaca for the symposium.
 
