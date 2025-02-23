@@ -12,10 +12,11 @@ The XXII Householder Symposium on Numerical Linear Algebra will be held June 8 -
 
 Householder Symposium XXII gratefully acknowledges support from Mathworks, Gurobi, the National Science Foundation, the Cornell Ann S. Bowers College of Computing and Information Science, the Cornell Center for Applied Mathematics, and the Cornell Department of Mathematics
 
-![Mathworks logo](images/Mathworks.png)
+<img src="images/Mathworks.png" alt="Mathworks logo" height="100">
 
-![Gurobi logo](images/Gurobi.png)
+<img src="images/Gurobi.png" alt="Gurobi logo" height="200">
 
-![National Science Foundation logo](images/NSF.png)
+<img src="images/NSF.png" alt="National Science Foundation logo" height="300">
 
-![Cornell Bowers College of Computing and Information Science logo](images/Bowers.png)
+<img src="images/Bowers.png" alt="Cornell Bowers College of Computing and Information Science logo" height="400">
+
