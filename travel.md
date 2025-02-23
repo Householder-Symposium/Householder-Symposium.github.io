@@ -30,6 +30,10 @@ Cornell runs a bus service from New York City to Ithaca. Information on the sche
 
 For those located in the northeast United States driving may be a convenient option. The Statler Hotel provides valet parking for a small fee.
 
+## Financial support
+
+We have funding available (from NSF) to help support a limited number of early-career researchers who are based in the US. If you are a graduate student or postdoc at a US institution and want to be considered for support please indicate so on the registration form. We anticipate being able to waive the registration fee for a shared room and provide additional funds to, at least partially, cover travel to/from Ithaca.
+
 ## Local Information
 
 More to come.
