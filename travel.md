@@ -34,7 +34,7 @@ For those located in the northeast United States driving may be a convenient opt
 
 We have funding available (from NSF) to help support a limited number of early-career researchers who are based in the US. If you are a graduate student or postdoc at a US institution and want to be considered for support please indicate so on the registration form. We anticipate being able to waive the registration fee for a shared room and provide additional funds to, at least partially, cover travel to/from Ithaca.
 
-## Financial support
+## Visa applications
 
 If you require a visa invitation letter please contact the [organizers](mailto:householderxxii@cornell.edu).
 
