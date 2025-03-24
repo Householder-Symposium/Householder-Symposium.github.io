@@ -37,9 +37,9 @@ The following items provide some general guidelines about issues to consider whe
 - The facility should have a high quality A/V system with on-staff technician. Note that A/V  includes audio - please make sure there is a good microphone system and/or good acoustics in the lecture rooms.
 - Outline of possible activities for a half day excursion. There could be multiple choices, but the activities should be able to accommodate all participants.
 - A reasonable cost estimate should be provided, including: 
-  - Sleeping rooms with complimentary WiFi. 
-  - Meeting rooms plus 2 coffee breaks per day. 
-  - 3 meals per day, a welcome reception and a banquet. 
-  - Rental of poster boards, A/V system and technician. 
-  - Excursion.
+	- Sleeping rooms with complimentary WiFi. 
+	- Meeting rooms plus 2 coffee breaks per day. 
+	- 3 meals per day, a welcome reception and a banquet. 
+	- Rental of poster boards, A/V system and technician. 
+	- Excursion.
 - Provide examples of possible sources of external funding to help support the meeting. This would likely include a proposal to the U.S. National Science Foundation to help cover travel and lodging expenses for student and early career participants. If the proposed symposium is in the U.S., then it is expected that the LOC will write and submit the NSF proposal. If the symposium is outside the U.S., the LOC should work with U.S. representatives on the Householder Committee who will be responsible for writing and submitting the NSF proposal.
