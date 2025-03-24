@@ -4,7 +4,7 @@ title: Organize
 permalink: /organize/
 ---
 
-The Householder Committee seeks a team to organize the 2025
+The Householder Committee seeks a team to organize the 2028
 Householder Symposium on Numerical Linear Algebra. The deadline for
 submitting a proposal is June 1, 2025.
 
