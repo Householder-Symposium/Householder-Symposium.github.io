@@ -29,7 +29,7 @@ The following items provide some general guidelines about issues to consider whe
 - The LOC should provide some assurances that they have a reliable team of "workers" to help with meeting logistics.
 - The facility should have enough sleeping rooms to hold all participants, including single and double occupancy.
 - There should be sufficient dining space for all participants.
-- or plenary lectures, there must be one lecture room large enough for all participants, preferably classroom style seating.
+- For plenary lectures, there must be one lecture room large enough for all participants, preferably classroom style seating.
 - For parallel sessions, there should be at least 2 smaller break-out rooms for approximately 80 participants, preferably classroom style seating.
 - For poster sessions, there should be a comfortable and centrally located space for about 100 posters, and availability of poster boards. Optionally, it could be proposed to have more than one poster session on separate days (e.g., 50 one day, 50 another day).
 - There should be a large bar area or lounge (for impromptu and evening meetings), with reasonable alcohol policies.
