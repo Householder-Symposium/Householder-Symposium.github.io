@@ -4,7 +4,7 @@ title: Travel
 permalink: /travel/
 ---
 
-Those invited to attend the symposium should plan to arrive on Sunday, 8 June, and depart in the late afternoon or evening of Friday, 13 June. The conference will begin with a reception on Sunday evening and conclude with lunch on Friday (provided to go). An important feature of the Householder Symposium is that all participants are committed to staying the entire week. This maximizes the opportunity for informal interactions among participants.
+Those invited to attend the symposium should plan to arrive on Sunday, 8 June, and depart in the afternoon or evening of Friday, 13 June. The conference will begin with a reception on Sunday evening and conclude with lunch on Friday (provided to go). An important feature of the Householder Symposium is that all participants are committed to staying the entire week. This maximizes the opportunity for informal interactions among participants.
 
 ## The Hotel
 
