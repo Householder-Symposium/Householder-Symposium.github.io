@@ -40,4 +40,4 @@ If you require a visa invitation letter please contact the [organizers](mailto:h
 
 ## Local Information
 
-More to come.
+Please see our page on [local information](/local/) for details relevant to your stay in Ithaca.
