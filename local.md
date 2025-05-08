@@ -10,11 +10,11 @@ Here is some information that you may find of interest during your stay (particu
 
 ### Necessities
 
-There is a small gift shop within the Statler Hotel and the [Cornell Store](https://www.cornellstore.com/) across the street is also available. In addition, Cornell Health maintains a [vending machine](https://health.cornell.edu/services/pharmacy/vending) that stocks non-prescription medications and supplies and is located [close to the hotel](https://health.cornell.edu/get-care/getting-here). 
+There is a small gift shop within the Statler Hotel and the [Cornell Store](https://www.cornellstore.com/) across the street is also available. 
 
 ### Medical care
 
-In the event of an emergency dial 911. For non-emergency situations there are numerous urgent care clinics in Ithaca that we can help arrange transport to; the hotel can also provide guidance. In addition, Cornell Health maintains a [vending machine](https://health.cornell.edu/services/pharmacy/vending) that stocks non-prescription medications and supplies and is located [close to the hotel](https://health.cornell.edu/get-care/getting-here). 
+In the event of an emergency dial 911. For non-emergency situations there are numerous urgent care clinics in Ithaca that we can help arrange transport to; the hotel can also provide guidance/assistance. In addition, Cornell Health maintains a [vending machine](https://health.cornell.edu/services/pharmacy/vending) that stocks non-prescription medications and supplies, and is located [close to the hotel](https://health.cornell.edu/get-care/getting-here). 
 
 ### Shopping (food)
 
