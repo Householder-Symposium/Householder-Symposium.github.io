@@ -18,5 +18,7 @@ Householder Symposium XXII gratefully acknowledges support from Mathworks, Gurob
 
 <img src="images/NSF.png" alt="National Science Foundation logo" height="100">
 
+<img src="images/CornellCAM.png" alt="Cornell Applied Math logo" height="100">
+
 <img src="images/Bowers.png" alt="Cornell Bowers College of Computing and Information Science logo" height="100">
 
