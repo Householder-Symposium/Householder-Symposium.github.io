@@ -38,3 +38,11 @@ If you wish to get out for a scenic walk near the hotel we recommend checking ou
 ### Cycling
 
 The area around Cornell has exceptional road cycling. Unfortunately, there are no good local options for renting road bikes; if you want to explore bring your own. We are happy to provide routes, this [website](https://sites.google.com/view/cyclingithaca/home) is a good starting point.
+
+## Points of interest
+
+### Overlooks
+For scenic views over Ithaca we recommend walking over to the Cornell University Slope; you can use [Uris Library](https://maps.app.goo.gl/r3TXGghJENGYQYAW8) as a landmark. Within Uris Library, the [A. D. White Library](https://exhibits.library.cornell.edu/a-d-white-library-tour) is quite nice.
+
+### Museums
+If you have time, we recommend a trip to the [Johnson Museum of Art](https://museum.cornell.edu/); it is a short walk from the Hotel. The museum has a variety of interesting collections and also features spectacular views from the upper floors.
