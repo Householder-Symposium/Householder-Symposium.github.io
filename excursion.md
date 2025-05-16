@@ -8,7 +8,7 @@ We are offering three options for the Wednesday afternoon excursion. The first i
 
 ## Taughannock Falls State Park
 
-Our main excursion will be a a trip to [Taughannock Falls State Park](https://parks.ny.gov/parks/taughannockfalls). Here we will lead a short hike to the base of Taughannock Falls (see below; two miles total and essentially flat). For the rest of the afternoon we have a pavilion booked for you to spend time by the lake. Provided we can secure the appropriate permits, we will also have beer from a local brewery.
+Our main excursion will be a a trip to [Taughannock Falls State Park](https://parks.ny.gov/parks/taughannockfalls). Here we will lead a short hike to the base of Taughannock Falls (see below; two miles total and essentially flat). For the rest of the afternoon we have a pavilion booked for you to spend time by the lake. We plan to have beer from a local brewary and assorted other snacks/beverages.
 
 <div class="strava-embed-placeholder" data-embed-type="route" data-embed-id="3357425280998172878" data-style="hybrid" data-terrain="3d" data-map-hash="13.59/42.5409/-76.60461" data-from-embed="true"></div><script src="https://strava-embeds.com/embed.js"></script> 
 
