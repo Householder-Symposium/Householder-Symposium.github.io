@@ -18,11 +18,7 @@ Householder Symposium XXII gratefully acknowledges support from Mathworks, Gurob
 
 <img src="images/Google.png" alt="Google logo" height="100">
 
-<img src="images/NSF.png" alt="National Science Foundation logo" height="100">
-
-<img src="images/SIAM.png" alt="SIAM logo" height="100">
-
-<img src="images/ILAS.png" alt="ILAS logo" height="100">
+<img src="images/NSF.png" alt="National Science Foundation logo" height="100"> <img src="images/SIAM.png" alt="SIAM logo" height="100"> <img src="images/ILAS.png" alt="ILAS logo" height="100">
 
 <img src="images/CornellCAM.png" alt="Cornell Applied Math logo" height="100">
 
