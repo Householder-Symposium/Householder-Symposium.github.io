@@ -1,0 +1,85 @@
+---
+title: Abstract
+layout: abstract
+---
+
+<a id="HH2025_paper_5-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized solvers for joint eigenvalue problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Daniel Kressner</span>, Haoze He
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Here is a Matlab one-liner for computing the eigenvectors of a <em>normal</em> matrix \(A\):
+</p>
+<pre class="verbatim">
+H = A+A’; S = A-A’; [U,~] = eig(randn*H+randn*1i*S);
+
+</pre>
+
+<p>
+This talk will explain why this one-liner works and what accuracy we can expect.
+</p>
+
+<p>
+More generally, this talk is concerned with randomized methods for solving joint eigenvalue problems associated with a matrix family \(A_1,\ldots ,A_d\). This problem class includes the diagonalization of (nearly) commuting symmetric or
+nonsymmetric matrices, as well as simultaneous diagonalization by congruence. As in the Matlab one-liner above (which exploits that the Hermitian and skew-Hermitian parts of a normal matrix commute), a common idea of these randomized
+methods is to first reduce the matrix family to one or two matrices by random linear combinations and then apply a standard eigensolver. These methods are remarkably simple and robust, and provide a decent level of accuracy with very high
+probability. If needed, accuracy can be improved further with optimization techniques or other refinement strategies.
+</p>
+
+<p>
+Besides algorithms, we will also discss the theory and applications of randomized solvers for joint eigenvalue problems. It turns out that classical eigenvalue perturbation theory, with a small dose of probabilistic analysis, can explain much of the
+success of these solvers. Applications include signal processing tasks (e.g., for image separation and EEG analysis) and tensor decomposition (e.g., for learning latent variable models). A particularly successful and important application are joint
+eigenvalue methods for multivariate root-finding problems, which we have explored in joint work with Bor Plestenjak.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="HH2025_paper_5-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> H.&nbsp;He and D.&nbsp;Kressner. Randomized joint diagonalization of symmetric matrices. <i>SIAM J. Matrix Anal. Appl.</i>, 45(1):661–684, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> H.&nbsp;He and D.&nbsp;Kressner. A randomized algorithm for simultaneously diagonalizing symmetric matrices by congruence. arXiv:2402.16557, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> H.&nbsp;He and D.&nbsp;Kressner. A simple, randomized algorithm for diagonalizing normal matrices. arXiv:2405.18399, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> H.&nbsp;He, D.&nbsp;Kressner, and B.&nbsp;Plestenjak. Randomized methods for computing joint eigenvalues, with applications to multiparameter eigenvalue problems and root finding
+arXiv:2409.00500, 2024.
+</p>
+</li>
+</ul>
+
+<a id="HH2025_paper_5-autofile-last"></a>
