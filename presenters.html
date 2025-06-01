@@ -1,0 +1,22 @@
+---
+title: Presenters
+layout: page
+---
+
+<table>
+  <thead>
+    <tr>
+      <th>Speaker</th>
+      <th>Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for sname in site.data.speakers.list -%}
+    {%- assign speaker = site.data.speakers[sname] -%}
+    <tr>
+      <td>{{ speaker.name }}</td>
+      <td><a href="{{ speaker.number }}">{{ speaker.title }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

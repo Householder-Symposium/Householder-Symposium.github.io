@@ -1,0 +1,992 @@
+list:
+ - mackermann
+ - aantoulas
+ - rarmstrong
+ - havron
+ - zbai
+ - gballard
+ - cballew
+ - gbarbarino
+ - jbarlow
+ - pbenner
+ - rbhattacharjee
+ - dbindel
+ - mbolten
+ - eboman
+ - nboulle
+ - jbrust
+ - abucci
+ - lburke
+ - jcape
+ - ecarson
+ - acasulli
+ - fchen
+ - tchen
+ - ycho
+ - echow
+ - jchung
+ - mchung
+ - acortinovis
+ - adamle
+ - jdemmel
+ - mderezinski
+ - edesturler
+ - idhillon
+ - gdinh
+ - ydong
+ - fdopico
+ - zdrmac
+ - vdruskin
+ - aedelman
+ - sekstrom
+ - membree
+ - eepperly
+ - mespanol
+ - seswar
+ - mfasi
+ - pferrari
+ - dfortunato
+ - ifurci
+ - jgarzavargas
+ - sgazolla
+ - mgnazzo
+ - igosea
+ - ngovindarajan
+ - agreenbaum
+ - lgrigori
+ - lgrubisic
+ - sgugercin
+ - dhalikias
+ - yhe
+ - bheinzelreiter
+ - ahiggins
+ - shon
+ - ahorning
+ - iipsen
+ - yjang
+ - sjeong
+ - hkapadia
+ - skeip
+ - mkilmer
+ - dkressner
+ - zlai
+ - hlam
+ - mlandman
+ - jlangou
+ - rlehoucq
+ - mlepilov
+ - sleveque
+ - rli
+ - xli
+ - xliang
+ - xliu
+ - dlu
+ - rluce
+ - hluo
+ - ama
+ - lma
+ - yma
+ - smackey
+ - mmanucci
+ - rmarcia
+ - smassei
+ - kmeerbergen
+ - vmehrmann
+ - mmeier
+ - amiedlar
+ - tmitchell
+ - cmoler
+ - amontoison
+ - umor
+ - rmorgan
+ - kmorikuni
+ - jnagy
+ - ynakatsukasa
+ - enewman
+ - eng
+ - vnoferini
+ - eoktay
+ - lonisk
+ - moutrata
+ - jpapez
+ - tpark
+ - mpasha
+ - jpearson
+ - jpecamedlin
+ - cpenke
+ - vperovic
+ - dpersson
+ - bplestenjak
+ - spozza
+ - aprajapati
+ - eqian
+ - erebrova
+ - mrinelli
+ - lrobol
+ - msaunders
+ - rschneider
+ - rshah
+ - nshao
+ - tshi
+ - isimunec
+ - nsingh
+ - asobczyk
+ - ksoodhalter
+ - nspillane
+ - astathopoulos
+ - mstoll
+ - xsun
+ - dszyld
+ - jtabeart
+ - ftisseur
+ - ctobler
+ - atownsend
+ - ntrefethen
+ - fuhlig
+ - jurschel
+ - auschmajew
+ - rvanbeeumen
+ - nvanbuggenhout
+ - bvandereycken
+ - wvanroose
+ - cwang
+ - dwatkins
+ - swerner
+ - hwilber
+ - yxi
+ - jxia
+ - fxue
+ - ayesypenko
+ - lyosef
+ - mzaslavskiy
+ - nzheng
+ - jzimmerling
+nboulle:
+  number: 1
+  name: Nicolas Boullé
+  texname: Nicolas Boull\\'e
+  title: Operator Learning without the Adjoint
+
+eng:
+  number: 2
+  name: Esmond G. Ng
+  title: "Recent Results on Improving Performance of Sparse Cholesky Factorization by Reordering Columns within Supernodes"
+
+cmoler:
+  number: 3
+  name: Cleve Moler
+  title: A Million-Dollar Matrix
+
+dkressner:
+  number: 5
+  name: Daniel Kressner
+  title: Randomized solvers for joint eigenvalue problems
+
+lburke:
+  number: 9
+  name: Liam Burke
+  title: "Krylov Subspace Recycling With Randomized Sketching For Matrix Functions"
+
+hluo:
+  number: 10
+  name: Hengrui Luo
+  title: "Building Scalable Tensor Regression Models: Linear Solvers and Beyond"
+
+nshao:
+  number: 11
+  name: Nian Shao
+  title: Randomized small-block Lanczos for null space computations
+
+mchung:
+  number: 12
+  name: Matthias Chung
+  title: Bridging Linear Algebra and Autoencoders
+
+agreenbaum:
+  number: 13
+  name: Anne Greenbaum
+  title: When is the Resolvent Like a Rank One Matrix?
+
+vnoferini:
+  number: 14
+  name: Vanni Noferini
+  title: Riemannian optimization for matrix nearness problems
+
+dszyld:
+  number: 16
+  name: Daniel B. Szyld
+  title: "Asynchronous methods meet randomized: Provable convergence rate"
+
+xliang:
+  number: 17
+  name: Xin Liang
+  title: "Stochastic algebraic Riccati equations are almost as easy as deterministic ones"
+
+eoktay:
+  number: 18
+  name: Eda Oktay
+  title: "Recent Advances in Mixed-Precision (Hybrid) Iterative Methods"
+
+fdopico:
+  number: 19
+  name: Froilán Dopico
+  texname: Froil\\'an Dopico
+  title: "Structured rational matrices: properties and strongly minimal linearizations"
+
+jbarlow:
+  number: 20
+  name: Jesse L. Barlow
+  title: Deflation for the Half-Arrow Singular Value Decomposition
+
+dwatkins:
+  number: 21
+  name: David S. Watkins
+  title: Bulge Chasing is Pole Swapping
+
+vmehrmann:
+  number: 23
+  name: Volker Mehrmann
+  title: "Regularization and stabilization of port-Hamiltonian descriptor systems via output feedback"
+
+mlandman:
+  number: 24
+  name: Malena Sabaté Landman
+  texname: Malena Sabat\\'e Landman
+  title: "Inner-product free Krylov subspace methods for inverse problems"
+
+havron:
+  number: 25
+  name: Haim Avron
+  title: Numerical Linear Algebra on Quantum Computers Made Simple
+
+iipsen:
+  number: 26
+  name: Ilse C.F. Ipsen
+  title: Least squares solvers based on randomized normal equations
+
+xliu:
+  number: 28
+  name: Xiaobo Liu
+  title: Mixed precision HODLR matrices
+
+eqian:
+  number: 29
+  name: Elizabeth Qian
+  title: The Fundamental Subspaces of Ensemble Kalman Inversion
+
+jpearson:
+  number: 31
+  name: John W. Pearson
+  title: Fast Iterative Solvers for Optimization of Nonlocal PDEs
+
+ecarson:
+  number: 32
+  name: Erin Carson
+  title: "The Stability of Split-Preconditioned FGMRES in Four Precisions"
+
+yma:
+  number: 33
+  name: Yuxin Ma
+  title: Backward stability of s-step GMRES
+
+wvanroose:
+  number: 34
+  name: Wim Vanroose
+  title: "Subspace methods with asymptotic Krylov convergence for bounded variable problems."
+
+jbrust:
+  number: 35
+  name: Johannes J. Brust
+  title: Streaming the Bidiagonal Factorization
+
+atownsend:
+  number: 36
+  name: Alex Townsend
+  title: "The Quest for a Numerically Stable Multivariate Polynomial Rootfinder"
+
+ama:
+  number: 37
+  name: Anna Ma
+  title: "Randomized Kaczmarz on doubly noisy systems and its applications"
+
+mmanucci:
+  number: 38
+  name: Mattia Manucci
+  title: "Solving generalized Lyapunov equations with guarantees: application to the reduction of linear switched systems"
+
+tshi:
+  number: 39
+  name: Tianyi Shi
+  title: Data-parallel adaptive tensor-train cross approximation
+
+dpersson:
+  number: 40
+  name: David Persson
+  title: "Randomized Nyström approximation of non-negative self-adjoint operators"
+
+smassei:
+  number: 41
+  name: Stefano Massei
+  title: "On the quasiseparability of the solution of continuous-time Riccati equations with quasiseparable coefficients"
+
+sjeong:
+  number: 42
+  name: Sungwoo Jeong
+  title: "On the Convergence of the Singular Value Expansion of 2D functions"
+
+msaunders:
+  number: 44
+  name: Michael Saunders
+  title: "Algorithm NCL for constrained optimization: Solving the linear systems within interior methods"
+
+tchen:
+  number: 45
+  name: Tyler Chen
+  title: "Preconditioning without a preconditioner: faster ridge-regression and Gaussian sampling with randomized block Krylov methods"
+
+gbarbarino:
+  number: 46
+  name: Giovanni Barbarino
+  title: On the Computation of the Maximum Conic Singular Values
+
+aprajapati:
+  number: 49
+  name: Anshul Prajapati
+  title: "Optimizing Rayleigh quotient with symmetric constraints and its application to eigenvalue backward errors of polynomial and rational eigenvalue problems"
+
+mstoll:
+  number: 50
+  name: Martin Stoll
+  title: "Adaptive rational Krylov methods for exponential Runge-Kutta integrators on networks"
+
+jcape:
+  number: 51
+  name: Joshua Cape
+  title: Robust Spectral Clustering with Rank Statistics
+
+vdruskin:
+  number: 52
+  name: Vladimir Druskin
+  title: "Nonlinear inverse scattering data transforms via casual transmutation matrices"
+
+nspillane:
+  number: 54
+  name: Nicole Spillane
+  title: GMRES with Preconditioning, Weighted norm and Deflation
+
+eepperly:
+  number: 58
+  name: Ethan N. Epperly
+  title: "Randomly Pivoted Cholesky: Near-Optimal Positive Semidefinite Low-Rank Approximation from a Small Number of Entry Evaluations"
+
+jnagy:
+  number: 59
+  name: James Nagy
+  title: "Inverse Problems, Kronecker Products and Mixed Precision Computations"
+
+ydong:
+  number: 61
+  name: Yijun Dong
+  title: "Toward Fast and Provable Data Selection under Low Intrinsic Dimension"
+
+yxi:
+  number: 62
+  name: Yuanzhe Xi
+  title: Data-driven Numerical Methods for Kernel Matrices
+
+jtabeart:
+  number: 65
+  name: Jemima M. Tabeart
+  title: "Preconditioning Weak-Constraint 4D-Var: A Parallelisable Implementation in Firedrake"
+
+isimunec:
+  number: 66
+  name: Igor Simunec
+  title: Estimation of Spectral Gaps for Sparse Symmetric Matrices
+
+acasulli:
+  number: 68
+  name: Angelo A. Casulli
+  title: "A low-memory Lanczos method with rational Krylov compression for matrix functions"
+
+acortinovis:
+  number: 70
+  name: Alice Cortinovis
+  title: "Fast Randomized Column Subset Selection Using Strong Rank-revealing QR"
+
+tpark:
+  number: 71
+  name: Taejun Park
+  title: "AdaCUR: Efficient Low-rank Approximation of Parameter-dependent matrices A(t) via CUR decomposition"
+
+nzheng:
+  number: 73
+  name: Ning Zheng
+  title: "Iterative Methods for Sylvester-like Variational Inequality Problems"
+
+mgnazzo:
+  number: 74
+  name: Miryam Gnazzo
+  title: "Numerical Approximation of the Distance to Singularity for Matrix-valued Functions"
+
+sekstrom:
+  number: 75
+  name: Sven-Erik Ekström
+  title: "Matrix-less spectral approximation for large structured matrices"
+
+yhe:
+  number: 79
+  name: Yunhui He
+  title: Convergence Analysis for Nonlinear GMRES
+
+sleveque:
+  number: 80
+  name: Santolo Leveque
+  title: "Fast Solvers for the Runge--Kutta Integration of the Instationary Incompressible Navier--Stokes Equations"
+
+amontoison:
+  number: 81
+  name: Alexis Montoison
+  title: "MinAres: An Iterative Solver for Symmetric Linear Systems"
+
+amiedlar:
+  number: 82
+  name: Agnieszka Międlar
+  texname: Agnieszka Mi\\k{e}dlar
+  title: On the Convergence of the CROP-Anderson Acceleration Method
+
+rschneider:
+  number: 83
+  name: Ryan Schneider
+  title: "Symmetric Pseudospectral Shattering and Fast Divide-and-Conquer for the Definite Generalized Eigenvalue Problem"
+
+lma:
+  number: 85
+  name: Linjian Ma
+  title: Efficient tensor network contraction algorithms
+
+abucci:
+  number: 86
+  name: Alberto Bucci
+  title: Streaming low-rank approximation of tree tensor networks
+
+bplestenjak:
+  number: 90
+  name: Bor Plestenjak
+  title: "A Randomized Numerical Method for Joint Eigenvalues of Commuting Matrices"
+
+jchung:
+  number: 91
+  name: Julianne Chung
+  title: "Efficient sample average approximation techniques for hyperparameter estimation in Bayesian inverse problems"
+
+kmeerbergen:
+  number: 93
+  name: Karl Meerbergen
+  title: Shift-and-invert Arnoldi for singular eigenvalue problems
+
+jpapez:
+  number: 96
+  name: Jan Papež
+  texname: Jan Pape\\v{z}
+  title: "Error estimate and stopping criteria for least-squares problems solved by CG-like algorithms CGLS and LSQR"
+
+ifurci:
+  number: 97
+  name: Isabella Furci
+  title: "Analysis on aggregation and block smoothers in multigrid methods for block structured linear systems"
+
+pferrari:
+  number: 98
+  name: Paola Ferrari
+  title: "Multigrid Methods for Solving Indefinite Problems in Port-Hamiltonian Systems"
+
+moutrata:
+  number: 99
+  name: Michal Outrata
+  title: "Absorbing boundary conditions form Padé approximants (sometimes): continued fractions are the key"
+  textitle: "Absorbing boundary conditions form Pad{\\'{e}} approximants (sometimes): continued fractions are the key"
+
+lgrubisic:
+  number: 100
+  name: Luka Grubišić
+  texname: Luka Grubi\\v{s}i\\'{c}
+  title: "Subspace accelerated contour integration methods for eigenvalue problems"
+
+jzimmerling:
+  number: 102
+  name: Jörn Zimmerling
+  texname: J\\"orn Zimmerling
+  title: "Monotonicity, Bounds, and Averaging of Block-Gauss and Gauss-Radau Quadrature for Computing B^T f(A) B"
+  textitle: "Monotonicity, Bounds, and Averaging of Block-Gauss and Gauss-Radau Quadrature for Computing $B^T f(A) B$"
+
+sgazolla:
+  number: 103
+  name: Silvia Gazzola
+  title: "Flexible Golub-Kahan Factorization for Linear Inverse Problems"
+
+zdrmac:
+  number: 104
+  name: Zlatko Drmač
+  texname: Zlatko Drma\\v{c}
+  title: "Numerical linear algebra for data driven analysis of nonlinear dynamics: Koopman-Schur Decomposition"
+
+lrobol:
+  number: 105
+  name: Leonardo Robol
+  title: "Preconditioned Low-Rank Riemannian Optimization for Symmetric Positive Definite Linear Matrix Equations"
+
+hlam:
+  number: 107
+  name: Hei Yin Lam
+  title: Randomized low-rank Runge-Kutta methods
+
+nvanbuggenhout:
+  number: 108
+  name: Niel Van Buggenhout
+  title: Numerically generating Sobolev orthogonal polynomials
+
+umor:
+  number: 110
+  name: Uria Mor
+  title: "QUASITUBAL TENSOR Framework with APPLICATIONS TO MULTIWAY FUNCTIONAL DATA"
+
+ftisseur:
+  number: 111
+  name: Françoise Tisseur
+  texname: Fran\\c{c}oise Tisseur
+  title: "Computing Accurate Eigenvalues of Symmetric Matrices With a Mixed Precision Jacobi Algorithm"
+
+ngovindarajan:
+  number: 112
+  name: Nithin Govindarajan
+  title: "Towards Efficient Algorithms for Approximately Solving (Overdetermined) Systems of Polynomial Equations"
+
+kmorikuni:
+  number: 114
+  name: Keiichi Morikuni
+  title: "Block cross-interactive residual smoothing for Lanczos-type solvers for linear systems with multiple right-hand sides"
+
+dlu:
+  number: 115
+  name: Ding Lu
+  title: "Convergence Analysis of SCF Iteration for Eigenvector-Dependent Nonlinear Eigenvalue Problems"
+
+bvandereycken:
+  number: 117
+  name: Bart Vandereycken
+  title: "Spectral problems through the lens of optimization: new ideas and improved algorithms?"
+
+ahiggins:
+  number: 118
+  name: Andrew J. Higgins
+  title: "Randomized Householder-Cholesky QR Factorization with Multisketching"
+
+cballew:
+  number: 119
+  name: Cade Ballew
+  title: "The Akhiezer iteration for matrix functions and Sylvester equations"
+
+aantoulas:
+  number: 122
+  name: Thanos Antoulas
+  title: "Rational Interpolation, the Loewner Framework and the Kolmogorov Superposition Theorem"
+
+mrinelli:
+  number: 123
+  name: Michele Rinelli
+  title: "Analysis of Stochastic Probing Methods for Estimating the Trace of Functions of Sparse Symmetric Matrices"
+
+zbai:
+  number: 125
+  name: Zhaojun Bai
+  title: Some Modified Matrix Eigenvalue Problems
+
+enewman:
+  number: 126
+  name: Elizabeth Newman
+  title: Optimal Matrix-Mimetic Tensor Algebras
+
+mlepilov:
+  number: 127
+  name: Mikhail Lepilov
+  title: "Spectral Density Estimation of Kernel Matrices with Applications"
+
+ynakatsukasa:
+  number: 128
+  name: Yuji Nakatsukasa
+  title: "A fast algorithm for low-rank approximation with error control"
+
+rli:
+  number: 129
+  name: Ren-Cang Li
+  title: "The NPDo Approach For Optimization On The Stiefel Manifold with Applications"
+
+mfasi:
+  number: 130
+  name: Massimiliano Fasi
+  title: "High-Accuracy Floating-Point Matrix Multiplication on Low-Precision Floating-Point and Fixed-Point Hardware"
+
+seswar:
+  number: 131
+  name: Srinivas Eswar
+  title: "Bayesian Optimal Experiment Design via Column Subset Selection"
+
+xsun:
+  number: 132
+  name: Xiaobai Sun
+  title: Sparsify Latent Factor Matrix by Householder Transformations
+
+gballard:
+  number: 133
+  name: Grey Ballard
+  title: "Accelerating Randomized Tensor Decompositions using Structured Random Matrices"
+
+dfortunato:
+  number: 136
+  name: Daniel Fortunato
+  title: "Interpolated Compressed Inverse Preconditioning: Fast and Accurate Simulation of Close-to-Touching Discs in Stokes Flow"
+
+skeip:
+  number: 137
+  name: Sophia Keip
+  title: "QCLAB: A MATLAB Toolbox for Quantum Numerical Linear Algebra"
+
+fxue:
+  number: 138
+  name: Fei Xue
+  title: "A block conjugate gradient method with polynomial filters for symmetric eigenvalue problems: practice and global quasi-optimality"
+
+hkapadia:
+  number: 139
+  name: Harshit Kapadia
+  title: "On a Multi-Stage Tensor Reduction Strategy for Arbitrary Order-p Tensorial Data under the Tensor T-Product Algebra"
+
+mzaslavskiy:
+  number: 141
+  name: Mikhail Zaslavskiy
+  title: "Adaptive data-driven reduced-order models of port-Hamiltonian dynamical systems for nonlinear inverse scattering applications"
+
+idhillon:
+  number: 142
+  name: Inderjit S. Dhillon
+  title: "CASPR: Combining Axis Preconditioners using Kronecker Sums/Products for Training Large Neural Networks"
+
+rarmstrong:
+  number: 143
+  name: Robin Armstrong
+  title: "Collect, Commit, Expand: an Efficient Strategy for Column Subset Selection on Extremely Wide Matrices"
+
+eboman:
+  number: 144
+  name: Erik G Boman
+  title: Parallel Incomplete Factorization Preconditioners
+
+echow:
+  number: 145
+  name: Edmond Chow
+  title: "Online Machine Learning for Solving a Sequence of Linear Systems"
+
+rvanbeeumen:
+  number: 147
+  name: Roel Van Beeumen
+  title: Quantum Krylov Methods for Eigenvalue Calculations
+
+rluce:
+  number: 149
+  name: Robert Luce
+  title: A MATLAB Toolbox for Toeplitz-Like Matrix Computations
+
+auschmajew:
+  number: 150
+  name: André Uschmajew
+  texname: Andr\\'e Uschmajew
+  title: Accelerating operator Sinkhorn iteration with overrelaxation
+
+shon:
+  number: 151
+  name: Sean Y. Hon
+  title: "Optimal preconditioners for nonsymmetric multilevel Toeplitz systems with application to solving non-local evolutionary PDEs"
+
+hwilber:
+  number: 152
+  name: Heather Wilber
+  title: "A Time-Trequency Method for Acoustic Scattering in Unfriendly Domains"
+
+ntrefethen:
+  number: 153
+  name: Lloyd N. Trefethen
+  title: "From Zolotarev problems in linear algebra to a new approach to quadrature"
+
+rlehoucq:
+  number: 154
+  name: Rich Lehoucq
+  title: "Optimal accuracy for linear sets of equations with the graph Laplacian"
+
+spozza:
+  number: 155
+  name: Stefano Pozza
+  title: "Matrix equations from the *-algebra with quantum chemistry applications"
+  textitle: "Matrix equations from the $\\star$-algebra with quantum chemistry applications"
+
+sgugercin:
+  number: 156
+  name: Serkan Gugercin
+  title: Separable Low-rank Barycentric Forms in the p-AAA Algorithm
+
+yjang:
+  number: 157
+  name: Yongseok Jang
+  title: "Randomized orthogonalization in GMRES with deflation and augmentation"
+
+jdemmel:
+  number: 159
+  name: James Demmel
+  title: "On Minimizing Arithmetic and Communication Complexity of Jacobi’s Eigenvalue Method: Review and Beyond"
+
+jpecamedlin:
+  number: 160
+  name: John Peca-Medlin
+  title: Global and local growth behavior of GEPP and GECP
+
+lyosef:
+  number: 161
+  name: Liron Mor Yosef
+  title: Efficient Classical-Quantum Algorithms for Matrix Encoding
+
+bheinzelreiter:
+  number: 162
+  name: Bernhard Heinzelreiter
+  title: "Efficient Iterative Methods for the Solution of Sparse Tree-Coupled Saddle-Point Systems"
+
+mbolten:
+  number: 164
+  name: Matthias Bolten
+  title: "Parallelization of all-at-once preconditioned solvers for time-dependent PDEs"
+
+
+mkilmer:
+  number: 168
+  name: Misha E. Kilmer
+  title: "A Memory-efficient MM-GKS Variant for Large-scale Dynamic or Streaming Inverse Problems"
+
+zlai:
+  number: 170
+  name: Zehua Lai
+  title: Most matrix manifold optimization problems are NP-hard
+
+jxia:
+  number: 171
+  name: Jianlin Xia
+  title: "Matrix Analysis and Fast Solvers for Neural Network Computations"
+
+rmorgan:
+  number: 172
+  name: Ron Morgan
+  title: Krylov Methods and Polynomials
+
+ycho:
+  number: 173
+  name: Younghyun Cho
+  title: "Surrogate-based Autotuning for Randomized Numerical Linear
+Algebra"
+
+cwang:
+  number: 174
+  name: Christopher Wang
+  title: "Surrogate-based Autotuning for Randomized Numerical Linear
+Algebra"
+
+membree:
+  number: 175
+  name: Mark Embree
+  title: Spectral Computations for Quasicrystal Models
+
+mpasha:
+  number: 176
+  name: Mirjeta Pasha
+  title: "Efficient Dynamic Image Reconstruction with Motion
+Estimation"
+
+cpenke:
+  number: 177
+  name: Carolin Penke
+  title: "Using a Blocked Adaptive Randomized Range Finder to Reduce Memory Requirements in Deep Learning Based on the Householder QR Decomposition"
+
+mderezinski:
+  number: 178
+  name: Michał Dereziński
+  texname: Micha{\\l} Derezi\\'nski
+  title: "Randomized Algorithms for Solving Linear Systems with Low-rank Structure"
+
+fchen:
+  number: 179
+  name: Fei Chen
+  title: "Convergence Behavior of GMRES on Tridiagonal Toeplitz Systems"
+
+smackey:
+  number: 180
+  name: D. Steven Mackey
+  title: "Sign Characteristic in the Inverse Problem for Hermitian Matrix Polynomials"
+
+rbhattacharjee:
+  number: 182
+  name: Rajarshi Bhattacharjee
+  title: "Improved Spectral Density Estimation via Explicit and Implicit Deflation"
+
+mespanol:
+  number: 183
+  name: Malena I. Español
+  texname: Malena I. Espa\\~nol
+  title: "Variable Projection Methods for Regularized Separable Nonlinear Inverse Problems"
+
+swerner:
+  number: 186
+  name: Steffen W. R. Werner
+  title: "Structured Representations of Rational Functions for Learning Mechanical Dynamical Systems: A Barycentric Approach"
+
+mackermann:
+  number: 189
+  name: Michael S. Ackermann
+  title: "Leveraging Numerical Linear Algebra for Robust Learning of Optimal H2 models from time-domain data"
+
+lonisk:
+  number: 190
+  name: Lucas Onisk
+  title: "Mixed Precision Iterative Refinement for Linear Inverse Problems"
+
+dhalikias:
+  number: 194
+  name: Diana Halikias
+  title: Robust Hierarchical Matrix Approximation from Sketches
+
+nsingh:
+  number: 195
+  name: Navjot Singh
+  title: "Alternating Mahalanobis Distance Minimization for CP Tensor Decomposition"
+
+lgrigori:
+  number: 196
+  name: Laura Grigori
+  title: Randomization techniques for solving eigenvalue problems
+
+asobczyk:
+  number: 197
+  name: Aleksandros Sobczyk
+  title: Algorithms for Hermitian eigenproblems and their complexity
+
+pbenner:
+  number: 198
+  name: Peter Benner
+  title: "Learning Globally Stable Dynamics — a Matrix-theoretic Perspective"
+
+adamle:
+  number: 199
+  name: Anil Damle
+  title: "Rank-revealing QR factorizations: applications, algorithms, and theory"
+
+mmeier:
+  number: 200
+  name: Maike Meier
+  title: "Exploiting mathematical structures in spectral imaging to accelerate experiments and improve iterative reconstructions"
+
+ksoodhalter:
+  number: 202
+  name: Kirk M. Soodhalter
+  title: "Filtration of Lanczos vectors in hybrid CG Tikhonov iteration"
+
+igosea:
+  number: 204
+  name: Ion Victor Gosea
+  title: "H2 optimal model reduction of linear systems with quadratic outputs: from rational function interpolation to data-driven modeling"
+
+ctobler:
+  number: 205
+  name: Christine Tobler
+  title: Quantum Computing in MATLAB
+
+astathopoulos:
+  number: 208
+  name: Andreas Stathopoulos
+  title: "Evaluating and improving streaming methods for large scale SVD problems"
+
+vperovic:
+  number: 209
+  name: Vasilije Perović
+  texname: Vasilije Perovi\\'{c}
+  title: "A hybrid method for computing a few singular triplets of very large sparse matrices"
+
+jurschel:
+  number: 210
+  name: John Urschel
+  title: Estimating the Numerical Range with a Krylov Subspace
+
+rmarcia:
+  number: 211
+  name: Roummel Marcia
+  title: "Inverse Eigenvalue Difference Problems Arising in Quantum Sensing"
+
+jlangou:
+  number: 214
+  name: Julien Langou
+  title: "New results on the I/O complexity of some Numerical Linear Algebra kernels"
+
+tmitchell:
+  number: 215
+  name: Tim Mitchell
+  title: "Interpolation-Based Algorithms to Compute the H-infinity Norm of a Parametric System"
+
+ayesypenko:
+  number: 216
+  name: Anna Yesypenko
+  title: "Randomized Algorithms for the Simultaneous Compression and LU Factorization of Hierarchical Matrices"
+
+edesturler:
+  number: 217
+  name: Eric de Sturler
+  title: Sketched GCRODR and its Convergence Analysis
+
+gdinh:
+  number: 221
+  name: Grace Dinh
+  title: "General Methods for Sparsity Structure Description and Cost Estimation"
+
+erebrova:
+  number: 222
+  name: Elizaveta Rebrova
+  title: "On efficiency and adaptivity of sketch-and-project approach in randomized linear solvers"
+
+ahorning:
+  number: 223
+  name: Andrew Horning
+  title: "Contour Integral Methods for Exponentials of Matrices and Operators with Explicit High-Order Error Bounds"
+
+rshah:
+  number: 224
+  name: Rikhav Shah
+  title: Sparse Pseudospectral Shattering
+
+jgarzavargas:
+  number: 226
+  name: Jorge Garza-Vargas
+  title: "Proving Rapid Global Convergence for the Shifted QR Algorithm"
+
+fuhlig:
+  number: 227
+  name: Frank Uhlig
+  title: On the Unitary Block-Diagonalisation of General Matrices and Applications
+
+dbindel:
+  number: 228
+  name: David S. Bindel
+  title: "Birkhoff Averages, Invariant Sets, and Adaptive Filtering"
+
+xli:
+  number: 229
+  name: Sherry Li
+  title: "Adaptive Sketching Based Construction of H2 Matrices on GPUs"
+  textitle: "Adaptive Sketching Based Construction of $\\mathcal{H}^2$ Matrices on GPUs"
+
+aedelman:
+  name: Alan Edelman
+  title: "Julia, portable Numerical Linear Algebra, and beyond"

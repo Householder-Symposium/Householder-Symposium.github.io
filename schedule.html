@@ -1,0 +1,66 @@
+---
+title: Schedule
+layout: page
+---
+
+{%- assign days="Monday,Tuesday,Wednesday,Thursday,Friday" | split: "," -%}
+{%- assign tracks="A,B,C" | split: "," -%}
+
+<hr>
+<div style="text-align:center">
+  {%- for day in days -%}
+  &nbsp;<a href="#{{ day }}">[{{ day }}]</a>&nbsp;
+  {%- endfor -%}
+</div>
+<hr>
+
+{% for day in days %}
+<h2><a name="{{ day }}">{{ day }}</a></h2>
+
+<table>
+  <tbody>
+    {% for item in site.data.schedule[day] %}
+    {%- if item.title -%}
+    <tr>
+      <td>{{ item.from }}-{{ item.until }}</td>
+      <td><b>{{ item.title }}</b></td>
+    </tr>
+    {%- endif -%}
+    {%- if item.type -%}
+    {%-   if item.type == "plenary" -%}
+    <tr>
+      <td></td>
+      <td><b>Plenary session</b> ({{ item.from }}-{{ item.until }}) <td>
+    </tr>
+    {%-     assign t = item.from | date: '%s' -%}
+    {%-     for s in item.speakers -%}
+    {%-       assign tnext = t | plus: 1500 -%}
+    {%-       assign speaker = site.data.speakers[s] -%}
+    {%-       include talk-slot.html -%}
+    {%-       assign t = tnext -%}
+    {%-     endfor -%}
+    {%-   endif -%}
+    {%-   if item.type == "parallel" -%}
+    <tr>
+      <td></td>
+      <td><b>Parallel session</b> ({{ item.from }}-{{ item.until }}) <td>
+    </tr>
+    {%    for track in tracks %}
+    <tr>
+      <td></td>
+      <td><em>Track {{ track }}</em></td>
+    </tr>
+    {%-     assign t = item.from | date: '%s' -%}
+    {%-     for s in item[track] -%}
+    {%-       assign tnext = t | plus: 1500 -%}
+    {%-       assign speaker = site.data.speakers[s] -%}
+    {%-       include talk-slot.html -%}
+    {%-       assign t = tnext -%}
+    {%-     endfor -%}
+    {%-   endfor -%}
+    {%-   endif -%}
+    {%- endif -%}
+    {% endfor %}
+  </tbody>
+</table>
+{% endfor %}

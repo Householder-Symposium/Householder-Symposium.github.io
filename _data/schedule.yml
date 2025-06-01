@@ -1,0 +1,330 @@
+Monday:
+  - title: Breakfast
+    from: "8:00"
+    until: "8:50"
+  - title: Opening Remarks
+    from: "8:50"
+    until: "9:00"
+  - type: plenary
+    speakers:
+      - havron
+      - gballard
+      - pbenner
+    from: "9:00"
+    until: "10:15"
+  - title: Coffee Break
+    from: "10:15"
+    until: "10:45"
+  - type: plenary
+    speakers:
+      - nboulle
+      - mchung
+      - idhillon
+    from: "10:45"
+    until: "12:00"
+  - title: Lunch Break
+    from: "12:00"
+    until: "13:30"
+  - type: parallel
+    A:
+      - mderezinski
+      - ycho
+      - lburke
+      - eepperly
+    B:
+      - acasulli
+      - ahorning
+      - edesturler
+      - jbarlow
+    C:
+      - abucci
+      - hkapadia
+      - igosea
+      - sekstrom
+    from: "13:30"
+    until: "15:10"
+  - title: Coffee Break
+    from: "15:10"
+    until: "15:40"
+  - type: parallel
+    A:
+      - mbolten
+      - dfortunato
+      - cballew
+      - gdinh
+      - zbai
+    B:
+      - gbarbarino
+      - jbrust
+      - jcape
+      - membree
+      - jgarzavargas
+    C:
+      - aantoulas
+      - mgnazzo
+      - agreenbaum
+      - lgrubisic
+      - rbhattacharjee
+    from: "15:40"
+    until: "17:45"
+  - title: Dinner
+    from: "18:00"
+    until: "20:00"
+
+Tuesday:
+  - title: Breakfast
+    from: "8:00"
+    until: "9:00"
+  - type: plenary
+    from: "9:00"
+    until: "10:15"
+    speakers:
+      - mfasi
+      - sgazolla
+      - lgrigori
+  - title: Coffee Break
+    from: "10:15"
+    until: "10:45"
+  - type: plenary
+    from: "10:45"
+    until: "11:50"
+    speakers:
+      - iipsen
+      - jlangou
+      - rschneider
+  - title: Lunch Break
+    from: "12:00"
+    until: "13:30"
+  - type: parallel
+    from: "13:30"
+    until: "15:10"
+    A:
+      - sgugercin
+      - dhalikias
+      - xli
+      - mlepilov
+    B:
+      - aedelman
+      - shon
+      - yjang
+      - bheinzelreiter
+    C:
+      - zlai
+      - yhe
+      - xliang
+      - sjeong
+  - title: Coffee Break
+    from: "15:10"
+    until: "15:40"
+  - type: parallel
+    from: "15:40"
+    until: "17:45"
+    A:
+      - sleveque
+      - dlu
+      - mmanucci
+      - smassei
+      - fdopico
+    B:
+      - rmorgan
+      - amontoison
+      - kmorikuni
+      - yma
+      - ama
+    C:
+      - hluo
+      - smackey
+      - mmeier
+      - swerner
+      - zdrmac
+  - title: Dinner and Poster Blitz
+    from: "18:00"
+    until: "20:00"
+  - title: <a href="posters.html">Poster Session</a>
+    from: "20:00"
+    until: "21:30"
+
+Wednesday:
+  - title: Breakfast
+    from: "8:00"
+    until: "9:00"
+  - type: plenary
+    from: "9:00"
+    until: "10:15"
+    speakers:
+      - cmoler
+      - enewman
+      - vnoferini
+  - title: Coffee Break
+    from: "10:15"
+    until: "10:45"
+  - type: plenary
+    from: "10:45"
+    until: "12:00"
+    speakers:
+      - eoktay
+      - eqian
+      - mlandman
+  - title: Lunch Break
+    from: "12:00"
+    until: "13:00"
+  - title: Excursion
+    from: "13:15"
+    until: "18:00"
+  - title: Banquet
+    from: "19:00"
+    until: "22:00"
+
+Thursday:
+  - title: Breakfast
+    from: "8:00"
+    until: "9:00"
+  - type: plenary
+    from: "9:00"
+    until: "10:45"
+    speakers:
+      - dszyld
+      - jtabeart
+      - ftisseur
+      - ntrefethen
+  - title: Coffee Break
+    from: "10:40"
+    until: "11:10"
+  - type: parallel
+    from: "11:10"
+    until: "12:00"
+    A:
+      - ahiggins
+      - ynakatsukasa
+    B:
+      - eng
+      - moutrata
+    C:
+      - jpapez
+      - tpark
+  - title: Lunch Break
+    from: "12:00"
+    until: "13:30"
+  - type: parallel
+    from: "13:30"
+    until: "15:10"
+    A:
+      - mpasha
+      - jpearson
+      - dpersson
+      - jpecamedlin
+    B:
+      - erebrova
+      - spozza
+      - bplestenjak
+      - mrinelli
+    C:
+      - rshah
+      - isimunec
+      - nsingh
+      - asobczyk
+  - title: Coffee Break
+    from: "15:10"
+    until: "15:30"
+  - type: parallel
+    A:
+      - nspillane
+      - astathopoulos
+      - jxia
+      - nzheng
+      - auschmajew
+    B:
+      - nvanbuggenhout
+      - bvandereycken
+      - wvanroose      
+      - dwatkins
+      - yxi
+    C:
+      - xsun
+      - fxue
+      - mzaslavskiy
+      - jzimmerling
+      - fuhlig
+  - title: Housholder Prize lecture(s)
+    from: "18:00"
+    until: "18:25"
+  - title: Dinner
+    from: "18:30"
+    until: "20:00"
+
+Friday:
+  - title: Breakfast
+    from: "8:00"
+    until: "9:00"
+  - type: plenary
+    from: "9:00"
+    until: "10:15"
+    speakers:
+      - jurschel
+      - hwilber
+      - ayesypenko
+  - title: Coffee Break and check out
+    from: "10:15"
+    until: "11:00"
+  - type: plenary
+    from: "11:00"
+    until: "11:50"
+    speakers:
+      - rvanbeeumen
+      - vmehrmann
+  - title: Closing Remarks
+    from: "11:50"
+    until: "12:00"
+  - title: To-go lunch available
+    from: "12:00"
+    until: "13:00"
+
+posters:
+ - mackermann
+ - rarmstrong
+ - dbindel
+ - eboman
+ - ecarson
+ - fchen
+ - tchen
+ - echow
+ - jchung
+ - acortinovis
+ - adamle
+ - jdemmel
+ - ydong
+ - vdruskin
+ - mespanol
+ - seswar
+ - pferrari
+ - ifurci
+ - ngovindarajan
+ - skeip
+ - mkilmer
+ - dkressner
+ - hlam
+ - rlehoucq
+ - rli
+ - xliu
+ - rluce
+ - lma
+ - rmarcia
+ - kmeerbergen
+ - amiedlar
+ - tmitchell
+ - umor
+ - jnagy
+ - lonisk
+ - cpenke
+ - vperovic
+ - aprajapati
+ - lrobol
+ - msaunders
+ - nshao
+ - tshi
+ - ksoodhalter
+ - mstoll
+ - ctobler
+ - atownsend
+ - cwang
+ - lyosef
