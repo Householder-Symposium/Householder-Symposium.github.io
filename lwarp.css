@@ -36,8 +36,8 @@ a.toctheorem {margin-left: 0em}
 a.toclstlisting {margin-left: 0em}
 
 body {
-    font-family: "DejaVu Serif", "Bitstream Vera Serif",
-        "Lucida Bright", Georgia, serif;
+    /* font-family: "DejaVu Serif", "Bitstream Vera Serif",
+        "Lucida Bright", Georgia, serif; */
     background: #FAF7F4 ;
     color: black ;
     margin:0em ;
@@ -80,8 +80,8 @@ span.textnormal, div.textnormal {
     font-style: normal;
     font-variant: normal;
     font-variant-numeric: normal ;
-    font-family: "DejaVu Serif", "Bitstream Vera Serif",
-        "Lucida Bright", Georgia, serif;
+    /* font-family: "DejaVu Serif", "Bitstream Vera Serif",
+        "Lucida Bright", Georgia, serif; */
 }
 
 span.textmd, div.textmd { font-weight: normal; }
@@ -109,13 +109,13 @@ span.textulc, div.textulc {
 span.textsl, div.textsl { font-style: oblique; }
 
 span.textrm, div.textrm {
-    font-family: "DejaVu Serif", "Bitstream Vera Serif",
-    "Lucida Bright", Georgia, serif;
+    /* font-family: "DejaVu Serif", "Bitstream Vera Serif",
+    "Lucida Bright", Georgia, serif; */
 }
 
 span.textsf, div.textsf {
-     font-family: "DejaVu Sans", "Bitstream Vera Sans",
-        Geneva, Verdana, sans-serif ;
+     /* font-family: "DejaVu Sans", "Bitstream Vera Sans",
+        Geneva, Verdana, sans-serif ; */
 }
 
 /* nfssext-cfr lining figures */
