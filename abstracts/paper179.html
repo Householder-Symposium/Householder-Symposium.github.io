@@ -1,0 +1,351 @@
+---
+layout: abstract
+absnum: 179
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Convergence Behavior of GMRES on Tridiagonal Toeplitz Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Fei Chen</span>, Kirk M. Soodhalter
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Discretizing PDEs leads to linear systems with large, sparse coeﬀicient matrices. When linear, constant-coeﬀicient PDEs with Dirichlet boundary conditions are discretized on uniform meshes, one can obtain Toeplitz, multilevel Toeplitz and/or block
+Toeplitz systems [1, 2]. Toeplitz matrices have constant diagonals, and multilevel and block Toeplitz matrices have related structures, that can be exploited to speed up GMRES, and aid convergence analysis. Such systems are widely solved by Krylov
+subspace methods.<br />
+
+</p>
+
+<p>
+Let
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                            Ax = b,                                                                                          (1)--><a id="LE"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {LE} Ax=b,
+\end{equation}
+
+</p>
+
+<p>
+where the matrix \(A\) is Toeplitz, \(b\) is a known right-hand side, and \(x\) is the unknown solution. GMRES starts with an initial guess, \(x_0\), and select \(x_k, k = 1,2,\cdots \), such that \(x_k-x_0\in \mathcal {K}_k(A,r_0) :=
+\)span \(\{r_0,\) \(Ar_0,\cdots ,A^{(k-1)} r_0\}\), where \(r_0 = A(x-x_0)\).<br />
+
+</p>
+
+<p>
+Let \(Y\) be the reverse identity matrix, then \(YA\) is symmetric Hankel. One can solve <span class="textup">(<a href="paper.html#LE">1</a>)</span> through
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                          Y Ax = Y b,                                                                                      (2)--><a id="flip"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {flip} YAx=Yb,
+\end{equation}
+
+</p>
+
+<p>
+by applying MINRES [3], which is mathematically equivalent to GMRES for a symmetric system. Through our experiments, we find that MINRES on <span class="textup">(<a href="paper.html#flip">2</a>)</span> requires about twice as
+many iterations as GMRES on <span class="textup">(<a href="paper.html#LE">1</a>)</span> to converge, especially when preconditioned.<br />
+
+</p>
+
+<p>
+For a symmetric system such as <span class="textup">(<a href="paper.html#flip">2</a>)</span>, the convergence behavior of MINRES can usually be characterized by the eigenvalues and the RHS. However, when \(A\) is nonsymmetric,
+GMRES convergence behavior is much more complicated to describe; in extreme cases the spectrum bears no relation to the convergence rate. In [4], the authors prove that any nonoincreasing convergence curve is possible for GMRES by constructing
+a linear system of prescribed nonzero eigenvalues with a given convergence curve.<br />
+
+</p>
+
+<p>
+In this work, we explore the convergence behavior of GMRES when applied to real tridiagonal Toeplitz systems, where the matrix
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                                                 
+                                                                                                                    α       γ      0    ···    0
+                                                                                                                  β        α      γ    ···    0
+                                                                                                                                                 
+                                                                                                                                              ..  ,
+                                                                                                              A =  ...    ..
+                                                                                                                              .
+                                                                                                                                  ..
+                                                                                                                                    .
+                                                                                                                                        ..
+                                                                                                                                           .    .                                                                                                     (3)
+                                                                                                                                                 
+                                                                                                                  0        0     β      α     γ
+                                                                                                                    0       0     0      β     α
+
+-->
+
+<p>
+
+\begin{equation}
+A=\begin{bmatrix} \alpha &amp; \gamma &amp; 0 &amp; \cdots &amp; 0\\ \beta &amp; \alpha &amp; \gamma &amp; \cdots &amp; 0\\ \vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; \beta &amp;
+\alpha &amp; \gamma \\ 0 &amp; 0 &amp; 0 &amp; \beta &amp; \alpha \end {bmatrix},
+\end{equation}
+
+</p>
+
+<p>
+\(\alpha , \beta , \) and \(\gamma \in \mathbb {R}.\)<br />
+
+</p>
+
+<p>
+We show that different GMRES convergence behavior is possible for different Toeplitz systems that share the same spectra, regardless of their right hand sides. We also explore the connection between the GMRES convergence behavior and the
+singular values of the tridiagonal Toeplitz matrices.<br />
+
+</p>
+
+<p>
+In spite of the diﬀiculties, there has been plenty of work in the literature inspecting the convergence behavior of GMRES. For instance, in [5], the authors point out that, for a general nonsingluar matrix \(A\), the convergence behavior of GMRES is
+related to the distribution of eigenvalues of \(A\), and provide an upper bound. However, each eigenvalue is either treated as a member of some cluster, or an outlier to any cluster. For the cases where eigenvalues are not spreading out far away from
+each other, for example, those of a tridiagonal Toeplitz matrix, or when the clusters are far away from each other, one fails to find a meaningful upper bound since it become too loose. In [6], Meurant shows through APS parametrization of \(A\) that
+GMRES could have different convergence behaviors for two different matrices with the same spectrum. Nevertheless, a reconstructed matrix \(A\) in this case does not preserve the Toeplitz structure in general. As for tridiagonal matrix systems,
+Liesen and Strakoš analyze the convergence behavior of GMRES when \(|\alpha |\approx |\beta |\gg |\gamma |\) [7]. For a more general case where \(\beta |\neq |\gamma |\), Li and Zhang provide upper bounds and asymptotic speeds of
+the 2-norm of the \(k^{th}\) residual via Chebyshev polynomial of the first kind[8] and the second kind[9]. In our work, we formulate equations based on APS parametrization of \(A\) with the constraint that each diagonal is constant to explore
+what convergence regimes are possible for a tridiagonal Toeplitz system.<br />
+
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> C. Garoni and S. Serra-Capizzano, <em>Generalized Locally Toeplitz Sequences: Theory and Applications</em>, vol. I Springer Cham, 2017.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C. Garoni and S. Serra-Capizzano, <em>Generalized Locally Toeplitz Sequences: Theory and Applications</em>, vol. II Springer Cham, 2018.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J. Pestana and A. Wathen, <em>A preconditioned MINRES method for nonsymmetric Toeplitz matrices</em>, SIAM J. Matrix Anal. Appl., vol 36(2015), no. 1, 273-288.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A. Greenbaum, V. Pták, Z. Strakoš <em>Any non increasing convergence curve is possible for GMRES</em>, SIAM J. Matrix Anal. Appl., vol 17(1996), no. 3, 465-469.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> S.&nbsp;L. Campbell, I.&nbsp;C.&nbsp;F. Ipsen, C.&nbsp;T. Kelley and C.&nbsp;D. Meyer, <em>GMRES and the minimal polynomial</em>, BIT Numerical Mathematics, vol 36(1996), no. 4, 664-675.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> G. Meurant, <em>GMRES and the Arioli, Pták, and Strakoš parametrization</em>, BIT Numerical Mathematics, vol 52(2012), 687-702.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> J. Liesen and Z. Strakoš, <em>Convergence of GMRES for tridiagonal Toeplitz matrices</em>, SIAM J. Matrix Anal. Appl., vol 26(2004), no. 1, 233-251.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> R.&nbsp;C. Li and W. Zhang, <em>The rate of convergence of GMRES on a tridiagonal Toeplitz linear system</em>, Numerische Mathematik, vol 112(2009), 267-293.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> R.&nbsp;C. Li and W. Zhang, <em>The rate of convergence of GMRES on a tridiagonal Toeplitz linear system. II</em>, Linear Algebra and its Applications, vol 12(2009), 2425-2436.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

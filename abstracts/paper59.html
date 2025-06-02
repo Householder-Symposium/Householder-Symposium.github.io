@@ -1,0 +1,236 @@
+---
+layout: abstract
+absnum: 59
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Inverse Problems, Kronecker Products and Mixed Precision Computations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">James Nagy</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The gaming industry, machine learning (ML), and artificial intelligence (AI) are areas that require substantial computational resources and/or require very fast computations, but do not always require high accuracy in certain computational
+problems. This has motivated GPU vendors, such as NVIDIA, Google and AMD to manufacture hardware that can perform computations using low precision 16-bit floating-point formats [4]. Two examples are bfloat16 and FP16. In comparison,
+IEEE single precision uses a 32-bit floating-point format, and double precision (e.g., the default in MATLAB) uses a 64-bit floating-point format. The use of 16-bit format can result in a \(4\times \) speedup compared to double precision, and
+certain hardware accelerators (called Tensor Cores) can further accelerate performance for operations such as matrix-vector multiplications [4].
+</p>
+
+<p>
+The potential for much faster computations has fueled a growing interest in the last decade to use powerful GPU servers for scientific applications, and in particular to use mixed precision algorithms for problems that require high accuracy; that is,
+when possible, use low precision for speed, but mix in some high precision computations to improve accuracy. Recent previous work for solving general, well-conditioned linear systems, including iterative refinement [1, 2, 7], Cholesky factorization and
+least squares problems [1, 5], QR factorization [8], and GMRES [6].
+</p>
+
+<p>
+Relatively little work has been done to exploit mixed precision computations for inverse problems, where the aim is to compute approximations of \(x\) from measured data, \(b\), where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                        --><a id="eq:DIP"></a><!--b = Ax + e .                                                                                                           (1)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:DIP} b = A x + e\,.
+\end{equation}
+
+</p>
+
+<p>
+\(A\) is assumed to be a large, severely ill-conditioned matrix, and \(e\) represents unknown noise and other data measurement errors. In some applications \(A\) is known to high accuracy, while in other applications it may be that only an
+approximation of \(A\) is given, or that \(A \equiv A(y)\) is given in parametric form. Even in the case when \(A\) is known to high accuracy, due to the ill-posedness of the problem, and the presence of noise in the measured data, computing
+accurate approximations of \(x\) is a nontrivial task; special considerations, such as regularization approaches, need to be considered for these problems [3]. In this presentation we show how Kronecker product structure can be exploited and used in
+mixed precision algorithms for inverse problems.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E.&nbsp;Carson, N.&nbsp;J. Higham, and S.&nbsp;Pranesh. Three-precision GMRES-based iterative refinement for least squares problems. <i>SIAM Journal on Scientific Computing</i>,
+42(6):A4063–A4083, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;Haidar, H.&nbsp;Bayraktar, S.&nbsp;Tomov, J.&nbsp;Dongarra, and N.&nbsp;J. Higham. Mixed-precision iterative refinement using tensor cores on GPUs to accelerate solution of linear
+systems. <i>Proceedings of the Royal Society A</i>, 476(2243):20200110, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> P.&nbsp;C. Hansen. <i>Discrete Inverse Problems: Insight and Algorithms</i>. SIAM, Philadelphia, PA, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> N.&nbsp;Higham and T.&nbsp;Mary. Mixed precision algorithms in numerical linear algebra. <i>Acta Numerica</i>, 31:347–414, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> N.&nbsp;J. Higham and S.&nbsp;Pranesh. Exploiting lower precision arithmetic in solving symmetric positive definite linear systems and least squares problems. <i>SIAM Journal on Scientific
+Computing</i>, 43(1):A258–A277, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> J.&nbsp;A. Loe, C.&nbsp;A. Glusa, I.&nbsp;Yamazaki, E.&nbsp;G. Boman, and S.&nbsp;Rajamanickam. A study of mixed precision strategies for gmres on gpus. <i>arXiv preprint
+arXiv:2105.07544</i>, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> E.&nbsp;Oktay and E.&nbsp;Carson. Multistage mixed precision iterative refinement. <i>Numerical Linear Algebra with Applications</i>, 29(4):e2434, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> L.&nbsp;M. Yang, A.&nbsp;Fox, and G.&nbsp;Sanders. Rounding error analysis of mixed precision block Householder QR algorithms. <i>SIAM J. Sci. Comput.</i>, 43:A1723–A1753, 2021.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

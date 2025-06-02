@@ -1,0 +1,268 @@
+---
+layout: abstract
+absnum: 222
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+On eﬀiciency and adaptivity of sketch-and-project approach<br />
+in randomized linear solvers
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Elizaveta Rebrova</span>
+</p>
+
+<p>
+Based on the joint works with Michal Derezinski, Deanna Needell, Daniel LeJeune, Jackie Lok.
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The sketch-and-project is a unifying framework for many known randomized iterative methods for solving linear systems, such as randomized Kaczmarz and coordinate descent algorithms, their block variants, as well as the extensions to non-linear
+optimization problems. Given a linear system \(Ax=b\), the general scheme iterates to find its solution in the following way: for \(t = 0, 1, \ldots \) a random sketching matrix \(S = S(t)\) is sampled from a distribution of (random) matrices
+and the update rule is given&nbsp;by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                 xt+1 = arg minn ∥xt − x∥2B    such that    SAx = Sb.                                                   (1)--><a id="sketch-and-project"></a><!--
+                                                                                                            x∈R
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {sketch-and-project} x_{t+1} = arg\min _{x \in R^n} \|x_t - x\|_B^2 \quad \text { such that }\quad SAx = Sb.
+\end{equation}
+
+</p>
+
+<p>
+This optimization problem can be solved directly and is equivalent to an iterative step
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                  xt+1 = xt − B −1 A⊤ S ⊤ (SAB −1 A⊤ S ⊤ )† S(Axt − b).
+
+-->
+
+<p>
+
+\begin{equation*}
+x_{t+1} = x_t - B^{-1}A^\top S^\top (SAB^{-1}A^\top S^\top )^{\dagger }S(Ax_{t} - b).
+\end{equation*}
+
+</p>
+
+<p>
+The performance of these methods is often measured via the expected convergence rate:
+</p>
+
+<p>
+\[E\,\|x_{t}-x_*\|_B^2\leq (1-\rho )^t\cdot \|x_0-x_*\|_B^2\quad \forall \,x_0,t\]
+</p>
+
+<p>
+where \(\rho \geq \lambda _{\min }(E[(S\tilde {A})^\dagger S\tilde {A}])\) and \(\tilde {A}=AB^{-1/2}\). Some of well-known special cases, such as Randomized Kaczmarz method (when the sketching matrix \(S\) samples individual
+rows of \(A\) and \(B = I\)), have been mainly used as simple linear solvers that can demonstrate computational eﬀiciency in the cases of vastly overdetermined linear systems, essentially, when the equations arrive in the streaming way. However,
+this perspective is far from complete. In the talk, I will discuss several recent results demonstrating other conceptual advantages of the sketch-and-project based linear solvers.
+</p>
+<!--
+...... subsection 1. Fast linear solvers for the systems with low-rank structure. ......
+-->
+<h5 id="autosec-5">1. Fast linear solvers for the systems with low-rank structure.</h5>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+It is expected that the sketching matrices \(S \in R^{k \times m}\) with larger sketch size \(k\) improve per-iteration convergence of the solver but clearly they become more computationally expensive within every step. In [?], we have quantified
+the advantage of increasing the sketch size and connected it to the <em>tail condition number</em> of the system, that is, singular values of \(A\) excluding the top \(k\) of them.
+</p>
+
+<p>
+Based on this improved convergence rate analysis, one can build a practical linear solver with several very natural enhancements of the generic computation scheme, that is, (a) particular not too small sketch size and very sparse sketching, or block
+sampling on the system preconditioned by the Randomized Hadamard Transform (b) inexact solve in place of the pseudoinverse inversion, and (c) adding the momentum. Such solver can compute \(\tilde x\) such that \(\|A \tilde x- b\|\leq
+\epsilon \|b\|\) in time: \(\tilde O\bigg (\frac {\sigma _{\ell }}{\sigma _n}\cdot n^2\log 1/\epsilon \bigg )\), where \(\ell =C\sqrt {n}\) for some \(C &gt; 0\), where \(\sigma _1\geq \sigma _2\geq ...\geq \sigma
+_{n}&gt;0\) are singular values of the matrix \(A\). This directly improves the standard time complexity for linear solvers, such as \(\tilde O(\kappa \cdot n^2)\), due to its independence from the full condition number (and the top of the
+spectrum in particular) on the linear systems with relatively flat tails of the spectrum. Such linear systems appear in a variety of standard applications such as spiked covariance models and kernel machines, or when the linear system is explicitly
+regularized, such as ridge regression.
+</p>
+
+<p>
+Another consequence of these results, obtained in [?], is that the sketch-and-project approach can be also viewed as implicit preconditioning by the iterative sparse sketching (or sampling) procedure.
+</p>
+<!--
+...... subsection 2. Subspace constrained iterative methods for linear solvers with prior information ......
+-->
+<h5 id="autosec-6">2. Subspace constrained iterative methods for linear solvers with prior information</h5>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+The adaptive nature of the sketch-and-project iteration can be also used to guide the iterations when additional information is available about the system. In [?], we propose a version of the randomized Kaczmarz algorithm for solving systems of
+linear equations where the iterates are confined to the solution space of a selected subsystem. We show that the subspace constraint leads to an accelerated convergence rate, especially when the system has approximately low-rank structure that can
+be estimated before solving the system. Another natural place for a subspace constraint appears if only a part of a linear system changes with time or one is solving a sequence of otherwise connected linear systems. On Gaussian-like random data, we
+show that the proposed Subspace Constrained Randomized Kaczmarz method results in a form of dimension reduction that effectively increases the aspect ratio of the system.
+</p>
+<!--
+...... subsection 3. Robust linear solvers for the systems with sparse corruptions ......
+-->
+<h5 id="autosec-7">3. Robust linear solvers for the systems with sparse corruptions</h5>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+Finally, the adaptivity of the considered iterative framework gives another prominent application to solving linear systems contaminated with sparse corruptions. This setting models applications where some measurements are corrupted by arbitrarily
+large errors, which may occur during the data collection, transmission, and storage process due to malfunctioning sensors or faulty components. For suﬀiciently tall and regular systems \(A \in R^{m\times n}, m \ge O(n)\), the iterates of a simple
+data-aware method based on the Randomized Kaczmarz algorithm converge to \(x_*\) avoiding a significant portion of arbitrary corruptions [?]. Moreover, the subspace constraining approach discussed above allows to eﬀiciently utilize external
+knowledge about corruption-free equations and achieve convergence in diﬀicult settings, such as not very overdetermined (\((1 + \alpha ) n \times n\)) linear systems [?].
+</p>
+
+{% endraw %}

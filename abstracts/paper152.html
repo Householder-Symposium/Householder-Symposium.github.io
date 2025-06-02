@@ -1,0 +1,425 @@
+---
+layout: abstract
+absnum: 152
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A Time-Trequency Method for Acoustic Scattering in Unfriendly Domains
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Heather Wilber</span>, Abi Gopal, Gunnar Martinsson, Wietse Vaes
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The acoustic scattering problem asks for the recovery of a scattered wavefield that is produced when an incoming incident wavefield strikes a scattering object. If sound-soft boundary conditions are imposed and the incident wavefield \(u_{inc}\) is
+pulse-like and away from the scatterer at \(t = 0\), then the scattered field \(u\) satisfies the following:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                       ∂2u
+                                                                           (x, t) − c2 ∆u(x, t) = 0,                                                                    (x, t) ∈ Ω × [0, T ],
+                                                                                                                                                                        (1)                                                 --><a id="eq:IVBP"></a><!--
+                                                                       ∂t2
+                                                                                  ∂u
+                                                                       u(x, 0) =     (x, 0) = 0,                                                                                     x ∈ Ω,                                                             (2)
+                                                                                  ∂t
+                                                                       u(x, t) = −uinc (x, t),                                                                      (3)(x, t) ∈ ∂Ω × [0, T ].                           --><a id="eq:IVBPbnd"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:IVBP} &amp; \dfrac {\partial ^2 u}{\partial t^2}(x, t) - c^2\Delta u(x,t) = 0, \quad &amp;(x, t) \in \Omega \times [0, T], \\ &amp; u(x,0) = \dfrac {\partial u}{\partial t}(x,0) = 0, \quad &amp;x \in
+\Omega , \\ &amp; u(x, t) = -u_{inc}(x,t), \quad &amp;(x,t) \in \partial \Omega \times [0, T]. \label {eq:IVBPbnd}
+\end{align}
+Here, \(c\) is the wave speed associated with the domain, \(\Omega \) is an exterior domain, and \([0, T]\) is some relevant time period over which the scattered waves are observable. This problem is challenging to solve for a number of reasons.
+Domain discretization schemes must manage the fact that the exterior domain is unbounded as \(|x|\to \infty \) and impose artificial absorbing boundary layers that appropriately handle outgoing waves. Traditional direct-in-time methods must
+combat pervasive issues related to accumulating dispersive error and potentially prohibitive restrictions on time step sizes. When the domain includes corners, cusps, or trapping regions where the scattered waves can get stuck and decay very slowly,
+these issues become severely exacerbated.
+</p>
+
+<p>
+Under the condition that the incident wavefield is enveloped by a Gaussian or is otherwise approximately bandlimited, some of the complications of direct-in-time methods can be avoided by using <i>hybrid time-frequency solvers</i>&nbsp;[1, 8].
+This class of methods considers an equivalent problem in the frequency domain. If \(\hat {U}(x, \omega )\) is the Fourier transform of \(u(x,t)\) with respect to time, then it follows that \(\hat {U}\) satisfies the Helmholtz equation with a
+continously parametrized wavenumber:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                                                                        ω2
+                                                                                                                           ∆Û (x, ω) +     Û (x, ω) = 0, x ∈ Ω,                           (4)                               --><a id="eq:HH"></a><!--
+                                                                                                                                         c2
+                                                                                                                           Û (x, ω) = −Ûinc (x, ω), x ∈ ∂Ω,                                                                                           (5)
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+&amp; \Delta \hat {U}(x, \omega ) +\frac {\omega ^2}{c^2} \hat {U}(x, \omega ) = 0, \quad x \in \Omega , \label {eq:HH} \\ &amp; \hat {U}(x, \omega ) = -\hat {U}_{inc}(x, \omega ), \quad x \in \partial \Omega ,
+\end{align}
+The Sommerfeld radiation condition is additionally imposed at all \(\omega \). Now \(u(x,t)\) can be expressed in terms of an inverse Fourier transform. If \(\hat {U}(x, \omega )\) is suﬀiciently small for all \(x\) whenever \(\omega \) is
+outside the band \([W_1, W_2]\), then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                 ˆ ∞                              ˆ W2
+                                                                             1                                1
+                                                                u(x, t) =              Û (x, ω)e−iωt dω ≈               Û (x, ω)e−iωt dω.                                                (6)                               --><a id="eq:iFT"></a><!--
+                                                                            2π   −∞                          2π    W1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:iFT} u(x,t) = \frac {1}{2 \pi } \int _{-\infty }^{\infty } \hat {U}(x, \omega ) e^{-i \omega t} \mathrm {d} \omega \approx \frac {1}{2 \pi } \int _{W_1}^{W_2} \hat {U}(x, \omega ) e^{-i \omega t} \mathrm
+{d} \omega .
+\end{equation}
+
+</p>
+
+<p>
+The primary task in these methods is the evaluation of the integral in&nbsp;<span class="textup">(<a href="paper.html#eq:iFT">6</a>)</span> via quadrature, which in turn requires the solving of the Helmholtz equation at quadrature points
+\(\{\omega _1, \omega _2, \cdots , \omega _N\}\), and then the evaluation of the solutions over all domain points of interest. There are major advantages to this formulation, including the ability to compute solutions that are virtually free of
+dispersive error, and the ability to evaluate \(u(x,t)\) at arbitrary points in time (time-skipping). Moreover, solutions to the Helmholtz equation can be expresesd via boundary integral equations that nicely handle the exterior domain by reducing it
+to a contour integral around the boundary of the scatterer&nbsp;[7]. However, there is no free lunch! These methods become prohibitively expensive or intractable when the domain involves corners, trapping regions, or both. We introduce
+developments that overcome these challenges so that hybrid time-frequency methods are effective in domains with these “unfriendly” features. Example domains where our methods work well include multiply–connected regions (e.g., whisper galleries
+or panel sets), as well as keyhole regions with severe trapping, multiple corners, and long channels.
+</p>
+
+<p>
+Our work involves two major developments that make hybrid time-frequency methods effective in unfriendly domains:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"></span> <i>For trapping regions:</i> A damping+correction fast quadrature scheme for the inverse Fourier transform that combines contour integration with fast transforms (the FFT and the fast sinc transform) to
+make evaluation of the integral in&nbsp;<span class="textup">(<a href="paper.html#eq:iFT">6</a>)</span> tractable even when there is trapping.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <i>For domains with corners:</i> State-of-the-art hierarchical linear algebra routines based on recursive skeletonization and the balanced use of “universal skeletions” for solving and evaluating the broadband
+Helmholtz equation. Excellent eﬀiciency makes it possible to handle discretizations with many points (e.g., induced by refinement into corners).
+</p>
+</li>
+</ul>
+
+<p>
+We briefly discuss these two developments, starting with a method to make evaluation feasible in domains with trapping.
+</p>
+
+<p>
+There are two reasons that the integral in&nbsp;<span class="textup">(<a href="paper.html#eq:iFT">6</a>)</span> can be challenging to discretize eﬀiciently. First, if \(t\) is large, the integral becomes highly oscillatory and naive
+discretizations (e.g., Gauss-Legendre quadrature) require many points to capture the oscillations. Coupled to this problem is the fact that when \(u(x,t)\) is in a trapping region and thus decays slowly over time, \(\hat {U}(x,\omega )\) has poles
+in the complex plane very near to the interval \([W_1, W_2]\). These poles are associated with near-resonant modes of the Helmholtz operator. Since \(\hat {U}(x, \omega )\) has only a very small region of analyticity that encloses \([W_1,
+W_2]\), it is inherently diﬀicult to approximate with polynomials.
+</p>
+
+<p>
+To improve upon the analyticity properties, we note that the poles of \(\hat {U}(x, \omega )\) always lie below the real line. This suggests the consideration of the perturbed function \(\hat {U}(x, \omega +i\delta )\), where \(\delta &gt;
+0\). One can view this perturbation as the introduction of mild damping into the solution. Since \(\hat {U}(x, z)\) is analytic with respect to \(z\) in the upper half plane, we can apply Cauchy’s integral theorem on a rectangular contour in the
+upper half plane and represent the undamped solution as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                          ˆ W2                             ˆ W2
+                                                                 Û (x, ω)e−iωt dω = −              Û (x, ω + δi)e−i(ω+δi)t dω −IcL − IcR ,                                              (7)                               --><a id="eq:rect"></a><!--
+                                                           W1                                  W1
+                                                                                           |                 {z                }
+                                                                                                             Iδ
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:rect} \int _{W_1}^{W_2} \hat {U}(x, \omega ) e^{-i \omega t} \mathrm {d} \omega = -\underbrace {\int _{W_1}^{W_2} \hat {U}(x, \omega + \delta i) e^{-i (\omega + \delta i) t} {\rm d} \omega }_{I_{\delta
+}} - I_{cL}- I_{cR},
+\end{equation}
+
+</p>
+
+<p>
+where the correction terms \(I_{cL}\) and \(I_{cR}\) are integrals along the vertical sides of the rectangle. There is an inherent upper limit on \(\delta \). We show that if it is taken too large, the correction terms cannot be stably evaluated.
+However, the room afforded by \(\delta \) is generous enough that when paired with a fast evaluation scheme for the integral \(I_\delta \), we are able to solve the acoustic scattering problem even with severe trapping over long time horizons.
+</p>
+
+<p>
+The integral \(I_{\delta }\) is still problematic in that it can be highly oscillatory when \(t\) is large. To manage this, we follow an idea originally presented in&nbsp;[1] that is also related to sampling schemes for bandlimited functions&nbsp;[6].
+We approximate the periodization of \(\hat {U}(x, \omega + \delta i)\) with a trigonometric polynomial. Critically, this is possible because of the improved analyticity afforded by damping. Substituting this approximation into the integral
+\(I_{\delta }\) results in a simplification of the integral so that for each fixed \(x\),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+
+                                                           W2 − W1 −it((W2 −W1 )/2+W1 +iδ) X
+                                                                                            m                             
+                                                   Iδ ≈              e                         (−1)j cj sinc (W2 −W
+                                                                                                                 2π
+                                                                                                                    1 )t
+                                                                                                                         −j ,                                                       (8)                                 --><a id="eq:sincsum"></a><!--
+                                                          2π(2m + 1)                      j=−m
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:sincsum} I_{\delta } \approx \frac {W_2-W_1}{2 \pi (2m+1)} e^{-i t((W_2-W_1)/2 + W_1 + i \delta )} \sum _{j = -m}^m (-1)^j c_j {\rm sinc}\left ( \tfrac {(W_2-W_1)t}{2 \pi } - j \right ),
+\end{equation}
+
+</p>
+
+<p>
+where \({\rm sinc}(x) = \sin (\pi x) / (\pi x).\) The set of coeﬀicients \(\{c_j\}_{j = -m}^{m}\) is \(x\)-dependent and can be found using the FFT on equally spaced samples of \(\hat {U}(x, \omega + \delta i )\) over the band
+\([W_1, W_2]\). Rather than naively evaluating the sum, we apply the fast sinc transform&nbsp;[5] (via the nonuniform FFT of type-III&nbsp;[2]) to evaluate the weighted sum of sincs at locations \(\{t_1, t_2, \cdots , t_N\}\) in only
+\(\mathcal {O}(m \log m + N)\) operations. Note that the complexity of this method no longer depends linearly on \(t\), as would be true with a naive discretization. Instead, it depends on \(m\), which has an implicit but much weaker
+dependence on \(t\) since the size of \(t\) for which \(u(x,t)\) is relevant is correlated to the distance of \([W_1, W_2]+\delta i\) from the poles associated with near-resonant modes.
+</p>
+
+<p>
+Even with damping, the discretization of \(I_{\delta }\) still requires \(2m+1\) solves of the Helmholtz equation, and then evaluations of each of these solutions at every point \(x\) of interest in the domain. Corners induced by singularities in the
+solutions require special care. They can be handled with highly specialized quadrature that requires precise knowledge about the geometry&nbsp;[3, 9], or they can be handled with refinement strategies in the Nyström discretization of the integral.
+The latter is practical, but makes the solve and evaluation steps much more expensive. To handle the expense, we employ so-called <i>universal skeletons</i> in a fast solver based on recursive skeletonization. Evaluations are then handled with the
+fast multipole method. Universal skeletons were first introduced in&nbsp;[4]. They supply a way to reuse low rank approximation factors in hierarchical discretizations of boundary integral equations as the wavenumber parameter changes. We discuss
+how they can be adapted and applied in balanced and effective ways in the context of the acoustic scattering problem.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Thomas&nbsp;G Anderson, Oscar&nbsp;P Bruno, and Mark Lyon. High-order, dispersionless “fast-hybrid” wave equation solver. part i: O (1) sampling cost via incident-field windowing and
+recentering. <i>SIAM J. Sci. Comput.</i>, 42(2):A1348–A1379, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Alex Barnett and J.&nbsp;Magland. Non-uniform fast Fourier transform library of types 1, 2, 3 in dimensions 1, 2, 3, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Oscar&nbsp;P Bruno, Jeffrey&nbsp;S Ovall, and Catalin Turc. A high-order integral algorithm for highly singular PDE solutions in Lipschitz domains. <i>Computing</i>, 84:149–181, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Abinand Gopal and Per-Gunnar Martinsson. Broadband recursive skeletonization. In <i>Spectral and High Order Methods for Partial Differential Equations ICOSAHOM 2020+ 1: Selected Papers
+from the ICOSAHOM Conference, Vienna, Austria, July 12-16, 2021</i>, pages 31–66. Springer, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Leslie Greengard, June-Yub Lee, and Souheil Inati. The fast sinc transform and image reconstruction from nonuniform samples in k-space. <i>Communications in Applied Mathematics and
+Computational Science</i>, 1(1):121–131, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Melanie Kircheis, Daniel Potts, and Manfred Tasche. On numerical realizations of Shannon’s sampling theorem. <i>Sampling Theory, Sig. Proc., and Data Anal.</i>, 22(1):1–33, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Per-Gunnar Martinsson. <i>Fast direct solvers for elliptic PDEs</i>. SIAM, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Eleonora Mecocci, Luciano Misici, Maria&nbsp;C Recchioni, and Francesco Zirilli. A new formalism for time-dependent wave scattering from a bounded obstacle. <i>J. Acoustical Soc. of
+America</i>, 107(4):1825–1840, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Kirill Serkh. On the solution of elliptic partial differential equations on regions with corners II: detailed analysis. <i>Appl. and Comp. Harmonic Anal.</i>, 46(2):250–287, 2019.
+</p>
+</li>
+</ul>
+
+{% endraw %}

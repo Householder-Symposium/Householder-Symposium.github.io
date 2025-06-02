@@ -1,0 +1,310 @@
+---
+layout: abstract
+absnum: 171
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Matrix Analysis and Fast Solvers for Neural Network Computations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Jianlin Xia</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Neural networks provide a powerful tool for machine learning and other data science techniques. They can also serve as new ways for mathematical and numerical tasks such as function approximations and PDE solutions. Although there have been
+significant developments in neural network methods, the analysis of relevant matrices and the design of relevant fast and stable matrix computation techniques are typically overlooked.
+</p>
+
+<p>
+In fact, neural network methods provide highly interesting new opportunities to perform matrix analysis and design matrix algorithms that can benefit modern data analysis and machine learning. Examples of scenarios where large and challenging
+matrices arise include the following.
+</p>
+
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> In neural network least-squares approximations of functions, large mass matrices and Hessian matrices may be constructed from activation functions such as ReLU functions as basis functions.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Sparse structured matrices have been often used in the design of effective neural networks and eﬀicient training algorithms (and a simple example is the use of sparse Toeplitz matrices as weight matrices in some
+neural networks).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> In optimization and training algorithms such as ADAM and BFGS, the underlying matrices are often closely related to certain preconditioners.
+</p>
+</li>
+</ul>
+
+<p>
+In this talk, we aim to bridge the gap between some neural network methods and fast and reliable matrix computations. We present rigorous analysis for some of these matrices and show two aspects.
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Why some of these matrices pose significant challenges (say, in the conditioning, spectrum distribution, and frequency modes) for matrix computations.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Why it is feasible to design new fast and reliable solvers for these problems based on certain underlying structures.
+</p>
+</li>
+</ul>
+
+<p>
+In particular, consider the approximation of a function \(u:\Omega (\subset \mathbb {R}^d)\to \mathbb {R}\) by
+</p>
+
+<p>
+\[ v=\sum _{i=1}^{n}c_{i}\sigma ({\mathbf {w}}_{i}^T\mathbf {x}+b_i),\quad \mathbf {x}\in \Omega , \]
+</p>
+
+<p>
+where \(\mathbf {w}_i\)’s are weight vectors, \(b_i\)’s are biases, \(c_i\)’s are scalar coeﬀicients, and \(\sigma (t)=\max \{t,0\}\) is the ReLU function. Let \(W=(\mathbf {w}_1,\ldots ,\mathbf {w}_n)\), \(\mathbf {b}=(b_1,\ldots
+,b_n)^T\), and \(\mathbf {c}=(c_1,\ldots ,c_n)\). The least-squares approximation of \(u\) by \(v\) solves the following optimization problem:
+</p>
+
+<p>
+\[ \min _{W,\mathbf {b},\mathbf {c}} \mathcal {J} \quad \text {with}\quad \mathcal {J}:= \left &lt;v-u,v-u\right &gt;= \frac 12 \int _{\Omega } (v-u)^2d\mathbf {x}.\]
+</p>
+
+<p>
+By viewing \(\mathbf {c}\) as a set of linear parameters and \(\{W, \mathbf {b}\}\) as nonlinear parameters, we can look at the gradient of \(\mathcal {J}\) with respect to one of the two sets of parameters with the other set fixed [1]. Setting
+the gradients to be \(0\) leads to a linear system for the linear parameters and a nonlinear system for the nonlinear parameters. The former system has a mass matrix \(\tilde {A}\) as the coeﬀicient matrix. The solution of the latter system with
+Newton or Gauss-Newton methods lead to linear systems involving a Hessian or Gauss-Newton matrix \(\tilde {H}\). In a highly simplified setting, \(\tilde {A}\) and \(\tilde {H}\) may be related to the following matrix forms, respectively:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                        ⟨                            ⟩
+                                                                                                 A = (Aij )n×n ,   Aij = σ(wiT x + bi ), σ(wjT x + bj ,
+                                                                                                                        ⟨                            ⟩
+                                                                                                H = (Hij )n×n ,    Hij = h(wiT x + bi ), h(wjT x + bj ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+A&amp;=(A_{ij})_{n\times n},\quad A_{ij}=\left &lt; \sigma ({\mathbf {w}}_{i}^T\mathbf {x}+b_i),\sigma ({\mathbf {w}}_{j}^T\mathbf {x}+b_j\right &gt;,\\ H&amp;=(H_{ij})_{n\times n},\quad H_{ij}=\left &lt;
+h({\mathbf {w}}_{i}^T\mathbf {x}+b_i),h({\mathbf {w}}_{j}^T\mathbf {x}+b_j\right &gt;,
+\end{align*}
+where \(h(t)=\sigma &apos;(t)=\begin {cases} 1, &amp; t&gt;0, \\ 0, &amp; t&lt;0. \end {cases}\)
+</p>
+
+<p>
+Some interesting matrix analysis may be performed for \(A\) and \(H\). For example, we can show the following aspects.
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> \(A\) and \(H\) are positive definite (with modest assumptions) but are highly ill conditioned due to the fast decay of the eigenvalues. For instance, even in the 1D case with uniform breakpoints that define the
+ReLU basis functions, \(A\) has 2-norm condition number proportional to \(\frac 1{n^4}\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The behaviors of the low and high frequency modes further make them challenging for iterative solvers.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Some preconditioning strategies may be designed based on basis function modifications, but the effectiveness is limited.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> On the other hand, the matrices have nice inherent structures. In particular, relevant off-diagonal blocks of the matrices are low rank (the 1D case) or numerically low rank (with appropriate conditions). These
+structures make it feasible to design fast and stable direct solvers for the relevant linear systems.
+</p>
+</li>
+</ul>
+
+<p>
+These problems thus give a nice opportunity to apply structured matrix methods. This also shows how advanced matrix analysis may benefit modern neural network methods. The talk includes joint with Z. Cai, T. Ding, M. Liu, and X. Liu.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Z. Cai, T. Ding, M. Liu, X. Liu, and J. Xia, <i>A structure-guided Gauss-Newton method for shallow ReLU neural network</i>, arXiv:2404.05064, submitted to SIAM J. Sci. Comput., (2024).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

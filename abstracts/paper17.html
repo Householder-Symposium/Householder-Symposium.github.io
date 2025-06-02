@@ -1,0 +1,472 @@
+---
+layout: abstract
+absnum: 17
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \T {\mathrm {T}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Stochastic algebraic Riccati equations are almost as easy as deterministic ones
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Xin Liang</span>, Zhen-Chen Guo
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Algebraic Riccati equations (AREs) arise in various models related to control theory, especially in linear-quadratic optimal control design. The deterministic/classical ones are considered for the deterministic linear time-invariant systems, including
+discrete-time algebraic Riccati equations (DAREs)
+</p>
+
+<p>
+\[ X=A^{\T }XA+Q-(A^{\T }XB+L)(R+B^{\T }XB)^{-1}(B^{\T }XA+L^{\T }), \]
+</p>
+
+<p>
+and continuous-time algebraic Riccati equations (CAREs)
+</p>
+
+<p>
+\[ A^{\T }X+XA+Q-(XB+L)R^{-1}(B^{\T }X+L^{\T })=0. \]
+</p>
+
+<p>
+During many years, people have developed rich theoretical results and numerical methods for the DAREs and CAREs. See [22, 21, 18, 3, 16, 2] to obtain an overview for both theories and algorithms.
+</p>
+
+<p>
+In comparison, the stochastic/rational ones are considered for the stochastic linear time-invariant systems, including stochastic discrete-time algebraic Riccati equations (SDAREs)
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                            ∑
+                                                                                            r−1
+                                                                             X =AT
+                                                                                 0 XA0 +          AT
+                                                                                                   i XAi + Q
+                                                                                            i=1
+
+                                                                                                  ∑
+                                                                                                  r−1                                 ∑
+                                                                                                                                      r−1                                ∑
+                                                                                                                                                                         r−1
+                                                                                  − (AT
+                                                                                      0 XB0 +           AT           T
+                                                                                                         i XBi + L)(B0 XB0 +                 BiT XBi + R)−1 (B0T XA0 +         BiT XAi + LT ),
+                                                                                                  i=1                                  i=1                               i=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+X=&amp;A_{0}^{\T }XA_{0} + \sum _{i=1}^{r-1} A_i^{\T }XA_i+Q \\ &amp;-(A_{0}^{\T }XB_{0}+\sum _{i=1}^{r-1} A_i^{\T }XB_i+L) (B_{0}^{\T }XB_{0}+\sum _{i=1}^{r-1} B_i^{\T }XB_i+R)^{-1}(B_{0}^{\T }XA_{0}+\sum
+_{i=1}^{r-1} B_i^{\T }XA_i+L^{\T }),
+\end{align*}
+and stochastic continuous-time algebraic Riccati equations (SCAREs)
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                              ∑
+                                                                                                              r−1
+                                                                                        AT
+                                                                                         0 X + XA0 +                AT
+                                                                                                                     i XAi + Q
+                                                                                                              i=1
+
+                                                                                                        ∑
+                                                                                                        r−1                  ∑
+                                                                                                                             r−1                             ∑
+                                                                                                                                                             r−1
+                                                                                        − (XB0 +              AT
+                                                                                                               i XBi + L)(         BiT XBi + R)−1 (B0T X +         BiT XAi + LT ) = 0.
+                                                                                                        i=1                  i=1                             i=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;A_{0}^{\T }X+XA_{0} + \sum _{i=1}^{r-1} A_i^{\T }XA_i+Q \\\qquad &amp;-(XB_{0}+\sum _{i=1}^{r-1} A_i^{\T }XB_i+L) (\sum _{i=1}^{r-1} B_i^{\T }XB_i+R)^{-1}(B_{0}^{\T }X+\sum _{i=1}^{r-1} B_i^{\T }XA_i+L^{\T
+})=0.
+\end{align*}
+Here \(r-1\) is the number of stochastic processes involved in the stochastic systems dealt with, and it is easy to check that for the case \(r=1\) SDAREs and SCAREs degenerate to DAREs and CAREs respectively. Due to the complicated forms,
+we may recognize it would be much more diﬀicult to analyze their properties and obtain their solutions. There are still literature, e.g., [6, 7, 8], discussing the stochastic linear systems and the induced stochastic AREs.
+</p>
+
+<p>
+As we can see, the stochastic AREs are still algebraic, and it is quite natural to ask whether algebraic methods could be developed to solve them. However, limited by lack of clear algebraic structures, to the best of the authors’ knowledge, nearly all
+of the existing algorithms are based on the differentiability or continuity of the equations, such as Newton’s method [6, 5], modified Newton’s method [12, 19, 4], Lyapunov/Stein iterations [9, 20, 24], comparison theorem based method [10, 11], LMI’s
+(linear matrix inequality) method [23, 17], and homotopy method [25].
+</p>
+
+<p>
+The key to the problem is the algebraic structures behind the equations. In this talk, we will build up a simple and clear algebraic interpretation of SDAREs and SCAREs with the help of the so-called left semi-tensor product. In the analysis we find
+out the Toeplitz structure and the symplectic structure appearing in the equations, and illustrate the fact that the fixed point iteration and the doubling iteration are also valid for them. The algebraic structures found here will shed light on the
+theoretical analysis and numerical algorithms design, and strongly imply that stochastic AREs are almost as easy as deterministic ones.
+</p>
+
+<p>
+As an example, we show how to propose a RADI-type method for large-scale stochastic continuous-time algebraic Riccati equations with sparse and low-rank matrices (\(A_i\) are large-scale and sparse, and \(B_i\) and \(Q-LR^{-1}L^{\T }\) are
+low-rank), based on revealed algebraic structure and motivated by the relation illustrated in [13] between the algebraic structure and the eﬀicient RADI method [1] for CAREs. Unlike many existing methods for large-scale problems such as
+Newton-type methods and homotopy method, it calculates the residual at a low cost and does not require a stabilizing initial approximation, which can often be challenging to find. Numerical experiments are provided to demonstrate its eﬀiciency.
+</p>
+
+<p>
+This talk is based on [13, 14, 15].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P.&nbsp;Benner, Z.&nbsp;Bujanović, P.&nbsp;Kürschner, and J.&nbsp;Saak, “RADI: a low-rank ADI-type algorithm for large-scale algebraic Riccati equations,” <em>Numer. Math.</em>, vol. 138, pp.
+301–330, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> ——, “A numerical comparison of different solvers for large-scale, continuous-time algebraic Riccati equations and LQR problems,” <em>SIAM J. Sci. Comput.</em>, vol.&nbsp;42, no.&nbsp;2, pp.
+A957–A996, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D.&nbsp;A. Bini, B.&nbsp;Iannazzo, and B.&nbsp;Meini, <em>Numerical Solution of Algebraic Riccati Equations</em>, ser. Fundamentals of Algorithms.         Philadelphia: SIAM Publications, 2012,
+vol.&nbsp;9.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> E.&nbsp;K.-w. Chu, T.&nbsp;Li, W.-W. Lin, and C.-Y. Weng, “A modified newton’s method for rational riccati equations arising in stochastic control,” in <em>2011 International Conference on
+Communications, Computing and Control Applications (CCCA)</em>, 2011, pp. 1–6.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> T.&nbsp;Damm and D.&nbsp;Hinrichsen, “Newton’s method for a rational matrix equation occurring in stochastic control,” <em>Linear Algebra Appl.</em>, vol. 332-334, pp. 81–109, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> T.&nbsp;Damm, <em>Rational Matrix Equations in Stochastic Control</em>.          Berlin/Heidelberg, Germany: Springer-Verlag, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> V.&nbsp;Dragan, T.&nbsp;Morozan, and A.-M. Stoica, <em>Mathematical Methods in Robust Control of Discrete-Time Linear Stochastic Systems</em>. New York, NY, USA: Springer-Verlag, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> ——, <em>Mathematical Methods in Robust Control of Linear Stochastic Systems</em>, 2nd&nbsp;ed. New York, NY, USA: Springer-Verlag, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> H.-Y. Fan, P.&nbsp;C.-Y. Weng, and E.&nbsp;K. wah Chu, “Smith method for generalized Lyapunov/Stein and rational Riccati equations in stochastic control,” <em>Numer. Alg.</em>, vol.&nbsp;71,
+pp. 245–272, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> G.&nbsp;Freiling and A.&nbsp;Hochhaus, “Properties of the solutions of ration matrix difference equations,” <em>Computers Math. Appl.</em>, vol.&nbsp;45, pp. 1137–1154, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> ——, “On a class of rational matrix differential equations arising in stochastic control,” <em>Linear Algebra Appl.</em>, vol. 379, pp. 43–68, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> C.-H. Guo, “Iterative solution of a matrix Riccati equation arising in stochastic control,” <em>Oper. Theory: Adv. Appl.</em>, vol. 130, pp. 209–221, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Z.-C. Guo and X.&nbsp;Liang, “The intrinsic Toeplitz structure and its applications in algebraic Riccati equations,” <em>Numer. Alg.</em>, vol.&nbsp;93, pp. 227–267, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> ——, “Stochastic algebraic Riccati equations are almost as easy as deterministic ones theoretically,” <em>SIAM J. Matrix Anal. Appl.</em>, vol.&nbsp;44, no.&nbsp;4, pp. 1749–1770, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> ——, “An RADI-type method for stochastic continuous-time algebraic Riccati equations,” 2024, 21 pages.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> T.-M. Huang, R.-C. Li, and W.-W. Lin, <em>Structure-Preserving Doubling Algorithms for Nonlinear Matrix Equations</em>, ser. Fundamentals of Algorithms.         Philadelphia: SIAM, 2018,
+vol.&nbsp;14.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> H.&nbsp;Iiduka and I.&nbsp;Yamada, “Computational method for solving a stochastic linear-quadratic control problem given an unsolvable stochastic algebraic Riccati equation,” <em>SIAM J.
+Control Optim.</em>, vol.&nbsp;50, no.&nbsp;4, pp. 2173–2192, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> V.&nbsp;Ionescu, C.&nbsp;Oară, and M.&nbsp;Weiss, <em>Generalized Riccati Theory and Robust Control: A Popov Function Approach</em>. Chichester, UK: John Wiley &amp; Sons, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> I.&nbsp;G. Ivanov, “Iterations for solving a rational Riccati equations arising in stochastic control,” <em>Computers Math. Appl.</em>, vol.&nbsp;53, pp. 977–988, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> ——, “Properties of Stein (Lyapunov) iterations for solving a general Riccati equation,” <em>Nonlinear Anal.</em>, vol.&nbsp;67, pp. 1155–1166, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[21]&#x2003;</span> P.&nbsp;Lancaster and L.&nbsp;Rodman, <em>Algebraic Riccati Equations</em>.          New York: The clarendon Press, Oxford Sciece Publications, 1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[22]&#x2003;</span> V.&nbsp;L. Mehrmann, “The autonomous linear quadratic control problems,” in <em>Lecture Notes in Control and Information Sciences</em>. Berlin: Springer-Verlag, 1991, vol. 163.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[23]&#x2003;</span> M.&nbsp;A. Rami and X.&nbsp;Y. Zhou, “Linear matrix inequalities, Riccati equations, and indefinite stochastic linear quadratic controls,” <em>IEEE Trans. Automat. Control</em>, vol.&nbsp;45,
+no.&nbsp;6, pp. 1131–1143, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[24]&#x2003;</span> N.&nbsp;Takahashi, M.&nbsp;Kono, T.&nbsp;Suzuki, and O.&nbsp;Sato, “A numerical solution of the stochastic discrete algebraic Riccati equation,” <em>J. Archaeological Sci.</em>, vol.&nbsp;13,
+pp. 451–454, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[25]&#x2003;</span> L.&nbsp;Zhang, H.-Y. Fan, E.&nbsp;K. wah Chu, and Y.&nbsp;Wei, “Homotopy for rational Riccati equations arising in stochastic optimal control,” <em>SIAM J. Sci. Comput.</em>, vol.&nbsp;37,
+no.&nbsp;1, pp. B103–B125, 2015.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

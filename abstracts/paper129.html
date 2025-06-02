@@ -1,0 +1,193 @@
+---
+layout: abstract
+absnum: 129
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+The NPDo Approach For Optimization On The Stiefel Manifold with Applications
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Ren-Cang Li</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+NPDo stands for nonlinear polar decomposition with orthogonal factor dependency. The NPDo approach is a unified framework recently proposed in [3] for solving certain optimization on the Stiefel manifold. Previously, the approach was implicitly
+employed in [5]. In this talk, we will explain the theory behind the approach, why it works, the known types of problems for which it is guaranteed to work, and discuss some of its applications in today’s data science, including subspace learning and
+partially joint block diagonalization of several Hermitian matrices.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Z.&nbsp;Bai, R.-C. Li, and D.&nbsp;Lu. Sharp estimation of convergence rate for self-consistent field iteration to solve eigenvector-dependent nonlinear eigenvalue problems. <i>SIAM J. Matrix Anal.
+Appl.</i>, 43(1):301–327, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Y.&nbsp;Cai, L.-H. Zhang, Z.&nbsp;Bai, and R.-C. Li. On an eigenvector-dependent nonlinear eigenvalue problem. <i>SIAM J. Matrix Anal. Appl.</i>, 39(3):1360–1382, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> R.-C. Li. A theory of the NEPv approach for optimization on the Stiefel manifold. arXiv:2305.00091 (88 pages), to appear in <i>Found. Comput. Math.</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> D.&nbsp;Lu and R.-C. Li. Locally unitarily invariantizable NEPv and convergence analysis of SCF. <i>Math. Comp.</i>, 93(349):2291–2329, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> L.&nbsp;Wang, L.-H.&nbsp;Zhang, and R.-C. Li. Maximizing sum of coupled traces with applications. <i>Numer. Math.</i>, 152:587–629, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> L.&nbsp;Wang, L.-H.&nbsp;Zhang, and R.-C. Li. Trace ratio optimization with an application to multi-view learning. <i>Math. Program.</i>, 201:97–131, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> L.-H.&nbsp;Zhang, L.&nbsp;Wang, Z.&nbsp;Bai, and R.-C. Li. A self-consistent-field iteration for orthogonal canonical correlation analysis. <i>IEEE Trans. Pattern Anal. Mach. Intell.</i>,
+44(2):890–904, 2022.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

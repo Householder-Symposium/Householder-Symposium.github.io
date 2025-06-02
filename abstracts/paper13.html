@@ -1,0 +1,358 @@
+---
+layout: abstract
+absnum: 13
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+When is the Resolvent Like a Rank One Matrix?
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Anne Greenbaum</span>, Abbas Salemi, Faranges Kyanfar
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+For a square matrix \(A\), the resolvent at a point \(z \in {\bf C}\) is defined as \((A-zI )^{-1}\). It was observed in [2] that for certain matrices \(A\) with ill-conditioned eigenvalues the resolvent is close to the rank one matrix \(\sigma _1
+(z) u_1 (z) v_1 (z )^H\), for a wide range of \(z\) values, where \(\sigma _1 (z)\) is the largest singular value of \((A-zI )^{-1}\) and \(u_1 (z)\) and \(v_1 (z)\) are the corresponding left and right singular vectors. Moreover, for a slightly
+smaller range of \(z\) values, \(u_1 (z)\) and \(v_1 (z)\) are almost orthogonal to each other. Here we provide a partial explanation for this phenomenon.
+</p>
+
+<p>
+The distance in 2-norm from \((A-zI )^{-1}\) to the nearest rank one matrix, \(\sigma _1 (z) u_1 (z) v_1 (z )^H\), is \(\sigma _2 (z)\), the second largest singular value of \((A - zI )^{-1}\), and one might define the relative distance as
+\(\sigma _2 (z) / \| (A-zI )^{-1} \|_2 = \sigma _2 (z) / \sigma _1 (z)\). Given \(\epsilon &gt; 0\), we are interested in
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                          {z ∈ C : σ2 (z)/σ1 (z) < ϵ}.--><a id="newset"></a><!--                                                                                          (1)
+
+-->
+
+<p>
+
+\begin{equation}
+\{ z \in {\bf C} : \sigma _2 (z) / \sigma _1 (z) &lt; \epsilon \} . \label {newset}
+\end{equation}
+
+</p>
+
+<p>
+Recall that the \(\epsilon \)-pseudospectrum of \(A\) can be defined as [3]:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                        {z ∈ C : 1/σ1 (z) < ϵ}.--><a id="pseudospectrum"></a><!--                                                                                         (2)
+
+-->
+
+<p>
+
+\begin{equation}
+\{ z \in {\bf C} : 1/ \sigma _1 (z) &lt; \epsilon \} . \label {pseudospectrum}
+\end{equation}
+
+</p>
+
+<p>
+If it turns out that \(\sigma _2 (z) \sim 1\) throughout the \(\epsilon \)-pseudospectrum, then these two sets may look very similar. Indeed, the plots in [2] look much like pseudospectra.
+</p>
+
+<p>
+To study this phenomenon, we will work with the matrix \(A-zI\), whose singular values are the inverses of those of \((A - zI )^{-1}\) and whose right and left singular vectors are the left and right singular vectors of \((A - zI )^{-1}\). If \(s_n
+(z)\) and \(s_{n-1} (z)\) denote the smallest and second smallest singular values of \(A-zI\), then we are interested in the ratio \(s_n (z) / s_{n-1} (z)\).
+</p>
+
+<p>
+The following theorem and corollary are proved in a paper currently in progress [1]:
+</p>
+
+<p>
+Theorem. Let \(\lambda \) be a simple eigenvalue of \(A\) and let \(A_0 := A - \lambda I = U S V^{H}\) be a singular value decomposition of \(A_0\), where \(U := [ u_1 , \ldots , u_n ]\), \(V := [ v_1 , \ldots , v_n ]\), \(S :=
+\mbox {diag} ( s_1 , \ldots , s_{n-1} , 0 )\), \(s_1 \geq \ldots \geq s_{n-1} &gt; 0\). Let \(A_0^{\dag }\) denote the Moore-Penrose pseudoinverse of \(A_0\):
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                        A†0 := Vn−1 Sn−1
+                                                                                                                     −1   H
+                                                                                                                         Un−1 , --><a id="pseduoinverse"></a><!--                                                                                         (3)
+
+-->
+
+<p>
+
+\begin{equation}
+A_0^{\dag } := V_{n-1} S_{n-1}^{-1} U_{n-1}^H , \label {pseduoinverse}
+\end{equation}
+
+</p>
+
+<p>
+where \(U_{n-1} := [ u_1 , \ldots , u_{n-1} ]\), \(V_{n-1} := [ v_1 , \ldots , v_{n-1} ]\), and \(S_{n-1} := \mbox {diag} ( s_1 , \ldots , s_{n-1} )\). For each \(k=1,2, \ldots \), the smallest singular value of \(A_0 - zI\) is
+less than or equal to
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                                ∑
+                                                                                                k
+                                                                                                                 † j−1
+                                                                                                      |z|j |uH
+                                                                                                             n (A0 )   vn | + |z|k+1 /skn−1 .--><a id="sigmanbound2"></a><!--                                                                             (4)
+                                                                                                j=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\sum _{j=1}^k |z |^j | u_n^H ( A_0^{\dag } )^{j-1} v_n | + | z |^{k+1} / s_{n-1}^k . \label {sigmanbound2}
+\end{equation}
+
+</p>
+
+<p>
+Taking \(k=1\) in the theorem, we obtain the bound
+</p>
+
+<p>
+\[ s_{n} ( A_0 -zI ) \leq | u_n^H v_n |~|z| + | z |^2 / s_{n-1} . \]
+</p>
+
+<p>
+If \(\lambda \) is ill-conditioned, it means that the inner product of the left and right unit eigenvectors of \(A\) corresponding to eigenvalue \(\lambda \) is tiny, but these eigenvectors are the same as the left and right singular vectors \(u_n\) and
+\(v_n\) corresponding to the zero singular value of \(A_0\). In this case, if also \(s_{n-1} \sim 1\), then \(s_n ( A_0 - zI )\) grows more like \(| z |^2\) than like \(| z |\) for \(| u_n^H v_n | &lt;&lt; | z | &lt;&lt; 1\). If \(u_n\) is
+also nearly orthogonal to \(A_0^{\dag } v_n\), then taking \(k=2\) in the theorem suggests that the growth rate of \(s_n (A_0 -zI)\) with \(|z|\) may be more like \(| z |^3\), and the more powers \(j\) for which \(| u_n^H ( A_0^{\dag }
+)^j v_n |\) is small, the higher the power of \(|z|\) describing the growth of \(s_n ( A_0 - zI )\), for \(|z| &lt;&lt; 1\). If the absolute value of \(z\) times each eigenvalue of \(A_0^{\dag }\) is less than one, then the first sum in (<a
+href="paper.html#sigmanbound2">4</a>) will converge to a finite value as \(k \rightarrow \infty \), and for \(|z| &lt; s_{n-1}\), the second term in (<a href="paper.html#sigmanbound2">4</a>) will go to \(0\) as \(k \rightarrow \infty
+\). In this case, the smallest bound may be obtained by taking \(k = \infty \).
+</p>
+
+<p>
+Although we are not yet sure how to interpret the conditions that \(| u_n^H ( A_0^{\dag } )^j v_n |\) be small, these conditions seem to be satisfied by many test problems with ill-conditioned eigenvalues, such as those available through the
+’gallery’ command in MATLAB and many in [3].
+</p>
+
+<p>
+Corollary. With the notation and assumptions of the previous theorem, let \(\epsilon \in (0,1)\) be given. The region where the ratio of the second largest to the largest singular value of the resolvent \(( A-zI )^{-1}\) is less than \(\epsilon
+\) contains the set of points \(z \in {\bf C}\) such that \(|z- \lambda | &lt; s_{n-1}\) and
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                   [ k                                                  ]
+                                                                                    ∑                  † j−1
+                                                                         min             |z − λ| |uH
+                                                                                                j
+                                                                                                   n (A0 )   vn | + |z − λ|k+1 /skn−1       /(sn−1 − |z − λ|) < ϵ.--><a id="epsregion"></a><!--                                                           (5)
+                                                                       k=1,2,...
+                                                                                   j=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\min _{k=1,2, \ldots } \left [ \sum _{j=1}^k | z- \lambda |^j | u_n^H ( A_0^{\dag } )^{j-1} v_n | + |z - \lambda |^{k+1} / s_{n-1}^k \right ] / ( s_{n-1} - |z - \lambda | ) &lt; \epsilon . \label {epsregion}
+\end{equation}
+
+</p>
+
+<p>
+The \(\epsilon \)-pseudospectrum of \(A\) contains the set of points \(z \in {\bf C}\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                               [ k                                                  ]
+                                                                                                ∑                  † j−1
+                                                                                     min             |z − λ| |uH
+                                                                                                            j
+                                                                                                               n (A0 )   vn | + |z − λ|k+1 /skn−1       < ϵ.--><a id="epspseudo"></a><!--                                                                 (6)
+                                                                                   k=1,2,...
+                                                                                               j=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\min _{k=1,2, \ldots } \left [ \sum _{j=1}^k | z- \lambda |^j | u_n^H ( A_0^{\dag } )^{j-1} v_n | + |z - \lambda |^{k+1} / s_{n-1}^k \right ] &lt; \epsilon . \label {epspseudo}
+\end{equation}
+
+</p>
+
+<p>
+This corollary defines disks about each eigenvalue that are known to lie within the regions defined in (<a href="paper.html#newset">1</a>) and (<a href="paper.html#pseudospectrum">2</a>). In our numerical tests, they are not far from the
+largest disks about the eigenvalues that are contained in these regions.
+</p>
+
+<p>
+We will report on these results, as well as some results obtained by differentiating the singular values and vectors of \(A-zI\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Greenbaum, F.&nbsp;Kyanfar, and A.&nbsp;Salemi, <i>When is the Resolvent Like a Rank One Matrix?</i>, to appear.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;Greenbaum and N.&nbsp;Wellen, <i>Comparison of K-Spectral Set Bounds on Norms of Functions of a Matrix or Operator</i>, Lin.&nbsp;Alg.&nbsp;Appl. 694, pp.&nbsp;52-77, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> L.&nbsp;N.&nbsp;Trefethen and M.&nbsp;Embree, <i>Spectra and Pseudospectra: The Behavior of Nonnormal Matrices and Operators</i>, Princeton University Press, 2005.
+</p>
+</li>
+</ul>
+
+{% endraw %}

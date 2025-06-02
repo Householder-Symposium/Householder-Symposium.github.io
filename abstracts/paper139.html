@@ -1,0 +1,573 @@
+---
+layout: abstract
+absnum: 139
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+On a Multi-Stage Tensor Reduction Strategy for Arbitrary Order-\(p\) Tensorial Data under the Tensor T-Product Algebra
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Harshit Kapadia</span>, Lihong Feng, Peter Benner
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We present a novel multi-stage tensor reduction (MSTR) framework for tensorial data arising from experimental measurements or high-fidelity simulations of physical systems. The order \(p\) of the tensor under consideration can be arbitrarily large.
+At the heart of the framework are a series of strategic tensor factorizations and compressions, ultimately leading to a <i>final</i> order-preserving reduced representation of the original tensor. We also augment the MSTR framework by performing
+eﬀicient kernel-based interpolation/regression over certain reduced tensor representations, amounting to a new non-intrusive model reduction approach capable of handling dynamical, parametric steady, and parametric dynamical systems.
+Furthermore, to eﬀiciently build the parametric reduced-order model in the offline stage, we develop a tensor empirical interpolation method&nbsp;(t-EIM). We formalize our ideas using the tensor t-product algebra&nbsp;[7, 3, 6] and provide a
+rigorous upper bound for the error of the tensor approximation from the MSTR strategy.
+</p>
+
+<p>
+The idea to factor any order-\(3\) tensor in two orthogonal tensors of order-\(3\) and an \(f\)-diagonal tensor of order-\(3\) first appeared in&nbsp;[7]. The notion of orthogonal tensors and such a factorization strategy, analogous to matrix
+factorization—rendered by the singular value decomposition (SVD)—is possible due to the tensor multiplication, referred to as the t-product&nbsp;[7]. An extension for order-\(p\) tensors of the t-product and t-SVD is proposed in&nbsp;[8], which is
+used in our work. Moreover, by following the approach taken in&nbsp;[9] for order-\(3\) tensors, we develop a randomized variant of t-SVD for order-\(p\) tensors, which is utilized to accelerate the tensor factorizations in our MSTR framework.
+</p>
+
+<p>
+To aid our discussion, let us define the t-SVD for an order-\(p\) tensor \(\mathcal {T}\):
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                   T = L ∗ M ∗ R⊤ ,                                                                                 (1)--><a id="eqn:t-svd"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:t-svd} \mathcal {T} = \mathcal {L} * \mathcal {M} * \mathcal {R}^\top ,
+\end{equation}
+
+</p>
+
+<p>
+where \(\mathcal {T} \in \mathbb {R}^{n_1 \times n_2 \times n_3 \times \cdots \times n_p}\), \(\mathcal {L} \in \mathbb {R}^{n_1 \times n_1 \times n_3 \times \cdots \times n_p}\), \(\mathcal {R} \in \mathbb {R}^{n_2
+\times n_2 \times n_3 \times \cdots \times n_p}\), and \(\mathcal {M} \in \mathbb {R}^{n_1 \times n_2 \times n_3 \times \cdots \times n_p}\). Here, \(\mathcal {L}\) and \(\mathcal {R}\) are orthogonal, and \(\mathcal {M}\)
+has entries \(\mathcal {M}_{i_1 i_2 i_3 \cdots i_p}\) such that \(\mathcal {M}_{i_1 i_2 i_3 \cdots i_p} = 0\) unless \(i_1 = i_2\). When \(p=3\), authors in&nbsp;[7] refer to \(\mathcal {M}\) as an \(f\)-diagonal tensor. The symbol
+\(*\) in (<a href="paper.html#eqn:t-svd">1</a>) refers to the t-product, and \(\mathcal {R}^\top \) is the t-transpose of \(\mathcal {R}\).
+</p>
+
+<p>
+We are concerned with data arising from high-fidelity simulations or physical measurements. In the most general setting, the solution tensor \(\mathcal {S}\) can have the following form:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                         S ∈ RNx ×Ny ×Nz ×m1 ×m2 ×···×mNµ ×Nt ,                                                                (2)--><a id="eqn:base-form"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:base-form} \mathcal {S} \in \mathbb {R}^{N_x \times N_y \times N_z \times m_1 \times m_2 \times \cdots \times m_{N_\mu } \times N_t},
+\end{equation}
+
+</p>
+
+<p>
+where \(N_x\), \(N_y\), and \(N_z\) refer to the size of each spatial dimension; \(N_{\mu }\) refers to the parameter space dimensions, with \(m_1, m_2, \cdots , m_{N_\mu }\) corresponding to the size of each dimension of the parameter space;
+\(N_t\) refers to the total number of time steps or the frequency of measurements. We seek to eﬀiciently reduce this high-dimensional tensorial data, obtaining its reduced tensor representation, which describes the original tensor with reasonable
+accuracy.
+</p>
+
+<p>
+The MSTR strategy begins by identifying the \(\textit {target variable}\) of interest, along which we do not seek to perform a tensor compression. For physical systems, it is typical to either collect measurements or high-fidelity solution values
+across the spatial domain, corresponding to various time instances and/or parameter configurations. As a result, the <i>target variable</i> could be either time or parameter. We seek to compress the solution tensor along all remaining dimensions.
+For instance, consider an order-\(5\) tensor \(\mathcal {S} \in \mathbb {R}^{N_x \times N_y \times N_z \times m \times N_t}\), where \(m = \prod _{j = \{1,2,\dots ,N_\mu \}} m_j\). If the <i>target variable</i> is the parameter,
+then the reduced representation we aim for lies in \(\mathbb {R}^{r_1 \times r_2 \times r_3 \times m \times r_5}\), whereas if the <i>target variable</i> is time, then the reduced representation we aim for lies in \(\mathbb {R}^{r_1 \times
+r_2 \times r_3 \times r_4 \times N_t}\). Here, \(r_1 \ll N_x\), \(r_2 \ll N_y\), \(r_3 \ll N_z\), \(r_4 \ll m\), and \(r_5 \ll N_t\).
+</p>
+
+<p>
+Based on the t-SVD in (<a href="paper.html#eqn:t-svd">1</a>), we can seek a compression of any tensor \(\mathcal {T} \in \mathbb {R}^{n_1 \times n_2 \times n_3 \times \cdots \times n_p}\) by truncating \(\mathcal {L} \in
+\mathbb {R}^{n_1 \times n_1 \times n_3 \times \cdots \times n_p}\) along the second dimension, obtaining \(\tilde {\mathcal {L}} \in \mathbb {R}^{n_1 \times r \times n_3 \times \cdots \times n_p}\), where \(r \ll n_1\),
+projecting \(\mathcal {T}\) on \(\tilde {\mathcal {L}}\), and producing \(\mathcal {A} \in \mathbb {R}^{r \times n_2 \times n_3 \times \cdots \times n_p}\). Note that \(\mathcal {A}\) provides a reduced representation of
+\(\mathcal {T}\), where information along the first dimension is compressed.
+</p>
+
+<p>
+The central idea pertaining to the MSTR strategy is to recursively perform a tensor factorization for obtaining a truncated orthogonal tensor, onto which the parent unfactored tensor can be projected, leading to compression along one tensor
+dimension at every stage. The tensor factorizations are performed sequentially over subsequent <i>intermediate</i> reduced representations of the original tensor \(\mathcal {S}\), ultimately leading to the <i>final</i> reduced tensor
+representation where all dimensions except the one corresponding to the <i>target variable</i> are compressed. While employing t-SVD to undertake the multi-stage tensor factorizations, it is imperative to appropriately permute the dimensions of
+the <i>intermediate</i> reduced tensor representations, allowing us to <i>attack</i> all relevant dimensions, leading to a compression of information along them. Moreover, for \(\mathcal {S}\) and all subsequent <i>intermediate</i> reduced
+tensor representations, it is important to maintain a specific tensor orientation. We will provide further details about these intricacies in our talk.
+</p>
+
+<p>
+We demonstrate an application of the MSTR strategy in the context of reduced-order modeling by using it to extract the <i>final</i> reduced tensor representation \(\mathcal {A}_{n_s}\) for any given \(\mathcal {S}\), along with the truncated
+orthogonal tensors \(\{\tilde {\mathcal {L}}_i\}_{i=1}^{n_s}\) from \(n_s\) tensor reduction stages. The primary motivation is to utilize the order-preserving compressed version of \(\mathcal {S}\), enabling eﬀicient operations within our
+reduced-order model, which can then deliver reliable predictions during the online phase at previously unseen parameter and/or time locations. After carrying out the MSTR procedure, we interpolate/regress between specific slices of \(\mathcal
+{A}_{n_s}\), generating a map \(\mathscr {M}_{\texttt {tv}}\) capable of accurately rendering the <i>final</i> reduced tensor representation corresponding to new locations of the <i>target variable</i>, i.e., either parameter or time. We
+denote this approximation as \(\hat {\mathcal {A}}_{n_s}\), which is obtained in the online phase. Note that the subscript <kbd>tv</kbd> in \(\mathscr {M}_{\texttt {tv}}\) refers to the <i>target variable</i>. Using the truncated orthogonal
+tensors \(\{\tilde {\mathcal {L}}_i\}_{i=1}^{n_s}\) and \(\hat {\mathcal {A}}_{n_s}\), we obtain an approximation of the solution tensor at new locations of the <i>target variable</i>. \(\mathscr {M}_{\texttt {tv}}\) is built using a
+kernel-based shallow neural network (KSNN) with trainable kernel activation functions, where the parameters—kernel widths and center locations—are automatically determined via an alternating dual-staged iterative training procedure from our
+prior work&nbsp;[4].
+</p>
+
+<p>
+In the <i>final</i> reduced tensor representation, the variable staying uncompressed is viewed as the <i>target variable</i>, whereas the variable compressed in the final stage of the MSTR procedure is referred to as the <i>secondary target
+variable</i>. To build a reduced-order model capable of providing predictions at new locations of both the parameter and time, it is necessary to ensure that they correspond to either the <i>target variable</i> or the <i>secondary target
+variable</i>. Upon ascertaining this, another interpolation/regression map \(\mathscr {M}_{\texttt {basis}}\) is created, which can provide an approximation of the truncated orthogonal tensor appearing in the second-last stage of the MSTR
+procedure, i.e., \(\tilde {\mathcal {L}}_{n_s - 1}\), at new locations of the <i>secondary target variable</i>. The approximation from \(\mathscr {M}_{\texttt {basis}}\) is denoted as \(\hat {\tilde {\mathcal {L}}}_{n_s - 1}\).
+</p>
+
+<p>
+For this variant of our reduced-order model, the online phase involves querying \(\mathscr {M}_{\texttt {tv}}\) to obtain \(\hat {\mathcal {A}}_{n_s}\). This is then used, along with \(\tilde {\mathcal {L}}_{n_s}\), to construct \(\hat
+{\mathcal {A}}_{n_s-1}\). Later, yet another map \(\mathscr {M}_{\texttt {stv}}\) is constructed by interpolation/regression between specific slices of \(\hat {\mathcal {A}}_{n_s-1}\), capable of providing an approximation of the
+<i>intermediate</i> reduced tensor representation from the second-last stage, corresponding to new locations of the <i>secondary target variable</i>. We denote this approximation by \(\hat {\hat {\mathcal {A}}}_{n_s-1}\). Next, \(\hat
+{\tilde {\mathcal {L}}}_{n_s - 1}\) is obtained by querying \(\mathscr {M}_{\texttt {basis}}\), and in conjugation with \(\hat {\hat {\mathcal {A}}}_{n_s-1}\), an approximation of the <i>intermediate</i> reduced tensor
+representation from the third-last stage is constructed. By using this approximation in conjugation with the truncated orthogonal tensors \(\{\tilde {\mathcal {L}}_i\}_{i=1}^{n_s-2}\), we obtain the approximation of the high-dimensional
+solution tensor at new locations of the <i>target variable</i> and <i>secondary target variable</i>, i.e., parameter and time. We create \(\mathscr {M}_{\texttt {basis}}\) and \(\mathscr {M}_{\texttt {stv}}\) using KSNNs, which is
+especially useful for eﬀiciently constructing \(\mathscr {M}_{\texttt {stv}}\) during the online phase. Moreover, an accurate construction of \(\mathscr {M}_{\texttt {basis}}\) is non-trivial, requiring interpolation over a Grassmann manifold.
+We investigate several approaches to accomplish this.
+</p>
+
+<p>
+To train the MSTR-based reduced-order model, we need the solution tensor \(\mathcal {S} \in \mathbb {R}^{N_x \times N_y \times N_z \times m \times N_t}\), which requires data from either physical measurements or high-fidelity
+simulations across \(N_t\) time instances and \(m\) parameter configurations. This can be challenging if obtaining spatio-temporal solution fields for many parameters is infeasible or computationally expensive. To address this, we develop a method
+to progressively expand the solution tensor \(\mathcal {S}\) along the parameter dimension from a small initial value \(m_0\) to a moderate final value \(m_{final}\). This incremental-learning procedure involves iterative applications of the MSTR
+strategy to create a surrogate \(\hat {\mathcal {S}} \in \mathbb {R}^{N_x \times N_y \times N_z \times m_{fine} \times N_t}\), where the growth of \(\mathcal {S}\) is guided by iteratively applying our t-EIM&nbsp;[5] over cheaply
+computable \(\hat {\mathcal {S}}\) to extract critical parameter locations from a fine candidate set with cardinality \(m_{fine}\). Moreover, employing randomized t-SVD for all factorizations in the MSTR procedure further enhances eﬀiciency
+during the offline phase. Related to our t-EIM are the recently proposed tensor discrete empirical interpolation methods&nbsp;[1, 2] that use t-SVD to get the interpolation basis. In [1], a greedy procedure is used to pick the interpolation indices,
+while [2] uses the pivoted t-QR decomposition&nbsp;[3]. In contrast, t-EIM employs a greedy procedure to select both the interpolation indices and the basis.
+</p>
+
+<p>
+We have observed excellent performance of the proposed framework over numerous high-dimensional tensor-valued datasets, comprising climate measurements as well as various parametric spatio-temporal flow phenomena exhibiting rich dynamics,
+including convection-dominated behavior. In the talk, we primarily intend to highlight the theoretical and algorithmic contributions of our work. Furthermore, we will illustrate the robustness of the MSTR strategy and the reduced-order model based
+on it over an appropriately selected numerical example.
+</p>
+
+<figure id="autoid-1" class="table ">
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Tensor datasets</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">Spatial dimension(s)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"># parameter samples</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"># time steps</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarrdouble" style="border-top: 4px double; border-left: 1px solid black; border-right: 4px double black">Wave equation</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(N = 10201\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(m = 19\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(N_t = 401\)</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Burgers’ equation</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(N_x = 161, N_y = 161\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(m=34\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(N_t=101\)</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Navier-Stokes equations</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(N=37514\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(m=18\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(N_t=201\)</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Details about the dimensions of selected order-\(3\) and order-\(4\) tensor datasets. All the examples have a \(2D\) spatial domain with \(N\) denoting the total number of unstructured grid nodes.
+</p>
+</div>
+
+<a id="tab:dim-details"></a>
+
+</div>
+
+</figure>
+
+<p>
+<b>Numerical results:</b> Table&nbsp;<a href="paper.html#tab:dim-details">1</a> provides the configurations of selected order-3 and order-4 tensor datasets, detailing the training set dimensions, representing about half of the parameter
+samples and time steps; the rest form the test sets. Table&nbsp;<a href="paper.html#tab:errors">3</a> lists the average relative errors for tensor approximations using the MSTR procedure and the MSTR-based reduced-order model. To
+demonstrate the MSTR procedure’s advantage, Table&nbsp;<a href="paper.html#tab:errors">3</a> also includes average relative errors when the tensor is matricized to \(S \in \mathbb {R}^{N_x N_y \times m N_t}\), thereby obtaining the
+truncated left singular matrix in \(\mathbb {R}^{N_x N_y \times r}\) via its SVD, projecting the matricized tensor on it, and producing the compressed representation in \(\mathbb {R}^{r \times m N_t}\), where \(r \ll m N_t\). The
+comparison between the results from SVD and MSTR is for equivalent compressions of the spatial dimensions. Table&nbsp;<a href="paper.html#tab:compression-details">2</a> details the compression levels, showing that the representation
+from MSTR possesses fewer total entries than the representation from SVD.
+</p>
+
+<figure id="autoid-2" class="table ">
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Tensor datasets</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">SVD</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">MSTR</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">Percent drop</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black"></td>
+<td class="tdc tdrule tvertbarr" style="border-right: 1px solid black">Matricized</td>
+<td class="tdc tdrule tvertbarr" style="border-right: 1px solid black">Compressed</td>
+<td class="tdc tdrule tvertbarr" style="border-right: 1px solid black">Original</td>
+<td class="tdc tdrule tvertbarr" style="border-right: 1px solid black">Compressed</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"></td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarrdouble" style="border-top: 4px double; border-left: 1px solid black; border-right: 4px double black">Wave equation</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mathbb {R}^{10201 \times 7619}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mathbb {R}^{10 \times 7619}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mathbb {R}^{10201 \times 19 \times 401}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mathbb {R}^{10 \times 19 \times 10}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">97.51%</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Burgers’ equation</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{25921 \times 3434}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{60 \times 3434}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{161 \times 34 \times 161 \times 101}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{10 \times 34 \times 10 \times 10}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">83.49%</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Navier-Stokes equations</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{37514 \times 3618}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{10 \times 3618}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{37514 \times 18 \times 201}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mathbb {R}^{10 \times 18 \times 10}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">95.02%</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+<div class="figurecaption">
+<p>
+Table&nbsp;2:&nbsp;Details about the achieved level of compression for SVD and MSTR. The last column highlights % reduction in the entries of the <i>final</i> reduced tensor representation from MSTR in comparison with the compression achieved
+via SVD. The corresponding errors are reported in&nbsp;Table&nbsp;<a href="paper.html#tab:errors">3</a>.
+</p>
+</div>
+
+<a id="tab:compression-details"></a>
+
+</div>
+
+</figure>
+
+<figure id="autoid-3" class="table ">
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Tensor datasets</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">SVD</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">SVD-based ROM</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">MSTR</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">MSTR-based ROM</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarrdouble" style="border-top: 4px double; border-left: 1px solid black; border-right: 4px double black">Wave equation</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(3.91 \times 10^{-3}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(4.08 \times 10^{-3}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(6.98 \times 10^{-4}\)</td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(1.21 \times 10^{-3}\)</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Burgers’ equation</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.14 \times 10^{-2}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(8.61 \times 10^{-2}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.45 \times 10^{-3}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.14 \times 10^{-3}\)</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarl tvertbarrdouble" style="border-left: 1px solid black; border-right: 4px double black">Navier-Stokes equations</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.25 \times 10^{-2}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.26 \times 10^{-2}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.29 \times 10^{-4}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.38 \times 10^{-4}\)</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+<div class="figurecaption">
+<p>
+Table&nbsp;3:&nbsp;An illustrative comparison between average relative errors of the SVD, MSTR, and their respective reduced-order model (ROM) approximations over the test sets for selected datasets.
+</p>
+</div>
+
+<a id="tab:errors"></a>
+
+</div>
+
+</figure>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-11">References</h4>
+<a id="paper-autopage-11"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> S.&nbsp;Ahmadi-Asl, A.-H. Phan, C.&nbsp;F. Caiafa, and A.&nbsp;Cichocki. Robust low tubal rank tensor recovery using discrete empirical interpolation method with optimized slice/feature
+selection. <i>Advances in Computational Mathematics</i>, 50(2):23, 2024. <a href="https://doi.org/10.1007/s10444-024-10117-8" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> S.&nbsp;Chellappa, L.&nbsp;Feng, and P.&nbsp;Benner. Discrete empirical interpolation in the tensor t-product framework. e-prints 2410.14519v1, arXiv, 2024. <a
+href="https://doi.org/10.48550/arXiv.2410.14519" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> N.&nbsp;Hao, M.&nbsp;E. Kilmer, K.&nbsp;Braman, and R.&nbsp;C. Hoover. Facial recognition using tensor-tensor decompositions. <i>SIAM Journal on Imaging Sciences</i>, 435(1):437–463,
+2013. <a href="https://doi.org/10.1137/110842570" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> H.&nbsp;Kapadia, L.&nbsp;Feng, and P.&nbsp;Benner. Active-learning-driven surrogate modeling for eﬀicient simulation of parametric nonlinear systems. <i>Computer Methods in Applied Mechanics
+and Engineering</i>, 419:116657, 2024. <a href="https://doi.org/10.1016/j.cma.2023.116657" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> H.&nbsp;Kapadia, L.&nbsp;Feng, and P.&nbsp;Benner. Data-driven optimal sensor placement for tensorial data reconstruction via the tensor t-product framework. Technical report, 2024. In
+preparation.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M.&nbsp;E. Kilmer, K.&nbsp;Braman, N.&nbsp;Hao, and R.&nbsp;C. Hoover. Third-order tensors as operators on matrices: A theoretical and computational framework with applications in imaging.
+<i>SIAM Journal on Matrix Analysis and Applications</i>, 34(1):148–172, 2013. <a href="https://doi.org/10.1137/110837711" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.&nbsp;E. Kilmer and C.&nbsp;D. Martin. Factorization strategies for third-order tensors. <i>Linear Algebra and its Application</i>, 435(3):641–658, 2011. Special issue: Dedication to Pete
+Stewart on the occasion of his 70th birthday. <a href="https://doi.org/10.1016/j.laa.2010.09.020" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> C.&nbsp;D. Martin, R.&nbsp;Shafer, and B.&nbsp;LaRue. An order-\(p\) tensor factorization with applications in imaging. <i>SIAM Journal on Scientific Computing</i>, 35(1):A474–A490, 2013.
+<a href="https://doi.org/10.1137/110841229" target="_blank" >.</a>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> J.&nbsp;Zhang, A.&nbsp;K. Saibaba, M.&nbsp;E. Kilmer, and S.&nbsp;Aeron. A randomized tensor singular value decomposition based on the t-product. <i>Numerical Linear Algebra with
+Applications</i>, 25(5):e2179, 2018. <a href="https://doi.org/10.1002/nla.2179" target="_blank" >.</a>
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

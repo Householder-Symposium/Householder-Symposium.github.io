@@ -1,0 +1,240 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Eigenvalue backward errors of Rosenbrock systems and optimization of sums of Rayleigh quotient
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Punit Sharma</span>, Ding Lu, Anshul Prajapati, Shreemayee Bora
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Consider the Rosenbrock system matrix in the standard form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                            [                     ]
+                                                                                                                                A − zIr    B
+                                                                                                                 S(z) =                               ,                                                           (1)--><a id="eq:rosenbrock"></a><!--
+                                                                                                                                  C       P (z)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:rosenbrock} S(z)=\mat {cc} A-z I_r &amp; B \\ C &amp; P(z) \rix ,
+\end{equation}
+
+</p>
+
+<p>
+where \(A\in \C ^{r, r}\), \(B\in \C ^{r, n}, C\in \C ^{n, r}\), \(I_r\) is an identity matrix of size \(r\), and \(P(z)\) is a matrix polynomial of degree \(d\) given by \(P(z)=\sum _{j=0}^d z^jA_j \) with \(A_j\in {\mathbb C}^{n,
+n}\) for \(j=0,\ldots ,d\). For ease of reference, we will refer to a matrix of form&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span> as a Rosenbrock system. A scalar \(\lambda \in \mathbb C\) is called an
+eigenvalue of \(S(z)\) if det\((S(\lambda ))=0\).
+</p>
+
+<p>
+The Rosenbrock system&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span> and its associated eigenvalues are of fundamental importance in the field of linear system theory. It is well-known that the dynamical
+behaviour of a linear time-invariant system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                    ẋ(t)       = Ax(t) + Bu(t)
+                                                                                                            Σ:                                d                                                                          (2)--><a id="eq:ltis"></a><!--
+                                                                                                                    y(t)        = Cx(t) + P ( dt )u(t)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ltis} \Sigma : \quad \begin{array}{rl} \dot {x}(t)&amp;=Ax(t)+Bu(t)\\ y(t)&amp;=Cx(t)+P(\frac {d}{dt})u(t) \end {array}
+\end{equation}
+
+</p>
+
+<p>
+is largely determined by the eigenvalues of the corresponding Rosenbrock system \(S(z)\)&nbsp;given by&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span>. Those eigenvalues are also known as the invariant
+zeros of \(\Sigma \)&nbsp;[1].
+</p>
+
+<p>
+The Rosenbrock systems also arise from solving rational eigenvalue problems for a rational matrix function in the form of
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                              R(z) = P (z) + C(zIr − A)−1 B,                                                                              (3)--><a id="eq:rep"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:rep} R(z)=P(z) + C(zI_r-A)^{-1}B,
+\end{equation}
+
+</p>
+
+<p>
+where \(A\in \C ^{r,r}, B\in \C ^{r,n}, C\in \C ^{n,r}\) and \(P(z)\) is an \(n\times n\) matrix polynomial of a degree \(d\). Here, a scalar \(\lambda \in \C \) is an eigenvalue of \(R(z)\) if \(\det (R(\lambda ))=0\). Rational
+eigenvalue problems consist of an important class of nonlinear eigenvalue problems. For the rational matrix function \(R(z)\) by&nbsp;<span class="textup">(<a href="paper.html#eq:rep">3</a>)</span>, a standard technique to find its
+eigenvalues is through linearization of the corresponding Robsenbrock system \(S(z)\) in&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span>. Particularly, Rosenbrock noted that \(R(z)\) and \(S(z)\) share the
+same (finite) eigenvalues provided that \(S(z)\) is irreducible&nbsp;[1], so the eigenvalues of \(R(z)\) can be computed from \(S(z)\). For a general rational matrix function, various rational linearization techniques via a realization \(S(z)\) in the
+form of Rosenbrock system&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span> are also available; see, e.g.,&nbsp;[2, 3, 4, 5].
+</p>
+
+<p>
+The main purpose of this work is to perform an eigenvalue backward error analysis for the Rosenbrock system&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span>, taking into account both full and partial
+perturbations across its four component blocks \(A\), \(B\), \(C\), and \(P(z)\). The eigenvalue backward error is a fundamental tool in both the theoretical study and practical application of numerical eigenvalue problems. As a metric for the
+accuracy of approximate eigenvalues, backward error is commonly applied in the stability analysis of eigensolvers.
+</p>
+
+<p>
+The eigenvalue backward error for matrix polynomials have been extensively studied in the literature; see, e.g.,&nbsp;[6, 7, 8, 9]. A recurring theme in those studies is the preservation of particular structure within the perturbation matrices, such as
+symmetry and skew-symmetry. However, these works have not yet explored the unique block structure in the Rosenbrock system \(S(z)\)&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span>, despite the prevalence
+of such matrix polynomials.
+</p>
+
+<p>
+Preserving the block structures within \(S(z)\) holds practical significance. For instance, in the linear system&nbsp;<span class="textup">(<a href="paper.html#eq:ltis">2</a>)</span>, certain coeﬀicient matrices may be exempt from
+perturbation due to system configurations, and a structured perturbation can best reflect such constraints. For the Rosenbrock system&nbsp;<span class="textup">(<a href="paper.html#eq:rosenbrock">1</a>)</span>, preserving the block
+structure in \(S(z)\) enables the derivation of eigenvalue backward errors for the rational matrix function \(R(z)\) from&nbsp;<span class="textup">(<a href="paper.html#eq:rep">3</a>)</span>, by exploiting equivalency of the two problems.
+To this end, there have been very few results on the backward error analysis for rational eigenvalue problems; for example, [12]&nbsp;discussed backward errors for eigenpairs, and the recent study&nbsp;[11] addressed backward error for eigenvalues of
+rational matrix functions with various structures on coeﬀicient matrices such as symmetric, Hermitian, alternating and palindromic. The block structure in \(S(z)\) may be preserved under perturbations with sparsity structures, see&nbsp;[12] for
+eigenpair backward errors of matrix polynomials.
+</p>
+
+<p>
+Motivated by the above considerations, we consider the problem of computing the eigenvalue backward error of the Rosenbrock system under various types of block perturbations. We show that the backward errors can be modeled as minimization
+problems involving the Sum of Two generalized Rayleigh Quotients (SRQ2) with up to three Hermitian matrices. By exploiting the convexity within the joint numerical range of these matrices, we derive a characterization of the optimal solution by a
+Nonlinear Eigenvalue Problem with Eigenvector dependency (NEPv). This NEPv characterization allows for eﬀicient solution of the SRQ2 minimization compared to traditional optimization techniques. Our extensive numerical experiments
+demonstrate the effectiveness of the NEPv approach for SRQ2 minimization from computation of eigenvalue backward errors of Rosenbrock matrix polynomials.
+</p>
+
+<p>
+This work has been communicated and available at&nbsp;[13].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> H. H. Rosenbrock, State-space and multivariable theory. <i>John Wiley \(\&amp;\) Sons, Inc. [Wiley Interscience Division]</i>, New York, 1970.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> R. Alam, N. Behara, Linearizations for rational matrix functions and Rosenbrock system polynomials. <i>SIAM J. Matrix Anal. Appl.</i>, 37, 354–380, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> R. K. Das, R. Alam, Aﬀine spaces of strong linearizations for rational matrices and the recovery of eigenvectors and minimal bases. <i>Linear Algebra Appl.</i>, 569, 335–368, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> F. Dopico, S. Marcaida, M. Quintana, Strong linearizations of rational matrices with polynomial part expressed in an orthogonal basis. <i>Linear Algebra Appl.</i>, 570, 1–45, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> F. Dopico, S. Marcaida, M. Quintana, P. Van Dooren, Linearizations of matrix polynomials viewed as Rosenbrock’s system matrices. <i>Linear Algebra Appl.</i>, 693, 116–139, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> B. Adhikari, R. Alam, On backward errors of structured polynomial eigenproblems solved by structure preserving linearizations. <i>Linear Algebra Appl.</i>, 434, 1989–2017, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> S. Bora, M. Karow, C. Mehl, P. Sharma, Structured eigenvalue backward errors of matrix pencils and polynomials with Hermitian and related structures. <i>SIAM J. Matrix Anal. Appl.</i>, 35,
+453–475, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> S. Bora, M. Karow, C. Mehl, P. Sharma, Structured eigenvalue backward errors of matrix pencils and polynomials with palindromic structures. <i>SIAM J. Matrix Anal. Appl.</i>, 36, 393–416, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> F. Tisseur Backward error and condition of polynomial eigenvalue problems. <i>Linear Algebra Appl.</i>, 1, 339–361, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Sk. S. Ahmad, V. Mehrmann Backward errors and pseudospectra for structured nonlinear eigenvalue problems. <i>Oper. Matrices</i>, 10, 539–556, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> A. Prajapati, P. Sharma Optimizing the Rayleigh quotient with symmetric constraints and its application to perturbations of structured polynomial eigenvalue problems. <i>Linear Algebra
+Appl.</i>, 645, 256–277, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Sk. S. Ahmad, V. Mehrmann Backward errors and pseudospectra for structured nonlinear eigenvalue problems. <i>Oper. Matrices</i>, 10, 539–556, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Sk. S. Ahmad, P. Kanhya Structured perturbation analysis of sparse matrix pencils with \(s\)-specified eigenpairs. <i>Linear Algebra Appl.</i>, 602, 93–119, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> D. Lu, A. Prajapati, P. Sharma, S. Bora Eigenvalue backward errors of Rosenbrock systems and optimization of sums of Rayleigh quotient. <i>arXiv:</i> 2407.03784 , 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

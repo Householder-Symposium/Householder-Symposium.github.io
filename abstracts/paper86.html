@@ -1,0 +1,245 @@
+---
+layout: abstract
+absnum: 86
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Streaming low-rank approximation of tree tensor networks
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Alberto Bucci</span>, Gianfranco Verzella
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Low-rank tensor approximation has emerged as a powerful tool in scientific computing, enabling the eﬀicient handling of large-scale linear and multilinear algebra problems that would otherwise be computationally infeasible with classical methods.
+By exploiting the inherent low-dimensional structure within high-dimensional data, these techniques reduce storage costs and computational complexity, making it possible to approximate solutions to problems in fields as diverse as quantum physics,
+machine learning, and computational biology.
+</p>
+
+<p>
+Recent advances in randomized techniques for low-rank matrix approximations, including methods like randomized SVD [1] and the generalized Nyström method [2, 3], have paved the way for substantial progress in tensor approximation as well. A
+range of specialized randomized methods have emerged for tensor decompositions. For instance, the randomized higher-order SVD and its sequential truncated version [4] provide eﬀicient tools for approximating tensors in Tucker format. Likewise,
+randomized adaptations of TT-SVD [5] extend matrix-based techniques to the tensor train format, enabling the approximation of high-dimensional data while mitigating the curse of dimensionality.
+</p>
+
+<p>
+The multilinear Nyström method [6], its sequential counterpart [7], and the streaming tensor train approximation [8] further advance this field, allowing for the streaming low-rank approximation of a given tensor \(\mathcal {A}\) in the Tucker or
+Tensor-Train format respectively.
+</p>
+
+<p>
+Both methods build on the generalized Nyström approach, accessing the tensor \(\mathcal {A}\) exclusively via two-sided random sketches of the original data, making them single-pass and facilitating parallel implementation.
+</p>
+
+<p>
+Tucker and tensor train decompositions are specific instances of the more general tree tensor network (TTN) decomposition, where the underlying tree structure takes the form of either a star or chain configuration.
+</p>
+
+<p>
+By combining the multilinear Nyström method [6] with the streaming tensor train approximation [8], we introduce the tree tensor network Nyström algorithm [9] (TTNN): a novel approach for the streaming low-rank approximation of tensors in the
+tree tensor network format. We also introduce a sequential variant of the algorithm that operates on increasingly compressed versions of the tensor, while remarkably preserving streamability. We also provide a detailed analysis of the accuracy of
+both methods.
+</p>
+
+<p>
+However, in practical applications, tensors are often provided in a low-rank TTN format, as working with the full tensor would be computationally prohibitive. In these cases, the challenge lies in achieving further compression or rounding of these
+representations.
+</p>
+
+<p>
+We demonstrate that our algorithm can be readily adapted to this specific setting by leveraging structured embeddings.
+</p>
+
+<p>
+Our results indicate that TTNN is capable of achieving nearly optimal approximation error when the sizes of the sketches are appropriately selected. A series of numerical experiments further illustrate the performance of TTNN in comparison to
+existing deterministic and randomized methods.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Halko, N., Martinsson, P.G., Tropp, J.A. (2011). Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions.<i>SIAM review</i>, 53(2),
+pp.217-288.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Clarkson K.L., Woodruff, D.P. (2009). Numerical linear algebra in the streaming model. <i>Proceedings of the forty-first annual ACM symposium on Theory of computing</i>, pp.205-214.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Nakatsukasa Y. (2020). Fast and stable randomized low-rank matrix approximation. <i>arXiv preprint</i>, arXiv:2009.11392.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Ahmadi-Asl, S., Abukhovich, S., Asante-Mensah, M.G., Cichocki, A., Phan, A.H., Tanaka, T. and Oseledets, I. (2021). Randomized algorithms for computation of Tucker decomposition and higher
+order SVD (HOSVD). <i>IEEE Access</i>, 9, pp.28684-28706.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Al Daas, H., Ballard, G., Cazeaux, P., Hallman, E., Miedlar, A., Pasha, M., Reid, T.W. and Saibaba, A.K. (2023). Randomized algorithms for rounding in the tensor-train format. <i>SIAM Journal
+on Scientific Computing</i>, 45(1), pp.A74-A95.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Bucci A., Robol. L. (2024). A multilinear Nyström algorithm for low-rank approximation of tensors in Tucker format. <i>SIAM Journal on Matrix Analysis and Applications</i>, 45(4), pp.1929-1953.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Bucci A., Hashemi. B. (2024). A sequential multilinear Nyström algorithm for streaming low-rank approximation of tensors in Tucker format. <i>Applied Mathematics Letters</i>, 159, p.109271.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Kressner D., Vandereycken B., Voorhaar R. (2023). Streaming tensor train approximation. <i>SIAM Journal on Scientific Computing</i>, 45(5), pp.A2610-A2631.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Bucci A., Verzella G. (2025). Streaming low-rank approximation of tree tensor networks. <i>In preparation</i>.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

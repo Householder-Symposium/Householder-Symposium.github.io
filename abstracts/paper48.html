@@ -1,0 +1,114 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+A few good columns: Subset selection by maximizing relative volume
+</h2>
+</div>
+<div class="center">
+
+<p>
+Srinivas Eswar, Ilse C.F. Ipsen, <span class="underline">Arvind K. Saibaba</span>,
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Given a matrix \(\mathbf {A} \in \mathbb {R}^{m\times n}\) with integer \(k \le \text {rank}(\mathbf {A})\), the column subset selection aims to choose a subset of columns \(\mathbf {C} \in \mathbb {R}^{m\times k}\) to optimize
+some criterion. In this talk, we want to select a set of \(k\) columns \(\mathbf {C}\) that are well-conditioned. This is a problem of importance in many areas such as interpolatory decompositions, nonlinear model reduction, sensitivity analysis, and
+optimal sensor placement.
+</p>
+
+<p>
+Denote the singular values of \(\mathbf {C}\) as \(\sigma _1 \geq \dots \geq \sigma _k\). One approach is to minimize the 2-norm condition number of \(\mathbf {C}\), defined as \(\kappa _2(\mathbf {C}) = \|\mathbf {C}\|_2
+\|\mathbf {C}^\dagger \|_2 = \sigma _1/\sigma _k\). Another approach, known as the strong rank-revealing QR algorithm by Gu and Eisenstat&nbsp;[2] maximizes the volume, defined as \(\text {vol}(\mathbf {C}) = \sqrt {\text
+{det}(\mathbf {C}^\top \mathbf {C})} = \prod _{j=1}^k \sigma _j\), of the set of columns \(\mathbf {C}\). Both these problems are known to be NP-Hard and they do not admit a polynomial time approximation algorithm&nbsp;[1]. To
+study these two criteria together, we adapted an algorithm in&nbsp;[2, Algorithm 3] that performs a local optimization by only permuting a pair of columns at a time. Numerical experiments on several test matrices revealed that maximizing the
+volume is more effective in identifying a set of well-conditioned columns, than directly minimizing \(\kappa _2(\mathbf {C})\). However, the volume criterion has the drawback that is an absolute criterion, and a large volume need not imply a good
+condition number. These shortcomings motivate the need for a new criterion, which we now describe.
+</p>
+<!--
+...... paragraph New criterion ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">New criterion</span>
+<a id="paper-autopage-5"></a>
+We present a new criterion, called relative volume, which is defined as
+</p>
+
+<p>
+\[ \text {rvol}(\mathbf {C}) = \frac {\text {vol}(\mathbf {C})}{\|\mathbf {C}\|_2^k} = \prod _{j=1}^k \frac {\sigma _j}{\sigma _1}. \]
+</p>
+
+<p>
+The relative volume is a relative criterion, and maximizing this criterion, in turn minimizes the product of the singular value ratios \(\gamma _j = \sigma _j/\sigma _1\) (or reciprocal condition numbers) for \(1 \le j \le k\). It is easy to see
+that \(\text {rvol}(\mathbf {C}) \in [0,1]\) with \(\text {rvol}(\mathbf {C}) = 1\) if and only if \(\mathbf {C}\) has orthonormal columns.
+</p>
+
+<p>
+We show that subset selection by maximizing relative volume is an NP-Hard problem. The proof is based on a reduction using Exact cover by 3-sets, which is known to be NP-Hard, and this technique was previously used in&nbsp;[1].
+</p>
+<!--
+...... paragraph Algorithmic developments ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Algorithmic developments</span>
+<a id="paper-autopage-6"></a>
+As before, we adapt an algorithm in&nbsp;[2, Algorithm 3] to maximize the relative volume that performs a local optimization by only permuting a pair of columns at a time, which we call a swap. A swap of columns occurs if the relative volume has
+increased by a user-specified factor \(f \geq 1\) and the algorithm terminates if no such swap can be found. We discuss the computational cost of this basic algorithm, and present bounds on the maximal number of column swaps required before
+termination.
+</p>
+
+<p>
+We present two extensions of these algorithms to reduce the computational cost. The first approach uses a fast updating of a thin-QR decomposition to enable eﬀicient computation of the criterion. The second approach uses sketching and maintains
+a sketched version of the the matrix to perform the swaps. We present theoretical justification for the sketching approach in the form of probabilistic guarantees of the criterion when a Gaussian random matrix is used for sketching. We also provide
+an analysis of the computational costs.
+</p>
+<!--
+...... paragraph Numerical Experiments ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">Numerical Experiments</span>
+<a id="paper-autopage-7"></a>
+We present a series of numerical experiments to demonstrate the performance of the criterion and the proposed algorithms. The set of test problems are (1) a matrix that comes from an inverse problem involving a 2D heat equation, (2) The MNIST
+dataset of images of handwritten digits, (3) test problems from nonlinear model reduction. The numerical experiments show that the algorithms for maximizing the relative volume criterion are successful in identifying a set of well-conditioned columns.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Çivril and M.&nbsp;Magdon-Ismail, <i>On selecting a maximum volume sub-matrix of a matrix and related problems</i>, Theoret. Comput. Sci., 410 (2009), pp.&nbsp;4801–4811.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;Gu and S.&nbsp;C. Eisenstat, <i>Eﬀicient algorithms for computing a strong rank-revealing QR factorization</i>, SIAM J. Sci. Comput., 17 (1996), pp.&nbsp;848–869.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

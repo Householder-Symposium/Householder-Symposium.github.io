@@ -1,0 +1,400 @@
+---
+layout: abstract
+absnum: 170
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\tp }{{\scriptscriptstyle \mathsf {T}}}\)
+
+\(\DeclareMathOperator {\Or }{O}\)
+
+\(\DeclareMathOperator {\GL }{GL}\)
+
+\(\DeclareMathOperator {\Pa }{P}\)
+
+\(\DeclareMathOperator {\V }{V}\)
+
+\(\DeclareMathOperator {\St }{St}\)
+
+\(\DeclareMathOperator {\tr }{tr}\)
+
+\(\DeclareMathOperator {\Gr }{Gr}\)
+
+\(\DeclareMathOperator {\El }{E}\)
+
+\(\DeclareMathOperator {\rank }{rank}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Most matrix manifold optimization problems are NP-hard
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Zehua Lai</span>, Lek-Heng Lim, Ke Ye
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Some of the most common Riemannian manifolds in geometry, including many that are important in engineering applications, may be represented as matrix manifolds, i.e., submanifolds or quotient manifolds of \(\mathbb {R}^{m \times n}\)
+endowed with various Riemannian metrics.
+</p>
+
+<p>
+We consider four of the best known ones: The Cartan manifold of ellipsoids in \(\mathbb {R}^n\) may be modeled as the set of positive definite matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                 E(Rn ) ∼
+                                                                                                                        = {A ∈ R
+                                                                                                                                 n×n
+                                                                                                                                     : AT = A, xT Ax > 0 for all x ̸= 0}.                                                (1)--><a id="eq:El"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:El} \El (\mathbb {R}^n) \cong \{ A \in \mathbb {R}^{n \times n} : A^\tp = A, \; x^\tp A x &gt; 0 \text { for all } x \ne 0 \}.
+\end{equation}
+
+</p>
+
+<p>
+The compact Stiefel manifold of orthogonal \(k\)-frames in \(\mathbb {R}^n\) may be modeled as the set of \(n \times k\) orthonormal matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                            Vk (Rn ) ∼
+                                                                                                                                     = {Y ∈ R
+                                                                                                                                              n×k
+                                                                                                                                                  : Y T Y = I}                                                            (2)--><a id="eq:V"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:V} \V _k(\mathbb {R}^n) \cong \{Y \in \mathbb {R}^{n \times k} : Y^\tp Y = I \}
+\end{equation}
+
+</p>
+
+<p>
+The noncompact Stiefel manifold of \(k\)-frames in \(\mathbb {R}^n\) may be modeled as the set of \(n \times k\) full-rank matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                          Stk (Rn ) ∼
+                                                                                                                                    = {S ∈ R
+                                                                                                                                             n×k
+                                                                                                                                                 : rank(S) = k}                                                          (3)--><a id="eq:St"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:St} \St _k(\mathbb {R}^n) \cong \{ S \in \mathbb {R}^{n \times k} : \rank (S) = k\}
+\end{equation}
+
+</p>
+
+<p>
+The Grassmannian of \(k\)-planes in \(\mathbb {R}^n\) may be modeled either as projection matrices, involution matrices, or, more generally, quadratic matrices with appropriate trace values:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+
+                                                                                                 Grk (Rn ) ∼
+                                                                                                           = {P ∈ R
+                                                                                                                    n×n
+                                                                                                                        : P 2 = P = P T , tr(P ) = k} (4)                                                                    --><a id="eq:P"></a><!--
+                                                                                                           ∼
+                                                                                                           = {Q ∈ R
+                                                                                                                    n×n
+                                                                                                                        : QT Q = I, QT = Q, tr(Q) = 2k − n}
+                                                                                                            ∼
+                                                                                                            = {W ∈ R
+                                                                                                                     n×n
+                                                                                                                         : W T = W, (W − aI)(W − bI) = 0, tr(W ) = ka + (n − k)b}.
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\Gr _k(\mathbb {R}^n) &amp;\cong \{P \in \mathbb {R}^{n \times n}: P^2 = P = P^\tp ,\; \tr (P) = k\} \label {eq:P} \\ &amp;\cong \{Q \in \mathbb {R}^{n \times n} : Q^\tp Q =I,\; Q^\tp = Q, \; \tr (Q)=2k - n\}
+\nonumber \\ &amp;\cong \{ W \in \mathbb {R}^{n \times n}: W^\tp = W, \; (W - a I)(W- bI) = 0, \; \tr (W) = ka + (n-k)b \}. \nonumber
+\end{align}
+Further examples may be obtained from these four basic cases as product, quotient, or submanifolds.
+</p>
+
+<p>
+We will show that unconstrained quadratic optimization over any of these models of Grassmannian is NP-hard. Our results cover all scenarios: (i) when \(k\) and \(n\) are both allowed to grow; (ii) when \(k\) is arbitrary but fixed; (iii) when \(k\)
+is fixed at its lowest possible value of \(1\).
+</p>
+
+<p>
+For example, the clique decision problem, i.e., deciding if a clique of size \(k\) exists in a graph \(G = (V, E)\), may be formulated as the maximization problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                      [ ∑                             ∑ T              ]
+                                           max                  eiT P ei eTj P ej +    ei P ei eTi P ei ,                                          (5)                                                                    --><a id="eq:func"></a><!--
+                                         P ∈Gr(k,n)
+                                                      (i,j)∈E                         i∈V
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:func} \max _{P\in \Gr (k, n)} \biggl [ \sum _{(i, j) \in E}e_i^\tp P e_i e_j^\tp P e_j + \sum _{i \in V} e_i^\tp P e_i e_i^\tp P e_i \biggr ],
+\end{equation}
+
+</p>
+
+<p>
+where \(\Gr (k,n)\) is the projection model of Grassmannian in <span class="textup">(<a href="paper.html#eq:P">4</a>)</span> and \(e_1, \dots , e_n \in \mathbb {R}^n\) the standard basis. This establishes NP-hardness of (i) for the
+projection model but we will extend it to other models and also to (ii) and (iii).
+</p>
+
+<p>
+We will establish similar NP-hardness results for unconstrained quadratic optimization over the Cartan manifold in <span class="textup">(<a href="paper.html#eq:El">1</a>)</span>, as well as unconstrained cubic optimization over the
+compact and noncompact Stiefel manifolds in <span class="textup">(<a href="paper.html#eq:V">2</a>)</span> and <span class="textup">(<a href="paper.html#eq:St">3</a>)</span>.
+</p>
+
+<p>
+In all cases, we will rule out the existence of \(\mathrm {FPTAS}\) and show that these hardness results hold regardless of the choice of Riemannian metrics one puts on these manifolds. If time permits, we will also discuss the NP-hardness of
+optimizing over various representations of these manifolds as quotient matrix manifolds, including
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+
+<!--
+
+
+
+                                                                                                            Grk (Rn ) ∼
+                                                                                                                      = O(n)/(O(k) × O(n − k)),     Vk (Rn ) ∼
+                                                                                                                                                             = O(n)/ O(n − k),
+                                                                                                            Stk (Rn ) ∼
+                                                                                                                      = GL(n)/ P1 (k, n),            E(Rn ) ∼= GL(n)/ O(n).
+
+
+
+-->
+
+
+<p>
+
+\begin{alignat*} {3}
+\Gr _k(\mathbb {R}^n) &amp;\cong \Or (n)/(\Or (k)\times \Or (n-k)), \qquad &amp;\V _k(\mathbb {R}^n) &amp;\cong \Or (n)/\Or (n-k),\\ \St _k(\mathbb {R}^n) &amp;\cong \GL (n)/\Pa _1(k,n), &amp;\El (\mathbb {R}^n)
+&amp;\cong \GL (n)/\Or (n).
+\end{alignat*}
+
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Z.&nbsp;Lai, L.-H.&nbsp;Lim, and K.&nbsp;Ye, “Grassmannian optimization is NP-hard,” <a href="arXiv:2406.19377" target="_blank" >arXiv:2406.19377</a>, 2024.
+</p>
+</li>
+</ul>
+
+{% endraw %}

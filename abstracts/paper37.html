@@ -1,0 +1,160 @@
+---
+layout: abstract
+absnum: 37
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized Kaczmarz on doubly noisy systems and its applications
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Anna Ma</span>, El Houcine Bergou, Soumia Boucherouite, Aritra Dutta and Xin Li
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Large-scale linear systems, \(Ax=b\), frequently arise in practice and demand effective iterative solvers. Often, these systems are noisy due to operational errors or faulty data-collection processes. In the past decade, the randomized Kaczmarz (RK)
+algorithm has been studied extensively as an eﬀicient iterative solver for such systems. However, the convergence of RK in the noisy system regime is limited and typically only considers measurement noise in the right-hand side vector, \(b\).
+Unfortunately, in practice, that is not always the case; the coeﬀicient matrix \(A\) can also be noisy. In this talk, we present the analysis of the convergence of RK for <i>doubly-noisy</i> linear systems, i.e., when the coeﬀicient matrix, \(A\), has
+additive or multiplicative noise, and \(b\) is also noisy. In our analyses, we provide convergence bounds depending on the quantity \(\tilde R=\| \tilde A^{\dagger } \|^2 \|\tilde A \|_F^2\), where \(\tilde A\) represents a noisy version of
+\(A\). This work opens the doors to applications, two of which we highlight in this talk. The first is additive preconditioning in which additive noise to the matrix is <i>intentionally</i> added to improve the initial convergence of RK. The second
+considers the extremely large-scale setting in which even entire rows of the matrix \(A\) cannot be loaded or used in a single iteration. In such a case, we use noise to model the sparsification of the rows of \(A\) to decrease computational memory or
+communication demand. The work presented is is joint work with El Houcine Bergou, Soumia Boucherouite, Aritra Dutta and Xin Li&nbsp;[1].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> El&nbsp;Houcine Bergou, Soumia Boucherouite, Aritra Dutta, Xin Li, and Anna Ma. A note on the randomized kaczmarz algorithm for solving doubly noisy linear systems. <i>SIAM Journal on
+Matrix Analysis and Applications</i>, 45(2):992–1006, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,694 @@
+---
+layout: abstract
+absnum: 130
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\low }{\ensuremath {\mathrm {low}}}\)
+
+\(\newcommand {\high }{\ensuremath {\mathrm {high}}}\)
+
+\(\newcommand {\Flow }{\ensuremath {\mathcal F_{\low }}}\)
+
+\(\newcommand {\Fhigh }{\ensuremath {\mathcal F_{\high }}}\)
+
+\(\newcommand {\fl }{\ensuremath {\mathrm {fl}}}\)
+
+\(\newcommand {\fllow }{\ensuremath {\fl _{\low }}}\)
+
+\(\newcommand {\ulow }{\ensuremath {u_{\low }}}\)
+
+\(\newcommand {\uhigh }{\ensuremath {u_{\high }}}\)
+
+\(\newcommand {\wt }{\ensuremath {\widetilde }}\)
+
+\(\newcommand {\N }{\ensuremath {\mathbb {N}}}\)
+
+\(\newcommand {\R }{\ensuremath {\Fhigh }}\)
+
+\(\newcommand {\Rmn }{\ensuremath {\R ^{m \times n}}}\)
+
+\(\newcommand {\Rmp }{\ensuremath {\R ^{m \times p}}}\)
+
+\(\newcommand {\Rpn }{\ensuremath {\R ^{p \times n}}}\)
+
+\(\newcommand {\DA }{\ensuremath {\varDelta A}}\)
+
+\(\newcommand {\DB }{\ensuremath {\varDelta B}}\)
+
+\(\newcommand {\sA }{\ensuremath {s_{A}}}\)
+
+\(\newcommand {\sB }{\ensuremath {s_{B}}}\)
+
+\(\newcommand {\kA }{\ensuremath {\kappa _{A}}}\)
+
+\(\newcommand {\kB }{\ensuremath {\kappa _{B}}}\)
+
+\(\newcommand {\uA }{\ensuremath {u_{A}}}\)
+
+\(\newcommand {\uB }{\ensuremath {u_{B}}}\)
+
+\(\newcommand {\da }{\ensuremath {\delta a}}\)
+
+\(\newcommand {\db }{\ensuremath {\delta b}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+High-Accuracy Floating-Point Matrix Multiplication on<br />
+Low-Precision Floating-Point and Fixed-Point Hardware
+</h2>
+</div>
+<div class="center">
+
+<p>
+Ahmad Abdelfattah, Jack Dongarra, <span class="underline">Massimiliano Fasi</span>, Mantas Mikaitis, Françoise Tisseur
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We have oﬀicially entered the exascale era. At the forefront is the Frontier supercomputer, topping the June 2024 Top500 list<sup>1</sup><a id="paper-autopage-4"></a> as the first machine capable of performing over \(10^{18}\) operations per
+second in binary64 (<em>double precision</em>) arithmetic. Modern supercomputers achieve their remarkable speeds by leveraging machine-learning hardware accelerators, which deliver extraordinary throughput by trading off some degree of
+accuracy. While these accelerators currently support binary64 arithmetic, the field is shifting, and soon many will be optimized exclusively for lower precision.
+</p>
+
+<p>
+Today, fully utilizing the potential of these accelerators requires relying on low-precision formats: TensorFloat-32, bfloat16, binary16 (<em>half precision</em>), E4M3, E5M2, and even compact integer data types, such as INT8. These
+reduced-precision formats can have a throughput up to two orders of magnitude higher than binary64, but they lack the precision needed for traditional scientific simulations, which require higher accuracy to yield meaningful results.
+</p>
+
+<p>
+To integrate GPUs effectively into scientific computing, we must reimagine high-precision computations by strategically applying lower precision when feasible. Here, we explore techniques to reformulate a high-precision matrix multiplication as a
+series of low-precision operations, and we outline two strategies for assigning different precision levels across computations. Matrix multiplication is a fundamental kernel in scientific computing, and eﬀicient implementations underpin the performance
+of many algorithms in numerical linear algebra. The techniques we discuss will enable numerical codes to make better use of current accelerators, where the performance gap between low and high precision is widening, and of future ones, where high
+precision will be missing altogether.
+</p>
+
+<p>
+<b>General scheme for mixed-precision matrix multiplication</b>&#x2003;Let \(\Flow \) and \(\Fhigh \) be a low-precision and a high-precision floating-point format, respectively, and let \(\ulow \) and \(\uhigh \) be their unit
+roundoffs. We consider the computation of \(C = AB \in \Rmn \), where \(A \in \Rmp \) and \(B \in \Rpn \). Rows of \(A\) and column of \(B\) with only zeros do not affect the result, thus we assume that each row of \(A\) and column of \(B\)
+contains at least one nonzero element. The high-precision matrices \(A\) and \(B\) can be written as the unevaluated sum of low-precision matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                      A = A(1) + A(2) + · · · + A(sA ) + ∆A,                    B = B (1) + B (2) + · · · + B (sB ) + ∆B,                                     (1)--><a id="eq:splitting"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:splitting} A = A^{(1)} + A^{(2)} + \cdots + A^{(\sA )} + \DA ,\qquad B = B^{(1)} + B^{(2)} + \cdots + B^{(\sB )} + \DB ,
+\end{equation}
+
+</p>
+
+<p>
+where the entries of \(A^{(1)}\), \(A^{(2)}\), &#x2026;, \(A^{(s_{A})}\), \(B^{(1)}\), \(B^{(2)}\), &#x2026;, \(B^{(s_{B})}\) belong to \(\Flow \), while \(\DA \) and \(\DB \) are truncation errors. With the decomposition&nbsp;<span
+class="textup">(<a href="paper.html#eq:splitting">1</a>)</span>, we can approximate the product as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                    X  X
+                                                                                                                                    sA sB
+                                                                                                                           e≈
+                                                                                                                           C                    A(k) B (ℓ) .                                                              (2)--><a id="eq:approximation"></a><!--
+                                                                                                                                    k=1 ℓ=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:approximation} \wt C \approx \sum _{k=1}^{s_{A}}\sum _{\ell =1}^{s_{B}} A^{(k)}B^{(\ell )}.
+\end{equation}
+
+</p>
+
+<p>
+In terms of runtime, <span class="textup">(<a href="paper.html#eq:approximation">2</a>)</span> will achieve good performance if the low-precision matrix products of the form \(A^{(k)}B^{(\ell )}\) are executed on hardware that can
+eﬀiciently multiply matrices stored in \(\Flow \) and accumulate the result in \(\Fhigh \). Two terms contribute to the total error in the approximation \(\wt C\):
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> the <em>truncation error</em> \(\DA B + A \DB \), which depends on the splitting strategy in&nbsp;<span class="textup">(<a href="paper.html#eq:splitting">1</a>)</span>; and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> a <em>rounding error</em>, caused by the matrix products and sums in&nbsp;<span class="textup">(<a href="paper.html#eq:approximation">2</a>)</span>
+</p>
+</li>
+</ul>
+
+<p>
+<b>Matrix multiplication using multi-word arithmetic</b>&#x2003;A natural way to obtain the decomposition&nbsp;<span class="textup">(<a href="paper.html#eq:splitting">1</a>)</span> is to split \(A\) and \(B\) as sum of
+low-precision floating-point matrices&nbsp;[4]. This can be accomplished by applying the splitting algorithm:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                                        !                                                   !
+                                                                                                                        X
+                                                                                                                        k−1                                                 X
+                                                                                                                                                                            ℓ−1
+                                                                                                A   (k)
+                                                                                                          = ﬂlow   A−         A   (t)
+                                                                                                                                            ,    B   (ℓ)
+                                                                                                                                                           = ﬂlow     B−          B   (t)
+                                                                                                                                                                                                ,                            (3)--><a id="eq:split-fhlm"></a><!--
+                                                                                                                        t=1                                                 t=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:split-fhlm} A^{(k)} = \fllow \left (A - \sum _{t=1}^{k-1}A^{(t)}\right ),\qquad B^{(\ell )} = \fllow \left (B - \sum _{t=1}^{\ell -1}B^{(t)}\right ),
+\end{equation}
+
+</p>
+
+<p>
+where \(\fllow (X)\) rounds the entries of the input matrix \(X\) to precision \(\Flow \). In this case, we can set \(\sA = \sB = s\), as the final accuracy will be limited by the smaller between \(\sA \) and \(\sB \).
+</p>
+
+<p>
+If the splitting&nbsp;<span class="textup">(<a href="paper.html#eq:splitting">1</a>)</span> is obtained using&nbsp;<span class="textup">(<a href="paper.html#eq:split-fhlm">3</a>)</span>, and the approximation \(\wt C\) is
+computed using&nbsp;<span class="textup">(<a href="paper.html#eq:approximation">2</a>)</span>, then&nbsp;[1]
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                                                      X
+                                                                                                                                                                      s X
+                                                                                                                                                                        s
+                                                                                             e − C ≤ (2uslow + u2s
+                                                                                             C                  low )|A||B| + (n + s − 1)uhigh
+                                                                                                                                    2
+                                                                                                                                                                                  A(ℓ) B (ℓ) .                                 (4)--><a id="eq:mp-bound"></a><!--
+                                                                                                                                                                      k=1 ℓ=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:mp-bound} \big \lvert \wt C - C \big \rvert \le (2\ulow ^{s} + \ulow ^{2s})\lvert A \rvert \lvert B \rvert + (n + s^{2} - 1)\uhigh \sum _{k=1}^{s}\sum _{\ell =1}^{s}\big \lvert A^{(\ell )} \big \rvert
+\big \lvert B^{(\ell )} \big \rvert .
+\end{equation}
+
+</p>
+
+<p>
+For practical choices of \(\ulow \) and \(\uhigh \), a small value of \(s\), 2 or 3 say, is suﬀicient to make the two terms in&nbsp;<span class="textup">(<a href="paper.html#eq:mp-bound">4</a>)</span> of similar size. Furthermore, not all
+\(s^{2}\) products in&nbsp;<span class="textup">(<a href="paper.html#eq:approximation">2</a>)</span> need be computed, since the magnitude of the elements of \(A^{(k)}\) and \(B^{(\ell )}\) decreases rapidly as \(k\) and \(\ell \)
+increase. Ignoring all products of the form \(A^{(k)}B^{(\ell )}\), for \(k + \ell &gt; s + 1\), yields a faster algorithm and an error bounded by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                                                              s+1 
+                                                             e − C ≤ (s + 1)uslow + (n + s2 − 1)uhigh |A||B| + O uhigh ulow + ulow
+                                                             C                                                                       ,                                                                          (5)--><a id="eq:mp-bound-simplified-alg"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:mp-bound-simplified-alg} \big \lvert \wt C - C \big \rvert \le \bigl ((s+1)\ulow ^{s} + (n + s^{2} - 1)\uhigh \bigr )\lvert A \rvert \lvert B \rvert + \mathcal O \bigl (\uhigh \ulow + \ulow ^{s+1}\bigr
+),
+\end{equation}
+
+</p>
+
+<p>
+which is just slightly weaker than&nbsp;<span class="textup">(<a href="paper.html#eq:mp-bound">4</a>)</span>. We evaluated this scheme using double-binary16 (\(s = 2\) and \(\ulow = 2^{-11}\)) arithmetic to compute binary32 matrix
+products (\(\uhigh = 2^{-24}\)). We run our implementations of the algorithm described above on NVIDIA GPUs equipped with <em>tensor cores</em>—mixed-precision units that compute the product of binary16 matrices using binary32
+arithmetic. We identified some cases where, surprisingly, double-binary16 fails to achieve binary32 accuracy: this is the case, for example, if the entries of the matrix are drawn from the interval \((0,1]\). This phenomenon does not contradict the
+bounds&nbsp;<span class="textup">(<a href="paper.html#eq:mp-bound">4</a>)</span> and&nbsp;<span class="textup">(<a href="paper.html#eq:mp-bound-simplified-alg">5</a>)</span>, and with the help of probabilistic rounding
+error analysis we showed that a possible cause is the fact that the tensor cores use a custom rounding mode that is less accurate than round-to-nearest&nbsp;[2]. To support this conclusion, we used the CPFloat library&nbsp;[3] to simulate a variant
+of the tensor cores that uses round-to-nearest throughout, and we showed that switching between rounding modes has indeed the expected effect on accuracy.
+</p>
+
+<p>
+<b>The Ozaki scheme for matrix multiplication</b>&#x2003;An alternative technique, which goes back to Rump, Ogita, and Oishi&nbsp;[8], uses a fixed-point representation to recast the matrix product as a sequence of error-free
+transformations. In the case of matrix multiplication&nbsp;[7], this technique is known as the <em>Ozaki scheme</em>. The decomposition&nbsp;<span class="textup">(<a href="paper.html#eq:splitting">1</a>)</span> is computed using the
+element-wise algorithm
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                    X
+                                                                                                                     k−1          !            !
+                                                                                                                                                             αi = 2max1≤j≤p ⌈log2 |aij |⌉+f (aij ) ,
+                                                                                       (k)                                  (t)
+                                                                                      aij = ﬂ    ﬂ αi + aij −              aij              − αi ,
+                                                                                                                     t=1
+                                                                                                                                  !           !                                                                           (6)--><a id="eq:split-ozaki"></a><!--
+                                                                                       (ℓ)
+                                                                                                              X
+                                                                                                              ℓ−1
+                                                                                                                   (t)                                               max1≤j≤p ⌈log2 |bij |⌉+f (bij )
+                                                                                      bij = ﬂ    ﬂ βj + bij −     bij                   − βj ,              βj = 2                                          ,
+                                                                                                                     t=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:split-ozaki} \begin{aligned} a^{(k)}_{ij} &amp;= \fl \Biggl ( \fl \Biggl (\alpha _{i} + \biggl (a_{ij} - \sum _{t=1}^{k-1}a^{(t)}_{ij}\biggr ) \Biggr ) - \alpha _{i} \Biggr ),\qquad \alpha _{i} = 2^{\max
+_{1\le j \le p} \lceil \log _{2} \lvert a_{ij}\rvert \rceil + f(a_{ij})},\\ b^{(\ell )}_{ij} &amp;= \fl \Biggl ( \fl \Biggl (\beta _{j} + \biggl (b_{ij} - \sum _{t=1}^{\ell -1}b^{(t)}_{ij}\biggr ) \Biggr ) - \beta
+_{j} \Biggr ),\qquad \beta _{j} = 2^{\max _{1\le j \le p} \lceil \log _{2} \lvert b_{ij}\rvert \rceil + f(b_{ij})},\\ \end {aligned}
+\end{equation}
+
+</p>
+
+<p>
+where \(f(x)\) returns \(1\) if \(x\) is a power of two, and 0 otherwise. If the routine computing \(A^{(k)}B^{(\ell )}\) in&nbsp;<span class="textup">(<a href="paper.html#eq:approximation">2</a>)</span> takes matrices with elements in
+\(\Flow \) as input but uses precision \(\uhigh \) internally, then the intermediate precision used by the \(\fl \) operator in&nbsp;<span class="textup">(<a href="paper.html#eq:split-ozaki">6</a>)</span> can have at most
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                                
+                                                                                                                     q = (log2 u−1
+                                                                                                                                high − log2 p)/2
+
+
+-->
+
+<p>
+
+\begin{equation*}
+q = \left \lceil (\log _{2} \uhigh ^{-1} - \log _{2} p)/2 \right \rceil
+\end{equation*}
+
+</p>
+
+<p>
+bits, where \(p\) is the common dimension of \(A\) and \(B\). This choice of \(q\) ensures that all multiplications of the form \(A^{(k)}B^{(\ell )}\) will be exact.
+</p>
+
+<p>
+Implicitly, the algorithm&nbsp;<span class="textup">(<a href="paper.html#eq:split-ozaki">6</a>)</span> performs two actions. First, it scales all entries in the \(i\)th row of \(A\) by \(\alpha _{i}^{-1}\), where \(\alpha _{i}\) is the
+smallest power of two that is strictly larger, in magnitude, than all elements in the \(i\)th row of \(A\); this ensures that \(\alpha _{i}^{-1} a_{ij}\) has magnitude in the interval \([0, 1)\). Next, each \(\alpha _{i}^{-1} a_{ij}\) is
+interpreted as a fixed-point number, and its representation is divided up into \(q\)-bit segments, each assigned to a different low-precision slice \(A^{(k)}\). The matrix \(B\) is sliced analogously, with the proviso that the algorithm operates by
+columns rather than by rows. This gives the representation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                       X
+                                                                                       sA
+                                                                                                                              X
+                                                                                                                              sB
+                                                                   A = ∆A + diag(α)       2−kq A(k) ,         B = ∆B +           2−ℓq B (ℓ) diag(β),                                                                    (7)--><a id="eq:ozaki-splitting"></a><!--
+                                                                                       k=1                                    ℓ=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ozaki-splitting} A = \DA + \mathrm {diag}(\alpha ) \sum _{k = 1}^{\sA }2^{-k q}A^{(k)}, \qquad B = \DB + \sum _{\ell = 1}^{\sB }2^{-\ell q}B^{(\ell )} \mathrm {diag}(\beta ),
+\end{equation}
+
+</p>
+
+<p>
+where \(A^{(1)}\), \(A^{(2)}\), &#x2026;, \(A^{(\sA )}\) and \(B^{(1)}\), \(B^{(2)}\), &#x2026;, \(B^{(\sB )}\) are slices of a fixed-point representation of the elements in \(A\) and \(B\). Since \(\alpha _{i}\) and \(\beta _{j}\) depend
+on the magnitude of the largest entry in row \(i\) and column \(j\), respectively, the leading matrices may have zeros in positions corresponding to small elements in \(A\) and \(B\).
+</p>
+
+<p>
+If \(\sA \) and \(\sB \) are large enough to guarantee that \(\DA = 0\) and \(\DB = 0\) in&nbsp;<span class="textup">(<a href="paper.html#eq:ozaki-splitting">7</a>)</span>, then algorithm&nbsp;<span class="textup">(<a
+href="paper.html#eq:approximation">2</a>)</span> will produce an extremely accurate approximation \(\wt C\), where the only rounding errors are due to the \(\sA \sB \) floating-point sums. Mukunoki et al.&nbsp;[5] have specialized this
+algorithm and have implemented it to obtain binary64 accuracy by using binary16 arithmetic on the NVIDIA tensor cores.
+</p>
+
+<p>
+The latest NVIDIA GPUs can perform matrix multiplication even more eﬀiciently using integer arithmetic. The tensor cores of NVIDIA H100 cards, for example, can compute the product of matrices stored in INT8 format (an 8-bit signed format)
+using 32-bit signed integer arithmetic. Exploiting the fixed-point nature of the Ozaki scheme, Ootomo, Ozaki, and Yokota&nbsp;[6] have therefore developed a method that computes the product of two binary64 matrices using only INT8 matrix
+multiplications. This initial idea was further refined by Uchino, Ozaki, and Imamura&nbsp;[9], who developed a more accurate and eﬀicient variant of this scheme and gave a first error analysis. For \(\sA = \sB = s\), they show that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+
+                                                                                                           e − C ≤ 4(s + 1)k2−qs αβ T + (s − 1)uhigh |A||B|,
+                                                                                                           C
+
+-->
+
+<p>
+
+\begin{equation*}
+\big \lvert \wt C - C \big \rvert \le 4(s + 1)k2^{-qs} \alpha \beta ^{T} + (s - 1) \uhigh \lvert A \rvert \lvert B \rvert ,
+\end{equation*}
+
+</p>
+
+<p>
+where \(\uhigh \) is the unit roundoff of the floating-point arithmetic used to accumulate the partial matrix products in&nbsp;<span class="textup">(<a href="paper.html#eq:approximation">2</a>)</span>. This result suggests that the
+algorithm can be inaccurate if \(s\) is too small, or if the entries of the matrix are large in absolute value, as this will cause the entries of the vectors \(\alpha \) and \(\beta \) to be large.
+</p>
+
+<p>
+We propose an alternative error analysis that can be used to inform the choice of the parameters \(\sA \) and \(\sB \), which we argue need not be equal in the Ozaki scheme. First, we note that the terms in&nbsp;<span class="textup">(<a
+href="paper.html#eq:ozaki-splitting">7</a>)</span> satisfy
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+
+                                                                                               |δaij | < αi uA ,    uA := 2−sA q ,               |δbij | < βj uB ,        uB := 2−sB q .                                    (8)--><a id="eq:ozaki-split"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ozaki-split} \lvert \da _{ij} \rvert &lt; \alpha _{i}\uA ,\quad \uA := 2^{-\sA q},\qquad \lvert \db _{ij} \rvert &lt; \beta _{j}\uB ,\quad \uB := 2^{-\sB q}.
+\end{equation}
+
+</p>
+
+<p>
+In error analysis, it is often more informative to bound the relative error. Such bounds arise naturally when using floating-point arithmetic, because floating-point numbers have constant precision. In fixed-point arithmetic, precision is tapered, so
+bounds like those in&nbsp;<span class="textup">(<a href="paper.html#eq:ozaki-split">8</a>)</span> are more familiar, but it is still possible to bound \(\lvert \da _{ij} \rvert \) and \(\lvert \db _{ij} \rvert \) in terms of
+\(\lvert a_{ij} \rvert \) and \(\lvert b_{ij} \rvert \), respectively, since
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                                                           max{|aij | : 1 ≤ j ≤ p}
+                                                                                         |δaij | ≤ κA uA |aij |,      κA := 2 max                                                                       ,
+                                                                                                                                    1≤i≤m minj {|aij | : 1 ≤ j ≤ p and aij ̸= 0}
+
+                                                                                                                                                           max{|bij | : 1 ≤ i ≤ p}
+                                                                                         |δbij | ≤ κB uB |bij |,     κB := 2 max                                                                    .
+                                                                                                                                    1≤j≤n min{|bij | : 1 ≤ i ≤ p and bij ̸= 0}
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\begin{aligned} \lvert \da _{ij} \rvert &amp;\le \kA \uA \lvert a_{ij} \rvert ,\qquad \kA := 2 \max _{1 \le i \le m} \frac {\max \{\lvert a_{ij} \rvert : 1 \le j \le p \}} {\min _{j} \{\lvert a_{ij} \rvert : 1 \le
+j \le p \text { and } a_{ij} \neq 0\} },\\ \lvert \db _{ij} \rvert &amp;\le \kB \uB \lvert b_{ij} \rvert ,\qquad \kB := 2 \max _{1 \le j \le n} \frac {\max \{\lvert b_{ij} \rvert : 1 \le i \le p \}} {\min \{\lvert
+b_{ij} \rvert : 1 \le i \le p \text { and } b_{ij} \neq 0\} }. \end {aligned}
+\end{equation*}
+
+</p>
+
+<p>
+Our analysis yields the alternative error bound
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                                            
+                                                            e − C ≤ κA uA + κB uB + κA κB uA uB + γs s −1 (1 + κA uA + κB uB + κA κB uA uB ) |A||B|.--><a id="eq:final-bound"></a><!--
+                                                            C                                       A B
+
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:final-bound} \big \lvert \wt C - C \big \rvert \le \kA \uA + \kB \uB + \kA \kB \uA \uB + \gamma _{\sA \sB - 1} (1 + \kA \uA + \kB \uB + \kA \kB \uA \uB ) \bigr ) \lvert A \rvert \lvert B \rvert .
+\end{equation*}
+
+</p>
+
+<p>
+In other words, the overall error can be substantial if either \(\kA \) or \(\kB \) are large. One can counteract the prominence of these two terms by increasing \(\sA \) and \(\sB \), but doing so will negatively impact the performance of the
+algorithm, which needs to perform \(\mathcal O(\sA \sB )\) integer matrix multiplications.
+</p>
+
+<p>
+The integer-based Ozaki scheme can be much faster than traditional high-precision alternatives, but our analysis suggests that it can also be significantly less accurate, depending on the dynamic range of the entries of \(A\) and \(B\). The value of
+the parameters \(\sA \) and \(\sB \) required to meet a specific accuracy target can be determined by examining \(\kA \) and \(\kB \), which are inexpensive to compute. For a given choice of \(\sA \) and \(\sB \), we can estimate the runtime
+of the scheme, and we can opt for a traditional high-precision routine when the latter is expected to be faster.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;<a href="https://www.top500.org/lists/top500/list/2024/06/" target="_blank" >https://www.top500.org/lists/top500/list/2024/06/</a>
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;Fasi, N.&nbsp;J. Higham, F.&nbsp;Lopez, T.&nbsp;Mary, and M.&nbsp;Mikaitis. <a href="http://dx.doi.org/10.1137/21m1465032" target="_blank" >Matrix multiplication in
+multiword arithmetic: Error analysis and application to GPU tensor cores</a>. <i>SIAM J. Sci. Comput.</i>, 45(1):C1–C19, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;Fasi, N.&nbsp;J. Higham, M.&nbsp;Mikaitis, and S.&nbsp;Pranesh. <a href="http://dx.doi.org/10.7717/peerj-cs.330" target="_blank" >Numerical behavior of NVIDIA tensor
+cores</a>. <i>PeerJ Comput. Sci.</i>, 7:e330(1–19), 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M.&nbsp;Fasi and M.&nbsp;Mikaitis. <a href="http://dx.doi.org/10.1145/3585515" target="_blank" >CPFloat: A C library for simulating low-precision arithmetic</a>. <i>ACM Trans. Math.
+Software</i>, 49(2):1–32, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> S.&nbsp;Markidis, S.&nbsp;W.&nbsp;D. Chien, E.&nbsp;Laure, I.&nbsp;B. Peng, and J.&nbsp;S. Vetter. <a href="http://dx.doi.org/10.1109/ipdpsw.2018.00091" target="_blank" >NVIDIA
+tensor core programmability, performance &amp; precision</a>. In <i>Proceedings of the 2018 IEEE International Parallel and Distributed Processing Symposium Workshops (IPDPSW)</i>, May 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> D.&nbsp;Mukunoki, K.&nbsp;Ozaki, T.&nbsp;Ogita, and T.&nbsp;Imamura. <a href="http://dx.doi.org/10.1007/978-3-030-50743-5_12" target="_blank" >DGEMM using tensor cores, and
+its accurate and reproducible versions</a>. In <i>High Performance Computing</i>, P.&nbsp;Sadayappan, B.&nbsp;L. Chamberlain, G.&nbsp;Juckeland, and H.&nbsp;Ltaief, editors, Springer-Verlag, 2020, page 230–248.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> H.&nbsp;Ootomo, K.&nbsp;Ozaki, and R.&nbsp;Yokota. <a href="http://dx.doi.org/10.1177/10943420241239588" target="_blank" >DGEMM on integer matrix multiplication unit</a>.
+<i>Int. J. High Performance Computing Applications</i>, 38(4):297–313, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> K.&nbsp;Ozaki, T.&nbsp;Ogita, S.&nbsp;Oishi, and S.&nbsp;M. Rump. <a href="http://dx.doi.org/10.1007/s11075-011-9478-1" target="_blank" >Error-free transformations of matrix
+multiplication by using fast routines of matrix multiplication and its applications</a>. <i>Numer. Algorithms</i>, 59(1):95–118, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> S.&nbsp;M. Rump, T.&nbsp;Ogita, and S.&nbsp;Oishi. <a href="http://dx.doi.org/10.1137/050645671" target="_blank" >Accurate floating-point summation part I: Faithful rounding</a>.
+<i>SIAM J. Sci. Comput.</i>, 31(1):189–224, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Y.&nbsp;Uchino, K.&nbsp;Ozaki, and T.&nbsp;Imamura. <a href="https://arxiv.org/abs/2409.13313" target="_blank" >Performance enhancement of the Ozaki scheme on integer matrix
+multiplication unit</a>. Technical report, September 2024. arXiv:2409.13313 [cs.DC].
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

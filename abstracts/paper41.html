@@ -1,0 +1,280 @@
+---
+layout: abstract
+absnum: 41
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+On the quasiseparability of the solution of continuous-time Riccati equations with quasiseparable coeﬀicients
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Stefano Massei</span>, Luca Saluzzi
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Solving large-scale continuous-time algebraic Riccati equations (CARE) of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                               A⊤ X + XA − XF X + Q = 0,                                                                                   (1)--><a id="eq:care"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:care} A^\top X+XA- XFX+Q=0,
+\end{equation}
+
+</p>
+
+<p>
+is a significant challenge in various control theory applications. When the numerical range \(\mathcal W(A)\) of \(A\) is in the left part of the complex plane, and \(F,Q\) are low-rank matrices the stabilizing solution \(X\) is numerically low-rank.
+The latter property can be shown by rewriting <span class="textup">(<a href="paper.html#eq:care">1</a>)</span> as a Sylvester equation with low-rank right-hand side, and by applying singular values inequalities for the solution of this type
+of equations [1]. In this scenario, one can apply Krylov subspace projection methods or ADI-type methods to eﬀiciently get approximate solutions.
+</p>
+
+<p>
+This work is concerned with the non standard large-scale case where the coeﬀicients \(A, F,Q\) are full rank quasiseparable matrices, i.e., all their offdiagonal blocks are low-rank. Within this setting, we provide decay bounds for the singular values of
+the offdiagonal blocks of \(X\), justifying the approximability of \(X\) by a quasiseparable matrix. To derive these bounds we relate a generic offdiagonal block with the solution of a Sylvester equation with low-rank right-hand side; note that, this can
+not be trivially obtained by moving the term \(Q-XFX\) to the right-hand side of <span class="textup">(<a href="paper.html#eq:care">1</a>)</span>. Our results establish a link between the rate of decay of the offdiagonal singular values and
+certain rational approximation problems, known as Zolotarev problems, involving the set \(\mathcal W(L^{-1}AL)\), where \(F=LL^\top \) is a Cholesky factorization of \(F\). More explicitly, for a generic offdiagonal submatrix \(M\) of \(X\), we
+get inequalities of the form
+</p>
+
+<p>
+\[ \frac {\sigma _{ht+r}(M)}{||X||_2}\le \kappa \cdot Z_h(W(L^{-1}AL), -W(L^{-1}AL)),\qquad h=1,2,3,\dots , \]
+</p>
+
+<p>
+where the shift parameters \(t,r\ge 0\) depend only on the quasiseparable ranks of the coeﬀicients of the CARE, \(\kappa \) is a constant including the condition number of \(F\), and \(Z_h\) indicates the optimal value of the aforementioned
+Zolotarev problem. When \(W(L^{-1}AL)\subseteq \mathbb C^{-}\), the quantity \(Z_h(W(L^{-1}AL), -W(L^{-1}AL))\) decays rapidly as \(h\) increases.
+</p>
+
+<p>
+Quite interestingly, the rank of the offdiagonal submatrices of \(X\) are linked to the <em>tensor train ranks</em> (TT ranks) of the tensor train representation of the value function
+</p>
+
+<p>
+\[V(\mathbf y):=\mathbf y^TX\mathbf y\]
+</p>
+
+<p>
+associated with the solution of the CARE&nbsp;[3]. As a byproduct of our analysis, we improve and enlarge the scope of existing upper bounds for the numerical TT ranks of \(V(\mathbf y)\)&nbsp;[2, Theorem 3.1].
+</p>
+
+<p>
+From the algorithmic view point, we propose two fast Riccati solvers: the first one applies to CAREs with quasiseparable coeﬀicients, and the second one specific to the banded case. The former method exploits the representation of \(A,F,\) and
+\(Q\), in the <em>hierarhcically semiseparable format</em> (HSS)&nbsp;[7], and is based on a divide-and-conquer scheme, similarly to other recent solvers for matrix equations with hierarchically low-rank coeﬀicients&nbsp;[4, 5]. The method for the
+banded coeﬀicients case aims at providing a sparse approximation of \(X\), by means of an inexact Newton-Kleinman iteration (NK) combined with a thresholding mechanism that keeps under control the level of sparsity of the iterates. Under
+reasonable assumptions, both algorithms have at most a linear-logarithmic complexity; when the NK iterate remains suﬀiciently banded, the second procedure provides a significant speed up thanks to the use of sparse arithmetic.
+</p>
+
+<p>
+The content of this talk is based on [6].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> B. Beckermann, and A. Townsend. “Bounds on the singular values of matrices with displacement structure.” SIAM Review 61.2 (2019): 319-344.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> S. Dolgov, and B. Khoromskij. “Two-level QTT-Tucker format for optimized tensor calculus.” SIAM Journal on Matrix Analysis and Applications 34.2 (2013): 593-623.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> V. Kazeev, O. Reichmann, and Ch. Schwab. “Low-rank tensor structure of linear diffusion operators in the TT and QTT formats.” Linear Algebra and its Applications 438.11 (2013): 4204-4221.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> D. Kressner, S. Massei, and L. Robol. “Low-rank updates and a divide-and-conquer method for linear matrix equations”. SIAM Journal on Scientific Computing, 41.2 (2019): A848-A876.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> D. Kressner, P. Kürschner, S. Massei. “Low-rank updates and divide-and-conquer methods for quadratic matrix equations”. Numerical Algorithms, 84.2 (2020): 717-741.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> S. Massei, and L. Saluzzi. “On the data-sparsity of the solution of Riccati equations with applications to feedback control”. arXiv preprint arXiv:2408.16569 (2024).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> J. Xia, S. Chandrasekaran, M. Gu, and X. Li. “Fast algorithms for hierarchically semiseparable matrices.” Numerical Linear Algebra with Applications 17.6 (2010): 953-976.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

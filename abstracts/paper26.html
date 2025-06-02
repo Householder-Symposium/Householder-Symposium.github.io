@@ -1,0 +1,241 @@
+---
+layout: abstract
+absnum: 26
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Least squares solvers based on randomized normal equations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Ilse C.F. Ipsen</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+For the better part of my life I have taught that least squares problems are to be solved with a QR decomposition or SVD, cautioning that formation of the normal equations is to be avoided if possible.
+</p>
+
+<p>
+Now I am re-thinking this advice, in light of developments underlying the Blendenpik least squares solver [1, 2], and our version of the randomized preconditioned Cholesky-QR algorithm [3].
+</p>
+<!--
+...... paragraph Proposed Algorithm. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Proposed Algorithm.</span>
+<a id="paper-autopage-5"></a>
+Given a real \(m\times n\) matrix \(\mathbf {A}\) with \(\mathrm {rank}(\mathbf {A})=n\), we investigate the solution of the least squares problems \(\min _{\mathbf {x}}{\|\mathbf {A}\mathbf {x}-\mathbf {b}\|_2}\) by solving the
+normal equation of a randomized preconditioned problem. In the spirit of the original Householder meetings, this is work in progress.
+</p>
+
+<p>
+Specifically, we right-precondition \(\mathbf {A}\) with a randomized preconditioner \(\mathbf {R}_s\), to obtain \(\mathbf {A}_1 \equiv \mathbf {A}\mathbf {R}_s^{-1}\). Instead of taking the Blendenpik route and solving \(\min
+_{\mathbf {y}}{\|\mathbf {A_1}\mathbf {y}-\mathbf {b}\|_2}\) via the iterative method LSQR, we solve the normal equations. That is, the Gram matrix \(\mathbf {G} \equiv \mathbf {A}_1^T\mathbf {A}_1\) is formed explicitly, followed
+by solution of the normal equations \(\mathbf {G} \mathbf {y} =\mathbf {A}_1^T\mathbf {b}\). This can be done with a Cholesky factorization of \(\mathbf {G}\) or of the bordered matrix \([\mathbf {A}_1\ \mathbf {b}]\) [4, §2.2]. At last,
+one recovers the solution of the original problem via the triangular solve \(\mathbf {R}_s\mathbf {x}=\mathbf {y}\).
+</p>
+
+<p>
+To compute the randomized preconditioner \(\mathbf {R}_s\), first improve the coherence of \(\mathbf {A}\) with a random orthogonal matrix \(\mathbf {F}\mathbf {A}\), where \(\mathbf {F}\) is the product of a fast transform (FFT,
+Walsh-Hadamard, DCT, Hartley) and a random diagonal matrix with independent Rademacher variables on the diagonal. Then sample \(c\) rows, uniformly and independently with replacement from \(\mathbf {F}\mathbf {A}\) to obtain the
+sampled matrix \(\mathbf {A}_s=\mathbf {S}\mathbf {F}\mathbf {A}\). At last compute the thin QR decomposition \(\mathbf {A}_s=\mathbf {Q}_s\mathbf {R}_s\).
+</p>
+<!--
+...... paragraph Advantages. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Advantages.</span>
+<a id="paper-autopage-6"></a>
+Unlike Blendenpik [1] which solves a \(m\times n\) least squares problem with an iterative method, we solve a small \(n\times n\) problem with a direct method. Direct methods, and Cholesky decompositions in particular, tend to perform well on
+cache-based and parallel architectures, where data movement and synchronization can dominate arithmetic. This is in contrast to the normal equations like approach with iterative methods in [5, 6], which also requires an initial guess.
+</p>
+
+<p>
+The simplicity of our approach, in contrast to the involved multi-stage [5, Algorithm 4], will lead to a rigorous and informative perturbation analysis for the accuracy of the computed solution. The potential backward stability issues due to the
+formation of the Gram matrix can be handled in the same way as for the randomized Cholesky-QR algorithm in&nbsp;[3].
+</p>
+
+<p>
+The preconditioner \(\mathbf {R}_s\) needs to be applied only once and is applied explicitly, thereby improving the backward stability issues discussed in&nbsp;[7]. Even for matrices \(\mathbf {A}\) with worst case coherence and a condition
+number \(\kappa (\mathbf {A})\approx 10^{15}\), a sampling amount of \(c=3n\) suﬀices to produce preconditioned matrices \(\mathbf {A}_1\) that are very well conditioned, with condition numbers \(\kappa (\mathbf {A}_1)\approx 10\).
+</p>
+
+<p>
+Preliminary numerical results suggest that for matrices with condition number \(\kappa (\mathbf {A})\leq 10^9\), the preconditioner \(\mathbf {R}_s\) can be computed faster, in single precision, without loss of accuracy in the preconditioned
+problem. We will show that solving the normal equations via a Cholesky decomposition represents an eﬀicient least squares solver on NVIDIA RTX 2080 GPUs.
+</p>
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> H. Avron, P. Maymounkov, and S. Toledo. Blendenpik: Supercharging Lapack’s Least-Squares Solver, <i>SIAM J. Sci. Comput.</i>, vol. 32, no. 3, pp 1217–1236 (2010)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> I.C.F. Ipsen and T. Wentworth. The Effect of Coherence on Sampling from Matrices with Orthonormal Columns, and Preconditioned Least Squares Problems, <i>SIAM J. Matrix Anal. Appl.</i>,
+vol. 35, no. 4, pp 149—1520 (2014)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.E. Garrison, and I.C.F. Ipsen. A Randomized preconditioned Cholesky-QR Algorithm, <i>SIAM J. Matrix Anal. Appl.</i>, under review (2024)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Å. Björck. <i>Numerical Methods for Least Squares Problems</i>, Society for Industrial and Applied Mathematics (SIAM), Philadelphia, PA (1996)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> E.N. Epperly, M. Meier and Y. Nakatsukasa. Fast Randomized Least-Squares Solvers can be just as Accurate and Stable as Classical Direct Solvers, arXiv:2406.03468 (2024)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> R. Xu and Y. Lu. Randomized Iterative Solver as Iterative Refinement: A Simple Fix Towards Backward Stability, arXiv:2410.11115 (2024)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M. Meier, Y. Nakatsukasa, A. Townsend, and M. Webb. Are sketch-and-precondition least squares solvers numerically stable? <i>SIAM J. Matrix Anal. Appl.</i>, vol. 45, no. 2, pp 905–929 (2024)
+</p>
+</li>
+</ul>
+
+{% endraw %}

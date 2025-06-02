@@ -1,0 +1,388 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+On low-synchronization block Gram-Schmidt methods and why twice isn’t always enough
+</h2>
+</div>
+<div class="center">
+
+<p>
+Erin Carson, <span class="underline">Kathryn Lund</span>, Yuxin Ma, Eda Oktay
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The Gram-Schmidt (GS) method for orthogonalizing a sequence of vectors is an enduring pillar of computational mathematics. Despite the simplicity of the task, hundreds of variants have arisen since the algorithm’s inception [15], and lately variants
+specialized for communication reduction in highly parallelized, distributed-memory architectures have proliferated; see, e.g., [1, 2, 4, 6, 8, 7, 9, 10, 17, 19, 20, 21, 22].
+</p>
+
+<p>
+Several strategies exist for improving the performance of GS in high-performance computing, and our latest efforts [7, 8] have focused mainly on <em>blocking</em> and reducing <em>synchronization points</em> (sync points) via algorithmic
+reformulations. Our approach is an exercise in modularity, both in the theoretical analysis as well as in the <kbd>BlockStab</kbd><sup>1</sup><a id="paper-autopage-4"></a> toolbox developed for illustrating our results and testing conjectures.
+Modularity in particular helps us recycle insights from the essential ingredients of block GS (BGS)– namely the projection and intraorthogonalization<sup>2</sup> stages– as well as build a powerful workflow for comparing hundreds of configurations
+and generating reader-friendly reports.
+</p>
+
+<p>
+An inextricable challenge with reformulating an algorithm to improve its eﬀiciency is the introduction of new sources of rounding error from finite-precision arithmetic, which can limit the attainable accuracy and increase the sensitivity to changes in
+the input data. For GS, with an input matrix \(\bXX \in \spR ^{m \times n}\) (\(n \leq m\)) and computed outputs \(\bQQ \in \spR ^{m \times n}\) and \(\RRbar \in \spR ^{n \times n}\) such that \(\bXX \approx \bQQbar \RR \), we
+study the residuals \(\norm {\bXX - \bQQbar \RRbar }\) and \(\norm {\bXX ^T \bXX - \RRbar ^T \RRbar }\) and loss of orthogonality (LOO) \(\norm {I - \bQQbar ^T \bQQbar }\). The LOO in particular is important for understanding the
+numerical stability of GS and its sensitivity to changes in \(\bXX \). With \(\eps \) denoting a given machine precision, we aim to bound the LOO in terms of \(\bigO {\eps } \kappa ^d(\bXX )\), for some power \(d \geq 0\) and where
+\(\kappa (\bXX )\) denotes the 2-norm condition number of \(\bXX \).
+</p>
+
+<p>
+Inner products and normalizations are the primary sync points in GS in a distributed-memory regime, assuming that vectors are themselves partitioned and distributed across multiple nodes. So-called <em>low-synchronization</em> (low-sync)
+formulations of GS thus aim at reducing the total number of sync points. When we move to a block paradigm via batching operations on multiple vectors instead of treating one at a time, block inner products \(\vX ^T \vY \) and QR factorizations
+on tall-skinny block vectors become the sync points. The ideal block GS (BGS) algorithm would require only one sync point per block vector and achieve \(\bigO {\eps }\) LOO for \(\bigO {\eps } \kappa (\bXX ) &lt; 1\). The analyses in
+[7, 8] are in pursuit of this “holy grail” BGS.
+</p>
+
+<p>
+In both [7, 8], we begin with block classical Gram-Schmidt (<kbd>BCGS</kbd>), a favorite low-sync BGS as it only requires two sync points per block and is easy to implement. Unfortunately, it is demonstrably as unstable as the column-wise variant
+<kbd>CGS</kbd>, with the LOO capable of exceeding \(\bigO {\eps } \kappa ^2(\bXX )\). We consider two strategies for improving <kbd>BCGS</kbd>: a “Pythagorean” correction (<kbd>BCGS-PIP</kbd>) [8, 9, 18] and a “strong” first
+intraorthogonalization (<kbd>BCGS-A</kbd>) [7]. We then examine reorthogonalized variants of both approaches.
+</p>
+
+<p>
+From reorthogonalized versions of <kbd>BCGS-PIP</kbd>, we arrive at BGS variants with two sync points per block vector that achieve \(\bigO {\eps }\) LOO for \(\bigO {\eps } \kappa ^2(\bXX ) &lt; 1\). The limitation on \(\kappa (\bXX
+)\) is strict in uniform precision; practically speaking, in a double-precision scenario with \(\eps \approx 10^{-16}\), the new algorithm only works for \(\kappa (\bXX ) \leq 10^8\), meaning that “twice is not enough” for a wide range of \(\bXX
+\). However, with the help of multiprecision, we develop yet another variant that demonstrates promising numerical results, despite poor provable bounds which are only possible to attain with pathologically designed test matrices.
+</p>
+
+<p>
+Reorthogonalized <kbd>BCGS-A</kbd> leads to a robust algorithm for which we prove general bounds subsuming previous works by Barlow &amp; Smoktunowicz and Barlow [5, 4]. At the same time, its LOO is sensitive to the choice of
+intraorthogonalization routines, leading to yet another refute of the “twice is enough” heuristic. From this algorithm, we derive a one-sync-per-block version in a similar vein to the column-wise, low-sync algorithm <kbd>DCGS2</kbd> by Bielich et
+al.&nbsp;[6]. The one-sync-per-block version is provably unstable, often as bad as <kbd>BCGS</kbd>; however, our modular proof framework allows us to show that <kbd>DCGS2</kbd> itself attains \(\bigO {\eps }\) LOO, thus confirming a
+conjecture posited in [6].
+</p>
+
+<p>
+Our work is by no means the final word on BGS; in Table&nbsp;<a href="paper.html#tab:skel_upper_bounds">1</a> we summarize key proven and conjectured LOO bounds from across the literature for a subset of variants. Note that any
+method with \(\bigO {p}\) sync points can be considered low-sync, especially with respect to block modified Gram-Schmdit (<kbd>BMGS</kbd>). Going forward, we expect probabilistic rounding-error analysis, especially for multiprecision variants, to
+improve our understanding of typical behavior for various methods. With the emergence of randomized sketching GS and QR variants [1, 2, 12, 13], we also aim to better understand how these new approaches compare in terms of both provable
+numerical stability as well as eﬀiciency and plan to expand the <kbd>BlockStab</kbd> toolbox to include them. We expect a careful fusion of all such communication-reducing techniques to lead to a robust and fast GS method. Furthermore,
+interfacing with recent work on restarting heuristics for block Arnoldi in [16] and the backward stability analysis of \(s\)-step GMRES [11], we hope to extend our work to block Arnoldi and block GMRES, for which numerous performance and
+analytical challenges remain open.
+</p>
+
+<figure id="autoid-1" class="table ">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Upper bounds on the LOO of \(\bQQbar \) for BGS skeletons with assumptions on intraorthogonalization routines (<kbd>IO</kbd>). Note that all conditions have hidden constants in terms of the dimensional parameters \(m\),
+\(p\), and \(s\), where \(\bXX = \begin {bmatrix} \vX _1 &amp; \vX _2 &amp; \cdots &amp; \vX _p \end {bmatrix}\) and \(\vX _j \in \spR ^{m \times s}\), \(j \in \{1, \ldots , p\}\). A superscript dagger \(^\dagger \) indicates
+that the result is conjectured but as yet lacks a rigorous proof. References are not exhaustive and point to where the original method, its LOO proof, or other key information can be found.<a id="tab:skel_upper_bounds"></a>
+</p>
+</div>
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black">&#x2003;&#x2003;<table><tr style="display:none"><th>.</th></tr><tr><td class="tdc"><kbd>BGS</kbd></td></tr></table>&#x2003;&#x2003;</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid
+black">&#x2003;&#x2003;<table><tr style="display:none"><th>.</th></tr><tr><td class="tdc"># sync points</td></tr><tr><td class="tdc">assuming each <kbd>IO</kbd></td></tr><tr><td class="tdc">has 1 sync point</td></tr></table>&#x2003;&#x2003;</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid
+black">&#x2003;&#x2003;<table><tr style="display:none"><th>.</th></tr><tr><td class="tdc">Assumption on</td></tr><tr><td class="tdc">\(\alpha \) s.&nbsp;t.&nbsp;<kbd>IO</kbd> satisfies</td></tr><tr><td class="tdc">\(\text {LOO} \leq \bigO {\eps } \kappa ^\alpha (\vX )\)</td></tr></
+<td class="tdc tvertbarr" style="border-right: 1px solid
+black">&#x2003;&#x2003;<table><tr style="display:none"><th>.</th></tr><tr><td class="tdc">Assumption on</td></tr><tr><td class="tdc">\(\theta \) s.&nbsp;t.</td></tr><tr><td class="tdc">\(\bigO {\eps } \kappa ^{\theta }(\bXX ) &lt; 1\)</td></tr></table>&#x2003;&#x2003;</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid
+black">&#x2003;&#x2003;<table><tr style="display:none"><th>.</th></tr><tr><td class="tdc">Proven</td></tr><tr><td class="tdc">\(\theta \) s.&nbsp;t.</td></tr><tr><td class="tdc">\(\text {LOO} \leq \bigO {\eps } \kappa ^\theta (\bXX )\)</td></tr></table>&#x2003;&#x2003;</td>
+
+<td class="tdc">&#x2003;&#x2003;<table><tr style="display:none"><th>.</th></tr><tr><td class="tdc">Reference(s)</td></tr></table>&#x2003;&#x2003;</td>
+</tr>
+
+<tr class="hline">
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BCGS</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2p-1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(p-1\)</td>
+<td class="tdc">[7]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BCGS-PIP</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(p\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc">[9, 21]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BMGS</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\frac {1}{2}(p^2 + p)\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc">[14]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BMGS-SVL</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3p-2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc">[3]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right:      1px solid black"><kbd>BMGS-LTS</kbd></td>
+<td class="tdc tvertbarr" style="border-right:      1px solid black">\(3p-2\)</td>
+<td class="tdc tvertbarr" style="border-right:      1px solid black">\(1^\dagger \)</td>
+<td class="tdc tvertbarr" style="border-right:      1px solid black">\(1^\dagger \)</td>
+<td class="tdc tvertbarr" style="border-right:      1px solid black">\(1^\dagger \)</td>
+<td class="tdc">[10]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BMGS-CWY</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(p\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0^\dagger \)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2^\dagger \)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2^\dagger \)</td>
+<td class="tdc">[10]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BMGS-ICWY</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(p\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0^\dagger \)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2^\dagger \)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2^\dagger \)</td>
+<td class="tdc">[10]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BCGSI+</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4p-3\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc">[4, 5, 7]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BCGS-PIP+</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2p\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc">[8]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BCGS-PIPI+</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2p-1\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc">[8]</td>
+</tr>
+
+<tr>
+<td class="tdl tvertbarr" style="border-right: 1px solid black"><kbd>BCGSI+LS</kbd></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(p\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2\)</td>
+<td class="tdc">[7]</td>
+</tr>
+</table>
+
+</div>
+
+</figure>
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> O.&nbsp;Balabanov and L.&nbsp;Grigori. Randomized Gram–Schmidt Process with Application to GMRES. <i>SIAM J. Sci. Comput.</i>, 44(3):A1450–A1474, 2022. URL: <a
+href="https://epubs.siam.org/doi/10.1137/20M138870X" target="_blank" >https://epubs.siam.org/doi/10.1137/20M138870X</a>, <a href="https://doi.org/10.1137/20M138870X" target="_blank" ><a href="doi:10.1137/20M138870X"
+target="_blank" >doi:10.1137/20M138870X</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> O.&nbsp;Balabanov and L.&nbsp;Grigori. Randomized block Gram-Schmidt process for solution of linear systems and eigenvalue problems. E-Print 2111.14641, arXiv, 2023. <a
+href="https://doi.org/10.48550/arXiv.2111.14641" target="_blank" ><a href="doi:10.48550/arXiv.2111.14641" target="_blank" >doi:10.48550/arXiv.2111.14641</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> J.&nbsp;L. Barlow. Block modified Gram-Schmidt algorithms and their analysis. <i>SIAM J. Matrix Anal. Appl.</i>, 40(4):1257–1290, 2019. <a href="https://doi.org/10.1137/18M1197400"
+target="_blank" ><a href="doi:10.1137/18M1197400" target="_blank" >doi:10.1137/18M1197400</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">4.</span> J.&nbsp;L. Barlow. Reorthogonalized block classical Gram-Schmidt using two Cholesky-based TSQR algorithms. <i>SIAM J. Matrix Anal. Appl.</i>, 45(3):1487–1517, 2024. <a
+href="https://doi.org/10.1137/23M1605387" target="_blank" ><a href="doi:10.1137/23M1605387" target="_blank" >doi:10.1137/23M1605387</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">5.</span> J.&nbsp;L. Barlow and A.&nbsp;Smoktunowicz. Reorthogonalized block classical Gram-Schmidt. <i>Numerische Mathematik</i>, 123:395–423, 2013. <a
+href="https://doi.org/10.1007/s00211-012-0496-2" target="_blank" ><a href="doi:10.1007/s00211-012-0496-2" target="_blank" >doi:10.1007/s00211-012-0496-2</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">6.</span> D.&nbsp;Bielich, J.&nbsp;Langou, S.&nbsp;Thomas, K.&nbsp;Świrydowicz, I.&nbsp;Yamazaki, and E.&nbsp;G. Boman. Low-synch Gram–Schmidt with delayed reorthogonalization for Krylov solvers.
+<i>Parallel Computing</i>, 112:102940, 2022. <a href="https://doi.org/10.1016/j.parco.2022.102940" target="_blank" ><a href="doi:10.1016/j.parco.2022.102940" target="_blank" >doi:10.1016/j.parco.2022.102940</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">7.</span> E.&nbsp;Carson, K.&nbsp;Lund, Y.&nbsp;Ma, and E.&nbsp;Oktay. On the loss of orthogonality in low-synchronization variants of reorthogonalized block classical Gram-Schmidt. E-Print arXiv:2408.10109,
+arXiv, 2024. <a href="https://doi.org/10.48550/arXiv.2408.10109" target="_blank" ><a href="doi:10.48550/arXiv.2408.10109" target="_blank" >doi:10.48550/arXiv.2408.10109</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">8.</span> E.&nbsp;Carson, K.&nbsp;Lund, Y.&nbsp;Ma, and E.&nbsp;Oktay. Reorthogonalized Pythagorean variants of block classical Gram-Schmidt. <i>SIAM J. Matrix Anal. Appl.</i>, Accepted, 2024. <a
+href="https://doi.org/10.48550/arXiv.2405.01298" target="_blank" ><a href="doi:10.48550/arXiv.2405.01298" target="_blank" >doi:10.48550/arXiv.2405.01298</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">9.</span> E.&nbsp;Carson, K.&nbsp;Lund, and M.&nbsp;Rozložník. The stability of block variants of classical Gram-Schmidt. <i>SIAM J. Matrix Anal. Appl.</i>, 42(3):1365–1380, 2021. <a
+href="https://doi.org/10.1137/21M1394424" target="_blank" ><a href="doi:10.1137/21M1394424" target="_blank" >doi:10.1137/21M1394424</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">10.</span> E.&nbsp;Carson, K.&nbsp;Lund, M.&nbsp;Rozložník, and S.&nbsp;Thomas. Block Gram-Schmidt algorithms and their stability properties. <i>Linear Algebra Appl.</i>, 638(20):150–195, 2022. <a
+href="https://doi.org/10.1016/j.laa.2021.12.017" target="_blank" ><a href="doi:10.1016/j.laa.2021.12.017" target="_blank" >doi:10.1016/j.laa.2021.12.017</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">11.</span> E.&nbsp;Carson and Y.&nbsp;Ma. On the backward stability of s-step GMRES. E-Print arXiv.2409.03079, arXiv, 2024. <a href="https://doi.org/10.48550/arXiv.2409.03079" target="_blank" ><a
+href="doi:10.48550/arXiv.2409.03079" target="_blank" >doi:10.48550/arXiv.2409.03079</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">12.</span> L.&nbsp;Grigori and E.&nbsp;Timsit. Randomized Householder QR. Technical Report hal-04156310, 2024. URL: <a href="https://hal.science/hal-04156310" target="_blank"
+>https://hal.science/hal-04156310</a>, <a href="https://doi.org/10/document" target="_blank" ><a href="doi:10/document" target="_blank" >doi:10/document</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">13.</span> A.&nbsp;J. Higgins, D.&nbsp;B. Szyld, E.&nbsp;G. Boman, and I.&nbsp;Yamazaki. Analysis of Randomized Householder-Cholesky QR Factorization with Multisketching. Technical Report arXiv:2309.05868,
+arXiv, 2024. URL: <a href="http://arxiv.org/abs/2309.05868" target="_blank" >http://arxiv.org/abs/2309.05868</a>, <a href="https://doi.org/10.48550/arXiv.2309.05868" target="_blank" ><a
+href="doi:10.48550/arXiv.2309.05868" target="_blank" >doi:10.48550/arXiv.2309.05868</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">14.</span> W.&nbsp;Jalby and B.&nbsp;Philippe. Stability analysis and improvement of the block Gram-Schmidt algorithm. <i>SIAM Journal on Scientific Computing</i>, 12(5):1058–1073, 1991. URL: <a
+href="https://epubs.siam.org/doi/abs/10.1137/0912056" target="_blank" >https://epubs.siam.org/doi/abs/10.1137/0912056</a>, <a href="https://doi.org/10.1137/0912056" target="_blank" ><a href="doi:10.1137/0912056"
+target="_blank" >doi:10.1137/0912056</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">15.</span> S.&nbsp;J. Leon, Å.&nbsp;Björck, and W.&nbsp;Gander. Gram-Schmidt orthogonalization: 100 years and more. <i>Numer. Linear Algebra Appl.</i>, 20(3):492–532, 2013. <a
+href="https://doi.org/10.1002/nla.1839" target="_blank" ><a href="doi:10.1002/nla.1839" target="_blank" >doi:10.1002/nla.1839</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">16.</span> K.&nbsp;Lund. Adaptively restarted block Krylov subspace methods with low-synchronization skeletons. <i>Numer Algor</i>, 93(2):731–764, 2023. <a
+href="https://doi.org/10.1007/s11075-022-01437-1" target="_blank" ><a href="doi:10.1007/s11075-022-01437-1" target="_blank" >doi:10.1007/s11075-022-01437-1</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">17.</span> E.&nbsp;Oktay and E.&nbsp;Carson. Using Mixed Precision in Low-Synchronization Reorthogonalized Block Classical Gram-Schmidt. <i>PAMM</i>, 23(1):e202200060, 2023. <a
+href="https://doi.org/10.1002/pamm.202200060" target="_blank" ><a href="doi:10.1002/pamm.202200060" target="_blank" >doi:10.1002/pamm.202200060</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">18.</span> A.&nbsp;Smoktunowicz, J.&nbsp;L. Barlow, and J.&nbsp;Langou. A note on the error analysis of classical Gram-Schmidt. <i>Numer. Math.</i>, 105(2):299–313, 2006. <a
+href="https://doi.org/10.1007/s00211-006-0042-1" target="_blank" ><a href="doi:10.1007/s00211-006-0042-1" target="_blank" >doi:10.1007/s00211-006-0042-1</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">19.</span> K.&nbsp;Świrydowicz, J.&nbsp;Langou, S.&nbsp;Ananthan, U.&nbsp;Yang, and S.&nbsp;Thomas. Low synchronization Gram–Schmidt and generalized minimal residual algorithms. <i>Numer Linear Algebra
+Appl</i>, 28(2):e2343, 2021. <a href="https://doi.org/10.1002/nla.2343" target="_blank" ><a href="doi:10.1002/nla.2343" target="_blank" >doi:10.1002/nla.2343</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">20.</span> I.&nbsp;Yamazaki, A.&nbsp;J. Higgins, E.&nbsp;G. Boman, and D.&nbsp;B. Szyld. Two-Stage Block Orthogonalization to Improve Performance of s-step GMRES. In <i>2024 IEEE International Parallel and
+Distributed Processing Symposium (IPDPS)</i>, pages 26–37, San Francisco, CA, USA, 2024. <a href="https://doi.org/10.1109/IPDPS57955.2024.00012" target="_blank" ><a href="doi:10.1109/IPDPS57955.2024.00012" target="_blank"
+>doi:10.1109/IPDPS57955.2024.00012</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">21.</span> I.&nbsp;Yamazaki, S.&nbsp;Thomas, M.&nbsp;Hoemmen, E.&nbsp;G. Boman, K.&nbsp;Świrydowicz, and J.&nbsp;J. Eilliot. Low-synchronization orthogonalization schemes for s-step and pipelined Krylov
+solvers in Trilinos. In <i>Proceedings of the 2020 SIAM Conference on Parallel Processing for Scientific Computing (PP)</i>, pages 118–128, 2020. <a href="https://doi.org/10.1137/1.9781611976137.11" target="_blank" ><a
+href="doi:10.1137/1.9781611976137.11" target="_blank" >doi:10.1137/1.9781611976137.11</a></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">22.</span> Q.&nbsp;Zou. A flexible block classical Gram–Schmidt skeleton with reorthogonalization. <i>Numerical Linear Algebra with Applications</i>, 30(5):e2491, 2023. <a
+href="https://doi.org/10.1002/nla.2491" target="_blank" ><a href="doi:10.1002/nla.2491" target="_blank" >doi:10.1002/nla.2491</a></a>.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-7"></a>
+<p>
+<sup>1</sup>&nbsp;<a href="https://github.com/katlund/BlockStab" target="_blank" >https://github.com/katlund/BlockStab</a>
+</p>
+
+<p>
+<sup>2</sup>&nbsp;i.e., the QR routine for orthogonalizing between the columns of a block vector
+</p>
+
+
+</div>
+

@@ -1,0 +1,406 @@
+---
+layout: abstract
+absnum: 190
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\mathlarger }[1]{#1}\)
+
+\(\newcommand {\mathsmaller }[1]{#1}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Mixed Precision Iterative Refinement for Linear Inverse Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Lucas Onisk</span> and James G. Nagy
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We are interested in linear discrete inverse problems which involve the reconstruction of objects or signals from noisy observed data. The available linear system is given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                             Ax + e = b,                                                                                  (1)--><a id="linsys"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {linsys} Ax + e = b,
+\end{equation}
+
+</p>
+
+<p>
+where \(A \in \mathbb {R}^{m \times n}\), \(m \geq n\) is a matrix whose singular values decay without significant gap and cluster at the origin (i.e., the matrix is ill-conditioned). Discrete inverse problems can arise through the discretization of
+Fredholm integral equations of the first kind; see [5, 3], but can also arise in massive data streaming problems such as the training of the random feature model in machine learning [8] or limited angle imaging problems including, for example, those
+from medical imaging [2]. To derive a meaningful solution from the available problem, regularization is needed.
+</p>
+
+<p>
+In Tikhonov regularization, the least-squares problem associated with <span class="textup">(<a href="paper.html#linsys">1</a>)</span> is replaced by the penalized least-squares problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                        {                       }
+                                                                                                                     min ∥Ax − b∥22 + α2 ∥Lx∥22                                                                           (2)--><a id="TikEqn"></a><!--
+                                                                                                                     x∈Rn
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {TikEqn} \min _{x\in \mathbb {R}^{n}} \left \{\left \|Ax-b\right \|_2^2 + \alpha ^2\left \|Lx\right \|_2^2\right \}
+\end{equation}
+
+</p>
+
+<p>
+where \(\alpha &gt;0\) is a regularization parameter that balances the sensitivity of the solution vector to the error in \(b\), as well as the closeness to the desired solution of the unavailable error-free problem. When the regularization matrix \(L
+\in \mathbb {R}^{s \times n}\) is chosen so that the null spaces of \(A\) and \(L\) trivially intersect then the solution of <span class="textup">(<a href="paper.html#TikEqn">2</a>)</span> may be written in closed form.
+</p>
+
+<p>
+Iterative refinement (IR) has long been utilized as an iterative strategy to improve the accuracy of numerical solutions to linear systems of equations. Recent works by Higham and collaborators have considered the use of IR in conjunction with mixed
+precision computing in light of recent advancements in hardware capabilities; see [6, 1]. Our interests of studying IR applied to the Tikhonov problem were motivated by the work [7] which considered the solution of symmetric positive definite linear
+systems and least-squares problems in mixed precision which showed regularization to be a key requirement when computing low precision factorizations.
+</p>
+
+<p>
+The \(k^{th}\) iterate of IR applied to the Tikhonov problem in standard form, \((A^TA + \alpha ^2I)x^{(k)}=A^Tb\), where \(L=I\) may be written recursively as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                  (            )−1               (            )−1
+                                                                   x(k) = x(k−1) + AT A + α2 I     AT r(k−1) − α2 AT A + α2 I     x(k−1)                                                                       (3)--><a id="IR_recursive_Tik"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {IR_recursive_Tik} x^{(k)} = x^{(k-1)} + \left (A^TA + \alpha ^2I\right )^{-1}A^Tr^{(k-1)} - \alpha ^2 \left (A^TA + \alpha ^2I\right )^{-1}x^{(k-1)}
+\end{equation}
+
+</p>
+
+<p>
+where \(r^{(k-1)}=b-Ax^{(k-1)}\) denotes the \((k-1)^{th}\) residual. Riley in [9] and Golub in [4] note that the IR procedure in <span class="textup">(<a href="paper.html#IR_recursive_Tik">3</a>)</span> is equivalent to iterated
+Tikhonov regularization in exact arithmetic whose \(k^{th}\) iterate is given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                      (            )−1
+                                                                                       x(k) = x(k−1) + AT A + α2 I     AT r(k−1) --><a id="iterTikReg"></a><!--
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {iterTikReg} x^{(k)} = x^{(k-1)} + \left (A^TA+\alpha ^2I\right )^{-1}A^Tr^{(k-1)}
+\end{equation*}
+
+</p>
+
+<p>
+which may be interpreted as a preconditioned Landweber method, or, from a mathematical optimization point of view - a preconditioned gradient descent method with fixed step size.
+</p>
+
+<p>
+To better understand the application of mixed precision IR applied to the Tikhonov problem we derive a methodology to formulate the iterates as filtered solutions by writing them as a recursive relationship between the iterates of preconditioned
+Landweber with a Tikhonov-type preconditioner and previous iterates. A filtered solution is of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                            ∑        uTj b
+                                                                                                 xf ilt =       ϕj         vj --><a id="filteredSoln"></a><!--
+                                                                                                            j
+                                                                                                                      σj
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {filteredSoln} x_{filt} = \sum _j \phi _j \frac {u_j^Tb}{\sigma _j}v_j
+\end{equation*}
+
+</p>
+
+<p>
+where vectors \(u_j\) and \(v_j\) correspond to left and right singular vectors of \(A\), respectively. The \(\sigma _j\) correspond to the singular values of \(A\). An intelligent selection of the filter factors \(\phi _j\) can remove deleterious
+components of the approximate solution to the least-squares problem stemming from <span class="textup">(<a href="paper.html#linsys">1</a>)</span>. By considering a filtered solution, we are able to study the effect that each level of
+precision utilized in IR has on (i) the quality of the approximate solution and (ii) the number of iterations the algorithm requires to terminate according to some termination criterion. We demonstrate in our numerical results that mixed precision IR
+on the Tikhonov problem gives comparable or superior accuracy against results computed in double precision as well as another benchmark which supports its use in modern applications that natively support mixed precision floating-point arithmetic.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E. Carson, N. J. Higham, and S. Pranesh, <em>Three-precision GMRES-based iterative refinement for least squares problems</em>, SIAM Journal on Scientific Computing, 42 (2020), pp. A4063– A4083.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J. Chung and L. Nguyen, <em>Motion estimation and correction in photoacoustic tomographic reconstruction</em>, SIAM Journal of Imaging Sciences, 10 (2017), pp. 216–242.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> H. W. Engl, M. Hanke, and A. Neubauer, <em>Regularization of Inverse Problems</em>, Kluwer, Dordrecht, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> G. Golub, <em>Numerical methods for solving linear least squares problems</em>, Numerische Mathematik, 7 (1965), pp. 206–216.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> P. C. Hansen, <em>Rank-Deficient and Discrete Ill-Posed Problems: Numerical Aspects of Linear Inversion</em>, SIAM, Philadelphia, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N. Higham and T. Mary, <em>Mixed precision algorithms in numerical linear algebra</em>, Acta Numerica, 31 (2022), pp. 347–414.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> N. J. Higham and S. Pranesh, <em>Exploiting lower precision arithmetic in solving symmetric positive definite linear systems and least squares problems</em>, SIAM Journal on Scientific Computing,
+43 (2021), pp. A258–A277.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> A. Rahim and B. Recht, <em>Random features for large-scale kernel machines</em>, Advances in Neural Information Processing Systems, 20 (2007), p. 1177–1184.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> J. D. Riley, <em>Solving systems of linear equations with a positive definite, symmetric, but possibly ill-conditioned matrix</em>, Mathematical Tables and other Aids to Computation, (1955), pp.
+96–101.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

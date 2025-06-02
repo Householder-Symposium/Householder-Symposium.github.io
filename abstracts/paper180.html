@@ -1,0 +1,345 @@
+---
+layout: abstract
+absnum: 180
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\mystrut }[1]{\rule {0cm}{#1}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Sign Characteristic in the Inverse Problem<br />
+for Hermitian Matrix Polynomials
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">D. Steven Mackey</span>, F. Tisseur
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+For any matrix polynomial \(P(\lambda ) = \sum _{j=0}^d \lambda ^j A_j \;,\; A_j \in \mathbb {F}^{m \times n}\), there is a multiset<sup>1</sup><a id="paper-autopage-4"></a> \(\mathcal {S}\) comprising the key structural data of
+\(P\) relevant for applications. This structural data consists of the elementary divisors (finite and infinite) of \(P\), together with its left and right minimal indices. The basic inverse problem for matrix polynomials, then, consists of two parts:
+</p>
+<blockquote>
+
+<p>
+Given a multiset \(\mathcal {S}\) of structural data and a choice of degree \(d\),
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(a)</span> does there exist any matrix polynomial \(P\) of degree \(d\) (of any size \(m \times n\)) whose structural data multiset is exactly \(\mathcal {S}\)?
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(b)</span> if such a matrix polynomial \(P\) exists, can one be explicitly constructed, especially in such a way that the structural data in \(\mathcal {S}\) is transparently visible in that \(P\) (e.g., in the spirit of the
+Kronecker canonical form), or at least can be exactly recovered from \(P\) without any numerical computation, only combinatorial manipulations?
+</p>
+</li>
+</ul>
+
+</blockquote>
+
+<p>
+Analogous questions can be immediately posed for matrix polynomials restricted to various classes of structured matrix polynomials important in applications, e.g., palindromic, alternating, or Hermitian matrix polynomials.
+</p>
+
+<p>
+Much progress has been made on these questions in the last decade, although much remains to be understood. Some of the earliest results on these questions were for general quadratic&nbsp;[3] and quadratic palindromic matrix
+polynomials&nbsp;[4], where Kronecker-like quasi-canonical forms were found. In the 2015 paper&nbsp;[5], De Terán, Dopico, and Van Dooren completely solved the existence question (in part (a)) for general matrix polynomials of arbitrary degree
+over any infinite field \(\mathbb {F}\), giving simple necessary and suﬀicient conditions for realizability of a structural data multiset. However, the construction used to prove suﬀiciency in&nbsp;[5] produces a matrix polynomial realization in which
+the given data \(\mathcal {S}\) is usually not transparently visible anymore. Recent work in&nbsp;[8] has substantially remedied this deficiency, giving a complete solution for part (b) of the inverse problem for general matrix polynomials, but only
+over algebraically closed fields.
+</p>
+
+<p>
+This talk, however, focuses more specifically on the inverse problem for Hermitian matrix polynomials. This class of matrix polynomials has an additional element in its structural data multiset, the <em>sign characteristic</em>, that is relevant for
+both theory and applications, playing an important role in the bifurcations of dynamical systems, as well as the behavior of eigenvalues under structured perturbations. First recognized and investigated in the seminal paper&nbsp;[7] as an important
+invariant of Hermitian polynomials under unimodular congruence, the sign characteristic consists of a plus or minus sign attached to each elementary divisor associated with a real or infinite eigenvalue. In&nbsp;[7], the authors considered sign
+characteristic only for regular Hermitian polynomials with no eigenvalues at \(\infty \). But more recently, the concepts and results in&nbsp;[7] concerning sign characteristic have been extended in&nbsp;[12] to include all Hermitian polynomials,
+both regular and singular, with or without eigenvalues at \(\infty \).
+</p>
+
+<p>
+Now for general Hermitian matrix polynomials, there are several well-known (pairing) constraints on elementary divisors and minimal indices; e.g., for any Hermitian polynomial \(H(\lambda )\), the multiset of left minimal indices of \(H\) is
+identical to the multiset of the right minimal indices of \(H\). But are there any constraints on how <em>signs</em> can be attached to real and infinite elementary divisors? For Hermitian pencils it is known that there are no constraints on signs; any
+real or infinite elementary divisor may have any sign, in any combination with the signs of all of the pencil’s other elementary divisors. This follows immediately from the canonical form for Hermitian pencils found in&nbsp;[10].
+</p>
+
+<p>
+For higher degree Hermitian polynomials, though, there is one known constraint on signs. This is the so-called <em>signature constraint</em>, first proved in&nbsp;[7] for regular Hermitian polynomials without any infinite elementary divisors, and
+extended to all Hermitian polynomials in&nbsp;[12]. For even degree Hermitian polynomials, the signature constraint says that the sum of the signs attached to all of the odd degree real and infinite elementary divisors is zero. The constraint is
+somewhat more complicated to state when the Hermitian polynomial \(H(\lambda )\) has odd degree — in this case the sum of the signs for odd degree elementary divisors of real eigenvalues together with those of the even degree elementary
+divisors of an infinite eigenvalue must equal the signature of the leading coeﬀicient of \(H\) (hence the name of the condition).
+</p>
+
+<p>
+Is the signature constraint the only condition on the sign characteristic? In the quadratic case, this has recently been shown to be true&nbsp;[11]. But for all degrees higher than \(2\), this is not so. Starting with degree \(3\), there are additional
+conditions on the sign characteristic that are independent of the signature constraint. Unfortunately, the techniques used in&nbsp;[11] to solve the quadratic Hermitian inverse problem do not easily extend to higher degrees, even to degree \(3\);
+there is a combinatorial explosion of cases that make this approach intractable. Thus it is reasonable to restrict the problem to something more manageable, yet still of some significance. Motivated by the recent investigations into the generic
+behavior in various structured classes of matrix polynomials&nbsp;[1, 2], it is sensible to restrict the question to Hermitian matrix polynomials in which <em>all eigenvalues (including \(\infty \)) are simple</em>. It is in this class that one can
+expect to find the structural data multisets that are generic for all Hermitian polynomials. Going forward, then, we make the simple eigenvalue assumption.
+</p>
+
+<p>
+When a Hermitian polynomial has all simple eigenvalues, the signs attached to these eigenvalues can be naturally ordered to form a <em>sign sequence</em>. For an \(n \times n\) Hermitian polynomial of degree \(d\) with the maximum number
+(\(dn\)) of simple real eigenvalues, there are \(2^{dn}\) conceivable sign sequences, most of which cannot be realized by any degree \(d\) &#x202f;Hermitian polynomial. Perhaps surprisingly, it is the <em>order</em> of the signs in a sign sequence
+that turns out to be crucial for Hermitian realizability, but in ways that are not immediately apparent. For example, consider a \(3 \times 3\) Hermitian matrix polynomial of degree \(4\), with \(12\) simple real eigenvalues. It is easy to see that
+the sign sequence \(\;\; ++++++------ \;\;\) satisfies the signature constraint for degree \(4\), but it can be shown that this sign sequence cannot be realized by any \(3 \times 3\) Hermitian polynomial of degree \(4\).
+</p>
+
+<p>
+Is it possible to determine exactly which sign sequences are realizable and which are not? And what role, if any, the degree might play in the story? This talk answers these questions, introducing several new constraints on signs beyond the signature
+constraint, as well as an underlying group of symmetries acting on the collection of all sign sequences, that sheds additional light on this issue. The result of this analysis is a <em>characterization</em> of the sign sequences that are realizable by a
+Hermitian matrix polynomial with all simple eigenvalues, as well as a solution of the inverse problem for this class of Hermitian polynomials.
+</p>
+
+<p>
+This characterization also allows us to get a quantitative sense for just how few of the possible sign sequences are actually realizable. Consider again the scenario above, i.e., \(n \times n\) Hermitian polynomials of degree \(d\) with the maximum
+number (\(dn\)) of simple real eigenvalues, in particular the special case of \(n=2\) with any even degree \(d \ge 4\). In this case the fraction of the \(2^{2d}\) possible sign sequences that satisfy the signature constraint is asymptotically \(O
+(\frac {1}{\,\sqrt {\pi d\,}\,})\) as \(d \rightarrow \infty \). By contrast, however, the characterization implies that the fraction of possible sign sequences that are actually Hermitian realizable is asymptotically \(O (\frac
+{1}{\,\,\mystrut {2.7mm} 2^{d}\,\,})\) as \(d \rightarrow \infty \). A reasonable conjecture is that this asymptotic behavior will persist for other values of \(n\) and \(d\). But this does at least show that the number of realizable sign
+sequences can not only be exponentially smaller than the number of all possible sign sequences, it can also even be exponentially smaller than the number of sign sequences that satisfy the signature constraint. Hence we see that the signature
+constraint is by itself very far from capturing the property of Hermitian realizability of sign sequences.
+</p>
+
+<p>
+Finally, it is worth noting that the key tool for proving the necessity of these new constraints on the sign characteristic is an old theorem of Rellich on analytic decompositions of analytic Hermitian matrix-valued functions (see&nbsp;[12, Thm.2.1]).
+On the other hand, suﬀiciency of these new constraints is proved using the new technique of <em>product realizations</em> of matrix polynomials&nbsp;[6].
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-6"></a>
+<p>
+<sup>1</sup>&nbsp;A <em>multiset</em> is a set with repetitions allowed, i.e., a “set with multiplicities”. [9, p.454]
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-7">References</h4>
+<a id="paper-autopage-7"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> F. De Terán, A. Dmytryshyn and F. M. Dopico, Generic symmetric matrix polynomials with bounded rank and fixed odd grade. <i>SIAM J. Matrix Anal. Appl.</i>, 41 (2020), p.1033–1058.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> F. De Terán, A. Dmytryshyn and F. M. Dopico, Generic eigenstructures of Hermitian pencils. <i>SIAM J. Matrix Anal. Appl.</i>, 45 (2024), p.260–283.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> F. De Terán, F.M. Dopico, and D.S. Mackey. A quasi-canonical form for quadratic matrix polynomials. In preparation.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> F. De Terán, F.M. Dopico, D.S. Mackey, and V. Perović. Quadratic realizability of palindromic matrix polynomials. <i>Linear Algebra Appl.</i>, 567 (2019), p.202–262.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> F. De Terán, F.M. Dopico, and P. Van Dooren. Matrix polynomials with completely prescribed eigenstructure. <i>SIAM J. Matrix Anal. Appl.</i>, 36 (2015), p.302–328.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> F.M. Dopico, D.S. Mackey, and P. Van Dooren. Product realizations of structural data for matrix polynomials. In preparation.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> I. Gohberg, P. Lancaster, and L. Rodman. Spectral analysis of self-adjoint matrix polynomials. <i>Annals of Math.</i>, 112, no.1 (1980), p.33–71.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> R. Hollister. <i>Inverse Problems for Polynomial and Rational Matrices</i>. PhD Thesis, Western Michigan University, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> D.E. Knuth. <i>The Art of Computer Programming. Vol.&nbsp;2: Seminumerical Algorithms</i>. Addison-Wesley, Reading, Massachusetts, 1981, 2nd Ed.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> P. Lancaster and L. Rodman. Canonical forms for Hermitian matrix pairs under strict equivalence and congruence. <i>SIAM Rev</i>, 47, no.3 (2005), p.407–443.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> D.S. Mackey and F. Tisseur, The Hermitian quadratic realizability problem. In preparation.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> V. Mehrmann, V. Noferini, F. Tisseur, and H. Xu, On the sign characteristics of Hermitian matrix polynomials. <i>Linear Algebra Appl.</i>, 511 (2016), pp.&nbsp;328–364.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

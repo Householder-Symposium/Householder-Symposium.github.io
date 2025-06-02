@@ -1,0 +1,356 @@
+---
+layout: abstract
+absnum: 46
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+On the Computation of the Maximum Conic Singular Values
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Giovanni Barbarino</span>, Nicolas Gillis, David Sossa
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Let \(\mathcal C_d\) denote the set of nonzero closed convex cones in \(\mathbb R^d\). Let \(A \in \mathbb {R}^{m \times n}\) and \((P,Q)\in \mathcal C_m\times \mathcal C_n\). The nonconvex optimization problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                       min           ⟨u, Av⟩,                                                                       (1)--><a id="eq:SVcones"></a><!--
+                                                                                                                  u ∈ P, ∥u∥ = 1,
+                                                                                                                  v ∈ Q, ∥v∥ = 1
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:SVcones} \min _{\scriptsize \begin{array}{l}u\in P,\,\Vert u\Vert =1,\\v\in Q,\,\Vert v\Vert =1\end {array}}\langle u,Av\rangle ,
+\end{equation}
+
+</p>
+
+<p>
+has been studied in depth in [1], mainly from a theoretical point of view. Any critical (stationary) point \((u,v)\) of <span class="textup">(<a href="paper.html#eq:SVcones">1</a>)</span> satisfies the KKT optimality conditions
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                             
+                                                                                                                                      ∗
+                                                                                                             
+                                                                                                              P ∋ u ⊥ (A v − σu) ∈ P ,
+                                                                                                               Q ∋ v ⊥ (A⊤ u − σv) ∈ Q∗ ,                                                                                    (2)--><a id="d1"></a><!--
+                                                                                                             
+                                                                                                             
+                                                                                                               ∥u∥ = 1, ∥v∥ = 1,
+
+-->
+
+<p>
+
+\begin{equation}
+\label {d1} \begin{cases} \,P\ni u\perp (A\,v-\sigma u) \;\,\in P^\ast ,&amp; \\ \,Q\ni v\perp (A^\top u -\sigma v)\in Q^\ast , &amp;\\ \Vert u\Vert =1,\;\Vert v\Vert =1, &amp;\end {cases}
+\end{equation}
+
+</p>
+
+<p>
+for some real Lagrange multiplier \(\sigma \), where \(P^\ast \) and \(Q^\ast \) are the dual cones of \(P\) and \(Q\), respectively. Observe that when \(P=\mathbb R^m\) and \(Q=\mathbb R^n\), <span class="textup">(<a
+href="paper.html#d1">2</a>)</span> provides us the (classical) singular values of \(A\).
+</p>
+
+<p>
+The model <span class="textup">(<a href="paper.html#eq:SVcones">1</a>)</span> covers many interesting optimization problems. Some of them are: maximal angle between two cones [2], obtained when \(m=n\) and \(A=I_n\), expressed by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                        min          ⟨u, v⟩;
+                                                                                                                   u ∈ P, ∥u∥ = 1,
+                                                                                                                   v ∈ Q, ∥v∥ = 1
+
+-->
+
+<p>
+
+\begin{equation*}
+\min _{\scriptsize \begin{array}{l}u\in P,\,\Vert u\Vert =1,\\v\in Q,\,\Vert v\Vert =1\end {array}}\langle u,v\rangle ;
+\end{equation*}
+
+</p>
+
+<p>
+cone-constrained principal component analysis or Pareto singular values [3,&#x202f;5], in which the two cones are the positive orthants of the respective spaces as in \(P = \mathbb R^m_+\) and \(Q = \mathbb R^n_+\), formalized as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                       min           ⟨u, Av⟩;
+                                                                                                                  u ≥ 0, ∥u∥ = 1,
+                                                                                                                  v ≥ 0, ∥v∥ = 1
+
+-->
+
+<p>
+
+\begin{equation*}
+\min _{\scriptsize \begin{array}{l}u\geq 0,\,\Vert u\Vert =1,\\v\geq 0,\,\Vert v\Vert =1\end {array}}\langle u,Av\rangle ;
+\end{equation*}
+
+</p>
+
+<p>
+nonnegative rank-one factorization matrix [4], equivalent to the Pareto singular value problem, and written as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                    min ∥M − uv ⊤ ∥F .
+                                                                                                                  u≥0,v≥0
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\min _{u\geq 0, v\geq 0} \|M - uv^\top \|_F.
+\end{equation*}
+
+</p>
+
+<p>
+The above problems can be proven to be in a descending order of complexity. Since the last formulation in particular can be used to solve the Maximal Edge Biclique Problem, this leads to the conclusion that all the above models are NP-hard to solve.
+</p>
+
+<p>
+We will discuss the linear algebra techniques used to reduce each problem to the following one, with a focus on suﬀicient conditions needed for each problem to be instead solved in polynomial time.<br />
+
+</p>
+
+<p>
+An exact (and thus necessarily exponential time) brute force active set algorithm is presented. Its proof of correctness is based on the observation in [1] that when we restrict the problem on the relative interior of the faces of the cones \(P\) and
+\(Q\), then the relations <span class="textup">(<a href="paper.html#d1">2</a>)</span> reduces to a generalized eigenvalue problem with additional constraints. This can be solved with classical techniques, with some careful handling in case of
+eigenvalues with relative eigenspace of dimension more than one.
+</p>
+
+<p>
+We will describe the algorithm with a focus on how to cut computational cost through the study of the stationary points of the problem in order to distinguish minima from saddle points.
+</p>
+
+<p>
+We compare the active set algorithm with an exact non-convex quadratic programming solver, that relies on the McCornick relaxation to solve the problem, and thus performs well in case of sparse problems.<br />
+
+</p>
+
+<p>
+Moreover, we show two additional iterative algorithms to solve the general problem, an alternating method with extrapolation and a fractional programming method. These are methods that are only guaranteed to converge to stationary points, and
+cannot certify the minimality of the solution they find.
+</p>
+
+<p>
+We discuss and illustrate the use of these algorithms on several examples, as in the computation of maximal angles between the Schur cone and other cones or the computation of maximal edge bicliques.
+</p>
+
+<p>
+We show how they can lead to rigorous proofs or new conjectures in special cases, such as the maximal angle between the cone of positive semidefinite matrices and the cone of nonnegative symmetric matrices.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Seeger, Alberto and Sossa, David. Singular value analysis of linear maps under conic constraints. <i>Set-Valued and Variational Analysis</i>, 31 (2023).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Orlitzky, Michael. When a maximal angle among cones is nonobtuse. <i>Computational and Applied Mathematics</i>, 83 (2020).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Montanari, Andrea and Richard, Emile. Non-negative principal component analysis: Message passing algorithms and sharp asymptotics. <i>IEEE Trans. Informat. Th.</i>, 62: 1458-1484 (2016).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Gillis, Nicolas and Glineur, Françoise. A continuous characterization of the maximum-edge biclique problem. <i>Journal of Global Optimization</i>, 58: 439-464 (2014).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Seeger, Alberto and Sossa, David. Singular value problems under nonnegativity constraints. <i>Positivity</i>, 27 (2023).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

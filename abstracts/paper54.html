@@ -1,0 +1,363 @@
+---
+layout: abstract
+absnum: 54
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\matid }{\ensuremath {\mathbf {{I}}}}\)
+
+\(\newcommand {\bPi }{\ensuremath {\boldsymbol {\Pi }}}\)
+
+\(\newcommand {\bA }{\ensuremath {\mathbf {A}}}\)
+
+\(\newcommand {\bH }{\ensuremath {\mathbf {H}}}\)
+
+\(\newcommand {\bW }{\ensuremath {\mathbf {W}}}\)
+
+\(\newcommand {\bM }{\ensuremath {\mathbf {M}}}\)
+
+\(\newcommand {\bN }{\ensuremath {\mathbf {N}}}\)
+
+\(\newcommand {\bu }{\ensuremath {\mathbf {u}}}\)
+
+\(\newcommand {\bx }{\ensuremath {\mathbf {x}}}\)
+
+\(\newcommand {\by }{\ensuremath {\mathbf {y}}}\)
+
+\(\newcommand {\bz }{\ensuremath {\mathbf {z}}}\)
+
+\(\newcommand {\br }{\ensuremath {\mathbf {r}}}\)
+
+\(\newcommand {\rhs }{\ensuremath {\mathbf {b}}}\)
+
+\(\newcommand {\bZ }{\ensuremath {\mathbf {Z}}}\)
+
+\(\newcommand {\bY }{\ensuremath {\mathbf {Y}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+GMRES with Preconditioning, Weighted norm and Deflation
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Nicole Spillane</span>, Daniel B. Szyld
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the general problem of solving a linear system of the form
+</p>
+
+<p>
+\[ \bA \bx = \rhs ; \, \bA \in \mathbb C^{n \times n}; \, \rhs \in \mathbb C^n. \]
+</p>
+
+<p>
+The matrices \(\bA \) that we consider are non-singular, sparse and of high order \(n\). For solving these matrices, GMRES [3, Chapter 6] is a natural choice. We address two fundamental and connected questions: How can the convergence of
+GMRES be predicted ? How can the convergence of GMRES be accelerated ? Our aim is to combine three ways of accelerating GMRES convergence:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Weighting by a Hermitian positive definite (hpd) matrix \(\bW \): all inner products and norms in the GMRES algorithm are replaced by the ones induced by \(\bW \) (see [1]),
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Preconditioning by a non-singular matrix \(\bH \): GMRES is applied to the preconditioned problem \(\bA \bH \bu = \rhs \) with \(\bx = \bH \bu \) (see [3, Section 9.3]),
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Deflation by a projection operator \(\bPi := \matid - \bA \bZ (\bY ^* \bA \bZ )^{-1} \bY ^* \) (with \(\bY , \bZ \in \mathbb C^{n \times m}\)): GMRES is applied to the projected problem \(\bPi
+\bA \bH \bu = \bPi \rhs \) (see [7, 4]). A suitable initialization is also performed that accounts for the part of the solution that has been projected away.
+</p>
+</li>
+</ul>
+
+<p>
+We refer to \(\bW \), \(\bH \) and \(\bPi \) as accelerators for GMRES. With words, the strategy is that the preconditioner \(\bH \) should be a <i>good</i> approximation of \(\bA ^{-1}\), the deflation operator should handle the space where
+\(\bH \) does not <i>well</i> approximate \(\bA ^{-1}\), and the weighted inner product should facilitate the analysis. In practice, identifying eﬀicient accelerators requires a GMRES convergence bound where the influence of \(\bH \), \(\bW \)
+and \(\bPi \) is explicit. We prove in [6, Theorem 4.1] that the convergence rate is bounded by
+</p>
+
+<p>
+\[ \frac { \|\br _{i+1} \|_\bW ^2}{\|\br _{i} \|_\bW ^2} \leq 1 - \operatorname {inf}\limits _{\by \in \operatorname {range} (\bPi )\setminus \{\mathbf 0\}}\frac {|\langle {\bPi \bA \bH \by }, \by \rangle _\bW
+|^2}{ \| \bPi \bA \bH \by \|_\bW ^2 \|\by \|_\bW ^2} \cdot \]
+</p>
+<!--
+...... paragraph Further Assumptions ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Further Assumptions</span>
+<a id="paper-autopage-5"></a>
+ Major simplifications occur in the case where \(\bA \) is positive definite (<i>i.e.</i>, its Hermitian part is hpd), the preconditioner \(\bH \) is hpd, and the weight equals the preconditioner \(\bW = \bH \). In this case (and with a technical
+assumption on the deflation operator), it holds that
+</p>
+
+<p>
+\[ \frac { \|\br _{i+1} \|^2_\bH }{\|\br _{i} \|^2_\bH } \leq 1- \operatorname {inf}\limits _{\by \in \operatorname {range} (\bA \bH \bPi )\setminus \{\mathbf 0\}} \frac {|\langle \bA ^{-1} \by , \by \rangle |}{
+\langle \by , {\bM ^{-1}} \by \rangle } \times \frac {{\lambda _{\text {min}}(\bH \bM )}}{{\lambda _{\text {max}}(\bH \bM )}}, \]
+</p>
+
+<p>
+where \(\bM = 1/2 (\bA + \bA ^*)\) and \(\bN = 1/2 (\bA - \bA ^*)\) are the Hermitian and skew-Hermitian parts of \(\bA \), and the spectrum of \(\bH \bM \) is in the interval \([ \lambda _{\text {min}}(\bH \bM ), \lambda _{\text
+{max}}(\bH \bM )]\).
+</p>
+<!--
+...... paragraph Convergence without deflation ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Convergence without deflation</span>
+<a id="paper-autopage-6"></a>
+Setting \(\bPi = \matid \) (no deflation) and with an identity from [2] it is proved in [5, Theorem 4.3] that
+</p>
+
+<p>
+\[ \frac { \|\br _{i+1} \|^2_\bH }{\|\br _{i} \|^2_\bH } \leq 1- \frac {1}{1+{\rho ( {\bM ^{-1}} \bN )}^2 } \times \frac {{\lambda _{\text {min}}(\bH \bM )}}{{\lambda _{\text {max}}(\bH \bM )}} \]
+</p>
+
+<p>
+where \(\rho (\cdot )\) denotes the spectral radius of a matrix. The residuals are bounded with respect to two quantities. The first is the condition number of \(\bH \bM \), a measure of whether \(\bH \) is a good preconditioner for the hpd
+matrix \(\bM \). The second is the spectral radius of \(\bM ^{-1} \bN \), a measure of how non-Hermitian the problem is. The takeaway is that fast convergence is guaranteed if the problem is mildly non-Hermitian and \(\bH \) is a good
+preconditioner for \(\bM \). The bound also has important consequences for parallel computing and the analysis of domain decomposition methods.
+</p>
+<!--
+...... paragraph A new deflation space [6, Theorem 6.3] ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">A new deflation space [6, Theorem 6.3]</span>
+<a id="paper-autopage-7"></a>
+
+</p>
+
+<p>
+When the problem is significantly non-Hermitian (in terms of \(\rho ( {\bM ^{-1}} \bN )\)), we propose to combine Hermitian preconditioning with spectral deflation.
+</p>
+
+<p>
+Under the same assumptions as above, we choose the matrices \(\bZ \) and \(\bY \) in the characterization of the projection operator \(\bPi \) as follows. First, we denote by \((\lambda _j, \bz ^{(j)}) \in \mathrm {i} \mathbb R \times
+\mathbb C^n\) (for \(j = 1, \dots , n\)) the eigenpairs of the generalized eigenvalue problem \(\displaystyle {\bN } \bz ^{(j)} = \lambda _{j}\, {\bM }\bz ^{(j)}. \) Then, with a chosen threshold \(\tau &gt; 0\) we select for the
+deflation operator, the highest frequency eigenvectors, by setting
+</p>
+
+<p>
+\[ \operatorname {span}( \bZ ) := \operatorname {span} \{ \bz ^{(j)} ; |\lambda _{j} | &gt; {\tau } \} \text { and } \bY = \bH \bA \bZ . \]
+</p>
+
+<p>
+Then the convergence of weighted, preconditioned and deflated GMRES is bounded by
+</p>
+
+<p>
+\[ \frac {\| \br _{i+1} \|_\bH ^2}{\| \br _{i} \|_\bH ^2} \leq 1- \frac {1}{ (1+{\tau }^2)} \times \frac {{\lambda _{\text {min}}(\bH \bM )}}{{\lambda _{\text {max}}(\bH \bM )}}. \]
+</p>
+
+<p>
+Numerical illustrations show that preconditioning the Hermitian part in a way that is scalable leads to overall scalability and that spectral deflation accelerates convergence when the problems become more strongly non-Hermitian.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Essai. Weighted FOM and GMRES for solving nonsymmetric linear systems. <i>Numer. Algorithms</i>, 18(3-4):277–292, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C.&nbsp;R. Johnson. Inequalities for a complex matrix whose real part is positive definite. <i>Trans. Am. Math. Soc.</i>, 212:149–154, 1975.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Y.&nbsp;Saad. <i>Iterative methods for sparse linear systems.</i> Philadelphia, PA: SIAM Society for Industrial and Applied Mathematics, 2nd ed. edition, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> K.&nbsp;M. Soodhalter, E.&nbsp;de&nbsp;Sturler, and M.&nbsp;E. Kilmer. A survey of subspace recycling iterative methods. <i>GAMM-Mitt.</i>, 43(4):29, 2020. Id/No e202000016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> N.&nbsp;Spillane. Hermitian preconditioning for a class of non-Hermitian linear systems. <i>SIAM J. Sci. Comput.</i>, 46(3):a1903–a1922, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N.&nbsp;Spillane and D.&nbsp;B. Szyld. New convergence analysis of GMRES with weighted norms, preconditioning, and deflation, leading to a new deflation space. <i>SIAM J. Matrix Anal.
+Appl.</i>, 45(4):1721–1745, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> J.&nbsp;M. Tang, R.&nbsp;Nabben, C.&nbsp;Vuik, and Y.&nbsp;A. Erlangga. Comparison of two-level preconditioners derived from deflation, domain decomposition and multigrid methods. <i>J.
+Sci. Comput.</i>, 39:340–370, 2009.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

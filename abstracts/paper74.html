@@ -1,0 +1,284 @@
+---
+layout: abstract
+absnum: 74
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Numerical Approximation of the Distance to Singularity for Matrix-valued Functions
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Miryam Gnazzo</span>, Nicola Guglielmi
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider matrix-valued functions in the form
+</p>
+
+<p>
+\[ \mathcal {F}(\lambda )=\sum _{i=1}^d f_i(\lambda ) A_i, \]
+</p>
+
+<p>
+where \(A_i \in \mathbb {C}^{n\times n}\) and \(f_i: \mathbb {C} \mapsto \mathbb {C}\) entire functions for \(i=1,\ldots ,d\). Given a regular matrix-valued function, that is a function whose determinant \(\det \left ( \mathcal
+{F}(\lambda ) \right )\) is not identically zero, we discuss the problem of computing the singular matrix-valued function closest to it in the Frobenius norm. This problem is known in literature as the computation of the <em>distance to
+singularity</em> for \(\mathcal {F}(\lambda )\). More precisely, we are interested in approximating the nearest matrix-valued function \(\mathcal {F}(\lambda ) + \Delta \mathcal {F}(\lambda )\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                   det (F (λ) + ∆F (λ)) ≡ 0,                                                                                     (1)--><a id="det"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {det} \det \left ( \mathcal {F}(\lambda ) + \Delta \mathcal {F}(\lambda ) \right ) \equiv 0,
+\end{equation}
+
+</p>
+
+<p>
+where \(\Delta \mathcal {F}(\lambda )= \sum _{i=1}^{d} f_i(\lambda ) \Delta A_i\), with \(\Delta A_i \in \mathbb {C}^{n \times n}\), for \(i=1,\ldots ,d\). The problem of the numerical approximation of the distance to singularity
+for \(\mathcal {F}(\lambda )\) is well-known to be challenging, even for linear cases, where it reduces to the computation of the distance to singularity for matrix pencils [2]. Recently, the problem has gained increasing attention and numerical
+approaches have been developed both for matrix pencils, as in [4], and in the case of polynomial nonlinearities, as in [3]. Nevertheless, none of the currently available techniques has been applied to the approximation of the distance to singularity for
+general nonlinearities.
+</p>
+
+<p>
+The solution of this problem for general nonlinearities becomes important in the context of differential algebraic equations and delay differential algebraic equations. Indeed, in this framework, the characteristic equation associated with the differential
+equation has the form
+</p>
+
+<p>
+\[ \det \left ( A_1 -\lambda A_2 + e^{-\tau _1 \lambda }A_3 + \ldots + e^{-\tau _k \lambda }A_{k+2} \right )=0, \]
+</p>
+
+<p>
+and the eigenstructure of the matrix-valued function is a crucial tool in the solvability of the delay differential algebraic equation with discrete constant delays \(\tau _j\), for \(j=1,\ldots ,k\).
+</p>
+
+<p>
+As an illustrative example, indeed, we underline that in many practical cases the function \(\mathcal {D}(\lambda )= A_1 - \lambda A_2 + e^{-\tau \lambda } A_3\), in presence of a small delay \(\tau \), may be numerically singular, even in
+situations where the pencil \(A_1-\lambda A_2\) is regular, leading to a severe ill-posedness of the problem. In this setting, an a-priori computation of the distance to singularity associated with \(\mathcal {D}(\lambda )\) would act like a measure
+for the lack of robustness of the differential equation.
+</p>
+
+<p>
+A major diﬀiculty is due to the presence of nonlinearities in the matrix-valued function, which represents a delicate point of the problem, since a general matrix-valued function may have an infinite number of eigenvalues. Observe that this feature of
+the problem does not arise when dealing with matrix pencils and matrix polynomials, and, to our knowledge, this characteristic may prevent the extension of the currently available methods to nonlinearities different from the polynomial one.
+</p>
+
+<p>
+In this talk, we propose a method for the numerical approximation of the distance to singularity for nonlinear matrix-valued functions [5]. We show that the problem can be rephrased as a nearness problem and the property of singularity of the
+matrix-valued function is translated into a discrete numerical constraint for a suitable minimization problem. Nevertheless, this resulting problem turns out to be highly non-convex. In order to solve it, we propose an iterative procedure made by two
+nested optimization subproblems, of whose the inner one introduces a constraint gradient system of matrix differential equations and the outer one consists in the optimization of the norm \(\|\begin {bmatrix} \Delta A_1 &amp; \ldots &amp;
+\Delta A_d \end {bmatrix} \|_F\) via a Newton-like method.
+</p>
+
+<p>
+We dedicate special attention to the numerical treatment of the continuous constraint <span class="textup">(<a href="paper.html#det">1</a>)</span>, since a careful translation of this condition into its discrete version is an essential step for
+the applicability of our numerical approach. To this purpose, we employ results from approximation theory for analytic functions [1].
+</p>
+
+<p>
+In many practical applications, such as in the ones arising from engeneering and mechanical modeling, matrix-valued functions \(\mathcal {F}(\lambda )\) are often endowed with additional structures. Indeed, the coeﬀicients \(A_i\) frequently
+encode data coming from the underlying application: for instance, they may represent the stiffness or damping matrix in a PDE setting. In this framework, it is important to employ an approach with the desired feature of addressing different
+structures, in which case the search of the closest singular function is restricted to the class of functions preserving the structure of the matrices.
+</p>
+
+<p>
+Nevertheless, the possibility of including additional structural constraints into a nearness problem is not an easy task and it leads to a more challenging version of the problem. Indeed, techniques that are able to compute the unstructured distance to
+singularity often can not be directly extended to their structured counterparts.
+</p>
+
+<p>
+One of the advantages of the nested approach we propose consists in the fact that it can be naturally extended to its structured version, with minors changes, and, therefore, it is able to tackle nearness problems with the additional constraint of
+structured perturbations. In the talk, we practically demonstrate this feature of our technique, by providing a number of case studies. For example, the method allows us to limit the perturbations to just a few matrices and also to include individual
+structures, such as the preservation of the sparsity pattern of one or more matrices \(A_i\), and collective-like properties, like a palindromic structure of the function \(\mathcal {F}(\lambda )\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.P. Austin, P. Kravanja and L.N. Trefethen. <i>Numerical Algorithms Based on Analytic Function Values at Roots of Unity</i>. SIAM Journal on Numerical Analysis. 52, 1795–1821, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> R. Byers, C. He and V. Mehrmann. <i>Where is the nearest non-regular pencil?</i> Linear Algebra Appl. 285, 81–105, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> B. Das and S. Bora. <i>Nearest rank deficient matrix polynomials</i>. Linear Algebra Appl. 674, 304–350, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> F. Dopico, V. Noferini and L. Nyman. <i>A Riemannian Optimization Method to Compute the Nearest Singular Pencil</i>. SIAM J. on Matrix Anal. Appl. 45, 2007-2038, 2024.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M. Gnazzo and N. Guglielmi. <i>On the numerical approximation of the distance to singularity for matrix-valued functions</i>. Preprint, 2023.
+</p>
+</li>
+</ul>
+
+{% endraw %}

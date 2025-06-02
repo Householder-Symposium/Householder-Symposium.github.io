@@ -1,0 +1,410 @@
+---
+layout: abstract
+absnum: 90
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\blambda }{{\boldsymbol \lambda }}\)
+
+\(\newcommand {\CC }{\mathbb C}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A Randomized Numerical Method for Joint Eigenvalues of Commuting Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+Haoze He, Daniel Kressner, <span class="underline">Bor Plestenjak</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Let \({\cal A}=\{A_1,\ldots ,A_d\}\) be a <em>commuting family</em> of \(n\times n\) complex matrices, i.e., \(A_jA_k=A_kA_j\) for all \(1\le j,k\le d\). Then there exists a unitary matrix \(U\) such that all matrices \(U^*A_1U,\ldots
+,U^*A_dU\) are upper triangular and the \(n\) \(d\)-tuples containing the diagonal elements of \(U^*A_1U,\ldots ,U^*A_dU\) are called the <em>joint eigenvalues</em> of \(\cal A\). For every joint eigenvalue \(\blambda =(\lambda _1,\ldots
+,\lambda _d)\) of \(\cal A\) there exists a nonzero <em>common eigenvector</em> \(x\), such that \(A_ix=\lambda _i x\) for \(i=1,\ldots ,d\).
+</p>
+
+<p>
+The task of numerical computation of joint eigenvalues for a commuting family arises, e.g., in solvers for multiparameter eigenvalue problems and systems of multivariate polynomials. We propose and analyze a simple approach, summarized in
+Algorithm 1, that computes eigenvalues as one-sided or two-sided Rayleigh quotients from eigenvectors of a random linear combination
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                             A(µ) = µ1 A1 + µ2 A2 + · · · + µd Ad ,                                                                        (1)--><a id="eq:Amu"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Amu} A(\mu )=\mu _1 A_1 + \mu _2 A_2 + \cdots + \mu _d A_d,
+\end{equation}
+
+</p>
+
+<p>
+where \(\mu =[\mu _1\ \cdots \ \mu _d]^T\) is a random vector from the uniform distribution on the unit sphere in \(\mathbb C^d\).
+</p>
+
+<p>
+We show that Algorithm 1, in particular the use of two-sided Rayleigh quotients, accurately computes well-conditioned semisimple joint eigenvalues with high probability. It still works satisfactorily in the presence of defective eigenvalues.
+Experiments show that the method can be eﬀiciently used in solvers for multiparameter eigenvalue problems and roots of systems of multivariate polynomials.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+
+<div class="figurecaption">
+Algorithm&nbsp;1: <b>R</b>andomized <b>J</b>oint <b>E</b>igenvalue <b>A</b>pproximation
+
+</div>
+
+<p>
+<b>Input:</b> A nearly commuting family \({\mathcal {A}}= \{A_1,\ldots , A_d\}\), \(\text {opt} \in \{\text {RQ1},\text {RQ2}\}\).
+</p>
+<p>
+<b>Output:</b> Approximations of joint eigenvalues of \(\mathcal {A}\).
+</p>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Draw \(\mu \in \mathbb {C}^d\) from the uniform distribution on the unit sphere.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span>Compute \(A(\mu ) = \mu _1 A_1 + \cdots + \mu _d A_d\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span>Compute invertible matrices \(X, Y\) such that the columns of \(X\) have norm \(1\), \(Y^* X = I\),
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> and \(Y^* A(\mu ) X\) is diagonal.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span> <span style="width:0pt; display:inline-block;"></span><b>if</b> opt \(=\) RQ\(1\) <b>then</b> <b>return</b> \({\blambda }_{ \mathrm {RQ1}}^{(i)} = (x_i^* A_1 x_i, \ldots , x_i^* A_d
+x_i), \quad i = 1,\ldots ,n\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">0.2em</span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span> <span style="width:0pt; display:inline-block;"></span><b>else</b> <b>if</b> opt \(=\) RQ\(2\) <b>then</b> <b>return</b> \({\blambda }_{ \mathrm {RQ2}}^{(i)} = (y_i^* A_1 x_i, \ldots ,
+y_i^* A_d x_i), \quad i = 1,\ldots ,n\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>if</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+The idea of using a random linear combination like&nbsp;<span class="textup">(<a href="paper.html#eq:Amu">1</a>)</span> is not new. For example, in&nbsp;[1, 4] the unitary matrix \(U\) from the Schur decomposition \(A(\mu )=U^*RU\) is
+used to transform all matrices from \(\cal A\) to <em>block</em> upper triangular form. Using the Schur decomposition, however, requires clustering to group multiple eigenvalues together, and this is a numerically subtle task. On the other hand,
+Algorithm 1 does not require clustering and in practice often leads to equally good or even better results for, e.g., multiparameter eigenvalue problems [5] and multivariate root finding problems.
+</p>
+
+<p>
+For a significantly simpler situation of commuting <em>Hermitian</em> matrices, where a unitary matrix exists that jointly diagonalizes all matrices, randomized methods based on&nbsp;<span class="textup">(<a
+href="paper.html#eq:Amu">1</a>)</span> have recently been analyzed in&nbsp;[2], establishing favorable robustness and stability properties.
+</p>
+
+<p>
+An important source of joint eigenvalue problems are eigenvector-based methods for solving systems of multivariate polynomial equations. If we are looking for roots of a set of polynomials
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                              pi (x1 , . . . , xd ) = 0,   i = 1, . . . , m,                                                      (2)--><a id="eq:polynomials"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:polynomials} p_i(x_1,\ldots ,x_d)=0,\quad i=1,\ldots ,m,
+\end{equation}
+
+</p>
+
+<p>
+such that the solution consists of finitely many points, then a common feature of these methods is that they construct so called <em>multiplication matrices</em> \(M_{x_1},\ldots ,M_{x_d}\) that commute and their joint eigenvalues are the roots
+\((x_1,\ldots ,x_d)\) of <span class="textup">(<a href="paper.html#eq:polynomials">2</a>)</span>. Many techniques that use symbolic and/or numerical computation, including Gröbner basis, various resultants, and Macaulay matrices,
+are used to construct the multiplication matrices, see, e.g., [6].
+</p>
+
+<p>
+Another source are multiparameter eigenvalue problems. A \(d\)-parameter version has the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                      Ai0 xi = λ1 Ai1 xi + · · · + λd Aid xi ,       i = 1, . . . , d,                                                     (3)--><a id="eq:mep"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:mep} A_{i0}x_i = \lambda _1 A_{i1}x_i + \cdots + \lambda _d A_{id}x_i, \quad i=1,\ldots ,d,
+\end{equation}
+
+</p>
+
+<p>
+where \(A_{ij}\) is an \(n_i\times n_i\) complex matrix and \(x_i\ne 0\) for \(i=1,\ldots ,d\). When&nbsp;<span class="textup">(<a href="paper.html#eq:mep">3</a>)</span> is satisfied, a \(d\)-tuple \(\blambda =(\lambda _1,\ldots
+,\lambda _d)\in \CC ^d\) is called an <em>eigenvalue</em> and \(x_1\otimes \cdots \otimes x_d\) is a corresponding eigenvector. Generically, a multiparameter eigenvalue problem&nbsp;<span class="textup">(<a
+href="paper.html#eq:mep">3</a>)</span> has \(N=n_1\cdots n_d\) eigenvalues. The problem&nbsp;<span class="textup">(<a href="paper.html#eq:mep">3</a>)</span> is related to a system of \(d\) generalized eigenvalue problems
+</p>
+
+<p>
+\[ \Delta _i z =\lambda _i \Delta _0z, \quad i=1,\ldots ,d, \]
+</p>
+
+<p>
+with \(z=x_1\otimes \cdots \otimes x_d\) and the \(N\times N\) matrices (that are called operator determinants)
+</p>
+
+<p>
+\[\Delta _0=\left |\begin {matrix}A_{11} &amp; \cdots &amp; A_{1d}\cr \vdots &amp; &amp; \vdots \cr A_{d1} &amp; \cdots &amp; A_{dd}\end {matrix}\right |_\otimes ,\quad \Delta _i=\left |\begin {matrix}A_{11} &amp;
+\cdots &amp; A_{1,i-1} &amp; A_{10} &amp; A_{1,i+1} &amp; \cdots &amp; A_{1d}\cr \vdots &amp; &amp; \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots \cr A_{d1} &amp; \cdots &amp; A_{d,i-1} &amp; A_{d0} &amp;
+A_{d,i+1} &amp; \cdots &amp; A_{dd}\end {matrix}\right |_\otimes ,\quad i=1,\ldots ,d. \]
+</p>
+
+<p>
+If \(\Delta _0\) is invertible, then the matrices \(\Gamma _i:=\Delta _0^{-1}\Delta _i\) for \(i=1,\ldots ,d\) commute. If \(N\) is not too large, then a standard approach to solve <span class="textup">(<a
+href="paper.html#eq:mep">3</a>)</span> is to explicitly compute the matrices \(\Gamma _1,\ldots ,\Gamma _d\) and then solve the joint eigenvalue problem.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> R.M. Corless, P.M Gianni, B.M. Trager, <i>A reordered Schur factorization method for zero dimensional polynomial systems with multiple roots</i>, in Proceedings of the 1997 International
+Symposium on Symbolic and Algebraic Computation (Kihei, HI) 133–140, ACM, New York, 1997.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> H. He, D. Kressner, <i>Randomized joint diagonalization of symmetric matrices</i>, SIAM J. Matrix Anal. Appl. 45 (2024) 661–684.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> H. He, D. Kressner, B. Plestenjak, <i>Randomized methods for computing joint eigenvalues, with applications to multiparameter eigenvalue problems and root finding</i>, arXiv:2409.00500
+(2024), to appear in Numer.&nbsp;Algorithms.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> D. Manocha, J. Demmel, <i>Algorithms for intersecting parametric and algebraic curves I: simple intersections</i>, ACM Trans. Graph. 13 (1994) 73–100.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> B.&nbsp;Plestenjak, <i>MultiParEig. Toolbox for multiparameter and singular eigenvalue problems</i>, www.mathworks.com/matlabcentral/fileexchange/47844-multipareig, MATLAB Central File
+Exchange.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> H. J. Stetter, <i>Numerical Polynomial Algebra</i>, SIAM, Philadelphia, PA, 2004.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

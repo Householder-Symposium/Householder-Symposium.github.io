@@ -1,0 +1,376 @@
+---
+layout: abstract
+absnum: 103
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bfA }{\mathbf {A}}\)
+
+\(\newcommand {\bfR }{\mathbf {R}}\)
+
+\(\newcommand {\bfI }{\mathbf {I}}\)
+
+\(\newcommand {\bfL }{\mathbf {L}}\)
+
+\(\newcommand {\bfU }{\mathbf {U}}\)
+
+\(\newcommand {\bfV }{\mathbf {V}}\)
+
+\(\newcommand {\bfY }{\mathbf {Y}}\)
+
+\(\newcommand {\bfZ }{\mathbf {Z}}\)
+
+\(\newcommand {\bfM }{\mathbf {M}}\)
+
+\(\newcommand {\bfT }{\mathbf {T}}\)
+
+\(\newcommand {\bfx }{\mathbf {x}}\)
+
+\(\newcommand {\bfs }{\mathbf {s}}\)
+
+\(\newcommand {\bfc }{\mathbf {c}}\)
+
+\(\newcommand {\bfS }{\mathbf {S}}\)
+
+\(\newcommand {\bfb }{\mathbf {b}}\)
+
+\(\newcommand {\bfu }{\mathbf {u}}\)
+
+\(\newcommand {\bfv }{\mathbf {v}}\)
+
+\(\newcommand {\bfn }{\mathbf {n}}\)
+
+\(\newcommand {\bbR }{\mathbb {R}}\)
+
+\(\newcommand {\reg }{_{\text {\scriptsize {reg}}}}\)
+
+\(\newcommand {\true }{_{\text {\scriptsize {true}}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Flexible Golub-Kahan Factorization for Linear Inverse Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Silvia Gazzola</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Discrete linear inverse problems arising in many applications in Science and Engineering are formulated as the solution of large-scale linear systems of equations of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                     Axtrue + n = b ,                                                                                 (1)--><a id="eq: linsys"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: linsys} \bfA \bfx \true +\bfn =\bfb \,,
+\end{equation}
+
+</p>
+
+<p>
+where the discretized forward operator \(\bfA \in \bbR ^{m\times n}\) is large-scale with ill-determined rank, and \(\bfn \in \bbR ^m\) are some unknown perturbations (noise) affecting the available data \(\bfb \in \bbR ^m\). In this setting,
+in order to recover a meaningful approximation of \(\bfx \true \in \bbR ^n\), one should regularize <span class="textup">(<a href="paper.html#eq: linsys">1</a>)</span>.
+</p>
+
+<p>
+In this talk we consider variational regularization methods that compute an approximation \(\bfx \reg \) of \(\bfx \true \) as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                xreg = arg minn ∥R(Ax − b)∥pp + λ∥Lx∥qq ,    where λ ≥ 0, p, q > 0, R ∈ Rm×m L ∈ Rl×n .                                                (2)--><a id="eq: regPb"></a><!--
+                                                                                           x∈R
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: regPb} \bfx \reg =\arg \min _{\bfx \in \bbR ^n}\|\bfR (\bfA \bfx -\bfb )\|_p^p + \lambda \|\bfL \bfx \|_q^q\,,\quad \mbox {where}\quad \lambda \geq 0,\: p,\,q&gt;0,\:\bfR \in \bbR ^{m\times m}\,\: \bfL
+\in \bbR ^{l\times n}.
+\end{equation}
+
+</p>
+
+<p>
+In the above formulation, when \(p=q=2\), many standard numerical linear algebra tools can be employed to approximate \(\bfx \reg \): these include the SVD of \(\bfA \) (when \(\bfA \) has some exploitable structure and \(\bfL \) is the
+identity), early termination of Krylov solvers for <span class="textup">(<a href="paper.html#eq: linsys">1</a>)</span> (when \(\lambda =0\)), and hybrid projection methods. We refer to [2] for a recent survey of these strategies. However,
+by properly setting \(p,\,q\neq 2\), better approximations of \(\bfx \true \) can be obtained in many scenarios, including: when the noise \(\bfn \) is not Gaussian, nor white, and/or when wanting to enforce sparsity onto \(\bfL \bfx \reg \)
+(e.g., in the compressive sensing framework, when \(\bfA \) is heavily underdetermined). Although many classes of well-established optimization methods are usually employed to handle the non-smooth and possibly non-convex instances of <span
+class="textup">(<a href="paper.html#eq: regPb">2</a>)</span>, in the last decades a number of new solvers based on ‘non-standard’ (such as flexible [1, 4] or generalized [5]) Krylov methods have been successfully considered for this purpose;
+see also [3, 7]. Even though the common starting point of such ‘non-standard’ Krylov solvers is the reformulation of a smoothed version of <span class="textup">(<a href="paper.html#eq: regPb">2</a>)</span> as an iteratively reweighted least
+squares problem, flexible Krylov methods for \(p=2\) are typically more eﬀicient and stable than generalized Krylov methods, while the latter can handle also the \(p\neq 2\) case and many options for \(\bfL \).
+</p>
+
+<p>
+This talk introduces new solvers for <span class="textup">(<a href="paper.html#eq: regPb">2</a>)</span>, based on a new flexible Golub-Kahan factorization of the kind
+</p>
+
+<p>
+\[ \widehat {\bfA }\bfZ _k=\bfU _{k+1}\bar {\bfM }_k\,,\quad \widehat {\bfA }^{\top }\bfY _{k+1}=\bfV _{k+1}{\bfT _{k+1}}\,, \]
+</p>
+
+<p>
+where: \(\bfU _{k+1}\in \bbR ^{m\times (k+1)}\) and \(\bfV _k\in \bbR ^{n\times k}\) have orthonormal columns \(\bfu _i\) (\(i=1,\dots ,k+1\)) and \(\bfv _i\) (\(i=1,\dots ,k\)), respectively; \(\bfZ _k=[\bfL _1^{\dagger }\bfv
+_1,\dots , \bfL _k^{\dagger }\bfv _k]\), \(\bfY _{k+1}=[\bfR _1^{\dagger }\bfu _1,\dots , \bfR _{k+1}^{\dagger }\bfu _{k+1}]\); \(\bar {\bfM }_k\in \bbR ^{(k+1)\times k}\) is upper Hessenberg and \({\bfT }_{k+1}\in \bbR
+^{(k+1)\times (k+1)}\) is upper triangular; \(k\ll \min \{m,n\}\). The \(i\)th approximate solution of \(\bfx \reg \) in <span class="textup">(<a href="paper.html#eq: regPb">2</a>)</span> is defined as
+</p>
+
+<p>
+\[ \bfx _i = \bfZ _i\arg \min _{\bfs \in \bbR ^i}\|f(\bfT _{i+1},\bar {\bfM }_i)\bfs -\bfc _i\|_2^2+\lambda _i\|\bfS _i\bfs \|_2^2\,, \]
+</p>
+
+<p>
+where the regularization parameter \(\lambda _i\) is adaptively set, \(\bfS _i\in \bbR ^{i\times i}\) is a regularization matrix for the projected variable \(\bfs \), \(\bfc _i\) is a projected right-hand side, and \(f\) compactly denotes
+products and/or sums of (possibly slight modifications and transposes of) both matrices \(\bfT _{i+1}\) and \(\bar {\bfM }_i\); different choices of \(f\) and \(\bfS _i\) define different solvers. Note that \(\bfR _i^{\dagger }\) and \(\bfL
+_i^{\dagger }\) act as variable ‘preconditioners’ for the constraint and solution subspaces, respectively; their role is to enforce iteration-dependent information useful for a successful regularization. Different choices of \(\widehat {\bfA }\), \(\bfR
+_i^{\dagger }\) and \(\bfL _i^{\dagger }\) allow to handle different instances of <span class="textup">(<a href="paper.html#eq: regPb">2</a>)</span>. Namely:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(a)</span> \(\widehat {\bfA }=[\bfA ^{\top },\, \bfL ^{\top }]^{\top }\), \(\bfR _i^{\dagger }=\mbox {diag}(\bfI ,\,\lambda _i\bfI )\) and \(\bfL _i^{\dagger }=\bfI \) solves Tikhonov problems in
+general form in the 2-norm, with adaptive regularization parameter choice strategy; this provides an alternative to the generalized Krylov method in [6].
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(b)</span> \(\widehat {\bfA }=\bfA \), \(\bfR _i^{\dagger }=\bfI \) and \(\bfL _i^{\dagger }=\mbox {diag}(g_q^{-1}(\bfx _{i-1}))\) (where \(g_q\) is a function that depends on the \(q\)-norm and is
+applied entry-wise) solves the so-called \(\ell _2-\ell _q\) regularized problem, with adaptive regularization parameter choice strategy; this coincides with the basic version of the method in [1] (and can be reformulated to cover all the options in
+[1]).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(c)</span> \(\widehat {\bfA }=[\bfA ^{\top },\, \bfL ^{\top }]^{\top }\), \(\bfR _i^{\dagger }=\mbox {diag}(g_p(\bfR (\bfA \bfx _{i-1}-\bfb )), \lambda _ig_q(\bfL \bfx _{i-1}))\) (where,
+similarly to \(g_q\), \(g_p\) is a function that depends on the \(p\)-norm and is applied entry-wise) and \(\bfL _i^{\dagger }=\bfI \) solves the so-called \(\ell _p-\ell _q\) regularized problem, with adaptive regularization parameter choice
+strategy; this extends the methods in [1] and provides an alternative to the generalized Krylov method in [5]. As a particular case, setting \(\lambda _i=0\), \(i=1,2,\dots \) solves a \(p\)-norm residual minimization problem.
+</p>
+</li>
+</ul>
+
+<p>
+The new solvers are theoretically analyzed by providing optimality properties and by studying the effect of variations in \(\bfR _i^{\dagger }\) and \(\bfL _i^{\dagger }\) on their convergence. The new solvers can eﬀiciently be applied to both
+underdetrmined and overdetermined problems, and successfully extend the current flexible Krylov solvers to handle different matrices \(\bfR \) (typically the inverse square root of the noise covariance matrix), as well as regularization matrices
+\(\bfL \) whose \(\bfA \)-weighted generalized pseudo-inverse cannot be cheaply computed.
+</p>
+
+<p>
+Numerical experiments on inverse problems in imaging, such as deblurring and computed tomography, show that the new solvers are competitive with other state-of-the-art nonsmooth and nonconvex optimization methods, as well as generalized
+Krylov methods.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> J.&nbsp;Chung, S.&nbsp;Gazzola. Flexible Krylov Methods for \(\ell _p\) Regularization. <em>SIAM J. Sci. Comput.</em>, 41(5), pp. S149–S171, 2019.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;Chung, S.&nbsp;Gazzola. Computational Methods for Large-Scale Inverse Problems: A Survey on Hybrid Projection Methods. <em>SIAM Review</em>, 66(2), pp. 205–284, 2024.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.&nbsp;Cornelis, W.&nbsp;Vanroose. Projected Newton method for noise constrained \(\ell _p\) regularization. <em>Inverse Problems</em>, 36 125004, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> S.&nbsp;Gazzola, J.&nbsp;G.&nbsp;Nagy, and M.&nbsp;Sabatè Landman. Iteratively reweighted FGMRES and FLSQR for sparse reconstruction. <em>SIAM J. Sci. Comput.</em>, 43, pp. S47–S69,
+2021.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> G.&nbsp;Huang, A.&nbsp;Lanza, S.&nbsp;Morigi, L.&nbsp;Reichel, F.&nbsp;Sgallari. Majorization–minimization generalized Krylov subspace methods for \(\ell _p-\ell _q\) optimization applied
+to image restoration. <em>BIT Numerical Mathematics</em>, 57(2), pp. 351–378, 2017.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> J.&nbsp;Lampe, L.&nbsp;Reichel, H.&nbsp;Voss. Large-scale Tikhonov regularization via reduction by orthogonal projection. <em>Linear Algebra Appl.</em>, 436(8), pp. 2845–2865, 2012.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.&nbsp;Sabate Landman, J.&nbsp;Chung. Flexible Krylov Methods for Group Sparsity Regularization. <em>Physica Scripta</em>, 2024.
+</p>
+</li>
+</ul>
+
+{% endraw %}

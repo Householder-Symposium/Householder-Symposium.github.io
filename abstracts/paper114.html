@@ -1,0 +1,693 @@
+---
+layout: abstract
+absnum: 114
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Block cross-interactive residual smoothing for Lanczos-type solvers<br />
+for linear systems with multiple right-hand sides
+</h2>
+</div>
+<div class="center">
+
+<p>
+Kensuke Aihara, Akira Imakura, <span class="underline">Keiichi Morikuni</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Block Lanczos-type solvers, such as the block BiCGSTAB method&nbsp;[3], for large sparse linear systems
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                        AX = B,     A ∈ Rn×n ,    B ∈ Rn×s ,   s≪n
+
+-->
+
+<p>
+
+\begin{equation*}
+AX = B, \quad A \in \mathbb {R}^{n\times n}, \quad B \in \mathbb {R}^{n\times s}, \quad s \ll n
+\end{equation*}
+
+</p>
+
+<p>
+often exhibit large oscillations in the residual norms. In finite precision arithmetic, the large oscillations lead to a large residual gap (the difference&nbsp;\(G_{R_k}\) between the recursively updated residual&nbsp;\(R_k\) and the explicitly
+computed residual&nbsp;\(B-AX_k\)) and a loss of attainable accuracy of the approximations, as observed in
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                        ∥GRk ∥ − ∥Rk ∥ ≤ ∥B − AXk ∥ ≤ ∥GRk ∥ + ∥Rk ∥,      GRk := (B − AXk ) − Rk .
+
+-->
+
+<p>
+
+\begin{equation*}
+\| G_{R_k} \| - \| R_k \| \leq \| B - A X_k \| \leq \| G_{R_k} \| + \| R_k \|, \quad G_{R_k} := (B-AX_k)-R_k.
+\end{equation*}
+
+</p>
+
+<p>
+This problem is addressed by using cross-interactive residual smoothing (CIRS). Just as the standard Lanczos-type solvers for a single linear system have been extended to their global and block versions for solving systems with multiple right-hand
+sides, similar extensions of CIRS are naturally considered. While we have developed the global CIRS scheme (Gl-CIRS) in our previous study&nbsp;[1], we propose a block version (Bl-CIRS) in this study. Then, we demonstrate the effectiveness of
+Bl-CIRS from various perspectives, such as theoretical insights into the convergence behaviors of the residual and approximation norms, numerical experiments on model problems, and a detailed rounding error analysis for the residual gap. In
+particular, we show for the case of Bl-CIRS that orthonormalizing the columns of direction matrices plays an important role in reducing the residual gap. The presented analysis also complements our previous study above that includes an evaluation
+for the residual gap of the block Lanczos-type solvers.
+</p>
+<!--
+...... paragraph Advances in residual smoothing ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Advances in residual smoothing</span>
+<a id="paper-autopage-5"></a>
+Block Lanczos-type solvers typically update the \(k\)th approximation&nbsp;\(X_k\) and residual&nbsp;\(R_k\) by using the recursion formulas
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                             Xk+1 = Xk + Pk αk□ ,    Rk+1 = Rk − (APk )αk□ ,   k = 0, 1, . . . ,
+
+-->
+
+<p>
+
+\begin{equation*}
+X_{k+1} = X_k + P_k \alpha _k^\square , \quad R_{k+1} = R_k - (AP_k) \alpha _k^\square , \quad k = 0,1,\dots ,
+\end{equation*}
+
+</p>
+
+<p>
+respectively, where \(P_k \in \mathbb {R}^{n\times s}\) is a direction matrix and \(\alpha _k^\square \in \mathbb {R}^{s\times s}\) is determined under a certain condition. Residual smoothing was introduced by Schönauer&nbsp;[7] to
+Lanczos-type solvers for a single linear system to get a non-increasing sequence of residual norms&nbsp;[8]. A block version of the simple residual smoothing (Bl-SRS) was presented by Jbilou&nbsp;[5]. Let \(X_k\) and \(R_k\) be the \(k\)th primary
+approximation and residual, respectively. Then, new sequences of approximations \(Y_k\) and the corresponding smoothed residuals \(S_k (:= B - A Y_k)\) are generated by the recursion formulas
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                             □                                 □
+                                                                                    Yk+1 = Yk + (Xk+1 − Yk )ηk+1 ,    Sk+1 = Sk + (Rk+1 − Sk )ηk+1 ,       k = 0, 1, . . . ,
+
+-->
+
+<p>
+
+\begin{equation*}
+Y_{k+1} = Y_k + (X_{k+1} - Y_k) \eta _{k+1}^\square , \quad S_{k+1} = S_k + (R_{k+1} - S_k) \eta _{k+1}^\square , \quad k = 0,1,\dots ,
+\end{equation*}
+
+</p>
+
+<p>
+respectively, where \(Y_0 = X_0\), \(S_0 = R_0\), and \(\eta _k^\square \in \mathbb {R}^{s\times s}\) is a parameter matrix. With a local minimization of the smoothed residual norm in choosing \(\eta _k^\square \), a monotonically
+decreasing sequence of \(\| S_k \|\) is obtained.
+</p>
+
+<p>
+Studies on the relationship between residual smoothing and the residual gap have an interesting history. For a single right-hand side case, Gutknecht and Rozložník&nbsp;[4] clarified that the conventional smoothing schemes (including the
+Zhou–Walker implementation&nbsp;[10]) do not help to improve the attainable accuracy. To be more specific, rounding errors accumulated in the primary sequences propagate to the smoothed sequences, and the smoothed true residual norms
+stagnate at the same order of magnitude as the primary ones. In order to remedy this phenomenon, Komeyama et al.&nbsp;[2, 6] modified the Zhou–Walker implementation so that the primary and smoothed sequences influence one another. This
+modification is referred to as cross-interactive residual smoothing (CIRS) and is indeed effective in reducing the residual gap and increasing attainable accuracy. As SRS has been extended to global and block versions&nbsp;[9, 5], CIRS is also
+extended. In this perspective, our previous study [1] presented a global version of CIRS (Gl-CIRS) for the global- and block-type solvers, and therefore, we propose a block version of CIRS (Bl-CIRS) in this study. Table&nbsp;<a
+href="paper.html#tbl">1</a> summarizes the recursion formulas for the aforementioned residual smoothing schemes. This table shows that this study fills a gap in the literature of the CIRS schemes.
+</p>
+
+<figure id="autoid-1" class="table ">
+<div class="center">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Difference in the recursion formulas for updating smoothed residuals.
+</p>
+</div>
+
+<a id="tbl"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdc tvertbarr" style="border-right: 1px solid black">Type</td>
+<td class="tdc">SRS scheme</td>
+<td class="tdc">CIRS scheme</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarr" style="border-right: 1px solid black">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">Standard</td>
+</tr>
+
+<tr>
+<td class="tdc">\(A\boldsymbol {x}=\boldsymbol {b}\)</td>
+</tr>
+</table>
+
+</td>
+<td class="tdc">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">[7, 8]</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\boldsymbol {s}_k = \boldsymbol {s}_{k-1} + \eta _k (\boldsymbol {r}_k-\boldsymbol {s}_{k-1})\),</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\boldsymbol {r}_k, \boldsymbol {s}_{k-1} \in \mathbb {R}^n\), &#x2003;\(\eta _k \in \mathbb {R}\)</td>
+</tr>
+</table>
+
+</td>
+<td class="tdc">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">[2, 6]</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\boldsymbol {s}_k = \boldsymbol {s}_{k-1} - \eta _k A \boldsymbol {v}_k\),</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\boldsymbol {v}_k, \boldsymbol {s}_{k-1} \in \mathbb {R}^n\), &#x2003;\(\eta _k \in \mathbb {R}\)</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarr" style="border-right: 1px solid black">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">Global</td>
+</tr>
+
+<tr>
+<td class="tdc">\(AX=B\)</td>
+</tr>
+</table>
+
+</td>
+<td class="tdc">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">[9]</td>
+</tr>
+
+<tr>
+<td class="tdc">\(S_k = S_{k-1} + \eta _k (R_k-S_{k-1})\),</td>
+</tr>
+
+<tr>
+<td class="tdc">\(R_k, S_{k-1} \in \mathbb {R}^{n\times s}\), &#x2003;\(\eta _k \in \mathbb {R}\)</td>
+</tr>
+</table>
+
+</td>
+<td class="tdc">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">[1]</td>
+</tr>
+
+<tr>
+<td class="tdc">\(S_k = S_{k-1} - \eta _k AV_k\),</td>
+</tr>
+
+<tr>
+<td class="tdc">\(V_k, S_{k-1} \in \mathbb {R}^{n\times s}\), &#x2003;\(\eta _k \in \mathbb {R}\)</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarr" style="border-right: 1px solid black">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">Block</td>
+</tr>
+
+<tr>
+<td class="tdc">\(AX=B\)</td>
+</tr>
+</table>
+
+</td>
+<td class="tdc">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">[5]</td>
+</tr>
+
+<tr>
+<td class="tdc">\(S_k = S_{k-1} + (R_k-S_{k-1}) \eta _k^\square \),</td>
+</tr>
+
+<tr>
+<td class="tdc">\(R_k, S_{k-1} \in \mathbb {R}^{n\times s}\), &#x2003;\(\eta _k^\square \in \mathbb {R}^{s\times s}\)</td>
+</tr>
+</table>
+
+</td>
+<td class="tdc">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">Present study</td>
+</tr>
+
+<tr>
+<td class="tdc">\(S_k = S_{k-1} - (A\tilde {Q}_k)\tilde {\eta }_k^\square \),</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\tilde {Q}_k,S_{k-1}\in \mathbb {R}^{n\times s}\), &#x2003;\(\tilde {\eta }_k^\square \in \mathbb {R}^{s\times s}\)</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</div>
+
+</figure>
+<!--
+...... paragraph Block cross-interactive residual smoothing ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-17">Block cross-interactive residual smoothing</span>
+<a id="paper-autopage-17"></a>
+This study proposes updating approximations and the corresponding residuals by the recursion formulas
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                 □                                                                        □
+                                           smoothed                                            Yk+1 = Yk + Vk+1 ηk+1 ,                                               Sk+1 = Sk − (AVk+1 )ηk+1 ,
+                                                                                                                        □                                                                         □
+                                           primary                                            Xk+1 = Yk+1 + Vk+1 (Is − ηk+1 ),                                       Rk+1 = Sk+1 − (AVk+1 )(Is − ηk+1 ),
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp; \text {smoothed} &amp; Y_{k+1} &amp; = Y_k + V_{k+1} \eta _{k+1}^\square , &amp; S_{k+1} &amp; = S_k - (AV_{k+1}) \eta _{k+1}^\square , \\ &amp; \text {primary} &amp; X_{k+1} &amp; = Y_{k+1} + V_{k+1} (I_s -
+\eta _{k+1}^\square ), &amp; R_{k+1} &amp; = S_{k+1} - (AV_{k+1}) (I_s -\eta _{k+1}^\square ),
+\end{align*}
+respectively, for \(k = 0,1,\dots \) with \(Y_0 = X_0\) and \(S_0 = R_0\) so that the primary and smoothed sequences influence one another, where \(V_{k+1} = V_k (I_s - \eta _k^\square ) + \tilde {P}_k\) is an auxiliary matrix for
+\(\eta _0^\square = O \in \mathbb {R}^{s\times s}\) and \(V_0 = O \in \mathbb {R}^{n\times s}\). Here, \(\tilde {P}_k \in \mathbb {R}^{n\times s}\) is a direction matrix in the recursion formula \(X_{k+1} = X_k + \tilde
+{P}_k\). Again with a local minimization of the smoothed residual norm in choosing \(\eta _k^\square \), a monotonically decreasing sequence of \(\| S_k \|\) is obtained. Note that the essential difference of Bl-CIRS from Gl-CIRS&nbsp;[1,
+Algorithm 3.1] is that the smoothing parameter&nbsp;\(\eta _k^\square \) of Bl-CIRS is an \(s\)-by-\(s\) matrix instead of a scalar.
+</p>
+
+<p>
+For numerical stability, Bl-CIRS needs to orthonormalize the columns of the auxiliary matrix \(V_k\) for each iteration. Let \(V_k = \tilde {Q}_k \tilde {\xi }_k\) be the QR decomposition of \(V_k\), where \(\tilde {Q}_k \in \mathbb
+{R}^{n\times s}\) and \(\tilde {\xi }_k \in \mathbb {R}^{s\times s}\) are the Q- and R-factors, respectively. With the auxiliary matrix&nbsp;\(\tilde {\eta }_k^\square := \tilde {\xi }_k \eta _k^\square \), the above formulas are
+equivalently rewritten as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                               □                                                                  □
+                                smoothed                                   Yk+1 = Yk + Q̃k+1 η̃k+1 ,                                       Sk+1 = Sk − (AQ̃k+1 )η̃k+1 ,
+                                                                                                         □                                                                  □
+                                primary                                   Xk+1 = Yk+1 + Q̃k+1 (ξ˜k+1 − η̃k+1 ),                           Rk+1 = Sk+1 − (AQ̃k+1 )(ξ˜k+1 − η̃k+1 )
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp; \text {smoothed} &amp; Y_{k+1} &amp; = Y_k + \tilde {Q}_{k+1} \tilde {\eta }_{k+1}^\square , &amp; S_{k+1} &amp; = S_k - (A\tilde {Q}_{k+1}) \tilde {\eta }_{k+1}^\square , &amp; \\ &amp; \text {primary} &amp;
+X_{k+1} &amp; = Y_{k+1} + \tilde {Q}_{k+1} (\tilde {\xi }_{k+1} - \tilde {\eta }_{k+1}^\square ), &amp; R_{k+1} &amp; = S_{k+1} - (A \tilde {Q}_{k+1}) (\tilde {\xi }_{k+1} - \tilde {\eta }_{k+1}^\square ) &amp;
+\end{align*}
+together with \(V_{k+1} = \tilde {Q}_k (\tilde {\xi }_k - \tilde {\eta }_k^\square ) + \tilde {P}_k\) for \(k = 0,1,\dots \).
+</p>
+
+<p>
+Our main results via a rounding error analysis shows that Bl-CIRS with the orthonormalization strategy suppresses the residual gap.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-18"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> In finite precision arithmetic, let \(X_k \in \mathbb {F}^{n\times s}\) and \(R_k \in \mathbb
+{F}^{n\times s}\) be the \(k\)th approximation and residual generated by the recursion formulas
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                    b k−1 αk−1
+                        Xk = Xk−1 + Q      □
+                                               ,                 b k−1 )αk−1
+                                                   Rk = Rk−1 − (AQ       □
+                                                                             ,   k = 0, 1, . . . ,                    (1)                                                                                     --><a id="eq:X_k,R_k"></a><!--
+
+-->
+
+<p>
+
+
+\begin{equation}
+X_k = X_{k-1} + \widehat {Q}_{k-1} \alpha _{k-1}^\square , \quad R_k = R_{k-1} - (A\widehat {Q}_{k-1}) \alpha _{k-1}^\square , \quad k = 0,1,\dots , \label {eq:X_k,R_k}
+\end{equation}
+
+
+</p>
+
+<p>
+respectively, where \(\mathbb {F} \subset \mathbb {R}\) is a set of floating point numbers and \(\widehat {Q}_{k-1}\) is a Q-factor of the direction matrix&nbsp;\(P_{k-1}\) obtained from the QR decomposition with Givens rotations or
+Householder transformations. Then, with \(X_0 = O\), the residual gap&nbsp;\(G_{R_k}\) satisfies the bound
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                         √           
+                                                                                               ∥GRk ∥ < 8 sγm+3s + γ1 k∥A∥ max ∥Xi ∥ + kγ1 max ∥Ri ∥,
+                                                                                                                            0<i≤k          0<i≤k
+
+
+-->
+
+<p>
+
+
+\begin{equation*}
+\| G_{R_k} \| &lt; \left ( 8 \sqrt {s} \gamma _{m+3s} + \gamma _1 \right ) k \| A \| \max _{0&lt;i\leq k} \| X_i \| + k\gamma _1 \max _{0&lt;i\leq k} \| R_i \|,
+\end{equation*}
+
+
+</p>
+
+<p>
+where \(\gamma _k := k \mathbf {u} / (1-k\mathbf {u})\) with a unit roundoff&nbsp;\(\mathbf {u}\) and \(m\) is the maximum number of nonzero entries per row of \(A\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In the case of Bl-CIRS, replacing \(X_k\) and \(R_k\) by \(Y_k\) and \(S_k\), respectively, in <span class="textup">(<a href="paper.html#eq:X_k,R_k">1</a>)</span>, this theorem holds for the residual gap&nbsp;\(G_{S_k} = (B-AY_k)-S_k\).
+Therefore, even when using an inexact orthonormalization for the columns of iteration matrices, Bl-CIRS in which the residual and approximation norms converge smoothly is indeed useful to reduce the residual gap. This theoretical result is
+consistent with our numerical results. Numerical experiments demonstrate that Bl-CIRS is effective for suppressing the residual gap and improving the attainable accuracy of the approximations.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-19">References</h4>
+<a id="paper-autopage-19"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> <span class="textsc">K.&nbsp;Aihara, A.&nbsp;Imakura, and K.&nbsp;Morikiuni</span>, <i>Cross-interactive residual smoothing for global and block Lanczos-type solvers for linear systems
+with multiple right-hand sides</i>, SIAM J. Matrix Anal. Appl., 43 (2022), pp.&nbsp;1308–1330.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> <span class="textsc">K.&nbsp;Aihara, R.&nbsp;Komeyama, and E.&nbsp;Ishiwata</span>, <i>Variants of residual smoothing with a small residual gap</i>, BIT, 59 (2019), pp.&nbsp;565–584.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> <span class="textsc">A. El Guennouni, K. Jbilou, and H. Sadok</span>, <i>A block version of BiCGSTAB for linear systems with multiple right-hand sides</i>, Electron. Trans. Numer.
+Anal., 16 (2003), pp.&nbsp;129–142.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> <span class="textsc">M. H. Gutknecht and M. Rozložník</span>, <i>Residual smoothing techniques: Do they improve the limiting accuracy of iterative solvers?</i>, BIT, 41 (2001),
+pp.&nbsp;86–114.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> <span class="textsc">K.&nbsp;Jbilou</span>, <i>Smoothing iterative block methods for linear systems with multiple right-hand sides</i>, J. Comput. Appl. Math., 107 (1999), pp.&nbsp;97–109.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> <span class="textsc">R.&nbsp;Komeyama, K.&nbsp;Aihara, and E.&nbsp;Ishiwata</span>, <i>Reconsideration of residual smoothing technique for improving the accuracy of approximate
+solutions of CGS-type iterative methods</i>, Trans. Japan Soc. Ind. Appl. Math., 28 (2018), pp.&nbsp;18–38.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> <span class="textsc">W.&nbsp;Schönauer</span>, <i>Scientific Computing on Vector Computers</i>, Elsevier, Amsterdam, 1987.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> <span class="textsc">R.&nbsp;Weiss</span>, <i>Parameter-free iterative linear solvers</i>, Akademie Verlag, Berlin, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> <span class="textsc">J. Zhang and F. Dai</span>, <i>Global CGS algorithm for linear systems with multiple right-hand sides</i>, Numer. Math. J. Chinese Univ., 30 (2008), pp.&nbsp;390–399.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> <span class="textsc">L. Zhou and H. F. Walker</span>, <i>Residual smoothing techniques for iterative methods</i>, SIAM J. Sci. Comput., 15 (1994), pp.&nbsp;297–312.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

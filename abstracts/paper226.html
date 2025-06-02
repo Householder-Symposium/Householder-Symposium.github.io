@@ -1,0 +1,715 @@
+---
+layout: abstract
+absnum: 226
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\firsthdashline }[1][]{\hdashline }\)
+
+\(\let \lasthdashline \firsthdashline \)
+
+\(\let \cdashline \cline \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\qr }{\mathrm {qr}}\)
+
+\(\newcommand {\bC }{\mathbb {C}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Proving Rapid Global Convergence for the Shifted QR Algorithm
+</h2>
+</div>
+<div class="center">
+
+<p>
+Jess Banks, <span class="underline">Jorge Garza-Vargas</span>, Nikhil Srivastava
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The design of eﬀicient and reliable algorithms for computing the eigenvalues and eigenvectors of a matrix is of unquestionable importance in both science and engineering. However, despite significant advancements in various practical aspects,
+fundamental theoretical questions about the eigenvalue problem remain poorly understood. In this talk I will discuss work [BGVSa, BGVSb, BGVSc] that provides nearly optimal rigorous guarantees, on all inputs, for the shifted QR algorithm.
+Similar results were established by Wilkinson in [Wil68] and Dekker and Traub in [DT71] for Hermitian inputs; however, despite sustained interest and several attempts, the non-Hermitian case remained elusive for the last five decades.
+</p>
+<!--
+...... paragraph The QR iteration. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">The QR iteration.</span>
+<a id="paper-autopage-5"></a>
+The QR algorithm, which originated in the works of Francis [Fra61, Fra62] and Kublanovskaya [Kub62] (see [GU09] for some history), has been listed as one of the top ten most influential algorithms of the 20th century [DS00] and is the preferred
+method for computing the full eigendecomposition of an arbitrary input matrix.
+</p>
+
+<p>
+In its simpler form, the QR algorithm starts by putting the input matrix \(A\in \bC ^{n\times n}\) into Hessenberg form, that is, it computes a unitary matrix \(U\) such that \(H = U^*AU\) is an upper Hessenberg matrix.<sup>1</sup> Then, it
+computes a sequence of Hessenberg matrices \(H_0=H, H_1, H_2 \dots \) via the iteration:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                   [Qt , Rt ] = qr(Ht ),                                                              (1)                  --><a id="eq:qr"></a><!--
+                                                                                                                   Ht+1 = Q∗t Ht Qt .
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+&amp; \label {eq:qr} [Q_t, R_t] = \qr (H_t), \\ \nonumber &amp; H_{t+1} = Q_t^* H_t Q_t.
+\end{align}
+Where \(Q_t R_t =H_t\) is the QR decomposition of \(H_t\), and from \(H_{t+1} = Q_t^* H_t Q_t\) we see that
+</p>
+
+<p>
+\[A = U_t H_t U_t^*\quad \text {for}\quad U_t = U Q_0 \cdots Q_t .\]
+</p>
+
+<p>
+This iteration has the fascinating property (see [Wat82]) that for generic<sup>2</sup> inputs \(A\), as \(t\) goes to infinity, the \(H_t\) converge to an upper triangular matrix, say, \(T\). In such situation, we can set \(V = \lim _{t\to \infty }
+U_t\), so that
+</p>
+
+<p>
+\[A = V T V^*,\]
+</p>
+
+<p>
+therefore obtaining the Schur decomposition of \(A\).<sup>3</sup> The appeal of this method resides on the simplicity of the iteration described in (<a href="paper.html#eq:qr">1</a>). The drawback is that the convergence \(H_t\to T\)
+happens at a prohibitively slow rate for most inputs, ultimately turning it into an impractical algorithm.
+</p>
+<!--
+...... paragraph The shifted QR algorithm. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">The shifted QR algorithm.</span>
+<a id="paper-autopage-6"></a>
+In practice the QR iteration is endowed with “shifts” that seek to accelerate convergence. Concretely, at each time \(t\), a polynomial \(p_t(z)\) is computed as a function of \(H_t\) (see Wilkinson’s shift below for an example) and the iteration
+now is given by:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                   [Qt , Rt ] = qr(pt (Ht )),                                                (2)                      --><a id="eq:shiftedqr"></a><!--
+                                                                                                                   Ht+1 = Q∗t Ht Qt .
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+&amp; \label {eq:shiftedqr} [Q_t, R_t] = \qr (p_t(H_t)), \\ &amp; H_{t+1} = Q_t^* H_t Q_t. \nonumber
+\end{align}
+Intuitively, one should think of the roots of \(p_t(z)\) as “guesses” for the eigenvalues of \(H_t\) (which by unitary equivalence are the same as the eigenvalues of \(A\)) and, the better the guesses the more progress towards convergence one will
+make while going from \(H_t\) to \(H_{t+1}\). Moreover, the closer \(H_t\) is to an upper triangular matrix, the more its eigenvalues have been “revealed”, which allows one to make better guesses, all together yielding a virtuous cycle that is in part
+responsible for the undefeated performance of the shifted QR algorithm. This intuition can be made rigorous by understanding the connection between the shifted QR algorithm and shifted inverse iteration [Wat82, Wat08], where the aforementioned
+“virtuous cycle” can be established via a <em>local</em> analysis of convergence, e.g. see [Par74] or [Par98, §4.7].
+</p>
+
+<p>
+The chosen algorithm for computing the \(p_t(z)\) as a function of the \(H_t\) is refered to as the <em>shifting strategy</em>, and the main purpose of any shifting strategy is to guarantee rapid <em>global</em> convergence, that is, rapid
+convergence to an upper triangular matrix regardless of the starting condition \(H_0\). Although local convergence is intuitive (as explained above) and typically easy to establish, devising a shifting strategy that ensures rapid global convergence
+remained an important open problem throughout the years [Par74, Mol78, Dem97, Sma97, HDG\(^{+}\)15].
+</p>
+<!--
+...... paragraph Exploiting the Hessenberg structure. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">Exploiting the Hessenberg structure.</span>
+<a id="paper-autopage-7"></a>
+Working with Hessenberg matrices has several computational advantages that ultimately permit obtaining the full eigendecomposition of the input in nearly \(n^3\) operations, which is the initial cost of putting the input matrix into Hessenberg form.
+</p>
+
+<p>
+<em>Easy deflation.</em> In practice, one can only hope to compute an approximate Schur form (resp. approximate eigedecomposition) for the input matrix. In turn, when seeking to solve the an approximate version of the eigenvalue problem, one
+can exploit the Hessenberg structure to accelerate the algorithm as follows. We will say that an upper Hessenberg matrix \(H\) is \(\delta \)-decoupled if one of its subdiagonals satisfies \(|H(i, i-1)| \leq \delta \|H\|\). So, in the iteration (<a
+href="paper.html#eq:shiftedqr">2</a>), once one of the matrices \(H_t\) is \(\delta \)-<em>decoupled</em> for some \(\delta \) small enough, one can zero out the small subdiagonal:
+</p>
+
+<p>
+\[\left ( \begin {array}{cccccc} \ast &amp; \ast &amp; \ast &amp; \ast &amp; \ast \\ \ast &amp; \ast &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; \text {\small small} &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 0
+&amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 0 &amp; 0 &amp; \ast &amp; \ast \end {array} \right ) \longrightarrow \left ( \begin {array}{cc:cccc} \ast &amp; \ast &amp; \ast &amp; \ast &amp; \ast \\ \ast &amp; \ast
+&amp; \ast &amp; \ast &amp; \ast \\ \hdashline 0 &amp; 0 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 0 &amp; \ast &amp; \ast &amp; \ast \\ 0 &amp; 0 &amp; 0 &amp; \ast &amp; \ast \end {array} \right ).\]
+</p>
+
+<p>
+This procedure, called <em>deflation</em>, incurs a small error in the computation but has the advantage that the resulting matrix is now block upper triangular, and therefore the spectrum of the big matrix is the union of the spectra of each of the
+smaller block diagonal parts, which happen to again have a Hessenberg structure. Moreover, the eigenvectors of the big matrix can be related in a similar way to the eigenvectors of the smaller diagonal blocks. With this, the eigenvalue problem has
+been reduced to two subproblems of smaller dimension, on which one can again call the QR algorithm.
+</p>
+
+<p>
+<em>Implicit shifts.</em> Another advantage of the Hessenberg structure is that in the iteration (<a href="paper.html#eq:shiftedqr">2</a>) one can compute \(H_{t+1}\) from \(H_t\) without having to explicitly compute \(p_t(H_t)\).
+Concretely, if \(p_t(z)\) is of degree \(k\) and \(H_t\) is of dimension \(n\), one can compute \(H_{t+1}\) from \(H_t\) in \(O(kn^2)\) operations using a procedure commonly known as <em>chasing the bulge</em> (see [Tis96] or [Wat08]).
+Moreover, when the input matrix is Hermitian, the iterates \(H_t\) are tridiagonal, and in this case \(H_{t+1}\) can be computed from \(H_t\) in \(O(kn)\) operations.
+</p>
+
+<p>
+<em>Meaningful corners.</em> If \(H\) is a normal upper Hessenberg matrix then the lower-right corners of \(H\) can be related to the orthogonal polynomials associated to a natural probability measure supported on the spectrum of \(H\), and,
+there is a natural potential theory interpretation of the subdiagonals of such corners. In the general non-normal case these interpretations are no longer valid, but still provide great intuition for the dynamics of the shifted QR algorithm. In part, this
+is the reason why many of the shifting strategies use small lower-right corners of the \(H_t\) to compute \(p_t(z)\).
+</p>
+<!--
+...... paragraph Previous theoretical guarantees. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-8">Previous theoretical guarantees.</span>
+<a id="paper-autopage-8"></a>
+When the input \(A\in \bC ^{n\times n}\) is Hermitian, and therefore all the iterates \(H_t\) are too, Wilkinson introduced a shifting strategy that guarantees rapid global convergence. At time \(t\), Wilkinson’s shift computes the two
+eigenvalues of the lower-right \(2\times 2\) matrix of \(H_t\) and takes the one (call it \(w_t\)) that is closest to \(H_{t}(n, n)\) to then set \(p_t(z) = z-w_t\). In [Wil68] Wilkinson proved that for any initial Hermitian \(H_0\) , if one runs the
+iteration (<a href="paper.html#eq:shiftedqr">2</a>) using his shifting strategy, it holds that \(\lim _{t\to \infty } H_t(n, n-1)=0\), which in particular implies that for any \(\delta &gt;0\), the matrix \(H_t\) is \(\delta \)-decoupled
+once \(t\) is large enough. This was then revisited by Dekker and Traub [DT71] who obtained a rate of convergence for Wilkinson’s shift by showing that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                         |Ht (n, n − 1)2 Ht (n − 1, n − 2)|
+                                              |Ht+1 (n, n − 1)2 Ht+1 (n − 1, n − 2)| ≤                  √                   ,   for all t ≥ 0.                                    (3)                      --><a id="eq:geometricdecrease"></a><!--
+                                                                                                          2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:geometricdecrease} |H_{t+1}(n, n-1)^2 H_{t+1}(n-1, n-2)| \leq \frac {|H_{t}(n, n-1)^2 H_t(n-1, n-2)|}{\sqrt {2}}, \quad \text {for all }t\geq 0.
+\end{equation}
+
+</p>
+
+<p>
+In particular, this implies that for any \(\delta &gt;0\), \(\delta \)-decoupling occurs in \(O(\log (1/\delta ))\) iterations. Combining this with the deflation technique and the implicit shifts described above, one gets that any Hermitian
+matrix can be fully diagonalized to accuracy \(\delta \) in \(O(n^3+ \log (1/\delta )n^2)\) operations.
+</p>
+
+<p>
+The case in which the input matrix \(A\in \bC ^{n\times n}\) is unitary was later solved by Eberlein and Huang [EH75] and Wang and Gragg [WG02]. When \(H_0\) is unitary the Wilkinson shift is no longer guaranteed to eventually produce
+decoupling. In fact, if the Wilkinson shift is used it can occur that \(H_0=H_1=H_2= \cdots \), and similarly many other natural shifting strategies have certain unitary matrices as fixed points (see [Par66]). The insight of Eberlein and Huang [EH75]
+was that these commonly used shifting strategies could be combined with an <em>exceptional shift</em> that avoids stagnation. In essence, their idea was to choose a <em>main shift</em> (e.g. one could choose the Wilkinson shift), and then exploit
+the knowledge that the input matrix is unitary to identify fixed points for the main shift, to then scape them by invoking the exceptional shift whenever necessary. Later, Gragg and Wang [WG02] revisited this idea and showed that, on unitary
+inputs, a mixed strategy that combines the Wilkinson shift and an exceptional shift satisfies a more complicated version of (<a href="paper.html#eq:geometricdecrease">3</a>). Their analysis implies that this mixed strategy achieves \(\delta
+\)-decoupling in \(O(\log (1/\delta ))\) iterations, ultimately implying that any unitary input can be diagonalized to accuracy \(\delta \) in \(O(\log (1/\delta )n^3)\) operations.
+</p>
+
+<p>
+Beyond Hermitian and unitary matrices not much was known and proving rapid global convergence was open even in the normal case. We refer the reader to [BGVSa, §1.2] for a comprehensive literature review.
+</p>
+<!--
+...... paragraph The main result. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-9">The main result.</span>
+<a id="paper-autopage-9"></a>
+In the series [BGVSa, BGVSb, BGVSc] we introduced a shifting strategy that provably achieves global rapid convergence (in the space of all matrices). Hereon, if all the \(p_t(z)\) in a shifting strategy are of degree \(k\) we will say that the shifting
+strategy is of degree \(k\).
+</p>
+
+<p>
+The condition number of the eigenvector matrix turned to be a fundamental quantity in our analysis. To be precise, if \(A\in \bC ^{n\times n}\) is diagonalizable, define
+</p>
+
+<p>
+\[\kappa _V(A) = \inf _{V : A = VDV^{-1}} \|V\| \|V^{-1}\|,\]
+</p>
+
+<p>
+where \(\|\cdot \|\) denotes the operator norm and the infimum runs over all diagonalizations of \(A\). Note that when \(A\) is normal one has \(\kappa _V(A)=1\) and when \(A\) is non-diagonalizable the convention is that \(\kappa
+_V(A)=\infty \), so \(\kappa _V(\cdot )\) can be viewed as a measure of non-normality. Fundamentally, [BGVSa] proves the following.<sup>4</sup>
+</p>
+
+<p>
+<b>Theorem 1.</b> <em>For every positive integer \(k\), there exists a shifting strategy of degree \(k\) that is ensured to achieve \(\delta \)-decoupling in \(\log (1/\delta )\) iterations provided that the starting matrix \(H_0\) satisfies</em>
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                           (                     )
+                                                                    log(1 + κV (H0 )) · log 1 + log(1 + κV (H0 )) ≤ ck,                                                                    (4)                     --><a id="eq:degreebound"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:degreebound} \log (1+\kappa _V(H_0)) \cdot \log \big (1+ \log (1+\kappa _V(H_0))\big ) \leq ck,
+\end{equation}
+
+</p>
+
+<p>
+<em>where \(c&gt;0\) is some absolute constant.</em>
+</p>
+
+<p>
+In some sense, our analysis articulates that the complexity of shifted QR is tied to \(\kappa _V\) of the input. In particular, the above theorem implies that rapid global convergence on normal matrices is possible using a shifting strategy of degree
+\(O(1)\), just as in the case of Hermitian and unitary matrices. In contrast, when the input is non-diagonalizable the strategy needed is “infinitely complex” and the theorem becomes vacuous. That said, the latter situation can be addressed using an
+idea from smoothed analysis [ST04] which in the context of the eigenvalue problem can be traced back to Davies [Dav08]. In short, to obtain guarantees for arbitrary inputs, instead of running the algorithm on the original input matrix \(A\in \bC
+^{n\times n}\) we run it on \(A+\gamma G_n\), where \(\gamma G_n\) is a tiny random perturbation of \(A\). One can then invoke results from random matrix theory (e.g. from [ABB\(^{+}\)18, BKMS21, BGVKS24, JSS21]), which for example
+imply that if \(G_n\) is a normalized \(n\times n\) Ginibre matrix<sup>5</sup>, \(\|A\|\leq 1\), and \(\gamma &gt;0\), with high probability
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                    n4
+                                                                                  κV (A + γGn ) ≤      .                                                                                 (5)                     --><a id="eq:boundonkappaV"></a><!--
+                                                                                                    γ
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:boundonkappaV} \kappa _V(A+ \gamma G_n) \leq \frac {n^4}{\gamma }.
+\end{equation}
+
+</p>
+
+<p>
+Certainly, this <em>preprocessing</em> random perturbation incurs an error in the computation (just as the deflation step does), but if the scale of \(\gamma \) is chosen appropriately, it will not preclude one from being able to obtain an accurate
+approximate version of the eigenvalue problem. Then, putting (<a href="paper.html#eq:degreebound">4</a>) and (<a href="paper.html#eq:boundonkappaV">5</a>) together, in [BGVSb] we were able to show that a randomized version of the
+QR algorithm can diagonalize any input matrix \(A\in \bC ^{n\times n}\) with accuracy \(\delta \) in \(O(n^3 \log (n/\delta )^2 \log \log (n/\delta )^2)\) operations.
+</p>
+<!--
+...... paragraph Our shifting strategy. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-10">Our shifting strategy.</span>
+<a id="paper-autopage-10"></a>
+As in [DT71] and other works that served as inspiration (e.g. [Bat94]), we used the lower subdiagonal entries of the iterates \(H_t\) to keep track of progress towards convergence. Specifically, to analyze the shifting strategy of degree \(k\) mentioned
+in Theorem 1, we used the potential function \(\psi _k\) which on a Hessenberg matrix \(H\) is defined as
+</p>
+
+<p>
+\[\psi _k(H) = |H(n, n-1)H(n-1, n-2)\cdots H(n-k+1, n-k)|^{\frac {1}{k}}.\]
+</p>
+
+<p>
+Then, as in [EH75, WG02], we used a mixed strategy consisting of a main shift and an exceptional shift. If at time \(t\) an iteration with the main shift <em>did not</em> satisfy that \(\psi _k(H_{t+1}) \leq .8 \psi _k(H_t)\) (i.e. if progress is
+not being made), then our shifting strategy recomputes \(H_{t+1}\), this time using the exceptional shift, and in [BGVSa] we show that provided that \(\kappa _V\) of the input matrix satisfies the bound (<a
+href="paper.html#eq:boundonkappaV">5</a>) the exceptional shift <em>does</em> succeed in guaranteeing \(\psi _k(H_{t+1})\leq .8 \psi _k(H_t)\). Our mixed strategy then guarantees a geometric decrease of the quantity \(\psi _k(H_t)\),
+which in turn implies that \(\delta \)-decoupling will occur after \(O(\log (1/\delta ))\) iterations.
+</p>
+
+<p>
+<b>A final caveat.</b> Our theoretical algorithm is not a prescription for practitioners and does not seek to replace the current very eﬀicient LAPACK routines, which have been fine-tuned over the decades and for which several patches have been
+added to avoid convergence failures. We do warn the reader however, that such routines are by now quite sophisticated and do not come with theoretical guarantees. This does make one wonder if there is an algorithm that is as eﬀicient as the
+existing implementations, but that is conceptually simple and for which one can give rigorous guarantees.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-11"></a>
+<p>
+<sup>1</sup>&nbsp;This can be done by applying a sequence of \(n-1\) suitably chosen Householder transformations. This procedure is numerically stable and can be executed in \(O(n^3)\) arithmetic operations, see [Wat08] for details.
+</p>
+
+<p>
+<sup>2</sup>&nbsp;That is, all but a set of Lebesgue measure zero.
+</p>
+
+<p>
+<sup>3</sup>&nbsp;Recall that one can read the eigenvalues of \(A\) from the diagonal entries of \(T\), and if desired, easily compute the eigenvectors of \(A\) from the columns of \(V\).
+</p>
+
+<p>
+<sup>4</sup>&nbsp;This theorem was not stated verbatim and strictly speaking only \(k\)’s that are powers of 2 were treated in the paper, however, the ideas in [BGVSa] yield, with very little extra work, the theorem stated here.
+</p>
+
+<p>
+<sup>5</sup>&nbsp;That is, and \(n\times n\) matrix with i.i.d. complex Gaussian entries of variance \(\frac {1}{n}.\)
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-12">References</h4>
+<a id="paper-autopage-12"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[ABB\(^{+}\)18]&#x2003;</span> Diego Armentano, Carlos Beltrán, Peter Bürgisser, Felipe Cucker, and Michael Shub. A stable, polynomial-time algorithm for the eigenpair problem. <i>Journal of the European
+Mathematical Society</i>, 20(6):1375–1437, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Bat94]&#x2003;</span> Steve Batterson. Convergence of the Francis shifted QR algorithm on normal matrices. <i>Linear algebra and its applications</i>, 207:181–195, 1994.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BGVKS24]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, Archit Kulkarni, and Nikhil Srivastava. Overlaps, eigenvalue gaps, and pseudospectrum under real ginibre and absolutely continuous perturbations. In
+<i>Annales de l’Institut Henri Poincare (B) Probabilites et statistiques</i>, volume&nbsp;60, pages 2736–2766. Institut Henri Poincaré, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BGVSa]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, and Nikhil Srivastava. Global convergence of Hessenberg shifted QR I: Dynamics. <i>To appear in Foundations of Computational Mathematics</i>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BGVSb]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, and Nikhil Srivastava. Global convergence of Hessenberg shifted QR II: Numerical stability. <i>To appear in SIAM Journal on Matrix Analysis and
+Applications</i>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BGVSc]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, and Nikhil Srivastava. Global convergence of Hessenberg shifted QR III: Approximate Ritz values via shifted inverse iteration. <i>To appear in SIAM Journal
+on Matrix Analysis and Applications</i>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BKMS21]&#x2003;</span> Jess Banks, Archit Kulkarni, Satyaki Mukherjee, and Nikhil Srivastava. Gaussian regularization of the pseudospectrum and Davies’ conjecture. <i>Communications on Pure and Applied
+Mathematics</i>, 74(10):2114–2131, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Dav08]&#x2003;</span> E.&nbsp;Brian Davies. Approximate diagonalization. <i>SIAM Journal on Matrix Analysis and Applications</i>, 29(4):1051–1064, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Dem97]&#x2003;</span> James&nbsp;W Demmel. <i>Applied numerical linear algebra</i>. SIAM, 1997.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DS00]&#x2003;</span> Jack Dongarra and Francis Sullivan. Guest editors introduction to the top 10 algorithms. <i>Computing in Science &amp; Engineering</i>, 2(01):22–23, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DT71]&#x2003;</span> Theodorus&nbsp;J Dekker and Joseph&nbsp;F Traub. The shifted QR algorithm for Hermitian matrices. <i>Linear Algebra Appl</i>, 4:137–154, 1971.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[EH75]&#x2003;</span> Patricia&nbsp;J Eberlein and C.&nbsp;P. Huang. Global convergence of the QR algorithm for unitary matrices with some results for normal matrices. <i>SIAM Journal on Numerical
+Analysis</i>, 12(1):97–104, 1975.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Fra61]&#x2003;</span> John&nbsp;GF Francis. The QR transformation a unitary analogue to the LR transformation—part 1. <i>The Computer Journal</i>, 4(3):265–271, 1961.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Fra62]&#x2003;</span> John&nbsp;GF Francis. The QR transformation—part 2. <i>The Computer Journal</i>, 4(4):332–345, 1962.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GU09]&#x2003;</span> Gene Golub and Frank Uhlig. The QR algorithm: 50 years later its genesis by John Francis and Vera Kublanovskaya and subsequent developments. <i>IMA Journal of Numerical Analysis</i>,
+29(3):467–485, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[HDG\(^{+}\)15]&#x2003;</span> Nicholas&nbsp;J Higham, Mark&nbsp;R Dennis, Paul Glendinning, Paul&nbsp;A Martin, Fadil Santosa, and Jared Tanner. <i>The Princeton companion to applied mathematics</i>.
+Princeton University Press Princeton, NJ, USA:, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[JSS21]&#x2003;</span> Vishesh Jain, Ashwin Sah, and Mehtaab Sawhney. On the real Davies’ conjecture. <i>The Annals of Probability</i>, 49(6):3011–3031, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Kub62]&#x2003;</span> Vera&nbsp;N Kublanovskaya. On some algorithms for the solution of the complete eigenvalue problem. <i>USSR Computational Mathematics and Mathematical Physics</i>, 1(3):637–657, 1962.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Mol78]&#x2003;</span> Cleve&nbsp;B Moler. Three research problems in numerical linear algebra. <i>Numerical Analysis</i>, 22:1–18, 1978.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Par66]&#x2003;</span> Beresford Parlett. Singular and invariant matrices under the QR transformation. <i>Mathematics of Computation</i>, 20(96):611–615, 1966.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Par74]&#x2003;</span> Beresford&nbsp;N Parlett. The Rayleigh quotient iteration and some generalizations for nonnormal matrices. <i>Mathematics of Computation</i>, 28(127):679–693, 1974.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Par98]&#x2003;</span> Beresford&nbsp;N Parlett. <i>The symmetric eigenvalue problem</i>. SIAM, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Sma97]&#x2003;</span> Steve Smale. Complexity theory and numerical analysis. <i>Acta numerica</i>, 6:523–551, 1997.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[ST04]&#x2003;</span> Daniel&nbsp;A Spielman and Shang-Hua Teng. Smoothed analysis of algorithms: Why the simplex algorithm usually takes polynomial time. <i>Journal of the ACM (JACM)</i>, 51(3):385–463,
+2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Tis96]&#x2003;</span> Francoise Tisseur. Backward stability of the QR algorithm. Technical report, 239, UMR 5585, Lyon Saint-Etienne, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Wat82]&#x2003;</span> David&nbsp;S Watkins. Understanding the QR algorithm. <i>SIAM review</i>, 24(4):427–440, 1982.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Wat08]&#x2003;</span> David&nbsp;S Watkins. The QR algorithm revisited. <i>SIAM review</i>, 50(1):133–145, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[WG02]&#x2003;</span> Tai-Lin Wang and William Gragg. Convergence of the shifted QR algorithm for unitary Hessenberg matrices. <i>Mathematics of computation</i>, 71(240):1473–1496, 2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Wil68]&#x2003;</span> James&nbsp;Hardy Wilkinson. Global convergence of tridiagonal QR algorithm with origin shifts. <i>Linear Algebra and its Applications</i>, 1(3):409–420, 1968.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

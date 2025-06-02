@@ -1,0 +1,360 @@
+---
+layout: abstract
+absnum: 32
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+The Stability of Split-Preconditioned FGMRES in Four Precisions
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Erin Carson</span>, Ieva Daužickaitė
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the problem of solving a linear system of equations \(Ax=b\), where \(A \in \mathbb {R}^{n \times n}\) is nonsymmetric and \(x,b \in \mathbb {R}^n\). When \(A\) is large and sparse, the iterative generalized minimal residual
+method (GMRES) or its flexible variant (FGMRES) are often used. In these and other Krylov subspace methods, preconditioning is an essential ingredient. Given a preconditioner \(P = M_L M_R\), the original problem is transformed to
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                              ML−1 AMR
+                                                                                     −1
+                                                                                        x̃ = ML−1 b,               −1
+                                                                                                            where MR  x̃ = x.--><a id="eq:Ax=b_split_precond"></a><!--
+
+-->
+
+<p>
+
+\begin{equation*}
+M_L^{-1} A M_R^{-1} \tilde {x} = \, M_L^{-1} b, \label {eq:Ax=b_split_precond}\qquad \textrm {where } M_R^{-1} \tilde {x} = \, x.
+\end{equation*}
+
+</p>
+
+<p>
+The emergence of mixed precision hardware has motivated work in developing mixed precision algorithms for matrix computations; see, e.g., the recent survey [4]. Modern GPUs offer double, single, half, and even quarter precision, along with
+specialized tensor core instructions; see, e.g., [5]. The use of lower precision can offer significant performance improvements, although this comes at a numerical cost. With fewer bits, we have a greater unit roundoff and a smaller range of
+representable numbers. The goal is thus to selectively use different precisions within algorithms such that performance is potentially improved without adversely affecting the desired numerical properties.
+</p>
+
+<p>
+In this talk, based on the published work [3], we consider the split-preconditioned FGMRES method in a mixed precision framework, in which four potentially different precisions can be used for computations with the coeﬀicient matrix \(A\) (unit
+roundoff \(u_A\)), left-preconditioner \(M_L\) (unit roundoff \(u_L\)), right-preconditioner \(M_R\) (unit roundoff \(u_R\)), and all other computations (unit roundoff \(u\)).
+</p>
+
+<p>
+Our analysis is applicable to general preconditioners with minimal assumptions. Briefly, following the strategy of [6], we assume that the application of \(M_L^{-1}\) and \(M_R^{-1}\) can be computed such that
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                               f l(ML−1 wj ) =ML−1 wj + ∆ML,j wj ,    |∆ML,j | ≤ c(n)uL EL,j ,
+                                                                                                    −1        −1
+                                                                                               f l(MR  wj ) =MR  wj + ∆MR,j wj ,       |∆MR,j | ≤ c(n)uR ER,j ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+fl(M_L^{-1} w_j) = &amp; M_L^{-1} w_j + \Delta M_{L,j} w_j, \quad \lvert \Delta M_{L,j} \rvert \leq c(n) u_L E_{L,j}, \\ fl(M_R^{-1} w_j) = &amp; M_R^{-1} w_j + \Delta M_{R,j} w_j, \quad \lvert \Delta M_{R,j}
+\rvert \leq c(n) u_R E_{R,j},
+\end{align*}
+where \(fl(\cdot )\) denotes the quantity computed in floating point arithmetic, \(E_{L,j}\) and \(E_{R,j}\) have positive entries, \(w_j \in \mathbb {R}^n\), and \(c(n)\) is a constant that depends on \(n\) only. Note that a particular
+strength of FGMRES is that it allows the right preconditioner to change throughout the iterations; for simplicity, we consider the case here where the preconditioners are static, although our results could be extended to allow dynamic preconditioning.
+</p>
+
+<p>
+We define \(\tilde {A} \equiv M_L^{-1} A\) and \(\tilde {b} \equiv M_L^{-1} b\) and assume that matrix-vector products with \(\tilde {A}\) can be computed so that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                           f l(Ãzj ) = (ML−1 + ∆ML,j )(A + ∆Aj )zj .
+
+-->
+
+<p>
+
+\begin{equation*}
+fl(\tilde {A} z_j) = (M_L^{-1} + \Delta M_{L,j}) (A + \Delta A_j) z_j.
+\end{equation*}
+
+</p>
+
+<p>
+Denoting
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                             ∥ML−1 ∆Aj zj ∥                      ∥∆ML,j Azj ∥
+                                                                                                uA ψA,j =                     and    uL ψL,j =                ,
+                                                                                                               ∥Ã∥∥zj ∥                           ∥Ã∥∥zj ∥
+
+-->
+
+<p>
+
+\begin{equation*}
+u_A \psi _{A,j} = \frac {\Vert M_L^{-1} \Delta A_j z_j \Vert }{\Vert \tilde {A} \Vert \Vert z_j \Vert } \quad \text { and } \quad u_L \psi _{L,j} = \frac {\Vert \Delta M_{L,j} A z_j\Vert }{\Vert \tilde {A} \Vert
+\Vert z_j \Vert },
+\end{equation*}
+
+</p>
+
+<p>
+where \(\Vert \cdot \Vert \) denotes the 2-norm, and ignoring the second order terms, we can write
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                            f l(Ãzj ) ≈ Ãzj + fj ,   where ∥fj ∥ ≤ (uA ψA,j + uL ψL,j )∥Ã∥∥zj ∥.
+
+-->
+
+<p>
+
+\begin{equation*}
+fl(\tilde {A} z_j) \approx \tilde {A} z_j + f_j,\qquad \text {where } \Vert f_j \Vert \leq (u_A \psi _{A,j} + u_L \psi _{L,j})\Vert \tilde {A} \Vert \Vert z_j \Vert .
+\end{equation*}
+
+</p>
+
+<p>
+We first present general bounds on the backward and forward errors in split-preconditioned FGMRES, which is based on the previous works [1] and [2]. Our analysis provides guidance on how the precisions should be set when the target backward
+error is of order \(u\). To summarize, the precision for applying \(M_L\) must be chosen in relation to \(u\), \(u_A\), and the required backward and forward errors, because \(u_L\) heavily influences the achievable backward error. We can be more
+flexible when choosing \(u_R\) as it does not influence the backward error directly. Our analysis holds under a suﬀicient but not necessary assumption on \(u_R\) in relation to \(M_R\). As long as \(M_R\) is not singular in precision \(u_R\) (note that
+scaling strategies may be used to ensure this), setting \(u_R\) to a low precision is suﬀicient. Very low precisions \(u_L\) and \(u_R\) may delay the convergence, but setting \(u_L \leq u\) or \(u_R \leq u\) does not improve the convergence in
+general. Note that these conclusions apply to the full left- and right-preconditioning cases as well.
+</p>
+
+<p>
+We observe that the forward error is determined by the backward error and the condition number of the left-preconditioned coeﬀicient matrix. This motivates concentrating effort on constructing an appropriate left-preconditioner when aiming for a
+small forward error: the preconditioner should reduce the condition number suﬀiciently and needs to be applied in a suitably chosen precision.
+</p>
+
+<p>
+We further provide insights on which preconditioning strategy (left, right, or split) may be preferred under certain objectives related to the desired the backward and forward errors. To summarize, if a small backward error is the main concern and
+\(A\) is ill-conditioned, and we have a ‘good’ preconditioner, so that \(\kappa (\tilde {A})\) is small and we can afford setting \(u_A\) and \(u_L\) to precisions that are high enough to neutralize the \(\psi _A\) and \(\psi _L\) terms, then
+left-preconditioning should be used. If however, we cannot afford setting \(u_A\) and \(u_L\) to high precisions but can construct a split-preconditioner such that \(\kappa (M_L)\) is small, then split-preconditioning (note that in this case \(\psi
+_A\) and \(\psi _L\) may be smaller too) or full right-preconditioning may be preferential. If our main concern is applying the preconditioner in lower than the working precision (which may be relevant, for example, when \(A\) is very sparse and
+the preconditioner uses some dense factors), the bounds suggest that full left-preconditioning should not be used as \(u_A \psi _A\) and \(u_L \psi _L\) may be large. Full right-preconditioning may be most suitable in this case.
+</p>
+
+<p>
+We present a suite of numerical experiments which support our theoretical results. Essentially, the experiments confirm that the precision in which the left preconditioner is applied has a significant effect on the forward and backward errors, but very
+little effect on the number of FGMRES iterations required for convergence. Conversely, the precision in which the right preconditioner is applied has almost no effect on the resulting forward and backward errors, but can affect the FGMRES
+convergence.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Mario Arioli and Iain&nbsp;S Duff. Using FGMRES to obtain backward stability in mixed precision. <i>Electronic Transactions on Numerical Analysis</i>, 33:31–44, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Mario Arioli, Iain&nbsp;S Duff, Serge Gratton, and Stéphane Pralet. A note on GMRES preconditioned by a perturbed \(LDL^T\) decomposition with static pivoting. <i>SIAM Journal on Scientific
+Computing</i>, 29(5):2024–2044, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Erin Carson and Ieva Daužickaitė. The stability of split-preconditioned FGMRES in four precisions. <i>Electronic Transactions on Numerical Analysis</i>, 60:40–58, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Nicholas&nbsp;J. Higham and Theo Mary. Mixed precision algorithms in numerical linear algebra. <i>Acta Numerica</i>, 31:347–414, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> NVIDIA H100 Tensor Core GPU. NVIDIA, <a href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" >https://www.nvidia.com/en-us/data-center/h100/</a>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Bastien Vieublé. <i>Mixed precision iterative refinement for the solution of large sparse linear systems</i>. PhD thesis, INP Toulouse, University of Toulouse, France, 2022.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

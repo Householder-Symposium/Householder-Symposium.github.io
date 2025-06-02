@@ -1,0 +1,360 @@
+---
+layout: abstract
+absnum: 117
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Spectral problems through the lens of optimization:<br />
+new ideas and improved algorithms?
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Bart Vandereycken</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Thanks to influential works like [8, 1], many classical problems in numerical linear algebra (NLA) can be formulated as optimization problems on smooth and differentiable manifolds. The link with optimization on manifolds allows us to approach
+these problems from the world of numerical optimization. The archetypical example is the symmetric eigenvalue problem (EVP): the dominant \(k\)-dimensional eigenspaces of \(A\) correspond to extrema of the partial trace function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                   f (X) = −Trace(X T AX),                                                                    (1)--><a id="eq:min_f_over_Gr"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:min_f_over_Gr} f(X) = -\textrm {Trace}(X^TAX),
+\end{equation}
+
+</p>
+
+<p>
+where \(X \in \mathbb {R}^{n \times k}\) is an orthonormal matrix (that is, \(X^T X = I_k\)). Due to the partial trace being invariant by orthogonal transformation on the right (that is, \(X \leadsto XQ\) with orthogonal \(Q\)), this problem
+is naturally stated on \(\textrm {Gr}(n,k)\), the Grassmann manifold of \(k\)-dimensional subspaces in \(\mathbb {R}^n\). Minimizing \(f\) by the Riemannian steepest descent method is, in specific cases, equivalent to the power method.
+</p>
+
+<p>
+It is well known that the steepest descent method converges exponentially fast, in distance to the optimizer and in function value, when the objective function is locally strongly convex. Applied to spectral problems in NLA, a nonzero spectral gap is
+required to ensure uniqueness and the initial estimate has to be suﬀiciently close to the optimal subspace. Unfortunately, the latter condition is usually very stringent. For a symmetric matrix \(A\) with eigenvalues \(\lambda _1 \geq \cdots \geq
+\lambda _n\), for example, we have shown in [5] that <span class="textup">(<a href="paper.html#eq:min_f_over_Gr">1</a>)</span> is geodesically convex in
+</p>
+
+<p>
+\[ N = \left \{ \mathrm {span}(X) \in \textrm {Gr}(n,k) \colon \sin ^2 (\theta _k) \leq \frac {\lambda _k - \lambda _{k-1}}{\lambda _1 + \lambda _k} \right \}. \]
+</p>
+
+<p>
+Here, \(\theta _k\) is the \(k\)th principal angle between \(\mathrm {span}(X)\) and the dominant eigenspace \(\mathrm {span}(V)\). While this is an improvement over more direct estimates that require \(\theta _k = O(\delta )\), the
+condition \(\theta _k = O(\sqrt {\delta })\) is still small.
+</p>
+
+<p>
+Fortunately, classical (geodesic) convexity is not needed to have gradient descent converge exponentially fast. In the Euclidean case, an old result by [11] proves that the Polyak–Łojasiewicz (PL) condition,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                   ∃µ > 0   s.t.   ∥∇f (x)∥2 ≥ 2µ(f (x) − f ∗ ),   ∀x ∈ Rn ,                                                             (2)--><a id="eq:PL"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:PL} \exists \mu &gt;0 \quad \text {s.t.} \quad \| \nabla f(x) \|^2 \geq 2 \mu (f(x)-f^*), \quad \forall x\in \mathbb {R}^n,
+\end{equation}
+
+</p>
+
+<p>
+is suﬀicient to guarantee fast (exponential) convergence in function value. The PL condition with constant \(\mu \) is weaker than \(\mu \) strong convexity
+</p>
+
+<p>
+More recently, an even weaker notion of strong convexity that relates to convergence with respect to distance to the optimum, has been studied [7, 10, 5]. The property is called weak-quasi-strong-convexity (WQSC) and is defined in the Euclidean
+case as follows:
+</p>
+
+<p>
+\[ \exists a &gt; 0, \mu &gt;0 \quad \text {s.t.} \quad f(x)-f^* \leq \frac {1}{a} \langle \nabla f(x) , x-x_p \rangle - \frac {\mu }{2} \| x-x_p\|^2, \quad \forall x \in \mathbb {R}^n, \]
+</p>
+
+<p>
+with \(x_p\) the projection of \(x\) onto the solution set of minimizers of \(f\).
+</p>
+
+<p>
+We have shown in [5, 2] that the manifold version of the WQSC property applies to the following spectral problems:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Symmetric EVP of \(A\): the objective function \(f\) in <span class="textup">(<a href="paper.html#eq:min_f_over_Gr">1</a>)</span> is WQSC with parameters \(a(\mathrm {span}(X))= \theta _k
+/ \tan \theta _k\) and \(\mu = 8 \delta /\pi ^2\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Symmetric generalized EVP of \((A,B)\) with \(B \succ 0\): the objective function
+</p>
+<p>
+\[f(\textrm {span}(X))=-\textrm {Trace}((X^T B X)^{-1} X^T A X)\]
+</p>
+<p>
+is WQSC with parameters \(a(\mathrm {span}(X))=\sigma _{\min }(V^T B X (X^T B X)^{-1/2})\) and \(\mu = 8 \delta /\pi ^2\).
+</p>
+</li>
+</ul>
+
+<p>
+Once WQSC is shown to hold, it can be used to analyse accelerated versions of gradient descent [7, 6]. For the symmetric EVP, the Riemannian conjugate gradient method from [4] also leads to practical improvements when comparing to other
+accelerated gradient methods, like the LOBPCG method of [9].
+</p>
+
+<p>
+Would it be possible to relax these generalized convexity properties even more? In other words, suppose gradient descent converges exponentially fast when started in any point in a set around the optimum, then which property does \(f\) satisfy? As
+shown in [3], the objective needs to be WQSC when measuring convergence in distance to the optimum. Recently, we have also shown that only the PL condition is required for convergence in function value. Hence, PL and WQSC are in some sense
+necessary and suﬀicient for a fast gradient method.
+</p>
+
+<p>
+An added bonus of the optimization viewpoint is that gapless problems can be treated and analysed fairly easily. The convergence of gradient descent is no longer exponential but only algebraic.
+</p>
+
+<p>
+This talk will present a general overview of these properties and highlight algorithmic and analytical applications from NLA. The contents are based on joint work with Pierre-Antoine Absil, Foivos Alimisis, and Yousef Saad.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P-A Absil, Robert Mahony, and Rodolphe Sepulchre. <i>Optimization algorithms on matrix manifolds</i>. Princeton University Press, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Pierre-Antoine Absil, Foivs Alimisis, and Bart Vandereycken. Riemannian inexact gradient descent for high-dimensional canonical correlation analysis. <i>In preparation</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Foivos Alimisis. Characterization of optimization problems that are solvable iteratively with linear convergence. <i>MTNS</i>, 2024a.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Foivos Alimisis, Yousef Saad, and Bart Vandereycken. Gradient-type subspace iteration methods for the symmetric eigenvalue problem. <i>arXiv preprint arXiv:2306.10379</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Foivos Alimisis and Bart Vandereycken. Geodesic convexity of the symmetric eigenvalue problem and convergence of steepest descent. <i>Journal of Optimization Theory and Applications</i>, pages
+1–40, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Foivos Alimisis, Simon Vary, and Bart Vandereycken. A nesterov-style accelerated gradient descent algorithm for the symmetric eigenvalue problem. <i>arXiv preprint arXiv:2406.18433</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Jingjing Bu and Mehran Mesbahi. A note on Nesterov’s accelerated method in nonconvex optimization: a weak estimate sequence approach. <i>arXiv preprint arXiv:2006.08548</i>, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Alan Edelman, Tomás&nbsp;A Arias, and Steven&nbsp;T Smith. The geometry of algorithms with orthogonality constraints. <i>SIAM journal on Matrix Analysis and Applications</i>,
+20(2):303–353, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Andrew&nbsp;V Knyazev. Toward the optimal preconditioned eigensolver: Locally optimal block preconditioned conjugate gradient method. <i>SIAM journal on scientific computing</i>,
+23(2):517–541, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Ion Necoara, Yurii Nesterov, and Francois Glineur. Linear convergence of first order methods for non-strongly convex optimization. <i>Mathematical Programming</i>, 175:69–107, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Boris&nbsp;Teodorovich Polyak. Gradient methods for minimizing functionals. <i>Zhurnal vychislitel’noi matematiki i matematicheskoi fiziki</i>, 3(4):643–653, 1963.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

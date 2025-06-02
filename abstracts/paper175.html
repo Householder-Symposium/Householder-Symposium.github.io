@@ -1,0 +1,268 @@
+---
+layout: abstract
+absnum: 175
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Spectral Computations for Quasicrystal Models
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Mark Embree</span>, Matthew J. Colbrook, David Damanik, Jake Fillman,<br />
+Anton Gorodetski, May Mei, Charles Puelz
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Mathematical models of aperiodic materials – quasicrystals – lead to fascinating problems in spectral theory that can test the limits of conventional approaches to eigenvalue computation. Quasicrystals are exotic objects that were discovered in the
+1980s by Dan Schechtman, who was recognized with the 2011 Nobel Prize in Chemistry.
+</p>
+
+<p>
+The periodic structure of conventional crystals gives rise to Schrödinger operators whose spectra consist of the union of real intervals, which are neatly characterized by Floquet–Bloch theory. At the other extreme, disordered materials lead to random
+Schrödinger operators that typically have eigenvectors whose entries exponentially decay from some central site (“Anderson localization”). Sitting between these extremes, quasicrystal models are deterministic but not periodic, and the associated
+self-adjoint linear operators often exhibit intriguing spectral structure. For example, the spectrum can be a zero-measure Cantor set (a closed set that contains its limit points but no intervals). How can one approach such problems using tools from
+numerical linear algebra?
+</p>
+
+<p>
+In this talk we will survey several problems that arise in the computational study of quasicrystals, highlighting the motivating questions, describing algorithmic approaches, and showing numerical results, based on&nbsp;[2, 3, 4, 7]. We focus on three
+general problems.
+</p>
+
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> <span class="textsl">Approximating the spectrum of the Fibonacci Hamiltonian.</span> The most carefully studied quasicrystal model is the Fibonacci Hamiltonian \(H:\ell ^2({\bf Z})\to \ell
+^2({\bf Z})\), defined for each site \(k\in {\bf Z}\) by the difference equation
+</p>
+<p>
+\[ (H x)_k = x_{k-1} + V_k\, x_k + x_{k+1}, \qquad V_k = \left \{\begin {array}{cl} 0, &amp; k \alpha \ {\rm mod}\ 1 \in [0, 1-\alpha ); \\[3pt] \lambda , &amp; k \alpha \ {\rm mod}\ 1 \in [1-\alpha ,1);\end
+{array}\right .\]
+</p>
+<p>
+for the irrational \(\alpha = (\sqrt {5}-1)/2 = 0.6180\ldots \) (the reciprocal of the golden ratio); see&nbsp;[4, 5] for summaries of key results. In 1987, Sütő&nbsp;[8] proved that the spectrum is a zero-measure Cantor set for all \(\lambda
+&gt;0\), which one can approximate by replacing \(\alpha \) with rational approximations given by the ratio of successive Fibonacci numbers. With such approximations the potential \(\{V_k\}\) becomes periodic, and the resulting spectrum
+follows from Floquet–Bloch theory. Specifically, if \(\{V_k\}\) has period \(p\), then the spectrum of \(H\) is the union of \(p\) real intervals whose end points are eigenvalues of two \(p\times p\) symmetric tridiagonal matrices plus corner entries:
+</p>
+<p>
+\[ J^{(p)}_{\pm } = \left [ \begin {array}{ccccc} V_1 &amp; 1 &amp; &amp; &amp; \pm 1 \\ 1 &amp; V_2 &amp; 1 &amp; &amp; \\ &amp; 1 &amp; V_3 &amp; \ddots &amp; \\ &amp; &amp; \ddots &amp; \ddots &amp; 1 \\ \pm 1
+&amp; &amp; &amp; 1 &amp; V_p \end {array}\right ].\]
+</p>
+<p>
+To study the Cantor spectrum of the Fibonacci Hamiltonian demands approximations with very large period \(p\), giving intervals so narrow that the computed eigenvalues of \(J^{(p)}_+\) and \(J^{(p)}_-\) can violate their theoretical ordering
+properties. For this reason we propose these examples as physically-motivated test matrices for symmetric eigensolvers. (Indeed, these models can exhibit similar behavior to Wilkinson’s famous \(W_{21}^+\) example&nbsp;[9, p.&nbsp;309].)
+</p>
+<p>
+We will describe the numerical linear algebra challenges associated with the approximation of the Cantor spectrum of the Fibonacci model and several other aperiodic models derived from substitution rules (period-doubling and Thue–Morse)&nbsp;[7].
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> <span class="textsl">Quantities derived from Cantor spectra.</span>
+</p>
+<p>
+The computation of the spectrum is often the first step in a more elaboate process. For example, one can gain physical insight from the fractal (box-counting and Hausdorff) dimension of the spectrum of the Schrödinger operator. How can one use
+estimates to the spectrum to approximate these quantities? Simple two- and three-dimensional quasicrystal models follow from coupling one-dimensional models on a square or cubic lattice. The resulting spectra are now <span class="textsl">sums
+of Cantor sets</span>, which could potentially be intervals, Cantor sets, or more exotic sets called <span class="textsl">Canvorvals</span>. We will discuss computational approaches and obstacles for such problems&nbsp;[2, 4, 7], using the
+perspective of the Solvability Complexity Index&nbsp;[1].
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> <span class="textsl">Locally supported eigenvectors of the graph Laplacian for Penrose tilings.</span>
+</p>
+<p>
+A different class of two-dimension quasicrystal models derive their structure from aperiodic tilings of the plane, such as the Penrose or Ammann–Beenker constructions. From a finite section of such tiling we construct a graph, and then study spectral
+properties of the associated graph Laplacian. Generalizing work from the physics literature&nbsp;[6], we show that a variety of Penrose models exhibit eigenvectors that are nonzero only on a small (repeating) pattern of tiles, and thus arise with high
+algebraic multiplicity. We illustrate these configurations, and discuss some associated numerical challenges (finding sparse bases for the invariant subspaces, predicting eigenvalue multiplicity as the tiling grows, identifying gaps in the
+spectrum)&nbsp;[2, 3].
+</p>
+</li>
+</ul>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.J. Colbrook, <i>On the computation of geometric features of spectra of linear operators on Hilbert spaces</i>, Found. Comput. Math.&nbsp;24 (2024) 723–804.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.J. Colbrook, M. Embree, J. Fillman, <i>Optimal algorithms for quantifying spectral size with applications to quasicrystals</i>, preprint: arXiv:2407.20353.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D. Damanik, M. Embree, J. Fillman, M. Mei, <i>Discontinuities of the integrated density of states for Laplacians associated with Penrose and Ammann–Beenker tilings</i>, Exp. Math., to appear
+(preprint: arXiv:2209.01443).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> D. Damanik, M. Embree, A. Gorodetski, <i>Spectral properties of Schrödinger operators arising in the study of quasicrystals</i>, In <i>Mathematics of Aperiodic Order</i>, p.&nbsp;307–370;
+J.&nbsp;Kellendonk, D.&nbsp;Lenz, J.&nbsp;Savinien, eds., Springer, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> D. Damanik, A. Gorodetski, W. Yessen, <i>The Fibonacci Hamiltonian</i>, Invent. Math. 206 (2016) 629–692.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> T. Fujiwara, M. Arai, T. Tokihiro, M. Kohmoto, <i>Localized states and self-similar states of electrons on a two-dimensional Penrose lattice</i>, Phys. Rev.&nbsp;B 37 (1988) 2797–2804.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> C. Puelz, M. Embree, and J. Fillman, <i>Spectral approximation for quasiperiodic Jacobi operators</i>, Integral Equations Operator Theory 82 (2015) 533–554.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> A. Sütő, <i>The spectrum of a quasiperiodic Schrödinger operator</i>, Comm. Math. Phys.&nbsp;111 (1987) 409–415.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> J.H. Wilkinson, <em>The Algebraic Eigenvalue Problem</em>, Oxford University Press, Oxford, 1965.
+</p>
+</li>
+</ul>
+
+{% endraw %}

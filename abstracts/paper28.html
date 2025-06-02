@@ -1,0 +1,487 @@
+---
+layout: abstract
+absnum: 28
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand \normF [1]{\lVert #1\rVert _F}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Mixed precision HODLR matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Xiaobo Liu</span><sup>1</sup><a id="paper-autopage-3"></a>, Erin Carson<sup>2</sup>, Xinye Chen<sup>2</sup>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+<b>Introduction and overview</b>. Hierarchical matrices, often abbreviated as \(\mathcal {H}\)-matrices&nbsp;[1], comprise a class of dense rank-structured matrices with a hierarchical low-rank structure, which is used to approximate a dense
+or sparse matrix by dividing it into multiple submatrices in a hierarchical way, where a number of submatrices are selected to be approximated by low-rank factors according to an admissibility condition.
+</p>
+
+<p>
+Computations of hierarchical matrices have attracted significant attention in the science and engineering community as exploiting data-sparse structures can significantly reduce the computational complexity of many important kernels such as
+matrix–vector products, matrix factorizations, etc. One particularly popular option within this class is the <i>Hierarchical Off-Diagonal Low-Rank</i> (HODLR) format, whose definition is associated with the binary cluster tree \(\mathcal
+{T}_{\ell }\) of depth \(\ell \in \mathbb {N^+}\)&nbsp;[4].
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+
+<p>
+<sup>1</sup>&nbsp;Max Planck Institute for Dynamics of Complex Technical Systems, Magdeburg, Germany.
+</p>
+
+
+<p>
+<sup>2</sup>&nbsp;Department of Numerical Mathematics, Charles University, Prague, Czech Republic.
+</p>
+
+
+
+</div>
+
+
+
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker">
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">1</span></span><span class="amsthmnoteplain"> (\((\mathcal {T}_{\ell }, p)\)-HODLR matrix)</span>. </span> \(H \in
+\mathbb {R}^{n \times n}\) is \((\mathcal {T}_{\ell }, p)\)-HODLR matrix if every off-diagonal block \(H(I_i^{k},I_j^{k})\) associated with siblings \(I_i^{k}\) and \(I_j^{k}\) in \(\mathcal {T}_{\ell }\), \(k = 1, \ldots , \ell
+\), has rank at most \(p\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In the proposed talk, we consider constructing HODLR matrices in a mixed precision manner and offer insights into the resulting behavior of finite precision computations. Our analysis confirms what is largely intuitive: the lower the quality of the
+low-rank approximation, the lower the precision which can be used without detriment. We provide theoretical bounds which determine which precisions can safely be used in order to balance the overall error.
+</p>
+
+<p>
+<b>Practical definition of HODLR matrix.</b> In order to quantify the error incurred in the low-rank factorization of the off-diagonal blocks, we introduce the practical definition of \((\mathcal {T}_{\ell }, p, \varepsilon )\)-HODLR
+matrix as in Definition&nbsp;<a href="paper.html#def:hodlr-eps">2</a>. The approximation error in the diagonal blocks of all levels of the \((\mathcal {T}_{\ell }, p, \varepsilon )\)-HODLR matrix \(\widetilde {H}\) is immediately
+obtainable following Definition&nbsp;<a href="paper.html#def:hodlr-eps">2</a> in the Frobenius norm, and, as a special case, one can show \(\normF {\widetilde {H}-H}\le \varepsilon \normF {H}\).
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-6"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">2</span></span><span class="amsthmnoteplain"> (\((\mathcal {T}_{\ell }, p, \varepsilon )\)-HODLR matrix)</span>.
+</span> <a id="def:hodlr-eps"></a> Let \(H \in \mathbb {R}^{n \times n}\) be a \((\mathcal {T}_{\ell }, p)\)-HODLR matrix. Then \(\widetilde {H} \in \mathbb {R}^{n \times n}\) is defined to be a \((\mathcal {T}_{\ell }, p,
+\varepsilon )\)-HODLR matrix to \(H\), if every off-diagonal block \(\widetilde {H}(I_i^{k},I_j^{k})\) associated with siblings \(I_i^{k}\) and \(I_j^{k}\) in \(\mathcal {T}_{\ell }\), \(k = 1, \ldots , \ell \), satisfies
+\(\|\widetilde {H}(I_i^{k},I_j^{k}) - H(I_i^{k},I_j^{k})\| \le \varepsilon \|H(I_i^{k},I_j^{k})\|\), where \(0\le \varepsilon &lt;1\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+<b>Mixed-precision representation.</b> First, we develop a mixed precision algorithm for constructing HODLR matrices. Let us assume that the off-diagonal blocks from the \(k\)th level of \(\widetilde {H}\), \(1 \le k \le \ell \), are
+compressed in the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                            e (k) = U
+                                                                                                            H       e (k) (Ve (k) )T ,   |i − j| = 1,                                                   (1)--><a id="eq:H-offdiag-lowrank"></a><!--
+                                                                                                              ij      i      j
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:H-offdiag-lowrank} \widetilde {H}_{i j}^{(k)}= \widetilde {U}_{i}^{(k)} (\widetilde {V}_{j}^{(k)})^T, \quad |i-j|=1,
+\end{equation}
+
+</p>
+
+<p>
+where \(\widetilde {U}_{i}^{(k)}\in \mathbb {R}^{n / 2^k \times p}\) has orthonormal columns to precision \(u\) and \(\widetilde {V}_{j}^{(k)} \in \mathbb {R}^{n / 2^k \times p}\). Our idea is to compress the low-rank blocks
+\(\widetilde {H}_{i j}^{(k)}\) and represent the low-rank factors \(\widetilde {U}_{i}^{(k)}\) and \(\widetilde {V}_{j}^{(k)}\) in precisions potentially lower than the working precision; given a set of available precisions, the same
+precision, say, \(u_k\), is used for the storage of all low-rank factors at level \(k\). To keep the global error in the mixed-precision representation at the same level as an unified working-precision representation, we choose
+</p>
+
+<p>
+\[ u_k\leq \varepsilon / (2^{k/2}\xi _{k}), \]
+</p>
+
+<p>
+where \(\varepsilon &gt;u\) (since the factorizations are calculated in the working precision \(u\)) can be thought of as the accuracy threshold in the low-rank factorizations&nbsp;<span class="textup">(<a
+href="paper.html#eq:H-offdiag-lowrank">1</a>)</span> and
+</p>
+
+<p>
+\[ \xi _k := \max _{|i-j|=1}\normF {\widetilde {H}^{(k)}_{ij}}/\normF {\widetilde {H}},\quad 1 \le k \le \ell , \]
+</p>
+
+<p>
+which essentially characterizes the relative importance of the off-diagonal blocks in level-\(k\) to the whole matrix in terms of magnitude. This means that, as the tree depth increases, the unit roundoff \(u_k\) must be smaller to offset the error
+between the HODLR matrix and the original matrix and that, since \(0&lt;\xi _k&lt; 1\) holds for \(k=1\colon \ell \), generally no higher-than-working precisions are needed among \(u_k\) for a HODLR matrix with mild depth \(\ell \),
+say, \(\ell \le 10\) (so \(2^{k/2}\le 32\)). We then propose an adaptive scheme for precision selection, which dynamically determines what degree of precision is required for the computations in each level of the cluster tree. We show that the
+error in the resulting mixed-precision representation \(\widehat {H}\) satisfies
+</p>
+
+<p>
+\[ \normF {H-\widehat {H}} \lesssim (2\sqrt {2\ell }+1)\varepsilon \normF {H}. \]
+</p>
+
+<p>
+<b>Matrix–vector products.</b> Next, we give error bounds on the working precision \(u\) so that the backward error in computing the matrix–vector product in finite precision does not exceed the error resulting from inexact representation of
+the matrix. The key idea is that, if the HODLR matrix \(H\) is approximated by the mixed-precision representation \(\widehat {H}\), to calculate the matrix–vector product \(b\leftarrow \widehat {H}x\) we should try to balance the errors
+occurring in the approximation of \(\widehat {H}\) and in the finite-precision computation, as shown from the following result.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-7"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="lemma:mqr"></a> Let \(\widehat {A}_{p}\) an approximation of \(A\) such that \(\|A -
+\widehat {A}_{p}\|_F \lesssim \eta \) for some \(\eta &gt;0\). Then the error due to finite precision computation of \(\widehat {y} = \mathrm {fl}(\widehat {A}_{p} x)\) will be no larger than the error due to the computed inexact
+representation when the working precision has unit roundoff \(u \le \eta /(n\normF {\widehat {A}_{p}})\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Applying Lemma&nbsp;<a href="paper.html#lemma:mqr">1</a> to the computation of the matrix–vector product associated with \(\widehat {H}^{(k)}_{ij}\) and ignoring the errors in the summation of the vector elements (which are usually
+negligible compared with the error in the block matrix–vector products), we can obtain the following result.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-8"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="thm:mat-vec-bwerr"></a> Let \(\widetilde {H}\) be a \((\mathcal {T}_{\ell }, p,
+\varepsilon )\)-HODLR matrix associated with the HODLR matrix \(H\), and let \(\widehat {H}\) denote our mixed-precision representation. If \(b = \widehat {H} x\) is computed in a working \(u \le \varepsilon /n\), then the computed
+\(\widehat {b}\) satisfies
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+
+<!--
+
+
+
+                                                                                               b     b = (H + ∆H)x,
+                                                                                               b = ﬂ(Hx)                      ∥∆H∥F ≤ 10 · 2ℓ/2 ε∥H∥F .
+
+
+
+-->
+
+
+
+<p>
+
+
+\begin{align*}
+\widehat {b} = \mathrm {fl}(\widehat {H} x) = (H + \Delta H) x, \quad \normF {\Delta H} &amp; \le 10\cdot 2^{\ell /2}\varepsilon \normF {H}.
+\end{align*}
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+<b>LU factorization.</b> Finally, we derive error bounds on the LU factorization of the mixed-precision HODLR matrix \(\widehat {H}\). The factorization is done by a recursive algorithm which computes for all but the bottom level the block
+LU factorization
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                               
+                                                                                                          H11   H12     L11               U11   U12
+                                                                                                                     =                                ,
+                                                                                                          H21   H22     L21    L22              U22
+
+-->
+
+<p>
+
+\begin{equation*}
+\begin{bmatrix} H_{11} &amp; H_{12} \\ H_{21} &amp; H_{22} \end {bmatrix} = \begin{bmatrix} L_{11} &amp; \\ L_{21} &amp; L_{22} \end {bmatrix} \begin{bmatrix} U_{11} &amp; U_{12} \\ &amp; U_{22} \end {bmatrix},
+\end{equation*}
+
+</p>
+
+<p>
+where \(L_{11}\) and \(L_{22}\) are lower triangular and \(U_{11}\) and \(U_{22}\) are upper triangular, and it invokes dense routines on the bottom level. Based on the results from&nbsp;[3, sect. 3.5] and&nbsp;[3, Thm. 8.5], we first look at the
+backward error in the LU factorization of the HODLR matrices at level \(k=\ell -1\) and then use induction to quantify the backward error in the LU decomposition of diagonal blocks in the other levels, up to the level \(k=0\)
+(\(H^{(0)}_{11}:=H\)). We arrive at the following result.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-9"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2</span></span>. </span> Let \(\widehat {H}\) be the mixed-precision \(\ell \)-level HODLR representation. If the LU
+decomposition of \(\widehat {H}\) is computed in a working precision \(u \lesssim \varepsilon /n\), then the LU factorization of the HODLR matrix \(\widehat {H}\) satisfies
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                             bU
+                                                                                             L b = H + ∆H,                                     b F ∥U
+                                                                                                                ∥∆H∥F ≲ 2ℓ+1 ε∥H∥F + 11 · 2ℓ ε∥L∥   b ∥F .
+
+
+-->
+
+<p>
+
+
+\begin{equation*}
+\widehat {L} \widehat {U} = H + \Delta H, \quad \|\Delta H \|_F \lesssim 2^{\ell +1}\varepsilon \| H \|_F + 11\cdot 2^{\ell }\varepsilon \|\widehat {L}\|_F\|\widehat {U}\|_F.
+\end{equation*}
+
+
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Noted that our finite precision analysis remains valid in the case where the HODLR matrices are stored in one precision and therefore also provides new results for this case. We will also present the numerical simulations we performed across various
+datasets to verify our theoretical results.
+</p>
+
+<p>
+The talk is based on&nbsp;[2]. We have also developed a MATLAB toolbox called <kbd>mhodlr</kbd> for matrix computations with HODLR representation and mixed-precision simulations, which supports other important operations within the class
+of HODLR matrix such as (mixed-precision) matrix multiplication and Cholesky factorization. The documentation webpage of <kbd>mhodlr</kbd> MATLAB toolbox is at <a href="https://mhodlr.readthedocs.io/en/latest/index.html"
+target="_blank" >https://mhodlr.readthedocs.io/en/latest/index.html</a>.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Steffen Börm, Lars Grasedyck, and Wolfgang Hackbusch. Introduction to hierarchical matrices with applications. <i>Eng. Anal. Bound. Elem.</i>, 27(5):405–422, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Erin Carson, Xinye Chen, and Xiaobo Liu. Mixed precision HODLR matrices. ArXiv:2407.21637 [math.NA], July 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Nicholas&nbsp;J. Higham. <i>Accuracy and Stability of Numerical Algorithms</i>. SIAM, Philadelphia, PA, USA, second edition, 2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Stefano Massei, Leonardo Robol, and Daniel Kressner. hm-toolbox: MATLAB software for HODLR and HSS matrices. <i>SIAM J. Sci. Comput.</i>, 42(2):C43–C68, 2020.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

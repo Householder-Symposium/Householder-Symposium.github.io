@@ -1,0 +1,720 @@
+---
+layout: abstract
+absnum: 156
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Separable Low-rank Barycentric Forms in the p-AAA Algorithm
+</h2>
+</div>
+<div class="center">
+
+<p>
+Linus Balicki, <span class="underline">Serkan Gugercin</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Rational approximation is a powerful tool for capturing the behavior of functions which have singularities on or near a domain of interest. This circumstance makes rational functions ubiquitous in fields such as signal processing, model reduction, and
+partial differential equations. In recent years the adaptive Antoulas-Anderson (AAA) algorithm [2] has established itself as a successful method for computing rational approximations from a set of sampled data. Our recent work&nbsp;[3] introduced
+the p-AAA algorithm, extending the original AAA framework to multivariate functions. In order to allow for a clear presentation, we first discuss the two variable case, where the goal is to approximate a function \(\mathbf {f}:\mathbb {C}^2
+\rightarrow \mathbb {C}\). In this case, p-AAA is given a set of samples
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                             F = {f (x1 , x2 ) | x1 ∈ X1 , x2 ∈ X2 } ⊂ C--><a id="eq:samples"></a><!--
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:samples} \mathbf {F} = \{ \mathbf {f}(x_1,x_2) \; | \; x_1 \in \mathbf {X}_1, \; x_2 \in \mathbf {X}_2 \} \subset \mathbb {C}
+\end{equation*}
+
+</p>
+
+<p>
+with the corresponding sampling points
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                    X1 = {X11 , . . . , X1N1 } ⊂ C            and      X2 = {X21 , . . . , X2N2 } ⊂ C, --><a id="eq:samplingvalues"></a><!--
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:samplingvalues} \mathbf {X}_1 = \{X_{11},\ldots ,X_{1N_1}\} \subset \mathbb {C} \quad \text {and} \quad \mathbf {X}_2 = \{X_{21},\ldots ,X_{2N_2}\} \subset \mathbb {C},
+\end{equation*}
+
+</p>
+
+<p>
+where \(X_{ij}\) denotes the \(j\)-th sampling point of the \(i\)-th variable. Then the goal is to approximate this data via a rational function represented as a multivariate barycentric form, i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                              , n n
+                                                                                n(x1 , x2 )   Xn1
+                                                                                                   Xn2
+                                                                                                           αi1 i2 f (ξ1i1 , ξ2i2 )              X1 X2
+                                                                                                                                                                        α i 1 i2
+                                                                  r(x1 , x2 ) =             =                                                                                                                                                      (1)--><a id="eq:barycentricform"></a><!--
+                                                                                d(x1 , x2 )             (x 1 − ξ1i1 )(x2 − ξ2i2 )                             (x 1 − ξ 1i1 )(x2 − ξ2i2 )
+                                                                                              i =1 i =1
+                                                                                                  1      2                                          i =1 i =1
+                                                                                                                                                    1       2
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:barycentricform} \mathbf {r}(x_1,x_2) = \frac {\mathbf {n}(x_1,x_2)}{\mathbf {d}(x_1,x_2)} = \sum _{i_1=1}^{n_1} \sum _{i_2=1}^{n_2} \frac {\alpha _{i_1i_2} \mathbf {f}(\xi _{1i_1},\xi _{2i_2})}{(x_1-\xi
+_{1i_1})(x_2 - \xi _{2i_2})} \Bigg / \sum _{i_1=1}^{n_1} \sum _{i_2=1}^{n_2} \frac {\alpha _{i_1i_2}}{(x_1-\xi _{1i_1})(x_2-\xi _{2i_2})}
+\end{equation}
+
+</p>
+
+<p>
+where \(\alpha _{i_1i_2} \neq 0\). We note that \(\mathbf {r}\) is interpolatory in the sense that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                            r(x1 , x2 ) = f (x1 , x2 )          for x1 ∈ ξ1             and   x2 ∈ ξ 2 ,
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathbf {r}(x_1,x_2) = \mathbf {f}(x_1,x_2) \quad \text {for} \quad x_1 \in \boldsymbol {\xi }_1 \quad \text {and} \quad x_2 \in \boldsymbol {\xi }_2,
+\end{equation*}
+
+</p>
+
+<p>
+where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                      ξ1 = {ξ11 , . . . , ξ1n1 } ⊂ X1             and ξ2 = {ξ21 , . . . , ξ2n2 } ⊂ X2
+
+-->
+
+<p>
+
+\begin{equation*}
+\boldsymbol {\xi }_1 = \{\xi _{11},\ldots ,\xi _{1n_1}\} \subset \mathbf {X}_1 \quad \text {and} \quad \boldsymbol {\xi }_2 = \{\xi _{21},\ldots ,\xi _{2n_2}\} \subset \mathbf {X}_2
+\end{equation*}
+
+</p>
+
+<p>
+are the respective sets of interpolation nodes. Similar to before, \(\xi _{ij}\) denotes the \(j\)-th interpolation node of the \(i\)-th variable. The p-AAA algorithm follows an iterative procedure to choose the interpolation nodes as well as the
+matrix of barycentric coeﬀicients
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                                       α ∈ Cn1 ×n2 , i.e., α(i1 , i2 ) = αi1 i2 .
+
+-->
+
+<p>
+
+\begin{equation*}
+\alpha \in \mathbb {C}^{n_1 \times n_2},~~\mbox {i.e.,}~~\alpha (i_1,i_2) = \alpha _{i_1i_2}.
+\end{equation*}
+
+</p>
+
+<p>
+Each iteration consists of first performing a greedy selection where we determine
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                                (x∗1 , x∗2 ) =      arg max              |r(x1 , x2 ) − f (x1 , x2 )|                                                          (2)--><a id="eq:greedy"></a><!--
+                                                                                                                                                 (x1 ,x2 )∈X1 ×X2
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:greedy} (x_1^*,x_2^*) = \argmax _{\substack {(x_1,x_2) \in \mathbf {X}_1 \times \mathbf {X}_2}} \lvert \mathbf {r}(x_1,x_2) - \mathbf {f}(x_1,x_2) \rvert
+\end{equation}
+
+</p>
+
+<p>
+and update the interpolation sets via
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                                       ξ1 ← ξ1 ∪ {x∗1 }           and ξ ← ξ ∪ {x∗2 }.
+
+-->
+
+<p>
+
+\begin{equation*}
+\boldsymbol {\xi }_1 \leftarrow \boldsymbol {\xi }_1 \cup \{x_1^*\} \quad \text {and} \quad \boldsymbol {\xi } \leftarrow \boldsymbol {\xi } \cup \{x_2^*\}.
+\end{equation*}
+
+</p>
+
+<p>
+As a second step, the barycentric coeﬀicients are computed by solving a linear least-squares (LS) problem of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                                                     min ∥L2 vec(α)∥22 ,                                                                                           (3)--><a id="eq:ls"></a><!--
+                                                                                                                                                    ∥α∥F =1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ls} \min _{\lVert \alpha \rVert _{\operatorname {F}} = 1}\lVert \mathbb {L}_2 \operatorname {vec}(\alpha ) \rVert _2^2,
+\end{equation}
+
+</p>
+
+<p>
+where \(\mathbb {L}_2 \in \mathbb {C}^{N_1 N_2 \times n_1 n_2}\) is the 2D Loewner matrix. The LS problem above arises as the minimization of the approximation error
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                           X  X
+                                                                                           N1 N2
+                                                                                                         |f (X1i1 , X2i2 )− r(X1i1 , X2i2 )|2 =
+                                                                                           i1 =1 i2 =1
+
+                                                                                                                                X  X
+                                                                                                                                N1 N2
+                                                                                                                                               1
+                                                                                                                                                                                                                        2
+                                                                                                                                                          (d(X1i1 , X2i2 )f (X1i1 , X2i2 ) − n(X1i1 , X2i2 )) ,
+                                                                                                                               i =1 i =1
+                                                                                                                                         d(X 1i1 , X2i2 )
+                                                                                                                                1      2
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\sum _{i_1=1}^{N_1} \sum _{i_2=1}^{N_2} \left \lvert \mathbf {f}(X_{1i_1},X_{2i_2}) - \right . &amp; \left . \mathbf {r}(X_{1i_1},X_{2i_2}) \right \rvert ^2 = \\ &amp; \sum _{i_1=1}^{N_1} \sum _{i_2=1}^{N_2} \left
+\lvert \frac {1}{\mathbf {d}(X_{1i_1},X_{2i_2})} \left ( \mathbf {d}(X_{1i_1},X_{2i_2}) \mathbf {f}(X_{1i_1},X_{2i_2}) - \mathbf {n}(X_{1i_1},X_{2i_2}) \right ) \right \rvert ^2,
+\end{align*}
+which is linearized by dropping the \(1 / \mathbf {d}(X_{1i_1},X_{2i_2})\) terms. In other words, the linearizd LS problem minimizes the expression
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                                                                    X  X
+                                                                                                                                    N1 N2
+                                                                                                              ∥L2 vec(α)∥22 =                     |(d(X1i1 , X2i2 )f (X1i1 , X2i2 ) − n(X1i1 , X2i2 ))|2 .
+                                                                                                                                    i1 =1 i2 =1
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\lVert \mathbb {L}_2 \operatorname {vec}(\alpha ) \rVert _2^2 = \sum _{i_1=1}^{N_1} \sum _{i_2=1}^{N_2} \left \lvert \left ( \mathbf {d}(X_{1i_1},X_{2i_2}) \mathbf {f}(X_{1i_1},X_{2i_2}) - \mathbf
+{n}(X_{1i_1},X_{2i_2}) \right ) \right \rvert ^2.
+\end{equation*}
+
+</p>
+
+<p>
+This procedure is repeated until the approximation error indicated in <span class="textup">(<a href="paper.html#eq:greedy">2</a>)</span> drops below a desired error tolerance. Solving the LS problem in <span class="textup">(<a
+href="paper.html#eq:ls">3</a>)</span> is the dominant cost of p-AAA and is done via a singular value decomposition of \(\mathbb {L}_2\). More precisely, <span class="textup">(<a href="paper.html#eq:ls">3</a>)</span> has a closed
+form solution which is given in terms of the right singular vector of \(\mathbb {L}_2\) which corresponds to the smallest singular value.
+</p>
+
+<p>
+While we only outlined the two variable case so far, the algorithm can easily be formulated as an approximation procedure for functions \(\mathbf {f} : \mathbb {C}^d \rightarrow \mathbb {C}\) that depend on \(d&gt;2\) variables. The key
+adjustments that need to be taken into account are that the multivariate approximant \(\mathbf {r}(x_1,x_2,\ldots ,x_d)\) will depend on a tensor
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                          α ∈ Cn1 ×···×nd                                                                                   (4)                                                                                                   --><a id="eq:alpha"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:alpha} \alpha \in \mathbb {C}^{n_1 \times \cdots \times n_d}
+\end{equation}
+
+</p>
+
+<p>
+of barycentric coeﬀicients (rather than a matrix) and the p-AAA LS problem will be based on the higher-order Loewner matrix \(\mathbb {L}_d \in \mathbb {C}^{N_1 \cdots N_d \times n_1 \cdots n_d}\). In this case solving this dense LS
+problem via SVD requires \(\mathcal {O}(N_1 \cdots N_d n_1^2 \cdots n_d^2)\) operations and thus computing \(\alpha \) or even forming \(\mathbb {L}_d\) may become an infeasible task. We note that this growth in complexity is a
+common issue in multivariate approximation algorithms and is typically referred to as the “curse of dimensionality”. While there exist approaches to overcome these obstacles in multivariate function approximation (e.g., sparse grids, radial basis
+schemes), we focus here on a method that leverages a separable representation of the denominator \(\mathbf {d}\) of the rational approximant \(\mathbf {r}\). As we will point out in the following, such a representation is directly connected to
+low-rank representations of higher-order tensors and allows for partially overcoming the curse of dimensionality associated with the p-AAA LS problem.<br />
+
+</p>
+
+<p>
+In order to introduce our proposed approach, we consider a canonical (CP) [1] decomposition of the tensor \(\alpha \) in&nbsp;<span class="textup">(<a href="paper.html#eq:alpha">4</a>)</span> which we write in its vectorized form as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                     X
+                                                     r
+                                         vec(α) =             β1ℓ ⊗ · · · ⊗ βdℓ ∈ Cn1 ···nd ,                                                                                                                               --><a id="eq:alphacp"></a><!--
+                                                     ℓ=1
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:alphacp} \operatorname {vec}(\alpha ) = \sum _{\ell =1}^r \beta _{1\ell } \otimes \cdots \otimes \beta _{d\ell } \in \mathbb {C}^{n_1 \cdots n_d},
+\end{equation*}
+
+</p>
+
+<p>
+where \(\beta _{i\ell } \in \mathbb {C}^{n_i}\) for \(\ell =1,\ldots ,r\). The matrices \(\beta _1 = \left [\beta _{11},\ldots ,\beta _{1r} \right ] \in \mathbb {C}^{n_1 \times r}\), ..., \(\beta _d = \left [\beta
+_{d1},\ldots ,\beta _{dr} \right ] \in \mathbb {C}^{n_d \times r}\) are called CP factors and the smallest \(r\) for which such a decomposition exists defines the tensor rank of \(\alpha \). The CP decomposition is particularly useful if it
+is able to represent (or approximate) \(\alpha \) with a small number of terms \(r \ll n_1,\ldots ,n_d\). In this case the storage requirement for the CP factors is merely \(\mathcal {O}(r(n_1 + \cdots + n_d))\) rather than \(\mathcal
+{O}(n_1\cdots n_d)\) for the full tensor. We propose to take advantage of this reduction in the degrees of freedom in the representation of \(\alpha \) within the p-AAA algorithm.
+</p>
+
+<p>
+To make this idea more clear, we revisit the two variable case. There the CP decomposition is analogous to a rank-\(r\) outer product representation given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                   α = β1 β2⊤ ,                                                                     (5)                                                                                                             --><a id="eq:alphaouterproduct"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:alphaouterproduct} \alpha = \beta _1 \beta _2^\top ,
+\end{equation}
+
+</p>
+
+<p>
+Plugging this representation for \(\alpha \) into the denominator in <span class="textup">(<a href="paper.html#eq:barycentricform">1</a>)</span> gives the separable representation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                                                                             !                          !
+                                                                                                                                             X
+                                                                                                                                             r          Xn1
+                                                                                                                                                              (β1ℓ )i1             Xn2
+                                                                                                                                                                                         (β2ℓ )i2
+                                                                                                                           d(x1 , x2 ) =                                                                    ,
+                                                                                                                                                             x 1 − ξ1i1                 x 2 − ξ2i2
+                                                                                                                                             ℓ=1        i =1
+                                                                                                                                                        1                          i =1
+                                                                                                                                                                                    2
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathbf {d}(x_1,x_2) = \sum _{\ell =1}^r \left ( \sum _{i_1=1}^{n_1} \frac { (\beta _{1\ell })_{i_1}}{x_1-\xi _{1i_1}} \right ) \left ( \sum _{i_2=1}^{n_2} \frac { (\beta _{2\ell })_{i_2}}{x_2-\xi _{2i_2}} \right
+),
+\end{equation*}
+
+</p>
+
+<p>
+where \((\beta _{1\ell })_{i_1} \in \mathbb {C}\) is the \(i_1\)-th entry of the vector \(\beta _{1\ell } \in \mathbb {C}^{n_1}\) and \((\beta _{2\ell })_{i_2} \in \mathbb {C}\) is the \(i_2\)-th entry of the vector \(\beta _{2\ell
+} \in \mathbb {C}^{n_2}\). Our main idea for incorporating such separable representations and the associated low-rank decomposition for the barycentric coeﬀicients into the p-AAA algorithm is to add the decomposition introduced in <span
+class="textup">(<a href="paper.html#eq:alphaouterproduct">5</a>)</span> as a constraint to the LS problem in <span class="textup">(<a href="paper.html#eq:ls">3</a>)</span>. In this case we obtain the LS problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                          2
+                                        X
+                                        r                                X
+                                                                         r
+                             min L2           β1ℓ ⊗ β2ℓ          s.t.          β1ℓ ⊗ β2ℓ       = 1.                                           (6)                                                                                                            --><a id="eq:separableLS"></a><!--
+                             β1 ,β2
+                                        ℓ=1               2              ℓ=1               2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:separableLS} \min _{\beta _1,\beta _2} \left \lVert \mathbb {L}_2 \sum _{\ell =1}^r \beta _{1\ell } \otimes \beta _{2\ell } \right \rVert _2^2 \quad \text {s.t.} \quad \left \lVert \sum _{\ell =1}^r
+\beta _{1\ell } \otimes \beta _{2\ell } \right \rVert _2 = 1.
+\end{equation}
+
+</p>
+
+<p>
+We introduce the matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+
+                                                                                        Kβ1 := [β11 ⊗ In2 , . . . , β1r ⊗ In2 ] ∈ Cn1 n2 ×n2 r                    and Kβ2 = [In1 ⊗ β21 , . . . , In1 ⊗ β2r ] ∈ Cn1 n2 ×n1 r ,
+
+-->
+
+<p>
+
+\begin{equation*}
+K_{\beta _1} := \left [ \beta _{11} \otimes I_{n_2}, \ldots , \beta _{1r} \otimes I_{n_2} \right ] \in \mathbb {C}^{n_1 n_2 \times n_2 r} \quad \text {and} \quad K_{\beta _2} = \left [ I_{n_1} \otimes \beta
+_{21},\ldots , I_{n_1} \otimes \beta _{2r} \right ] \in \mathbb {C}^{n_1 n_2 \times n_1 r},
+\end{equation*}
+
+</p>
+
+<p>
+as well as the contracted Loewner matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+
+                                                                                                                Lβ1 := L2 Kβ1 ∈ CN1 N2 ×n2 r                      and         Lβ2 := L2 Kβ2 ∈ CN1 N2 ×n1 r ,
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathbb {L}_{\beta _1} := \mathbb {L}_2 K_{\beta _1} \in \mathbb {C}^{N_1 N_2 \times n_2 r} \qquad \text {and} \qquad \mathbb {L}_{\beta _2} := \mathbb {L}_2 K_{\beta _2} \in \mathbb {C}^{N_1 N_2 \times n_1 r},
+\end{equation*}
+
+</p>
+
+<p>
+which allow for writing the constrained LS problem in two distinct ways
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                               min ∥Lβ2 vec(β1 )∥22               s.t.     ∥Kβ2 vec(β1 )∥2 = 1,                   (7)                                             --><a id="eq:betals"></a><!--
+                                                                                                                              β1 ,β2
+
+                                                                                                                               min ∥Lβ1 vec(β2 )∥22               s.t.     ∥Kβ1 vec(β2 )∥2 = 1.                  (8)                                            --><a id="eq:gammals"></a><!--
+                                                                                                                              β1 ,β2
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\min _{\beta _1, \beta _2} \left \Vert \mathbb {L}_{\beta _2} \operatorname {vec}(\beta _1) \right \rVert _2^2 \quad &amp;\text {s.t.} \quad \left \lVert K_{\beta _2} \operatorname {vec}(\beta _1) \right \rVert _2
+= 1 , \label {eq:betals} \\ \min _{\beta _1, \beta _2} \left \Vert \mathbb {L}_{\beta _1} \operatorname {vec}(\beta _2) \right \rVert _2^2 \quad &amp;\text {s.t.} \quad \left \lVert K_{\beta _1} \operatorname
+{vec}(\beta _2) \right \rVert _2 = 1. \label {eq:gammals}
+\end{align}
+We note that if one of the factors \(\beta _1\) or \(\beta _2\) is fixed, the other one can be obtained by solving an equality constrained LS problem based on the formulation above. In this case, these linear LS problems have a closed form solution
+in terms of the generalized SVD [4] of the matrix tuple \((\mathbb {L}_{\beta _2},K_{\beta _2})\) or \((\mathbb {L}_{\beta _1},K_{\beta _1})\), respectively. Hence, the constrained LS problem in <span class="textup">(<a
+href="paper.html#eq:separableLS">6</a>)</span> has a separable structure which can be tackled via an alternating least-squares (ALS) procedure. In this procedure, we start with an initial guess for \(\beta _1\) and \(\beta _2\), then
+repeatedly solve the problem in <span class="textup">(<a href="paper.html#eq:betals">7</a>)</span> while keeping \(\beta _2\) fixed, and the problem in <span class="textup">(<a href="paper.html#eq:gammals">8</a>)</span> while
+keeping \(\beta _1\) fixed. This ALS approach requires \(\mathcal {O}(N_1 N_2 r^2(n_1^2+n_2^2))\) operations which corresponds to the cost of computing the generalized SVDs. While this change in complexity may only have a small impact in
+the two variable case, it can be critical when moving to \(d&gt;2\) variables where ALS requires \(\mathcal {O}(N_1 \cdots N_d r^2(n_1^2+ \cdots + n_d^2))\) operations. Additionally, we note that the contracted Loewner matrices can be
+assembled eﬀiciently by exploiting the Kronecker structure present in \(\mathbb {L}_d\). These facts make it appealing to combine p-AAA with a separable representation for the denominator \(\mathbf {d}\).<br />
+
+</p>
+
+<p>
+We conclude this abstract by considering a simple example where our proposed low-rank version of the p-AAA algorithm yields a high-fidelity rational approximant, while the standard p-AAA algorithm runs out of memory on our machine during the
+construction of the Loewner matrix \(\mathbb {L}_d\). Specifically, we consider approximating the function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                                                            x1 + x2 + x3 + x4 + x5
+                                                                                                             f (x1 , x2 , x3 , x4 , x5 ) =
+                                                                                                                                             10 + sin(x1 ) + sin(x2 ) + sin(x3 ) + sin(x4 ) + sin(x5 )
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathbf {f}(x_1,x_2,x_3,x_4,x_5) = \frac {x_1 + x_2 + x_3 + x_4 + x_5}{10 + \sin (x_1) + \sin (x_2) + \sin (x_3) + \sin (x_4) + \sin (x_5)}
+\end{equation*}
+
+</p>
+
+<p>
+on the domain \([-3,3]^5\). For each variable we choose the same sampling points corresponding to \(20\) linearly spaced values in the interval \([-3,3]\). We run the proposed low-rank version of p-AAA and enforce a rank \(r=1\) constraint on
+the coeﬀicient tensor \(\alpha \). After \(6\) iterations the relative maximum approximation error over the sampled data is approximately \(8.514 \times 10^{-3}\) and p-AAA chose \(6\) interpolation nodes for each variable. The standard
+p-AAA algorithm does not make it past the third iteration on our machine, due to running out of memory. Note that in this example the memory requirement for \(\mathbb {L}_5\) is around \(24.4\) GB in double precision once \(4\) interpolation
+nodes are chosen for each variable. In order to evaluate the quality of the computed approximation for unsampled data, we validate \(\mathbf {r}\) on a set of samples obtained by sampling \(50\) linearly spaced points in \([-3,3]\) for each
+variable. The maximum relative error on this validation set is approximately \(8.704 \times 10^{-3}\), which closely matches the maximum error on the training data set.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> T.&nbsp;G. Kolda and B.&nbsp;W. Bader. Tensor Decompositions and Applications. <i>SIAM Review</i>, 51(3):455–500, Aug. 2009. Publisher: Society for Industrial and Applied Mathematics.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Y.&nbsp;Nakatsukasa, O.&nbsp;Sète, and L.&nbsp;N. Trefethen. The AAA Algorithm for Rational Approximation. <i>SIAM Journal on Scientific Computing</i>, 40(3):A1494–A1522, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A.&nbsp;C. Rodriguez, L.&nbsp;Balicki, and S.&nbsp;Gugercin. The p-AAA Algorithm for Data-Driven Modeling of Parametric Dynamical Systems. <i>SIAM Journal on Scientific Computing</i>,
+45(3):A1332–A1358, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> C.&nbsp;F. Van&nbsp;Loan. Generalizing the Singular Value Decomposition. <i>SIAM Journal on Numerical Analysis</i>, 13(1):76–83, Mar. 1976. Publisher: Society for Industrial and Applied
+Mathematics.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,404 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Minimal Residual Rational Krylov Subspace Method for Sequences of Shifted Linear Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+Hussam Al Daas<sup>1</sup><a id="paper-autopage-3"></a>, <span class="underline">Davide Palitta</span><sup>2</sup>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The solution of sequences of shifted linear systems of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                              (A + ξi In )x(i) = b(i) ,    i = 1, . . . , ℓ,                                                             (1)--><a id="eq:main"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:main} (A+\xi _i I_n)x^{(i)} = b^{(i)}, \quad i=1,\ldots ,\ell ,
+\end{equation}
+
+</p>
+
+<p>
+with \(A\in \mathbb {R}^{n\times n}\), \(I_n\) the identity matrix of order \(n\), \(\xi _i\) a possibly complex number, and \(b^{(i)}\in \mathbb {R}^n\) is a classic problem in numerical linear algebra. For the sake of simplicity in the
+presentation, we assume the right-hand side in&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> to be independent of the parameter index \(i\), namely \(b\equiv b^{(i)}\) for all \(i=1,\ldots ,\ell \). However,
+many of the results presented in this talk can be extended to more general frameworks.
+</p>
+
+<p>
+Equations&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> can be met in numerous application settings as control theory and model order reduction techniques&nbsp;[1], structural dynamics&nbsp;[3], lattice
+quantum-chromodynamics&nbsp;[7], Tikhonov regularization&nbsp;[6], the solution of time-dependent PDEs&nbsp;[9], and as inner step in sophisticated eigensolvers&nbsp;[10], to name a few.
+</p>
+
+<p>
+The ubiquity of&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> has driven the interest of our community into developing very many different strategies for the solution of this problem over the years; see, e.g., the
+survey&nbsp;[14]. Most of these techniques build upon the construction of the polynomial Krylov subspace
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                          Km (A, r0 ) = span{r0 , Ar0 , . . . , Am−1 r0 },                                                                 (2)--><a id="eq:PK"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:PK} \mathbf {K}_m(A,r_0)=\text {span}\{r_0,Ar_0,\ldots ,A^{m-1}r_0\},
+\end{equation}
+
+</p>
+
+<p>
+where \(r_0=b-Ax_0\) is the initial residual vector for a given initial guess \(x_0\in \mathbb {R}^n\). In these schemes, solutions of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                       x(i)            (i)
+                                                                                                                        m = x 0 + V m ym ,                                                                                (3)--><a id="eq:sol"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:sol} x_m^{(i)}=x_0+V_my_m^{(i)},
+\end{equation}
+
+</p>
+
+<p>
+are constructed where the columns of \(V_m=[v_1,\ldots ,v_m]\in \mathbb {R}^{n\times m}\) form an orthonormal basis of&nbsp;<span class="textup">(<a href="paper.html#eq:PK">2</a>)</span> whereas \(y_m^{(i)}\in \mathbb
+{C}^m\). The backbone of polynomial Krylov subspace methods for shifted linear systems is the <em>shift-invariant</em> property of&nbsp;<span class="textup">(<a href="paper.html#eq:PK">2</a>)</span>, namely the following Arnoldi relation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                 (                [         ])
+                                                                                                                                                      Im
+                                                                   (A + ξi In )Vm = Vm (Hm + ξi Im ) + hm+1,m vm+1 eTm = Vm+1        H m + ξi                    ,                                             (4)--><a id="eq:shiftArnoldi"></a><!--
+                                                                                                                                                       0
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:shiftArnoldi} (A+\xi _iI_n)V_m=V_m(H_m+\xi _iI_m)+h_{m+1,m}v_{m+1}e_m^T=V_{m+1}\left (\underline {H}_m+\xi _i \begin{bmatrix} I_m\\ 0\\ \end {bmatrix}\right ),
+\end{equation}
+
+</p>
+
+<p>
+holds true for any shift \(\xi _i\) in&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span>. In&nbsp;<span class="textup">(<a href="paper.html#eq:shiftArnoldi">4</a>)</span>, \(H_m\in \mathbb {R}^{m\times
+m}\) and \(h_{m+1,m}\in \mathbb {R}\) are quantities related to the orthonormalization step of the Arnoldi process and \(\underline {H}_m=[H_m;h_{m+1,m}e_m^T]\in \mathbb {R}^{(m+1)\times m}\). The relation&nbsp;<span
+class="textup">(<a href="paper.html#eq:shiftArnoldi">4</a>)</span> explains the use of the shift-independent space&nbsp;<span class="textup">(<a href="paper.html#eq:PK">2</a>)</span> employed in the construction of the
+solutions&nbsp;<span class="textup">(<a href="paper.html#eq:sol">3</a>)</span>. Indeed,&nbsp;<span class="textup">(<a href="paper.html#eq:shiftArnoldi">4</a>)</span> allows us to construct a single basis \(V_m\) and deal with
+shifted quantities only at the projected level.
+</p>
+
+<p>
+Once \(V_m\) is formed, the second ingredient in the construction of the solution \(x_m^{(i)}\) is the vector \(y_m^{(i)}\) which contains the coeﬀicients of the linear combination in terms of the basis vectors providing the current solution. The
+computation of this vector \(y_m^{(i)}\) is one of the main aspects characterizing a given Krylov subspace method. Some methods impose a Galerkin condition on the residual vectors \(r_m^{(i)}=b-Ax_m^{(i)}\), namely they require the
+\(r_m^{(i)}\)’s to be orthogonal to \(\mathbf {K}_m(A,b)\). This condition is equivalent to computing \(y_m^{(i)}\) as the solution of the projected shifted linear system
+</p>
+
+<p>
+\[(H_m+\xi _iI)y_m^{(i)}=\beta e_1,\quad \beta =\|r_0\|;\]
+</p>
+
+<p>
+see, e.g.,&nbsp;[11].
+</p>
+
+<p>
+Other methods impose a minimal residual condition and compute \(y_m^{(i)}\) as
+</p>
+
+<p>
+\[y_m^{(i)}=\argmin _{y\in \mathbb {C}^m}\|r_0-(A+\xi _i I)V_my\|=\argmin _{y\in \mathbb {C}^m}\left \|\beta e_1 - \left (\underline {H}_m+\xi _i \begin {bmatrix} I_m\\ 0\\ \end {bmatrix}\right )y\right \|, \]
+</p>
+
+<p>
+see, e.g.,&nbsp;[11].
+</p>
+
+<p>
+In many cases, polynomial Krylov subspace methods for&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> require the construction of a large subspace to meet the prescribed level of accuracy. This leads to severe
+drawbacks in terms of both computational cost and storage demand, especially for those methods where a full orthogonalization step and the allocation of the whole \(V_m\) are necessary. Different strategies have been developed to overcome these
+issues. Since preconditioning is often not an option as designing good preconditioners for all the shifted linear systems in the sequence&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> is rather diﬀicult, the restarting
+paradigm has become one of the most popular approaches in this setting; see, e.g.,&nbsp;[12, 5, 4]. However, it is well-known that restarting needs collinearity of the residual vectors \(r_m^{(i)}\) to be successful and this feature may be diﬀicult to
+achieve in minimal residual methods unless rather strict conditions on \(A\) and the shifts \(\xi _i\) are considered; see, e.g.,&nbsp;[4].
+</p>
+
+<p>
+A completely different approach consists in employing approximation spaces different from&nbsp;<span class="textup">(<a href="paper.html#eq:PK">2</a>)</span> in the construction of the solutions&nbsp;<span class="textup">(<a
+href="paper.html#eq:sol">3</a>)</span>. This novel point of view has been proposed for the first time in&nbsp;[13] where tools coming from the matrix equations literature have been adapted to the solution of&nbsp;<span class="textup">(<a
+href="paper.html#eq:main">1</a>)</span>. Indeed, it is easy to show that the sequence of shifted linear systems in&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> with \(b\equiv b^{(i)}\), for all \(i\), can be
+reformulated in terms of a single Sylvester matrix equation of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                                        AX + XD = b1Tℓ ,                                                                                 (5)--><a id="eq:Sylv"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Sylv} AX+XD=b\mathbf {1}_\ell ^T,
+\end{equation}
+
+</p>
+
+<p>
+where \(X=[x^{(1)},\ldots ,x^{(\ell )}]\in \mathbb {C}^{n\times \ell }\), \(\mathbf {1}_\ell \in \mathbb {R}^\ell \) is the vector of all ones, and
+</p>
+
+<p>
+\[D=\begin {bmatrix} \xi _1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp;&amp;\xi _\ell \\ \end {bmatrix}\in \mathbb {C}^{\ell \times \ell },\]
+</p>
+
+<p>
+is a diagonal matrix containing the shifts on the main diagonal.
+</p>
+
+<p>
+In this setting, an approximate solution to&nbsp;<span class="textup">(<a href="paper.html#eq:Sylv">5</a>)</span> of the form \(X_m=V_mY_m\) is sought. In&nbsp;[13], the columns of \(V_m\in \mathbb {R}^{n\times 2m}\) represent an
+orthonormal basis for the <em>extended</em> Krylov subspace
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                                                                                                  EKm (A, b) = span{b, A−1 b, Ab, A−2 b, . . . , Am−1 b, A−m b},                                                           (6)--><a id="eq:EK"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:EK} \mathbf {EK}_m(A,b)=\text {span}\{b,A^{-1}b,Ab,A^{-2}b,\ldots ,A^{m-1}b,A^{-m}b\},
+\end{equation}
+
+</p>
+
+<p>
+whereas \(Y_m\in \mathbb {C}^{2m\times \ell }\) is computed by imposing a Galerkin condition on the residual matrix \(AV_mY_m+V_mY_mD-b\mathbf {1}_\ell ^T\). As before, this condition is equivalent to computing \(Y_m\) as the solution of
+a projected problem which in this case amounts to the following Sylvester equation
+</p>
+
+<p>
+\[T_mY_m+Y_mD=\beta e_1\mathbf {1}_\ell ^T,\quad T_m=V_m^TAV_m,\;\beta =\|b\|.\]
+</p>
+
+<p>
+In&nbsp;[13] it has been shown that the use of the extended Krylov subspace&nbsp;<span class="textup">(<a href="paper.html#eq:EK">6</a>)</span> in place of its polynomial counterpart&nbsp;<span class="textup">(<a
+href="paper.html#eq:PK">2</a>)</span> as approximation space leads to a much faster convergence in terms of number of iterations so that restarting is not really necessary. On the other hand, the computation of \(V_m\) is now significantly more
+expensive than before due to solving linear systems with \(A\) at each iteration.
+</p>
+
+<p>
+Our novel method takes inspiration from what has been proposed in&nbsp;[13] but differs in both the selection of the approximation space and the computation of the matrix \(Y_m\). In our scheme we assume we can afford solving a handful of
+shifted linear systems by, e.g., a sparse direct solver, but that we do not have the computational resources for solving all the \(\ell \) linear systems in&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span>. This can be
+the case when, e.g., we need to solve&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> on a laptop where we may be able to solve \((A+\xi I)x=b\) but the lack of a proper parallel computing environment makes the
+sequential solution of all the systems in&nbsp;<span class="textup">(<a href="paper.html#eq:main">1</a>)</span> extremely time consuming.
+</p>
+
+<p>
+In our novel approach we propose to employ the rational Krylov subspace
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                         {                                                            }
+                                                                                                                                          −1
+                                                                                                                                                            ∏
+                                                                                                                                                            m−1
+                                                                                                                                                                                 −1
+                                                                                               Km (A, b, σm−1 ) = span b, (A + σ1 )            b, . . . ,            (A + σi )        b ,                                  (7)--><a id="eq:RK"></a><!--
+                                                                                                                                                            i=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:RK} \mathbf {K}_m(A,b,\bm {\sigma }_{m-1})=\text {span}\left \{b,(A+\sigma _1)^{-1}b,\ldots ,\prod _{i=1}^{m-1}(A+\sigma _i)^{-1}b\right \},
+\end{equation}
+
+</p>
+
+<p>
+in place of&nbsp;<span class="textup">(<a href="paper.html#eq:EK">6</a>)</span> as approximation space. In&nbsp;<span class="textup">(<a href="paper.html#eq:RK">7</a>)</span>, \(\bm {\sigma }_{m-1}=(\sigma _1,\ldots
+,\sigma _{m-1})^T\in \mathbb {C}^{m-1}\) is a set of poles that can be either given a-priori or computed on the fly as the space expands. Various strategies for the computation of these poles are available in the literature; see, e.g.,&nbsp;[2, 8].
+Selecting good poles is crucial to obtain a performing rational Krylov subspace method for the problem at hand. We have designed an ad-hoc routine taking into account the peculiar structure of our problem&nbsp;<span class="textup">(<a
+href="paper.html#eq:Sylv">5</a>)</span>. Numerical results show that our approach often performs better than off-the-shelf pole-selection strategies.
+</p>
+
+<p>
+Moreover, we compute \(Y_m\in \mathbb {C}^{m\times \ell }\) by imposing a minimal residual condition instead of a Galerkin one as done in&nbsp;[13]. Opposite to what happens when&nbsp;<span class="textup">(<a
+href="paper.html#eq:PK">2</a>)</span> is adopted as approximation space, this appealing minimization property does not come with the drawback of forcing collinearity of the residuals, which may not even exist. Indeed, in our extensive
+numerical experience, the rational Krylov subspace one needs to construct is always of very moderate dimension so that no restart has to be performed.
+</p>
+
+<p>
+A panel of diverse numerical results shows that our novel approach performs better than state-of-the-art techniques especially on very challenging problems where, e.g., the shifts \(\xi _i\)’s in&nbsp;<span class="textup">(<a
+href="paper.html#eq:main">1</a>)</span> are complex and do not come as conjugate pairs.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;STFC, Scientific Computing Department, Rutherford Appleton Laboratory, Didcot, Oxfordshire, UK (hussam.al-daas@stfc.ac.uk)
+</p>
+
+
+<p>
+<sup>2</sup>&nbsp;Dipartimento di Matematica, Alma Mater Studiorum Università di Bologna, Piazza di Porta San Donato 5, I-40127 Bologna, Italy (davide.palitta@unibo.it)
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P.&nbsp;Benner, S.&nbsp;Gugercin, and K.&nbsp;Willcox. A Survey of Projection-Based Model Reduction Methods for Parametric Dynamical Systems. <i>SIAM Review</i>, 57(4):483–531, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;Casulli and L.&nbsp;Robol. An Eﬀicient Block Rational Krylov Solver for Sylvester Equations with Adaptive Pole Selection. <i>SIAM Journal on Scientific Computing</i>,
+46(2):A798–A824, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A.&nbsp;Feriani, F.&nbsp;Perotti, and V.&nbsp;Simoncini. Iterative System Solvers for the Frequency Analysis of Linear Mechanical Systems. <i>Computer Methods in Applied Mechanics and
+Engineering</i>, 190(13):1719–1739, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A.&nbsp;Frommer. BiCGStab(\(\ell \)) for Families of Shifted Linear Systems. <i>Computing</i>, 70:87–109, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> A.&nbsp;Frommer and U.&nbsp;Glässner. Restarted GMRES for Shifted Linear Systems. <i>SIAM Journal on Scientific Computing</i>, 19(1):15–26, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> A.&nbsp;Frommer and P.&nbsp;Maass. Fast CG-Based Methods for Tikhonov–Phillips Regularization. <i>SIAM Journal on Scientific Computing</i>, 20(5):1831–1850, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> A.&nbsp;Frommer, B.&nbsp;Nöckel, S.&nbsp;Güsken, T.&nbsp;Lippert, and K.&nbsp;Schilling. Many Masses on one Stroke: Economic Computation of Quark Propagators. <i>International Journal
+of Modern Physics C</i>, 06(05):627–638, 1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> S.&nbsp;Güttel. Rational Krylov Approximation of Matrix Functions: Numerical Methods and Optimal Pole Selection. <i>GAMM-Mitteilungen</i>, 36(1):8–31, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Md. Masud&nbsp;Rana, V.&nbsp;E. Howle, K.&nbsp;Long, A.&nbsp;Meek, and W.&nbsp;Milestone. A New Block Preconditioner for Implicit Runge–Kutta Methods for Parabolic PDE Problems.
+<i>SIAM Journal on Scientific Computing</i>, 43(5):S475–S495, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> E.&nbsp;Polizzi. Density-matrix-based algorithm for solving eigenvalue problems. <i>Phys. Rev. B</i>, 79, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Y.&nbsp;Saad. <i>Iterative Methods for Sparse Linear Systems</i>. SIAM, Society for Industrial and Applied Mathematics, Philadelphia, PA, 2nd edition, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> V.&nbsp;Simoncini. Restarted Full Orthogonalization Method for Shifted Linear Systems. <i>BIT Numerical Mathematics</i>, 43:459–466, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> V.&nbsp;Simoncini. Extended Krylov Subspace for Parameter Dependent Systems. <i>Applied Numerical Mathematics</i>, 60(5):550–560, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> K.&nbsp;M. Soodhalter, E.&nbsp;de&nbsp;Sturler, and M.&nbsp;E. Kilmer. A Survey of Subspace Recycling Iterative Methods. <i>GAMM-Mitteilungen</i>, 43(4), 2020.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

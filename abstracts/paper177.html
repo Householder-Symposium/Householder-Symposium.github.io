@@ -1,0 +1,572 @@
+---
+layout: abstract
+absnum: 177
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\rotvert }{\mathrm {-}}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Using a Blocked Adaptive Randomized Range Finder to Reduce Memory Requirements in Deep Learning Based on the Householder QR Decomposition
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Carolin Penke</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Deep neural networks, such as GPT-like transformer architectures, are increasingly prevalent and consume significant portions of global computing infrastructure, predominantly using GPUs. These models demand vast datasets and are constrained
+by available compute capabilities during both the pre-training stage on supercomputers and the fine-tuning stage on smaller workstations. Enhancing training eﬀiciency is therefore highly impactful. This work introduces techniques to leverage
+low-rank structures for reducing memory requirements and outlines a method to eﬀiciently acquire the necessary subspaces by using a randomized range finder. We propose a GPU-accelerated algorithm, based on the Householder QR decomposition
+that is also applicable beyond deep learning contexts.
+</p>
+
+<p>
+In the following, we briefly give background about the <em>randomized rangefinder</em>[3, 5, 8] and about low-rank methods in deep learning [4, 9]. Here, the randomized rangefinder can be used as a tool to eﬀicently compute necessary subspace
+bases. We present a GPU-accelerated variant, based on a Householder QR decomposition instead of the common Gram-Schmidt-based approach.
+</p>
+
+<p>
+Given a matrix \(A\in \mathbb {R}^{m\times n}\) and a rank \(r\in \mathbb {N}\), the most simple version of the randomized range finder [3] finds an orthogonal subspace basis \(Q\in \mathbb {R}^{m\times r}\) such that \(\text
+{range}(Q)\approx \text {range}(A)\) as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                      1.   Ω    ←   randn(n,r)      (fill \(\Omega \) with random values)
+                                                                      2.   Y    ←   AΩ              (matrix multiply)                      --><a id="eq:RandRangeFinder"></a><!--
+                                                                      3.   Q    ←   orth(Y )        (e.g. QR decomposition of \(Y\)).
+
+-->
+
+<p>
+
+\begin{equation*}
+\begin{aligned} 1.\quad &amp; \Omega &amp; \leftarrow \quad &amp; \texttt {randn(n,r)} &amp;&amp; \text {(fill $\Omega $ with random values)} \\ 2.\quad &amp; Y &amp; \leftarrow \quad &amp; A\Omega &amp;&amp; \text
+{(matrix multiply)} \\ 3.\quad &amp; Q &amp; \leftarrow \quad &amp; \text {orth}(Y) &amp;&amp; \text {(e.g. QR decomposition of $Y$)}. \end {aligned} \label {eq:RandRangeFinder}
+\end{equation*}
+
+</p>
+
+<p>
+The notion \(\text {range}(Q)\approx \text {range}(A)\) holds in a probabilistic sense. With \(B:=Q^TA\), the method yields a decomposition
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                               A = QB.                                                                            (1)         --><a id="Eq:QB"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {Eq:QB} A=QB.
+\end{align}
+The minimal rank \(r\) to reach a certain error tolerance \(\epsilon &gt;0\), such that
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                        ∥A − QQT A∥ ≤ ϵ,                                                               (2)      --><a id="subspace_accuracy"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {subspace_accuracy} \|A - QQ^TA\| \leq \epsilon ,
+\end{align}
+
+</p>
+
+<p>
+can not be known in advance. Instead, an <em>adaptive</em> randomized rangefinder can be employed to iteratively construct a subspace basis until the desired accuracy is reached.
+</p>
+
+<p>
+In the training of a deep neural network, each layer is represented by matrices, including weights, gradients, and optimizer states. The weights are updated using gradients computed by back propagation, typically along with optimizer states, e.g. in
+the popular Adam optimizer. These states encode moving averages of the gradient’s first and second moments, incorporating past iteration data to guide updates more effectively. However, storing optimizer states requires considerable memory.
+Frameworks like LoRA [4] and GaLore [9] reduce memory demands by exploiting the low-rank structure of gradients.
+</p>
+
+<p>
+The popular LoRA framework utilizes a low-rank network architecture to eﬀiciently accumulate weight updates derived from gradients and optimizer states. The GaLore framework follows another approach and dynamically computes a dominant
+subspace basis of low rank for the gradient matrix during training. The optimizer states are represented within this subspace to reduce storage requirements. Rather than relying on a computationally intensive singular value decomposition (SVD),
+the use of a randomized range finder offers a more practical and eﬀicient alternative.
+</p>
+
+<p>
+In GaLore, as in LoRA, the rank \(r\) is treated as a hyperparameter, typically chosen based on intuition or experience (e.g., \(r=128\)). An alternative approach is to use the approximation quality \(\epsilon \) as a more interpretable
+hyperparameter, alongside an adaptive variant of the randomized range finder.
+</p>
+
+<p>
+With this adaptive method, the dimensionality of subspaces across consecutive training steps can vary. This enunciates the problem, that adding optimizer states, represented in different subspaces, is not very meaningful and can lead to deteriorated
+performance, even when the rank is fixed. A linear transformation can be applied to ensure subspace consistency. A low-rank optimizer state \(M_t\in \mathbb {R}^{m\times r_t}\), should at step \(t+1\) be substituted by \(Q_{t+1}Q_{t}M_t\).
+</p>
+
+<p>
+With the goal of exploiting the memory hierarchy in modern hardware, a blocked variant of the Adaptive Randomized Range Finder is presented in [5]. In each iteration, a random matrix \(\Omega \in \mathbb {R}^{n\times b}\) is generated to
+sample the columns of \(A\) via a matrix multiplication \(A\Omega \). The result is orthogonalized with respect to previously generated basis vectors using a Gram-Schmidt procedure.
+</p>
+
+<p>
+Here, a non-probabilistic stopping criterion is devised by keeping track of the residual \(A-QB\). The array \(A\) is updated to reflect this and approaches zero. A downside of this criterion is the higher memory requirements as three arrays (\(Q\),
+\(B\), \(A\)) need to be maintained. This is relevant in the context of gradient approximation in deep learning, because, here, available GPU memory is a significant bottleneck.
+</p>
+
+<p>
+Another stopping criterion is devised in [8], which does not necessitate maintaining the residual matrix, but is derived from the newly computed panels of \(B\) instead. Furthermore, the authors devise an algorithm that avoids passing over \(A\)
+during the loop and move the generation of random matrices outside the loop. In [2], the randomized range finder is applied as a crucial step in compressing matrices to Hierarchically Semi-Separable structure. A new probabilistic stopping allows for
+a relative error bound.
+</p>
+
+<p>
+The other works [3, 5, 8, 2] present algorithms based on the adaptive, blocked, Gram-Schmidt-orthogonalization of \(A\Omega \), where \(\Omega =\begin {bmatrix}\Omega _0&amp;\dots &amp;\Omega _k\end {bmatrix}\) contains the random
+panels constructed in the context of the iteration. In this work, we want to explore the alternative approach of computing the Householder-\(QR\) decomposition of \(A\Omega \) adaptively, i.e.&nbsp;generating sampled panels \(A\Omega \) on the
+fly, and only computing as many Householder vectors as necessary to approximate the subspace to a given tolerance.
+</p>
+
+<p>
+Our motivation to use Householder over Gram-Schmidt is foremost a practical one. The subspace computations introduce a significant computational load into the training process, that otherwise utilizes GPUs very eﬀiciently. The gradients already
+reside inside GPU memory, so it makes sense to use a GPU-accelerated algorithm. GPU-accelerated implementations of the blocked Householder QR decomposition (LAPACK routine <kbd>*geqrt3</kbd>) are available [1, 7] and can be adapted to
+perform the algorithm outlined in the following.
+</p>
+
+<p>
+We divide \(A\) into blocks, store Householder vectors in \(V\), and successively compute block rows of \(B\), which can be stored in the memory location of \(A\). Each storage-eﬀicient factorization [6] of a block yields an upper triangular matrix
+block, all of which are stored in \(T\).
+</p>
+
+<p>
+As a notation for referring to blocks, block rows and block columns we use
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                          
+                                                                                                                                            \(\vert \)
+
+
+
+                                                                                                                                                              \(\vert \)
+
+
+
+
+                                                                                                                                                                          
+                                                                                                                                                                          
+                                                                                                                                                        B0                
+                                                                                                                                                                      
+                                                                                           ···                          ···                                               
+                                                                                    A0,0          A0,k          V0,0           V0,k                                       
+                                                                                    .
+                                                                               A =  ..    ..      ..  , V =  ..      ..      ..  , B = 
+                                                                                                                                                        ..                      [
+                                                                                                                                                                            , T = T0   ···
+                                                                                                                                                                                                  ]
+                                                                                              .     .         .          .     .                      .                                  Tk , .
+                                                                                                                                                                          
+                                                                                           ···                          ···                                               
+                                                                                                                                            \(\vert \)
+
+
+
+                                                                                                                                                              \(\vert \)
+
+
+
+
+                                                                                    Aj,0          Aj,k          Vj,0           Vj,k
+                                                                                                                                                                          
+                                                                                                                                                                          
+                                                                                                                                                        Bk                
+                                                                                                                                                                          
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+A = \begin{bmatrix} A_{0,0} &amp; \cdots &amp; A_{0,k}\\ \vdots &amp; \ddots &amp; \vdots \\ A_{j,0} &amp; \cdots &amp; A_{j,k} \end {bmatrix},\ V = \begin{bmatrix} V_{0,0} &amp; \cdots &amp; V_{0,k}\\ \vdots &amp;
+\ddots &amp; \vdots \\ V_{j,0} &amp; \cdots &amp; V_{j,k} \end {bmatrix},\ \ B= \begin{bmatrix} \rotvert &amp;B_0 &amp;\rotvert \\ &amp;\vdots &amp;\\ \rotvert &amp; B_{k} &amp; \rotvert \end {bmatrix},\ T =
+\begin{bmatrix} T_0 &amp; \cdots &amp; T_k, \end {bmatrix}.
+\end{align*}
+The orthogonal subspace basis in <span class="textup">(<a href="paper.html#Eq:QB">1</a>)</span> is represented as \(Q = \prod _{i=0}^k(I - V_i T_i V_i^T)\). We use colon notation to refer to a submatrix of \(M\) as \(M_{i:l,p:q}\),
+or to part of a block-column as \(M_{i:j,p}\).
+</p>
+
+<p>
+Algorithm <a href="paper.html#Alg:QRAdaptiveRandomizedRangeFinder">1</a> successively creates the block columns of \(V\) and block rows of \(B\). \(A\) can be overwritten by \(B\) due to the error criterion from [8], which only relies on the
+Frobenius norm of the current panel of \(B\). For simpler notation we assume the matrix dimensions to be divisible by \(b\).
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Householder Block Adaptive Randomized Range Finder <a id="Alg:QRAdaptiveRandomizedRangeFinder"></a>
+</p>
+</div>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"><b>Require:</b></span> A matrix \(A \in \mathbb {R}^{m \times n}\), a tolerance \(\epsilon \), and a block size \(b\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>\(E \gets \|A\|_F\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span>\(B \gets A\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span>\(i \gets 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> <span style="width:0pt; display:inline-block;"></span><b>while</b> \(E &gt; \epsilon \) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span>         <span style="width:14pt; display:inline-block;"></span>Fill \(\Omega \in \mathbb {R}^{n \times b}\) with values from a standard Gaussian distribution.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span>     <span style="width:14pt; display:inline-block;"></span>\((V_{i:j, i}, T_i) \gets \text {qr}(B_{i:j, 0:k} \Omega )\) <span class="floatright">&#x25B7; Storage-eﬀicient QR
+decomposition, <kbd>geqrt</kbd></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7:</span>         <span style="width:14pt; display:inline-block;"></span>\(B_{i:k} \gets (I - V_i T_i V_i^T) B_{i:k}\)<a id="Alg:Bupdate"></a>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">8:</span>         <span style="width:14pt; display:inline-block;"></span>\(E \gets E - \|B_{i}\|_F\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">9:</span>         <span style="width:14pt; display:inline-block;"></span>\(i \gets i + 1\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">10:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>while</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">11:</span> <span style="width:0pt; display:inline-block;"></span>\(V \gets V_{:, 0:i-1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">12:</span> <span style="width:0pt; display:inline-block;"></span>\(B \gets B_{0:i-1, :}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">13:</span> <span style="width:0pt; display:inline-block;"></span>\(r \gets (i-1)\cdot b\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"><b>Ensure:</b></span> Rank \(r\), Householder vectors \(V \in \mathbb {R}^{m \times r}\), \(B \in \mathbb {R}^{r \times n}\), \(T_0, \dots , T_{i-1} \in \mathbb {R}^{b \times b}\) such that \(\|A -
+QB\|_{\text {Fro}} \leq \epsilon \), where \(Q = \prod _{l=0}^{i-1} (I - V_l T_l V_l^T)\).
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+When the sampled panel \(B_{i:j,0:k}\Omega \) is updated independently of the matrix update in the previous iteration (line <a href="paper.html#Alg:Bupdate">7</a> in Algorithm <a
+href="paper.html#Alg:QRAdaptiveRandomizedRangeFinder">1</a>), this update together with the panel factorization on the CPU, can be overlapped with the matrix update of \(B\). This introduces extra computations but shortens the critical
+path, when the block size is chosen in a way to completely hide the panel update and factorization.
+</p>
+
+<p>
+Apart from allowing a GPU-accelerated implementation, the presented Householder QR approach has the advantage of improved stability over the Gram-Schmidt approach, not needing a reorthogonalization step. As we are dealing with rapidly
+decaying singular matrices in the gradient matrix, stability becomes a relevant practical consideration.
+</p>
+
+<p>
+Methods from randomized numerical linear algebra have promise to become a viable tool in the context of resource-eﬀicient low-rank deep learning.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E.&nbsp;Elmroth and F.&nbsp;G. Gustavson, <i>Applying recursion to serial and parallel QR factorization leads to better performance</i>, 44, pp.&nbsp;605–624.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C.&nbsp;Gorman, G.&nbsp;Chávez, P.&nbsp;Ghysels, T.&nbsp;Mary, F.-H. Rouet, and X.&nbsp;S. Li, <i>Robust and Accurate Stopping Criteria for Adaptive Randomized Sampling in
+Matrix-Free Hierarchically Semiseparable Construction</i>, 41, pp.&nbsp;S61–S85.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> N.&nbsp;Halko, P.&nbsp;G. Martinsson, and J.&nbsp;A. Tropp, <i>Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions</i>, SIAM
+Review, 53 (2011), pp.&nbsp;217–288.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> E.&nbsp;J. Hu, Y.&nbsp;Shen, P.&nbsp;Wallis, Z.&nbsp;Allen-Zhu, Y.&nbsp;Li, S.&nbsp;Wang, L.&nbsp;Wang, and W.&nbsp;Chen, <i>LoRA: Low-rank adaptation of large language
+models</i>, in International Conference on Learning Representations, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> P.-G. Martinsson and S.&nbsp;Voronin, <i>A randomized blocked algorithm for eﬀiciently computing rank-revealing factorizations of matrices</i>, 38, pp.&nbsp;S485–S507.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> R.&nbsp;S. Schreiber and C.&nbsp;Van&nbsp;Loan, <i>A storage eﬀicient wy representation for products of Householder transformations</i>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> S.&nbsp;Tomov, J.&nbsp;Dongarra, and M.&nbsp;Baboulin, <i>Towards dense linear algebra for hybrid GPU accelerated manycore systems</i>, Parallel Computing, 36 (2010),
+pp.&nbsp;232–240.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> W.&nbsp;Yu, Y.&nbsp;Gu, and Y.&nbsp;Li, <i>Eﬀicient randomized algorithms for the fixed-precision low-rank matrix approximation</i>, SIAM Journal on Matrix Analysis and Applications, 39
+(2018), pp.&nbsp;1339–1359.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> J.&nbsp;Zhao, Z.&nbsp;Zhang, B.&nbsp;Chen, Z.&nbsp;Wang, A.&nbsp;Anandkumar, and Y.&nbsp;Tian, <i>Galore: Memory-eﬀicient LLM training by gradient low-rank projection</i>, in
+5th Workshop on practical ML for limited/low resource settings, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

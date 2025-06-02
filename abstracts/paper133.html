@@ -1,0 +1,179 @@
+---
+layout: abstract
+absnum: 133
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Accelerating Randomized Tensor Decompositions<br />
+using Structured Random Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Grey Ballard</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Tensor decompositions are generalizations of low-rank matrix approximations to higher dimensional data. They have become popular for their utility across applications—including blind source separation, dimensionality reduction, compression,
+anomaly detection—where the original data is represented as a multidimensional array. In this talk, I will focus on randomized methods for computing Tucker and Tensor Train (TT) decompositions. The kernel computation is computing a sketch of
+an unfolding/matricization of the tensor, and we impose structure on the random matrix in order to exploit structure in the tensor unfolding and reduce computational cost. I will discuss theoretical results on the accuracy of these approaches, their
+accuracy in practice, and the performance improvement they achieve over deterministic methods.
+</p>
+
+<p>
+The TT format is useful in particular for tensors of many modes, including representing approximations to the solution of certain types of parametrized partial differential equations. The fundamental operation used to maintain feasible memory and
+computational time is called rounding, which truncates the internal ranks of a tensor already in TT format. I will present multiple randomized algorithms for this task that are generalizations of randomized low-rank matrix approximation algorithms
+and provide significant reduction in computation compared to deterministic TT rounding algorithms. We achieve computational eﬀiciency by using random matrix sketches that mirror the TT format of the input tensor. Randomization is particularly
+effective in the case of rounding a sum of TT tensors, which is the bottleneck computation in the adaptation of GMRES to vectors in TT format. In this talk, I will present the randomized algorithms, compare their empirical accuracy and
+computational time with deterministic alternatives (including results from [1]), and discuss recent progress on probabilistic error analysis of the algorithms.
+</p>
+
+<p>
+I will present two Tucker decomposition algorithms that scale to large data (and many processors), significantly reduce both computation and communication cost compared to previous deterministic and randomized approaches, and obtain nearly the
+same approximation errors. The key idea in our algorithms is to perform randomized sketches with Kronecker-structured random matrices, which reduces computation compared to unstructured random matrices and can be implemented using a
+fundamental tensor computational kernel. I will state probabilistic error analysis of our algorithms and present a new parallel algorithm for the structured randomized sketch. Our experimental results demonstrate that our combination of
+randomization and parallelization achieves accurate Tucker decompositions much faster than alternative approaches. We observe up to a \(16\times \) speedup over the fastest deterministic parallel implementation on 3D simulation data [2].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Hussam Al&nbsp;Daas, Grey Ballard, Paul Cazeaux, Eric Hallman, Agnieszka Miedlar, Mirjeta Pasha, Tim&nbsp;W. Reid, and Arvind&nbsp;K. Saibaba. Randomized algorithms for rounding in the
+tensor-train format. <i>SIAM Journal on Scientific Computing</i>, 45(1):A74–A95, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Rachel Minster, Zitong Li, and Grey Ballard. Parallel randomized Tucker decomposition algorithms. <i>SIAM Journal on Scientific Computing</i>, 46(2):A1186–A1213, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

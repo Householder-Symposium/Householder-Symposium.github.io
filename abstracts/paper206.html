@@ -1,0 +1,171 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Randomized Preconditioned Solvers for Strong Constraint 4D-Var Data Assimilation
+</h2>
+</div>
+<div class="center">
+
+<p>
+Amit Subrahmanya, <span class="underline">Vishwas Rao</span>, and Arvind Saibaba
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Data assimilation (DA), having origins in meteorology and oceanography, aims to optimally blend prior knowledge coming from a computational model of a dynamical system with noisy observations of reality to estimate the system states,
+parameters, or controls while quantifying the uncertainties of the said estimates&nbsp;[1, 2]. Data assimilation can be viewed in a Bayesian framework where the current best estimate is obtained from a posterior distribution that combines a prior
+distribution (of the previous best estimate) with observational likelihood&nbsp;[3]. The Strong Constraint 4D-Variational approach (SC-4DVAR), is a well-known DA framework used to estimate the initial condition of a system under a perfect model
+assumption. Typically, the SC-4DVAR optimization problem&nbsp;[1] is solved using Newton-based methods such as the Gauss-Newton (GN) approach&nbsp;[4], and hence require the solution of a large linear system to compute the GN descent
+direction. These linear systems need to be solved in a matrix-free fashion to and in this work, we use the preconditioned conjugate gradient (PCG) method&nbsp;[5], requiring the actions of the tangent linear model (TLM) and adjoint model
+(ADJ)&nbsp;[3, 1]. The performance of PCG depends crucially on the use of a good preconditioner, which is the central focus of this work.
+</p>
+
+<p>
+In recent years, randomized methods have emerged as a powerful tool in scientific computing for accelerating expensive computations (see, e.g., recent surveys such as&nbsp;[6, 7]). Randomized methods have strong theoretical guarantees, reduced
+computational costs, and are highly parallelizable. A key ingredient in the randomized methods is the use of a sketch of the matrix of interest (obtained by computing the product of the matrix with an appropriately chosen random matrix) which
+captures the desired essential features of the matrix. Randomization for least-squares problems roughly comes in two flavors: sketch and solve, or sketch and precondition. In the sketch and solve approach, randomization is used as a dimensionality
+reduction tool to solve a smaller inexact problem, whereas in the sketch and precondition approach, randomization is used to accelerate the convergence of the PCG method.
+</p>
+<!--
+...... paragraph Contributions ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Contributions</span>
+<a id="paper-autopage-5"></a>
+This work proposes multiple, eﬀicient, randomized solvers for SC-4DVAR. Our contributions are subdivided into three parts—algorithms, analysis, and numerical experiments.
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> <b>Algorithms</b>: Previously analyzed in &nbsp;[8], it is well established that the eigenvalues of the prior preconditioned data-misfit term of the GN Hessian exhibit rapid decay. We exploit this fact to
+propose three different randomized algorithms (i) Randomized SVD (RandSVD), (ii) Nyström, and (iii) Single View (SingleView), to compute a low-rank sketch of the GN Hessian for SC-4DVAR, and demonstrate the reliability of its low-rank sketch,
+both in theory and practice. These three sketching methods can be used in the following ways:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(a)</span> <b>SketchSolv</b>: The GN descent direction is obtained by solving a linear system with the sketched GN Hessian (using the Woodbury formula) to obtain a descent direction.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(b)</span> <b>SketchPrec</b>: The GN descent direction is obtained by using the GN Hessian in PCG preconditioned by the inverse of the low-rank sketch. We also develop an adaptive approach (called
+<b>SketchPrecA</b>) that decides on both (1) the sketch reuse (rather than recompute) and (2) the sketch size of the low-rank approximation.
+</p>
+</li>
+</ul>
+<p>
+The first two randomized methods (RandSVD, Nyström) are nearly identical in cost, error, and performance. The third method (SingleView), while more expensive to compute, offers an additional level of parallelism.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> <b>Analysis</b>: A twofold analysis—structural, and expectational—of the proposed sketching methods is presented in this paper.
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(a)</span> <b>Structural analysis</b>: We analyze the performance of the approximation for a single step of the GN iteration in three metrics: relative error in the inverse, the error in the solution, and the condition
+number of the preconditioned operator of the GN iterations. The analysis is applicable beyond low-rank approximations and the randomized algorithms proposed in this paper.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">(b)</span> <b>Analysis in expectation</b>: We develop specific analyses for the three randomized methods in expectation. The bounds do not show explicit dependence on the size of the matrices and provide insight
+into the sampling parameters.
+</p>
+</li>
+</ul>
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> <b>Numerical Experiments</b>: We validate the proposed methods on two challenging model problems: 1D Burgers equations, and the barotropic-vorticity equation. We compare our methods with the
+state-of-the-art Lanczos approach which is inherently sequential.
+</p>
+</li>
+</ul>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> G.&nbsp;Evensen, F.&nbsp;C. Vossepoel, and P.&nbsp;J. van Leeuwen, <em>Data assimilation fundamentals: A unified formulation of the state and parameter estimation problem</em>. Springer
+Nature, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;Asch, M.&nbsp;Bocquet, and M.&nbsp;Nodet, <em>Data assimilation: methods, algorithms, and applications</em>.      SIAM, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> E.&nbsp;Kalnay, <em>Atmospheric Modeling, Data Assimilation and Predictability</em>. Cambridge University Press, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.&nbsp;Nocedal and S.&nbsp;J. Wright, <em>Numerical optimization</em>.     Springer, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y.&nbsp;Saad, <em>Iterative methods for sparse linear systems</em>, 2nd&nbsp;ed.   SIAM, Philadelphia, PA, 2003, pp. xviii+528.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N.&nbsp;Halko, P.-G. Martinsson, and J.&nbsp;A. Tropp, “Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions,” <em>SIAM
+Review</em>, vol.&nbsp;53, no.&nbsp;2, pp. 217–288, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> P.-G. Martinsson and J.&nbsp;A. Tropp, “Randomized numerical linear algebra: Foundations and algorithms,” <em>Acta Numerica</em>, vol.&nbsp;29, pp. 403–572, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> H.&nbsp;P. Flath, L.&nbsp;C. Wilcox, V.&nbsp;Akçelik, J.&nbsp;Hill, B.&nbsp;van Bloemen Waanders, and O.&nbsp;Ghattas, “Fast algorithms for Bayesian uncertainty quantification in large-scale
+linear inverse problems based on low-rank partial Hessian approximations,” <em>SIAM Journal on Scientific Computing</em>, vol.&nbsp;33, no.&nbsp;1, pp. 407–432, 2011.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

@@ -1,0 +1,280 @@
+---
+layout: abstract
+absnum: 24
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Inner-product free Krylov subspace methods for inverse problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Malena Sabaté Landman</span>, Ariana Brown, Julianne Chung, James G. Nagy
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider linear discrete inverse problems, which involve the reconstruction of hidden objects from possibly noisy indirect measurements. Rapid advances in technology and computation have resulted in enormous and growing data-sets, creating an
+urgent need for more eﬀicient algorithms that can handle the increasing dimension of these problems while maintaining both reliability and, crucially, speed. New (and not so new) promising directions include reducing the working floating point
+arithmetic and increase parallelization, both of which can suffer from problems related to the use of inner-products in the algorithms. In this work, I present a <b>general class of Krylov methods</b> that are inherently <b>inner-product
+free</b>, while maintaining regularizing properties, making them a powerful and eﬀicient alternative to traditional Krylov solvers in the context of <b>large-scale linear inverse problems</b>. Important applications appear, for example, in
+medical imaging (computed tomography), non-destructive testing of engineering designs, and geophysics (seismic exploration).
+</p>
+
+<p>
+We write a linear system with additive noise as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                  --><a id="linear"></a><!--Ax + e = b,        A ∈ Rm×n ,                                                                                                 (1)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {linear} Ax + e=b, \quad A \in \mathrm {R}^{m \times n},
+\end{equation}
+
+</p>
+
+<p>
+where we typically consider \(e\) to be a realization of a white Gaussian random variable, and we focus on problems that are ill-posed in the sense that the system matrix \(A\) has decaying singular values which cluster at zero, but where \(A\) has
+an ill-determined numerical rank. Therefore, the reconstructions of \(x\) are typically very sensitive to perturbations in the measurements (a.k.a. noise) and need regularization.
+</p>
+
+<p>
+Krylov subspace methods are a class of very popular projection methods to solve (<a href="paper.html#linear">1</a>) which show very fast convergence and have inherent regularization properties when equipped with early stopping of the
+iterations [1]. In other words, the approximate solutions approach the true solution in the first iterations but, if the algorithms are not stopped, they continue to converge towards to unwanted solution of the least-squares problems associated with the
+noisy right hand side, which suffers badly from noise amplification: this is also referred to as semi-convergence. These are typically based on the stable construction of bases for Krylov subspaces, or search spaces for the solution \(x\), defined as:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                     --><a id="Krylovbasis"></a><!--Kk (C, d) = R(Vk ),        Vk = [d, Cd, ..., C k−1 d],                                                                                (2)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {Krylovbasis} \mathcal {K}_k(C,d) = \mathcal {R}(V_k), \quad V_k = [d, Cd, ..., C^{k-1}d],
+\end{equation}
+
+</p>
+
+<p>
+which are related to the original linear system and where \(\mathcal {R}(\cdot )\) represents the range of a matrix. Moreover, these are iterative methods, so that a new direction is added to the space \(\mathcal {K}_k(C,d)\) at each iteration
+\(k\). Usually, this is done using either the Arnoldi or Golub-Kahan bidiagonalization (GKB) algorithms, which, applied to (<a href="paper.html#linear">1</a>), differ on the choice of the matrix-vector pair \(\{C,d\}\). In particular, Arnoldi
+considers \(\{A,b\}\); and GKB constructs basis for two Krylov subspaces; one taking \(\{A^T A, A^T b\}\) and one taking \(\{A A^T, b\}\). Both methods rely on the implicit construction of a QR factorization of the matrix \(V_k\) in (<a
+href="paper.html#Krylovbasis">2</a>), and they require the orthogonalization and normalization of the new basis vectors against the previous vectors in the basis, see, e.g. [2, Chapter 4]. However, there are scenarios where the inner-products
+required in this process can hinder the usability of the solvers. For example, in low precision arithmetic, standard Krylov solvers might break-down too early due to the norm of the new vector after orthogonalization being numerically zero in the
+given working precision, or over/under-flows can occur during norm computations. Moreover, inner-products can be a limiting factor for high performance computing, since they require global communication [3]. On the other hand, the most used
+inner-product free solvers, e.g. Chebyshev semi-iterations, can show very slow convergence.
+</p>
+
+<p>
+In this work, we present a general family of solvers which leverage the fast converge of Krylov methods while being inherently inner-product free, and which are based off implicit LU factorizations of the matrix \(V_k\) in (<a
+href="paper.html#Krylovbasis">2</a>). These solvers construct bases that span the same Krylov subspaces as those associated to their traditional counterparts, but contain only linearly independent vectors that are not orthogonal by construction.
+The choice of the matrix-vector pair \(\{C,d\}\) in (<a href="paper.html#Krylovbasis">2</a>) gives rise to different frameworks, which hold a strong parallelism to the Arnoldi and GKB algorithms: on the one hand, we use the standard
+Hessenberg method for \(\{A,b\}\), see [4, 5], and on the other hand we develop a new modified version of the Hessenberg method for \(\{A^TA,A^Tb\}\) and for \(\{AA^T,b\}\), see [7]. Note that, in practice, partial pivoting is needed to avoid
+unwanted break-down of the algorithms. Moreover, we describe the (quasi minimal residual) solvers associated with each approach. In the first place, we revisit the changing minimal residual Hessenberg method (CMRH), see e.g.&nbsp;[4, 5], and
+then we develop a completely new method, which we call the least squares LU (LSLU)&nbsp;[7]. In particular, we show that CMRH and LSLU can be used to tackle large-scale linear inverse problems eﬀiciently, since they both present very fast
+convergence and regularization properties. Note that previous work on the CMRH method did not consider its application to ill-posed problems, and it was therefore not known if it was a regularizing method. Now we know that both CMRH and
+LSLU have empirical spectral filtering properties, i.e., early iterations reconstruct smooth component of the solution, and later iterations reconstruct high frequency components, so that early stopping of the iterations gives rise to a regularized
+solution. Finally, we extend both methods to include Tikhonov regularization, in the fashion of hybrid regularization [8], so that a projected Tikhonov regularization problem is solved at each iteration. This is a very powerful framework, since the
+solution of such problems does not show semi-convergence (and therefore is less sensitive to the stopping criteria), and we can choose the regularization parameters throughout the iterations using standard parameter choice criteria.
+</p>
+
+<p>
+For more details on this work, where theoretical results and extensive numerical experiments suggest that inner-product free variants exhibit comparable performance to established methods, see&nbsp;[6, 7].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P. C. Hansen. <i>Discrete Inverse Problems: Insight and Algorithms,</i> SIAM (2010).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> G. Meurant and J. Duintjer Tebbens, <i>Krylov Methods for Nonsymmetric Linear Systems: From Theory to Computations</i>, Springer Cham (2020).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> R. Barrett, M. Berry, T. F. Chan, J. Demmel, J. Donato, J. Dongarra, V. Eijkhout, R. Pozo, C. Romine, and H. van der Vorst, <i>Templates for the Solution of Linear Systems: Building Blocks for
+Iterative Methods</i>, SIAM (1994).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> H. Sadok, <i>CMRH: A new method for solving nonsymmetric linear systems based on the Hessenberg reduction algorithm</i>, Numerical Algorithms, 20 (1999), pp.485-501.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> H. Sadok and D. B. Szyld, <i> A new look at CMRH and its relation to GMRES.</i>, BIT Numer. Math., 52 (2012), pp. 485–501.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> A. N. Brown, J. G. Nagy and M. Sabaté Landman, <i>H-CMRH: A Novel Inner Product Free Hybrid Krylov Method for Large-Scale Inverse Problems</i>, Accepted for publication in SIMAX, (2024),
+arXiv:2401.06918.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> A. N. Brown, J. Chung, J. G. Nagy and M. Sabaté Landman, <i>Inner Product Free Krylov Methods for Large-Scale Inverse Problems</i>, arXiv preprint, (2024), arXiv: arXiv:2409.05239.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> J. Chung and S. Gazzola, <i>Computational methods for large-scale inverse problems: a survey on hybrid projection methods</i>, SIAM Review, 66 (2024), pp. 205–284.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,106 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Eﬀicient Algorithms for Simulation with Low-Rank Tensor Networks
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Edgar Solomonik</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Tensor network methods are general numerical techniques for implicitly-represented high-dimensional systems. They are frequently used to represent quantum systems and Hamiltonian operators, as well as to simulate quantum circuits, but are also
+effective for partial differential equations (PDE) of lower dimension. In these methods, the high-dimensional system (e.g., PDE time-evolution operator and solution) are represented and updated in a compact form provided by a choice of tensor
+decomposition. This talk surveys some of our recent work in tensor network methods for quantum circuit simulation and dynamical low-rank approximation with tensor networks.
+</p>
+
+<p>
+Simulation of Quantum Circuits with Clifford Gates
+</p>
+
+<p>
+The Gottesman-Knill theorem states that circuits consisting of a subclass of quantum gates (Clifford gates) may be simulated eﬀiciently in polynomial time&nbsp;[4]. Like Clifford algebras, unitaries and quantum states resulting from application of
+Clifford gates to a classical state, may be represented by a quadratic form, of size \(O(n^2)\) for \(n\) qubits&nbsp;[2]. Simulation algorithms typically represent these objects with a representation known as a tableaux (encoded by a pair of matrices)
+and leverage composition rules to simulate full circuits from gates&nbsp;[2]. Recent results have shown that such compositions can be eﬀiciently computed with fast matrix multiplication, resulting in improved computational complexity for simulating
+Clifford circuits&nbsp;[4].
+</p>
+
+<p>
+Leveraging simplified forms of general circuits derived through the ZX calculus (a tensor network formalism for quantum circuits)&nbsp;[6], we provide a simplified representation of Clifford states and circuits. In particular, we demonstrate that
+calculation of amplitudes of a quantum state resulting from a Clifford circuit, can be computed from a GF(2) LDLT decomposition of a matrix whose off-diagonal part is the adjacency matrix of the tensor network corresponding to a ZX diagram.
+This observation enables direct translation of some of the techniques developed in numerical methods and combinatorial scientific computing for sparse direct solvers. Additionally, we discuss new approaches for combining Clifford simulation methods
+with low-rank tensor network contraction approaches for simulation of general circuits (i.e., including non-Clifford gates).
+</p>
+
+<p>
+Dynamical Low Rank Approximation with CP Decomposition
+</p>
+
+<p>
+High-accuracy models of plasmas employ 6D (space and momentum) discretizations of the Boltzmann equation or a more restricted PDE such as the Vlasov equation. Low-rank matrix and tensor factorizations have been a prominent tool for
+improving computational complexity of solvers for these equations&nbsp;[5, 3, 1], with prior works considering use of tensor train, hierarchical Tucker, and the canonical polyadic (CP) decomposition. We provide a new alternating optimization
+algorithm for CP approximation of solutions to the Vlasov-Poisson equation, which eﬀiciently incorporates conservation constraints. Further, we provide a Cholesky-based scheme for approximating a CP decomposition with another of lower rank, a
+key primitive in this and other applications of CP decomposition in numerical solvers for PDEs.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;M. Boelens, D.&nbsp;Venturi, and D.&nbsp;M. Tartakovsky. Tensor methods for the Boltzmann-BGK equation. <i>Journal of Computational Physics</i>, 421:109744, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;Dehaene and B.&nbsp;De&nbsp;Moor. Clifford group, stabilizer states, and linear and quadratic operations over GF(2). <i>Physical Review A</i>, 68(4):042318, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> L.&nbsp;Einkemmer and C.&nbsp;Lubich. A low-rank projector-splitting integrator for the Vlasov–Poisson equation. <i>SIAM Journal on Scientific Computing</i>, 40(5):B1330–B1360, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> D.&nbsp;Gosset, D.&nbsp;Grier, A.&nbsp;Kerzner, and L.&nbsp;Schaeffer. Fast simulation of planar Clifford circuits. <i>Quantum</i>, 8:1251, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> W.&nbsp;Guo and J.-M. Qiu. A local macroscopic conservative (LoMaC) low rank tensor method for the Vlasov dynamics. <i>Journal of Scientific Computing</i>, 101(3):61, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> J.&nbsp;van&nbsp;de Wetering. ZX-calculus for the working quantum computer scientist. <i>arXiv preprint arXiv:2012.13966</i>, 2020.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

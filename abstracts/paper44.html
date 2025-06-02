@@ -1,0 +1,539 @@
+---
+layout: abstract
+absnum: 44
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\pmat }[1]{\begin {pmatrix}#1\end {pmatrix}}\)
+
+\(\newcommand {\bmat }[1]{\begin {bmatrix}#1\end {bmatrix}}\)
+
+\(\newcommand {\diag }{\textrm {diag}}\)
+
+\(\newcommand {\half }{{\textstyle \frac 12}}\)
+
+\(\newcommand {\inv }{^{-1}}\)
+
+\(\newcommand {\norm }[1]{\|#1\|}\)
+
+\(\newcommand {\T }{^T\!}\)
+
+\(\newcommand {\NC }{\mbox {NC}}\)
+
+\(\newcommand {\NCL }{{\small NCL}}\)
+
+\(\newcommand {\BCk }{\mbox {BC$_k$}}\)
+
+\(\newcommand {\LCk }{\mbox {LC$_k$}}\)
+
+\(\newcommand {\NCk }{\mbox {NC$_k$}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Algorithm NCL for constrained optimization:<br />
+Solving the linear systems within interior methods
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Michael Saunders</span>, Ding Ma, Alexis Montoison, Dominique Orban
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+<!--
+...... section Constrained optimization ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Constrained optimization</h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+We consider large smooth constrained optimization problems of the form
+</p>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdl">\(\NC \)</td>
+<td class="tdl">\(\min _{x \in \Re ^n}\)</td>
+<td class="tdl">\(\phi (x)\)</td>
+</tr>
+
+<tr>
+<td class="tdl"></td>
+<td class="tdl">subject to</td>
+<td class="tdl">\(c(x) = 0, \ \ \ell \le x \le u\)</td>
+</tr>
+</table>
+
+<p>
+where \(\phi (x)\) is a smooth scalar function and \(c(x) \in \Re ^m\) is a vector of smooth linear or nonlinear functions. We assume that first and second derivatives are available. If the constraints include any linear or nonlinear inequalities, we
+assume that slack variables have already been included as part of \(x\), and appropriate bounds are included in \(\ell \) and \(u\). Problem NC is general in this sense.
+</p>
+<!--
+...... section LANCELOT ......
+-->
+<h4 id="autosec-7"><span class="sectionnumber">2&#x2003;</span>LANCELOT</h4>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+LANCELOT [1, 2, 6] is designed to solve large, smooth constrained optimization problems. For problem NC, LANCELOT solves a sequence of about 10 BCL (Bound-Constrained augmented Lagrangian) subproblems of the form
+</p>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdl">\(\BCk \)</td>
+<td class="tdl">\(\min _{x \in \Re ^n}\)</td>
+<td class="tdl">\(\phi (x) - y_k^T c(x) + \half \rho _k c(x)\T c(x)\)</td>
+</tr>
+
+<tr>
+<td class="tdl"></td>
+<td class="tdl">subject to</td>
+<td class="tdl">\(\ell \le x \le u,\)</td>
+</tr>
+</table>
+
+<p>
+where \(y_k\) is an estimate of the dual variables for the nonlinear constraints \(c(x)=0\), and \(\rho _k &gt; 0\) is a penalty parameter. After BCk is solved (perhaps approximately) to give a subproblem solution \(x_k^*\), the size of \(\norm
+{c(x_k^*)}\) is used to define BC\(_{k+1}\):
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> If \(\norm {c(x_k^*)}\) is suﬀiciently small, stop with “Optimal solution found”.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> If \(\norm {c(x_k^*)} &lt; \norm {c(x_{k-1}^*)}\) suﬀiciently, update \(y_{k+1} = y_k - \rho _k c(x_k^*)\) and keep \(\rho _{k+1} = \rho _k\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Otherwise, keep \(y_{k+1} = y_k\) and increase the penalty (say \(\rho _{k+1} = 10 \rho _k\)).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> If the penalty is too large (say \(\rho _{k+1} &gt; 10^{10}\)), stop with “The problem is infeasible”.
+</p>
+</li>
+</ul>
+<!--
+...... section Algorithm NCL ......
+-->
+<h4 id="autosec-9"><span class="sectionnumber">3&#x2003;</span>Algorithm NCL</h4>
+<a id="paper-autopage-9"></a>
+
+
+<p>
+Algorithm NCL [7] mimics LANCELOT with only one change: subproblem BCk is replaced by the equivalent larger subproblem
+</p>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdl">\(\NCk \)</td>
+<td class="tdl">\(\min _{x \in \Re ^n,\,r \in \Re ^m}\)</td>
+<td class="tdl">\(\phi (x) + y_k\T r + \half \rho _k r\T r\)</td>
+</tr>
+
+<tr>
+<td class="tdl"></td>
+<td class="tdl">subject to</td>
+<td class="tdl">\(c(x) + r = 0, \quad \ell \le x \le u.\)</td>
+</tr>
+</table>
+
+<p>
+Given a subproblem solution \((x_k^*,r_k^*)\), the choice between updating \(y_k\) or increasing \(\rho _k\) is based on \(\norm {r_k^*}\). We expect \(\norm {r_k^*} \rightarrow 0\), so that \(x_k^*\) is increasingly close to solving NC.
+</p>
+
+<p>
+The active-set solvers CONOPT [3], MINOS [8], and SNOPT [13] are nominally applicable to NCk . Their reduced-gradient algorithms would naturally choose \(r\) as basic variables, and the \(x\) variables would be either superbasic (free to move)
+or nonbasic (fixed at one of the bounds). However, this is ineﬀicient on large problems unless most bounds are active at the subproblem solution \(x_k^*\).
+</p>
+
+<p>
+In contrast, interior methods welcome the extra variables \(r\) in NCk , as explained in [7]:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> The Jacobian of \(c(x) + r\) always has full row rank. NCL can therefore solve problems whose solution does not satisfy LICQ (the linear independence constraint qualification). It is also applicable to MPEC
+problems (Mathematical programming problems with equilibrium constraints).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The sparse-matrix methods used for each iteration of an interior method are affected very little by the increased matrix size.
+</p>
+</li>
+</ul>
+<!--
+...... section The linear system in nonlinear interior methods ......
+-->
+<h4 id="autosec-11"><span class="sectionnumber">4&#x2003;</span>The linear system in nonlinear interior methods</h4>
+<a id="paper-autopage-11"></a>
+
+
+<p>
+For simplicity, we assume that the bounds \(\ell \le x \le u\) are simply \(x \ge 0\). Let \(y\) and \(z\) be dual variables associated with the constraints \(c(x)=0\) and \(x\ge 0\) respectively, and let \(X = \diag (x)\), \(Z = \diag (z)\).
+When a nonlinear primal-dual interior method such as IPOPT [4] or KNITRO [5] is applied to NCk , each search direction is obtained from a linear system of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                  
+                                                                                                     −(H + X −1 Z)           JT    ∆x       r2
+                                                                                                                    −ρk I    I   ∆r  = r3  .                                                                  (K3)--><a id="K3"></a><!--
+                                                                                                          J            I           ∆y       r1
+
+-->
+
+<p>
+
+\begin{equation}
+\label {K3} \tag {K3} \pmat { -(H + X\inv Z) &amp; &amp; J^T \\ &amp; \!\!\!-\!\rho _k I &amp; I \\ J &amp; I &amp; } \pmat {\Delta x \\ \Delta r \\ \Delta y} = \pmat {r_2 \\ r_3 \\ r_1}.
+\end{equation}
+
+</p>
+
+<p>
+Although this system large, the additional variables \(\delta r\) do not damage the sparsity of the matrix. IPOPT and KNITRO have performed well on problem NCk as it stands, solving systems <span class="textup">(<a
+href="paper.html#K3">K3</a>)</span>.
+</p>
+<!--
+...... section Reducing the size of (<a href=paper.html#K3>K3</a>) ......
+-->
+<h4 id="autosec-12"><span class="sectionnumber">5&#x2003;</span>Reducing the size of <span class="textup">(<a href="paper.html#K3">K3</a>)</span></h4>
+<a id="paper-autopage-12"></a>
+
+
+<p>
+For all NCk , \(\rho _k \ge 1\) (and ultimately \(\rho _k \gg 1\)), and it is stable to eliminate \(\Delta r\) from <span class="textup">(<a href="paper.html#K3">K3</a>)</span> to obtain
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                          (                          )(        )       (               )
+                                                                                              −(H + X −1 Z)   JT          ∆x                  r2                       1
+                                                                                                                                   =                       ,    ∆r =      (∆y − r3 ).        (K2)--><a id="K2"></a><!--
+                                                                                                   J           1
+                                                                                                              ρk
+                                                                                                                 I        ∆y               r1 + ρrk3                   ρk
+
+-->
+
+<p>
+
+\begin{equation}
+\label {K2} \tag {K2} \pmat { -(H + X\inv Z) &amp; J^T \\ J &amp; \frac {1}{\rho _k}I } \pmat {\Delta x \\ \Delta y} = \pmat {r_2 \\ r_1 + \frac {r_3}{\rho _k}}, \qquad \Delta r = \frac {1}{\rho _k} (\Delta y -
+r_3).
+\end{equation}
+
+</p>
+
+<p>
+If the original problem is convex, \(H + X\inv Z\) is symmetric positive definite (SPD) and it is possible to eliminate \(\Delta y\):
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                     (H + X −1 Z + ρk J T J)∆x = −r2 + J T (r3 + ρk r1 ),                      ∆y = r3 + ρk (r1 − J∆x).      (K1)--><a id="K1"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {K1} \tag {K1} (H + X\inv Z + \rho _k J^T J) \Delta x = -r_2 + J^T(r_3 + \rho _k r_1), \qquad \Delta y = r_3 + \rho _k(r_1 - J \Delta x).
+\end{equation}
+
+</p>
+
+<p>
+These reductions would require recoding of IPOPT and KNITRO (which is not likely to happen), but they are practical within the nonlinear interior solver MadNLP [11].
+</p>
+<!--
+...... section MadNLP, MadNCL, and GPUs ......
+-->
+<h4 id="autosec-13"><span class="sectionnumber">6&#x2003;</span>MadNLP, MadNCL, and GPUs</h4>
+<a id="paper-autopage-13"></a>
+
+
+<p>
+Algorithm NCL has been implemented as MadNCL [10], using MadNLP [11] as the solver for subproblems NCk . MadNLP has the option of solving <span class="textup">(<a href="paper.html#K2">K2</a>)</span> or <span class="textup">(<a
+href="paper.html#K1">K1</a>)</span> rather than <span class="textup">(<a href="paper.html#K3">K3</a>)</span>.
+</p>
+
+<p>
+For convex problems, system <span class="textup">(<a href="paper.html#K2">K2</a>)</span> is symmetric quasidefinite (SQD) [14] and it is practical to use sparse indefinite LDLT factorization. MadNLP implements this option using the
+cuDSS library [12, 9] to utilize GPUs. Alternatively (and again for convex problems), <span class="textup">(<a href="paper.html#K1">K1</a>)</span> is SPD and MadNLP can use the cuDSS sparse Cholesky LDLT factorization (unless \(J^T
+J\) is dense).
+</p>
+
+<p>
+Thus, for certain large optimization problems, MadNCL is a solver that employs GPUs and in general is much faster than IPOPT or KNITRO . Numerical results are presented for solving security constrained optimal power flow (SCOPF) problems
+on GPUs.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-14">References</h4>
+<a id="paper-autopage-14"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;R. Conn, N.&nbsp;I.&nbsp;M. Gould, and Ph. L. Toint. <i>LANCELOT: A Fortran Package for Large-scale Nonlinear Optimization (Release A)</i>. Lecture Notes in Computational
+Mathematics 17. Springer Verlag, Berlin, Heidelberg, New York, London, Paris and Tokyo, 1992.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;R. Conn, N.&nbsp;I.&nbsp;M. Gould, and Ph. L. Toint. <i>Trust-Region Methods</i>. MOS-SIAM Ser. Optim.&nbsp;1. SIAM, Philadelphia, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> CONOPT home page. <a href="https://www.gams.com/products/conopt/" target="_blank" >https://www.gams.com/products/conopt/</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> IPOPT open source optimization software. <a href="https://projects.coin-or.org/Ipopt" target="_blank" >https://projects.coin-or.org/Ipopt</a>, accessed July 12, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> KNITRO optimization software. <a href="https://www.artelys.com/solvers/knitro/" target="_blank" >https://www.artelys.com/solvers/knitro/</a>, accessed July 12, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> LANCELOT optimization software. <a href="https://github.com/ralna/LANCELOT" target="_blank" >https://github.com/ralna/LANCELOT</a>, accessed July 12, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> D.&nbsp;Ma, K.&nbsp;L. Judd, D.&nbsp;Orban, and M.&nbsp;A. Saunders. Stabilized optimization via an NCL algorithm. In M.&nbsp;Al-Baali, Lucio Grandinetti, and Anton Purnama, editors,
+<i>Numerical Analysis and Optimization, NAO-IV, Muscat, Oman, January 2017</i>, volume 235 of <i>Springer Proceedings in Mathematics and Statistics</i>, pages 173–191. Springer International Publishing Switzerland, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> MINOS sparse nonlinear optimization solver. <a href="https://www.gams.com/latest/docs/S_MINOS.html" target="_blank" >https://www.gams.com/latest/docs/S_MINOS.html</a>, accessed
+July 12, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> A.&nbsp;Montoison, <i>CUDSS.jl: Julia interface for NVIDIA cuDSS</i>. <a href="https://github.com/exanauts/CUDSS.jl" target="_blank" >https://github.com/exanauts/CUDSS.jl</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> A.&nbsp;Montoison, F.&nbsp;Pacaud, M.&nbsp;A. Saunders, S.&nbsp;Shin, and D.&nbsp;Orban. MadNCL: GPU implementation of algorithm NCL. Working paper on Overleaf, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> A.&nbsp;Montoison, F.&nbsp;Pacaud, S.&nbsp;Shin, et&nbsp;al. MadNLP: a solver for nonlinear programming. <a href="https://github.com/MadNLP/MadNLP.jl" target="_blank"
+>https://github.com/MadNLP/MadNLP.jl</a>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> NVIDIA cuDSS (Preview): A high-performance CUDA Library for Direct Sparse Solvers <a href="https://docs.nvidia.com/cuda/cudss/index.html" target="_blank"
+>https://docs.nvidia.com/cuda/cudss/index.html</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> SNOPT sparse nonlinear optimization solver. <a href="http://ccom.ucsd.edu/~optimizers/solvers/snopt/" target="_blank" >http://ccom.ucsd.edu/~optimizers/solvers/snopt/</a>, accessed
+July 12, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> R.&nbsp;J. Vanderbei. Symmetric quasi-definite matrices. <i>SIAM J. Optim.</i>, 5:100–113, 1995.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

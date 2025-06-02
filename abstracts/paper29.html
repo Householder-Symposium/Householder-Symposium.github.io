@@ -1,0 +1,639 @@
+---
+layout: abstract
+absnum: 29
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bbM }{\mathbb {M}}\)
+
+\(\newcommand {\bbN }{\mathbb {N}}\)
+
+\(\newcommand {\bbO }{\mathbb {O}}\)
+
+\(\newcommand {\bbP }{\mathbb {P}}\)
+
+\(\newcommand {\bbQ }{\mathbb {Q}}\)
+
+\(\newcommand {\R }{\mathbb {R}}\)
+
+\(\newcommand {\E }{\mathbb {E}}\)
+
+\(\newcommand {\sfE }{\textsf {E}}\)
+
+\(\newcommand {\sfCov }{\textsf {cov}}\)
+
+\(\newcommand {\rank }{\textsf {rank}}\)
+
+\(\newcommand {\Ran }{\textsf {Ran}}\)
+
+\(\newcommand {\Ker }{\textsf {Ker}}\)
+
+\(\newcommand {\Cov }{\mathbb {C}{\rm ov}}\)
+
+\(\newcommand {\bGamma }{\boldsymbol {\Gamma }}\)
+
+\(\newcommand {\bSigma }{\boldsymbol {\Sigma }}\)
+
+\(\newcommand {\bheta }{\boldsymbol {\eta }}\)
+
+\(\newcommand {\beps }{\boldsymbol {\varepsilon }}\)
+
+\(\newcommand {\bcP }{\boldsymbol {\mathcal {P}}}\)
+
+\(\newcommand {\bcQ }{\boldsymbol {\mathcal {Q}}}\)
+
+\(\newcommand {\bcR }{\boldsymbol {\mathcal {R}}}\)
+
+\(\newcommand {\bcN }{\boldsymbol {\mathcal {N}}}\)
+
+\(\newcommand {\bH }{\mathbf {H}}\)
+
+\(\newcommand {\bK }{\mathbf {K}}\)
+
+\(\newcommand {\bm }{\mathbf {m}}\)
+
+\(\newcommand {\by }{\mathbf {y}}\)
+
+\(\newcommand {\bw }{\mathbf {w}}\)
+
+\(\newcommand {\bv }{\mathbf {v}}\)
+
+\(\newcommand {\bx }{\mathbf {x}}\)
+
+\(\newcommand {\bu }{\mathbf {u}}\)
+
+\(\newcommand {\bh }{\mathbf {h}}\)
+
+\(\newcommand {\ba }{\mathbf {a}}\)
+
+\(\newcommand {\bb }{\mathbf {b}}\)
+
+\(\newcommand {\br }{\mathbf {r}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+The Fundamental Subspaces of Ensemble Kalman Inversion
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Elizabeth Qian</span>, Christopher Beattie
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Ensemble Kalman Inversion (EKI) methods are a family of iterative methods for solving weighted least-squares problems of the form
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                 min (y − H(v))⊤ Σ−1 (y − H(v)) = min (1)
+                                                                                                                                      ∥y − H(v)∥2Σ−1 ,                                                 --><a id="eq: least squares problem"></a><!--
+                                                                                                 v∈Rd                                       v∈Rd
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq: least squares problem} \min _{\bv \in \R ^d} (\by - \bH (\bv ))^\top \bSigma ^{-1} (\by - \bH (\bv )) = \min _{\bv \in \R ^d} \|\by - \bH (\bv )\|_{\bSigma ^{-1}}^2,
+\end{align}
+where \(\bSigma \in \R ^{n\times n}\) is symmetric positive definite, and \(\bH :\R ^d\to \R ^n\). Such problems arise in many settings, including in <i>inverse problems</i> in which \(\bv \in \R ^d\) represents an unknown parameter or
+state of a system of interest which must be inferred from observed data \(\by \in \R ^n\). Inverse problems arise in many disciplines across science, engineering, and medicine, including earth, atmospheric, and ocean modeling, medical imaging,
+robotics and autonomy, and more. In large-scale scientific and engineering applications, solving&nbsp;<span class="textup">(<a href="paper.html#eq: least squares problem">1</a>)</span> using standard gradient-based optimization
+methods can be prohibitively expensive due to the high cost of evaluating derivatives or adjoints of the forward operator \(\bH \). In contrast, EKI methods can be implemented in an <i>adjoint-/derivative-free</i> way. This makes EKI an
+attractive alternative to gradient-based methods for solving&nbsp;<span class="textup">(<a href="paper.html#eq: least squares problem">1</a>)</span> in large-scale inverse problems.
+</p>
+
+<p>
+We introduce a basic version of EKI from&nbsp;[4] in Algorithm&nbsp;<a href="paper.html#alg:EKI">1</a>, noting that other EKI methods can be viewed as variations on this theme. In Algorithm&nbsp;<a href="paper.html#alg:EKI">1</a>,
+we use \(\sfE \) and \(\sfCov \) to denote the <i>empirical</i> (sample) mean and covariance operators, respectively: given \(J\in \mathbb {N}\) samples \(\{\ba ^{(j)}\}_{j=1}^J\) and \(\{\bb ^{(j)}\}_{j=1}^J\), we define \(\sfE [\ba
+^{(1:J)}] = \frac 1J\sum _{j=1}^J \ba ^{(j)}\), and
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                         1 ∑ (j)
+                                                                                                                              J
+                                                                                             cov[a(1:J) , b(1:J) ] =             (a − E[a(1:J) ])(b(j) − E[b(1:J) ])⊤ ,
+                                                                                                                       J − 1 j=1
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\sfCov [\ba ^{(1:J)},\bb ^{(1:J)}] = \frac 1{J-1}\sum _{j=1}^J (\ba ^{(j)}-\sfE [\ba ^{(1:J)}])(\bb ^{(j)}-\sfE [\bb ^{(1:J)}])^\top ,
+\end{align*}
+and \(\sfCov [\ba ^{(1:J)}] = \sfCov [\ba ^{(1:J)},\ba ^{(1:J)}]\). Algorithm&nbsp;<a href="paper.html#alg:EKI">1</a> prescribes the evolution of an ensemble of \(J\) particles, \(\{\bv _i^{(1)},\ldots ,\bv _i^{(J)}\}\),
+initialized at \(i = 0\) in some way, e.g., by drawing from a suitable prior distribution, and subsequently updated for \(i = 1,2,3,\) etc. We emphasize that Algorithm&nbsp;<a href="paper.html#alg:EKI">1</a> does not require the evaluation
+of adjoints or derivatives of \(\bH \). Those familiar with ensemble Kalman <i>filtering</i> methods will recognize familiar elements in Algorithm&nbsp;<a href="paper.html#alg:EKI">1</a>. Indeed, one way to obtain Algorithm&nbsp;<a
+href="paper.html#alg:EKI">1</a> is to apply the ensemble Kalman filter to a system whose dynamics are given by the identity map in the “forecast” step of the filter. The connection to the ensemble Kalman filter also motivates the perturbation of
+the observations by random noise in Step 7; these perturbations ensure unbiased estimates of the filtering statistics in the linear Gaussian setting.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Basic Ensemble Kalman Inversion (EKI)
+</p>
+</div>
+
+<a id="alg:EKI"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <b>Input:</b> forward operator \(\bH :\R ^d\to \R ^n\), initial ensemble \(\{\bv _0^{(1)},\ldots ,\bv _0^{(J)}\}\subset \R ^d\), observations \(\by \in \R ^n\), observation error covariance
+\(\bSigma \in \R ^{n\times n}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(i = 0,1,2,\ldots ,\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span>         <span style="width:14pt; display:inline-block;"></span>Compute observation-space ensemble: \(\bh _i^{(j)} = \bH \big (\bv _i^{(j)}\big ),\) \(j = 1,2,\ldots ,J\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span>         <span style="width:14pt; display:inline-block;"></span>Compute empirical covariances: \(\sfCov [\bv _i^{(1:J)},\bh _i^{(1:J)}]\) and \(\sfCov [\bh _i^{(1:J)}]\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span>         <span style="width:14pt; display:inline-block;"></span>Compute Kalman gain: \(\bK _i = \sfCov [\bv _i^{(1:J)}\!,\bh _i^{(1:J)}]\cdot \big (\sfCov [\bh _i^{(1:J)}] + \bSigma \big
+)^{-1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span>         <span style="width:14pt; display:inline-block;"></span>Sample \(\beps _i^{(j)}\) i.i.d. from \(\cN (0,\bSigma )\) for \(j = 1,2,\ldots ,J\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7:</span>         <span style="width:14pt; display:inline-block;"></span>Perturb observations: set \(\by _i^{(j)}=\by + \beps _i^{(j)}\) for \(j = 1,2,\ldots ,J\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">8:</span>         <span style="width:14pt; display:inline-block;"></span>Compute particle update: \(\bv _{i+1}^{(j)} = \bv _i^{(j)}+\bK _i(\by _i^{(j)}-\bH \bv _i^{(j)})\) for \(j = 1,2,\ldots ,J\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">9:</span>         <span style="width:14pt; display:inline-block;"></span><b>if</b> converged <b>then</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">10:</span>             <span style="width:27pt; display:inline-block;"></span><b>return</b> current ensemble mean, \(\sfE [\bv _{i+1}^{(1:J)}]\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">11:</span>         <span style="width:14pt; display:inline-block;"></span><b>end</b> <b>if</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">12:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+<p>
+<i>This is <b>Stochastic EKI</b></i>. <i>For <b>Deterministic EKI</b>, skip \(5\)-\(6\) and assign \(\by _i^{(j)} = \by \) in \(7\).</i>
+</p>
+</figure>
+
+<p>
+There is a very rich literature developing both EKI methods and accompanying theory (see&nbsp;[3] for an extensive survey). Variants of the basic method include the incorporation of a Tikhonov regularization term into the least-squares objective
+function, the enforcement of constraints in the optimization, or hierarchical, multilevel, and parallel versions of the algorithm. Beyond the successful use of EKI for solving diverse inverse problems in the physical sciences, e.g., in geophysical and
+biological contexts, EKI has also been used as an optimizer for training machine learning models. In particular, the use of EKI for training neural networks has motivated the development of EKI variants based on ideas used for gradient-based
+training of neural networks, including dropout, data subsampling (also called ‘(mini-)batching’), adaptive step sizes, and convergence acceleration with Nesterov momentum.
+</p>
+
+<p>
+Theoretical analyses of EKI convergence behavior have mostly considered linear observation operators \(\bH \in \R ^{n\times d}\), for which the standard norm-minimizing solution of&nbsp;<span class="textup">(<a
+href="paper.html#eq: least squares problem">1</a>)</span> is given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                     v∗ = (H⊤ Σ−1 H)† H⊤ Σ−1 y ≡ H+ y,                                                                (2)                                                         --><a id="eq: ls solution"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: ls solution} \bv ^* = (\bH ^\top \bSigma ^{-1}\bH )^{\dagger }\bH ^\top \bSigma ^{-1}\by \equiv \bH ^+\by ,
+\end{equation}
+
+</p>
+
+<p>
+where “\(\dagger \)” denotes the usual Moore-Penrose pseudoinverse and we have introduced the weighted pseudoinverse, \(\bH ^+=(\bH ^\top \bSigma ^{-1}\bH )^{\dagger }\bH ^\top \bSigma ^{-1}\). Previous analyses of linear EKI have
+largely considered mean-field limits (equivalent to an infinitely large ensemble)&nbsp;[3] or continuous-time limits of the EKI iteration, in which the deterministic iteration becomes a system of coupled ordinary differential equations
+(ODEs)&nbsp;[2, 6] and the stochastic iteration becomes a system of coupled stochastic differential equations (SDEs)&nbsp;[1]. These continuous-time analyses have shown that the EKI ensemble covariance collapses at a rate inversely proportional to
+time&nbsp;[6, 1, 2], meaning that the residual of the EKI iteration (with respect to the final solution) converges at a \(1/\sqrt {i}\) rate. These analyses have also characterized EKI solutions either by assuming \(\bH \) is one-to-one or by assuming
+the ensemble covariance is full rank. In particular, the works&nbsp;[6] show that if \(\bH \) is one-to-one, then EKI converges to the pre-image of the data restricted to the span of the ensemble&nbsp;[6, 1]. On the other hand, the work&nbsp;[2]
+shows that if the ensemble covariance is full rank (and \(\bH \) may be low-rank), then EKI converges to the (non-standard) minimizer of&nbsp;<span class="textup">(<a href="paper.html#eq: least squares problem">1</a>)</span> closest
+to the initial ensemble mean in the norm induced by the initial ensemble covariance. The characterization of EKI solutions in the general case where both \(\bH \) and the ensemble covariance may be low-rank, and the relationship between EKI
+solutions and the standard minimum-norm least-squares solution&nbsp;<span class="textup">(<a href="paper.html#eq: ls solution">2</a>)</span>, are open questions addressed in this work.
+</p>
+
+<p>
+In this work, we provide a new analysis of EKI for linear observation operators \(\bH \in \R ^{n\times d}\) which directly considers the discrete iteration for a finite ensemble, relying principally on linear algebra as an analysis tool. Our analysis
+yields new results relating EKI solutions to the standard minimum-norm least-squares solution&nbsp;<span class="textup">(<a href="paper.html#eq: ls solution">2</a>)</span>, together with a new and natural interpretation of EKI
+convergence behavior in terms of ‘fundamental subspaces of EKI’, analogous to the four fundamental subspaces characterizing Strang’s ‘fundamental theorem of linear algebra’&nbsp;[7], which we now review.
+</p>
+
+<p>
+Strang’s four ‘fundamental subspaces of linear algebra’ arise from dividing observation space \(\R ^n\) and state space \(\R ^d\) into two <i>sub</i>spaces each, one subspace associated with ‘observable’ directions and a complementary subspace
+associated with ‘unobservable’ directions&nbsp;[7]. That is, in observation space \(\R ^n\), the two fundamental subspaces are:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> \(\Ran (\bH )\) (denoting the range of \(\bH \)), and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> \(\Ker (\bH ^\top \bSigma ^{-1})\) (denoting the null space of \(\bH ^\top \bSigma ^{-1}\)), the \(\bSigma ^{-1}\)-orthogonal complement to \(\Ran (\bH )\).
+</p>
+</li>
+</ul>
+
+<p>
+In state space \(\R ^d\), the two fundamental subspaces are:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> \(\Ran (\bH ^\top )\), and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> \(\Ker (\bH )\), the orthogonal complement to \(\Ran (\bH ^\top )\) with respect to the Euclidean norm.
+</p>
+</li>
+</ul>
+
+<p>
+The standard minimum-norm solution&nbsp;<span class="textup">(<a href="paper.html#eq: ls solution">2</a>)</span> to the linear least-squares problem&nbsp;<span class="textup">(<a
+href="paper.html#eq: least squares problem">1</a>)</span> can be understood in terms of these fundamental subspaces as follows (see&nbsp;[5, Figure 1]): in observation space \(\R ^n\), the closest that \(\bH \bv \) can come to \(\by \in
+\R ^n\) with respect to the \(\bSigma ^{-1}\)-norm is the \(\bSigma ^{-1}\)-orthogonal projection of \(\by \) onto the observable space \(\Ran (\bH )\), which then has a zero component in the (unobservable) subspace \(\Ker (\bH ^\top
+\bSigma ^{-1})\). In state space \(\R ^d\), directions in \(\Ker (\bH )\) are unobservable because they are mapped by \(\bH \) to zero and thus do not influence the minimand of&nbsp;<span class="textup">(<a
+href="paper.html#eq: least squares problem">1</a>)</span>. If \(\Ker (\bH )\) is non-trivial, multiple minimizers of&nbsp;<span class="textup">(<a href="paper.html#eq: least squares problem">1</a>)</span> exist. The unique
+norm-minimizing solution&nbsp;<span class="textup">(<a href="paper.html#eq: ls solution">2</a>)</span> lies in the observable space \(\Ran (\bH ^\top )\) and has a zero component in the unobservable space \(\Ker (\bH )\).
+</p>
+
+<p>
+Our analysis reveals that EKI solutions to the weighted least squares problem admit a similar interpretation in terms of fundamental subspaces of EKI. However, the EKI fundamental subspaces arise first from dividing the state and observation
+spaces into directions that are ‘populated’ by particles, lying in the range of ensemble covariance \(\bGamma _i\) (it is well-known&nbsp;[1, 2, 4, 6] that \(\Ran (\bGamma _i)\) is invariant for all \(i\)), and ‘unpopulated’ directions lying in a
+complementary subspace. The populated subspace can then be further divided into two subspaces associated with observable and unobservable directions. There are therefore three subspaces in each of the observation and state spaces. In observation
+space \(\R ^n\), the three fundamental subspaces of EKI are associated with three complementary oblique projection operators, \(\bcP ,\bcQ ,\bcN \in \R ^{n\times n}\). These projections are defined via a spectral analysis of the iteration map
+which governs the evolution of the <i>data misfit</i>, \(\bH \bv _i^{(j)}-\by \), so that the range of each projector is an invariant subspace under the misfit iteration map. The three fundamental subspaces of observation space \(\R ^n\) are then
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> \(\Ran (\bcP )\equiv \Ran (\bH \bGamma _i)\), associated with observable populated directions,
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> \(\Ran (\bcQ )\equiv \bH \,\Ker (\bGamma _i\fisher )\), associated with observable but <i>un</i>populated directions, and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> \(\Ran (\bcN )\equiv \Ker (\bH ^\top \bSigma ^{-1})\), associated with unobservable directions.
+</p>
+</li>
+</ul>
+
+<p>
+In state space \(\R ^d\), the three fundamental subspaces of EKI are also associated with three complementary oblique projection operators, \(\bbP ,\bbQ ,\bbN \in \R ^{n\times n}\). These projections are defined via a spectral analysis of the
+iteration map which governs the evolution of the <i>least squares residual</i>, \(\bv _i^{(j)}-\bv ^*\). The range of each projector is again an invariant subspace under the residual iteration map. The three fundamental subspaces of state space
+\(\R ^d\) are then
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> \(\Ran (\bbP )\subset \Ran (\bGamma _i)\), associated with observable populated directions (but generally <i>not</i> simply the intersection of \(\Ran (\bGamma _i)\) with \(\Ran (\bH ^\top )\)),
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> \(\Ran (\bbQ )\subset \Ran (\bH ^\top )\), associated with observable <i>un</i>populated directions, and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> \(\Ran (\bbN )\), associated with unobservable directions.
+</p>
+</li>
+</ul>
+
+<p>
+The fundamental subspaces of EKI are depicted in&nbsp;[5, Figure 2], and an interactive three-dimensional visualization is available at <kbd><a href="https://elizqian.github.io/eki-fundamental-subspaces/" target="_blank"
+>https://elizqian.github.io/eki-fundamental-subspaces/</a></kbd>.
+</p>
+
+<p>
+We show that EKI misfits [residuals] converge to zero at a \(1/\sqrt {i}\) rate in the fundamental subspace associated with observable and populated directions, \(\Ran (\bcP )\) [\(\Ran (\bbP )\)], and remain constant in the fundamental
+subspaces associated with observable unpopulated directions, \(\Ran (\bcQ )\) [\(\Ran (\bbQ )\)]. The misfits [residuals] also remain constant in the unobservable directions, \(\Ran (\bcN )\) [\(\Ran (\bbN )\)]. Numerical experiments
+illustrating these results may be found in&nbsp;[5, Figure 3]. Our results verify for the discrete iteration and finite ensemble case the \(1/\sqrt {i}\) convergence rate previously shown in continuous time or infinite ensemble limits, and provide the
+first results describing the relationship between EKI solutions and the standard minimum-norm least squares solution&nbsp;<span class="textup">(<a href="paper.html#eq: ls solution">2</a>)</span>.
+</p>
+
+<p>
+Our analysis sheds light on several directions of interest for future work connecting EKI with classical iterative methods. Because we have shown that the convergence behavior of deterministic EKI can be characterized in terms of an evolving spectral
+problem that has invariant subspaces that are independent of iteration index, this allows for straightforward EKI acceleration strategies analogous to overrelaxation schemes in classical stationary iterative methods. Other potential directions of
+interest could exploit the well-known connection between the extended Kalman filter and Gauss-Newton methods to establish further connections between EKI and classical methods.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Dirk Blömker, Claudia Schillings, Philipp Wacker, and Simon Weissmann. Well posedness and convergence analysis of the ensemble Kalman inversion. <i>Inverse Problems</i>, 35(8):085007, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Leon Bungert and Philipp Wacker. Complete deterministic dynamics and spectral decomposition of the linear ensemble Kalman inversion. <i>SIAM/ASA Journal on Uncertainty Quantification</i>,
+11(1):320–357, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Edoardo Calvello, Sebastian Reich, and Andrew&nbsp;M Stuart. Ensemble Kalman methods: A mean field perspective. <i>arXiv preprint arXiv:2209.11371</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Marco&nbsp;A. Iglesias, Kody J.&nbsp;H. Law, and Andrew&nbsp;M. Stuart. Ensemble Kalman methods for inverse problems. <i>Inverse Problems</i>, 29:045001, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Elizabeth Qian and Christopher Beattie. The fundamental subspaces of ensemble Kalman inversion. <i>arXiv:2409.08862</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Claudia Schillings and Andrew&nbsp;M. Stuart. Analysis of the ensemble Kalman filter for inverse problems. <i>SIAM Journal on Numerical Analysis</i>, 55(3):1264–1290, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Gilbert Strang. The fundamental theorem of linear algebra. <i>The American Mathematical Monthly</i>, 100(9):848–855, 1993.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

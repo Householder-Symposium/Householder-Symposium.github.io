@@ -1,0 +1,626 @@
+---
+layout: abstract
+absnum: 52
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Nonlinear inverse scattering data transforms via casual transmutation matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Vladimir Druskin</span>, Shari Moskow, Mikhail Zaslavskiy
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Many important problems in remote sensing, where measurements are not available in the domain of interest (radar imaging, seismic exploration, medical array ultrasound, etc.) lead to inverse scattering problems which can be strongly nonlinear in
+case of large perturbations of the unknown PDE coeﬀicients. The model based nonlinear optimization which is the method of choice for the solution of such problems can be unreliable and prohibitively expensive. Data driven nonlinear transforms
+emerged as an attractive alternative, however it was recently shown that the most common ReLU neural networks are intractable for reliable solution of non-parametric inverse problems. Data driven ROMs recently emerged as a feasible option for
+such problems.
+</p>
+
+<p>
+The key of this approach is data-driven computation of the state solution in the domain of interest not available for direct measurements for a black-box model via a nonlinear transform. It implicitly was used for different imaging applications with
+data-driven ROMs, e.g., see, [2, 3, 1]. Here we give its new explicit formulation allowing simple analysis and clear connection with preceding work.
+</p>
+
+<p>
+We assume the following wave model problem for a domain \(\Omega \subset {R}^d\)
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                            --><a id="waveeq"></a><!--utt − ∆u + q(x)u = 0 in Ω × [0, ∞)                                                                                               (1)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {waveeq} u_{tt} -\Delta u + q(x) u= 0 \ \mbox {in} \ \Omega \times [ 0,\infty )
+\end{equation}
+
+</p>
+
+<p>
+with initial conditions
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                 --><a id="waveeqic"></a><!--u(t = 0)         =   g in Ω                                                                                                               (2)
+                                                                                                                 ut (t = 0)   =   0 in Ω--><a id="waveeqid"></a><!--                                                                                   (3)
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {waveeqic} u ( t=0) &amp;=&amp; g \ \mbox {in}\ \Omega \\ u_t ( t=0) &amp;=&amp; 0\ \mbox {in}\ \Omega \label {waveeqid}
+\end{eqnarray}
+
+</p>
+
+<p>
+where \(g(x)\) is an initial condition representing a localized source near the boundary, and we assume homogeneous Neumann boundary conditions on the spatial boundary \(\partial \Omega \). We assume \(q(x)\ge 0\) is our unknown
+potential, not necessarily small, but with compact support. The exact forward solution to (<a href="paper.html#waveeq">1</a>-<a href="paper.html#waveeqid">3</a>) is
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                              √
+                                                                                              --><a id="exactsolution"></a><!--u(x, t) = cos ( At)g(x),                                                                                                (4)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {exactsolution} u(x,t) = \cos {(\sqrt {A}t)} g(x),
+\end{equation}
+
+</p>
+
+<p>
+where
+</p>
+
+<p>
+\[A={-\Delta +q(x)},\]
+</p>
+
+<p>
+with the square root and cosine are defined via the spectral theorem. This solution is assumed to be unknown, except near the receivers.
+</p>
+
+<p>
+Assume we measure the SISO transfer function at the receiver collocated with the at the \(2n-1\) evenly spaced time steps \(t= k\tau \) for \(k=0,\dots , 2n-2\), modeled by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+
+<!--
+
+
+                                                                                                                                            ∫
+                                                                                         --><a id="datadef"></a><!--F (kτ )       =                 g(x)u(x, kτ )dx
+                                                                                                                                            ∫Ω
+                                                                                                                                                              √
+                                                                                                                                  =                 g(x) cos ( Akτ )g(x)dx.                                                                            (5)
+                                                                                                                                                Ω
+
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {datadef} F(k\tau ) &amp;= &amp;\int _\Omega g(x) u(x,k\tau ) dx\nonumber \\ &amp;=&amp; \int _\Omega g(x) \cos {(\sqrt {A }k\tau )} g(x) dx .
+\end{eqnarray}
+
+</p>
+
+<p>
+The inverse problem we consider is as follows: Given
+</p>
+
+<p>
+\[ \{ F(k \tau ) \} \ \mbox { for } \ k=0,\dots , 2n-2,\]
+</p>
+
+<p>
+reconstruct \(q\). This generally nonlinear problem becomes a simple linear problem if \(u_k = u(x,k\tau )\) is known in the entire domain, that may not be accessible to the direct measurement.
+</p>
+
+<p>
+So our objective here is to compute, from the measured data \(F(k\tau )\) only, approximations of the internal snapshots \(u_k = u(x,k\tau )\) for \(k=0,\ldots n-1\) assuming that \(q(x)\) is unknown.
+</p>
+
+<p>
+We introduce Gramian matrix \(M\) with with elements
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                                                          ∫
+                                                                                                  --><a id="massmatrixj"></a><!--Mkl =                            uk ul dx                                                                             (6)
+                                                                                                                                                              Ω
+
+-->
+
+<p>
+
+\begin{equation}
+\label {massmatrixj} M_{kl}= \int _\Omega u_k u_l dx
+\end{equation}
+
+</p>
+
+<p>
+for \(k,l =0,\ldots ,n-1\), can be written as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                  ∫
+                                                                                                                                                    √           √
+                                                                                    --><a id="massmatrixj2"></a><!--Mkl =                 g(x) cos ( Akτ ) cos ( Alτ )g(x)dx.                                                                          (7)
+                                                                                                                                      Ω
+
+-->
+
+<p>
+
+\begin{equation}
+\label {massmatrixj2} M_{kl} = \int _\Omega g(x) \cos {(\sqrt {A}k\tau )} \cos {(\sqrt {A }l\tau )} g(x) dx.
+\end{equation}
+
+</p>
+
+<p>
+thanks to the formula (<a href="paper.html#exactsolution">4</a>). Then, from (<a href="paper.html#datadef">5</a>), (<a href="paper.html#massmatrixj2">7</a>), and the cosine angle sum formula, one has
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                                                                           1
+                                                                                       --><a id="massfromdataj"></a><!--Mkl =                (F ((k − l)τ ) + F ((k + l)τ )) ,                                                                         (8)
+                                                                                                                                           2
+-->
+
+<p>
+
+\begin{equation}
+\label {massfromdataj} M_{kl} = \frac {1}{2} \left ( F((k-l)\tau ) + F((k+l)\tau ) \right ),
+\end{equation}
+
+</p>
+
+<p>
+so Gramian \(M\) can obtained directly from the data [2] . Formula (<a href="paper.html#massmatrixj2">7</a>) is the Chebyshev moment problem yielding \(M\) given by <a href="paper.html#massfromdataj">8</a> as the sum of Toeplitz and
+Hankel matrices.
+</p>
+
+<p>
+Now, let
+</p>
+
+<p>
+\[U = [ u_1(x), \ldots , u_n(x) ] \]
+</p>
+
+<p>
+be a row vector of the true snapshots, so that we can write
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                                                ∫
+                                                                                                 --><a id="truemass"></a><!--M =                        U ⊤ U ∈ Rn×n .                                                                                 (9)
+                                                                                                                                                    Ω
+
+-->
+
+<p>
+
+\begin{equation}
+\label {truemass} M = \int _\Omega U^\top U\in R^{n\times n}.
+\end{equation}
+
+</p>
+
+<p>
+Consider also the background field \(u^0(x,t)\), the solution to (<a href="paper.html#waveeq">1</a>-<a href="paper.html#waveeqid">3</a>) with \(q(x)=0\), which we assume that we know. Let
+</p>
+
+<p>
+\[U_0 = [ u_1^0(x), \ldots , u_n^0(x) ] \]
+</p>
+
+<p>
+be a row vector of the background snapshots \(u_k^0 = u^0(x,k\tau )\), and let
+</p>
+
+<p>
+\[ M_0 = \int _\Omega U_0^\top U_0 \in R^{n\times n}\]
+</p>
+
+<p>
+be the background mass matrix. We want to obtain approximation
+</p>
+
+<p>
+\[U\approx {\bf U} = U_0 T \]
+</p>
+
+<p>
+satisfying (<a href="paper.html#truemass">9</a>) via projection, i.,e., condition
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{9}\)</span>
+
+<!--
+
+                                                                                                                                            ∫
+                                                                                                     --><a id="datamass"></a><!--                   U⊤ U = M                                                                                          (10)
+                                                                                                                                                Ω
+
+-->
+
+<p>
+
+\begin{equation}
+\label {datamass} \int _\Omega {\bf U}^\top {\bf U} = M
+\end{equation}
+
+</p>
+
+<p>
+that yields
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{10}\)</span>
+
+<!--
+
+
+                                                                                                      --><a id="ROMmass"></a><!--M = T ⊤ M0 T.                                                                                                        (11)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {ROMmass} M = T^\top M_0 T.
+\end{equation}
+
+</p>
+
+<p>
+Equation (<a href="paper.html#ROMmass">11</a>) was inspired by the celebrated Marchenko-Gelfand-Levitan-Krein (MGLK) Volterra equation, e.g.,see [5] and references wherein, with \(T\) being so-called transmutation matrix. Its discrete
+analogy first appeared in study of connection between the discrete MGLK and Lanczos algorithms [6]. A critical observation is that the waves in background (\(q=0\)) and true (unknown \(q\) ) media travel with the same speed, so thanks to the
+causality principle, \(T\) is upper triangular matrix. This restriction leads to its uniqueness, that can be shown by direct calculations.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Proposition 1 </span></span> The row vector of data generated internal fields \({\bf U} = U_0 T \) satisfying (<a href="paper.html#datamass">10</a>) with upper triangular
+transmutation matrix \(T\) is unique and can be computed as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{11}\)</span>
+
+<!--
+
+
+
+                                                                                                         --><a id="Teq"></a><!--T = (L⊤
+                                                                                                                                      0 )
+                                                                                                                                          −1 ⊤
+                                                                                                                                            L .                                                                                                           (12)
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {Teq} T= (L_0^\top )^{-1} L^\top .
+\end{equation}
+
+
+</p>
+
+<p>
+where upper triangular matrices \(L\) and \(L_0\) are defined via Cholesky factorizations
+</p>
+
+<p>
+\[ M = LL^\top \ \ \ \ \ \ M_0 = L_0 L_0^\top \]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The Cholesky factorization of \(M\) constitutes the nonlinear part of the data transform. The internal solution generated via SISO data was successfully used for radar imaging applications, however it had significant artifacts due to luck of aperture [4].
+</p>
+
+<p>
+For seismic exploration and medical array ultrasound the SISO data (<a href="paper.html#datadef">5</a>) can be replaced by the square MIMO transfer function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{12}\)</span>
+
+
+<!--
+
+
+                                                                                                                                     ∫
+                                                                                   --><a id="datadefMIMO"></a><!--F (kτ )        =           G(x)u(x, kτ )dx
+                                                                                                                                     ∫   Ω
+                                                                                                                                                       √
+                                                                                                                                 =           g(x) cos ( Akτ )G(x)dx ∈ Rm×m ,                                                                              (13)
+                                                                                                                                         Ω
+
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {datadefMIMO} F(k\tau ) &amp;= &amp;\int _\Omega G(x) u(x,k\tau ) dx\nonumber \\ &amp;=&amp; \int _\Omega g(x) \cos {(\sqrt {A }k\tau )} G(x) dx \in R^{m\times m},
+\end{eqnarray}
+
+</p>
+
+<p>
+where \(G(x)=[g_1(x),\ldots , g_m(x)]\) is the row vector of \(m\) transmitters collocated with receivers. The Proposition&nbsp;1 can be replaced by its block analogy for the data given by (<a href="paper.html#datadefMIMO">13</a>), which
+was implicitly used in e.g., [3].
+</p>
+
+<p>
+Another important application, the synthetic aperture radars (SAR) used for imaging from airborne platforms can only access \(\hbox {diag }F\), and for computing block-transmutation matrix they require data-completion.
+</p>
+
+<p>
+Finally we outline the list of computational linear algebra bottlenecks in the proposal framework:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Fast Cholesky factorization and spectral decomposition of sum of block Hankel and Toeplitz matrices
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Lifting partial data matrices to full square MIMO data, e.g., from diagonal as in the SAR framework
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Eﬀicient truncation or correction of spurious non-Hamiltonian modes (with negative eigenvalues, appeared due to measurement errors or inaccuracies of the above mentioned data-completion or lifting) of
+data-driven Gramians
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Estimation of non-strictly triangular data-driven transmutation matrices
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Extension to problems with dissipation
+</p>
+</li>
+</ul>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Liliana Borcea, Josslin Garnier Alexander V. Mamonov, and Jörn Zimmerling, <i> When data driven reduced order modeling meets full waveform inversion</i> SIAM Review , 66 (3) (216): 501-532.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Druskin, V.r, A. Mamonov, A. Thaler, and M. Zaslavsky. ”Direct, nonlinear inversion algorithm for hyperbolic problems via projection-based model reduction.” SIAM Journal on Imaging Sciences 9,
+no. 2 (2016): 684-747.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Druskin, V., Mamonov, A. V., Zaslavsky, M. (2018). A nonlinear method for imaging with acoustic waves via reduced order model backprojection. SIAM Journal on Imaging Sciences, 11(1), 164-196.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Druskin, V., Moskow, S. and Zaslavsky, M., 2024. Reduced Order Modeling Inversion of Monostatic Data in a Multi-scattering Environment. SIAM Journal on Imaging Sciences, 17(1), pp.334-350.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> T. Habashy. A generalized Gelfand–Levitan–Marchenko integral equation. Inverse Problems, 7, pp.703–711, 1991.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> F. Natterer. A discrete Gelfand–Levitan theory. Electronic, from the author’s web page.
+</p>
+</li>
+</ul>
+
+{% endraw %}

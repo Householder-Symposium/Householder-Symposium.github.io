@@ -1,0 +1,209 @@
+---
+layout: abstract
+absnum: 93
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Shift-and-invert Arnoldi for singular eigenvalue problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Karl Meerbergen</span>, Zhijun Wang
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The solution of the regular \(n\times n\) generalized eigenvalue problem \(Ax=\lambda Bx\) is pretty well understood. This is not so for singular pencils, i.e., pencils for which \(A-\lambda B\) is singular for any \(\lambda \in \mathbb {C}\cup
+\{\infty \}\). We say that \(\lambda \) is an eigenvalue iff the rank of \(A-\lambda B\) is below the normal rank, i.e., the maximum rank of \(A-\sigma B\) for \(\sigma \in \mathbb {C}\cup \{\infty \}\).
+</p>
+
+<p>
+The staircase method separates the regular and singular parts of the pencil using the Kronecnker canonical form. The QZ method can also perform such a separation but may suffer from numerical instabilities. Recently, a rank perturbation was
+proposed [1][2] which is related to a bordered regular pencil. In this talk, we use a border of the form
+</p>
+
+<p>
+\[ \begin {bmatrix} A - \lambda B &amp; W \\ V^T &amp; 0 \end {bmatrix} \]
+</p>
+
+<p>
+where \(W\) and \(V\) are chosen so that both
+</p>
+
+<p>
+\[ \begin {bmatrix} A - \lambda B &amp; W \end {bmatrix} \quad \text {and}\quad \begin {bmatrix} A - \lambda B \\ V^T \end {bmatrix} \]
+</p>
+
+<p>
+have rank \(n\) for all \(\lambda \). This bordered eigenvalue problem has a spurious infinite eigenvalue, and may have spurious finite eigenvalue too, but for every eigenvector a simple test can be performed to check whether the eigenvalue is true or
+spurious.
+</p>
+
+<p>
+The aim is to solve the bordered eigenvalue problem using the shift-and-invert Arnoldi method. We employ a special inner product and implicit restarting to reduce the impact of the infinite eigenvalue. To determine a suitable \(V\) and \(W\) we
+propose a rank revealing LU factorization that should enable computations for large sparse problems. We illustrate the algorithm and the theory for problems arising from multiparameter eigenvalue problems, rectangular pencils and singular
+quadratic eigenvalue problems.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;E. Hochstenbach, C. Mehl, and B. Plestenjak. Solving singular generalized eigenvalue problems by a rank-completing perturbation. <i>SIAM Journal on Matrix Analysis and
+Applications</i>, 40(3):1022–1046, January 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;E. Hochstenbach, C. Mehl, and B. Plestenjak. Solving singular generalized eigenvalue problems. part ii: Projection and augmentation. <i>SIAM Journal on Matrix Analysis and
+Applications</i>, 44(4):1589–1618, October 2023.
+</p>
+</li>
+</ul>
+
+{% endraw %}

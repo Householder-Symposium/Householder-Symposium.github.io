@@ -1,0 +1,148 @@
+---
+layout: abstract
+absnum: 168
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A Memory-eﬀicient MM-GKS Variant for Large-scale Dynamic or Streaming Inverse Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Misha E. Kilmer</span>, Mirjeta Pasha, Eric de Sturler
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Reconstructing high-quality images with sharp edges requires edge-preserving regularization operators. Using a general \(\ell _q\)-norm on the gradient of the image is a common approach. For implementation purposes, the \(\ell _q\)-norm
+regularization term is typically replaced with a sequence of \(\ell _2\)-norm weighted gradient terms with the weights determined from the current solution estimate. While (hybrid) Krylov subspace methods can be employed on this sequence, it
+would require generating a new Krylov subspace for every update of the regularization operator. The majorization-minimization generalized Krylov subspace method (MM-GKS) addresses this disadvantage by combining the updating of the
+regularization operator with generalized Krylov subspaces (GKS). After projecting the problem onto a lower dimensional subspace - one that expands each iteration - the regularization parameter is selected for the projected problem. Basis expansion
+continues until a suﬀiciently accurate solution is found. Unfortunately, for large-scale problems that require many iterations to converge, storage and the cost of repeated orthogonalization present overwhelming memory requirements and
+computational costs.
+</p>
+
+<p>
+We present a variant of MM-GKS that provably converges to the minimum of the smoothed functional even if the search space dimension remains very small. This substantially improves theoretical results for MM-GKS where the convergence proof
+relies on (eventually) spanning the full problem space. Using this result, we develop a new method that solves the minimization/imaging problem by alternatingly compressing and expanding the search space while maintaining strict monotonic
+convergence. Our method can solve large-scale problems eﬀiciently both in terms of computational complexity and memory requirements. In the compression phase, we select a subspace of small dimension that is considered the most “important” for
+convergence by one of four compression strategies. We further generalize our proposed method to handle streaming problems where the data is either not all available simultaneously or the size of the problem demands it be treated as such. We
+demonstrate the utility of our approach on several image reconstruction and restoration problems.
+</p>
+
+{% endraw %}

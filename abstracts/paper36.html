@@ -1,0 +1,324 @@
+---
+layout: abstract
+absnum: 36
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+The Quest for a Numerically Stable Multivariate Polynomial Rootfinder
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Alex Townsend</span>, Emil Graf
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+<b>Introduction.</b> The search for a robust, global, and numerically stable algorithm for solving multivariate polynomial systems has persisted for decades&nbsp;[2, 3, 5, 6, 7, 8, 9]. The goal is to compute all the solutions to zero-dimensional
+polynomial systems of the form:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                         
+                                                                                                                    p1 (x1 , . . . , xd )
+                                                                                                                            ..           
+                                                                                                                             .            = 0,                                                                 (1)--><a id="eq:polysystem"></a><!--
+                                                                                                                      pd (x1 , . . . , xd )
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{pmatrix} p_1(x_1, \ldots , x_d) \\ \vdots \\ p_d(x_1, \ldots , x_d) \end {pmatrix} = \mathbf {0}, \label {eq:polysystem}
+\end{equation}
+
+</p>
+
+<p>
+where \(d \geq 2\) and \(p_1, \ldots , p_d\) are polynomials in \(x_1,\ldots , x_d\) with complex coeﬀicients. All the promising solvers are based on an elegant approach of converting the multivariate rootfinding problem in&nbsp;<span
+class="textup">(<a href="paper.html#eq:polysystem">1</a>)</span> into one or more eigenproblems At first this approach appears to be a practitioner’s dream as a diﬀicult rootfinding problem can be solved by the robust QR or QZ algorithm.
+For this reason, these methods have received considerable research attention from the scientific computing community. However, we are currently stuck waiting for new ideas to emerge from algebraic geometry or hoping for novel structured
+eigensolvers from numerical linear algebra.
+</p>
+
+<p>
+A popular class of techniques known as hidden variable resultant methods are notoriously diﬀicult—and maybe impossible—to make numerically robust&nbsp;[6]. Naive implementations are plagued with unwanted spurious solutions, inaccurate roots,
+and miss zeros. In this talk, we will discuss the ongoing quest for a numerically stable rootfinder using Sylvester resultants, Gröbner bases, Möller–Stetter matrices, and Macaulay resultants. Our focus will be on understanding the sources of the
+instability in these approaches, in the hope that they can be circumvented.
+</p>
+
+<p>
+<b>Motivation for Eigenvalue-Based Approaches.</b> Given a well-conditioned rootfinding problem, we would like to derive a stable algorithm to solve it. Roughly speaking, an algorithm is stable if it computes an accurate solution to
+well-conditioned problems. The search for a stable algorithm for multivariate polynomial rootfinding is motivated by the existence of stable algorithms for many related problems. All the univariate problems, such as eigenproblems, univariate
+polynomial rootfinding, and matrix polynomial eigenproblems, have stable algorithms. Likewise, there are stable algorithms to solve linear systems of the form \(A \mathbf {x} = \mathbf {b}\), which are multivariate.
+</p>
+
+<p>
+For univariate rootfinding, instead of solving a rootfinding problem directly, one can first construct an eigenproblem whose eigenvalues match the desired roots. The companion matrix of a polynomial \(p(x)\) is an example of this, as its
+characteristic polynomial is \(p\), so its eigenvalues are the roots of \(p\). One can solve the companion eigenproblem using an eigensolver, which is one of the most reliable algorithms in numerical linear algebra. For roots in \([-1,1]\), a provably
+stable algorithm for univariate polynomial rootfinding is based on the colleague matrix [4]. For multivariable rootfinding, we attempt the same conversion, i.e., we try to convert <span class="textup">(<a
+href="paper.html#eq:polysystem">1</a>)</span> into one or more generalized eigenvalue problems (GEPs). For polynomial systems in <span class="textup">(<a href="paper.html#eq:polysystem">1</a>)</span> in \(d\) variables, one
+usually constructs \(d\) GEPs, the eigenvalues of which give the coordinates of each root. The Macaulay resultant method is an exception as it constructs a single GEP and extracts the roots from the eigenvectors, not eigenvalues. Analogously to the
+univariate case, one hopes that the eigenproblems are as well-conditioned as the original rootfinding problem. Unfortunately, this is not always the case.
+</p>
+
+<p>
+Gröbner bases, Möller–Stetter matrices, rational univariate reductions, multiparameter eigenvalue problems, and Macaulay resultants all convert&nbsp;<span class="textup">(<a href="paper.html#eq:polysystem">1</a>)</span> into one or more
+GEPs, either directly or by way of a univariate rootfinding problem. For each method, we show that either a constructed eigenproblem or an intermediate univariate rootfinding problem can be more ill-conditioned than the original rootfinding
+problem by a factor that is exponentially large in \(d\).
+</p>
+
+<p>
+<b>A devastating example.</b> The analysis of the instability of Sylvester and Cayley resultant method appears in [5, 6] and studied the following “devastating” polynomial rootfinding problem.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Example 1 </span></span> <a id="ex:dev"></a> Let \(Q\) be a \(d \times d\) orthogonal matrix, \(\sigma &gt;0\), and consider&nbsp;<span class="textup">(<a
+href="paper.html#eq:polysystem">1</a>)</span> with
+</p>
+
+<p>
+\[ p_i(x_1,\ldots ,x_d) = x_i^2 + \sigma \sum _{j=1}^d q_{ij} x_j, \quad 1 \leq i \leq d, \]
+</p>
+
+<p>
+where \(q_{ij}\) is the \((i,j)\) entry of \(Q\). The system has a root at \((0,\ldots ,0)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+By a conditioning analysis, one should expect to find the root at \((0,\ldots ,0)\) to within \(\approx \sigma u\), where \(u\) is the unit roundoff on a computer. However, it has been shown that Sylvester resultants can only achieve \(\approx
+\sigma ^{-2} u\) when \(d=2\) and Cayley can only achieve \(\approx \sigma ^{-d} u\) [6]. The eigenproblems constructed by these methods can be far more sensitive to perturbations than the original rootfinding problem, which is a hallmark of
+an unstable algorithm. Similar examples show that Gröbner bases, Möller–Stetter matrices, rational univariate reductions, multiparameter eigenvalue problems, and Macaulay resultants can also generate highly ill-conditioned eigenproblems.
+</p>
+
+<p>
+Theoretical results supported by numerical experiments. One might be hopeful that these worst-case examples are rarely and never realized in practice. Unfortunately, this is not the case in practice. We regularly observe the ill-conditioning
+in numerical experiments, causing solvers to generate spurious solutions, miss roots, or compute them inaccurately. There is a small glimmer of hope in some new approaches that construct structured eigenproblems and solve them with eigensolvers
+that respective that structure&nbsp;[1].
+</p>
+
+<p>
+We hope that our work inspires new approaches that circumvent the limitations of current techniques and provide robust solutions to the fundamental multivariate polynomial roofinding problem.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> H.&nbsp;He, D.&nbsp;Kressner, and B.&nbsp;Plestenjak. Randomized methods for computing joint eigenvalues, with applications to multiparameter eigenvalue problems and root finding. <i>arXiv
+preprint arXiv:2409.00500</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> G.&nbsp;F. Jónsson and S.&nbsp;A. Vavasis. Accurate solution of polynomial equations using Macaulay resultant matrices. <i>Math. Comp.</i>, 74(249):221–262, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> B.&nbsp;Mourrain, S.&nbsp;Telen, and M.&nbsp;Van&nbsp;Barel. Truncated normal forms for solving polynomial systems: generalized and eﬀicient algorithms. <i>J. Symbolic Comput.</i>,
+102:63–85, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Y.&nbsp;Nakatsukasa and V.&nbsp;Noferini. On the stability of computing polynomial roots via confederate linearizations. <i>Math. Comp.</i>, 85(301):2391–2425, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y.&nbsp;Nakatsukasa, V.&nbsp;Noferini, and A.&nbsp;Townsend. Computing the common zeros of two bivariate functions via Bézout resultants. <i>Numer. Math.</i>, 129(1):181–209, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> V.&nbsp;Noferini and A.&nbsp;Townsend. Numerical instability of resultant methods for multidimensional rootfinding. <i>SIAM J. Numer. Anal.</i>, 54(2):719–743, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> B.&nbsp;Plestenjak and M.&nbsp;E. Hochstenbach. Roots of bivariate polynomial systems via determinantal representations. <i>SIAM J. Sci. Comput.</i>, 38(2):A765–A788, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> F.&nbsp;Rouillier. Solving zero-dimensional systems through the rational univariate representation. <i>Appl. Algebra Engrg. Comm. Comput.</i>, 9(5):433–461, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> S.&nbsp;Telen, B.&nbsp;Mourrain, and M.&nbsp;Van&nbsp;Barel. Solving polynomial systems via truncated normal forms. <i>SIAM J. Matrix Anal. Appl.</i>, 39(3):1421–1447, 2018.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

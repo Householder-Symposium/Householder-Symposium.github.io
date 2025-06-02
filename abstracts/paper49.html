@@ -1,0 +1,321 @@
+---
+layout: abstract
+absnum: 49
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Optimizing Rayleigh quotient with symmetric constraints and its application to eigenvalue backward errors of polynomial and rational eigenvalue problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Anshul Prajapati</span>, Punit Sharma
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Let \(H \in \mathbb {C}^{n,n}\) be Hermitian and \(S_0,S_1,\ldots ,S_k \in \mathbb {C}^{n,n}\) be symmetric matrices. We consider the problem of maximizing the Rayleigh quotient of \(H\) with respect to certain constraints involving
+symmetric matrices \(S_0,S_1,\ldots ,S_k\). More precisely, we compute
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                        { ∗
+                                                                                                                                                         v Hv
+                                                                                                         mhs0 s1 ...sk (H, S0 , S1 , . . . , Sk ) := sup        : v ∈ Cn \ {0}, v T Si v = 0
+                                                                                                                                                           v∗ v
+                                                                                                                                                                          }
+                                                                                                                                                      (\(\mathcal
+                                                                                                                                                         for i = 0, . {P}\))
+                                                                                                                                                                      ..,k ,                                                       --><a id="eq:cenprob"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:cenprob} m_{hs_0s_1\ldots s_k}(H,S_0,S_1,\ldots ,S_k):=\sup \bigg \{ &amp;\frac {v^*Hv}{v^*v} :~v\in \mathbb {C}^{n} \setminus \{0\},\,v^TS_iv=0 \nonumber \\ &amp; \text {for}~i=0,\ldots ,k \bigg \},
+\tag {$\mathcal {P}$}
+\end{align}
+where \(T\) and \(*\) denote respectively the transpose and the conjugate transpose of a matrix or a vector.<br />
+<br />
+Such problems occur in stability analysis of uncertain systems and in the eigenvalue perturbation theory of matrices and matrix polynomials&nbsp;[3, 4]. A particular case of problem&nbsp;<span class="textup">(<a
+href="paper.html#eq:cenprob">\(\mathcal {P}\)</a>)</span> with only one symmetric constraint (i.e., when \(k=0\)) is used to characterize the \(\mu \)-value of the matrix under skew-symmetric perturbations&nbsp;[4]. An explicit computable
+formula was obtained for \(m_{hs_0}(H,S_0)\) in&nbsp;[4, Theorem 6.3] and given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                  ([                ])
+                                                                                        H    tS 0
+                                                 mhs0 (H, S0 ) =    inf      λ2                          ,                                                                                     --><a id="eq:mikaresult"></a><!--
+                                                                   t∈[0,∞)             tS0    H
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:mikaresult} m_{hs_0}(H,S_0)=\inf _{t\in [0,\infty )} \lambda _2\left (\begin{bmatrix} H &amp; t\overline S_0 \\ t S_0 &amp; \overline H \end {bmatrix}\right ),
+\end{equation*}
+
+</p>
+
+<p>
+where \(\lambda _2(A)\) stands for the second largest eigenvalue of a Hermitian matrix \(A\). However, the solution to the problem&nbsp;<span class="textup">(<a href="paper.html#eq:cenprob">\(\mathcal {P}\)</a>)</span> with more
+than one symmetric constraint was not known.<br />
+<br />
+We derive an explicit computable formula for&nbsp;<span class="textup">(<a href="paper.html#eq:cenprob">\(\mathcal {P}\)</a>)</span> in terms of minimizing the second largest eigenvalue of a parameter-depending Hermitian matrix
+under a simplicity assumption. The results are then applied to derive computable formulas for the structured eigenvalue backward errors of rational matrix functions (RMFs) of the following form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                           s1 (z)              sk (z)
+                                                                                                                  G(z) = A0 + zA1 + · · · z d Ad +                E1 + · · · +        Ek
+                                                                                                                                                           q1 (z)              qk (z)
+
+-->
+
+<p>
+
+\begin{equation*}
+G(z) = A_0+zA_1+\cdots z^d A_d + \frac {s_1(z)}{q_1(z)}E_1+\cdots +\frac {s_k(z)}{q_k(z)}E_k
+\end{equation*}
+
+</p>
+
+<p>
+where the coeﬀicients \(A_p,p=0,1,\ldots ,d\) and \(E_j,j=1,2,\ldots ,k\) are \(n\times n\) matrices, and \(s_j(z)\), \(q_j(z),\) for \(j=1,2,\ldots ,k\) are scalar polynomials.<br />
+<br />
+Eigenvalue backward errors of matrix polynomials, both for unstructured and structure-preserving perturbations, have been studied in the literature; see&nbsp;[9] for unstructured,&nbsp;[1] for Hermitian and related structures, and&nbsp;[2] for
+palindromic and related structures. However, the literature on RMFs is relatively limited, and the structured eigenvalue backward errors have not been explored before.<br />
+<br />
+To explore this, we first aim to reformulate the problem of computing structured eigenvalue backward errors for RMFs with symmetric, skew-symmetric, T-even, T-odd, and T-palindromic structures into the optimization problem&nbsp;<span
+class="textup">(<a href="paper.html#eq:cenprob">\(\mathcal {P}\)</a>)</span>. We then apply the results obtained for this optimization problem to derive computable formulas for the structured eigenvalue backward errors of RMFs. As a
+specific case of RMFs, formulas for the structured eigenvalue backward errors of matrix polynomials with the aforementioned structures can also be derived. Numerical experiments suggest that our results&nbsp;[5] provide a more accurate estimation
+of the supremum in&nbsp;<span class="textup">(<a href="paper.html#eq:cenprob">\(\mathcal {P}\)</a>)</span> compared to the one in&nbsp;[7]. Some of these results are published in Linear Algebra and its Applications&nbsp;[5], while
+others in BIT Numerical Mathematics&nbsp;[6].
+</p>
+
+<p>
+References
+</p>
+<!--
+...... section ......
+-->
+<h4 id="autosec-5"></h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> S. Bora, M. Karow, C. Mehl, P. Sharma. Structured eigenvalue backward errors of matrix pencils and polynomials with Hermitian and related structures. SIAM J. Matrix Anal. Appl., 35: 453–475
+(2014).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> S. Bora, M. Karow, C. Mehl, P. Sharma. Structured eigenvalue backward errors of matrix pencils and polynomials with palindromic structures. SIAM J. Matrix Anal. Appl., 36: 393–416 (2015).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J. Doyle. Analysis of feedback systems with structured uncertainties. IEE Proc. Part D, Control Theory Appl., 129: 242–250 (1982).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M. Karow. \(\mu \)-values and spectral value sets for linear perturbation classes defined by a scalar product. SIAM J. Matrix Anal. Appl., 32: 845–865 (2011).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> A. Prajapati, P. Sharma. Optimizing the Rayleigh quotient with symmetric constraints and its application to perturbations of structured polynomial eigenvalue problems. Linear Algebra Appl., 645:
+256–277 (2022).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> A. Prajapati, P. Sharma. Structured eigenvalue backward errors for rational matrix functions with symmetry structures, BIT Numer Math, 64, 10 (2024).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> P. Sharma. Eigenvalue Backward errors of polynomial eigenvalue problems under structure preserving perturbations. PhD thesis, Department of Mathematics, Indian Institute of Technology Guwahati,
+India, (2016).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> F. Tisseur, K. Meerbergen. The quadratic eigenvalue problem. SIAM Review, 43: 235–286 (2001).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> F. Tisseur. Backward error and condition of polynomial eigenvalue problems. Linear Algebra Appl., 309: 339–361 (2000).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

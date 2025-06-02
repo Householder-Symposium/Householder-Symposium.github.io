@@ -1,0 +1,325 @@
+---
+layout: abstract
+absnum: 12
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Bridging Linear Algebra and Autoencoders
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Matthias Chung</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In recent years <em>autoencoders</em> – mappings \(A_\theta :\mathcal {X} \to \mathcal {X}\) parameterized by \(\theta \in \mathbb {R}^\ell \) – have emerged as a cornerstone of machine learning and data science, playing a pivotal role
+in numerous applications. Their ability to learn eﬀicient low-dimensional representations of data has led to significant advancements in fields such as image and natural language processing, anomaly detection, and generative modeling.
+</p>
+
+<p>
+While universal approximation theorems provide a general theoretical foundation of autoencoder, various analytical aspects such as interpretability, robustness, network design, and hyperparameter selection remain relatively unexplored.
+<em>Numerical linear algebra</em> has played a fundamental and crucial role in the development of modern science and technology and its impact on autoencoders remains under-utilized.
+</p>
+
+<p>
+The connection between linear autoencoder and singular value decomposition/principal component analysis has been laid out in various works. Recognizing the connection between linear autoencoders and singular value decomposition has sparked
+novel research utilizing autoencoders in fields such as matrix factorizations, model reduction, denoising, spectral clustering, and low-rank approximations to name a few.
+</p>
+
+<p>
+In this work, we aim to investigate and initiate discussions on how tools from the numerical linear algebra community may provide fundamental and novel results for autoencoders, scientific machine learning, and beyond. We will discuss fundamental
+connections between matrix factorizations, classical inverse problems, and autoencoders in the field of signal compression and inverse problems. In the following, we provide details on the formulation of linear autoencoders through the Bayes risk
+formulation and the linear algebra involved in its analysis.
+</p>
+
+<p>
+<em>Linear autoencoder.</em> Autoencoders are neural networks that learn to encode input data \(x\) into a compressed representation (latent representation) and then decode it back to reconstruct the original data \(x \in \mathbb {R}^n\). Let
+us consider a linear autoencoder \(A \in \mathbb {R}^{n\times n}\), where each element in \(A\) represents a trainable parameter. Assuming we have an \(\ell \)-dimensional <em>latent space</em> we may compute a generic optimal
+autoencoder by minimizing the <em>Bayes risk</em>, i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                              min       f (A) = E ∥(A − I)x∥22 ,                                                          (1)--><a id="eq:linAutoencoder"></a><!--
+                                                                                                            rank(A)≤ℓ
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:linAutoencoder} \min _{\text {rank}(A)\leq \ell } \ f(A) = \mathbb {E} \left \|(A-I)x\right \|_2^2,
+\end{equation}
+
+</p>
+
+<p>
+given a distribution of the random variable \(x\) and where \(\mathbb {E}\) denotes the expectation and \(I\) the identity mapping. Assuming the random variable \(x\) has symmetric positive definite second moment \(\mathbb {E}\ x x^\top =
+\Gamma \) with Cholesky decomposition \(\Gamma = BB^\top \), then
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                 E ∥(A − I)x∥22 = tr((A − I)Γ(A⊤ − I)) = ∥AB − B∥2F                                                                                                (2)
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\mathbb {E} \ \left \|(A-I)x\right \|_2^2 &amp;= \text {tr}((A-I)\Gamma (A^\top -I)) = \left \|AB-B\right \|_{\text {F}}^2
+\end{align}
+and <span class="textup">(<a href="paper.html#eq:linAutoencoder">1</a>)</span> is equivalent to
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                               min       ∥AB − B∥2F .                                                              (3)                                                   --><a id="eq:linAutoencoderAna"></a><!--
+                                                             rank(A)≤ℓ
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:linAutoencoderAna} \min _{\text {rank}(A)\leq \ell } \ \left \|AB-B\right \|_{\text {F}}^2.
+\end{equation}
+
+</p>
+
+<p>
+For \(\ell = n\) the identity mapping \(A = I\) is an optimal solution. For rank constraint problems \(\ell &lt; n\) an optimal low-rank solution can be found using the following generalization of the Eckart–Young–Mirsky theorem.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-5"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="thm:fullrowrank"></a> Let matrix \(B \in \mathbb {R}^{n \times n}\) have full row rank
+with SVD given by \(B = U \Sigma V^\top \). Then
+</p>
+
+<p>
+\[\widehat A = U_{\ell } U_{\ell }^\top \]
+</p>
+
+<p>
+is a solution to the minimization problem
+</p>
+
+<p>
+\[\min _{\text {rank}(A)\leq \ell } \left \|A B - B\right \|^2_{\text {F}} ,\]
+</p>
+
+<p>
+having a minimal Frobenius norm \(\|\widehat A\|_{\text {F}}= \sqrt {\ell }\) and \(\| \widehat A B - B\|^2_{\text {F}} = \sum _{k = \ell +1}^n \sigma _k(B)\). This solution is unique if and only if either \(\ell = n\) or
+\(1\leq \ell &lt; n\) and \(\sigma _\ell (B) &gt; \sigma _{\ell +1}(B)\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Following this result, the natural choice for the autoencoder \(\widehat A\) to be decomposed into an encoder and a decoder is \(\widehat A= \widehat D\widehat E\), with encoder and decoder being \(\widehat E =U_\ell ^\top \) and
+\(\widehat D = U_\ell \), respectively. Note that this decomposition is not unique, e.g., let \(K\) be any \(n\times n\) invertible matrix then \(\widehat E =U_\ell ^\top K\) and \(\widehat D = K^{-1}U_\ell \), are valid choices.
+</p>
+
+<p>
+<em>Sparse autoencoder.</em> While for small latent spaces \(\ell \ll n\) one obtains a low-rank approximation and a compressed approximation on the original signal \(x\). However, compression can also be obtained utilizing a compressed
+sensing framework. Let us consider the problem of finding an optimal linear autoencoder \(A\) with the decomposition \(A = DE\) into encoder \(E\in \mathbb {R}^{\ell \times n}\) and \(D \in \mathbb {R}^{n \times \ell }\) where \(\ell
+&gt;n\) by minimizing \(L^1\)-regularized optimization problem
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+
+                                                                                                           min        E ∥(DE − I)x∥2 + λ∥Ex∥1                   (4)                                          --><a id="eq:sparseLinear"></a><!--
+                                                                                                     D∈Rn×ℓ ,E∈Rℓ×n
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:sparseLinear} \min _{D\in \mathbb {R}^{n \times \ell }, E\in \mathbb {R}^{\ell \times n}} \ \mathbb {E} \ \|(DE - I)x\|^2 + \lambda \|Ex\|_1
+\end{align}
+with \(\lambda &gt;0\). Autoencoders with \(\ell &gt; n\) are referred to as overcomplete autoencoders. Such sparsity-promoting overcomplete autoencoders were first been introduced in the 2010s with pioneering work from various research
+groups but are not commonly utilized. The generalized lasso approach <span class="textup">(<a href="paper.html#eq:sparseLinear">4</a>)</span> may generate sparse vectors \(Ex\) while maintaining the same expected squared error as an
+undercomplete linear autoencoder where \(\ell &lt;n\).
+</p>
+
+<p>
+<em>Numerical results.</em> We present our analytical findings and confirm them through numerical examples. We approach linear inverse problems using linear autoencoder approximations with theoretical guarantees. Here, we illustrate this with
+medical tomography, deblurring, and a classic heat equation. Furthermore, we analyze small angle scattering (SAS) data – a technique from material science to obtain information about the size, shape, and arrangement of material – via the proposed
+sparse autoencoder. We are able to obtain superior compression rates compared to state-of-the-art approaches.
+</p>
+
+{% endraw %}

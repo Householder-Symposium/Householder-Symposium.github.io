@@ -1,0 +1,358 @@
+---
+layout: abstract
+absnum: 97
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Analysis on Aggregation and Block Smoothers in Multigrid Methods for Block Structured Linear Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+Matthias Bolten, Marco Donatelli, Paola Ferrari, <span class="underline">Isabella Furci</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In this talk we present a detailed analysis of block smoothers and propose new aggregation-based strategies in multigrid methods for structured linear systems [3].
+</p>
+
+<p>
+Multigrid methods are well-known for their eﬀiciency in solving large linear systems, especially when the coeﬀicient matrices exhibit a large (multilevel block) structure [2, 7, 8]. These methods are widely used in various scientific and engineering
+applications, including the discretization of partial differential equations (PDEs), image processing, and approximation problems.
+</p>
+
+<p>
+The key to developing effective multigrid methods lies in the careful selection of the grid transfer operator \(P\) and the iterative methods that serve as pre/post smoothers within the multigrid iteration. In previous works [2, 8], a comprehensive
+convergence analysis for two-grid and V-cycle methods applied to scalar Toeplitz and circulant systems was developed. Specifically, the convergence requirements for \(P\) and smoothers were formulated elegantly using conditions on the
+(scalar-valued) function \(f\) associated with the structured coeﬀicient matrix. Extending this symbol-based analysis to block systems introduces challenges such as the non-commutativity of matrix-valued functions and the need for suitable grid
+transfer operators to manage coarse-grid corrections.
+</p>
+
+<p>
+Scalar smoothers can be defined by carefully selecting the relaxation parameter based on the matrix-valued function \(\textbf {f}\), mimicking the approach used for scalar-valued functions. However, we show that, as the block dimension \(d\)
+increases, block smoothers become more appropriate because they align more naturally with the system’s block structure.
+</p>
+
+<p>
+One of the main goals of this talk is to provide an in-depth analysis of block smoothers, which are more effective in handling block-structured systems. Specifically, we introduce a relaxed block Jacobi method and derive general conditions for the
+smoothing parameter \(\omega \) that ensure convergence. This method proves more eﬀicient than scalar smoothers, both in terms of solving time and set-up time. From our comparison of scalar and block Jacobi smoothers, we demonstrate that the
+block Jacobi method consistently outperforms its scalar counterpart in terms of convergence rate and computational eﬀiciency, particularly for systems with large block dimensions. Moreover, we show that the general conditions on smoothing
+parameters can be calculated with negligible computational cost in some practical applications.
+</p>
+
+<p>
+Regarding the choice of grid transfer operators, a rigorous convergence analysis for the two-grid method (TGM), further extended to the V-cycle, was derived in [6]. The latter demonstrates that certain classical grid transfer operators, such as the
+geometric projection and standard bisection operators, meet the necessary conditions for convergence in many practical cases. The grid transfer operator in this context is written as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                      P = An (p)(K ⊗ Id ),
+
+-->
+
+<p>
+
+\begin{equation*}
+P=\mathcal {A}_{n}(\mathbf {p})(K \otimes I_d),
+\end{equation*}
+
+</p>
+
+<p>
+where \(K\) is an \(n\times k\) matrix that reduces the dimension of the problem by selecting specific rows, and \(\mathcal {A}_{n}(\mathbf {p})\) is a structured matrix analogous to the original problem. A key aspect of such grid transfer
+operators is that they preserve the block structure at coarser levels, and the proof of the approximation convergence property is based on validating further commutativity conditions on the matrix-valued symbol \(\textbf {p}\).
+</p>
+
+<p>
+However, many known grid transfer operators were not covered by the previous theory. To address this, new conditions were obtained in [4], expressing the projector’s approximation property in terms of the eigenvector associated with the
+ill-conditioned subspace, thereby broadening the class of valid operators. Specifically, convergence results in the block-structured setting were derived by exploiting block-symbol analysis. If \(\mathbf {f}(\theta ) \) is a trigonometric polynomial
+with exactly one zero eigenvalue at \(\theta _0 \) and is positive definite in \([0,2\pi ) \backslash \{\theta _0\} \), it can be diagonalized as
+</p>
+
+<p>
+\[ \mathbf {f}(\theta ) = Q(\theta ) D(\theta ) Q(\theta )^H, \]
+</p>
+
+<p>
+where \(Q(\theta ) \) is the matrix of eigenvectors and \(D(\theta ) \) is the diagonal matrix of eigenvalues. We denote by \(q_{\bar {\jmath }}(\theta ) \) the normalized eigenvector associated with the zero eigenvalue \(\lambda _{\bar
+{\jmath }}(\mathbf {f}(\theta _0)) = 0 \). Under certain assumptions, suﬀicient conditions for the linear convergence of the TGM involve choosing \(\mathbf {p} \) such that the function \(\mathbf {p}(\theta )^{H}\mathbf {p}(\theta )
++ \mathbf {p}(\theta +\pi )^{H}\mathbf {p}(\theta +\pi ) \) is positive definite for all \(\theta \in [0,2\pi ) \) and specific limit conditions as \(\theta \) approaches \(\theta _0 \) are satisfied. These requirements can be simplified in
+specific applications, and the V-cycle convergence conditions are based on these results. An important aspect of the strategy outlined above is that the grid transfer operator maintains the block structure at coarser levels. While this is theoretically
+convenient for proving V-cycle convergence, it introduces computational challenges, as the block structure remains, and the matrix-valued function can be diﬀicult to analyze.
+</p>
+
+<p>
+The second aim of this talk is to present a new symbol-based multigrid method with an aggregation-based approach, which reduces the system to a scalar form at coarser levels. In particular, from the decomposition of the matrix-valued trigonometric
+polynomial \(\mathbf {f} \), we propose a grid transfer operator of the form
+</p>
+
+<p>
+\[ P = I_{n} \otimes q_{\bar {\jmath }}(\theta _0). \]
+</p>
+
+<p>
+This approach offers significant computational advantages, especially for large-scale systems [1]. At the coarse level, the coeﬀicient matrix simplifies, resulting in a scalar-valued function
+</p>
+
+<p>
+\[ \tilde {f}(\theta ) = q_{\bar {\jmath }}^H(\theta _0) \mathbf {f}(\theta ) q_{\bar {\jmath }}(\theta _0),\]
+</p>
+
+<p>
+which maintains some properties of the original problem. Indeed, \(\tilde {f} \) vanishes at \(\theta _0 \) (and only at \(\theta _0 \)), and with a zero of order smaller than or equal to that of the original \(\lambda _{\bar {\jmath
+}}(\mathbf {f}) \), ensuring that the conditioning of the problem does not worsen.
+</p>
+
+<p>
+We derive the convergence and optimality of the TGM by combining the approximation property verified by \(P \) and the findings on the block smoothers. We also extend the TGM analysis to the V-cycle, where the properties of the scalar-valued
+symbol at the coarse level are crucial in determining the convergence rate. In particular, we show that V-cycle convergence can be achieved by combining the TGM results with an analysis of the scalar coarse-level symbol. This allows us to formulate
+clear conditions for convergence and optimality, even in complex block settings.
+</p>
+
+<p>
+From a computational perspective, aggregation-based methods provide substantial savings while maintaining convergence, particularly when combined with over-relaxation strategies. As proposed by Braess [5], over-relaxation of the coarse-grid
+correction significantly enhances multigrid performance, and we show the effectiveness of this strategy when combined with our symbol-based grid transfer operators. This corresponds to performing an over-relaxation with a parameter \(\alpha &gt;
+1 \) when computing the interpolation of the error, \(\alpha P y \). Consequently, we present a strategy to select the optimal pair \((\omega , \alpha ) \) to minimize the spectral radius of the TGM iteration matrix, thereby improving results.
+</p>
+
+<p>
+To validate our theoretical findings, we conduct numerical experiments using the proposed approach both as a standalone method and as a preconditioner for Krylov iterative methods. The tested large-scale block circulant, block Toeplitz-like, and
+Generalized Locally Toeplitz (GLT) linear systems stem from discretizations using \(\mathbb {Q}_{d} \) Lagrangian FEM approximation of second-order differential problems and B-spline discretization with non-maximal regularity. In addition to
+confirming our theoretical results, these examples demonstrate how the conditions outlined for block smoother convergence simplify in practical scenarios.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> C. An, Y. Su. An aggregation-based Two-Grid method for multilevel block Toeplitz linear systems. <i>J. Sci. Comput.</i>, 98(3): Paper No. 54, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A. Aricò, M. Donatelli. A V-cycle multigrid for multilevel matrix algebras: proof of optimality. <i>Numer. Math.</i>, 105 (4): 511–547, 2007.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M. Bolten, M. Donatelli, P. Ferrari, I. Furci. Analysis on aggregation and block smoothers in multigrid methods for block Toeplitz linear systems. <i>(under revision)</i>, arXiv:2403.02139v1
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M. Bolten, M. Donatelli, P. Ferrari, I. Furci. A symbol based analysis for multigrid methods for Block-Circulant and Block-Toeplitz Systems. <i>SIAM J. Matrix Anal. Appl.</i>, 43(1): 405–438,
+2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> D. Braess. Towards algebraic multigrid for elliptic problems of second order. <i>Computing</i>, 55(4): 379–393, 1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M. Donatelli, P. Ferrari, I. Furci, S. Serra–Capizzano, D. Sesana. Multigrid methods for Block-Toeplitz linear systems: Convergence Analysis and Applications. <em> Numer. Linear Algebra
+Appl.,</em> 28(4): e2356, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> H. Elman, A. Ramage. Fourier Analysis of multigrid for a model two-dimensional convection-diffusion equation. <em> BIT Numer Math,</em> 46, 283-306, 2006
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> G. Fiorentino, S. Serra, A. Ramage. Multigrid methods for symmetric positive definite block Toeplitz matrices with nonnegative generating functions. <em>SIAM J. Sci. Comput.,</em> 17(5),
+1068-1081, 1996.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

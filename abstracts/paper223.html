@@ -1,0 +1,344 @@
+---
+layout: abstract
+absnum: 223
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Contour Integral Methods for Exponentials of Matrices and Operators with Explicit High-Order Error Bounds
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Andrew Horning</span>\(^*\) and Adam R. Gerlach
+</p>
+</div>
+<div class="center">
+
+<p>
+\(^*\)Department of Mathematical Sciences, Rensselaer Polytechnic Institute
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Exponential integrators based on contour integral transforms lead to powerful numerical solvers for a variety of ODEs, PDEs, and other time-evolution equations. They are easy to parallelize and lead to global-in-time approximations that can be
+eﬀiciently evaluated anywhere within a finite time horizon. However, there are theoretical challenges that restrict their use-cases to classes of smooth evolution equations called analytic semigroups. In this talk, we show how to use carefully
+regularized contour integral representations to construct high-order quadrature schemes for the much larger class of strongly continuous semigroups. Our algorithms are accompanied by explicit high-order error bounds and near-optimal parameter
+selection. We illustrate the method’s attractive features through several PDE examples associated with singular behavior, causality, and non-normality. Our approach is firmly rooted in contour integral techniques for matrix functions. Along the way,
+we highlight how simple ideas from semigroup theory can augment traditional techniques in numerical linear algebra to tackle common tensions that arise while computing functions of operators.
+</p>
+
+<p>
+<b>Contour integral methods.</b> Contour integral methods approximate the action of the matrix exponential with a quadrature rule. Given \(\gamma \), a Jordan curve winding once clockwise around the spectrum of a square matrix \(A\),
+quadrature nodes \(z_1,\ldots ,z_N\), and weights \(w_1,\ldots ,w_N\), then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                             ∫
+                                                                                                                                                   1 ∑
+                                                                                                                                                       N
+                                                                                                        1
+                                                                                          exp(At)x =                 ezt (zI − A)−1 x dz ≈             wk ezk t (zk I − A)−1 x.                                 (1)--><a id="eqn:matrix_exp"></a><!--
+                                                                                                       2πi       γ                                2πi
+                                                                                                                                                      k=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:matrix_exp} \exp (At)x = \frac {1}{2\pi i}\int _\gamma e^{zt}(zI-A)^{-1}x\, dz \approx \frac {1}{2\pi i}\sum _{k=1}^N w_k e^{z_k t} (z_kI-A)^{-1}x.
+\end{equation}
+
+</p>
+
+<p>
+The main cost of the scheme is solving a shifted linear equation at each quadrature node. These can be done in parallel and may be accelerated with iterative methods. After solving these linear systems, the approximation can be evaluated at any
+time \(t&gt;0\) with only vector-vector operations.
+</p>
+
+<p>
+When \(A\) is obtained by discretizing a differential operator, its spectrum may fill a large region of the complex plane. As the discretization is refined, this region typically grows and the quadrature approximation in&nbsp;<span
+class="textup">(<a href="paper.html#eqn:matrix_exp">1</a>)</span> may rapidly deteriorate along with the performance of iterative methods for the linear systems. Famously, this effect can be mitigated through <i>Talbot quadrature</i> if
+the spectrum of \(A\) lies in a modest sector along the negative real axis&nbsp;[1]. These techniques have been used to develop highly parallelizable schemes for a broad class of parabolic equations&nbsp;[2]. Recently, Colbrook was awarded the Leslie
+Fox Prize for extending these techniques to analytic semigroups, which are associated with smooth evolution problems like parabolic and damped wave equations&nbsp;[3].
+</p>
+
+<p>
+<b>Regularization.</b> Fundamentally, Talbot contour integral schemes exploit <i>regularity in the operator exponential</i> for analytic semigroups. Unfortunately, this is not possible for less regular evolution equations associated with challenging
+causal, singular, or non-normal behavior. Instead, we show how to regularize contour integral schemes to exploit <i>regularity in the vector</i> \(x\). This is common in time-stepping methods but global-in-time methods require new tools from
+semigroup theory.
+</p>
+
+<p>
+To exploit regularity in \(x\) in our scheme and analysis, we develop the algorithm at the infinite-dimensional level and then carefully assess the impact of discretization. Consider a linear operator \(\mathcal {A}:D(\mathcal {A})\rightarrow
+\mathcal {X}\) on a separable Banach space \(\mathcal {X}\) and replace \(x\) by \(u\in \mathcal {X}\) and \(A\) by \(\mathcal {A}\). If \(\mathcal {A}\) generates a strongly continuous semigroup on \(\mathcal {X}\), then its spectrum
+is contained in a left half-plane \({\rm Im}(z)&lt;\omega \) and its resolvent decays uniformly in the complimentary right-half plane. We use a regularized analogue of the contour integral in&nbsp;<span class="textup">(<a
+href="paper.html#eqn:matrix_exp">1</a>)</span> with form, for some \(\delta &gt;\omega \) and integer \(m\geq 2\),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                           ∫ δ+i∞
+                                                                                                                      1                     ezt
+                                                                                      exp(At)u = (2δI − A)m                                       (zI − A)−1 x dz,       u ∈ D(A2 ).                               (2)--><a id="eqn:reg_exp"></a><!--
+                                                                                                                     2πi    δ−i∞        (2δ − z)m
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:reg_exp} \exp (\mathcal {A}t)u = (2\delta \mathcal {I-A})^m\frac {1}{2\pi i}\int _{\delta -i\infty }^{\delta +i\infty } \frac {e^{zt}}{(2\delta -z)^m}(z\mathcal {I-A})^{-1} x\,dz, \qquad u\in D(\mathcal
+{A}^2).
+\end{equation}
+
+</p>
+
+<p>
+To approximate&nbsp;<span class="textup">(<a href="paper.html#eqn:reg_exp">2</a>)</span>, we apply a truncated \(N\)-point trapezoidal rule with node spacing \(h&gt;0\),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                           [                                       ]
+                                                                                                                                h ∑ e(δ+ihk)t
+                                                                                                                                  N
+                                                                                           (m)                                                                  −1
+                                                                                          SN (t)u = (2δI − A)m                                 ((δ + ihk)I − A)      u.                                           (3)--><a id="eqn:reg_quad"></a><!--
+                                                                                                                               2π   (δ − ihk)m
+                                                                                                                                   k=−N
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:reg_quad} S_N^{(m)}(t)u = (2\delta \mathcal {I-A})^m \left [\frac {h}{2\pi }\sum _{k=-N}^N \frac {e^{(\delta +ihk)t}}{(\delta -ihk)^m} ((\delta +ihk)\mathcal {I-A})^{-1} \right ]u.
+\end{equation}
+
+</p>
+
+<p>
+For a practical computational scheme, the shifted linear equations can be solved with a suitable discretization of smooth functions \(u\in D(\mathcal {A}^2)\subset \mathcal {X}\). The main requirement for convergence is that \(Ax\rightarrow
+\mathcal {A}u\) and \((z_kI-A)^{-1}x\rightarrow (z_k\mathcal {I-A})^{-1}u\), \(k=-N,\ldots ,N\), as the discretization is refined.
+</p>
+
+<p>
+<b>Explicit Error Bounds.</b> At the operator level, the regularized quadrature approximation in&nbsp;<span class="textup">(<a href="paper.html#eqn:reg_exp">2</a>)</span>-<span class="textup">(<a
+href="paper.html#eqn:reg_quad">3</a>)</span> has several key advantages over&nbsp;<span class="textup">(<a href="paper.html#eqn:matrix_exp">1</a>)</span>. The integral converges absolutely and uniformly for \(u\in D(\mathcal
+{A}^2)\), while the amplification power of \((2\delta \mathcal {I-A})^m\) is controlled by the regularity of the vector \(u\). Moreover, the integrand decays at a controlled rate along the contour. These features allow us to derive simple explicit
+error bounds for smooth vectors \(u\in D(\mathcal {A}^m)\). In fact, we can derive closed-form expressions for quadrature parameters that achieve&nbsp;[4]
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                               (        )m−1
+                                                                                                       (m)                          δ
+                                                                                  sup ∥ exp(At)u − SN (t)u∥ ≤ C                                ||(2δI − A)m ∥,    when      u ∈ D(Am ).                                                                 (4)
+                                                                                 0≤t≤T                                             hN
+
+-->
+
+<p>
+
+\begin{equation}
+\sup _{0\leq t\leq T}\|\exp (\mathcal {A}t)u - S_N^{(m)}(t)u\| \leq C \left (\frac {\delta }{hN}\right )^{m-1} ||(2\delta \mathcal {I-A})^m\|, \qquad \text {when}\qquad u\in D(A^m).
+\end{equation}
+
+</p>
+
+<p>
+Here, \(C\) is an explicit constant depending on \(A\), the contour location \(\delta \), and the time horizon \(T\).
+</p>
+
+<p>
+In practice, one must discretize the infinite-dimensional objects for a numerical algorithm. We show how semigroup theory provides simple, computable bounds for the action of the discretized resolvent that hold for a very broad class of discretization
+techniques including Galerkin-based schemes and modern spectral methods. These bounds are inspired by the residual bounds for linear systems commonly used in numerical linear algebra.
+</p>
+
+<p>
+<b>Applications and Outlook.</b> High-order contour integral schemes for strongly continuous semigroups open the door to highly parallelizable methods for traditionally challenging PDEs and related time-evolution processes. They also provide
+a compact modal-like representation of semigroups that may be useful in operator learning, system identification, and other data-driven modeling techniques. We will illustrate some applications of our scheme to challenging simulation scenarios
+related to uncertainty quantification, where verified simulation of Koopman semigroups is a key ingredient. We will also discuss work in progress on applications of contour integral representations in data-driven settings. Finally, we will outline the
+potential of semigroup theory to resolve related tensions encountered while computing matrix functions of discretized operators.
+</p>
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A. Talbot, <i>The accurate numerical inversion of Laplace transforms</i>, IMA J. Appl. Math., (1979).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> L.N. Trefethen, J.A.C. Weideman, and T. Schmelzer, <i>Talbot quadratures and rational approximations</i>, BIT Numer. Math., (2006).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M.J. Colbrook, <i>Computing semigroups with error control</i>, SIAM J. Numer. Anal., (2022).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A. Horning and A.R. Gerlach., <i>A family of high-order accurate contour integral methods for strongly continuous semigroups</i>, Arxiv preprint arXiv:2408.07691, (2024).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

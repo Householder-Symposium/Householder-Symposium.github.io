@@ -1,0 +1,290 @@
+---
+layout: abstract
+absnum: 107
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized low-rank Runge-Kutta methods
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Hei Yin Lam</span>, Gianluca Ceruti, Daniel Kressner
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In this work, we aim at approximating the solution \(A(t)\) to large-scale matrix differential equations of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                            Ȧ(t) = F (A(t)),    A(0) = A0 ∈ Rm×n .                                                           (1)--><a id="eq: equation"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: equation} \dot {A}(t)=F(A(t)),\quad A(0)=A_0\in \mathbb {R}^{m\times n}.
+\end{equation}
+
+</p>
+
+<p>
+For large \(m\) and \(n\), the solution of&nbsp;<span class="textup">(<a href="paper.html#eq: equation">1</a>)</span> becomes expensive; in fact, it may not even be possible to store the entire matrix \(A(t)\) explicitly. To circumvent this
+limitation, model order reduction techniques based on exploiting (approximate) low-rank structure of \(A(t)\) can be employed. In particular, dynamical low-rank approximation&nbsp;[3] approximates \(A(t)\) by evolving matrices \(Y(t)\) on the
+manifold \(\mathcal {M}_r\) of rank-\(r\) matrices, reducing memory usage when \(r \ll m, n\). By the Dirac-Frenkel variational principle, the matrix \(Y(t)\) is obtained by solving the differential equation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                        Ẏ (t) = Pr (Y (t))F (Y (t)),   Y (0) = Y0 ∈ Mr ,                                                          (2)--><a id="dlra-ode"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {dlra-ode} \dot {Y}(t)=P_r(Y(t))F(Y(t)),\quad Y(0)=Y_0\in \mathcal {M}_r,
+\end{equation}
+
+</p>
+
+<p>
+where \(P_r(Y(t))\) denotes the orthogonal projection onto \(T_{Y(t)} {\mathcal M}_r\), the tangent space of \({\mathcal M}_r\) at \(Y(t)\). However, the stiffness of this equation leads to a severe step size restriction for standard explicit time
+integration methods. To address this issue, special integrators for this equation have been proposed [4, 2, 5]. Under the assumption
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                            ∥F (Y ) − Pr (Y )F (Y )∥F ≤ ϵ̃,   for all Y ∈ Mr ∩ {suitable neighbourhood of \(A(t)\)}                                                         (3)--><a id="eq: assumption"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: assumption} \|F(Y)- P_r(Y)F(Y)\|_F\leq \tilde {\epsilon },\quad \text {for all }Y\in \mathcal {M}_r\cap \{\text {suitable neighbourhood of $A(t)$}\}
+\end{equation}
+
+</p>
+
+<p>
+all these methods exhibit at least first-order convergence up to \(\mathcal {O}(\tilde {\epsilon })\).
+</p>
+
+<p>
+Assumption&nbsp;<span class="textup">(<a href="paper.html#eq: assumption">3</a>)</span>, which states that \(F(Y)\) is nearly contained in the tangent space, is arguably a strong assumption. According to&nbsp;[2] and the examples
+shown, it is possible that \(A(t)\) can be well approximated by a rank-\(r\) matrix even if&nbsp;<span class="textup">(<a href="paper.html#eq: assumption">3</a>)</span> is not satisified with small \(\tilde {\epsilon }\). When this
+assumption fails for small \(\tilde {\epsilon }\), using tangent space projections in numerical methods risks introducing significant errors.
+</p>
+
+<p>
+In this work, we develop low-rank time integration methods for&nbsp;<span class="textup">(<a href="paper.html#eq: equation">1</a>)</span> that do not rely on&nbsp;<span class="textup">(<a
+href="paper.html#eq: assumption">3</a>)</span> but only require \(A(t)\) to admit accurate low-rank approximations. Our approach is based on the notion of projected integrators, which first perform a standard time integration step and then
+project back to the manifold. For the manifold \(\mathcal M_r\), the eﬀiciency of projected integrators is impaired by the occurrence of high-rank matrices, e.g., during the intermediate stages of a Runge-Kutta method. Previous work&nbsp;[2]
+mitigated this with repeated tangent space projections. Here, we propose a novel alternative using randomized low-rank approximation, employing random sketches instead of tangent projections to control rank growth eﬀiciently.
+</p>
+
+<p>
+To the best of our knowledge, this is the first work to propose and analyze randomized low-rank approximation methods for time integration. The randomized low-rank Runge-Kutta (RK) methods proposed in this work combine explicit RK methods
+with randomized low-rank approximation. Assuming that the dynamics generated by \(F\) preserve rank-\(r\) matrices approximately, we derive a probabilistic result that establishes a convergence order (up to the level of rank-\(r\) approximation
+error) based on the so-called stage order of the underlying RK method, which matches the order established in&nbsp;[2] for projected RK methods. However, unlike the results in&nbsp;[2], our numerical experiments indicate that randomized
+low-rank RK methods actually achieve the usual convergence order of the RK method, which can be significantly higher. For the randomized low-rank RK 4, we also establish order \(4\) theoretically when allowing for modest intermediate rank
+increases in the stages. This compares favorably to order \(2\) implied by the techniques in&nbsp;[2].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Hei Yin Lam, Gianluca Ceruti, and Daniel Kressner. Randomized low-rank Runge-Kutta methods. <em>arXiv preprint arXiv:2409.06384</em>, 2024.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Emil Kieri and Bart Vandereycken. Projection methods for dynamical low-rank approximation of high-dimensional problems. <em>Comput. Methods Appl. Math.</em>, 19(1):73–92, 2019.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Othmar Koch and Christian Lubich. Dynamical low-rank approximation. <em>SIAM J. Matrix Anal. Appl.</em>, 29(2):434–454, 2007.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Christian Lubich and Ivan V. Oseledets. A projector-splitting integrator for dynamical low-rank approximation. <em>BIT</em>, 54(1):171–188, 2014.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Gianluca Ceruti, Lukas Einkemmer, Jonas Kusch, and Christian Lubich. A robust second-order low-rank BUG integrator based on the midpoint rule. <em>BIT</em>, 64(3):Paper No. 30, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,276 @@
+---
+layout: abstract
+absnum: 210
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Estimating the Numerical Range with a Krylov Subspace
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">John Urschel</span>, Cecilia Chen
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Moment-based methods are ubiquitous in applied mathematics, and numerical linear algebra is no exception. Krylov subspace methods are an incredibly popular family of algorithms that approximate the solution to some problem involving a matrix
+\(A\) using the Krylov subspace
+</p>
+
+<p>
+\[\mathcal {K}_m(A, b) = \mathrm {span}\{ b, A b, A^2 b,\ldots ,A^{m-1} b\}.\]
+</p>
+
+<p>
+This includes methods for approximating linear systems (conjugate gradient method, GMRES, MINRES, etc.), extremal eigenvalue problems (Arnoldi iteration, Lanczos method, etc.), and matrix functions. In many applications, \(m\) is much
+smaller than \(n\), and a key benefit of this framework is that only matrix-vector products are involved, allowing for fast computation.
+</p>
+
+<p>
+In this talk, we focus on the quality of estimate on the numerical range
+</p>
+
+<p>
+\[ W(A) = \left \{ \frac { x^* A x}{ x^* x} \, \bigg | \, x \in \mathbb {C}^{n \times n} \right \} \]
+</p>
+
+<p>
+of a matrix \(A\) provided by the numerical range of the orthogonal projection of \(A\) onto the Krylov subspace \(\mathcal {K}_m(A, b)\) for some vector \(b\), denoted by \(H_m\). Estimates on \(W(A)\) are important not only in the
+computation of extremal eigenvalues, but for error estimates for other methods. For instance, standard error bounds for the residual in the GMRES algorithm for \(A {x} = {b}\) after \(m\) steps depend on the quantity
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                    min         max |p(λ)|,                                                                                  (1)--><a id="eq1"></a><!--
+                                                                                                               p∈Pm s.t. p(0)=1 λ∈Λ(A)
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq1} \min _{p \in \mathcal {P}_m \, \mathrm {s.t.}\,p(0)=1} \max _{\lambda \in \Lambda (A)} |p(\lambda )|,
+\end{equation}
+
+</p>
+
+<p>
+where \(\mathcal {P}_m\) is the set of complex polynomials of degree at most \(m\) and \(\Lambda (A)\) is the spectrum of \(A\). If \(W(H_m)\) provides a good estimate of \(W(A)\), or even \(\mathrm {conv}\{\Lambda (A)\}\), then computing
+\(W(H_m)\) and estimating the separation from zero can produce guarantees for the convergence rate.
+</p>
+
+<p>
+Typically, estimates for approximating an extreme eigenvalue \(\lambda \) with a Krylov subspace \(\mathcal {K}_{m+1}(A, b)\) depend on the quality of the initial guess \(b\) in relation to the eigenspace of \(\lambda \), the eigenvector
+condition number, and the quantity
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                   min          max       |p(µ)|.                                                                            (2)--><a id="eq2"></a><!--
+                                                                                                              p∈Pm s.t. p(λ)=1 µ∈Λ(A)\λ
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq2} \min _{p \in \mathcal {P}_m \, \mathrm {s.t.}\,p(\lambda )=1} \max _{\mu \in \Lambda (A)\backslash \lambda } |p(\mu )|.
+\end{equation}
+
+</p>
+
+<p>
+The latter quantity is small when there is separation between \(\lambda \) and \(\Lambda (A) \backslash \lambda \) in the complex plane, but can become arbitrarily close to one in many cases, producing unnecessarily pessimistic bounds. These
+issues can persist even when \(A\) is Hermitian. For instance, consider the tridiagonal matrix \(A\) resulting from the discretization of the Laplacian operator on an interval with Dirichlet boundary conditions (i.e., \(A_{ii} = 2\), \(A_{i,i+1} =
+A_{i+1,i} = -1\)). This matrix has no small eigenvalue gaps, and so standard gap-dependent error estimates significantly over estimate the error in approximation for extreme eigenvalues.
+</p>
+
+<p>
+In practice, Krylov subspace methods perform well at estimating extreme eigenvalues, even when eigenvalue gaps are small. In their 2015 paper, Musco and Musco argue that bounds on distances to any particular eigenvector are not necessarily
+needed in situations where the goal is only to estimate the eigenvalues. While a good estimate of an eigenvector naturally implies a good estimate of its corresponding eigenvalue, the converse is simply not true. For instance, while having two extreme
+eigenvalues \(\lambda \) and \(\mu \) very close together significantly hinders eigenvector approximation, it can actually improve eigenvalue estimation, as a good approximation to any vector in the direct sum of the eigenspaces of \(\lambda \) and
+\(\mu \) (assuming the matrix is well-conditioned) implies a good estimate to both eigenvalues, since they are both close together.
+</p>
+
+<p>
+Kuczynski and Wozniakowski were arguably the first to fully recognize this phenomenon in a quantitative way, producing a probabilistic upper bound of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                              (m)
+                                                                                                                λmax (A) − λmax      ln2 n
+                                                                                                                                   ≲                                                                                                                    (3)
+                                                                                                               λmax (A) − λmin (A)    m2
+
+-->
+
+<p>
+
+\begin{equation}
+\frac {\lambda _{\max } (A) - \lambda ^{(m)}_{\max }}{\lambda _{\max }(A) - \lambda _{\min }(A)} \lesssim \frac {\ln ^2 n}{m^2}
+\end{equation}
+
+</p>
+
+<p>
+for a real symmetric matrix \(A \in \mathbb {R}^{n \times n}\), where \(\lambda ^{(m)}_{\max }\) is the largest eigenvalue of \(H_m\), the orthogonal projection of \(A\) onto \(\mathcal {K}_{m}(A, b)\), for an initial guess \(b\) sampled
+uniformly from the hypersphere.
+</p>
+
+<p>
+In this talk, we consider the extension of this type of gap-independent result to general matrices. In particular, we consider the approximation that the numerical range of \(H_m\) provides to the numerical range of \(A\) and to the convex hull of the
+eigenvalues of \(A\). This is quantified by the Hausdorff distance \(d_H(W(H_m),W(A))\) between \(W(H_m)\) and \(W(A)\), and the one-sided Hausdorff distance \(\sup _{\mu \in \mathrm {conv}(\Lambda (A))} d(\mu ,W(H_m))\) between
+\(\mathrm {conv}(\Lambda (A))\) and \(W(H_m)\). We will consider three distinct cases: normal matrices, normal matrices with their spectrum on a circle (e.g., unitary matrices), and non-normal matrices. Time permitting, we may also discuss
+bounds for the behavior of the quantities (<a href="paper.html#eq1">1</a>) and (<a href="paper.html#eq2">2</a>), depending on the structure of the eigenvalues of \(A\).
+</p>
+
+{% endraw %}

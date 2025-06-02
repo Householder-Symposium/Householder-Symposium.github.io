@@ -1,0 +1,449 @@
+---
+layout: abstract
+absnum: 66
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand{\normLWRsubstar}[2][]{{#1\left \lVert #2#1\right \rVert }}\)
+
+\(\newcommand{\normLWRsubnostar}[2][]{{#1\lVert #2#1\rVert }}\)
+
+\(\newcommand{\norm}{\ifstar\normLWRsubstar\normLWRsubnostar}\)
+
+\(\newcommand{\absLWRsubstar}[2][]{{#1\left \lvert #2#1\right \rvert }}\)
+
+\(\newcommand{\absLWRsubnostar}[2][]{{#1\lvert #2#1\rvert }}\)
+
+\(\newcommand{\abs}{\ifstar\absLWRsubstar\absLWRsubnostar}\)
+
+\(\newcommand {\R }{\mathbb {R}}\)
+
+\(\newcommand {\kryl }{\mathcal {K}}\)
+
+\(\newcommand {\traceH }[1]{\trace ^\mathrm {H}_{#1}}\)
+
+\(\newcommand {\prob }{\mathbb {P}}\)
+
+\(\DeclareMathOperator {\vspan }{span}\)
+
+\(\DeclareMathOperator {\eigcount }{n_e}\)
+
+\(\DeclareMathOperator {\trace }{tr}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Estimation of Spectral Gaps for Sparse Symmetric Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+Michele Benzi, Michele Rinelli, <span class="underline">Igor Simunec</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Identifying the gap between two consecutive eigenvalues of a real symmetric matrix \(A \in \R ^{n \times n}\) is an important task that is often encountered in applications, such as in electronic structure computations. For instance, in
+Kohn-Sham Density Functional Theory [5] one has to determine the spectral projector \(P_\mu \) associated with the <i>Fermi level</i> (or <i>chemical potential</i>) \(\mu \in \R \), which corresponds to the occupied states of a system
+described by a discrete Hamiltonian \(A\). In the case of insulators at zero electronic temperature, there is a gap separating the first \(k\) eigenvalues of \(A\) from the rest of the spectrum, and the Fermi level \(\mu \) lies inside the gap between the
+\(k\)-th and \((k+1)\)-th eigenvalue of \(A\), where \(k\) is the number of electrons in the system. In this setting, the spectral projector \(P_\mu = h_\mu (A)\) is often approximated using polynomials or rational functions that approximate the
+step function \(h_\mu (\lambda )\), which takes the value \(1\) for \(\lambda &lt; \mu \) and \(0\) for \(\lambda &gt; \mu \). In order to use this approach, one first needs to compute a value of \(\mu \) that lies in the gap between \(\lambda
+_k\) and \(\lambda _{k+1}\), where we denote the eigenvalues of \(A\) as \(\lambda _1, \dots , \lambda _n\) in nondecreasing order.
+</p>
+
+<p>
+Instead of looking for the gap between \(\lambda _k\) and \(\lambda _{k+1}\) for a specific \(k\), in this talk we tackle this problem from a different perspective, and aim to find all gaps in the spectrum of \(A\) that are larger than a certain
+threshold. Since in practical applications the gap between \(\lambda _k\) and \(\lambda _{k+1}\) is often relatively large, we expect that this approach will provide useful results even when one needs to find a single, specific gap.
+</p>
+
+<p>
+Let us denote by \(\eigcount (\mu )\) the number of eigenvalues of \(A\) that are strictly smaller than \(\mu \). Assuming that \(\mu \) does not coincide with an eigenvalue of \(A\), we have \(\eigcount (\mu ) = \rank (P_\mu ) = \trace
+(P_\mu )\). Therefore, \(\eigcount (\mu )\) can be estimated by estimating \(\trace (P_\mu )\) with Hutchinson’s stochastic trace estimator [4] combined with the Lanczos algorithm [7, Algorithm 6.15]. Given \(s\) random Gaussian vectors
+\(\{\vec x_i\}_{i = 1}^s\), Hutchinson’s stochastic trace estimator approximates \(\trace (P_\mu )\) with
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                                    1∑ T
+                                                                                                                                       s
+                                                                                                                   trH
+                                                                                                                     s (Pµ ) :=           x i Pµ x i .
+                                                                                                                                    s i=1
+
+-->
+
+<p>
+
+\begin{equation*}
+\traceH {s}(P_\mu ) := \frac {1}{s} \sum _{i = 1}^s \vec x_i^T P_\mu \vec x_i.
+\end{equation*}
+
+</p>
+
+<p>
+Since \(P_\mu = h_\mu (A)\), each quadratic form can be approximated using the Lanczos algorithm. Let \(V_m^{(i)} \in \R ^{n \times m}\) be an orthonormal basis of the Krylov subspace
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                          Km (A, xi ) = span{xi , Axi , . . . , Am−1 xi },
+
+-->
+
+<p>
+
+\begin{equation*}
+\kryl _m(A, \vec x_i) = \vspan \{\vec x_i, A \vec x_i, \dots , \vec A^{m-1} \vec x_i\},
+\end{equation*}
+
+</p>
+
+<p>
+constructed with the Lanczos algorithm, and let the tridiagonal matrix \(T_m^{(i)}:= V_m^{(i)T} A V_m^{(i)}\) be the projection of \(A\) onto \(\kryl _m(A, \vec x_i)\). We can approximate \(\vec x_i^T P_\mu \vec x_i\) with
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                       (i)
+                                                                                                      ψm   (µ) := ∥x∥22 eT1 hµ (Tm
+                                                                                                                                 (i)
+                                                                                                                                     )e1 ,          j = 1, . . . , Nf ,
+
+-->
+
+<p>
+
+\begin{equation*}
+\psi _m^{(i)}(\mu ) := \norm {\vec x}_2^2 \vec e_1^T h_\mu (T_m^{(i)}) \vec e_1, \qquad j = 1, \dots , N_f,
+\end{equation*}
+
+</p>
+
+<p>
+so we obtain the trace approximations
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                                  1 ∑ (i)
+                                                                                                                                       s
+                                                                                                                     tr(Pµ ) ≈          ψm (µ).
+                                                                                                                                  s i=1
+
+-->
+
+<p>
+
+\begin{equation*}
+\trace (P_\mu ) \approx \frac {1}{s} \sum _{i = 1}^s \psi _m^{(i)}(\mu ).
+\end{equation*}
+
+</p>
+
+<p>
+If we use the same vectors \(\{\vec x_i\}_{i = 1}^s\) for different \(\mu \), these trace approximations can be computed simultaneously for many different \(\mu \) by using the same Krylov subspaces \(\kryl _m(A, \vec x_i)\), with a cost
+that is only slightly higher than for a single value of \(\mu \). This approach has already been used in literature on related problems, such as the estimation of the number of eigenvalues of \(A\) in an interval or the estimation of spectral densities
+[3, 6]. In this talk we will focus on thoroughly analyzing this method for the detection of spectral gaps, with the goal of determining how to choose the parameters \(s\) and&nbsp;\(m\) in order to minimize the computational cost and ensure that all
+gaps with relative width above a given threshold \(\theta \in (0,1)\) are found (up to a failure probability \(\delta \)).
+</p>
+
+<p>
+The error of Hutchinson’s estimator can be bounded, for instance, with [2, Theorem&nbsp;1], which states that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                          (                         )                            4(                   )
+                                                                                         P |tr(Pµ ) − trH
+                                                                                                        s (Pµ )| ≥ ε ≤ δ       if          s≥      2
+                                                                                                                                                     ∥Pµ ∥2F + ε∥Pµ ∥2 log(2/δ).
+                                                                                                                                                 ε
+-->
+
+<p>
+
+\begin{equation*}
+\prob \big ( \abs {\trace (P_\mu ) - \traceH {s}(P_\mu )} \ge \varepsilon \big ) \le \delta \qquad \text {if} \qquad s \ge \frac {4}{\varepsilon ^2} \big (\norm {P_\mu }_F^2 + \varepsilon \norm {P_\mu }_2\big )
+\log (2/\delta ).
+\end{equation*}
+
+</p>
+
+<p>
+However, we have \(\norm {P_\mu }_F^2 = \eigcount (\mu )\), and \(\eigcount (\mu ) = O(n)\) when \(\mu \) is near the middle of the spectrum, so to achieve any fixed absolute accuracy \(\varepsilon \) we would have to take \(s =
+O(n)\), which becomes unfeasible as \(n\) grows. This means that with this approach it is prohibitively expensive to try and find a value of \(\mu \) in the gap between \(\lambda _k\) and \(\lambda _{k+1}\) by requiring that \(\traceH
+{s}(P_\mu ) \approx \eigcount (\mu ) = k\). Instead, we use a different point of view.
+</p>
+
+<p>
+If we consider \(\trace (P_\mu )\) as a function of \(\mu \), it is a nondecreasing and piecewise constant function, with a jump of height \(1\) whenever \(\mu \) coincides with an eigenvalue of \(A\). A similar property holds for \(\traceH
+{s}(P_\mu )\), with the difference that the jumps have random heights, each with expected value \(1\). In particular, \(\traceH {s}(P_\mu )\) is constant for all \(\mu \in [a, b]\) if the interval \([a, b]\) contains no eigenvalues
+of&nbsp;\(A\). This observation can be exploited to find gaps in the spectrum of \(A\), by looking for intervals in which the Lanczos approximation \(\frac {1}{s} \sum _{i = 1}^s \psi _m^{(i)}(\mu )\) is almost constant in \(\mu \) and has a
+small error. For instance, if for a constant \(C\) and a small \(\varepsilon &gt; 0\) we can show that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                          s (Pµ ) ∈ [C − ε, C + ε]
+                                                                                                        trH                                     for all µ ∈ [a, b],
+
+-->
+
+<p>
+
+\begin{equation*}
+\traceH {s}(P_\mu ) \in [C - \varepsilon , C + \varepsilon ] \qquad \text {for all } \mu \in [a, b],
+\end{equation*}
+
+</p>
+
+<p>
+then we can conclude that either \(\traceH {s}(P_\mu )\) is constant in the interval \([a, b]\) and hence \([a, b]\) is a gap in the spectrum of \(A\), or all jumps in \(\traceH {s}(P_\mu )\) associated with eigenvalues in \([a, b]\) have
+heights smaller than \(2 \varepsilon \). If \(\varepsilon \) is small enough, the latter event has a small chance of occurring.
+</p>
+
+<p>
+In order to make the argument outlined above rigorous, we obtain a bound on the probability of having small jumps in \(\traceH {s}(P_\mu )\), as well as a posteriori error bounds and estimates for the Lanczos approximation of the quadratic
+forms \(\vec x_i^T P_\mu \vec x_i\). By combining these bounds, we will show that for a given budget of matrix-vector products with \(A\), the best way to allocate it is to set \(s = 1\), i.e., use a single random vector for Hutchinson’s estimator
+and concentrate all the computational effort on the Lanczos algorithm. We also obtain an a priori bound on the accuracy of the Lanczos approximation that depends on the relative gap width \(\theta \), which will allow us to predict how many
+Lanczos iterations are needed to ensure that all gaps larger than a given width are detected.
+</p>
+
+<p>
+The theoretical analysis is complemented by a detailed computational discussion, leading to an algorithm that is able to detect gaps eﬀiciently and reliably. The effectiveness of the proposed method will be showcased with several numerical examples.
+Further details can be found in the preprint [1].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;Benzi, M.&nbsp;Rinelli, and I.&nbsp;Simunec. Estimation of spectral gaps for sparse symmetric matrices, arXiv:2410.15349, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;Cortinovis and D.&nbsp;Kressner. On randomized trace estimates for indefinite matrices with an application to determinants. <i>Found. Comput. Math.</i>, 22(3):875–903, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> E.&nbsp;Di&nbsp;Napoli, E.&nbsp;Polizzi, and Y.&nbsp;Saad. Eﬀicient estimation of eigenvalue counts in an interval. <i>Numer. Linear Algebra Appl.</i>, 23(4):674–692, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M.&nbsp;F. Hutchinson. A stochastic estimator of the trace of the influence matrix for Laplacian smoothing splines. <i>Comm. Statist. Simulation Comput.</i>, 18(3):1059–1076, 1989.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> L.&nbsp;Lin, J.&nbsp;Lu, and L.&nbsp;Ying. Numerical methods for Kohn-Sham density functional theory. <i>Acta Numer.</i>, 28:405–539, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> L.&nbsp;Lin, Y.&nbsp;Saad, and C.&nbsp;Yang. Approximating spectral densities of large matrices. <i>SIAM Rev.</i>, 58(1):34–65, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Y.&nbsp;Saad. <i>Iterative Methods for Sparse Linear Systems</i>. SIAM, Philadelphia, PA, second edition, 2003.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,475 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Equivalence transformations of evaluation schemes for matrix polynomials
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Elias Jarlebring</span>, Gustaf Lorentzon
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In the field of matrix functions, evaluating matrix polynomials holds significant theoretical, practical and computational importance. A broad range of methods for matrix functions relies on constructing polynomial approximations using only
+fundamental operations: matrix addition, scalar scaling, and matrix-matrix multiplication. For large, dense matrices \(X \in \mathbb {R}^{n \times n} \), the primary computational effort to compute \(p(X)\) in these methods is concentrated in
+matrix-matrix multiplication. This motivated the seminal work of Paterson and Stockmeyer&nbsp;[1], which introduced techniques to minimize the number of matrix-matrix operations needed for eﬀicient polynomial evaluation.
+</p>
+
+<p>
+Our work concerns an explicit characterization of the set
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                      Π˚
+                                                                                       2m “ tp P Π2m : ppXq can be obtained with m matrix-matrix multiplicationsu
+                                                                                                 s                                                                                                                     (1)--><a id="eq:Pistar"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Pistar} \Pi _{2^m}^*=\{p\in \widebar {\Pi }_{2^m}:p(X) \text { can be obtained with } m \text { matrix-matrix multiplications}\}
+\end{equation}
+
+</p>
+
+<p>
+where \(\Pi _k\) denotes all polynomials of degree \(k\), i.e., a non-zero coeﬀicient for the \(k\)th power. Therefore its closure \(\widebar {\Pi }_k\) is the set of polynomials of degree \(k\) or less, i.e., containing also polynomials with a zero
+coeﬀicient for the \(k\)th power. In the terminology of [2] the set \(\Pi _k\) corresponds to degree \(k\) and \(\widebar {\Pi }_k\) corresponds to grade \(k\). This distinction is important here, since a zero coeﬀicient for the highest power
+corresponds to a special case. It can be seen already when considering three multiplications. For instance, we observe that \(X^8\in \Pi _{2^3}^*\) because \(X^8=((X^2)^2)^2\), yet the same squaring approach does not apply to \(X^7\). To
+compute \(X^7\) we may use four multiplications: \(X^7=(XX^2)^2X\in \Pi _{2^4}^*\). However, with the tools of this work we can show \(\Pi _{8}\subset \Pi _{2^3}^*\), but \(\widebar {\Pi }_8\not \subset \Pi _{2^3}^*\) and
+\(X^7\not \in \Pi _{2^3}^*\), which implies that for an arbitrary \(\epsilon \neq 0\), we have \(X^7+\epsilon X^8\in \Pi _{2^3}^*\). A polynomial of lower degree is not necessarily computationally cheaper to evaluate.
+</p>
+
+<p>
+In the context of algebraic geometry, specifically theory for semi-algebraic sets, the dimension of <span class="textup">(<a href="paper.html#eq:Pistar">1</a>)</span> refers to the minimal number of scalar variables required to parameterize it.
+With this terminology we can say that one of the results of Paterson and Stockmeyer was to show that the dimension of \(\Pi _{2^m}^*\) is \(O(m^2)\). As a consequence, since polynomials of grade \(k\) have dimension \(k+1\), any procedure
+capable of evaluating any polynomial of grade \(k\) will require \(O(\sqrt {k})\) matrix-matrix operations. Paterson and Stockmeyer presented the first method to explicitly achieve \(O(\sqrt {k})\) complexity. While this approach has optimal
+complexity asymptotically, one can still obtain much better performance, e.g., for a fixed moderate \(m\), which is frequent in approximations; cf [4, 5], and references therein.
+</p>
+
+<p>
+Contributions of this work include an explicit parameterization of \(\Pi _{2^m}^*\) and the development of equivalence transformations for the parameterization. Specifically, we show how to represent any element \(p \in \Pi _{2^m}^*\) and
+provide equivalence transformations that correspond to computationally different methods for evaluating the same polynomial \(p\).
+</p>
+
+<p>
+Evaluation scheme representation. The starting point is a similar parameterization in [3], briefly summarized as follows. In any algorithm of the type considered here, every matrix-matrix product can only be formed by taking linear
+combinations of previously computed matrices. For instance, in the first step, the product is necessarily formed between a linear combination of \(Q_1 := I\) and \(Q_2 := X\) and another linear combination of \(Q_1\) and \(Q_2\), resulting in the
+(new) matrix \(Q_3\). In the next matrix-matrix multiplication, a product is formed between two (potentially different) linear combinations of \(Q_1\), \(Q_2\), and \(Q_3\). Thus, by associating each matrix-matrix operation with a row, we can
+represent any evaluation scheme for \(m\) multiplications using the matrices \(A, B \in \mathbb {C}^{m \times (m+1)}\) and the vector \(c \in \mathbb {C}^{m+2}\). This setup allows us to evaluate the polynomial \(p(X) = Y\) by initializing
+\(Q_1 = I\) and \(Q_2 = X\), and applying the following scheme.
+</p>
+
+<p>
+<span
+    id="lateximage-paper-1"
+    class="lateximagesource"
+><!--
+»                     ﬁ
+    aa      b b         Q3 “ paQ1 ` aQ2 qpbQ1 ` bQ2 q
+— aaa
+—                     ﬃ
+             b b b    ﬃ Q4 “ paQ1 ` aQ2 ` aQ3 qpbQ1 ` bQ2 ` bQ3 q
+—                     ﬃ
+— aaaa
+             b  b b b ﬂ Q5 “ paQ1 ` aQ2 ` aQ3 ` aQ4 qpbQ1 ` bQ2 ` bQ3 ` bQ4 q
+                      ﬃ
+–
+  aaaaa b b b b b       Q6 “ paQ1 ` aQ2 ` aQ3 ` aQ4 ` aQ5 qpbQ1 ` bQ2 ` bQ3 ` bQ4 ` bQ5 q
+”              ı
+  c c c c c c           Y “ pcQ1 ` cQ2 ` ¨ ¨ ¨ ` cQ6 q
+--><img
+    src="paper-images/image-1.svg"
+    alt="(-tikz-&nbsp;diagram)"
+    style=""
+    class="lateximage"
+></span> For simplicity, the scheme above is illustrated for \(m=4\) multiplications, with indices for the \(A\)-matrix, \(B\)-matrix, and \(c\)-vector omitted for notational convenience.
+</p>
+
+<p>
+The evaluation schemes defined by all sets of triplet \((A, B, c)\) provides a complete parameterization of \(\Pi _{2^m}^*\). We establish several equivalence transformations; that is, given \((A, B, c)\) that represents the evaluation of some
+polynomial \(p(X)\), we identify alternative representations \((\hat {A}, \hat {B}, \hat {c})\) that yield the same polynomial, but corresponding to different evaluation methods. In the following, we provide a subset of the transformations.
+</p>
+
+<p>
+Transformations and normalized form. First, we demonstrate how the evaluation scheme can be modified by appropriately scaling the \(k\)th row in \(A\) and \(B\).
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 1 </span></span> <a id="thm:rowscaling"></a> Let \(p\) be the polynomial associated with \((A,B,c)\) corresponding to \(m\) multiplications and \(\hat {p}\) be the
+polynomial associated with \((\hat {A},\hat {B},\hat {c})\), where \([\hat {A}|\hat {B}]\) is a modification of \([A|B]\) in row \(k\) and column \(k+2\)
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-paper-2"
+      class="lateximagesource"
+><!--
+»                                                                                      ﬁ
+    a   a                                  b b
+—                                                                                      ﬃ
+— .          ..                            ..       ..
+— ..
+                                                                                       ﬃ
+—              .                            .           .                              ﬃ
+                                                                                       ﬃ
+— a ¨¨¨      ¨¨¨   a                       b ¨¨¨ ¨¨¨ b
+—                                                                                      ﬃ
+                                                                                       ﬃ
+—                                                                                      ﬃ
+— â ¨ ¨ ¨   ¨ ¨ ¨ ¨ ¨ ¨ â                b̂ ¨ ¨ ¨ ¨ ¨ ¨ ¨ ¨ ¨ b̂
+                                                                                       ﬃ
+—                                                                                      ﬃ
+—                                                                                      ﬃ
+— a ¨¨¨      ¨ ¨ ¨ ¨ ¨ ¨ a â              b ¨¨¨ ¨¨¨ ¨¨¨ b            b̂               ﬃ
+—                                                                                      ﬃ
+— .                      .. .. a            ..                  ..    ..               ﬃ
+— .                                                                         b
+— .                       . .                .                   .     .
+                                                                                       ﬃ
+                                                                                       ﬃ
+— ..                      .. .. .. . .       ..                  ..    ..   .. . .
+—                                                                                      ﬃ
+                                       .                                           .
+                                                                                       ﬃ
+— .                        . . .              .                   .     .    .         ﬃ
+–                                                                                      ﬂ
+  a ¨¨¨      ¨ ¨ ¨ ¨ ¨ ¨ a â a ¨ ¨ ¨ a    b ¨¨¨ ¨¨¨ ¨¨¨ b            b̂    b ¨¨¨ b
+--><img
+      src="paper-images/image-2.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and modified elements defined by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<p>
+
+
+\begin{eqnarray*}
+\hat {a}_{k,j}&amp;=&amp;\alpha a_{k,j}, \;\;\; \qquad j=1,\ldots ,k+1 \\ \hat {a}_{i,k+2}&amp;=&amp;\alpha ^{-1} a_{i,k+2},\;\;\; i=k+1,\ldots ,m \\ \hat {b}_{i,k+2}&amp;=&amp;\alpha ^{-1} b_{i,k+2},\;\;\;
+i=k+1,\ldots ,m. \\ \hat {c}_{k+2}&amp;=&amp;\alpha ^{-1}c_{k+2}
+\end{eqnarray*}
+
+
+</p>
+
+<p>
+Then,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+
+                                                                                                                                 p̂ “ p,                                                        (2)--><a id="eq:scalingproof:p_equal"></a><!--
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:scalingproof:p_equal} \hat {p} = p,
+\end{equation}
+
+
+</p>
+
+<p>
+for any \(k\in \left [1,\ldots ,m\right ]\) and \(\alpha \in \RR \backslash \{0\}\).<br />
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The above theorem, applied to every row with \(\alpha =1/a_{k,k+1}\), along with another result corresponding to the addition of multiples of the identity to each \(Q\)-matrix, provides a normalized form. More precisely, they can be combined to
+show that any unreduced evaluation scheme (where \(A\) and \(B\) are unreduced Hessenberg matrices) can be transformed such that the matrices have the structure
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                      0       1    0     0         ¨¨¨     0    0    1    0     0       ¨¨¨   0
+                                                                                                      »                                                                          ﬁ
+                                                                                                    — 0       a    1     0         ¨¨¨     0    0    b    1     0       ¨¨¨   0 ﬃ
+                                                                                                                        ..                 ..                  ..             .. ﬃ
+                                                                                                    —                                                                            ﬃ
+                                                                                                                             .                                      .
+                                                                                         “        ‰ —
+                                                                                             A   B “—
+                                                                                                    — 0       a    a                        .   0    b    b                    . ﬃ
+                                                                                                                                                                                 ﬃ.                        (3)--><a id="eq:normalized"></a><!--
+                                                                                                    — .       ..   ..   ..                      ..   ..   ..   ..
+                                                                                                    – ..
+                                                                                                                                                                                 ﬃ
+                                                                                                               .    .     .        1       0     .    .    .     .      1     0 ﬂ
+                                                                                                          0   a    a    ¨¨¨        a       1    0    b    b    ¨¨¨      b     1
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:normalized} \left [\begin{array}{c | c} A &amp; B \end {array}\right ] = \left [\begin{array}{c c c c c c | c c c c c c} 0 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0
+&amp; \cdots &amp; 0 \\ 0 &amp; a &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; b &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; a &amp; a &amp; \ddots &amp; &amp; \vdots &amp; 0 &amp; b &amp; b &amp; \ddots
+&amp; &amp; \vdots \\ \vdots &amp; \vdots &amp;\vdots &amp; \ddots &amp; 1 &amp; 0 &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; 1 &amp; 0 \\ 0 &amp; a &amp; a &amp; \cdots &amp; a &amp; 1 &amp; 0 &amp;
+b &amp; b &amp; \cdots &amp; b &amp; 1 \end {array}\right ].
+\end{equation}
+
+</p>
+
+<p>
+Another theorem states how the second multiplication can be transformed, expressed specifically for the schemes in normalized form.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 2 </span></span> <a id="thm:b22zero"></a> Let \(p\) be the polynomial associated with normalized triplet \((A,B,c)\) corresponding to \(m\) multiplications and \(\hat {p}\)
+be the polynomial associated with \((\hat {A},\hat {B},\hat {c})\) where \([\hat {A}|\hat {B}]\) is a modification of \([A|B]\):
+</p>
+<div class="center">
+
+<p>
+<span
+      id="lateximage-paper-3"
+      class="lateximagesource"
+><!--
+»                                                                    ﬁ
+  0  1     0     0 ¨¨¨        0    0  1       0      0 ¨¨¨      0
+—                                                                    ﬃ
+— 0 a`α 1        0 ¨¨¨        0    0 b´α      1      0 ¨¨¨      0    ﬃ
+—                                                                    ﬃ
+—
+                   .          ..                       .        ..   ﬃ
+— 0  a   â3,3   1 ..          .   0    b    b̂3,3   1 ..        .
+—                                                                    ﬃ
+                                                                     ﬃ
+—                                                                    ﬃ
+—                    ..       ..                       ..       ..   ﬃ
+— 0
+—
+     a   â4,3   a        .    .   0    b    b̂4,3 b        .    .
+                                                                     ﬃ
+                                                                     ﬃ
+—                                                                    ﬃ
+— .  ..    ..    .. . .            ..   ..     ..    .. . .
+— ..
+                                                                     ﬃ
+—     .     .     .     . 1 0       .    .      .     .     . 1 0    ﬃ
+                                                                     ﬃ
+–                                                                    ﬂ
+  0  a  âm,3    a ¨¨¨ a 1         0    b    b̂m,3 b ¨ ¨ ¨ b 1
+--><img
+      src="paper-images/image-3.svg"
+      alt="(-tikz-&nbsp;diagram)"
+      style=""
+      class="lateximage"
+></span>
+</p>
+</div>
+
+<p>
+and
+</p>
+
+<p>
+\[ \hat {c} = \left [ \begin {array}{c c c c c c} c_1 &amp; c_2 &amp; \hat {c}_3 &amp; c_4 &amp; \ldots &amp; c_{m+2} \end {array} \right ]. \]
+</p>
+
+<p>
+The modifications to the coeﬀicients are given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<p>
+
+
+\begin{eqnarray*}
+\hat {a}_{i,3}&amp;=&amp;a_{i,3}-s a_{i,4} \label {eq:b22proof:coeffA}, \quad i = 3,\ldots ,m. \\ \hat {b}_{i,3}&amp;=&amp;b_{i,3}-s b_{i,4} \label {eq:b22proof:coeffB} \quad i = 3,\ldots ,m.\\ \hat {c}_3
+&amp;=&amp;c_{3} -s c_{4}. \label {eq:b22proof:coeffC}
+\end{eqnarray*}
+
+
+</p>
+
+<p>
+where,
+</p>
+
+<p>
+\[ s = -\alpha ^2 + \alpha (b_{22} - a_{22}) .\]
+</p>
+
+<p>
+Then,
+</p>
+
+<p>
+\[ p=\hat {p} \label {eq:b22proof:peqp} \]
+</p>
+
+<p>
+for any \(\alpha \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+By invoking Theorem&nbsp;<a href="paper.html#thm:b22zero">2</a> with \(\alpha = -a_{22}\), we conclude that, without loss of generality, the \(a_{22}\) element can be set to zero without altering the set of parameterized polynomials. A
+similar result, applicable to the third row, can also be established. Consequently, any unreduced evaluation scheme can be transformed into a form with zeros in specific positions:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                                     0       1    0     0       ¨¨¨   0    0    1    0     0       ¨¨¨   0
+                                                                                                     »                                                                      ﬁ
+                                                                                                   — 0       0    1     0       ¨¨¨   0    0    b    1     0       ¨¨¨   0 ﬃ
+                                                                                                                       ..             ..                  ..             .. ﬃ
+                                                                                                   —                                                                        ﬃ
+                                                                                                                            .                                  .
+                                                                                        “        ‰ —
+                                                                                            A      — 0
+                                                                                                B “—         a    0                    .   0    b    b                    . ﬃ
+                                                                                                                                                                            ﬃ.                          (4)--><a id="eq:normalized2"></a><!--
+                                                                                                   — .       ..   ..   ..                  ..   ..   ..   ..
+                                                                                                   – ..
+                                                                                                                                                                            ﬃ
+                                                                                                              .    .     .      1     0     .    .    .     .      1     0 ﬂ
+                                                                                                         0   a    a    ¨¨¨      a     1    0    b    b    ¨¨¨      b     1
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:normalized2} \left [\begin{array}{c | c} A &amp; B \end {array}\right ] = \left [\begin{array}{c c c c c c | c c c c c c} 0 &amp; 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0
+&amp; \cdots &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; b &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; a &amp; 0 &amp; \ddots &amp; &amp; \vdots &amp; 0 &amp; b &amp; b &amp; \ddots
+&amp; &amp; \vdots \\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; 1 &amp; 0 &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; 1 &amp; 0 \\ 0 &amp; a &amp; a &amp; \cdots &amp; a &amp; 1 &amp; 0
+&amp; b &amp; b &amp; \cdots &amp; b &amp; 1 \end {array}\right ].
+\end{equation}
+
+</p>
+
+<p>
+Conclusions and consequences. We use the above form and transformations for both practical and theoretical purposes.
+</p>
+
+<p>
+The number of free variables in <span class="textup">(<a href="paper.html#eq:normalized2">4</a>)</span>, together with \(c\), is exactly \(m^2\). Therefore, \(\Pi _{2^m}^*\) has dimension less than or equal to \(m^2\) for any \(m &gt;
+3\) (a previousely unknown fact to our knowledge). We conjecture that this bound is minimal, supported by computing the (numerical) rank of a Jacobian associated with mapping \((A, B, c)\) to a monomial basis. Thus, this approach appears to
+provide the first minimal parameterization of the unreduced schemes in \(\Pi _{2^m}^*\).
+</p>
+
+<p>
+We can also specialize this for \(m = 4\), concluding that the dimension of \(\Pi _{2^4}^*\) is \(m^2 = 16\). Note that \(\Pi _{2^4}\) has dimension 17, meaning we cannot expect to compute a generic polynomial of degree 16 with four
+multiplications; a fact, also to our knowledge, previously unknown. Similar, but more severe restrictions on possible evaluations can be concluded for more multiplications.
+</p>
+
+<p>
+In practical situations, such as approximating a non-polynomial matrix function, we may need to determine \((A, B, c)\) given a polynomial in monomial basis form. Note that computing monomial coeﬀicients from \((A, B, c)\) can be directly
+done using any tool for symbolic computation. However, the inverse mapping—computing \((A, B, c)\) from a polynomial given in (say) a monomial basis, corresponds to the solutions to a multivatiate polynomial system, and is therefore
+considerably more complex. We address this problem both theoretically, by explicitly eliminating variables, and numerically, with methods designed to approximate \((A, B, c)\) even when the monomial does not belong to \(\Pi _{2^m}^*\),
+illustrated with approximations of various matrix functions.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-15">References</h4>
+<a id="paper-autopage-15"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;S. Paterson and L.&nbsp;J. Stockmeyer, “On the number of nonscalar multiplications necessary to evaluate polynomials,” <i>SIAM Journal on Computing</i>, vol.&nbsp;2, no.&nbsp;1,
+pp.&nbsp;60–66, 1973
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> D.&nbsp;Mackey, N.&nbsp;Mackey, and F.&nbsp;Tisseur, “Polynomial Eigenvalue Problems: Theory, Computation, and Structure,” in <i>Numerical Algebra, Matrix Theory, Differential-Algebraic
+Equations and Control Theory: Festschrift in Honor of Volker Mehrmann</i>, Springer, 2015, pp.&nbsp;319–348
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> E.&nbsp;Jarlebring, M.&nbsp;Fasi, and E.&nbsp;Ringh, “Computational Graphs for Matrix Functions,” <i>ACM Trans Math Software</i>, vol.&nbsp;48, no.&nbsp;4, Article 39, pp.&nbsp;1–35,
+2023, doi:10.1145/3568991.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> E.&nbsp;Jarlebring, J.&nbsp;Sastre, and J.&nbsp;Javier, “Polynomial Approximations for the Matrix Logarithm with Computation Graphs,” <i>Linear Algebra and its Applications</i>, 2025,
+accepted for publication.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> J.&nbsp;Sastre, “Eﬀicient Evaluation of Matrix Polynomials,” <i>Linear Algebra and its Applications</i>, vol.&nbsp;539, pp.&nbsp;229–250, Feb.&nbsp;2018,
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

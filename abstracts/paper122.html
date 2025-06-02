@@ -1,0 +1,334 @@
+---
+layout: abstract
+absnum: 122
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Rational Interpolation, the Loewner Framework and the Kolmogorov Superposition Theorem.
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Athanasios C. Antoulas</span>, Ion Victor Gosea, Charles Poussot-Vassal
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Problem #119, in [1], asks the question:&nbsp; Are there actually functions of three variables?
+</p>
+
+<p>
+Stated differently: is it possible to use compositions of functions of two or fewer variables to express any function of three variables? This question is related to Hilbert’s 13th problem: are there any genuine continuous multivariate functions. As a
+matter of fact, Hilbert conjectured the existence of a three-variable continuous function which cannot be expressed in terms of composition and addition of two-variable continuous functions. For a recent overview of this problem, see [2].
+</p>
+
+<p>
+For continuous function, the Kolmogorov Superposition Theorem (KST) answers this question negatively. It shows namely that continued functions of several variables can be expressed as composition and superposition of functions of one variable.
+Thus, there are no true functions of three variables.
+</p>
+
+<p>
+The present contribution presents connections between the Loewner framework for rational interpolation of multivariate functions and KST restricted to rational functions. The result is the formulation of KST for the special case of rational functions.
+As a byproduct taming of the curse of dimensionality, both in computational complexity, storage, and last but not least, numerical accuracy, is achieved.
+</p>
+
+<p>
+Short summary of the Loewner framework. The Loewner framework is an interpolatory approach designed for approximating linear and nonlinear systems. Reference [3] extends this framework to linear parametric systems with an arbitrary
+number of parameters, in other words to multivariate functions of \(n\) variables. One main innovation established is the construction of data-based system realizations for any number of parameters. Equally importantly, [3] shows how to alleviate
+the computational burden, storage and numerical accuracy, by avoiding the explicit construction of higher dimensional Loewner matrices of size \(N\times N\). Instead, the proposed methodology achieves decoupling of variables, leading to (i) a
+complexity reduction from \({\cal O}(N^3)\) to below than \({\cal O}(N^{1.5})\) when \(N&gt;5\) and (ii) to memory storage bounded by the largest variable dimension rather than the product of all variable dimensions, thus taming the curse of
+dimensionality and making the solution scalable to large data sets.
+</p>
+
+<p>
+After defining a new multivariate realization, we introduce the higher dimensional multivariate Loewner matrices and show that they can be computed by solving a coupled set of Sylvester equations. The null space of these Loewner matrices then
+allows the computation of the multivariate barycentric weights of the associated rational function. One of the main results of [3] is to show how the null space of \(N\)-dimensional Loewner matrices can be computed using a sequence of 1-dimensional
+Loewner matrices. This leads to a drastic computational burden reduction. This also leads to the formulation of KST for rational functions. Finally, two algorithms are proposed (one direct and one iterative) to construct, directly from data,
+multivariate (or parametric) realizations ensuring (approximate) interpolation. For details on the above material see [3].
+</p>
+
+<p>
+The purpose of this contribution is to make contact of the above results with the Kolmogorov Superposition Theorem. For clarity of exposition we will illustrate the main features of our approach by means of a three-variable example.
+</p>
+
+<p>
+Example. Consider the three-variable function \({\bf H}(s, t, x) =\frac {s^2+xs+1}{t+x+st+2}\). Since the degrees in each variable are \((2,1,1)\), we will need the integers \(\nu _1=3\), \(\nu _2=2\), and \(\nu _3=2\), This implies that
+\(N=\nu _1\nu _2\nu _3=12\).&nbsp; The right and left interpolation points are
+</p>
+
+<p>
+\[ \begin {array}{lll} s_1=1,~s_2=2,~s_3=3,&amp;t_1=4,~t_2=5,&amp;x_1=6,~x_2=7,~~~ \mbox {and}\\[.6mm] s_4=3/2,~s_5=5/2,~s_6=7/2,&amp;t_3=9/5,~t_4=11/5,&amp;x_3=13/3,~x_4=5,~~\mbox {respectively}. \end {array} \]
+</p>
+
+<p>
+Following the theory in [3], the right triples of interpolation points are \(\bf S=[\bf s_1,~\bf s_2,~\bf s_3]\otimes {\mathbb I}_{1,2}\otimes {\mathbb I}_{1,2}\), \(\bf T={\mathbb I}_{1,3}\otimes [\bf t_1,~\bf t_2]\otimes
+{\mathbb I}_{1,2}\), \(\bf X={\mathbb I}_{1,3}\otimes {\mathbb I}_{1,2}\otimes [\bf x_1,~\bf x_2]\) \(\in {\bf C}^{1\times N}\). Thus the resulting 3D-Loewner matrix has dimension \(N\times N\) and the barycentric weights are
+</p>
+
+<p>
+\[{\bf Bary}= \left [\begin {array}{cccccccccccc} \frac {16}{29} &amp; -\frac {17}{29} &amp; -\frac {18}{29} &amp; \frac {19}{29} &amp; -\frac {40}{29} &amp; \frac {42}{29} &amp; \frac {46}{29} &amp; -\frac
+{48}{29} &amp; \frac {24}{29} &amp; -\frac {25}{29} &amp; -\frac {28}{29} &amp; 1 \end {array}\right ]^T.\]
+</p>
+
+<p>
+Again, the theory in [3], allows the demposition of this vector in a (pointwise) product of barycentric weights with respect to each variable, separetly. Thus decoupling the problem is achieved, one of the important aspects of KST; in [3] we obtain:
+</p>
+
+<p>
+\[ {\bf Bary}={\bf Bary}_x\odot {\bf Bary}_t\odot {\bf Bary}_s, \]
+</p>
+
+<p>
+where \(\odot \) denotes the pointwise product. This is a special case of formula (5.5) in [3].<br />
+<br />
+This is the key result which allows the connection with KST and taming the curse of dimensionality. We have thus shown that the 3D multivariate function can be computed in terms of three 1D functions (one in each variable). These functions are
+denoted below by \({\bf \Phi }(x)\), \({\bf \Psi }(t)\) and \({\bf \Omega }(s)\). Furthermore \({\bf Lag}_x\), \({\bf Lag}_t\) and \({\bf Lag}_s\) are the Lagrange bases components in each variable. Finally \(\bf W\) are the right
+interpolation values for the triples in \({\bf S}\times {\bf T}\times {\bf X}\). The ensuing numerical values are as follows:
+</p>
+
+<p>
+\[ \underbrace { \left [\begin {array}{c} -\frac {16}{17}\\[1mm] 1\\[1mm] -\frac {18}{19}\\[1mm] 1\\[1mm] -\frac {20}{21}\\[1mm] 1\\[1mm] -\frac {23}{24}\\[1mm] 1\\[1mm] -\frac {24}{25}\\[1mm] 1\\[1mm] -\frac
+{28}{29}\\[1mm] 1 \end {array}\right ]}_ {{\bf Bary}_x}, \underbrace { \left [\begin {array}{c} -\frac {17}{19}\\[1mm] -\frac {17}{19}\\[1mm] 1\\[1mm] 1\\[1mm] -\frac {7}{8}\\[1mm] -\frac {7}{8}\\[1mm] 1\\[1mm]
+1\\[1mm] -\frac {25}{29}\\[1mm] -\frac {25}{29}\\[1mm] 1\\[1mm] 1 \end {array}\right ]}_ {{\bf Bary}_t}, \underbrace { \left [\begin {array}{c} \frac {19}{29}\\[1mm] \frac {19}{29}\\[1mm] \frac {19}{29}\\[1mm]
+\frac {19}{29}\\[1mm] -\frac {48}{29}\\[1mm] -\frac {48}{29}\\[1mm] -\frac {48}{29}\\[1mm] -\frac {48}{29}\\[1mm] 1\\[1mm] 1\\[1mm] 1\\[1mm] 1 \end {array}\right ]}_{{\bf Bary}_s}, \underbrace { \left [\begin
+{array}{c} \frac {1}{x-6}\\[1mm] \frac {1}{x-7}\\[1mm] \frac {1}{x-6}\\[1mm] \frac {1}{x-7}\\[1mm] \frac {1}{x-6}\\[1mm] \frac {1}{x-7}\\[1mm] \frac {1}{x-6}\\[1mm] \frac {1}{x-7}\\[1mm] \frac {1}{x-6}\\[1mm] \frac
+{1}{x-7}\\[1mm] \frac {1}{x-6}\\[1mm] \frac {1}{x-7} \end {array}\right ]}_{{\bf Lag}_x}, \underbrace { \left [\begin {array}{c} \frac {1}{t-4}\\[1mm] \frac {1}{t-4}\\[1mm] \frac {1}{t-5}\\[1mm] \frac
+{1}{t-5}\\[1mm] \frac {1}{t-4}\\[1mm] \frac {1}{t-4}\\[1mm] \frac {1}{t-5}\\[1mm] \frac {1}{t-5}\\[1mm] \frac {1}{t-4}\\[1mm] \frac {1}{t-4}\\[1mm] \frac {1}{t-5}\\[1mm] \frac {1}{t-5} \end {array}\right ]}_{{\bf
+Lag}_t}, \underbrace { \left [\begin {array}{c} \frac {1}{s-1}\\[1mm] \frac {1}{s-1}\\[1mm] \frac {1}{s-1}\\[1mm] \frac {1}{s-1}\\[1mm] \frac {1}{s-2}\\[1mm] \frac {1}{s-2}\\[1mm] \frac {1}{s-2}\\[1mm] \frac
+{1}{s-2}\\[1mm] \frac {1}{s-3}\\[1mm] \frac {1}{s-3}\\[1mm] \frac {1}{s-3}\\[1mm] \frac {1}{s-3} \end {array}\right ]}_{{\bf Lag}_s}, \underbrace { \left [\begin {array}{c} \frac {1}{2}\\[1mm] \frac {9}{17}\\[1mm]
+\frac {4}{9}\\[1mm] \frac {9}{19}\\[1mm] \frac {17}{20}\\[1mm] \frac {19}{21}\\[1mm] \frac {17}{23}\\[1mm] \frac {19}{24}\\[1mm] \frac {7}{6}\\[1mm] \frac {31}{25}\\[1mm] 1\\[1mm] \frac {31}{29} \end {array}\right
+]}_{{\bf W}}\begin {array}{c} {\rm def}\\ \Rightarrow \end {array} \left \{\begin {array}{ll} \bf \Phi (x)= &amp;\!\!\!\bf Bary_x\odot Lag_x,\\[2mm] \bf \Psi (t)= &amp;\!\!\!\bf Bary_t\odot Lag_t,\\[2mm] \bf \Omega
+(s)=&amp;\!\!\!\bf Bary_s\odot Lag_s.\\[1mm] \end {array}\right . \]
+</p>
+
+<p>
+With the above notation we can express \(\bf H\) as the quotient of two rational functions:
+</p>
+
+<p>
+\[ \left .\begin {array}{rcl} \hat {\bf n}(s,t,x)&amp;=&amp; \sum _{\rm rows} \left [\bf W\odot {\bf \Phi (x)}\odot {\bf \Psi (t)}\odot {\bf \Omega (s)}\right ]\\[1mm] \hat {\bf d}(s,t,x)&amp;=&amp; \sum _{\rm
+rows} \left [{\bf \Phi (x)}\odot {\bf \Psi (t)}\odot {\bf \Omega (s)}\right ] \end {array}\right \}~\Rightarrow ~ \frac {\hat {\bf n}(s,t,x)}{\hat {\bf d}(s,t,x)}={\bf H}(s,t,x). \]
+</p>
+
+<p>
+Consequently, KST for rational functions, as composition and superposition of one-variable functions, takes the form:
+</p>
+
+<p>
+\[ \left .\begin {array}{rcl} \hat {\bf n}(s,t,x)&amp;=&amp;\sum _{\rm rows}\,\exp \left [\,\log {\bf W}+\log {\bf \Phi (x)}+\log {\bf \Psi (t)}+ \log {\bf \Omega (s)}\,\right ]\\[1mm] \hat {\bf
+d}(s,t,x)&amp;=&amp;\sum _{\rm rows}\,\exp \left [\,\log {\bf \Phi (x)}+\log {\bf \Psi (t)}+ \log {\bf \Omega (s)}\,\right ]. \end {array}\right \}\qquad \mathrm {(*)} \]
+</p>
+
+<p>
+Some details of the above computation. To compute (i) \({\bf Bary}_x\), computation of the nullspace of six 1D Loewner matrices of size \(2\times 2\) is needed, (ii) \({\bf Bary}_t\), computation of three 1D Loewner matrices of size
+\(2\times 2\) is needed, and (iii) \({\bf Bary}_s\), computation of one 1D Loewner matrix of size \(3\times \) is needed. The resulting total computation using 1D Loewner matrices is \(\nu _1^3\nu _2\nu _3+\nu _2^3\nu _3+\nu _3^3=99~
+{\rm flops}\) as opposed to \((\nu _1\nu _2\nu _3)^3=1728\) flops, when working with 3D Loewner matrices. For details on the computational complexity, storage and numerical accuracy, we refer to [3]. Note also that the \(n\)D Loewner
+matrix is of dimension \(12\times 12\) while in the 1D case, a maximum of \(3\times 3\) matrix is needed.
+</p>
+
+<p>
+Comparison of KST and (*).&nbsp; A number of researchers have contributed in sharpening Kolmogorov’s original result, so currently is is often referred to as the Kolmogorov, Arnol’d, Kahane, Lorenz and Sprecher Theorem (see [2], theorem
+2.1). For simplicity we will follow [2] and state this result for \(n=3\), so that we can compare it with (*).<br />
+<br />
+Theorem. Given a continuous function \(f:\,[0,1]^3\rightarrow \mathbb {R}\) of three variables, there exist real numbers \(\lambda _i\), \(i=1,2\), and single-variable continuous functions \(\phi _k:\,[0,1]\rightarrow \mathbb {R}\),
+\(k=1,\cdots ,7\), and a single-variable function \(g:\,\mathbb {R}\rightarrow \mathbb {R}\), such that
+</p>
+
+<p>
+\[ f(x_1,x_2)=\sum _{k=1}^7\,g(\phi _k(x_1)+\lambda _1\phi _k(x_2)+\lambda _2\phi _k(x_3)),~ \forall (x_1,x_2,x_3)\in \left [0,1\right ]^3. \]
+</p>
+
+<p>
+In the above result, \(\lambda _i\) and \(\phi _k\) do not depend on \(f\). Thus for \(n=3\), eight functions are needed together with two real scalars \(\lambda _i\).
+</p>
+
+<p>
+Similarities and differences between KST and (*).
+</p>
+
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> While KST refers to continuous functions defined on \([0,1]^n\), (*) is concerned with rational functions defined on \(\mathbb {C}^n\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> In its present form (*) is valid in a particular basis, namely the Lagrange basis. Multiplication of functions in (*), is defined with respect to this basis.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> The composition and superposition property holds for the numerator and denominator. Notice that in KST no explicit denominators are considered. This is important in our case because (*) preserves
+interpolation conditions.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4.</span> The parameters needed are \(n=3\) Lagrange bases (one in each variable) and the barycentric coeﬀicients of numerator and denominator.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5.</span> Both KST and (*) accomplish the goal of replacing the computation of multivariate functions, by means of a series of computations involving single-variable functions, KST for general continuous functions and
+(*) for rational functions. Notice also that (*) provides a different formulation of the problem than KST.
+</p>
+</li>
+</ul>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> G. Pólya and G. Szegö, Problems and Theorems in Analysis, Volume 1, Springer Verlag, 1972.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Sidney A. Morris, Hilbert 13: Are there any genuine continuous multivariate functions?, Bulletin (New Series) of the AMS, 58: 107-118 (2021).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Athanasios C. Antoulas, Ion Victor Gosea, Charles Poussot-Vassal,<br />
+The Loewner framework for parametric systems: Taming the curse of dimensionality,<br />
+https://arxiv.org/abs/2405.00495.&nbsp; Sumbitted to SIREV, May 2024.
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,446 @@
+---
+layout: abstract
+absnum: 186
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Structured Representations of Rational Functions for Learning Mechanical Dynamical Systems: A Barycentric Approach
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Steffen W. R. Werner</span>, Michael S. Ackermann, Ion Victor Gosea, Serkan Gugercin
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In recent years, the importance of learning dynamical systems from data has emerged as a pivotal area of research, bridging the realms of mathematics, engineering, and data science. Dynamical systems, which describe how states evolve over time
+based on underlying mathematical relations, are fundamental to understanding a wide range of time-dependent phenomena—from physics and biology to economics and social sciences. For the use of these systems in practical applications like
+predictive simulations and control, high modeling accuracy as well as interpretability and explainability are essential. While high accuracy of models can usually be achieved by the incorporation of data from simulations or real-world measurements,
+the interpretability and explainability are typically not given in most blackbox and unstructured modeling approaches. In this work, we propose a new framework of data-driven modeling algorithms based on a novel representation of rational functions
+leading that allows us in the case of mechanical applications the modeling of accurate dynamical systems from given data while providing a structured system representation, which gives physical meaning to the terms describing the dynamical system.
+</p>
+
+<p>
+The dynamical systems that we are interested in are given via second-order ordinary differential equations of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                     M ẍ(t) + Dẋ(t) + Kx(t) = bu(t),       y(t) = cT x(t),                                                           (1)--><a id="eqn:sosys"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:sosys} M \ddot {x}(t) + D \dot {x}(t) + K x(t) = b u(t), \quad y(t) = c^{T} x(t),
+\end{equation}
+
+</p>
+
+<p>
+with \(M, D, K \in \mathbb {R}^{n \times n}\) and \(b, c^{T} \in \mathbb {R}^{n}\). Thereby, the function \(u\colon \mathbb {R} \to \mathbb {R}\) models the external inputs that allow us to interfere with the internal system behavior
+given by the states \(x\colon \mathbb {R} \to \mathbb {R}^{n}\). Typically, one cannot observe the complete state behavior but has access to a low-dimensional output \(y\colon \mathbb {R} \to \mathbb {R}\) modeling quantities of interest
+of the system. The unique format of&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span> usually appears in applications with mechanical structures, acoustic phenomena or electro-mechanical components. Consequently,
+the matrices in&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span> can be associated with a certain physical meaning: \(M\) is describing the distribution of mass in the system, \(D\) yields the dissipation or
+preservation of energy, and \(K\) explains the forces between the different components of the system. An equivalent description of&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span> is given in the complex frequency
+domain by taking the Laplace transformation of&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span> leading to the system’s transfer function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                              H(s) = cT (s2 M + sD + K)−1 b,                                                                            (2)--><a id="eqn:sotf"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:sotf} H(s) = c^{T} (s^{2} M + s D + K)^{-1} b,
+\end{equation}
+
+</p>
+
+<p>
+with \(s \in \mathbb {C}\). The function \(H\colon \mathbb {C} \to \mathbb {C}\) in&nbsp;<span class="textup">(<a href="paper.html#eqn:sotf">2</a>)</span> is at its core a complex rational function with a structured representation.
+In the case of the aforementioned applications, data is typically given in form of transfer function measurements
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                     H(µ1 ) = h1 ,    H(µ2 ) = h2 ,   ...,    H(µN ) = hN .                                                             (3)--><a id="eqn:data"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:data} H(\mu _{1}) = h_{1}, \quad H(\mu _{2}) = h_{2}, \quad \ldots , \quad H(\mu _{N}) = h_{N}.
+\end{equation}
+
+</p>
+
+<p>
+With all these components, the structured data-driven modeling problem that we consider in this work reads as follows: Find a transfer function \(\widehat {H}\) that has the same structure as&nbsp;<span class="textup">(<a
+href="paper.html#eqn:sotf">2</a>)</span> and that approximates the given data&nbsp;<span class="textup">(<a href="paper.html#eqn:data">3</a>)</span> like
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                                     b 1 ) ≈ h1 ,
+                                                                                                     H(µ              b 2 ) ≈ h2 ,
+                                                                                                                      H(µ             ...,    b N ) ≈ hN .
+                                                                                                                                              H(µ                                                                   (4)--><a id="eqn:problem"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:problem} \widehat {H}(\mu _{1}) \approx h_{1}, \quad \widehat {H}(\mu _{2}) \approx h_{2}, \quad \ldots , \quad \widehat {H}(\mu _{N}) \approx h_{N}.
+\end{equation}
+
+</p>
+
+<p>
+To solve the structured data-driven modeling problem, we have extended key tools from numerical linear algebra that have been used for the unstructured modeling problem before. In the unstructured case, linear dynamical systems are given in the
+form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                          E ẋ(t) = Ax(t) + bu(t),    y(t) = cT x(t),                                                                  (5)--><a id="eqn:fosys"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:fosys} E \dot {x}(t) = A x(t) + b u(t), \quad y(t) = c^{T} x(t),
+\end{equation}
+
+</p>
+
+<p>
+with \(E, A \in \mathbb {R}^{n \times n}\) and \(b, c^{T} \in \mathbb {R}^{n}\), and the corresponding transfer function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                                                                                                                     G(s) = cT (sE − A)−1 b.                                                                            (6)--><a id="eqn:fotf"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:fotf} G(s) = c^{T} (s E - A)^{-1} b.
+\end{equation}
+
+</p>
+
+<p>
+Many eﬀicient and effective methods for the modeling of transfer functions \(\widehat {G}\) of the form&nbsp;<span class="textup">(<a href="paper.html#eqn:fotf">6</a>)</span> from data&nbsp;<span class="textup">(<a
+href="paper.html#eqn:data">3</a>)</span>, utilize a reformulation of&nbsp;<span class="textup">(<a href="paper.html#eqn:fotf">6</a>)</span> into its barycentric form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                P
+                                                                                                                                n
+                                                                                                                                  hk ω k
+                                                                                                                                 (s−λk )
+                                                                                                                             k=1
+                                                                                                                     G(s) =    Pn          ,                                                                          (7)--><a id="eqn:fobary"></a><!--
+                                                                                                                                      ωk
+                                                                                                                            1+     (s−λk )
+                                                                                                                               k=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:fobary} G(s) = \frac {\sum \limits _{k = 1}^{n} \frac {h_{k} \omega _{k}}{(s - \lambda _{k})}}{1 + \sum \limits _{k = 1}^{n} \frac {\omega _{k}}{(s - \lambda _{k})}},
+\end{equation}
+
+</p>
+
+<p>
+where \(\lambda _{k} \in \mathbb {C}\) are the support points, \(h_{k} \in \mathbb {C}\) function values and \(\omega _{k} \in \mathbb {C}\) the barycentric weights. This representation&nbsp;<span class="textup">(<a
+href="paper.html#eqn:fobary">7</a>)</span> eases the problem of fitting data significantly as it allows interpolation by construction and provides desired numerical properties in least squares problems which become linear systems with Loewner
+matrices. Consequently, popular data-driven modeling approaches are based on&nbsp;<span class="textup">(<a href="paper.html#eqn:fobary">7</a>)</span>. Enforcing interpolation in all given data leads to the Loewner framework&nbsp;[1],
+matching the data in a least-squares sense results in the vector fitting method&nbsp;[3], and mixing interpolation conditions for parts of the data with a least square fit for the rest yields the AAA algorithm&nbsp;[4]. Due to the classical barycentric
+form&nbsp;<span class="textup">(<a href="paper.html#eqn:fobary">7</a>)</span> corresponding to unstructured systems&nbsp;<span class="textup">(<a href="paper.html#eqn:fosys">5</a>)</span>, the models obtained via these
+approaches typically cannot be rewritten into the second-order form&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span> even when the data was coming from a mechanical application.
+</p>
+
+<p>
+With the barycentric form&nbsp;<span class="textup">(<a href="paper.html#eqn:fobary">7</a>)</span> being the key component in the data-driven modeling approaches above, we developed a new structured variant of the barycentric form
+corresponding to the second-order transfer function&nbsp;<span class="textup">(<a href="paper.html#eqn:sotf">2</a>)</span>. The structured transfer function&nbsp;<span class="textup">(<a href="paper.html#eqn:sotf">2</a>)</span>
+can be written in the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                                                            P
+                                                                                                                            n
+                                                                                                                               hk ωk
+                                                                                                                           (s−λk )(s−σk )
+                                                                                                                       k=1
+                                                                                                               H(s) =    Pn                 ,                                                                         (8)--><a id="eqn:sobary"></a><!--
+                                                                                                                                   ωk
+                                                                                                                      1+     (s−λk )(s−σk )
+                                                                                                                         k=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:sobary} H(s) = \frac {\sum \limits _{k = 1}^{n} \frac {h_{k} \omega _{k}}{(s - \lambda _{k})(s - \sigma _{k})}}{1 + \sum \limits _{k = 1}^{n} \frac {\omega _{k}}{(s - \lambda _{k})(s - \sigma _{k})}},
+\end{equation}
+
+</p>
+
+<p>
+where \(\lambda _{k} \in \mathbb {C}\) are support points, \(h_{k} \in \mathbb {C}\) are function values and \(\omega _{k} \in \mathbb {C}\) are barycentric weights as in the classical variant&nbsp;<span class="textup">(<a
+href="paper.html#eqn:fobary">7</a>)</span>; see&nbsp;[2]. In contrast to&nbsp;<span class="textup">(<a href="paper.html#eqn:fobary">7</a>)</span>, the new structured form has an additional set of parameters \(\sigma _{k} \in
+\mathbb {C}\) that we denote as quasi-support points. The structured barycentric form&nbsp;<span class="textup">(<a href="paper.html#eqn:sobary">8</a>)</span> shares important properties with the classical variant&nbsp;<span
+class="textup">(<a href="paper.html#eqn:fobary">7</a>)</span>, in particular the interpolation of the data \({(\lambda _{k}, h_{k})}_{k = 1}^{n}\) by construction, such that it can be similarly used as the backbone of data-driven
+modeling algorithms. Additionally, second-order systems of the form&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span> can easily be recovered from&nbsp;<span class="textup">(<a
+href="paper.html#eqn:sobary">8</a>)</span> via
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                                                       T                          T
+                                                                                M = In ,   D = −Λ − Σ,      K = b1Tn + ΛΣ,      b = w1       ...   wn        ,   c = h1   ...   hn        ,
+
+-->
+
+<p>
+
+\begin{equation*}
+M = I_{n}, \quad D = -\Lambda - \Sigma , \quad K = b \boldsymbol {1}_{n}^{T} + \Lambda \Sigma , \quad b = \begin{bmatrix} w_{1} &amp; \ldots &amp; w_{n} \end {bmatrix}^{T}, \quad c = \begin{bmatrix} h_{1} &amp;
+\ldots &amp; h_{n} \end {bmatrix}^{T},
+\end{equation*}
+
+</p>
+
+<p>
+where \(\Lambda = \operatorname {diag}(\lambda _{1}, \ldots , \lambda _{n})\) and \(\Sigma = \operatorname {diag}(\sigma _{1}, \ldots , \sigma _{n})\) are diagonal matrices containing the support and quasi-support points, and
+\(I_{n}\) and \(\boldsymbol {1}_{n}\) denote the \(n\)-dimensional identity matrix and the vector of all ones of length \(n\), respectively; see&nbsp;[2] for more details.
+</p>
+
+<p>
+Based on the structured barycentric form&nbsp;<span class="textup">(<a href="paper.html#eqn:sobary">8</a>)</span>, we can now develop new approaches that solve the structured data fitting problem&nbsp;<span class="textup">(<a
+href="paper.html#eqn:problem">4</a>)</span>. Previously, we introduced a new structured version of the Loewner framework based on&nbsp;<span class="textup">(<a href="paper.html#eqn:sobary">8</a>)</span> in&nbsp;[2], in which the
+use of&nbsp;<span class="textup">(<a href="paper.html#eqn:sobary">8</a>)</span> leads to linear systems of Loewner-like matrices to be solved to match additional interpolation conditions. In this work, we will provide an extension of the
+AAA algorithm for the structured second-order case. To this end, we consider a similar step-by-step construction of a lower dimensional model in barycentric form, interpolating in the most important data points and approximating the rest of the
+data&nbsp;<span class="textup">(<a href="paper.html#eqn:data">3</a>)</span> effectively in a least-squares sense for which we need to solve nonlinear least-squares problems with Loewner-like matrices. We will provide a variety of numerical
+examples including the vibrational response of a plate and the sound behavior of an acoustic cavity to show that the proposed approach is capable of eﬀiciently constructing low-dimensional high-fidelity models from given data that are interpretable
+and explainable as second-order systems&nbsp;<span class="textup">(<a href="paper.html#eqn:sosys">1</a>)</span>.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;C. Antoulas and B.&nbsp;D.&nbsp;O. Anderson. On the scalar rational interpolation problem. <i>IMA J. Math. Control Inf.</i>, 3(2–3):61–8, 1986. https://doi.org/10.1093/imamci/3.2-3.61
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> I.&nbsp;V. Gosea, S.&nbsp;Gugercin, and S.&nbsp;W.&nbsp;R. Werner. Structured barycentric forms for interpolation-based data-driven reduced modeling of second-order systems. <i>Adv. Comput.
+Math.</i>, 50(2):26, 2024. https://doi.org/10.1007/s10444-024-10118-7
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> B.&nbsp;Gustavsen and A.&nbsp;Semlyen. Rational approximation of frequency domain responses by vector fitting. <i>IEEE Trans. Power Del.</i>, 14(3):1052–1061, 1999.
+https://doi.org/10.1109/61.772353
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Y.&nbsp;Nakatsukasa, O.&nbsp;Sète, and L.&nbsp;N. Trefethen. The AAA algorithm for rational approximation. <i>SIAM J. Sci. Comput.</i>, 40(3):A1494–A1522, 2018.
+https://doi.org/10.1137/16M1106122
+</p>
+</li>
+</ul>
+
+{% endraw %}

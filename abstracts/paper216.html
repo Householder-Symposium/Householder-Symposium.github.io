@@ -1,0 +1,294 @@
+---
+layout: abstract
+absnum: 216
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\mtx }[1]{\bm {\mathsf {#1}}}\)
+
+\(\newcommand {\pxx }{\bm {x}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized Algorithms for the Simultaneous Compression<br />
+and LU Factorization of Hierarchical Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Anna Yesypenko</span>, Per-Gunnar Martinsson
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Dense matrices related to solving elliptic PDEs often have internal structure that allows for the linear system \(\mtx A \mtx x = \mtx b\) to be solved in linear or near-linear time. The hierarchical matrix (\(\mathcal {H}^{2}\)-matrix) formalism
+[1] partitions \(\mtx A\) into blocks, with each block small enough to be stored densely or of numerically low rank \(k\), where \(k\) controls the accuracy of the approximation. This format enables matrix-vector products to be computed to a
+desired accuracy in linear or near-linear time, allowing for the rapid solution of dense linear systems using iterative methods when \(\mtx A\) is well-conditioned. However, in many situations, the matrix \(\mtx A\) is ill-conditioned, and iterative
+methods do not offer satisfactory performance.
+</p>
+
+<p>
+The objective of this work is to compute an \(\mathcal H^2\) approximation to the inverse \(\mtx A^{-1}\), enabling the fast solution of ill-conditioned dense linear systems. Previously, the use of invertible factorizations of \(\mathcal H^2\)
+matrices has been limited due to two challenges:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> <b>Compression.</b> Although a fast matrix vector product for \(\mtx A\) is often available, individual entries may be challenging to access, which leads to challenges in compressing \(\mtx A\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> <b>Invertible Factorization.</b> While invertible factorization algorithms are eﬀicient for specialized formats like HBS/HSS matrices [2, 4, 7], inversion algorithms for general \(\mathcal {H}^{2}\)-matrices
+typically involve nested recursions and recompressions, making eﬀicient implementation challenging.
+</p>
+</li>
+</ul>
+
+<p>
+This work [8] describes a novel algorithm for <i>simultaneously</i> compressing and inverting an \(\mathcal {H}^{2}\)-matrix and extends the applicability of \(\mathcal H^2\) inversion algorithms [5, 6] to a generic class of dense matrices for
+which there is a means of applying the matrix and its adjoint to vectors. The method leverages the randomized SVD (RSVD) and novel sketching techniques [3] to eﬀiciently recover numerically low-rank sub-blocks of the matrix \(\mtx A\) within a
+hierarchical framework by reusing random sketches of the matrix. The precise problem formulation is:
+</p>
+
+<p>
+Suppose that \(\mtx {A} \in \mathbb {R}^{N \times N}\) is an \(\mathcal {H}^{2}\)-matrix, and that you are given a fast method for applying \(\mtx {A}\) and its adjoint \(\mtx {A}^{*}\) to vectors. We are also given geometric information
+corresponding to the matrix \(\mtx A\), e.g. entry \(\mtx A_{ij}\) corresponds to interactions between points \(\pxx _i\) and \(\pxx _j\) in 2 or 3-dimensional space. Using test matrices \(\mtx {\Omega }\) and \(\mtx {\Psi }\) and the set of
+matrices \(\{ \mtx Y, \mtx Z, \mtx \Omega , \mtx \Psi \}\), where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                Y     =    A    Ω     and     Z     =    A ∗ Ψ , --><a id="eq:setting_intro"></a><!--
+                                                                               N ×s       N ×N N ×s          N ×s       N ×N N ×s
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\underset {N \times s}{\mtx {Y}}\ =\ \underset {N \times N}{\mtx {A}}\ \underset {N \times s}{\mtx {\Omega }} \qquad \mbox {and}\qquad \underset {N \times s}{\mtx {Z}}\ =\ \underset {N \times N}{\mtx {A}}^*
+\underset {N \times s}{\mtx {\Psi }}, \label {eq:setting_intro}
+\end{equation*}
+
+</p>
+
+<p>
+the framework constructs an invertible \(\mathcal H^2\) factorization \(\mtx K\) such that \(\mtx K^{-1} \approx \mtx A^{-1}\).
+</p>
+
+<p>
+The number of samples \(s\) needed to construct an \(\mathcal H^2\) approximation of the inverse \(\mtx A^{-1}\) is independent of \(N\) and depends only on the chosen rank parameter \(k\) as well as properties of the geometry. The numerical
+results demonstrate the effectiveness of the algorithm across a range of problems, including the discretization of partial differential equations (PDEs) and boundary integral equations (BIEs) in both 2D and 3D. The results demonstrate the algorithm’s
+performance in terms of speed, memory eﬀiciency, and precision, as well as its robustness in handling indefiniteness and ill-conditioning.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Steffen Börm, Lars Grasedyck, and Wolfgang Hackbusch. Introduction to hierarchical matrices with applications. <i>Engineering analysis with boundary elements</i>, 27(5):405–422, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Kenneth&nbsp;L Ho and Leslie Greengard. A fast direct solver for structured linear systems by recursive skeletonization. <i>SIAM Journal on Scientific Computing</i>, 34(5):A2507–A2532, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> James Levitt and Per-Gunnar Martinsson. Linear-complexity black-box randomized compression of rank-structured matrices. <i>SIAM Journal on Scientific Computing</i>, 46(3):A1747–A1763, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Per-Gunnar Martinsson and Vladimir Rokhlin. A fast direct solver for boundary integral equations in two dimensions. <i>Journal of Computational Physics</i>, 205(1):1–23, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Victor Minden, Kenneth&nbsp;L Ho, Anil Damle, and Lexing Ying. A recursive skeletonization factorization based on strong admissibility. <i>Multiscale Modeling &amp; Simulation</i>,
+15(2):768–796, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Daria Sushnikova, Leslie Greengard, Michael O’Neil, and Manas Rachh. FMM-LU: A fast direct solver for multiscale boundary integral equations in three dimensions. <i>Multiscale Modeling &amp;
+Simulation</i>, 21(4):1570–1601, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Jianlin Xia, Shivkumar Chandrasekaran, Ming Gu, and Xiaoye&nbsp;S Li. Fast algorithms for hierarchically semiseparable matrices. <i>Numerical Linear Algebra with Applications</i>,
+17(6):953–976, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Anna Yesypenko and Per-Gunnar Martinsson. Randomized Strong Recursive Skeletonization: Simultaneous compression and factorization of H-matrices in the Black-Box Setting. <i>arXiv preprint
+arXiv:2311.01451</i>, 2023.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

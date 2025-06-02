@@ -1,0 +1,1090 @@
+---
+layout: abstract
+absnum: 81
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\pmat }[1]{\begin {pmatrix}#1\end {pmatrix}}\)
+
+\(\newcommand {\bmat }[1]{\begin {bmatrix}#1\end {bmatrix}}\)
+
+\(\newcommand {\norm }[1]{\|#1\|}\)
+
+\(\newcommand {\T }{^T\!}\)
+
+\(\newcommand {\xstar }{x^{\star }}\)
+
+\(\newcommand {\st }{\text {s.t.}}\)
+
+\(\newcommand {\R }{\mathbb {R}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+<span class="textsc">MinAres</span>: An Iterative Solver for Symmetric Linear Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Alexis Montoison</span>, Dominique Orban, Michael Saunders
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+<!--
+...... section MINARES ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span><span class="textsc">MinAres</span> </h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+Suppose \(A \in \R ^{n \times n}\) is a large symmetric matrix for which matrix-vector products \(Av\) can be computed eﬀiciently for any vector \(v \in \R ^n\). We present a Krylov subspace method called <span
+class="textsc">MinAres</span> for computing a solution to the following problems:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                       Symmetric linear systems:                      Ax = (1)
+                                                                                                                                           b,                                                                         --><a id="eq:Ax=b"></a><!--
+                                                                                       Symmetric least-squares problems:              min ∥Ax(2)
+                                                                                                                                              − b∥,                                                                     --><a id="eq:ls"></a><!--
+                                                                                       Symmetric nullspace problems:                 (3)
+                                                                                                                                      Ar = 0,                                                                  --><a id="eq:nullvector"></a><!--
+                                                                                       Symmetric eigenvalue problems:                (4)Ar
+                                                                                                                                        [ = λr, ] [ ]    [ ]                                                  --><a id="eq:eigenvector"></a><!--
+                                                                                                                                             B u          u
+                                                                                                                                 (5)
+                                                                                       Singular value problems for rectangular \(B\):      T          =σ     .                                            --><a id="eq:singularvector"></a><!--
+                                                                                                                                         B         v      v
+
+
+-->
+
+
+<p>
+
+\begin{alignat} {2}
+\label {eq:Ax=b} &amp; \text {Symmetric linear systems:} &amp;&amp; \quad Ax = b, \\ \label {eq:ls} &amp; \text {Symmetric least-squares problems:} &amp;&amp; \quad \min \norm {Ax - b}, \\ \label {eq:nullvector}
+&amp; \text {Symmetric nullspace problems:} &amp;&amp; \quad Ar = 0, \\ \label {eq:eigenvector} &amp; \text {Symmetric eigenvalue problems:} &amp;&amp; \quad Ar = \lambda r, \\[-4pt] \label {eq:singularvector}
+&amp; \text {Singular value problems for rectangular $B$:} &amp;&amp; \quad \bmat {&amp; B \\ B\T &amp; } \bmat {u \\ v} = \sigma \bmat {u \\ v}.
+\end{alignat}
+If \(A\) is nonsingular, problems&nbsp;<span class="textup">(<a href="paper.html#eq:Ax=b">1</a>)</span>–<span class="textup">(<a href="paper.html#eq:ls">2</a>)</span> have a unique solution \(\xstar \). When \(A\) is singular, if
+\(b\) is not in the range of \(A\) then <span class="textup">(<a href="paper.html#eq:Ax=b">1</a>)</span> has no solution; otherwise, <span class="textup">(<a href="paper.html#eq:Ax=b">1</a>)</span>–<span class="textup">(<a
+href="paper.html#eq:ls">2</a>)</span> have an infinite number of solutions, and we seek the unique \(\xstar \) that solves the problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                                                       min 12 ∥x∥2   s.t. A2 x = Ab.                                                     (6)                                                                       --><a id="eq:AAx=Ab"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:AAx=Ab} \min \tfrac {1}{2} \|x\|^2 \quad \st \quad A^2 x = Ab.
+\end{equation}
+
+</p>
+
+<p>
+Let \(x_k\) be an approximation to \(\xstar \) with residual \(r_k = b - Ax_k\). If \(A\) were unsymmetric or rectangular, applicable solvers for&nbsp;<span class="textup">(<a href="paper.html#eq:Ax=b">1</a>)</span>–<span
+class="textup">(<a href="paper.html#eq:ls">2</a>)</span> would be <span class="textsc">Lsqr</span> [10] and <span class="textsc">Lsmr</span> [3], which reduce \(\norm {r_k}\) and \(\norm {A\T r_k}\) respectively within the
+\(k\)th Krylov subspace \(\mathcal {K}_k(A\T A, A^T b)\) generated by the Golub-Kahan bidiagonalization on \((A,b)\) [4].
+</p>
+
+<p>
+For&nbsp;<span class="textup">(<a href="paper.html#eq:Ax=b">1</a>)</span>–<span class="textup">(<a href="paper.html#eq:singularvector">5</a>)</span>, our algorithm <span class="textsc">MinAres</span> solves&nbsp;<span
+class="textup">(<a href="paper.html#eq:AAx=Ab">6</a>)</span> by reducing \(\norm {Ar_k}\) within the \(k\)th Krylov subspace \(\mathcal {K}_k(A,b)\) generated by the symmetric Lanczos process on \((A,b)\) [6]. Thus when \(A\) is
+symmetric, <span class="textsc">MinAres</span> minimizes the same quantity \(\norm {Ar_k}\) as <span class="textsc">Lsmr</span>, but in different (more effective) subspaces, and it requires only one matrix-vector product \(Av\) per
+iteration, whereas <span class="textsc">Lsmr</span> would need two.
+</p>
+
+<p>
+Qualitatively, certain residual norms decrease smoothly for these iterative methods, but other norms are more erratic as they approach zero. It is ideal if stopping criteria involve the smooth quantities. For <span class="textsc">Lsqr</span> and
+<span class="textsc">Lsmr</span> on general (possibly rectangular) systems, \(\norm {r_k}\) decreases smoothly for both methods. We observe that while <span class="textsc">Lsqr</span> is always ahead by construction, it is never by
+very much. Thus on consistent systems \(Ax=b\), <span class="textsc">Lsqr</span> may terminate slightly sooner than <span class="textsc">Lsmr</span>. On inconsistent systems \(Ax \approx b\), the comparison is more striking. \(\norm
+{A\T r_k}\) decreases erratically for <span class="textsc">Lsqr</span> but smoothly for <span class="textsc">Lsmr</span>, and there is usually a significance difference between the two. Thus <span class="textsc">Lsmr</span> may
+terminate significantly sooner [3].
+</p>
+
+<p>
+Similarly for <span class="textsc">Minres</span> [9] and <span class="textsc">MinAres</span>, \(\norm {r_k}\) decreases smoothly for both methods, and on consistent symmetric systems \(Ax=b\), <span class="textsc">Minres</span>
+may have a small advantage. On inconsistent symmetric systems \(Ax \approx b\), \(\norm {Ar_k}\) decreases erratically for <span class="textsc">Minres</span> and its variant <span class="textsc">Minres-qlp</span> [2] but smoothly
+for <span class="textsc">MinAres</span>, and there is usually a significant difference between them. Thus <span class="textsc">MinAres</span> may terminate sooner.
+</p>
+
+<p>
+<span class="textsc">MinAres</span> completes the family of Krylov methods based on the symmetric Lanczos process. As it minimizes \(\norm {A r_k}\) (which always converges to zero), <span class="textsc">MinAres</span> can be
+applied safely to any symmetric system.
+</p>
+
+<p>
+On consistent symmetric systems, <span class="textsc">MinAres</span> is a relevant alternative to <span class="textsc">Minres</span> and <span class="textsc">Minres-qlp</span> because it converges in a similar number of iterations
+if the stopping condition is based on \(\norm {r_k}\), and much sooner if the stopping condition is based on \(\norm {A r_k}\). On singular inconsistent symmetric systems, <span class="textsc">MinAres</span> outperforms <span
+class="textsc">Minres-qlp</span> and <span class="textsc">Lsmr</span>, and should be the preferred method. Furthermore, a lifting step [7] can be applied to move from the final iterate to the minimum-length solution (pseudoinverse) at
+negligible cost.
+</p>
+<!--
+...... section CAR ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">2&#x2003;</span><span class="textsc">CAr</span> </h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+We introduce <span class="textsc">CAr</span>, a new conjugate direction method similar to <span class="textsc">Cg</span> and <span class="textsc">Cr</span> (the conjugate gradient and conjugate residual methods of Hestenes and
+Stiefel [5, 11] for solving symmetric positive definite (SPD) systems \(Ax=b\)). Each of these methods generates a sequence of approximate solutions \(x_k\) in the Krylov subspaces \(\mathcal {K}_k(A, b)\) by minimizing a quadratic function
+\(f(x)\):
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+<!--
+
+
+
+                                                                                  fCg (x) = 21 xTAx − bTx,   fCr (x) = 12 ∥Ax − b∥2 ,   fCAr (x) = 12 ∥A2x − Ab∥2 .
+
+
+
+-->
+
+
+<p>
+
+\begin{alignat*} {3}
+&amp;f_{\CGM }(x) = \tfrac {1}{2} x\T A x - b\T x, \quad \quad &amp;f_{\CR }(x) = \tfrac {1}{2} \norm {Ax - b}^2, \quad \quad &amp;f_{\CAR }(x) = \tfrac {1}{2} \norm {A^{2\!} x - Ab}^2.
+\end{alignat*}
+<span class="textsc">CAr</span> is to <span class="textsc">MinAres</span> as <span class="textsc">Cr</span> is to <span class="textsc">Minres</span>. For SPD \(A\), <span class="textsc">CAr</span> is mathematically
+equivalent to <span class="textsc">MinAres</span>, and both methods exhibit monotonic decrease in \(\norm {Ar_k}\), \(\norm {r_k}\), \(\norm {x_k - \xstar }\), and \(\norm {x_k - \xstar }_A\). The name <span
+class="textsc">CAr</span> reflects its property of generating successive \(A\)-residuals that are conjugate with respect to \(A\). Designed to minimize \(\norm {Ar_k}\) in \(\mathcal {K}_k(A, b)\), <span class="textsc">CAr</span>
+complements the family of conjugate direction methods <span class="textsc">Cg</span> and <span class="textsc">Cr</span> for SPD systems.
+</p>
+
+<figure id="autoid-1" class="triplealgorithm ">
+
+<a id="alg:cg_cr_car"></a>
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:168pt ; ">
+
+<a id="paper-autopage-7"></a>
+
+<figure id="autoid-2" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;<span class="textsc">Cg</span>
+</p>
+</div>
+
+<a id="alg:cg"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span
+class="listmarker"><b>Require:</b></span>
+\(A\), \(b\), \(\epsilon &gt; 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(k=0\),
+\(x_0 = 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(r_0
+= b\), \(p_0 = r_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(q_0
+= Ap_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(\rho
+_0 = r_0\T r_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span><b>while</b>
+\(\norm {r_k} &gt; \epsilon \)
+<b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\alpha
+_k = \rho _k / p_k\T q_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(x_{k+1}
+= x_{k} + \alpha _k p_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(r_{k+1}
+= r_{k} - \alpha _k q_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\rho
+_{k+1} = r_{k+1}\T r_{k+1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\beta
+_k = \rho _{k+1} / \rho _{k}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(p_{k+1}
+= r_{k+1} + \beta _{k} p_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(q_{k+1}
+= A p_{k+1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(k
+\leftarrow k + 1\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span><b>end</b>
+<b>while</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+</div>
+
+&#x2003;
+
+&#x2003;
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:168pt ; ">
+
+<a id="paper-autopage-8"></a>
+
+<figure id="autoid-3" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;2:&nbsp;<span class="textsc">Cr</span>
+</p>
+</div>
+
+<a id="alg:cr"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span
+class="listmarker"><b>Require:</b></span>
+\(A\), \(b\), \(\epsilon &gt; 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(k=0\),
+\(x_0 = 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(r_0
+= b\), \(p_0 = r_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(s_0
+= A r_0\), \(q_0 = s_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(\rho
+_0 = r_0\T s_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span><b>while</b>
+\(\norm {r_k} &gt; \epsilon \)
+<b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\alpha
+_k = \rho _k / \norm {q_k}^2\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(x_{k+1}
+= x_{k} + \alpha _k p_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(r_{k+1}
+= r_{k} - \alpha _k q_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(s_{k+1}
+= A r_{k+1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\rho
+_{k+1} = r_{k+1}\T s_{k+1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\beta
+_k = \rho _{k+1} / \rho _{k}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(p_{k+1}
+= r_{k+1} + \beta _{k} p_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(q_{k+1}
+= s_{k+1} + \beta _{k} q_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(k
+\leftarrow k + 1\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span><b>end</b>
+<b>while</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+</div>
+
+&#x2003;
+
+&#x2003;
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:168pt ; ">
+
+<a id="paper-autopage-9"></a>
+
+<figure id="autoid-4" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;3:&nbsp;<span class="textsc">CAr</span>
+</p>
+</div>
+
+<a id="alg:car"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span
+class="listmarker"><b>Require:</b></span>
+\(A\), \(b\), \(\epsilon &gt; 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(k=0\),
+\(x_0 = 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(r_0
+= b\), \(p_0 = r_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(s_0
+= A r_0\), \(q_0 = s_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(t_0
+= A s_0\), \(u_0 = t_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span>\(\rho
+_0 = s_0\T t_0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span><b>while</b>
+\(\norm {r_k} &gt; \epsilon \)
+<b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\alpha
+_k = \rho _k / \norm {u_k}^2\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(x_{k+1}
+= x_{k} + \alpha _k p_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(r_{k+1}
+= r_{k} - \alpha _k q_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(s_{k+1}
+= s_{k} - \alpha _k u_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(t_{k+1}
+= A s_{k+1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\rho
+_{k+1} = s_{k+1}\T t_{k+1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(\beta
+_k = \rho _{k+1} / \rho _{k}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(p_{k+1}
+= r_{k+1} + \beta _{k} p_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(q_{k+1}
+= s_{k+1} + \beta _{k} q_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(u_{k+1}
+= t_{k+1} + \beta _{k} u_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:14pt;
+display:inline-block;"></span>\(k
+\leftarrow k + 1\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span
+class="listmarker"></span>
+<span style="width:0pt;
+display:inline-block;"></span><b>end</b>
+<b>while</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+</div>
+
+</figure>
+<!--
+...... section Krylov.jl ......
+-->
+<h4 id="autosec-10"><span class="sectionnumber">3&#x2003;</span>Krylov.jl</h4>
+<a id="paper-autopage-10"></a>
+
+
+<p>
+The algorithms <span class="textsc">MinAres</span> and <span class="textsc">CAr</span> have been implemented in Julia [1] as part of the package <kbd>Krylov.jl</kbd> [8], which provides a suite of Krylov and block-Krylov methods.
+Leveraging Julia’s flexibility and multiple dispatch capabilities, our implementations are compatible with all floating-point systems supported by the language, including complex numbers. These methods are optimized for both CPU and GPU
+architectures, ensuring high performance across a wide range of computational platforms. Additionally, our implementations support preconditioners, enhancing convergence and robustness across various problem classes.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-11">References</h4>
+<a id="paper-autopage-11"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> J.&nbsp;Bezanson, A.&nbsp;Edelman, S.&nbsp;Karpinski, and V.&nbsp;B. Shah. <a href="http://dx.doi.org/\detokenize {10.1137/141000671}" target="_blank" >Julia: A fresh approach to
+numerical computing</a>. <em>SIAM Rev.</em>, 59(1):65–98, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> S.-C. Choi, C.&nbsp;C. Paige, and M.&nbsp;A. Saunders. <a href="http://dx.doi.org/\detokenize {10.1137/100787921}" target="_blank" >MINRES-QLP: A Krylov subspace method for
+indefinite or singular symmetric systems</a>. <em>SIAM J. Sci. Comput.</em>, 33(4):1810–1836, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D.&nbsp;C.-L. Fong and M.&nbsp;A. Saunders. <a href="http://dx.doi.org/\detokenize {10.1137/10079687X}" target="_blank" >LSMR: An iterative algorithm for sparse least-squares
+problems</a>. <em>SIAM J. Sci. Comput.</em>, 33(5):2950–2971, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> G.&nbsp;H. Golub and W.&nbsp;Kahan. <a href="http://dx.doi.org/\detokenize {10.1137/0702016}" target="_blank" >Calculating the singular values and pseudo-inverse of a matrix</a>.
+<em>SIAM J. Numer. Anal.</em>, 2(2):205–224, 1965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M.&nbsp;R. Hestenes and E.&nbsp;Stiefel. <a href="http://dx.doi.org/\detokenize {10.6028/jres.049.044}" target="_blank" >Methods of conjugate gradients for solving linear systems</a>.
+<em>J. Res. Natl. Bur. Stand.</em>, 49(6):409–436, 1952.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> C.&nbsp;Lanczos. <a href="http://dx.doi.org/\detokenize {10.6028/jres.045.026}" target="_blank" >An iteration method for the solution of the eigenvalue problem of linear differential and
+integral operators</a>. <em>J. Res. Natl. Bur. Stand.</em>, 45:225–280, 1950.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Y.&nbsp;Liu, A.&nbsp;Milzarek, and F.&nbsp;Roosta. Obtaining pseudo-inverse solutions with MINRES. <em>arXiv preprint arXiv:2309.17096</em>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> A.&nbsp;Montoison and D.&nbsp;Orban. <a href="http://dx.doi.org/\detokenize {10.21105/joss.05187}" target="_blank" >Krylov.jl: A Julia basket of hand-picked Krylov methods</a>.
+<em>Journal of Open Source Software</em>, 8(89):5187, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> C.&nbsp;C. Paige and M.&nbsp;A. Saunders. <a href="http://dx.doi.org/\detokenize {10.1137/0712047}" target="_blank" >Solution of sparse indefinite systems of linear equations</a>.
+<em>SIAM J. Numer. Anal.</em>, 12(4):617–629, 1975.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> C.&nbsp;C. Paige and M.&nbsp;A. Saunders. <a href="http://dx.doi.org/\detokenize {10.1145/355984.355989}" target="_blank" >LSQR: An algorithm for sparse linear equations and
+sparse least squares</a>. <em>ACM Trans. Math. Software</em>, 8(1):43–71, 1982.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> E.&nbsp;Stiefel. <a href="http://dx.doi.org/\detokenize {doi.org/10.1007/BF02564277}" target="_blank" >Relaxationsmethoden bester strategie zur lösung linearer gleichungssysteme</a>.
+<em>Commentarii Mathematici Helvetici</em>, 29(1):157–179, 1955.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

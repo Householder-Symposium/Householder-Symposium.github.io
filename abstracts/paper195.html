@@ -1,0 +1,429 @@
+---
+layout: abstract
+absnum: 195
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\require {colortbl}\)
+
+\(\let \LWRorigcolumncolor \columncolor \)
+
+\(\renewcommand {\columncolor }[2][named]{\LWRorigcolumncolor [#1]{#2}\LWRabsorbtwooptions }\)
+
+\(\let \LWRorigrowcolor \rowcolor \)
+
+\(\renewcommand {\rowcolor }[2][named]{\LWRorigrowcolor [#1]{#2}\LWRabsorbtwooptions }\)
+
+\(\let \LWRorigcellcolor \cellcolor \)
+
+\(\renewcommand {\cellcolor }[2][named]{\LWRorigcellcolor [#1]{#2}\LWRabsorbtwooptions }\)
+
+\(\newcommand {\vcr }[1]{\bm {#1}}\)
+
+\(\newcommand {\mat }[1]{\bm {#1}}\)
+
+\(\newcommand {\tsr }[1]{\pmb {\mathcal {#1}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Alternating Mahalanobis Distance Minimization for CP Tensor Decomposition
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Navjot Singh</span>, Edgar Solomonik
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Tensors generalize matrices by representing data in more than two dimensions. Tensor decompositions are mathematical constructs used to eﬀiciently represent, approximate, and manipulate tensors. Tensor decompositions have applications in
+various fields such as in image analysis&nbsp; [2], in signal processing&nbsp; [6], in quantum chemistry&nbsp; [5], in chemometrics&nbsp; [4] and many more. Finding the most accurate low rank tensor decomposition of a tensor is an NP-hard
+problem&nbsp; [1] in most cases. Consequently, numerical optimization algorithms are used to compute a low rank approximation eﬀiciently. In this talk, we present a novel alternating optimization algorithm for CP tensor decomposition
+(CPD)&nbsp; [7].
+</p>
+<!--
+...... paragraph CP Decomposition. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">CP Decomposition.</span>
+<a id="paper-autopage-5"></a>
+The CPD problem, for an order \(3\) tensor \(\tsr T\) is formulated as following,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                              1                    2
+                                                                                                                      min      T − [[A, B, C]] ,
+                                                                                                                    A,B,C 2                       F
+                                                                                                                                    X
+                                                                                                                 ([[A, B, C]])ijk =     air bjr ckr .
+                                                                                                                                      r
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\min _{\mat A, \mat B, \mat C} \frac {1}{2}\Big \|\tsr {T} - [\![ \mat {A}, \mat {B}, \mat {C} ]\!]\Big \|^2_F, \\ ([\![ \mat {A}, \mat {B}, \mat {C} ]\!])_{ijk} = \sum _{r} a_{ir}b_{jr}c_{kr}.
+\end{align*}
+The most used algorithm to solve the above problem is alternating least squares (ALS). ALS solves for one factor matrix at a time which results in least squares equation. Solving for factor matrix \(\mat A\) results in the following least squares
+equation,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                       A(C ⊙ B)T ∼
+                                                                                                                                 = T(1) ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\mat A(\mat C \odot \mat B)^T \cong \mat {T}_{(1)},
+\end{align*}
+where \(\odot \) denotes the Khatri-Rao product. ALS solves these equations via normal equations where the solution is given as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                       †T               
+                                                                                                  A = T(1) C ⊙ B             = T(1) C ⊙ B (B T B ∗ C T C)† ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\mat A = \mat T_{(1)}\big ( \mat C \odot \mat B\big )^{\dagger T} = \mat T_{(1)}\big ( \mat C \odot \mat B\big ) ( \mat B^T \mat B \ast \mat C^T \mat C)^{\dagger },
+\end{align*}
+where \(\ast \) denotes the Hadamard product, and \(\dagger \) denotes the Moore-Penrose inverse. The normal equations result in a solution that is optimal in Frobenius norm and matrix \(2-\)norm. We propose an update that solves the least
+squares equations for factor \(\mat A\) as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                     A = T(1) (C †T ⊙ B †T ).
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\mat A = \mat T_{(1)}(\mat C^{\dagger T} \odot \mat B^{\dagger T} ).
+\end{align*}
+We prove that the above update leads to an alternating minimization algorithm which has a <b>local superlinear convergence rate</b> for exact CP rank problems, when rank is smaller than the dimensions. The above update is an optimal
+solution of the least squares equations in Mahalanobis norm. The algorithm corresponding to these alternating updates is called alternating Mahalanobis distance minimization (AMDM)&nbsp; [7]. The update for factor \(\mat A\) is derived by
+minimizing the following objective function
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                       1
+                                                                                                    min vec(T − [[A, B, C]])T M vec(T − [[A, B, C]]),
+                                                                                                     A 2
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\min _{\mat A}\frac {1}{2} \text {vec}(\tsr T - [\![ \mat {A}, \mat {B}, \mat {C} ]\!])^T \mat M \text {vec}(\tsr T - [\![ \mat {A}, \mat {B}, \mat {C} ]\!]),
+\end{align*}
+where \(\mat M\) is a Kronecker structured positive definite matrix. \(\mat M\) is defined as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                        −1               −1             −1
+                                                                                                       M = M (A)              ⊗ M (B)           ⊗ M (C)         ,
+                                                                                                                                          †
+                                                                                                       M   (B)
+                                                                                                                 = BB + (I − BB ),
+                                                                                                                        T
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\mat M = &amp; \big (\mat M^{(\mat A)}\big )^{-1} \otimes \big (\mat M^{(\mat B)}\big )^{-1} \otimes \big (\mat M^{(\mat C)}\big )^{-1},\\ \mat M^{(\mat B)} &amp;= \mat B\mat B^{T} + (\mat I - \mat {B}\mat
+{B}^\dagger ),
+\end{align*}
+and similarly defined for \(\mat M^{(\mat A)}\) and \(\mat M^{(\mat C)}\). Mahalanobis norm&nbsp; [3] is a generalization of Frobenius norm by using covariance or ground metric matrices. For exact rank problems, the minima for any
+Mahalanobis norm corresponds to the minima of Frobenius norm. However, for approximation of a tensor with low CP rank, the stationary point of the AMDM algorithm may not be optimal in Frobenius norm metric that is the most used metric for
+assessing quality of the decomposition.
+</p>
+
+<p>
+We empirically show that changing the metric \(\mat M\) from \(\mat I\) (which corresponds to the ALS update) to the proposed AMDM metric leads to a well-conditioned decomposition for approximation problems. A well-conditioned
+decomposition is useful for separation of components, clustering using CPD factors, and stability of application of the operator when an operator is approximated via CPD. We also show that by interpolating between AMDM and ALS updates, we
+obtain a hybrid algorithm that leads to better fitness as compared to ALS while maintaining a the quality of decomposition.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> C.&nbsp;J. Hillar and L.-H. Lim. Most tensor problems are NP-hard. <i>J. ACM</i>, 60(6):45:1–45:39, Nov. 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;Jouni, M.&nbsp;D. Mura, and P.&nbsp;Comon. Hyperspectral image classification based on mathematical morphology and tensor decomposition. <i>Mathematical Morphology-Theory and
+Applications</i>, 4(1):1–30, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> P.&nbsp;Mahalanobis. On the generalised distance in statistics (reprint, 2018). <i>Sankhya A</i>, 80(1):1–7, 1936.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> K.&nbsp;R. Murphy, C.&nbsp;A. Stedmon, D.&nbsp;Graeber, and R.&nbsp;Bro. Fluorescence spectroscopy and multi-way techniques. PARAFAC. <i>Analytical Methods</i>, 5(23):6557–6566, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> R.&nbsp;M. Parrish, E.&nbsp;G. Hohenstein, T.&nbsp;J. Martínez, and C.&nbsp;D. Sherrill. Tensor hypercontraction. ii. least-squares renormalization. <i>The Journal of chemical physics</i>,
+137(22), 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N.&nbsp;D. Sidiropoulos, L.&nbsp;De&nbsp;Lathauwer, X.&nbsp;Fu, K.&nbsp;Huang, E.&nbsp;E. Papalexakis, and C.&nbsp;Faloutsos. Tensor decomposition for signal processing and machine
+learning. <i>IEEE Transactions on Signal Processing</i>, 65(13):3551–3582, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> N.&nbsp;Singh and E.&nbsp;Solomonik. Alternating mahalanobis distance minimization for accurate and well-conditioned cp decomposition. <i>SIAM Journal on Scientific Computing</i>,
+45(6):A2781–A2812, 2023.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

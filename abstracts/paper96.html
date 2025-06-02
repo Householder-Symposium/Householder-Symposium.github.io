@@ -1,0 +1,356 @@
+---
+layout: abstract
+absnum: 96
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Error estimate and stopping criteria for least-squares problems solved by CG-like algorithms CGLS and LSQR
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Jan Papež</span>, Petr Tichý
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In [2], we presented an adaptive estimate for the energy norm of the error in the conjugate gradient (CG) method. Using the notation from [2, Alg.&nbsp;1], \(A\)-norm of the error between the exact solution of \(Ax=b\) and the CG approximation
+\(x_\ell \) given in the \(\ell \)th step is estimated as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                                    ∑
+                                                                                                                                    k
+                                                                                                            ∥x − xℓ ∥2A ≈ ∆CG
+                                                                                                                           ℓ:k :=         αj ∥rj ∥2 ,                                                         (1)--><a id="eq:CGerrorestim"></a><!--
+                                                                                                                                    j=ℓ
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:CGerrorestim} \| x - x_\ell \|^2_A \approx \Delta ^{\mathrm {CG}}_{\ell :k} := \sum _{j=\ell }^{k} \alpha _j \| r_j \|^2,
+\end{equation}
+
+</p>
+
+<p>
+where \(\| v \|^2_A \equiv v^T A v\) denotes the squared \(A\)-norm. Integrating the estimate into the existing CG code is straightforward and simple; see [4, Alg.&nbsp;1]. At the current \(k\)th CG iteration, we get an estimate with the delay
+\(d = k-\ell \) for previous approximation \(x_\ell \). The delay&nbsp;\(d\) is set adaptively by [4, Alg.&nbsp;2]. From the construction, \(\Delta ^{\mathrm {CG}}_{\ell :k}\) yields a lower bound
+</p>
+
+<p>
+\[ \| x - x_\ell \|^2_A \geq \Delta ^{\mathrm {CG}}_{\ell :k}. \]
+</p>
+
+<p>
+In [4] and in the prospective talk at Householder Symposium&nbsp;XXII we consider algorithms for solving least-squares problems with a general, possibly rectangular matrix
+</p>
+
+<p>
+\[ \min _{x\in \mathbb {R}^m} \| b - Ax\|, \qquad b\in \mathbb {R}^n, A\in \mathbb {R}^{n \times m}, n \geq m, \]
+</p>
+
+<p>
+that are mathematically based on applying CG to a system with a positive (semi-)definite matrix&nbsp;\(A^TA\). We discuss CGLS based on Hestenes–Stiefel-like implementation as well as LSQR based on Golub–Kahan bidiagonalization, and both
+unpreconditioned and preconditioned variants. We show that the adaptive estimate used in CG can be extended for these algorithms to estimate the monotonically decreasing quantity
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                              ∥x − xℓ ∥2AT A = ∥rℓ ∥2 − ∥r∥2 ,                                                                 (2)--><a id="eq:LSresiduals"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:LSresiduals} \| x - x_\ell \|^2_{A^TA} = \| r_\ell \|^2 - \| r \|^2,
+\end{equation}
+
+</p>
+
+<p>
+where \(x = A^{\dagger }b\) is the minimal norm solution, \(x_\ell \) is the approximation in the \(\ell \)th step of CGLS or LSQR, \(r_\ell = b - Ax_\ell \), and \(r = b - b_{|\mathcal {R}(A)}\) with \(b_{|\mathcal {R}(A)}\) being
+the orthogonal projection of&nbsp;\(b\) onto the range of&nbsp;\(A\).
+</p>
+
+<p>
+For example, the estimate
+</p>
+
+<p>
+\[ \| x - x_\ell \|^2_{A^TA} \approx \Delta ^{\mathrm {LSQR}}_{\ell :k} := \sum _{j=k}^{k} \phi _{j+1}^2, \]
+</p>
+
+<p>
+for estimating the quantity of interest&nbsp;<span class="textup">(<a href="paper.html#eq:LSresiduals">2</a>)</span> in LSQR algorithm is given, analogously to \(\Delta ^{\mathrm {CG}}_{\ell :k}\), as a sum of scalar terms, which are
+available in the algorithm; here we use the notation from [4, Alg.&nbsp;4]. Moreover, \(\Delta ^{\mathrm {LSQR}}_{\ell :k}\) provides a lower bound on \(\| x - x_\ell \|^2_{A^TA}\).
+</p>
+
+<p>
+We emphasize the applicability of the estimates (bounds) for the computations in finite-precision arithmetic. Their derivation is only based on local orthogonality, which is typically well preserved during computations; see [5]. We demonstrate that
+the estimates remain computationally inexpensive to evaluate and are numerically reliable in finite-precision arithmetic under mild assumptions. These qualities make the estimates highly suitable for stopping the iterations.
+</p>
+
+<p>
+One can consider the stopping criterion requiring that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                    ∥rℓ ∥2 − ∥r∥2
+                                                                                                                                  ≤ε                                                                         (3)--><a id="eq:stopcrit1_req"></a><!--
+                                                                                                                         ∥r∥2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:stopcrit1_req} \frac {\| r_\ell \|^2 - \| r \|^2}{\| r \|^2} \leq \varepsilon
+\end{equation}
+
+</p>
+
+<p>
+for a prescribed tolerance&nbsp;\(\varepsilon \). It is clear from&nbsp;<span class="textup">(<a href="paper.html#eq:LSresiduals">2</a>)</span>, that after \(\| r_\ell \| \approx \| r \|\), further iterations bring no significant
+decrease of the residual norm \(\|r_\ell \|\). Using&nbsp;<span class="textup">(<a href="paper.html#eq:LSresiduals">2</a>)</span>, the criterion&nbsp;<span class="textup">(<a href="paper.html#eq:stopcrit1_req">3</a>)</span>
+is equivalent to
+</p>
+
+<p>
+\[ \| x - x_\ell \|^2_{A^TA} \leq \frac {\varepsilon }{1-\varepsilon } \| r_\ell \|^2, \]
+</p>
+
+<p>
+where the estimate for \(\| x - x_\ell \|^2_{A^TA}\) can be used.
+</p>
+
+<p>
+Another stopping criterion based on a backward error can also be considered when applying our estimates. This criterion aims to identify the iteration at which the computed approximation can be interpreted as the least-squares solution to a
+perturbed system
+</p>
+
+<p>
+\[ \min _x \| (b+f) - (A+E)x\|, \]
+</p>
+
+<p>
+with
+</p>
+
+<p>
+\[ \min _{f,E,\zeta } \{\zeta \quad \mbox {such that}\quad {\|E\|} \leq \zeta \|A\|, {\|f\|} \leq \zeta \|b\| \} \leq \varepsilon . \]
+</p>
+
+<p>
+This backward error for stopping LSQR iterations has been studied, e.g., in [3, 1], and can be approximated using the asymptotically tight bound
+</p>
+
+<p>
+\[ \frac {\| x - x_\ell \|^2_{A^TA}}{\|A\| \| x_\ell \| + \|b\|}; \]
+</p>
+
+<p>
+see [1].
+</p>
+
+<p>
+Finally, we present a range of numerical experiments to confirm the robustness and very satisfactory behaviour of the estimates for CGLS, LSQR, and also their preconditioned variants. We hope that these estimate will prove to be useful in practical
+computations. They allow us to approximate, with the prescribed relative accuracy, the quantity of interest at a negligible cost.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> X.-W.&nbsp;Chang, C.&nbsp;C.&nbsp;Paige, and D.&nbsp;Titley-Peloquin. Stopping criteria for the iterative solution of linear least squares problems. <i>SIAM J. Matrix Anal. Appl.</i>,
+31(2):831–852, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> G.&nbsp;Meurant, J.&nbsp;Papež, and P.&nbsp;Tichý. Accurate error estimation in CG. <i>Numer. Algorithms</i>, 88(3):1337–1359, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> C.&nbsp;C.&nbsp;Paige and M.&nbsp;A.&nbsp;Saunders. LSQR: an algorithm for sparse linear equations and sparse least squares. <i>ACM Trans. Math. Software</i>, 8(1):43–71, 1982.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.&nbsp;Papež and P.&nbsp;Tichý. Estimating error norms in CG-like algorithms for least-squares and least-norm problems. <i>Numer. Algorithms</i>, 97(1):1–28, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Z.&nbsp;Strakoš and P.&nbsp;Tichý. On error estimation in the conjugate gradient method and why it works in finite precision computations. <i>Electron. Trans. Numer. Anal.</i>, 13:56–80, 2002.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

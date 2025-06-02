@@ -1,0 +1,305 @@
+---
+layout: abstract
+absnum: 71
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+AdaCUR: Eﬀicient Low-rank Approximation of Parameter-dependent matrices \(A(t)\) via CUR decomposition
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Taejun Park</span>, Yuji Nakatsukasa
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Let \(A(t) \in \mathbb {R}^{m\times n}\) be a parameter-dependent matrix and suppose we want to compute its low-rank approximation at a finite number of parameter values \(t_1,t_2,...,t_q\). This problem arises in several applications
+including the compression of a series of images, dynamical systems, and Gaussian process regression, where low-rank approximations are needed for the sequence \(A(t_1), A(t_2),...,A(t_q)\). While existing methods such as dynamical low-rank
+approximation [6] and random embedding techniques [7] offer solutions, they typically incur a complexity of \(\mathcal {O}(r_iT_{A(t_i)})\) for each parameter \(t_i\), with \(r_i\) as the target rank and \(T_{A(t_i)}\) as the cost of a
+matrix-vector product with \(A(t)\). We propose an alternative approach using the CUR decomposition, which can accelerate low-rank approximation to an average complexity of \(\mathcal {O}(T_{A(t_i)})\) while addressing key challenges, such
+as rank-adaptivity and error control, often missing in other methods.
+</p>
+
+<p>
+The CUR decomposition [3, 5, 8, 11] approximates a matrix \(A\) using subsets of its rows and columns:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                       A ≈ CU † R,
+
+-->
+
+<p>
+
+\begin{equation*}
+A \approx CU^\dagger R,
+\end{equation*}
+
+</p>
+
+<p>
+where \(C\) and \(R\) are subsets of \(A\)’s columns and rows, and \(U\) is their intersection. This decomposition, in contrast to methods like the truncated SVD, preserves properties such as sparsity and aids in data interpretation by identifying
+significant columns and rows. For \(A(t)\), recomputing row and column indices for each \(t_i\) is ineﬀicient, as indices derived for one parameter value may still provide useful information for nearby parameters. Building on this insight, we
+introduce an algorithm, AdaCUR [12], which maximizes the reuse of row and column indices across parameter values.
+</p>
+
+<p>
+AdaCUR computes low-rank approximations of parameter-dependent matrices via CUR decomposition:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                 A(t) ≈ C(t)U (t)† R(t),
+
+-->
+
+<p>
+
+\begin{equation*}
+A(t) \approx C(t)U(t)^\dagger R(t),
+\end{equation*}
+
+</p>
+
+<p>
+where \(C(t)\) and \(R(t)\) are subsets of the columns and rows of \(A(t)\), and \(U(t)\) is their intersection. Starting from an initial CUR decomposition, AdaCUR reuses row and column indices until the error exceeds a specified threshold, at
+which point the indices are recomputed. To achieve this eﬀiciently and reliably, we rely on a variety of tools from randomized numerical linear algebra [9]. Specifically, we use pivoting on a random sketch [1, 2] to obtain a reliable set of row and
+column indices, randomized rank estimation [10] to adapt to rank changes across parameter values, and randomized norm estimation [4] to approximate the relative error, ensuring effective error control. The resulting algorithm is eﬀicient,
+rank-adaptive, and incorporates error control.
+</p>
+
+<p>
+Additionally, we present FastAdaCUR, a variation that prioritizes speed over precision. FastAdaCUR achieves linear complexity in \(m\) and \(n\) after an initial index computation phase. Although highly eﬀicient and rank-adaptive, it lacks
+rigorous error control, as it emphasizes speed over accuracy by only examining a subset of rows and columns of the matrix.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Y. Dong and P.-G. Martinsson, <em>Simpler is better: a comparative study of randomized pivoting algorithms for CUR and interpolative decompositions</em>, Adv. Comput. Math., 49 (2023).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J. A. Duersch and M. Gu, <em>Randomized projection for rank-revealing matrix factorizations and low-rank approximations</em>, SIAM Rev., 62 (2020), pp. 661–682.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> S. Goreinov, E. Tyrtyshnikov, and N. Zamarashkin, <em>A theory of pseudoskeleton approximations</em>, Linear Algebra Appl., 261 (1997), pp. 1–21.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> S. Gratton and D. Titley-Peloquin, <em>Improved bounds for small-sample estimation</em>, SIAM J. Matrix Anal. Appl., 39 (2018), pp. 922–931.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> K. Hamm and L. Huang, <em>Perspectives on CUR decompositions</em>, Appl. Comput. Harmon. Anal., 48 (2020), pp. 1088–1099.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> O. Koch and C. Lubich, <em>Dynamical low-rank approximation</em>, SIAM J. Matrix Anal. Appl., 29 (2007), pp. 434–454.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> D. Kressner and H. Y. Lam, <em>Randomized low-rank approximation of parameter-dependent matrices</em>, Numer. Lin. Alg. Appl., (2024), p. e2576.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> M. W. Mahoney and P. Drineas, <em>CUR matrix decompositions for improved data analysis</em>, Proc. Natl. Acad. Sci., 106 (2009), pp. 697–702.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> P.-G. Martinsson and J. A. Tropp, <em>Randomized numerical linear algebra: Foundations and algorithms</em>, Acta Numer., 29 (2020), p. 403–572.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> M. Meier and Y. Nakatsukasa, <em>Fast randomized numerical rank estimation for numerically low-rank matrices</em>, Linear Algebra Appl., 686 (2024), pp. 1–32.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> T. Park and Y. Nakatsukasa, <em>Accuracy and stability of CUR decompositions with oversampling</em>, arXiv:2405.06375, (2024).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> T. Park and Y. Nakatsukasa, <em>Low-rank approximation of parameter-dependent matrices via CUR decomposition</em>, arXiv:2408.05595, (2024).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

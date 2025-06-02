@@ -1,0 +1,402 @@
+---
+layout: abstract
+absnum: 102
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Monotonicity, Bounds, and Averaging of Block-Gauss and Gauss-Radau Quadrature for Computing \(B^T\phi (A)B\)
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Jörn Zimmerling</span>, Vladimir Druskin, Valeria Simoncini
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We explore quadratures for \({\cal F}(s)=B^T \phi (A,s) B\) where \(A\) is a symmetric, nonnegative-definite matrix in \(\mathbb {R}^{n \times n}\), \(B\) is a tall matrix in \(\mathbb {R}^{n \times p}\), and \(\phi (\cdot ,s)\) is a
+matrix function with parameter \(s\) [1, 2]. These formulations commonly arise in the computation of multiple-input, multiple-output transfer functions for diffusion PDEs.
+</p>
+
+<p>
+We derive bounds and averaging schemes for quadrature rules for \(B^T \phi (A,s) B\) computed via the block-Lanczos algorithm, which are particularly eﬀicient for discretizations of PDE operators with continuous spectra. Additionally, we
+demonstrate that these bounds and averaging schemes are applicable to parametric model reduction of dynamical systems via Galerkin projections.
+</p>
+<!--
+...... section Block-Lanczos Approximations to ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Block-Lanczos Approximations to \(B^T \phi (A,s) B\)</h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+We propose an approximation scheme for \({\cal F}(s)=B^T \phi (A,s) B\) leveraging the block-Lanczos algorithm [3] and its representation via Stieltjes matrix continued fractions.
+</p>
+
+<p>
+The block-Lanczos recursion for the block-Lanczos vectors \(Q_{i}\in \mathbb {R}^{n\times p}\) reads
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                        AQi = Qi+1 β i+1 + Qi αi + Qi−1 (β i )T ,                                                                (1)--><a id="eq:Lanczos"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Lanczos} A Q_i=Q_{i+1} {\boldsymbol \beta }_{i+1} +Q_{i} {\boldsymbol \alpha }_{i}+Q_{i-1} ({\boldsymbol \beta }_{i})^T,
+\end{equation}
+
+</p>
+
+<p>
+with block coeﬀicients \({\boldsymbol \alpha }_{i},{\boldsymbol \beta }_{i} \in \mathbb {R}^{p\times p}\). Using Stieltjes matrix continued fractions, we show that this block-Lanczos algorithm defines a block-Gauss quadrature
+approximation \({\cal F}_m(s)\) and converges monotonically for \(\phi (A,s) =(A+sI)^{-1}\) with \(s \in \mathbb {R}^+\) and \(I\) the identity matrix. We further show that a monotonically convergent block Gauss-Radau quadrature
+\(\tilde {\cal F}_m(s)\) can be readily defined through this Stieltjes continued fraction representation. In the literature, Gauss-Radau quadratures for symmetric matrices are often defined via rank-one updates of the Lanczos matrix in the
+non-block case [4, 5] or rank \(p\) updates in the block case [6].
+</p>
+
+<p>
+Here we define Gauss-Radau quadrature through Stieltjes matrix continued fractions which can be written via the recursion
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                                  1
+                                                                                                             Cj (s) =                            ,
+                                                                                                                                      1
+                                                                                                                        sγ̂ j +
+                                                                                                                                γ j + Cj+1 (s)
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathcal {C}_j(s)=\cfrac {1}{s \hat {\boldsymbol \gamma }_j + \cfrac {1}{{\boldsymbol \gamma }_j+\mathcal {C}_{j+1}(s)}} ,
+\end{equation*}
+
+</p>
+
+<p>
+where \(\hat {\boldsymbol \gamma }_j, {\boldsymbol \gamma }_j \in \mathbb {R}^{p \times p}\) are symmetric positive definite matrices directly related to the block-Lanczos coeﬀicients \({\boldsymbol \alpha }_j\) and \({\boldsymbol
+\beta }_j\). We show that the Gauss quadrature approximation to \(B^T (A+sI)^{-1} B\) after \(m\) iterations of block-Lanczos corresponds to \(\mathcal {C}_1(s)\), defined through the above recursion, terminated with \(\mathcal
+{C}_{m+1}=0\), whereas the Gauss-Radau quadrature corresponds to truncation with \(\mathcal {C}_{m+1}=\infty \).
+</p>
+
+<p>
+Through Stieltjes matrix continued fractions, we demonstrate that Gauss quadrature provides a lower bound, while Gauss-Radau quadrature provides an upper bound to the matrix function. Combined with the monotonicity result, this yields an
+ordering of the Gauss and Gauss-Radau quadrature approximations to \(\cal F\). Given \(m\), the quadrature order, we obtain
+</p>
+
+<p>
+\[ 0&lt;{\cal F}_{m-1}(s)&lt;{\cal F}_{m}(s)&lt; {\cal F}(s)&lt; \tilde {\cal F}_{m}(s)&lt;\tilde {\cal F}_{m-1}(s) \quad \forall s\in \mathbb {R}_+, \]
+</p>
+
+<p>
+where, for two symmetric matrices \(G_1, G_2\), the notation \(G_1&lt;G_2\) indicates that \(G_2-G_1\) is positive definite.
+</p>
+
+<p>
+This ordering further enables derivation of easily computable error bounds of the form
+</p>
+
+<p>
+\[ \|{\cal F}- {\cal F}_m \| &lt; \|\tilde {\cal F}_m - {\cal F}_m \|. \]
+</p>
+
+<p>
+In this contribution, we discuss averaging schemes of Gauss and Gauss-Radau quadrature motivated by potential theory for Padé approximations. We show numerical examples for various \(\phi (A,s)\), where \(A\) is a graph Laplacian or
+discretization of an operator with a continuous spectrum (e.g., PDE operators in unbounded domains). These examples demonstrate that the derived error bound is tight in important applications, and that the averaging schemes reduce the
+approximation error by an order of magnitude for discretizations of operators with continuous spectra, as shown in [7]. In the next section we discuss the applicability of such Gauss-Radau bounds to parametric model reduction, a subsequent result
+not covered in [7].
+</p>
+<!--
+...... section Parametric Model Reduction via Galerkin Projection ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">2&#x2003;</span>Parametric Model Reduction via Galerkin Projection</h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+The first iteration of the block-Lanczos procedure can be interpreted as a Galerkin projection of a symmetric positive definite matrix on a general basis. This insight allows us to directly apply the Gauss-Radau bound and averaging schemes to, for
+instance, projection-based parametric model reduction [8].
+</p>
+
+<p>
+Consider the parametric dynamical system
+</p>
+
+<p>
+\[ (A(\rho )+s I)X(s,\rho ) = B, \quad \text {with transfer function } {\cal F}(s) = B^T X(s,\rho ), \]
+</p>
+
+<p>
+where \(A(\rho )\in \mathbb {R}^{n \times n}\) is symmetric positive definite for all parameters \(\rho \) of interest, \(B\in \mathbb {R}^{n\times p}\), and the Laplace frequency \(s \in \mathbb {R}^+\). This formulation arises in inverse
+problems where \(A(\rho )\) represents a discretized PDE operator with PDE coeﬀicients parametrized by \(\rho \).
+</p>
+
+<p>
+Assuming for simplicity, that the Galerkin projection basis \(U\in \mathbb {R}^{n \times k}\) contains \(B\) as \(U=[B, U_0]\) and is orthogonalized \(U^TU=I_k\) (e.g. a rational Krylov subspace with a shift at \(\infty \)). Then the Galerkin
+approximation of \(\cal F\) is
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                     FGal (s) = (U T B)T (U T A(ρ)U + sIk )−1 (U T B)
+                                                                                                                [ ]T                       [ ]
+                                                                                                                 Ip                         Ip
+                                                                                                              =       (H ROM (ρ) + sIk )−1       .
+                                                                                                                  0                          0
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+{\cal F}_{\rm Gal}(s) &amp;= (U^TB)^T (U^TA(\rho )U+s I_k)^{-1} (U^T B) \\ {} &amp;=\begin{bmatrix}I_p\\ 0\end {bmatrix}^T (H^{\rm ROM}(\rho )+sI_k)^{-1} \begin{bmatrix}I_p\\ 0\end {bmatrix}.
+\end{align*}
+
+</p>
+
+<p>
+We can interpret \(U\) as the first Lanczos vector \(Q_1\) in equation&nbsp;(<a href="paper.html#eq:Lanczos">1</a>) for \(i=1\) with \(Q_0=0\) and \(H^{\rm ROM}(\rho )\) as the \({\boldsymbol \alpha }_{1}\) block-Lanczos coeﬀicents.
+Then we can further define the \({\boldsymbol \beta }_2\) coeﬀicent according to the block-Lanczos recursion
+</p>
+
+<p>
+\[ ({\boldsymbol \beta }_2)^T{\boldsymbol \beta }_2=U^TA^2U - (H^{\rm ROM}(\rho ))^2. \]
+</p>
+
+<p>
+Then the Gauss-Radau quadrature approximation to the \(k \times k\) transfer function \({\cal F}_U=U^T(A(\rho )+sI)U\) as defined in [7] reads
+</p>
+
+<p>
+\[ \tilde {\cal F}_{U}(s) = \begin {bmatrix}I_k\\ 0\end {bmatrix}^T \left ( \begin {bmatrix}H^{\rm ROM}(\rho ) &amp; {\boldsymbol \beta }_2^T\\{\boldsymbol \beta }_2&amp; {\boldsymbol \beta }_2 (H^{{\rm ROM}}(\rho
+))^{-1} {\boldsymbol \beta }_2^T\end {bmatrix} +sI_{2k} \right )^{-1} \begin {bmatrix}I_k\\ 0\end {bmatrix}. \]
+</p>
+
+<p>
+Since the Gauss Radau approximation \(\tilde {\cal F}_{U}\) is an upper bound to \({\cal F}_{U}\) their difference \(\tilde {\cal F}_{U}-{\cal F}_{U}\) is s.p.d. and any subspace projection of a s.p.d. matrix is s.p.d. Hence the leading
+\(p \times p\) block of \(\tilde {\cal F}_{U}\) provides an easy-to-compute error bound for the leading block of \({\cal F}_{U}\) which coincides with \({\cal F}_{\rm Gal}\) and holds for any \(U\) and \(\rho \). In this contribution, we
+will show that such a bound provides a meaningful tool for applications in inverse problems and greedy selection of interpolation points in parametric model reduction.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-7">References</h4>
+<a id="paper-autopage-7"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Gene&nbsp;H. Golub and Gérard Meurant. <i>Matrices, Moments and Quadrature with Applications</i>. Princeton University Press, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C.&nbsp;Fenu, D.&nbsp;Martin, L.&nbsp;Reichel, and G.&nbsp;Rodriguez. Block Gauss and anti-Gauss quadrature with application to networks. <i>SIAM Journal on Matrix Analysis and
+Applications</i>, 34(4):1655–1684, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> G.H. Golub and R.&nbsp;Underwood. The block Lanczos method for computing eigenvalues. In John&nbsp;R. Rice, editor, <i>Mathematical Software</i>, pages 361–377. Academic Press, 1977.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> G.&nbsp;López Lagomasino, L.&nbsp;Reichel, and L.&nbsp;Wunderlich. Matrices, moments, and rational quadrature. <i>Linear Algebra and its Applications</i>, 429(10):2540–2554, 2008. Special
+Issue in honor of Richard S. Varga.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Andreas Frommer, Kathryn Lund, Marcel Schweitzer, and Daniel&nbsp;B. Szyld. The Radau–Lanczos method for matrix functions. <i>SIAM Journal on Matrix Analysis and Applications</i>,
+38(3):710–732, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Kathryn Lund. <i>A New Block Krylov Subspace Framework with Applications to Functions of Matrices Acting on Multiple Vectors</i>. Phd thesis, Department of Mathematics, Temple University
+and Fakultät Mathematik und Naturwissenschaften der Bergischen Universität Wuppertal, Philadelphia, Pennsylvania, USA, May 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Jörn Zimmerling, Vladimir Druskin and Valeria Simoncini. Monotonicity, bounds and extrapolation of Block-Gauss and Gauss-Radau quadrature for computing \(B^T \phi (A) B\), 2024;
+arXiv:2407.21505.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Benner, P., Gugercin, S. &amp; Willcox, K. A Survey of Projection-Based Model Reduction Methods for Parametric Dynamical Systems. <i>SIAM Review</i>. 57, 483-531 (2015),
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,321 @@
+---
+layout: abstract
+absnum: 111
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\def \Qt {\widetilde {Q}}\)
+
+\(\def \At {\widetilde {A}}\)
+
+\(\def \Qt {\widetilde {Q}}\)
+
+\(\def \At {\widetilde {A}}\)
+
+\(\def \scond {\kappa _{2}^{S}}\)
+
+\(\def \diag {\mathrm {\mathop {diag}}}\)
+
+\(\def \off {\mathrm {\mathop {off}}}\)
+
+\(\def \Atcomp {{\At _{\mathrm {comp}}}}\)
+
+\(\def \Ahcomp {{\At _{\mathrm {h,comp}}}}\)
+
+\(\def \normt #1{\|#1\|_2}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Computing Accurate Eigenvalues of Symmetric Matrices<br />
+With a Mixed Precision Jacobi Algorithm
+</h2>
+</div>
+<div class="center">
+
+<p>
+Nicholas J.&nbsp;Higham, <span class="underline">Françoise&nbsp;Tisseur</span>, Marcus&nbsp;Webb, Zhengbo&nbsp;Zhou
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Modern hardware increasingly supports not only single and double precisions, but also half and quadruple precisions. These precisions provide new opportunities to considerably accelerate linear algebra computations while maintaining numerical
+stability and accuracy. Efforts on developing mixed precision algorithms in the numerical linear algebra and high performance computing communities have mainly focussed on linear systems and least squares problems. Eigenvalue problems are
+considerably more challenging to solve and have a larger solution space that cannot be computed in a finite number of steps [5].
+</p>
+
+<p>
+There are two classes of algorithms for symmetric eigenproblems: (i) those that work directly on the matrix, such as the Jacobi algorithm and the QR-based Dynamically Weighted Halley (QDWH-eig) algorithm and (ii) those that reduce the matrix
+to tridiagonal form in a finite number of steps and then employ an iterative scheme to compute all or just part of the eigenvalues and/or the eigenvectors, such as bisection and inverse iteration (BI), the QR algorithm, and the divide-and-conquer
+algorithm (DC). All these algorithms have pros and cons. DC and the method of multiple relatively robust representations (MR), which is a sophisticated variant of inverse iteration, are generally much faster than QR and BI on large matrices, with
+MR performing the fewest floating point operations but at a lower MFLOPS rate than DC. The latter and QR are the most accurate algorithms with observed accuracy \(O(\sqrt {n}u)\), where \(u\) is the working precision, \(n\) the size of the
+matrix, and accuracy is measured in terms of scaled residual norms and loss of orthogonality for the eigenvectors [1]. None of these eigensolvers exploits the low precisions available in modern hardware.
+</p>
+
+<p>
+A key question is how can we exploit access to multiple precisions arithmetic to accelerate symmetric eigensolvers while maintaining numerical stability and accuracy?
+</p>
+
+<p>
+In terms of arithmetic cost, solving a symmetric eigenvalue problem is about 27 times more expensive than solving a symmetric positive definite linear system. Unlike for linear systems for which the \(O(n^3)\) part of the computation can be
+performed at low precision and the \(n\)-dimensional solution refined at working precision in \(O(n^2)\) operations, it can be shown that for the eigenvalue problem, some of the \(O(n^3)\) operations need to be performed in the working precision if
+one hopes to maintain numerical stability and achieve accuracy. So to gain any speedup, these should be BLAS 3 operations, i.e., highly optimized matrix-matrix multiplies. Modern architectures execute matrix multiplies of large size \(n\) at least
+18 faster than symmetric eigensolvers on the same size matrices. Low precision arithmetic can be used to preprocess or to precondition the eigenproblem to allow for a faster solution.
+</p>
+
+<p>
+In this talk we concentrate on symmetric positive definite matrices \(A\in \mathbb {R}^{n\times n}\) and consider a mixed precision preconditioned Jacobi algorithm that uses three precisions \(u_h&lt;u&lt;u_\ell \). The preconditioner \(\Qt
+\) is an approximate eigenvector matrix that is eﬀiciently computed using a combination of low and working precisions. Zhang and Bai&nbsp;[7] and Zhou&nbsp;[8] suggested to compute an eigenvector matrix at low precision and then orthogonalize
+it to working precision so that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                                 eT Q
+                                                                                           --><a id="ft.eq.assumption1"></a><!--∥Q  e − I∥2 ≤ p1 u < 1,                                                                                                (1)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {ft.eq.assumption1} \normt {\Qt ^T\Qt - I} \le p_{1}u &lt; 1,
+\end{equation}
+
+</p>
+
+<p>
+where \(p_{1}\) is a low degree polynomial in \(n\). It is essential that the preconditioner \(\Qt \) satisfies (<a href="paper.html#ft.eq.assumption1">1</a>) to ensure that the eigenvectors returned by the mixed precision preconditioned Jacobi
+algorithm are orthogonal to working precision \(u\). We discuss several alternative eﬀicient ways to construct such preconditioner and prove it reduces the off-diagonal entries of \(A\) to a level determined by the chosen low precision \(u_\ell \) so
+that the initial slow convergence phase of the Jacobi algorithm can be skipped.
+</p>
+
+<p>
+Demmel and Veselič&nbsp;[2] showed that the eigenvalues computed by the Jacobi algorithm with stopping criterion \(|{a_{ij}}| \le \sqrt {a_{ii}a_{jj}}\) for all \(i,j\) satisfy
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                                 |λi (A) − λei (A)|
+                                                                                        --><a id="eq.deve92-bound"></a><!--                         ≤ p(n) u κS
+                                                                                                                                                              2 (A),                                                                                   (2)
+                                                                                                                                      |λi (A)|
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq.deve92-bound} \frac {|\lambda _{i}(A)-\widetilde {\lambda }_{i}(A)|} {|\lambda _{i}(A)|} \le p(n)\,u\,\scond (A),
+\end{equation}
+
+</p>
+
+<p>
+where \(\lambda _{i}(A)\) and \(\widetilde \lambda _{i}(A)\) denote the \(i\)th largest exact and computed eigenvalue of \(A\), \(p(n)\) is a low degree polynomial and \(u\) is the working precision. Here \(\scond (A)\) is the <em>scaled
+condition number</em> of \(A\) defined by
+</p>
+
+<p>
+\[ \scond (A) = \kappa _{2}(DAD), \qquad D = \diag (a_{ii}^{-1/2}), \]
+</p>
+
+<p>
+where \(\kappa _2(B)= \lambda _1(B)/\lambda _n(B)\). For the QR and DC algorithms, the relative error is bounded by \(n^{1/2} p(n)\,u\,\kappa _2(A)\) so when \(\kappa _{2}(DAD)\ll \kappa _2(A)\), the Jacobi algorithm can produce
+much more accurate approximations to the smaller eigenvalues than QR or DC algorithms.
+</p>
+
+<p>
+Malyshev&nbsp;[6] and Drygalla&nbsp;[3, 4] suggest that preconditioning the matrix at a precision \(u_h\) higher than the working precision \(u\) improves the accuracy of the spectral decomposition computed by the preconditioned Jacobi
+algorithm. However, Malyshev only discuss the backward error and Drygalla only claims the high accuracy property without proving it. Let us denote by \(\At \) and \(\Atcomp \) the product \(\Qt ^T A\Qt \) computed in exact and floating
+point arithmetic, respectively. We prove under mild assumptions that the relative errors in the computed eigenvalues are proportional to \(u\scond (\Atcomp )\) and \(u\scond (\At )\) instead of \(u\scond (A)\) which appears in&nbsp;(<a
+href="paper.html#eq.deve92-bound">2</a>). Moreover, we prove that if \(\At \) is \(\theta \)-scaled diagonally dominant, i.e., \(\theta = \normt {\widetilde {D}\At \widetilde {D}}&lt;1\) then the scaled condition numbers \(\scond
+(\At )\) and \(\scond (\Atcomp )\) are of order 1. Hence, all the eigenvalues are computed to high relative accuracy. We remark that any preconditioner \(\Qt \) such that \(\off (\At )/\min _i(\widetilde {a}_{ii})&lt;1\), where \(\off
+(\At ) = (\sum _{i\neq j} \widetilde {a}_{ij}^{2})^{1/2}\), yields an \(\At \) that is scaled diagonally dominant. For a preconditioned matrix \(\At \) that is not scaled diagonally dominant, we use a result by Demmel and Veselič [2,
+Prop.&nbsp;6.2] to argue that if \(\off (\At )\) is suﬀiciently small so that we can treat the diagonals of \(\At \) as its approximate eigenvalues, the scaled condition numbers \(\scond (\Atcomp )\) and \(\scond (\At )\) are significantly
+smaller than \(\scond (A)\).
+</p>
+
+<p>
+Finally, we present numerical results to support our theoretical analysis.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> J.&nbsp;W. Demmel, O.&nbsp;A. Marques, B.&nbsp;N. Parlett, and C.&nbsp;Vömel. Performance and accuracy of LAPACK’s symmetric tridiagonal eigensolvers. <i>SIAM J. Sci. Comput.</i>,
+30(3):1508–1526, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;W. Demmel and K.&nbsp;Veselić. Jacobi’s method is more accurate than \(QR\). <i>SIAM J. Matrix Anal. Appl.</i>, 13(4):1204–1245, 1992.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> V.&nbsp;Drygalla. Extra precise preconditioning for non–Hermitian eigenvalue problems. <i>Proc. Appl. Math. Mech.</i>, 6(1):713–714, Dec. 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> V.&nbsp;Drygalla. Exploiting mixed precision for computing eigenvalues of symmetric matrices and singular values. <i>Proc. Appl. Math. Mech.</i>, 8(1):10809–10810, Dec. 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> N.&nbsp;J. Higham and T.&nbsp;Mary. Mixed precision algorithms in numerical linear algebra. <i>Acta Numerica</i>, 31:347–414, May 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> A.&nbsp;N. Malyshev. On iterative refinement for the spectral decomposition of symmetric matrices. Research Report 1651, INRIA/IRISA, Unité de Recherche, Rennes, France, 1992.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Z.&nbsp;Zhang and Z.-J. Bai. A mixed precision Jacobi method for the symmetric eigenvalue problem. Technical Report arXiv:2211.03339v1, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Z.&nbsp;Zhou. A mixed-precision eigensolver based on the Jacobi algorithm. M.Sc. Thesis, The University of Manchester, Manchester, UK, Sept. 2022.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

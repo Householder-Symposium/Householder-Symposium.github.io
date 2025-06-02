@@ -1,0 +1,536 @@
+---
+layout: abstract
+absnum: 217
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Sketched GCRODR and its Convergence Analysis
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Eric de Sturler</span> and Fei Xue
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We develop a sketched version of the GCRODR algorithm for the solution of a sequence of linear systems. The recycling approach in GCRODR with an approximate invariant subspace allows us to derive upperbounds on the convergence of
+GCRODR based on the field of values of the projected system (see below). We extend this convergence result to upperbounds on the convergence of a sketched GCRODR (S-GCRODR). The bounds for S-GCRODR deteriorate from those for
+GCRODR as a function of the subspace embedding distortion \(\epsilon \), and we provide expressions for this relation.
+</p>
+
+<p>
+Sketching offers the opportunity to substantially reduce the high orthogonalization cost in long-recurrence solvers like GMRES. Several approaches have been explored. Balabanov and Grigori [1] replace the inner products in the orthogonalization by
+sketched inner products, replacing an orthogonal projection by a oblique projection (but typically close to orthogonal), which maintains the stability of the Arnoldi process. While they demonstrate good performance improvements on HPC
+architectures, the approach does not reduce the computational complexity, \(O( nm^2 )\) for \(m\) iterations with \(A \in \mathbb {C}^{n \times n}\). On the other hand, Nakatsukasa and Tropp [5] generate the Krylov space with truncated
+Arnoldi and use sketching for the LS solution of the resulting, potentially very ill-conditioned, system. This approach has the significant advantage that it drastically reduces the computational complexity to \(O(n m\log m )\) for \(m\) iterations.
+However, the severe ill-conditioning of the basis vectors typically leads to some deterioration of the convergence. We propose an eﬀicient and convergence-wise effective combination of the two approaches.
+</p>
+
+<p>
+We consider the solution of a sequence of linear systems, \(A^{(j)} x^{(j)} = b^{(j)}\), where \(A \in \mathbb {C}^{n \times n}\), and where the matrices change slowly. We aim for robustness and reduced iterations as well as a significant
+reduction in the average cost per iteration. Recycling Krylov subspaces from previous linear solves can drastically reduce the total number of iterations, which suggests that the approximate orthogonalization by sketching of new Krylov vectors
+against the recycle space is important. This introduces only a linear cost in the number of iterations. In addition, we substantially reduce the computational complexity by using only selective orthogonalization with a fixed number of
+orthogonalizations when we extend the (augmented) Krylov search space and solve the least squares problem in a sketched fashion following the approach proposed in [5].
+</p>
+<!--
+...... paragraph GCRODR and S-GCRODR ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">GCRODR and S-GCRODR</span>
+<a id="paper-autopage-5"></a>
+Consider a recycle space of dimension \(k\), defined by (range) \(R(U)\), where \(U \in \mathbb {C}^{n \times k}\) such that (for convenience) \(C = AU\) has orthonormal columns, \(C^*C = I\). We define the (orthogonal) projection \(\Phi =
+CC^*\). We also define \(C_\perp \) such that the matrix \([C \; C_\perp ] \in \mathbb {C}^{n \times n}\) is unitary. We assume here, for simplicity, that \(U\) has been selected such that \(R(U)\) is a low accuracy approximation (see below)
+to an invariant subspace with eigenvalues near the origin. As shown in [7], using the recycle space \(R(U)\), we can update the initial solution, \(\widetilde {x}_0\), and residual, \(\widetilde {r}_0\), as \(x_0 = \widetilde {x}_0 +
+UC^*\widetilde {r}_0\), and \(r_0 = (I-\Phi )\widetilde {r}_0\), and subsequently solve the projected system \((I-\Phi )Az = (I-\Phi )\widetilde {r}_0\) with GMRES. For this (consistent) system, the right hand side \((I-\Phi
+)\widetilde {r}_0 \in R(C)^{\perp } = R(C_\perp )\) and \((I-\Phi )Az:R(C_{\perp }) \rightarrow R(C_{\perp })\). So, we can analyze the convergence for GMRES for the linear operator \((I-\Phi )A\) over the space \(R(C_\perp )\).
+</p>
+
+<p>
+After defining a sketching matrix \(S \in \mathbb {C}^{s \times n}\), which provides an \(\ell _2\) embedding of a suitable vector space \(\cal V\), which contains the right hand side or residual, the \(R(C)\), and a suitable Krylov space, we
+let \(SC = YR_Y\) and \(S^*Y = QR_Q\) be reduced QR decompositions. In S-GCRODR the orthogonal projection \(I-\Phi \) in GCRODR is replaced by the (oblique) projection \(I - \widehat {\Phi }\), with range \(R(\widehat {\Phi }) =
+R(C)\) and null space \(N(\widehat {\Phi }) = R(Q)^\perp = R(Q_\perp )\), where \([ Q \; Q_\perp ]\) is a unitary matrix. This implies that \((I - \widehat {\Phi }) = Q_{\perp }(C_{\perp }^*Q_\perp )^{-1}C_{\perp }^*\). After
+computing the updates to the initial guess and residual, S-GCRODR solves the projected system \((I - \widehat {\Phi })Az = (I - \widehat {\Phi })\widetilde {r}_0\) using GMRES.
+</p>
+<!--
+...... paragraph Convergence ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Convergence</span>
+<a id="paper-autopage-6"></a>
+We give bounds on the convergence for GCRODR while recycling an approximate invariant subspace and compare these with convergence bounds for the sketched version, S-GCRODR, recycling the same invariant subspace. We show that the
+convergence bounds for S-GCRODR can deteriorate due the oblique projection; however, the deterioration can be bounded in terms of the embedding subspace distortion \(\epsilon \).
+</p>
+
+<p>
+We can analyze the convergence of GCRODR by considering convergence bounds for GMRES for the linear operator \((I-\Phi )A\) restricted to the space \(R(C_\perp )\), which can derived using the field of values (FOV) [4, 3] of \(C_{\perp
+}^*A C_{\perp }\). Now let \(A\) have the block Schur decomposition (with unitary \([V \; V_\perp ] \in \mathbb {C}^{n \times n}\))
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                            [                 ]
+                                                                                                                                                T11     T12
+                                                                                      --><a id="eq:SchurA"></a><!--A        =     [V V⊥ ]                         [V V⊥ ]∗ ,                                                                      (1)
+                                                                                                                                                 0      T22
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {eq:SchurA} A &amp;=&amp; [V \:\:V_\perp ] \left [\begin{array}{cc}T_{11} &amp; T_{12} \\ 0 &amp; T_{22}\end {array} \right ][V \:\: V_\perp ]^* ,
+\end{eqnarray}
+
+</p>
+
+<p>
+where the eigenvalues of \(T_{11}\) are near the origin (possibly surrounding the origin) and \(\|T_{11}\|_2\) is small, and the eigenvalues of \(T_{22}\) are further away in the right half plane, and let \(\|(I-\Phi )V\|_2 = \delta &lt; 1\). In
+the derivation of FOV bounds, we use the following notation. We use calligraphic script to denote sets: \({\cal F}(T_{11})\) denotes the field of values of \(T_{11}\), \({\cal F}(T_{22})\) denotes the field of values of \(T_{22}\) and \(\cal D\)
+denotes the unit disk. Set addition is defined in the usual way, and for a scalar \(\tau \) and set \(\cal S\), the set \(\tau {\cal S}\) is defined as \(\tau {\cal S} = \{ \tau x \;|\; x \in {\cal S} \}\) and \([\tau _1, \tau _2] {\cal
+S} = \{ \tau x \;|\; x \in {\cal S} \mbox { and } \tau \in [\tau _1, \tau _2]\}\). We can then bound the FOV of the linear operator \((I-\Phi )A\) restricted to the space \(R(C_\perp )\), \(\cal F(C_{\perp }^*A C_\perp )\) as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                                       ∗
+                                                                     --><a id="eq:FOVbnd1"></a><!--F (C⊥ AC⊥ )       ⊂   [1 − δ 2 , 1]F (T22 ) + [0, δ 2 ]F (T11 ) + δ(1 − δ 2 )1/2 ∥T12 ∥2 D.                                                    (2)
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {eq:FOVbnd1} {\cal F(C_{\perp }^*A C_\perp )} &amp; \subset &amp; [1-\delta ^2,1]{\cal F}(T_{22}) + [0,\delta ^2]{\cal F}(T_{11}) + \delta (1-\delta ^2)^{1/2}\|T_{12}\|_2 {\cal D}.
+\end{eqnarray}
+
+</p>
+
+<p>
+This equation shows that even for \(\delta \) not very small, say \(\delta = 10^{-2}\) (which can be achieved with modest effort [6]), \(\cal F(C_{\perp }^*A C_\perp )\) is only slightly large than \({\cal F}(T_{22})\), unless \(\|
+T_{12}\|_2\) is (relatively) large. We can now bound the convergence of GCRODR for \(A\) with the recycle space \(R(U)\) using the FOV convergence bounds for GMRES with the FOV bounds from (<a href="paper.html#eq:FOVbnd1">2</a>).
+</p>
+
+<p>
+We can bound the convergence of S-GCRODR in a similar fashion as for GCRODR using bounds on the FOV of \((I - \widehat {\Phi })A\) restricted to the space \(R(Q_{\perp })\), that is the set \(\{ z^*(I - \widehat {\Phi })Az \; : \;
+z = Q_\perp \zeta , \zeta \in \mathbb {C}^{n-k}, \|\zeta \|_2 = 1 \}\), which is also given by \({\cal F}( Q_{\perp }^* Q_\perp (C_{\perp }^*Q_\perp )^{-1}C_{\perp }^*AQ_\perp ) = {\cal F}(\; (C_{\perp }^*Q_\perp
+)^{-1}C_{\perp }^*AQ_\perp \;)\).
+</p>
+
+<p>
+To understand the relation between the FOV bounds for GCRODR and S-GCRODR, we consider the singular values of \(C_{\perp }^*Q_{\perp }\). We assume \(k \ll n\). Let \(\lambda _1 \geq \lambda _2 \geq \cdots \geq \lambda _k\)
+be the singular values of \(C^*Q\). Then we can derive the singular values of \(C_{\perp }^*Q_{\perp }\) from the CS-decomposition of \([C \; C_\perp ]^*[Q \; Q_\perp ]\): \(\sigma (C_{\perp }^*Q_{\perp }) \in \{ 1,\lambda _1,
+\ldots , \lambda _k \}\). Furthermore, we can prove, based on the \(\epsilon \)-embedding, that \(\lambda _k \geq \sqrt {(1-\epsilon )/(1+\epsilon )}\), and therefore, for \(\epsilon \rightarrow 0\), \(R(Q_\perp ) \rightarrow
+R(C_\perp )\). This in turn implies that \((C_{\perp }^*Q_\perp )^{-1}C_{\perp }^*AQ_\perp \rightarrow C_{\perp }^*AC_\perp \), and hence the FOVs that govern the convergence bounds for GCRODR and S-GCRODR get closer and
+closer as \(\epsilon \) becomes small.
+</p>
+
+<p>
+We can describe the dependence of \({\cal F}(\; (C_{\perp }^*Q_\perp )^{-1}C_{\perp }^*AQ_\perp \;)\) on \(\epsilon \) in substantial detail by deriving detailed expressions of the type (for unit vectors \(\zeta \))
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                (            )∗ (                )(            )
+                                                                                                                                                    η1 (ϵ)           T11   T12        η1 (ϵ)
+                                                                     --><a id="eq:FOVeta"></a><!--ζ ∗ Q∗⊥ Q⊥ (C⊥
+                                                                                                               ∗
+                                                                                                                 Q⊥ )−1 C⊥
+                                                                                                                         ∗
+                                                                                                                           AQ⊥ ζ        =                                                          ,                                              (3)
+                                                                                                                                                    η2 (ϵ)            O    T22        η2 (ϵ)
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {eq:FOVeta} \zeta ^* Q_{\perp }^* Q_\perp (C_{\perp }^*Q_\perp )^{-1}C_{\perp }^*AQ_\perp \zeta &amp; = &amp; \left ( \begin{array}{c} \eta _1(\epsilon ) \\ \eta _2(\epsilon ) \end {array} \right )^* \left (
+\begin{array}{cc} T_{11} &amp; T_{12}\\ O &amp; T_{22} \end {array} \right ) \left ( \begin{array}{c} \eta _1(\epsilon ) \\ \eta _2(\epsilon ) \end {array} \right ) ,
+\end{eqnarray}
+
+</p>
+
+<p>
+and analyze how close bounds for <span class="textup">(<a href="paper.html#eq:FOVeta">3</a>)</span> are to <span class="textup">(<a href="paper.html#eq:FOVbnd1">2</a>)</span> as a function of \(\epsilon \). These bounds clarify
+how the convergence of S-GCRODR may deteriorate as a function of the distortion parameter \(\epsilon \) as a consequence of how far the oblique projection \(I - \widehat {\Phi }\) deviates from the orthogonal projection \(I - \Phi \).
+</p>
+<!--
+...... paragraph A Numerical Experiment ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">A Numerical Experiment</span>
+<a id="paper-autopage-7"></a>
+We present one set of numerical results to compare several sketched variants of GMRES and GCRODR. The results are derived from solving the following nonlinear Helmholtz equation on the 2D domain \(\Omega = (0,1) \times (0,1)\),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                                         
+                                                                                                         
+                                                                                                          ∆u + κ2 (1 + ϵ|u|2 )u = 0,
+                                                                                                         
+                                                                                                           ux + iκu = 2iκ, at x = 0, y ∈ (0, 1)
+                                                                               --><a id="nlheq"></a><!--                                                                                                                                            (4)
+                                                                                                         
+                                                                                                          ux − iκu = −iκ, at x = 1, y ∈ (0, 1)
+                                                                                                         
+                                                                                                           periodic boundary condition at y = 0, 1, x ∈ (0, 1),
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {nlheq} \left \{\begin{array}{l} \Delta u +\kappa ^2(1+\epsilon |u|^2)u = 0, \\ u_x + i\kappa u = 2i\kappa , \quad \mbox {at } x = 0, y \in (0,1)\\ u_x-i\kappa u = -i\kappa , \quad \mbox {at } x = 1, y \in
+(0,1) \\ \mbox {periodic boundary condition at }y=0,1, x \in (0,1), \end {array}\right .
+\end{eqnarray}
+
+</p>
+
+<p>
+using Anderson acceleration (AA). We take \(\epsilon = 0.40\) and \(\kappa = 12\). We discretize \(\Omega \) using a uniform mesh with \(n+1\) equispaced nodes in the \(x\) and in the \(y\) directions, respectively. We also use the standard
+2nd order finite difference to approximate the Laplacian operator, and use ghost nodes at the left (\(x=0\)) and the right (\(x=1\)) boundaries. We let \(n = 512\) so that the number of elements in the \(u\) vectors is \(n(n+1)=262656\). To set up
+the corresponding nonlinear system, define \(I_x = I_{n+1}\), \(I_y = I_n\), \(D_{2x} = \mathrm {tridiag}({\bf 1},{\bf -2},{\bf 1}) \in \mathbb {R}^{(n+1)\times (n+1)}\), except that \(D_{2x}(1,1) = D_{2x}(n+1,n+1) = 2(-1+i
+\kappa h)\), and \(D_{2x}(1,2)=D_{2x}(n+1,n) = 2\), \(D_{2y}= \mathrm {tridiag}({\bf 1},{\bf -2},{\bf 1}) \in \mathbb {R}^{n \times n}\), except that \(D_{2y}(1,n) = D_{2y}(n,1) = 1\), \(F(u)= \frac {1}{h^2}\left (I_y
+\otimes D_{2x} + D_{2y} \otimes I_x\right ) + \kappa ^2 \mathrm {diag}(1+\epsilon |u|^2)-f_{bdy}\), where \(f_{bdy}= {\bf 1}_{n} \otimes [\frac {2(2)i\kappa }{h}; {\bf 0_{n-1}}; \frac {2(-1)i\kappa }{h}]\), so that the
+nonlinear system is \(F(u)u = 0\). To define the Picard iteration, we let the squared term of \(u\) be the current iterate \(u^{(k)}\) and solve for the next iterate \(u^{(k+1)}\). That is, at each step we solve the linear system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+
+<!--
+
+
+                                                                                                         (                                                            )
+                                                                                                             1
+                                                                        --><a id="nlelinsys"></a><!--           (I y ⊗ D 2x + D 2y ⊗ I x ) + κ 2
+                                                                                                                                                 diag(1 + ϵ|u    |
+                                                                                                                                                              (k) 2
+                                                                                                                                                                    )   u(k+1) = fbdy                                                               (5)
+                                                                                                             h2
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {nlelinsys} \left (\frac {1}{h^2}\left (I_y \otimes D_{2x} + D_{2y} \otimes I_x\right ) + \kappa ^2 \mathrm {diag}(1+\epsilon |u^{(k)}|^2)\right )u^{(k+1)}=f_{bdy}
+\end{eqnarray}
+
+</p>
+
+<p>
+for \(u^{(k+1)}\). The initial vector \(u^{(0)}\) is the vectorization of \(u(x,y) = e^{i (2\pi y + \kappa x)}\) on the mesh. To set up AA, we let the damping parameter be \(1\), the optimization involve all previous iterates \(u^{(k)}\), and
+the iteration is terminated when \(\|u^{(k+1)}-u^{(k)}\|_\infty \leq 10^{-6}\).
+</p>
+
+<p>
+At each step of AA, the linear system <span class="textup">(<a href="paper.html#nlelinsys">5</a>)</span> is solved by the following methods, and a new ILUTP preconditioner is constructed using approximate minimum degree ordering and
+drop tolerance \(0.002\). We compare GMRES(120), the sketched version S-GMRES(120) as proposed in [5], (standard) GCRODR(120,20) and the sketched version S-GCRODR(120,20) discussed above, and two versions of the method
+GMRES-SDR(120,20) proposed in the recent paper [2], where the authors combine a sketched version of GMRES with deflated restarting. This approach differs from S-GCRODR in that the authors apply the deflated restarting by augmenting the
+search space with the deflation vectors, using truncated/selective orthogonalization when generating new Krylov search directions, and then using sketching to solve the least squares problem over both deflation and new Krylov vectors. In this
+approach, the new Krylov space that extends the solution search space is not generated (approximately) orthogonal to (the image under \(A\) of) the recycle space. This may lead to less effective search spaces and hence a reduced convergence rate.
+On the other hand, for the same total search space dimension in a cycle, it leads to a further reduction in complexity compared with the method we propose.
+</p>
+
+<figure id="autoid-1" class="table ">
+<div class="center">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Total and average numbers of preconditioned matrix-vector products and runtimes for several methods solving the sequence of linear systems <span class="textup">(<a href="paper.html#nlelinsys">5</a>)</span> arising
+from Anderson acceleration for a nonlinear Helmholtz equation.
+</p>
+</div>
+
+<a id="tab:test3"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"></td>
+<td class="tdc"></td>
+<td class="tdc">GCRO-</td>
+<td class="tdc"></td>
+<td class="tdc">S-GCRO-</td>
+<td class="tdc">(m) GMRES-</td>
+<td class="tdc">(s) GMRES-</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarr" style="border-right: 1px solid black"></td>
+<td class="tdc">GMRES(\(120\))</td>
+<td class="tdc">DR(\(120\),\(20\))</td>
+<td class="tdc">S-GMRES(\(120\))</td>
+<td class="tdc">DR(\(120\),\(20\))</td>
+<td class="tdc">SDR(120,20)</td>
+<td class="tdc">SDR(120,20)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarr" style="border-right: 1px solid black">matvecs</td>
+<td class="tdc">\(9014\) (\(361\))</td>
+<td class="tdc">\(2794\) (\(121\))</td>
+<td class="tdc">\(10319\) (\(382\))</td>
+<td class="tdc">\(2819\) (\(123\))</td>
+<td class="tdc">\(10144\) (\(423\))</td>
+<td class="tdc">\(6037\) (\(232\))</td>
+</tr>
+
+<tr>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">time (secs)</td>
+<td class="tdc">\(1374.3\) (\(55.0\))</td>
+<td class="tdc">\(343.8\) (\(14.9\))</td>
+<td class="tdc">\(691.3\) (\(25.6\))</td>
+<td class="tdc">\(183.2\) (\(8.0\))</td>
+<td class="tdc">\(622.5\) (\(25.9\))</td>
+<td class="tdc">\(393.4\) (\(15.1\))</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</div>
+
+</figure>
+
+<p>
+In Table 1, for each linear solver, we give the total and average runtime and number of preconditioned matrix-vector products for solving the sequence of linear systems <span class="textup">(<a href="paper.html#nlelinsys">5</a>)</span>
+arising from Anderson acceleration for the nonlinear system <span class="textup">(<a href="paper.html#nlheq">4</a>)</span>. For all linear solvers, we let the maximum dimension of the subspace be \(m=120\) and let the recycle space
+dimension be \(k = 20\). Due to the irregular convergence behavior of Anderson acceleration with the linear systems <span class="textup">(<a href="paper.html#nlelinsys">5</a>)</span> solved <em>approximately</em>, it takes Anderson
+acceleration a slightly different number of steps to satisfy the stopping criterion \(\|u^{(k+1)}-u^{(k)}\|_\infty \leq 10^{-6}\) for each solver. AA based on GCRO-DR and S-GCRO-DR takes 23 (the fewest) steps, whereas AA based on
+S-GMRES takes 27 (the most) steps to converge. In the column ‘(m) GMRES-SDR(120,20)’ we report results when GMRES-SDR recycles search spaces from one linear system to the next, whereas under the column ‘(s) GMRES-SDR(120,20)’ we
+report results with GMRES-SDR starting each linear system without a recycle space (which seems to work better). Finally, we note that, while for this system S-GCRODR is the clear winner, by a large margin, in terms of the runtime, for other test
+problems GMRES-SDR was competitive and sometimes faster.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> O. Balabanov and L. Grigori, <i>Randomized Gram–Schmidt process with application to GMRES</i>, SIAM J. Sci. Comput., 44 (2022), pp.&nbsp;A1450–A1474.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> L. Burke, S. Güttel, and K. Soodhalter, <i>GMRES with randomized sketching and deflated restarting</i>, arXiv:2311.14206, arXiv, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M. Embree, <i>Extending Elman’s Bound for GMRES</i>, arXiv:2312.15022v1, arXiv, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A. Greenbaum, <i>Iterative methods for solving linear systems</i>, SIAM 1997.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y. Nakatsukasa and J. A. Tropp, <i>Fast and accurate randomized algorithms for linear systems and eigen- value problems</i>, SIAM J. Matrix Anal. Appl., 45 (2024), pp.&nbsp;1183–1214.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M. L. Parks, E. de Sturler, G. Mackey, D. D. Johnson, and S. Maiti, <i>Recycling Krylov subspaces for sequences of linear systems</i>, SIAM J. Sci. Comput. 28 (2006), pp.&nbsp;1651–1674.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> K.M. Soodhalter, E. de Sturler, and M. E. Kilmer, <i>A survey of subspace recycling iterative methods</i>, GAMM-Mitteilungen 43 (2020), p. e202000016.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

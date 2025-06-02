@@ -1,0 +1,256 @@
+---
+layout: abstract
+absnum: 199
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Rank-revealing QR factorizations: applications, algorithms, and theory
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Anil Damle</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Rank-revealing factorizations, e.g.,&nbsp;[2, 7], have a long history in numerical linear algebra. We continue this story in multiple directions by discussing recent highlights of their development and use. This starts with a discussion about how
+pivoted QR factorizations play a central role in techniques for compressing modern, large-scale deep learning models&nbsp;[3, 5]. Motivated by that work we briefly highlight recent advances in computational methods for computing interpolative
+decompositions that leverage tools from randomized numerical linear algebra&nbsp;[1] and discuss associated theoretical developments that more clearly capture the behavior of low-rank matrix approximations derived from pivoted factorizations
+</p>
+
+<p>
+Modern deep learning models are often vastly overparametrized for their desired task; it is diﬀicult to determine a optimal model size based on a description of the problem and/or training data. However, this has consequence as it leads to large
+models that are expensive to store and run inference on. We show that given a small amount of (potentially unlabeled) data we can compress a given model into one of smaller size that retains the same structure as the original model—it is just
+smaller. To illustrate this process we can consider a one-hidden layer neural network
+</p>
+
+<p>
+\[ f(x) = \sigma (x^TW)\alpha , \]
+</p>
+
+<p>
+where \(x\in \mathbb {R}^d\) represents a data point, \(W\in \mathbb {R}^{d\times n}\) is the weight matrix, \(\alpha \in \mathbb {R}^n\) is a linear last layer, and \(\sigma \) is a non-linear function applied entrywise. Our task is to
+compute \(\widehat {W}^{d\times m}\) and \(\widehat {\alpha }^{m}\) with \(m&lt;n\) such that \(f(x)\approx \sigma (x^T\widehat {W})\widehat {\alpha }\) to the desired accuracy and for all sensible \(x.\)
+</p>
+
+<p>
+Given some small amount of data points, which we encode as the columns of \(X_C\), we accomplish this goal by computing an interpolative decomposition&nbsp;[4] of \(Z=\sigma (X_C^TW)\alpha \) as
+</p>
+
+<p>
+\[ Z \approx Z(:\mathcal {C})T, \]
+</p>
+
+<p>
+where \(\mathcal {C}\) represents a subset of the columns of \(Z.\) Because the non-linear function is applied entrywise it commutes with subset selection and we have that
+</p>
+
+<p>
+\[ f(x)\approx \sigma (x^TW(:,\mathcal {C}))(T\alpha ). \]
+</p>
+
+<p>
+Letting \(\widehat {W} = W(:,\mathcal {C})\) and \(\widehat {\alpha } = T\alpha \) accomplishes our goal. This idea can be extended to multiple layers and more complicated layer types.
+</p>
+
+<p>
+In the preceding use case, the matrices that we have to compute interpolative decompositions of can be quite large. However, the final quality of the process is not typically dependent on the exact subset of columns chosen—we just need a suﬀiciently
+good subset. This motivates the use of randomized algorithms to rapidly compute a suitable \(\mathcal {C}.\) Numerous algorithms exist for this task, and we provide a novel randomized version of the Golub-Klema-Stewart subset selection
+algorithm&nbsp;[6] that performs admirably in practice. In particular, we observe that its performance (and that of alternatives) depends on properties of singular vectors and we derive theoretical bounds that highlight this fact&nbsp;[1].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> R.&nbsp;Armstrong, A.&nbsp;Buzali, and A.&nbsp;Damle, <i>Structure-aware analyses and algorithms for interpolative decompositions</i>, arXiv preprint arXiv:2310.09452, (2023).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> S.&nbsp;Chandrasekaran and I.&nbsp;C. Ipsen, <i>On rank-revealing factorisations</i>, SIAM Journal on Matrix Analysis and Applications, 15 (1994), pp.&nbsp;592–622.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.&nbsp;Chee, M.&nbsp;Renz, A.&nbsp;Damle, and C.&nbsp;D. Sa, <i>Model preserving compression for neural networks</i>, in Advances in Neural Information Processing Systems, A.&nbsp;H.
+Oh, A.&nbsp;Agarwal, D.&nbsp;Belgrave, and K.&nbsp;Cho, eds., 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> H.&nbsp;Cheng, Z.&nbsp;Gimbutas, P.-G. Martinsson, and V.&nbsp;Rokhlin, <i>On the compression of low rank matrices</i>, SIAM Journal on Scientific Computing, 26 (2005),
+pp.&nbsp;1389–1404.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M.&nbsp;Flynn, A.&nbsp;Wang, D.&nbsp;E. Alvarez, C.&nbsp;De&nbsp;Sa, and A.&nbsp;Damle, <i>STAT: Shrinking transformers after training</i>, arXiv preprint arXiv:2406.00061, (2024).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> G.&nbsp;Golub, V.&nbsp;Klema, and G.W.&nbsp;Stewart, <i>Rank degeneracy and least squares problems</i>, Stanford University department of Computer Science, (1976).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.&nbsp;Gu and S.&nbsp;C. Eisenstat, <i>Eﬀicient algorithms for computing a strong rank-revealing QR factorization</i>, SIAM Journal on Scientific Computing, 17 (1996), pp.&nbsp;848–869.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

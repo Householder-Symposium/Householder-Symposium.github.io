@@ -1,0 +1,650 @@
+---
+layout: abstract
+absnum: 119
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\mathlarger }[1]{#1}\)
+
+\(\newcommand {\mathsmaller }[1]{#1}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+The Akhiezer iteration for matrix functions and Sylvester equations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Cade Ballew</span>, Thomas Trogdon, and Heather Wilber
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the computation of matrix functions \(f(\mathbf A)\) when the eigenvalues of \(\mathbf A\) are known to lie on or near a collection of disjoint intervals \(\Sigma \subset \mathbb {R}\). The Akhiezer iteration is an inverse-free
+iterative method for this task that arises via an orthogonal polynomial expansion of \(f\) on \(\Sigma \). When \(\Sigma \) consists of two or more intervals, extensions of the Chebyshev polynomials, often called the Akhiezer polynomials, are
+employed. This method is an extension of the classical Chebyshev iteration and an effective implementation of the ideas of Saad [7].
+</p>
+
+<p>
+The Akhiezer iteration relies on orthogonal polynomial recurrence coeﬀicients and Cauchy integrals. Importantly, orthonormal polynomials \(\{p_j\}_{j=0}^\infty \) with respect to a weight function \(w\) satisfy a symmetric three-term recurrence
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                    xp0 (x) = a0 p0 (x) + b0 p1 (x),
+                                                                                                                                                                                                                      (1)--><a id="eq:recurr"></a><!--
+                                                                                                    xpj (x) = bj−1 pj−1 (x) + aj pj (x) + bj pj+1 (x),                       j ≥ 1,
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:recurr} \begin{aligned} &amp;xp_0(x)=a_0p_0(x)+b_0p_1(x),\\ &amp;xp_j(x)=b_{j-1}p_{j-1}(x)+a_jp_j(x)+b_jp_{j+1}(x),\quad j\geq 1, \end {aligned}
+\end{equation}
+
+</p>
+
+<p>
+for some recurrence coeﬀicients \(\{a_j\}_{j=0}^\infty ,\{b_j\}_{j=0}^\infty \) where \(b_j&gt;0\) for all \(j\). The Cauchy integrals of these polynomials are defined by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                               ∫
+                                                                                                                                        1              pj (s)w(s)
+                                                                                                                  CΣ [pj w](z) =                                  ds.
+                                                                                                                                       2πi         Σ      s−z
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathcal {C}_\Sigma [p_jw](z)=\frac {1}{2\pi \mathrm {i}}\int _\Sigma \frac {p_j(s)w(s)}{s-z}\mathrm {d} s.
+\end{equation*}
+
+</p>
+
+<p>
+As a particular example, consider \(\Sigma =[a_1,b_1]\cup [a_2,b_2]\), \(b_1&lt;a_2\). The orthonormal polynomials with respect to the weight function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                    √
+                                                                                                                    1                 x − b1
+                                                                                                              w(x) = 1Σ (x) √       √        √     ,
+                                                                                                                    π         b2 − x x − a1 x − a2
+
+-->
+
+<p>
+
+\begin{equation*}
+w(x)=\frac {1}{\pi }\boldsymbol {1}_\Sigma (x)\frac {\sqrt {x-b_1}}{\sqrt {b_2-x}\sqrt {x-a_1}\sqrt {x-a_2}},
+\end{equation*}
+
+</p>
+
+<p>
+were constructed by Akhiezer in [1]. The construction gives an explicit formula for these polynomials in terms of Jacobi elliptic and theta functions. From this formula and derivation, formulae for their recurrence coeﬀicients and Cauchy integrals can
+be derived [2]. When explicit formulae are not known, e.g., when \(\Sigma \) consists of more than two intervals, \(N\) pairs of recurrence coeﬀicients and Cauchy integrals can be computed in \(\mathrm {O}(N)\) operations via the numerical
+method of [3].
+</p>
+
+<p>
+Given a function \(f\) that is analytic in a region containing \(\Sigma \), let \(p_0,p_1,\ldots \) denote the orthonormal polynomials with respect to \(w\). Then, for \(x\in \Sigma \), a \(p_j\)-series expansion for \(f\) is given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                  ∑
+                                                                                                                  ∞                                    ∫
+                                                                                                        f (x) =         αj pj (x),     αj =                    f (x)pj (x)w(x)dx.
+                                                                                                                  j=0                                      Σ
+
+
+-->
+
+<p>
+
+\begin{equation*}
+f(x)=\sum _{j=0}^\infty \alpha _jp_j(x),\quad \alpha _j=\int _\Sigma f(x)p_j(x)w(x)\mathrm {d} x.
+\end{equation*}
+
+</p>
+
+<p>
+For a matrix \(\mathbf A\) with eigenvalues on or near \(\Sigma \), this extends to an iterative method for computing \(f(\mathbf A)\) by truncating the series:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                       ∑
+                                                                                                                       ∞                       ∑
+                                                                                                                                               k
+                                                                                                             f (A) =         αj pj (A) ≈               αj pj (A) =: Fk+1 .                                     (2)--><a id="eq:series_trunc"></a><!--
+                                                                                                                       j=0                     j=0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:series_trunc} f(\mathbf A)=\sum _{j=0}^\infty \alpha _jp_j(\mathbf A)\approx \sum _{j=0}^k\alpha _jp_j(\mathbf A)=:\mathbf F_{k+1}.
+\end{equation}
+
+</p>
+
+<p>
+The coeﬀicients \(\{\alpha _j\}_{j=0}^\infty \) and polynomials \(\{p_j(\mathbf A)\}_{j=0}^\infty \) can be generated via Cauchy integrals and recurrence coeﬀicients, respectively. Applying <span class="textup">(<a
+href="paper.html#eq:recurr">1</a>)</span>, the polynomials are generated as follows:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                            p0 (A) = I,
+                                                                                                      1
+                                                                                            p1 (A) = (Ap0 (A) − a0 p0 (A)),
+                                                                                                     b0
+                                                                                                        1
+                                                                                            pj (A) =      (Apj−1 (A) − aj−1 pj−1 (A) − bj−2 pj−2 (A)),                                j ≥ 2.
+                                                                                                     bj−1
+
+-->
+
+<p>
+
+\begin{equation*}
+\begin{aligned} &amp;p_0(\mathbf A)=\mathbf I,\\ &amp;p_1(\mathbf A)=\frac {1}{b_0}(\mathbf A p_0(\mathbf A)-a_0p_0(\mathbf A)),\\ &amp;p_{j}(\mathbf A)=\frac {1}{b_{j-1}}(\mathbf A p_{j-1}(\mathbf
+A)-a_{j-1}p_{j-1}(\mathbf A)-b_{j-2}p_{j-2}(\mathbf A)),\quad j\geq 2. \end {aligned}
+\end{equation*}
+
+</p>
+
+<p>
+Let \(\Gamma \) be a counterclockwise oriented curve that encloses the spectrum of \(\mathbf A\) such that \(f\) is analytic in a region containing \(\Gamma \). Then,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                    ∫                                  ∫ (                 ∫             )
+                                                                                                                                                1                f (z)
+                                                                                             αj =           f (x)pj (x)w(x)dx =                                        dz pj (x)w(x)dx.
+                                                                                                        Σ                              Σ       2πi             Γ z −x
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\alpha _j=\int _{\Sigma }f(x)p_j(x)w(x)\mathrm {d} x=\int _{\Sigma }\left (\frac {1}{2\pi \mathrm {i}}\int _{\Gamma }\frac {f(z)}{z-x}\mathrm {d} z\right )p_j(x)w(x)\mathrm {d} x.
+\end{equation*}
+
+</p>
+
+<p>
+Applying a quadrature rule with nodes \(\{z_\ell \}_{\ell =1}^m\) and weights \(\{w_\ell \}_{\ell =1}^m\) to the inner integral, the coeﬀicients can be approximated via Cauchy integrals as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                     ∫
+                                                                                                            1 ∑ f (zℓ )                  ∑
+                                                                                                                  m                                                m
+                                                                                              αj ≈                      pℓ (x)w(x)dx = −   f (zℓ )CΣ [pj w](zℓ ).
+                                                                                                         Σ 2πi  zℓ − x
+                                                                                                                 ℓ=1                                              ℓ=1
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\alpha _j\approx \int _{\Sigma }\frac {1}{2\pi \mathrm {i}}\sum _{\ell =1}^m\frac {f(z_\ell )}{z_\ell -x}p_\ell (x)w(x)\mathrm {d} x=-\sum _{\ell =1}^mf(z_\ell )\mathcal {C}_\Sigma [p_jw](z_\ell ).
+\end{equation*}
+
+</p>
+
+<p>
+Assuming that one has access to such an approximation, the truncated series <span class="textup">(<a href="paper.html#eq:series_trunc">2</a>)</span> can be implemented as an iteration as in Algorithm&nbsp;<a
+href="paper.html#alg:akh_func">1</a>. The resulting method has a computable and provable geometric rate of convergence that is independent of the dimension of \(\mathbf A\) and governed by the classical exterior Green’s function with pole
+at infinity from potential theory. We remark that once the coeﬀicients \(\alpha _j\) are known, this algorithm is the same for all matrix functions.
+</p>
+<figure id="autoid-1" class="algocf ruled">
+
+<div class="figurecaption">
+<p>
+<span class="textnormal"><b><span class="textnormal"><b>Algorithm&nbsp;1</b></span>:</b></span>&nbsp;<span class="textnormal">Akhiezer iteration for matrix function approximation<br />
+</span>
+</p>
+</div>
+
+<a id="alg:akh_func"></a>
+
+<p>
+<b>Input: </b>\(f\), \(\mathbf {A}\), and functions to compute recurrence coeﬀicients \(a_k,b_k\) and \(p_k\)-series coeﬀicients \(\alpha _k\).
+</p>
+<p>
+ Set \(\mathbf F_0=0\).
+ </p>
+<p>
+<span class="textnormal"><b>for</b></span> <span class="textnormal"><em>k=0,1,&#x2026;</em></span> <span class="textnormal"><b>do</b></span>
+</p>
+
+
+<div class="alg2evsline">
+
+<p>
+<span class="textnormal"><b>if</b></span> <span class="textnormal"><em>k=0</em></span> <span class="textnormal"><b>then</b></span>
+</p>
+
+
+<div class="alg2evsline">
+
+<p>
+ Set \(\mathbf P_0=\mathbf I\).
+ </p>
+ </div>
+
+<p>
+<span class="textnormal"><b>else if</b></span> <span class="textnormal"><em>k=1</em></span> <span class="textnormal"><b>then</b></span>
+</p>
+
+
+<div class="alg2evsline">
+
+<p>
+ Set \(\mathbf P_{1}=\frac {1}{b_0}(\mathbf A\mathbf P_0-a_0\mathbf P_0)\).
+ </p>
+ </div>
+
+<p>
+<span class="textnormal"><b>else</b></span>
+</p>
+
+
+<div class="alg2evsline">
+
+<p>
+ Set \(\mathbf P_{k}=\frac {1}{b_{k-1}}(\mathbf A\mathbf P_{k-1} - a_{k-1}\mathbf P_{k-1} - b_{k-2}\mathbf P_{k-2}).\)
+ </p>
+ </div>
+
+<p>
+<span class="textnormal"><b>end</b></span>
+</p>
+
+<p>
+ Set \(\mathbf F_{k+1}=\mathbf F_k + \alpha _k \mathbf P_k\).
+ </p>
+<p>
+<span class="textnormal"><b>if</b></span> <span class="textnormal"><em><em>converged</em></em></span> <span class="textnormal"><b>then</b></span>
+</p>
+
+
+<div class="alg2evsline">
+
+<p>
+<span class="textnormal"><b>return</b></span> <span class="textnormal"><em>\(\mathbf F_{k+1}\)</em></span>.
+</p>
+</div>
+
+<p>
+<span class="textnormal"><b>end</b></span>
+</p>
+
+</div>
+
+<p>
+<span class="textnormal"><b>end</b></span>
+</p>
+
+</figure>
+
+<p>
+A particular application pertains to the solution of Sylvester equations of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                               XA − BX = C,                                                                        (3)--><a id="eq:sylv_eqn"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:sylv_eqn} \mathbf X\mathbf A-\mathbf B\mathbf X=\mathbf C,
+\end{equation}
+
+</p>
+
+<p>
+where the spectra of \(\mathbf A\in \mathbb {C}^{n\times n}\) and \(\mathbf B\in \mathbb {C}^{m\times m}\) lie in known intervals. If these intervals are disjoint, the unique solution \(\mathbf X\) to <span class="textup">(<a
+href="paper.html#eq:sylv_eqn">3</a>)</span> is the lower left block of the matrix
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                       (             )
+                                                                                                                                           A       0
+                                                                                                                                sign                   ,                                                           (4)--><a id="eq:mat_sign"></a><!--
+                                                                                                                                           C       B
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:mat_sign} \mathrm {sign}\begin{pmatrix}\mathbf A&amp;\mathbf 0 \\ \mathbf C&amp;\mathbf B\end {pmatrix},
+\end{equation}
+
+</p>
+
+<p>
+where \(\mathrm {sign}\) evaluates to \(1\) on the spectrum of \(\mathbf A\) and \(-1\) on the spectrum of \(\mathbf B\) [6].
+</p>
+
+<p>
+Algorithm&nbsp;<a href="paper.html#alg:akh_func">1</a> can be directly applied to compute <span class="textup">(<a href="paper.html#eq:mat_sign">4</a>)</span>; however, its naive use requires the computation of potentially dense
+matrix-matrix products and blocks that are irrelevant to the approximate solution. In the case where \(\mathbf C=\mathbf U\mathbf V\) is low-rank, this can be circumvented by deriving an equivalent iteration for only the relevant block entry,
+writing updates in block form and compressing at each iteration.
+</p>
+
+<p>
+Such an implementation is effectively \(\mathrm {O}(n^2)\) for \(\mathbf A,\mathbf B\in \mathbb {C}^{n\times n}\), as it requires only matrix-vector products and the compression of low-rank objects. In contrast, when the coeﬀicient matrices
+are dense, rational methods and direct solvers will typically be \(\mathrm {O}(n^3)\). We compare timings of such an implementation with the Bartels–Stewart algorithm [4] and factored Alternating-Directional-Implicit (ADI) iterations [5] in
+Table&nbsp;<a href="paper.html#tab:timings">1</a>. The lower computational complexity is reflected in these timings, as the Akhiezer iteration has a shorter runtime than competing methods when \(n\geq 500\).
+</p>
+<figure id="autoid-2" class="table ">
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"></td>
+<td colspan="3" class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">Runtime (seconds)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(n\)</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">Akhiezer</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">Factored ADI</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">Bartels–Stewart</td>
+</tr>
+
+<tr class="hline">
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">100</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.0639</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.0116</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.0060</td>
+</tr>
+
+<tr>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">500</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.2263</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.3939</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.2836</td>
+</tr>
+
+<tr>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">1000</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.4947</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">1.9799</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">1.8147</td>
+</tr>
+
+<tr>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">1500</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">0.8297</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">4.8730</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">6.5464</td>
+</tr>
+
+<tr>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">2000</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">1.3224</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">9.6079</td>
+<td class="tdr tvertbarr" style="border-right: 1px solid black">21.3945</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdr"></td>
+<td class="tdr"></td>
+<td class="tdr"></td>
+<td class="tdr"></td>
+</tr>
+</table>
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Runtime for solving <span class="textup">(<a href="paper.html#eq:sylv_eqn">3</a>)</span> to full precision where \(\mathbf A\in \mathbb {R}^{n\times n}\) has spectrum contained in \([2,3]\), \(\mathbf B\in
+\mathbb {R}^{n\times n}\) has spectrum contained in \([-1.8,-0.5]\), and \(\mathbf C\) is rank \(2\).
+</p>
+</div>
+
+<a id="tab:timings"></a>
+
+</div>
+
+</figure>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-7">References</h4>
+<a id="paper-autopage-7"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> N.&nbsp;I. Akhiezer. <i>Elements of the Theory of Elliptic Functions</i>, volume&nbsp;79 of <i>Translations of Mathematical Monographs</i>. American Mathematical Society, 1970.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C.&nbsp;Ballew and T.&nbsp;Trogdon. The Akhiezer iteration. <i>arXiv preprint 2312.02384</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> C.&nbsp;Ballew and T.&nbsp;Trogdon. A Riemann–Hilbert approach to computing the inverse spectral map for measures supported on disjoint intervals. <i>Studies in Applied Mathematics</i>,
+152(1):31–72, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> R.&nbsp;H. Bartels and G.&nbsp;W. Stewart. Algorithm 432 [C2]: Solution of the matrix equation AX + XB = C [F4]. <i>Commun. ACM</i>, 15(9):820–826, September 1972.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> P.&nbsp;Benner, R.-C. Li, and N.&nbsp;Truhar. On the ADI method for Sylvester equations. <i>Journal of Computational and Applied Mathematics</i>, 233(4):1035–1045, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N.&nbsp;J. Higham. <i>Functions of matrices: theory and computation</i>. SIAM, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Y.&nbsp;Saad. Iterative Solution of Indefinite Symmetric Linear Systems by Methods Using Orthogonal Polynomials over Two Disjoint Intervals. <i>SIAM Journal on Numerical Analysis</i>,
+20(4):784–811, 1983.
+</p>
+</li>
+</ul>
+
+{% endraw %}

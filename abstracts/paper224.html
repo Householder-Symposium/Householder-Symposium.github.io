@@ -1,0 +1,468 @@
+---
+layout: abstract
+absnum: 224
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\mleft }{\left }\)
+
+\(\newcommand {\mright }{\right }\)
+
+\(\newcommand {\mleftright }{}\)
+
+\(\newcommand {\mleftrightrestore }{}\)
+
+\(\newcommand {\specr }{spr}\)
+
+\(\newcommand {\C }{{\mathbb {C}}}\)
+
+\(\newcommand {\eps }{\varepsilon }\)
+
+\(\newcommand {\qand }{\quad \text { and }\quad }\)
+
+\(\newcommand {\abs }[1]{\mleft |#1\mright |}\)
+
+\(\newcommand {\magn }[1]{\left \|#1\right \|}\)
+
+\(\newcommand {\rmagn }[1]{\|#1\|}\)
+
+\(\newcommand {\pare }[1]{\mleft (#1\mright )}\)
+
+\(\DeclareMathOperator *{\E }{\mathbb {E}}\)
+
+\(\DeclareMathOperator *{\poly }{poly}\)
+
+\(\DeclareMathOperator *{\vol }{vol}\)
+
+\(\DeclareMathOperator *{\nnz }{nnz}\)
+
+\(\DeclareMathOperator {\Ber }{Bernoulli}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Sparse Pseudospectral Shattering
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Rikhav Shah</span>, Edward Zeng, Nikhil Srivastava
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+A central question in numerical analysis is the following: how do the eigenvalues and eigenvectors of a matrix behave under perturbations of its entries? For Hermitian matrices, the eigenvalues are \(1-\)Lipschitz functions of the entries, and the
+eigenvectors are stable under perturbations if the minimum eigenvalue gap is large. This fact is essential to the rapid convergence and rigorous analysis of algorithms for the Hermitian eigenvalue problem and its cousins.
+</p>
+
+<p>
+For non-Hermitian matrices, two related diﬀiculties appear: non-orthogonality of the eigenvectors and spectral instability, i.e. high sensitivity of the eigenvalues to perturbations of the matrix entries. Non-orthogonality slows down the convergence of
+iterative algorithms (such as the power method) and spectral instability makes it diﬀicult to rigorously reason about convergence in the presence of roundoff error. The main tool used to surmount these diﬀiculties in recent years is smoothed analysis,
+i.e., adding a small random perturbation to the input and solving the perturbed problem, incurring a small backward error. Specifically it was shown in [BGVKS23] that adding small i.i.d. complex Gaussian random variables to each entry of a matrix
+produces a matrix with well-conditioned eigenvectors and a large eigenvalue gap, a phenomenon termed “pseudospectral shattering”. This was then generalized to other random variables in [BVKS20, JSS20], and is currently an essential mechanism in
+all of the known convergence results about diagonalizing arbitrary dense matrices. Crucially, however, all current work examines the setting where i.i.d. noise is added to every single entry of a given matrix.
+</p>
+<blockquote>
+
+<p>
+This paper asks if it possible to achieve pseudospectral shattering by adding noise to only a subset of entries, selected at random. We provide a positive answer.
+</p>
+</blockquote>
+
+<p>
+In fact, we show only \(O(n\log ^2(n))\) entries need to be perturbed to achieve suﬀicient regularization for many downstream algorithmic tasks. Our results are phrased in terms of the sparsity \(\rho =\rho (n)\) of the added noise. In our
+model, each entry of a given matrix \(M\) is perturbed by a complex Gaussian \(g\) with probability \(\rho \), and left unchanged otherwise. As one might expect, our guarantee provides stronger regularization the larger \(\rho \) is. We measure
+regularization in terms of the <i>eigenvector condition number</i> \(\kappa _V(A)\) and <i>minimum eigenvalue gap</i> \(\eta (A)\). In the following definitions of these quantites, \(A=VDV^{-1}\) is any diagonalization of \(A\) and \(\lambda
+_1(A),\ldots ,\lambda _n(A)\) are the eigenvalues of \(A\).
+</p>
+
+<p>
+\[ \kappa _V(A) = \inf _{A = VDV^{-1}}\rmagn {V^{-1}}\magn V \qand \eta (A)=\min _{i\neq j}\abs {\lambda _i(A)-\lambda _j(A)}. \]
+</p>
+
+<p>
+Given a matrix \(M\), the perturbation described above has the form \(M+N_g\), where the entries of \(N_g\) are i.i.d. copies of \(\delta \cdot g\) where \(\delta \sim \Ber (\rho )\) and \(g\sim \mathcal N(0,1_\C )\). Our main theorem is
+as follows.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-6"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="thm:SPARSE_GAUSSIAN_KAPPAv"></a> Set \(K=2\log (n)/\log (n\rho )\). For any \(M\in \C
+^{n\times n}\), if \(n\rho =\Omega (\log (n)\log (\magn M+n))\) then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                      (                               )   (   )
+                                                                                                    Pr κV (M + Ng ) ≥ (∥M ∥ + n2 ρ)10K ≤ O n−K ,(1)                                                         --><a id="eq:main_kappav_bound"></a><!--
+
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:main_kappav_bound}\begin{split} \Pr \pare {\kappa _V(M+N_g)\ge (\magn M+n^2\rho )^{10K}} \le O\pare {n^{-K}},\end {split}
+\end{equation}
+
+
+</p>
+
+<p>
+and
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                      (                              )   (   )
+                                                                                                    Pr η(M + Ng ) ≤ (∥M ∥ + n2 ρ)−35K ≤ O n−K .           (2)                                                  --><a id="eq:main_eta_bound"></a><!--
+
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:main_eta_bound}\begin{split} \Pr \pare {\eta (M+N_g)\le (\magn M+n^2\rho )^{-35K}} \le O\pare {n^{-K}}.\end {split}
+\end{equation}
+
+
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The proof of this theorem consists of three steps. In the first two steps, \(A\) can be any random matrix. In the third step, we need our particular model of sparse perturbations, \(A=M+N_g\).
+</p>
+
+<p>
+<b>1. Bootstrapping:</b> An important object related to spectral stability is the \(\eps \)-pseudospectrum of \(A\), defined as
+</p>
+
+<p>
+\[\Lambda _\eps (A)=\{z\in \C :\sigma _n(z-A)\le \eps \}.\]
+</p>
+
+<p>
+It always contains disks of radius \(\eps \) around each eigenvalue; equality is achieved if and only if \(A\) is a normal matrix, i.e. \(\kappa _V(A)=1\). For less well conditioned matrices, the \(\eps \)-pseudospectrum will be larger. A quantifiable
+version of this statement relates the area of the pseudospectrum to both \(\kappa _V(\cdot )\) and \(\eta (\cdot )\). The bootstrapping argument of [JSS20] turns this observation into a probabilistic tail bound: a strong upper bound on \(\E
+\vol \Lambda _\eps (A)\) and a lower tail bound on \(\eta (A)\) establishes an upper tail bound on \(\kappa _V(A)\). We adapt their argument and improve it by dramatically lessening the control on \(\E \vol \Lambda _\eps (A)\) required
+for the argument to go through. The ideal control would be of the form
+</p>
+
+<p>
+\[\E \vol \Lambda _\eps (A)\le \poly (n)\cdot \eps ^2.\]
+</p>
+
+<p>
+The bootstrapping argument of [JSS20] shows that it suﬀices to have \(\eps ^2\log (1/\eps )\) in place of \(\eps ^2\). We show it suﬀices to have \(\eps ^c+\exp (-n)\) for any constant \(c&gt;0\) in place of \(\eps ^2\).
+</p>
+
+<p>
+<b>2. Reduction to bottom two singular values:</b> This step relies on known arguments which were also used in [BKMS21, BGVKS23]. The previous step shows we need control over \(\E \vol \Lambda _\eps (A)\) and \(\eta (A)\). As
+may be clear from the definition, \(\E \vol \Lambda _\eps (A)\) is immediately convertible to lower tail estimates for the least singular value \(\sigma _n(z-A)\) for \(z\in \C \). We also show a lower tail bound on \(\eta (A)\) can be reduced
+to lower tail bounds on the bottom two singular values \(\sigma _n(z-A),\sigma _{n-1}(z-A)\).
+</p>
+
+<p>
+The strength of the tail bound can be characterized in terms of the <i>power</i> \(c_m\) of \(\eps \) on the right-hand side of a bound of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+
+                                                                                                       Pr(σn−m (A) ≤ ε) ≤ poly(n)εcm + exp(−n).                  (3)                                           --><a id="eq:sig_bound_form"></a><!--
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:sig_bound_form}\begin{split} \Pr \pare {\sigma _{n-m}(A)\le \eps }\le \poly (n)\eps ^{c_m}+\exp (-n). \end {split}
+\end{equation}
+
+</p>
+
+<p>
+The reduction from \(\eta (A)\) described in Lemma <a href="paper.html#??">??</a> goes through when
+</p>
+
+<p>
+\[\frac 1{c_0}+\frac 1{c_1}&lt;1.\]
+</p>
+
+<p>
+For suﬀicient control on \(\E \vol \Lambda _\eps (A)\), we just need \(c_0&gt;0\). Thus the bottleneck is the reduction from \(\eta (A)\).
+</p>
+
+<p>
+<b>3. Control on bottom two singular values:</b> We show the required control over the bottom two singular values holds with room to spare. Specifically, we show a bound of the form <span class="textup">(<a
+href="paper.html#eq:sig_bound_form">3</a>)</span> holds for \(c_0=2\) and \(c_1=4\) (in fact, we show it holds for \(c_m=2m+2\) for any constant \(m\)). The argument is based on an \(\eps \)-net construction following the
+compressible/incompressible or rich/poor decomposition in [TV07]. That work considers lower tail bounds of \(\sigma _n(M+N_x)\) where \(x\) is a general sub-Gaussian random variable and the sparsity parameter \(\rho (n)=n^{\alpha -1}\),
+\(\alpha &gt;0\) is a fixed polynomial in \(n\). They show for every polynomial \(n^A\), there exists a polynomial \(n^B\) such that
+</p>
+
+<p>
+\[\Pr \pare { \sigma _n(A)\le n^{-A} } \le n^{-B}.\]
+</p>
+
+<p>
+By tracing their argument, one can show there is a linear relationship between \(A\) and \(B\) so that their bound more closely resembles the form <span class="textup">(<a href="paper.html#eq:sig_bound_form">3</a>)</span> for an
+unspecified tiny constant \(c_0\) and \(\eps =\frac 1{\poly (n)}\).
+</p>
+
+<p>
+By our improvement to the bootstrapping argument, their result gives enough control over \(\E \vol \Lambda _\eps (A)\). However, it is not enough for \(\eta (A)\). We specialize to the complex Gaussian case \(x=g\) (or really the case of \(x\)
+having bounded density on \(\C \)) and achieve three advantages over [TV07] in this setting. Firstly, our argument applies to every \(m\) (not just \(m=0\)), and we show the optimal power of \(c_0=2\) in the \(m=0\) case. Secondly, we may take
+\(\eps \) to be arbitrarily small. Lastly, we are able to push the sparsity parameter down to \((\log n)^2/n\).
+</p>
+
+<p>
+Furthermore, because \(g\) has a continuous density, we avoid the additive combinatorics required by [TV07], resulting in much simpler proofs.
+</p>
+<!--
+...... paragraph Algorithmic application. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">Algorithmic application.</span>
+<a id="paper-autopage-7"></a>
+As alluded to already, establishing control over the eigenvector condition number of a matrix is essential for rigorous analysis of non-Hermitian eigenvalue problems. The work of [BKMS21] does this by adding a dense perturbation \(N\). The
+drawback is that the cost of computing matrix-vector products goes from \(O(\nnz (M))\) to \(O(\nnz (M)+\nnz (N))=O(n^2)\) where \(\nnz (A)\) is the number of nonzero entries in the matrix \(A\). The algorithmic content of this paper is that
+it suﬀices to take \(N\) to be a sparse perturbation, with \(\E \nnz (N)=n^2\rho \) for \(\rho =\Omega (\log (n)^2/n)\).
+</p>
+
+<p>
+As a simple example of an application of Theorem <a href="paper.html#thm:SPARSE_GAUSSIAN_KAPPAv">1</a>, we show it implies an algorithm for computing the spectral radius \(\specr (M)\) of any matrix up to mixed forwards-backwards error
+\(\eps \) using just
+</p>
+
+<p>
+\[O\pare {\frac {\log (n)}{\log (n\rho )}\cdot \frac {\log (n/\eps )}\eps \cdot \pare {\nnz (M)+n^2\rho }}\]
+</p>
+
+<p>
+floating point operations.
+</p>
+
+<p>
+A full preprint can be found at
+</p>
+
+<p>
+<a href="https://math.berkeley.edu/~rdshah/files/sparsepseudospectralshattering.pdf" target="_blank" >https://math.berkeley.edu/~rdshah/files/sparsepseudospectralshattering.pdf</a>
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[BGVKS23]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, Archit Kulkarni, and Nikhil Srivastava. Pseudospectral shattering, the sign function, and diagonalization in nearly matrix multiplication time.
+<i>Foundations of computational mathematics</i>, 23(6):1959–2047, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BVKS20]&#x2003;</span> Jess Banks, Jorge&nbsp;Garza Vargas, Archit Kulkarni, and Nikhil Srivastava. Overlaps, eigenvalue gaps, and pseudospectrum under real ginibre and absolutely continuous perturbations, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[JSS20]&#x2003;</span> Vishesh Jain, Ashwin Sah, and Mehtaab Sawhney. On the Real Davies’ Conjecture, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BKMS21]&#x2003;</span> Jess Banks, Archit Kulkarni, Satyaki Mukherjee, and Nikhil Srivastava. Gaussian regularization of the pseudospectrum and davies’ conjecture. <i>Communications on Pure and Applied
+Mathematics</i>, 74(10):2114–2131, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[TV07]&#x2003;</span> Terence Tao and Van Vu. Random matrices: The circular law. <i>Communications in Contemporary Mathematics</i>, pages 261–307, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BR17]&#x2003;</span> Anirban Basak and Mark Rudelson. Invertibility of sparse non-hermitian matrices. <i>Advances in Mathematics</i>, 320:426–483, 2017.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

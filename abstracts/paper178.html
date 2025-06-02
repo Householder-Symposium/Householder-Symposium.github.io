@@ -1,0 +1,388 @@
+---
+layout: abstract
+absnum: 178
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized Algorithms for Solving Linear Systems<br />
+with Low-rank Structure
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Michał Dereziński</span>, Daniel LeJeune, Christopher Musco,<br />
+Deanna Needell, Elizaveta Rebrova, and Jiaming Yang
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the task of solving a large system of linear equations \(Ax=b\), where for simplicity, we will assume that \(A\) is real, square, and full-rank. Iterative algorithms, such as LSQR, Conjugate Gradient and other Krylov subspace methods, are
+a powerful tool for solving such linear systems. Yet, the convergence properties of these methods are highly dependent on the singular value structure of the matrix \(A\), and characterizing these properties effectively requires going beyond the usual
+notion of condition number. In this talk, we will consider this problem in the context of linear systems whose singular values exhibit a low-rank structure, in the sense that \(A\) can be decomposed into a low-rank ill-conditioned matrix (the “signal”)
+and a full-rank well-conditioned matrix (the “noise”). Such linear systems are motivated by a range of problem settings, including in statistics, machine learning, and optimization, where the “signal” is often low-rank due to inherent structure of the
+data, while the “noise” may be coming from measurement error, data transformations, or an explicit regularizer imposed by the user. We will show how randomized sketching techniques, including our recent works on randomized preconditioning
+[DMY25] and stochastic solvers [DR24, DY24, DLNR24], can be used to exploit this low-rank structure in order to accelerate linear system solving in ways that go beyond what is possible with Krylov subspace methods.
+</p>
+<!--
+...... paragraph Linear systems with low-rank structure. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Linear systems with low-rank structure.</span>
+<a id="paper-autopage-5"></a>
+Consider the following linear system task:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                     Solve Ax = b,     given A ∈ Rn×n      and   b ∈ Rn ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\text {Solve}\quad Ax=b,\quad \text {given}\quad A\in \mathbb {R}^{n\times n}\quad \text {and}\quad b\in \mathbb {R}^n,
+\end{align*}
+where \(A\) is a full-rank matrix with singular values \(\sigma _1\geq \sigma _2\geq ...\geq \sigma _n\). For a given low-rank parameter \(k\in \{1,...,n\}\), we will allow the top-\(k\) part of the singular values to be very ill-conditioned,
+but assume that the tail is moderately well-conditioned, as measured by \(\kappa _k = \sigma _{k+1}/\sigma _n\). For example, if the matrix \(A\) is explicitly regularized, e.g., \(A = B+\lambda I_n\) as in ridge regression [AM15] or
+cubic-regularized Newton’s method [NP06], then \(k\) may correspond to the number of singular values above the \(\lambda \) threshold. Similar regularization effect occurs when \(A\) is distorted by isotropic noise, \(A=B+\delta N\), e.g., where
+\(N\) is Subgaussian [Joh01], or it is the error from stochastic rounding [DBM\(^{+}\)24]. Also, \(A\) may exhibit a power law singular value distribution (\(\sigma _i\propto i^{-\beta }\)), e.g., due to a data transformation with the Matérn
+kernel function [RW06]. Here, different values of \(k\) capture different signal-to-noise trade-offs. Our goal is to describe the convergence and computational cost of iterative algorithms for solving \(Ax=b\) in terms of the parameters \(n\), \(k\), and
+\(\kappa _k\). One can also consider the sparsity of \(A\), but for simplicity, we will focus on the dense setting.
+</p>
+<!--
+...... paragraph Effectiveness and limitations of Krylov subspace methods. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Effectiveness and limitations of Krylov subspace methods.</span>
+<a id="paper-autopage-6"></a>
+A careful analysis of Krylov subspace methods such as LSQR and CG for solving linear systems with low-rank structure [AL86] shows that they need \(k\) iterations to capture the top-\(k\) singular vectors, and then \(O(\kappa _k\log
+(1/\epsilon ))\) iterations to converge at a rate that depends only on \(\kappa _k\) (with \(\kappa _k\) replaced by \(\sqrt {\kappa _k}\) when \(A\) is positive definite). Thus, for a dense \(A\), before reaching a fast convergence rate of
+\(O(n^2\kappa _k\log 1/\epsilon )\) operations, Krylov methods require an initial \(O(n^2k)\) cost (corresponding to roughly \(k\) matrix-vector products) to capture the low-rank structure of \(A\), which is expensive for large \(k\). This
+\(n^2k\)&nbsp;bottleneck can be established as a lower bound not just for Krylov methods but for any algorithms that access \(A\) only through matrix-vector products [DLNR24].
+</p>
+
+<p>
+Given the above problem formulation and discussion, the central question of this talk is:
+</p>
+<div class="center">
+
+<p>
+<i>Can the \(n^2k\) bottleneck in solving linear systems with low-rank structure be overcome,<br />
+when given direct access to \(A\) and allowing randomization?</i>
+</p>
+</div>
+<!--
+...... paragraph Randomized preconditioning via sparse sketching. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-8">Randomized preconditioning via sparse sketching.</span>
+<a id="paper-autopage-8"></a>
+Randomized sketching offers a powerful set of tools for accelerating linear solvers. While these approaches have traditionally focused on very tall least squares problems [AMT10], linear systems with low-rank structure offer another setting where
+sketching can be beneficial. Such an algorithm starts by applying a random matrix \(S\in \mathbb {R}^{s\times n}\) (e.g., Gaussian) to the matrix \(A\), producing a smaller sketch \(\tilde A=SA\in \mathbb {R}^{s\times n}\), where \(s\ll
+n\) is the sketch size. This sketch can now be used to construct an approximate low-rank decomposition of \(A\), e.g., by orthonormalizing the columns of \(\tilde A^\top \) to obtain an \(n\times s\) matrix \(Q\) and projecting \(A\) onto the
+subspace defined by those columns, \(\hat A = A QQ^\top \approx A\) [HMT11]. The intuition here is that \(\hat A\) approximates \(A\) reasonably well in the top-\(k\) singular directions as long as the sketch size \(s\) is suﬀiciently larger than
+\(k\), and this approximation can be further boosted via subspace iteration.
+</p>
+
+<p>
+If implemented naïvely, sketching does not appear to overcome the \(O(n^2k)\) computational barrier exhibited by Krylov methods, due to three bottlenecks: (1)&nbsp;applying the sketching matrix \(S\), (2)&nbsp;projecting via the orthogonal
+matrix \(Q\), and (3)&nbsp;performing subspace iteration. Each of these require at least \(k\) matrix-vector products to produce a decent preconditioner for a linear system with rank \(k\) structure. However, given direct access to \(A\), the
+sketching cost (bottleneck 1) can be reduced by using fast sketching methods, e.g., by making \(S\) extremely sparse, which is known to retain similar guarantees as a Gaussian matrix. Moreover, recent works have shown that a careful construction of
+the preconditioner can avoid the full projection step (bottleneck 2): in the positive definite case, by relying on Nyström approximations [FTU23], and in the general case, by using an inner solver to construct the preconditioner implicitly [DMY25]. In
+the latter work, we showed that this approach can be used to solve a linear system in \(\tilde O(n^2 \kappa _k\sqrt {n/k}\log 1/\epsilon + k^3)\) operations (up to minor logarithmic factors), where the term \(\sqrt {n/k}\) comes as a
+trade-off from omitting subspace iteration (bottleneck&nbsp;3). When \(k\) is suﬀiciently large and \(\kappa _k\) small enough, this overcomes the&nbsp;\(n^2k\)&nbsp;barrier.
+</p>
+<!--
+...... paragraph Stochastic solvers via Sketch-and-Project. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-9">Stochastic solvers via Sketch-and-Project.</span>
+<a id="paper-autopage-9"></a>
+Another class of methods that use randomized sketching and/or sub-sampling to go beyond matrix-vector products are stochastic iterative solvers such as randomized Kaczmarz and coordinate descent, among others. Viewed in the context of
+sketching, many of these methods can be unified under the framework of Sketch-and-Project [GR15]. Here, we consider a solver that updates an iterate \(x_t\) by repeatedly sketching the system \(Ax=b\) and projecting \(x_t\) onto the solutions of
+the sketched system:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                    xt+1 = arg minn ∥xt − x∥   subject to SAx = Sb.
+                                                                                                               x∈R
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+x_{t+1} = \arg \min _{x\in \mathbb {R}^n}\|x_t-x\|\quad \text {subject to}\quad SAx=Sb.
+\end{align*}
+While stochastic solvers have traditionally been considered effective primarily in specialized settings where we may not be able to perform full matrix-vector products with \(A\) (e.g., due to memory or bandwidth constraints), we have shown in
+recent works that these methods can also be particularly effective for linear systems with low-rank structure. Here, the intuition is that the sketched system \(SAx=Sb\) retains the information about the top-\(k\) singular directions of \(A\), which
+gives the Sketch-and-Project solver a convergence rate akin to being preconditioned with a rank \(k\) approximation [DR24]. We have adapted this approach to a simple Randomized Block Kaczmarz method [DY24], as well as a variant with
+Nesterov’s acceleration [DLNR24], showing that these algorithms can solve a linear system in \(\tilde O((n^2+nk^2)\kappa _k\log 1/\epsilon )\) operations. This recovers the fast Krylov convergence of \(\tilde O(n^2\kappa _k\log
+1/\epsilon )\) operations for up to \(k=O(\sqrt n)\), while entirely avoiding the \(n^2k\) bottleneck.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[AL86]&#x2003;</span> Owe Axelsson and Gunhild Lindskog. On the rate of convergence of the preconditioned conjugate gradient method. <i>Numerische Mathematik</i>, 48:499–523, 1986.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[AM15]&#x2003;</span> Ahmed&nbsp;El Alaoui and Michael&nbsp;W. Mahoney. Fast randomized kernel ridge regression with statistical guarantees. In <i>Proceedings of the 28th International Conference on Neural
+Information Processing Systems</i>, pages 775–783, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[AMT10]&#x2003;</span> Haim Avron, Petar Maymounkov, and Sivan Toledo. Blendenpik: Supercharging lapack’s least-squares solver. <i>SIAM Journal on Scientific Computing</i>, 32(3):1217–1236, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DBM\(^{+}\)24]&#x2003;</span> Gregory Dexter, Christos Boutsikas, Linkai Ma, Ilse&nbsp;CF Ipsen, and Petros Drineas. Stochastic rounding implicitly regularizes tall-and-thin matrices. <i>arXiv preprint
+arXiv:2403.12278</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DLNR24]&#x2003;</span> Michał Dereziński, Daniel LeJeune, Deanna Needell, and Elizaveta Rebrova. Fine-grained analysis and faster algorithms for iteratively solving linear systems. <i>arXiv preprint
+arXiv:2405.05818</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DMY25]&#x2003;</span> Michał Dereziński, Christopher Musco, and Jiaming Yang. Faster linear systems and matrix norm approximation via multi-level sketched preconditioning. <i>ACM-SIAM Symposium on
+Discrete Algorithms (SODA)</i>, 2025.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DR24]&#x2003;</span> Michał Dereziński and Elizaveta Rebrova. Sharp analysis of sketch-and-project methods via a connection to randomized singular value decomposition. <i>SIAM Journal on Mathematics of Data
+Science</i>, 6(1):127–153, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DY24]&#x2003;</span> Michał Dereziński and Jiaming Yang. Solving dense linear systems faster than via preconditioning. In <i>56th Annual ACM Symposium on Theory of Computing</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[FTU23]&#x2003;</span> Zachary Frangella, Joel&nbsp;A Tropp, and Madeleine Udell. Randomized Nyström preconditioning. <i>SIAM Journal on Matrix Analysis and Applications</i>, 44(2):718–752, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GR15]&#x2003;</span> Robert&nbsp;M Gower and Peter Richtárik. Randomized iterative methods for linear systems. <i>SIAM Journal on Matrix Analysis and Applications</i>, 36(4):1660–1690, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[HMT11]&#x2003;</span> Nathan Halko, Per-Gunnar Martinsson, and Joel&nbsp;A Tropp. Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions. <i>SIAM
+review</i>, 53(2):217–288, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Joh01]&#x2003;</span> Iain&nbsp;M Johnstone. On the distribution of the largest eigenvalue in principal components analysis. <i>The Annals of Statistics</i>, 29(2):295–327, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[NP06]&#x2003;</span> Yurii Nesterov and Boris&nbsp;T Polyak. Cubic regularization of newton method and its global performance. <i>Mathematical Programming</i>, 108(1):177–205, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[RW06]&#x2003;</span> C.&nbsp;E. Rasmussen and C.&nbsp;K.&nbsp;I. Williams. <i>Gaussian Processes for Machine Learning</i>. MIT Press, 2006.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

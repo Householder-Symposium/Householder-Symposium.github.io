@@ -1,0 +1,215 @@
+---
+layout: abstract
+absnum: 157
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized orthogonalization in GMRES with deflation and augmentation
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Yongseok Jang</span>, Laura Grigori
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In the context of large-scale linear algebra, random sketching has emerged as a powerful technique to reduce computational costs and memory requirements. As data dimensions grow, traditional methods often become impractical. Random sketching
+provides a way to approximate large matrices and datasets by projecting them onto lower-dimensional subspaces using randomized linear maps, which capture essential properties of the original data –such as norms of vectors– but at a fraction of the
+size.
+</p>
+
+<p>
+In this talk, we present the application of random sketching to Gram-Schmidt process for orthonormalizing a set of vectors. One [1] can provide a set of vectors, which are not \(l_2\) orthogonal but their low dimensional images through random
+sketching are orthonormal. Using this method, called <i>randomized Gram-Schmidt</i> (RGS) algorithm, for QR factorization of a matrix \(W\in \mathbb {R}^{n\times m}\) (with \(m\leq n\)), we obtain \(W=QR\), where \(Q\) is not
+orthonormal, but \(\Theta Q\) becomes orthonormal with a random sketching matrix \(\Theta \in \mathbb {R}^{t\times n}\) for \(t\ll n\). Furthermore, inspired by the reorthogonalization techniques in <i>classical Gram-Schmidt</i> (CGS)
+and <i>modified Gram-Schmidt</i> (MGS) (namely CGS2 and MGS2, respectively), we develop the RGS2 algorithm [2]. The RGS2 algorithm combines RGS with CGS/MGS to result improved numerical stability and \(l_2\) orthonormal \(Q\).
+</p>
+
+<p>
+By employing fast computation techniques for sketching, such as fast Walsh Hadamard transformation, our RGS algorithms bring significant computational cost reductions. RGS has half the complexity of CGS/MGS, and RGS2 reduces computational
+costs by 25% compared to CGS2/MGS2. Furthermore, with the probabilistic rounding model, we analyze rounding errors and show that RGS exhibits better numerical stability than CGS and comparable stability to MGS. Additionally, under a
+numerical non-singularity condition, the loss of orthogonality in RGS2 is independent of the condition number of \(W\). Thus, the randomized orthogonalization process offers both reduced computational cost and enhanced numerical stability.
+</p>
+
+<p>
+When solving linear systems with GMRES, the quality of Krylov basis vectors is crucial; poor quality can deteriorate GMRES convergence. To accelerate the convergence of GMRES, a deflation strategy is combined together. However, in GMRES
+with deflated restarting (GMRES-DR), where the previous Krylov subspace is reused, loss of orthogonality may accumulate over iterations, potentially leading to stagnation or divergence. Hence, the orthogonalizing process is particularly important
+in GMRES-DR. Here, RGS-based Arnoldi iterations can ensure numerical stability in generating Krylov basis vectors rather than other GS algorithms. Consequently, the randomized GMRES and the randomized GMRES-DR exhibit better numerical
+performance [3].
+</p>
+
+<p>
+In this presentation, we introduce the randomized variants of FGMRES-DR, FGCRO-DR, SVD based deflation, and augmentation, (e.g., please refer to [4, 5, 6, 7] and the references therein for the GMRES methods with deflation and augmentation).
+To validate the stability and convergence improvements, we present numerical examples that solve ill-conditioned systems arising from compressible turbulent CFD simulations.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Balabanov, Oleg, and Laura Grigori. “Randomized Gram–Schmidt process with application to GMRES.” <i>SIAM Journal on Scientific Computing</i> 44, no. 3 (2022): A1450-A1474.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Jang, Yongseok, and Laura Grigori. “Randomized orthogonalization process with reorthogonalization.” HAL open science (2024).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Jang, Yongseok, Laura Grigori, Emeric Martin, and Cédric Content. “Randomized flexible GMRES with deflated restarting.” <i>Numerical Algorithms</i> (2024): 1-35.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Giraud, Luc, Serge Gratton, Xavier Pinel, and Xavier Vasseur. “Flexible GMRES with deflated restarting.” <i>SIAM Journal on Scientific Computing</i> 32, no. 4 (2010): 1858-1878.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Parks, Michael L., Eric De Sturler, Greg Mackey, Duane D. Johnson, and Spandan Maiti. “Recycling Krylov subspaces for sequences of linear systems.” <i>SIAM Journal on Scientific Computing</i>
+28, no. 5 (2006): 1651-1674.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Daas, Hussam Al, Laura Grigori, Pascal Hénon, and Philippe Ricoux. “Recycling Krylov subspaces and truncating deflation subspaces for solving sequence of linear systems.” <i>ACM Transactions on
+Mathematical Software (TOMS)</i> 47, no. 2 (2021): 1-30.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Soodhalter, Kirk M., Eric de Sturler, and Misha E. Kilmer. “A survey of subspace recycling iterative methods.” <i>GAMM‐Mitteilungen</i> 43, no. 4 (2020): e202000016.
+</p>
+</li>
+</ul>
+
+{% endraw %}

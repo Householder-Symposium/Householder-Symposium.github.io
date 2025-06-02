@@ -1,0 +1,246 @@
+---
+layout: abstract
+absnum: 128
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A fast algorithm for low-rank approximation with error control
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Yuji Nakatsukasa</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Computing a low-rank approximation to a large \(m\times n\) matrix \(A\) is a ubiquitous task in Numerical Linear Algebra (NLA), and possibly the single topic that contributed the most to making randomized NLA algorithms popular, trusted,
+and widely used. Typically&nbsp;[1, 5], the first step is to compute a random sketch of the form \(AS\) (or \(\hat SA\), or both&nbsp;[12]), where the size of the sketch is at least the target rank, which is often unknown. Extensive theory is now
+available&nbsp;[5, 8, 11] that gives strong guarantees for the quality of the resulting approximation that hold with extremely high probability.
+</p>
+
+<p>
+In this work we develop an algorithm for low-rank approximation that (i) requires only an \(O(1)\) sketch size, (ii) comes with high-probability error control to achieve a user-defined error tolerance, without requiring the knowledge of the rank, (iii)
+avoids computing orthogonal projections, and (iv) is based on the CUR decomposition&nbsp;[6] and its stable implementation&nbsp;[10], so inherits properties of \(A\) such as sparsity and nonnegativity, if present. These are achieved by bringing
+together techniques in randomized NLA algorithms, including CUR, subset selection methods&nbsp;[2, 9] based on a sketch-and-pivot strategy&nbsp;[3, 4], and error estimation via trace estimation&nbsp;[7].
+</p>
+
+<p>
+The algorithm finds a near-optimal (up to a modest polynomial in \(r\)) rank-\(r\) approximation in \(O(N+(m+n)r^2)\) operations, where \(N\) is the cost of a matrix-vector multiplication with \(A\). Advantages over the MATLAB routine
+svdsketch&nbsp;[13] include faster runtime and the ability to set the error tolerance to be smaller than \(\sqrt {u}\), where \(u\) is the unit roundoff.
+</p>
+
+<p>
+This talk is based on joint projects with the following collaborators: Per-Gunnar Martinsson and Nathaniel Pritchard; Anjali Narendran; and Taejun Park.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> K.&nbsp;L. Clarkson and D.&nbsp;P. Woodruff. Low-rank approximation and regression in input sparsity time. <i>Journal of the ACM</i>, 63(6):54, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;Cortinovis and D.&nbsp;Kressner. Low-rank approximation in the frobenius norm by column and row subset selection. <i>SIAM J. Matrix Anal. Appl.</i>, 41(4):1651–1673, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Y.&nbsp;Dong and P.-G. Martinsson. Simpler is better: a comparative study of randomized pivoting algorithms for CUR and interpolative decompositions. <i>Adv. in Comput. Math.</i>, 49(4):66,
+2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.&nbsp;A. Duersch and M.&nbsp;Gu. Randomized projection for rank-revealing matrix factorizations and low-rank approximations. <i>SIAM Rev.</i>, 62(3):661–682, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> N.&nbsp;Halko, P.-G. Martinsson, and J.&nbsp;A. Tropp. Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions. <i>SIAM Rev.</i>,
+53(2):217–288, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M.&nbsp;W. Mahoney and P.&nbsp;Drineas. CUR matrix decompositions for improved data analysis. <i>Proc. Natl. Acad. Sci.</i>, 106(3):697–702, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> P.-G. Martinsson and J.&nbsp;A. Tropp. Randomized numerical linear algebra: Foundations and algorithms. <i>Acta Numer.</i>, pages 403—572, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Y.&nbsp;Nakatsukasa. Fast and stable randomized low-rank matrix approximation. <i>arXiv preprint arXiv:2009.11392</i>, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> A.&nbsp;Osinsky. Close to optimal column approximations with a single SVD. <i>arXiv preprint arXiv:2308.09068</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> T.&nbsp;Park and Y.&nbsp;Nakatsukasa. Accuracy and stability of CUR decompositions with oversampling. <i>arXiv preprint arXiv:2405.06375</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> J.&nbsp;A. Tropp, A.&nbsp;Yurtsever, M.&nbsp;Udell, and V.&nbsp;Cevher. Practical sketching algorithms for low-rank matrix approximation. <i>SIAM J. Matrix Anal. Appl.</i>,
+38(4):1454–1485, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> F.&nbsp;Woolfe, E.&nbsp;Liberty, V.&nbsp;Rokhlin, and M.&nbsp;Tygert. A fast randomized algorithm for the approximation of matrices. <i>Appl. Comput. Harmon. Anal.</i>, 25(3):335–366,
+2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> W.&nbsp;Yu, Y.&nbsp;Gu, and Y.&nbsp;Li. Eﬀicient randomized algorithms for the fixed-precision low-rank matrix approximation. <i>SIAM J. Matrix Anal. Appl.</i>, 39(3):1339–1359, 2018.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,551 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Constrained graph partitioning by Rayleigh quotients optimization
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Nicola Guglielmi</span> (GSSI), Christian Lubich (Tübingen)
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The problems of partitioning a connected undirected weighted graph under constraints such as cardinality or membership requirements are NP-hard combinatorial optimization problems (see e.g [2]). As is well-known, fundamental properties of
+weighted graphs such as connectivity and centrality are characterized by eigenvalues or eigenvectors of matrices related to the weighted adjacency matrix, such as the graph Laplacian. Here we study exemplary problems of partitioning/clustering,
+which can be viewed as matrix nearness problems that refer to eigenvalues and eigenvectors of structured symmetric real matrices. We propose algorithms that do eigenvalue optimization without eigenvalues but instead work directly with the
+quadratic form (Rayleigh quotients). This requires only matrix-vector products and vector inner products. In this presentation we will address the problem of graph partitioning, in particular in presence of constraints. We propose an iterative
+algorithm for computing a minimum cut of a given weighted undirected graph under constraints, e.g. under cardinality, membership, must-link and cannot-link constraints. The algorithm changes the weights such that the second eigenvalue of the
+graph Laplacian is driven to zero. The connected components of the partitioned graph are then read off from the corresponding eigenvector, known as the Fiedler vector. The proposed algorithm only requires the computation of matrix-vector
+products with the graph Laplacian and vector inner products but no computations of eigenvalues and eigenvectors. It is a two-level algorithm that follows a graph diffusion equation into a stationary point in the inner iteration and determines the
+minimum cut in the outer iteration.
+</p>
+<!--
+...... paragraph Problem formulation and algebraic connectivity ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Problem formulation and algebraic connectivity</span>
+<a id="paper-autopage-5"></a>
+<a id="sec:problem"></a>
+</p>
+
+<p>
+We formulate the minimum cut problem as a matrix nearness problem. A graph \(\mathcal {G}=(\mathcal {V},\cE )\) is given by a set of vertices (or nodes) \(\mathcal {V}=\{1,\dots ,n \}\) and an edge set \(\cE \subset \mathcal
+{V}\times \mathcal {V}\). We consider an undirected graph: with \((i,j)\in \cE \), also \((j,i)\in \cE \). With the undirected graph we associate weights \(a_{ij}\) for \((i,j)\in \cE \) with \(a_{ij}=a_{ji} \ge 0 \quad \hbox { for
+all }\ (i,j)\in \cE . \) The graph is connected if for all \(i,j\in \mathcal {V}\), there is a path \((i_0,i_1),(i_1,i_2),\dots ,(i_{\ell -1},i_\ell )\in \cE \) of arbitrary length \(\ell \), such that \(i=i_0\) and \(j=i_\ell \) and
+\(a_{i_{k-1},i_k}&gt;0\) for all \(k=1,\dots ,\ell \). Given a connected weighted undirected graph with weights \(a_{ij}\), we aim to find a disconnected weighted undirected graph with the same edge set \(\cE \) and modified weights \(\wt
+a_{ij}\) s.t.
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                          X
+                                                                                                                    aij − aij )2
+                                                                                                                   (e              is minimized.                                                              (1)--><a id="dist-2"></a><!--
+                                                                                                         (i,j)∈E
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {dist-2} \sum _{(i,j)\in \cE } (\wt a_{ij} - a_{ij})^2 \quad \hbox { is minimized.}
+\end{equation}
+
+</p>
+
+<p>
+In the minimum the weights \(\wt a_{ij}\) must either be zero or remain unchanged, i.e. \(\wt a_{ij} = a_{ij}\). Solving the matrix nearness problem (<a href="paper.html#dist-2">1</a>) is therefore equivalent to finding a cut \(\mathcal
+{C}\), i.e. a set of edges that yield a disconnected graph when they are removed from \(\cE \), where the cut \(\mathcal {C}\) is such that
+</p>
+
+<p>
+\[ \sum _{(i,j)\in \mathcal {C}} a_{ij}^2 \quad \hbox { is minimized.} \]
+</p>
+
+<p>
+Replacing the weights by their square roots yields \(a_{ij}\) instead of \(a_{ij}^2\) in the above sum, which is the usual formulation of the minimum cut problem.
+</p>
+<!--
+...... paragraph Graph Laplacian and algebraic connectivity. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Graph Laplacian and algebraic connectivity.</span>
+<a id="paper-autopage-6"></a>
+Setting \(a_{ij}=0\) for \((i,j)\notin \cE \), we have the weighted adjacency matrix \(A=(a_{ij}) , \) which is a symmetric non-negative real matrix with the sparsity pattern given by the set of edges \(\cE \), i.e. \(a_{ij}\ne 0\) only if
+\((i,j)\in \cE \). The degrees \(d_i = \sum _{j=1}^n a_{ij} \) are collected in the diagonal matrix
+</p>
+
+<p>
+\[ D(A) = \diag (d_i)= \diag (A \one ), \qquad \hbox {where $\one :=(1,\ldots ,1)^\top \in \R ^n$.} \]
+</p>
+
+<p>
+The Laplacian matrix \(\Lap (A)\) is defined by
+</p>
+
+<p>
+\[ \Lap (A) = D(A)-A=\diag (A \one ) - A . \]
+</p>
+
+<p>
+By the Gershgorin circle theorem, all eigenvalues of \(\Lap (A)\) are non-negative, and \(\Lap (A)\one =0\), so that \(\lambda _1=0\) is the smallest eigenvalue of \(\Lap (A)\) with the eigenvector \(\one \). The connectivity of the graph is
+characterized by the second-smallest eigenvalue of \(\Lap (A)\), as the following basic theorem shows.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-7"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span><span class="amsthmnoteplain"> (Fiedler [3])</span>. </span> <a id="thm:fiedler"></a> Let \(A \in \R ^{n
+\times n}\) be the weight matrix of an undirected graph and \(\Lap (A)\) the graph Laplacian. Let \(0 = \lambda _1 \le \lambda _2 \le \ldots \le \lambda _n\) be the eigenvalues of \(\Lap (A)\). Then, the graph is disconnected if and only
+if \(\lambda _2 = 0\). Moreover, if \(0=\lambda _2&lt;\lambda _3\), then the entries of the corresponding eigenvector orthogonal to \(\one \) assume only two different values, of different sign, which indicate the membership to the two connected
+components.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Consequently the second smallest eigenvalue \(\lambda _2\) of \(\Lap (A)\) is called algebraic connectivity of \(A\). The corresponding eigenvector orthogonal to \(\one \) is known as the Fiedler vector, provided that \(\lambda _2&lt;\lambda
+_3\).
+</p>
+<!--
+...... paragraph Unconstrained minimum cut problem: illustration of the approach. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-8">Unconstrained minimum cut problem: illustration of the approach.</span>
+<a id="paper-autopage-8"></a>
+<a id="sec:two-level method"></a>
+</p>
+
+<p>
+For simplicity of presentation - although our main aim is to include constraints - we start by considering the unconstrained minimum cut we propose a two-level approach for the unconstrained minimum cut problem <span class="textup">(<a
+href="paper.html#dist-2">1</a>)</span>. The extension to minimum cut problems with constraints is obtained by adding a suitable penalty term to the considered functional. We denote the structure space of the matrices in the problem by
+</p>
+
+<p>
+\[ \cS = \sym (\cE ), \]
+</p>
+
+<p>
+the space of symmetric real \(n\times n\) matrices with the sparsity pattern given by the edges \(\cE \) of the graph. In view of Theorem&nbsp;<a href="paper.html#thm:fiedler">1</a>, the minimum cut problem can be reformulated as follows.
+</p>
+
+<p>
+Problem. Given \(A\in \cS \) with \(A\ge 0\), find a matrix \(\Delta \in \cS \) of minimal Frobenius norm such that \(A+\Delta \ge 0\) and the Laplacian \(\Lap (A+\Delta )\) has a double eigenvalue 0.
+</p>
+
+<p>
+Two-level iteration. We propose a two-level approach in the spirit of [4].
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Inner iteration: Given \(\eps &gt;0\), we look for a matrix \(E=(e_{ij})\in \cS \) of unit Frobenius norm, with \(A+\eps E\ge 0\) (with componentwise inequality) such that the second smallest
+eigenvalue of \(\Lap (A+\eps E)\) is minimal. The minimizer is denoted by&nbsp;\(E(\eps )\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Outer iteration: We determine the smallest value of \(\eps &gt;0\) such that the second smallest eigenvalue of \(\Lap (A+\eps E(\eps ))\) equals \(0\).
+</p>
+</li>
+</ul>
+
+<p>
+Computing \(E(\eps )\) for a given \(\eps &gt;0\) is based on a constrained gradient flow for minimizing the functional given by the Rayleigh quotient
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                           Fε (E, v) = 21 v ⊤ L(A + εE)v,                                                                   (2)--><a id="F-eps-cut"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {F-eps-cut} F_\eps (E,v) = \tfrac 12\,v^\top \Lap (A+\eps E) v,
+\end{equation}
+
+</p>
+
+<p>
+for \(E\in \cS \) of Frobenius norm&nbsp;1 with \(A+\eps E\ge 0\) and vectors \(v\in \R ^n\) of Euclidean norm&nbsp;1 that are orthogonal to the eigenvector \(\one \) to the eigenvalue \(0\) of \(\Lap (A+\eps E)\):
+</p>
+
+<p>
+\[ \one ^\top v=0. \]
+</p>
+
+<p>
+In the outer iteration we compute the optimal \(\eps \) by a combined Newton-bisection method. This optimal \(\eps \), denoted \(\oeps \), is the smallest \(\eps \) such that \(\lambda _2(\Lap (A+\eps E))=0\) for some admissible \(E\) of
+unit norm. The algorithm computes a partition of the graph as provided by the Fiedler vector corresponding to the weight matrix \(A+\oeps E(\oeps )\), which is the eigenvector orthogonal to \(\one \) for the double eigenvalue \(0\). The
+iteration can be stopped if
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                            \(F_\eps (E,v) \le \theta \,\lambda _2(A)\) and \(\| v^\pm - \langle v^\pm \rangle \one \| \le \vartheta \).                                                      (3)--><a id="eq:cond"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:cond} \text {$F_\eps (E,v) \le \theta \,\lambda _2(A)$ \ and \ $\| v^\pm - \langle v^\pm \rangle \one \| \le \vartheta $.}
+\end{equation}
+
+</p>
+
+<p>
+Here, \(v^+=(\max (v_i,0))\) and \(v^-=\min (v_i,0)\) collect the positive and negative entries of \(v\), and \(\langle v^\pm \rangle \) is the arithmetic mean of the nonzero entries in \(v^\pm \). Moreover, \(\theta \) and \(\vartheta \)
+are given tolerances. When <span class="textup">(<a href="paper.html#eq:cond">3</a>)</span> holds, the signs of the entries of \(v\) mark the membership to the two connected components.
+</p>
+<!--
+...... paragraph Inner iteration: diffusion on the graph ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-9">Inner iteration: diffusion on the graph</span>
+<a id="paper-autopage-9"></a>
+<a id="subsec:gradient-cut"></a> For two matrices \(X\) and \(Y\), we denote by \(\langle X,Y \rangle = \mathrm {trace}(X^\top Y)\) their Frobenius inner product. Let \(\Pi ^\cS \) be the orthogonal projection from \(\R ^{n,n}\)
+onto \(\cS =\sym (\mathcal {E)}\): for \(Z=(z_{ij})\),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                               (
+                                                                                                      S
+                                                                                                                   1
+                                                                                                                   2
+                                                                                                                     (zij + zji ) ,   if (i, j) ∈ E ,
+                                                                                                    Π Z ij =                                                                                                 (4)--><a id="Pi-S-cut"></a><!--
+                                                                                                                   0,                 otherwise.
+
+-->
+
+<p>
+
+\begin{equation}
+\label {Pi-S-cut} \Pi ^\cS Z\big |_{ij} = \begin{cases} \tfrac 12(z_{ij}+z_{ji})\,, &amp;\text {if } (i,j)\in \cE \,,\\ 0\,, &amp;\text {otherwise.}\end {cases}
+\end{equation}
+
+</p>
+
+<p>
+Considering the dependence on the adjacency matrix \(A\in \cS \) in the graph Laplacian \(L(A)\) leads us to the Laplace operator \(\Lap \) as a linear map \(\Lap : \cS \to \R ^{n,n}. \) Its adjoint with respect to the Frobenius inner
+product, say \(\Lap ^*: \R ^{n,n}\to \cS , \) is defined by \(\langle \Lap ^*(V),W \rangle = \langle V, \Lap (W) \rangle \) for all \(V\in \R ^{n,n}\) and \(W\in \cS \) and is given by (see [1])
+</p>
+
+<p>
+\[ \Lap ^*(V) = \Pi ^\cS (\diagvec (V)\one ^\top - V), \]
+</p>
+
+<p>
+where \(\diagvec (V)\in \R ^n\) is the vector of the diagonal entries of \(V\).
+</p>
+<!--
+...... paragraph Structured gradient. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-10">Structured gradient.</span>
+<a id="paper-autopage-10"></a>
+Consider a smooth path of matrices \(E(t)\in \cS \) and vectors \(v(t)\in \R ^n\). Then, omitting the argument \(t\) on the right-hand side,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+
+<!--
+
+
+                                                                            d
+                                                                               Fε (E(t), v(t)) = 12 v ⊤ L(εĖ)v + v ⊤ L(A + εE)v̇ = 12 ⟨vv ⊤ , L(εĖ)⟩ + ⟨L(A + εE)v, v̇⟩
+                                                                            dt
+                                                                                               = ε ⟨G, Ė⟩ + ⟨g, v̇⟩,      (5)G = 12 L∗ (vv ⊤ ) ∈ S,
+                                                                                                                         with                           g = L(A + εE)v ∈ Rn              --><a id="F-dot-cut"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\nonumber \frac {d}{dt}F_\eps (E(t),v(t)) &amp;= \tfrac 12\,v^\top \Lap (\eps \dot E) v + v^\top \Lap (A+\eps E) \dot v = \tfrac 12\,\langle vv^\top ,\Lap (\eps \dot E) \rangle + \langle \Lap (A+\eps E)v,\dot
+v\rangle \\ \label {F-dot-cut} &amp;= \eps \,\langle G,\dot E \rangle + \langle g,\dot v\rangle , \qquad \mbox {with} \ G=\tfrac 12\Lap ^*(vv^\top ) \in \cS ,\quad \ g=\Lap (A+\eps E)v \in \R ^n
+\end{align}
+the (rescaled) gradient (indeed \(G=G_\eps (E,v)\) and \(g=g_\eps (E,v)\)).
+</p>
+<!--
+...... paragraph Constrained gradient flow. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-11">Constrained gradient flow.</span>
+<a id="paper-autopage-11"></a>
+With the constraints of norm 1 for \(E\) and \(v\) and the orthogonality constraint \(\one ^\top v=0\) we have the constrained gradient flow
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+
+<!--
+
+
+
+                                                                                                           Ė = −G + ⟨G, E⟩E                                 (6)       --><a id="ode-E-cut"></a><!--
+                                                                                                                               1
+                                                                                                            v̇ = −g + ⟨g, v⟩v + ⟨g, 1⟩1.                     (7)       --><a id="ode-v-cut"></a><!--
+                                                                                                                               n
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {ode-E-cut} \dot E &amp;= - G + \langle G,E \rangle E \\ \label {ode-v-cut} \dot v &amp;= -g + \langle g,v \rangle v + \frac 1n \langle g,\one \rangle \one .
+\end{align}
+
+</p>
+<!--
+...... paragraph Non-negativity constraint. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-12">Non-negativity constraint.</span>
+<a id="paper-autopage-12"></a>
+To satisfy the non-negativity condition of the perturbed weight matrix \(A+\eps E(t)\), we need that \(\dot {e}_{ij}(t) \ge 0\) for all \((i,j)\) with \(a_{ij} + \varepsilon e_{ij}(t) = 0\). On every interval where \(\cE ^+(t):=\{
+(i,j)\in \cE \,:\, a_{ij} + \varepsilon e_{ij}(t) &gt; 0 \}\) does not change with&nbsp;\(t\), we consider the ODE
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+
+<!--
+
+
+
+                                                                                                   --><a id="ode-E-plus-cut"></a><!--Ė       =   −P + G + γP + E
+                                                                                                                                                  (
+                                                                                                                                                    zij if (i, j) ∈ E +
+                                                                                                                                   P + Z ij   =
+                                                                                                                                                    0   otherwise,
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {ode-E-plus-cut} \nonumber \dot E &amp; = &amp; -\Pact G + \gamma \Pact E \\ \nonumber P^+Z\big |_{ij} &amp; = &amp; \begin{cases} z_{ij} &amp;\text {if } (i,j)\in \cE ^+ \,\\ 0 &amp;\text {otherwise,}\end
+{cases}
+\end{eqnarray}
+
+</p>
+
+<p>
+where \(\gamma \) is to be chosen such that \(\langle E, \dot E \rangle =0\).
+</p>
+<!--
+...... paragraph Stationary points. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-13">Stationary points.</span>
+<a id="paper-autopage-13"></a>
+In a stationary point \((E,v)\) we have cut edges \((i,j)\) with \(a_{ij}+\eps e_{ij}=0\) and for the remaining edges we have that \(P^+ E\) is a multiple of \(P^+G\) provided that \(P^+G\ne 0\).
+</p>
+
+<p>
+Indeed since \(G=\Lap ^*(vv^\top )\) of <span class="textup">(<a href="paper.html#F-dot-cut">5</a>)</span> depends only on \(v\) (and not on \(E\)), we can reduce the functional <span class="textup">(<a
+href="paper.html#F-eps-cut">2</a>)</span> to a functional of \(v\) only, as we will explained.
+</p>
+<!--
+...... paragraph Constrained minimum cut problems. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-14">Constrained minimum cut problems.</span>
+<a id="paper-autopage-14"></a>
+<a id="subsection:constrained-mincut"></a> Here we are interested in the following constraints, which will be treated with the addition of suitable penalty terms. For a given set \(\mathcal {P}\subset \mathcal {V} \times \mathcal {V}\):
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Must-link constraints: Pairs of vertices in \(\mathcal {P}\) are in the same connected component.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Cannot-link constraints: Pairs of vertices in \(\mathcal {P}\) are in different connected components.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Membership constraints: A given set of vertices \(\mathcal {V}^+\subset \mathcal {V}\) is in one team (connected component) and another given set of vertices \(\mathcal {V}^-\subset \mathcal {V}\) is
+in the other team.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Cardinality constraint: Each connected component has a prescribed min number of vertices.
+</p>
+</li>
+</ul>
+
+<p>
+In the literature it seems that a unifying approach able to treat all these cases is missing, which is instead a main advantage of the approach we propose.
+</p>
+<!--
+...... paragraph Extension of the approach. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-15">Extension of the approach.</span>
+<a id="paper-autopage-15"></a>
+We add non-negative terms \(C(v)\) to the functional \(F_\eps (E,v)\) such that the augmented functional takes the minimum value zero if and only if the graph with the modified weighted adjacency matrix \(A+\eps E\) is disconnected and the
+imposed constraints are satisfied. For example in the must-link constraint it is required that pairs of vertices in a given set \(\mathcal {P}\subset \mathcal {V} \times \mathcal {V}\) are in the same connected component. Motivated by the
+special form of the eigenvectors as given in Fiedler’s theorem (Theorem&nbsp;<a href="paper.html#thm:fiedler">1</a>), we consider the non-negative functional
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                     α X
+                                                                            C(v) =       (vi − vj )2 ,                           --><a id="F-must-link"></a><!--
+                                                                                     2
+                                                                                      (i,j)∈P
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {F-must-link} \nonumber C(v) = \frac \alpha 2 \!\sum _{(i,j)\in \mathcal {P}} (v_i - v_j )^2 ,
+\end{equation}
+
+</p>
+
+<p>
+where \(\alpha &gt;0\) is a scaling factor chosen e.g.&nbsp;as \(\alpha =\|A\|_2\). We minimize the augmented functional
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+
+                                                                          Fbε (E, v) = Fε (E, v) + C(v),                         --><a id="F-red-aug-cut"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {F-red-aug-cut} \nonumber \widehat F_\eps (E,v) = F_\eps (E,v) + C(v),
+\end{equation}
+
+</p>
+
+<p>
+under the previously considered constraints \(\|v\|=1\), \(\|E\|=1\), \(\langle \one ,v \rangle =0\) and \(A+\eps E\ge 0\). The minimization of this augmented functional is done in the same way as in the unconstrained case, using a two-level
+approach that minimizes \(\widehat F_\eps (E,v)\) for a given \(\eps \) in the inner iteration and determines the optimal \(\oeps \) in the outer iteration as the smallest \(\eps &gt;0\) such that \(\widehat F_\eps (E(\eps ),v(\eps ))=0\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-16">References</h4>
+<a id="paper-autopage-16"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E.&nbsp;Andreotti, D.&nbsp;Edelmann, N.&nbsp;Guglielmi and C.&nbsp;Lubich, Constrained graph partitioning via matrix differential equations. <i>SIAM J. Matrix Anal. Appl.</i>, 40(1):1–22,
+2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;Bruglieri, M.&nbsp;Ehrgott, H.&nbsp;W. Hamacher, and F.&nbsp;Maﬀioli. An annotated bibliography of combinatorial optimization problems with fixed cardinality constraints. <i>Discrete
+Appl. Math.</i>, 154(9):1344–1357, June 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M.&nbsp;Fiedler. Algebraic connectivity of graphs. <i>Czechoslovak Math. J.</i>, 23(98):298–305, 1973.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> N.&nbsp;Guglielmi and C.&nbsp;Lubich. Matrix nearness problems and eigenvalue optimization. <i>EMS Series in Industrial and Applied Mathematics</i>, in preparation, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

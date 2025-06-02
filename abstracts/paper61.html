@@ -1,0 +1,453 @@
+---
+layout: abstract
+absnum: 61
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\def \LWRbooktabscmidruleparen (#1)#2{}\)
+
+\(\newcommand {\LWRbooktabscmidrulenoparen }[1]{}\)
+
+\(\newcommand {\cmidrule }[1][]{\ifnextchar (\LWRbooktabscmidruleparen \LWRbooktabscmidrulenoparen }\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\require {gensymb}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\newcommand {\nicefrac }[3][]{\mathinner {{}^{#2}\!/\!_{#3}}}\)
+
+\(\newcommand {\Scal }{{\mathcal {S}}}\)
+
+\(\newcommand {\Sigmab }{\boldsymbol {\Sigma }}\)
+
+\(\newcommand {\wt }[1]{\widetilde {#1}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Toward Fast and Provable Data Selection under Low Intrinsic Dimension
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Yijun Dong</span>, Per-Gunnar Martinsson, Qi Lei, Hoang Phan, Xiang Pan, Chao Chen, Katherine Pearce
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+As the data volume and model size explode with the unprecedented successes of modern machine learning algorithms, high dimensionality is turning to the major computational bottleneck that impedes the development and democratization of large
+models. Since redundancies in high dimensions are ubiquitous in most real-world learning problems, the notion of <em>low intrinsic dimension</em> is introduced to characterize the minimal size of any low-dimensional manifolds that can encapsulate
+the essential information in the learning problem. Leveraging such low intrinsic dimensions is crucial for designing fast and sample-eﬀicient learning algorithms for large-scale problems.
+</p>
+
+<p>
+Fine-tuning that adapts powerful pre-trained models to specific downstream tasks is arguably one of the most common examples of eﬀicient learning through low intrinsic dimensions. Intuitively, with the general knowledge encoded in the pre-trained
+model with high-dimensional parameters, fine-tuning within a low-dimensional parameter subspace is usually suﬀicient for adapting the model to new tasks. Leveraging such low intrinsic dimensions allows learning with much fewer samples (than the
+high parameter dimension, i.e., in the overparametrized setting) and computational resources.
+</p>
+
+<p>
+In practice, natural data generally come with heterogeneous qualities and considerable redundancies, which brings about a critical question:
+</p>
+<div class="center">
+
+<p>
+How to select the most informative data for sample-eﬀicient learning under low intrinsic dimension?
+</p>
+</div>
+
+<p>
+Answers to this question are highly objective-dependent. This talk aims to provide an overview of some recent progress in two common objectives for data selection:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(i)</span> row (or column) subset selection for low-rank interpolative decomposition, and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(ii)</span> data selection for statistical learning models in kernel regime (e.g., fine-tuning).
+</p>
+</li>
+</ul>
+
+<p>
+By diving into a few randomized algorithms for interpolative (or CUR) decompositions and data selection based on random pivoting and sketching, we will unveil the power of randomization in fast and robust data selection, from both the empirical
+and theoretical perspectives.
+</p>
+<!--
+...... subsection Data Selection for Low-rank Interpolative Decompositions ......
+-->
+<h5 id="autosec-6">Data Selection for Low-rank Interpolative Decompositions</h5>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+The interpolative decomposition (ID) aims to construct a low-rank approximation formed by a basis consisting of row (or column) skeletons in the original matrix and a corresponding interpolation matrix. We explore fast and accurate ID algorithms
+from five essential perspectives for empirical performance:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(i)</span> <em>skeleton complexity</em> that measures the minimum possible ID rank for a given low-rank approximation error,
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(ii)</span> <em>asymptotic complexity</em> in floating point operations (FLOPs),
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(iii)</span> <em>parallelizability</em> of the computational bottleneck, i.e., whether the steps with dominant cost can be cast into matrix-matrix, instead of matrix-vector, multiplications,
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(iv)</span> <em>error-revealing property</em> that enables automatic rank detection for given error tolerances without prior knowledge of target ranks,
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(v)</span> <em>ID-revealing property</em> that ensures eﬀicient construction of the optimal interpolation matrix after selecting the skeletons.
+</p>
+</li>
+</ul>
+
+<p>
+While many algorithms have been developed to optimize parts of the aforementioned perspectives, practical ID algorithms proficient in all perspectives remain absent. To fill in the gap, we introduce <em>robust blockwise random pivoting
+(RBRP)</em> that is parallelizable, error-revealing, and exactly ID-revealing, with comparable skeleton and asymptotic complexities to the best existing ID algorithms in practice. Through extensive numerical experiments on various synthetic and
+natural datasets, we demonstrate the appealing empirical performance of RBRP from the five perspectives above, as well as its robustness to adversarial inputs.
+</p>
+
+<p>
+In a nutshell, random pivoting for interpolative decomposition involves adaptively sampling rows (or columns) according to their squared \(\ell _2\)-norm and updating the data matrix by projecting the remaining rows (or columns) onto the
+orthogonal complement of the current basis. Such an adaptive sampling scheme ensures that the selected rows (or columns) are informative and diverse, leading to a small skeleton complexity for given low-rank approximation errors. However, the
+sequential nature of random pivoting compromises its parallelizability and empirical eﬀiciency. Alternatively, the sequential random pivoting can be naïvely extended to a faster blockwise version that samples a block of \(b &gt; 1\) points according
+to the current squared \(\ell _2\)-norm in each step and updates the data matrix blockwisely. However, such plain blockwise random pivoting tends to suffer from unnecessarily large skeleton complexity under adversarial inputs due to the lack of
+local adaptiveness within each block. As a remedy, RBRP leverages <em>robust blockwise filtering</em>—applying CPQR to every small sampled block locally and discarding the potentially redundant points through a truncation on the relative
+residual of the CPQR. By choosing a reasonable block size, such robust blockwise filtering effectively resolves the ineﬀiciency in skeleton complexity encountered by the plain blockwise random pivoting, with negligible additional cost.
+</p>
+<!--
+...... subsection Data Selection for Statistical Learning Models in Kernel Regime ......
+-->
+<h5 id="autosec-7">Data Selection for Statistical Learning Models in Kernel Regime</h5>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+Fine-tuning can be viewed as learning with a good pre-trained initialization that lies in some neighborhood of an optimal solution, whose dynamics fall into the kernel regime. Therefore, fine-tuning a regression task (under Tikhonov regularization
+with a suitable hyperparameter) can be well approximated by
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(i)</span> a linear regression problem in the low-dimensional (overdetermined) setting, or
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(ii)</span> a ridge regression problem in the high-dimensional (overparametrized) setting<sup>1</sup>.
+</p>
+</li>
+</ul>
+
+<p>
+For overdetermined linear regression in low dimension, data selection falls in the classical frames of coreset selection for linear regression and optimal experimental design where the generalization gap can be reduced by selecting data that minimize
+the associated variance. However, for overparametrized problems, variance minimization alone is insuﬀicient to characterize the generalization. In particular, when the parameter dimension \(r\) is higher than the coreset size \(n\), the selected data
+necessarily miss a parameter subspace of dimension at least \(r-n\), leading to errors in addition to variance.
+</p>
+
+<p>
+Nevertheless, the prevailing empirical and theoretical evidence on the ubiquitous intrinsic low-dimensional structures in high-dimensional problems motivates a natural question:
+</p>
+<div class="center">
+
+<p>
+<em>Can the low intrinsic dimension be leveraged in data selection for high-dimensional fine-tuning?</em>
+</p>
+</div>
+
+<p>
+We provide a positive answer to this question through a variance-bias tradeoff perspective. Intuitively, we consider a low-dimensional subspace \(\Scal \) in the fine-tuning parameter space where the model learns the necessary knowledge for the
+downstream task. The generalization gap can be controlled by simultaneously reducing <em>the bias (redundant information) by “exploring” the parameter space to find a suitable \(\Scal \)</em> and <em>the variance by “exploiting” the useful
+knowledge in \(\Scal \)</em>.
+</p>
+
+<p>
+Given the high-dimensional nature of the parameter space, a direct search for such suitable subspace \(\Scal \) is computationally infeasible in general. This leads to a follow-up question:
+</p>
+<div class="center">
+
+<p>
+<em>How to explore the intrinsic low-dimensional structure eﬀiciently for data selection?</em>
+</p>
+</div>
+
+<p>
+We propose <em>Sketchy Moment Matching (SkMM)</em>, a two-stage solution for this question:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(i)</span> <b>Gradient sketching for bias reduction</b>: First, we construct a low-dimensional parameter subspace \(\Scal \) by sketching the model gradients. Sketching is a well-established dimensionality
+reduction tool known for affordable and accurate low-rank approximations. In deep learning, sketching recently extends its empirical applications to scalable estimations of influence functions for data selection. We make a first step toward the
+theoretical guarantee of gradient sketching for data selection: <em>gradient sketching eﬀiciently finds a low-dimensional subspace \(\Scal \) with small bias such that selecting \(n\) samples by reducing variance over \(\Scal \) is suﬀicient to
+preserve the fast-rate generalization \(O(\dim (\mathcal {S})/n)\), linear in the low intrinsic dimension \(\dim (\mathcal {S})\) while independent of the high parameter dimension \(r\)</em>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(ii)</span> <b>Moment matching for variance reduction</b>: Second, we select data that reduce variance in the low-dimensional subspace \(\Scal \) via moment matching. The variance of data selection is
+characterized by matching between the sketched gradient moments of the original and selected datasets, \(\wt \Sigmab , \wt \Sigmab _S\), respectively. The objective \(\mathrm {tr}(\wt \Sigmab \wt \Sigmab _S^\dagger )\) takes the form of
+V-optimality in optimal experimental design, whose exact minimization is computationally intractable. Existing polynomial-time heuristics for V-optimality are generally based on the continuous relaxation of the V-optimality objective followed by a
+fast rounding process. However, solving such a continuous relaxation can be challenging in practice, as it involves inverting a potentially ill-conditioned matrix \(\wt \Sigmab _S\) in each iteration. Under a common heuristic assumption that \(\wt
+\Sigmab , \wt \Sigmab _S\) commute, we introduce a continuous relaxation with a quadratic objective and linear constraints that is numerically stable (free of inversions) and can be eﬀiciently optimized via projected gradient descent.
+</p>
+</li>
+</ul>
+
+<p>
+With synthetic mixtures of Gaussian data, we first demonstrate how SkMM balances variance and bias in data selection for overparametrized ridge regression and leads to sample-eﬀicient learning. Then, with extensive experiments on fine-tuning
+CLIP or ImageNet pre-trained vision models for both regression and classification tasks, we show the appealing sample and computational eﬀiciency of SkMM, along with its surprising robustness to data heterogeneity.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-10"></a>
+<p>
+<sup>1</sup>&nbsp; We refer to “low-dimension” as the setting where the number of parameters \(r\) is smaller than the selected downstream sample size \(n\), while “high-dimension” refers to the opposite, \(r &gt; n\).
+</p>
+
+
+</div>
+<!--
+...... subsection References ......
+-->
+<h5 id="autosec-11">References</h5>
+<a id="paper-autopage-11"></a>
+
+
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> <a href="https://arxiv.org/abs/2309.16002" target="_blank" >Robust Blockwise Random Pivoting: Fast and Accurate Adaptive Interpolative Decomposition</a>. Yijun Dong, Chao Chen, Per-Gunnar
+Martinsson, Katherine Pearce. <i>arXiv:</i> 2309.16002, 2023.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> <a href="https://arxiv.org/abs/2407.06120" target="_blank" >Sketchy Moment Matching: Toward Fast and Provable Data Selection for Finetuning</a>. Yijun Dong*, Hoang Phan*, Xiang Pan*, Qi Lei.
+<i>Conference on Neural Information Processing Systems (NeurIPS)</i>, 2024. (to appear)
+</p>
+</li>
+</ul>
+
+{% endraw %}

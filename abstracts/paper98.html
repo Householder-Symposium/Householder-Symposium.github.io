@@ -1,0 +1,302 @@
+---
+layout: abstract
+absnum: 98
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Multigrid Methods for Solving Indefinite Problems<br />
+in Port-Hamiltonian Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Paola Ferrari</span>, Matthias Bolten
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In this study, we develop and analyze multigrid methods for eﬀiciently solving large-scale indefinite structured linear systems that arise in port-Hamiltonian systems. Port-Hamiltonian systems are open dynamical systems characterized by a
+Hamiltonian function representing the stored energy, and they interact with their environment through ports, which facilitate the exchange of energy. Mathematically, these systems are described by differential equations coupled with algebraic
+constraints, forming a framework that inherently preserves the energy-conserving properties of physical systems. Resistive effects are included by terminating some of the ports on energy-dissipating elements, such as resistors, which introduce
+dissipation into the system. Finding the numerical solution of such problems results in resolving linear systems with specific structures, often indefinite and involving skew-symmetric and symmetric blocks [6, 8].
+</p>
+
+<p>
+The combination of energy-conserving and dissipative properties leads to saddle-point structures. When discretized, they result in large, indefinite systems of equations that pose significant computational challenges. The matrices involved are often
+block-based, with components that are skew-symmetric or symmetric, and with proper discretizations, they are of (multilevel block) Toeplitz type. The skew-symmetry can lead to Hermitian but indefinite matrices when multiplied by the imaginary
+unit. The coupling introduces additional challenges due to the skew-symmetric nature of the interactions, necessitating specialized numerical techniques for eﬀicient and stable solutions.
+</p>
+
+<p>
+Multigrid methods have long been recognized as optimal solvers for a wide range of elliptic partial differential equations (PDEs) due to their ability to provide convergence rates independent of the problem size. However, adapting these methods to
+indefinite and structured problems, such as those encountered in port-Hamiltonian systems, requires careful consideration of the matrix properties and the selection of appropriate smoothers and grid transfer operators. In this study, we address such
+challenges by focusing on two key aspects: solving general saddle-point systems that arise naturally in port-Hamiltonian models and solving skew-symmetric Toeplitz systems. Our tailored multigrid methods are designed to handle the indefiniteness
+and structured properties of the resulting linear systems, providing eﬀicient and stable solutions to the considered complex problems.
+</p>
+
+<p>
+To tackle these computational challenges, we propose applying an approach inspired by Notay’s method [7] for solving saddle-point systems. This method involves transforming the original system through pre- and post-multiplication with sparse
+block triangular matrices, effectively preconditioning the system to be more suitable for resolution by multigrid techniques. After this transformation, the diagonal blocks become symmetric and positive definite, resembling discrete Laplace operators
+that are well-suited for multigrid solvers. In our previous works [2, 3], we successfully applied this approach to multilevel block Toeplitz matrices arising from finite element approximations of systems of PDEs such as the Stokes problem,
+demonstrating that it leads to eﬀicient multigrid methods with convergence rates independent of the matrix size. We extend this approach to port-Hamiltonian systems.
+</p>
+
+<p>
+To establish a rigorous convergence analysis of our proposed multigrid methods, it is crucial to examine the detailed matrix structures of the discretized systems. These matrices are low-rank corrections of multilevel block Toeplitz matrices, whose
+properties can be characterized by their (matrix-valued) generating functions, also called symbols. By deriving the generating functions, we gain insight into the spectral properties of the transformed matrices, which are essential for analyzing the
+effectiveness of multigrid methods. Specifically, for saddle-point problems with hidden block Toeplitz structure, the analysis of the generating functions enables us to determine optimal preconditioning strategies and to select appropriate smoothers
+and grid transfer operators within the multigrid hierarchy.
+</p>
+
+<p>
+For structured problems involving multilevel block Toeplitz matrices, such as those arising in port-Hamiltonian systems, it is essential to preserve the matrix structure across different grid levels. This focus guides the design of our grid transfer
+operators. By retaining the Toeplitz-like structure, we can apply symbol-based convergence analysis uniformly across all grid levels. This approach enables us to rigorously analyze and predict the convergence behavior of the multigrid method,
+providing both theoretical guarantees and practical performance benefits.
+</p>
+
+<p>
+Additionally, we present a preliminary analysis of multigrid methods for port-Hamiltonian-derived saddle-point problems with hierarchical and recursive configurations. These configurations commonly arise in complex port-Hamiltonian models where
+multiple nested levels of interactions or coupling mechanisms are present. By extending our multigrid framework to accommodate hierarchical and recursive structures, we highlight the potential for scalability and effectiveness in a broader class of
+indefinite and structured linear systems.
+</p>
+
+<p>
+To validate our theoretical findings, we present numerical experiments focusing on field-circuit coupling problems [4] and also on non-convex shape optimization problems [1]. In the field-circuit coupling experiments, we tackle large, indefinite linear
+systems arising from the interaction of Maxwell’s equations with circuit equations, simplified under certain modeling assumptions to quasi-stationary models or dimensionally reduced forms like the telegraph equation. Concerning shape optimization,
+we address non-convex problems involving mechanical components, such as optimizing the shape of ceramic parts under reliability, volume, and construction space constraints. These numerical experiments confirm that the convergence rates of our
+multigrid methods are indeed independent of the problem size, validating the effectiveness of our approach in practical, complex applications.
+</p>
+
+<p>
+Furthermore, we focus on the resolution of skew-symmetric structured linear systems. Multiplying a skew-symmetric Toeplitz matrix by the imaginary unit transforms it into a Hermitian matrix; however, the resulting matrix is not positive definite,
+complicating the application of standard multigrid methods.
+</p>
+
+<p>
+In particular, we introduce a novel approach by interpreting a scalar skew-symmetric Toeplitz matrix as a block Toeplitz matrix with \(2 \times 2 \) blocks. This block formulation allows us to associate the transformed Hermitian matrix with a
+matrix-valued generating function, which we demonstrate is diagonalizable and possesses one positive and one negative eigenvalue function. According to the relationship between the eigenvalues of Hermitian Toeplitz matrices and their generating
+functions—as established by Szegő’s theorem—the zeros of these eigenvalue functions lead to near-zero eigenvalues in the matrix. The near-zero eigenvalues can significantly hinder the convergence of multigrid methods due to slow error reduction in
+the associated spectral components [5].
+</p>
+
+<p>
+To address this challenge, we develop grid transfer operators that consider the two eigenvalue functions separately, effectively tailoring the multigrid hierarchy to the distinct spectral properties of the positive and negative eigenvalues. By analyzing
+the eigenvalue functions and their zeros, we design interpolation and restriction operators that enhance the coarse-grid correction process. Additionally, we employ block-Jacobi methods as smoothers and establish a preliminary theoretical framework
+to estimate optimal smoothing parameters, thereby improving the overall eﬀiciency of the multigrid method.
+</p>
+
+<p>
+Our approach ensures robust convergence of multigrid methods for skew-symmetric Toeplitz systems, even in the presence of near-zero eigenvalues. Numerical experiments confirm the effectiveness of our method, showing optimal convergence rates
+also in the multilevel setting.
+</p>
+
+<p>
+Overall, our work advances the development of eﬀicient multigrid methods for large-scale, indefinite, and structured linear systems arising in port-Hamiltonian systems. By addressing the challenges associated with saddle-point structures and
+skew-symmetric Toeplitz matrices, we provide a robust computational framework with convergence rates independent of the problem size. Our theoretical analyses, supported by numerical experiments, demonstrate the potential of these methods to
+significantly improve computational eﬀiciency in modeling complex physical systems.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;Bolten, O.&nbsp;T. Doganay, H.&nbsp;Gottschalk, and K.&nbsp;Klamroth. Non-convex shape optimization by dissipative hamiltonian flows. <i>Engineering Optimization</i>, pages 1–20,
+2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;Bolten, M.&nbsp;Donatelli, P.&nbsp;Ferrari, and I.&nbsp;Furci. Symbol based convergence analysis in block multigrid methods with applications for Stokes problems. <i>Appl. Numer.
+Math.</i>, 193:109–130, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M.&nbsp;Bolten, M.&nbsp;Donatelli, P.&nbsp;Ferrari, and I.&nbsp;Furci. Symbol based convergence analysis in multigrid methods for saddle point problems. <i>Linear Algebra Appl.</i>,
+671:67–108, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M.&nbsp;Clemens, F.&nbsp;Kasolis, and M.&nbsp;Günther. Port-hamiltonian system framework for conservatively coupled discrete electromagnetics and multi-physics problem formulations. In
+<i>11th Conference on the Computation of Electromagnetic Fields (CEM 2023), Cannes, France</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> G.&nbsp;Fiorentino and S.&nbsp;Serra. Multigrid methods for Toeplitz matrices. <i>Calcolo</i>, 28:283–305, 1991.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> C.&nbsp;Güdücü, J.&nbsp;Liesen, V.&nbsp;Mehrmann, and D.&nbsp;B. Szyld. On non-hermitian positive (semi)definite linear algebraic systems arising from dissipative hamiltonian daes. <i>SIAM
+Journal on Scientific Computing</i>, 44(4):A2871–A2894, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Y.&nbsp;Notay. A new algebraic multigrid approach for Stokes problems. <i>Numer. Math.</i>, 132(1):51–84, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> A.&nbsp;van der Schaft. Port-hamiltonian systems: an introductory survey. In <i>Proceedings of the International Congress of Mathematicians Vol. III</i>, number suppl 2, pages 1339–1365.
+European Mathematical Society Publishing House (EMS Ph), 2006.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

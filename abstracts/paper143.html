@@ -1,0 +1,410 @@
+---
+layout: abstract
+absnum: 143
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Collect, Commit, Expand: an Eﬀicient Strategy for Column Subset Selection on Extremely Wide Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Robin Armstrong</span>, Anil Damle
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The column subset selection problem (CSSP) appears in a remarkably wide range of applications. For example, point selection problems that arise in model order reduction [5], computational chemistry [7], spectral clustering [8], low-rank
+approximation [6, 13], and Gaussian process regression [15] can all be treated as instances of CSSP. Given a matrix \(A \in \mathbb {R}^{m \times n}\) and a target rank \(k \leq \min \{ m,\, n \}\), CSSP seeks to find a set of \(k\) columns
+from \(A\) that are “highly linearly independent.” A more formal statement, using the framework of rank-revealing QR factorizations [4, 11, 12], is that algorithms for CSSP produce an index set \(S \in [n]^k\) satisfying
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                            maxJ∈[n]k σmin (A(:, J))
+                                                                                                         σmin (A(:, S)) ≥                                                                                 (1)--><a id="eqn:cssp_statement"></a><!--
+                                                                                                                                   q(n, k)
+
+-->
+
+<p>
+
+\begin{equation}
+\sigma _\mathrm {min}(A(:,S)) \geq \frac {\max _{J \in [n]^k} \sigma _\mathrm {min}(A(:,J))}{q(n,\, k)} \label {eqn:cssp_statement}
+\end{equation}
+
+</p>
+
+<p>
+for some low-degree bivariate polynomial \(q\). The Golub-Businger algorithm [3], which uses alternating column pivots and Householder reflections to compute a column-pivoted QR (CPQR) factorization \(A\Pi = QR\), is widely used for this
+problem. After running this algorithm, choosing \(A(:,S) = A\Pi (:,1:k)\) results in an \(S\) which does not provably satisfy <span class="textup">(<a href="paper.html#eqn:cssp_statement">1</a>)</span>, but which nearly always brings
+\(\sigma _\mathrm {min}(A(:,S))\) reasonably close to its maximum.
+</p>
+
+<p>
+We seek to address a computational bottleneck in the Golub-Businger algorithm that results from sequential application of Householder reflections with level-2 BLAS. Most existing solutions to this problem involve reducing the number of rows
+manipulated with BLAS-2. For example, the CPQR factorization routine in LAPACK reflects only as many rows as are needed to determine a small block of pivot columns, deferring the full Householder reflection to a later application with BLAS-3
+[16]. There also exists a large class of randomized algorithms that apply standard CPQR routines to sketched matrices with far fewer rows [6, 10, 14, 17]. We, however, are interested in problems where the diﬀiculty arises not from the number of rows,
+but from the number of columns. For example, spectral clustering generates instances of CSSP where each row represents a cluster and each column represents a data point [8], meaning \(m\) may be several orders of magnitude smaller than \(n\). In
+these applications, reducing the number of rows being manipulated with BLAS-2 does not address the main bottleneck.
+</p>
+
+<p>
+We will demonstrate a new CPQR-based column selection algorithm that effectively mitigates the BLAS-2 bottleneck for matrices with far more columns than rows. Our algorithm divides columns into a “tracked” set, where residual column norms
+are recorded, and an “untracked” set, where only overall norms are recorded. Pivot columns are selected in blocks, and each block is selected using a three-step strategy:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> A “collect” step assembles a small number of candidate columns from the tracked set, and forms a conventional CPQR factorization of the candidates.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> A “commit” step uses the CPQR factors to identify a set of provably “safe” pivots from among the candidates, and updates <em>only</em> the tracked columns according to the new pivots.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> An “expand” step moves a small number of columns from “untracked” to “tracked,” setting up for a new round of candidates to be chosen in the next block.
+</p>
+</li>
+</ul>
+
+<p>
+We call this algorithm CCEQR (“Collect-Commit-Expand QR”).
+</p>
+
+<p>
+CCEQR is fully deterministic, and unlike CPQR-based column selection algorithms which distribute the column load across several parallel processors [1, 2, 9], it provably selects the same basis columns as the Golub-Businger algorithm (assuming no
+ties between residual column norms). Using test problems from domains such as computational chemistry, model order reduction, and spectral clustering, we will demonstrate that CCEQR can run several times faster than the standard LAPACK
+routine (GEQP3) for matrices with an unbalanced column norm distribution. For example, Figure <a href="paper.html#fig:clustering_results">1</a> shows that CCEQR can run as much as 10 times faster than GEQP3 for certain spectral
+clustering problems. We will also show that CCEQR and GEQP3 have essentially the same runtime for large unstructured problems, such as Gaussian random test matrices.
+</p>
+<figure id="autoid-1" class="figure ">
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(n\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">GEQP3 Runtime (s)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">CCEQR Runtime (s)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10^2\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.9 \times 10^{-5}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(8.1 \times 10^{-5}\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10^3\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.7 \times 10^{-4}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.7 \times 10^{-4}\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10^4\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.8 \times 10^{-3}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.5 \times 10^{-4}\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10^5\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.8 \times 10^{-2}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.7 \times 10^{-3}\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10^6\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.0 \times 10^{-1}\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.5 \times 10^{-2}\)</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+<div class="figurecaption">
+<p>
+Figure&nbsp;1:&nbsp;Average runtimes of GEQP3 and CCEQR (over 20 trials) on matrices of size \(20 \times n\), for increasing \(n\). Test matrices were generated from a spectral clustering problem, and correspond to Laplacian embeddings of
+\(n\) data points drawn from a 20-component Gaussian mixture model.
+</p>
+</div>
+
+<a id="fig:clustering_results"></a>
+
+</div>
+
+</figure>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-7">References</h4>
+<a id="paper-autopage-7"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Christian&nbsp;H. Bischof. A parallel QR factorization algorithm with controlled local pivoting. <i>SIAM Journal on Scientific and Statistical Computing</i>, 12(1):36–57, 1991.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Christian&nbsp;H. Bischof and Per&nbsp;Christian Hansen. Structure-preserving and rank-revealing QR-factorizations. <i>SIAM Journal on Scientific and Statistical Computing</i>,
+12(6):1332–1350, 1991.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Peter Businger and Gene&nbsp;H. Golub. Linear least squares solutions by Householder transformations. <i>Numerische Mathematik</i>, 7:269 – 276, 1965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Shivkumar Chandrasekaran and Ilse C.&nbsp;F. Ipsen. On rank-revealing factorisations. <i>SIAM Journal on Matrix Analysis and Applications</i>, 15(2):592–622, 1994.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Saifon Chaturantabut and Danny&nbsp;C. Sorensen. Nonlinear model reduction via discrete empirical interpolation. <i>SIAM Journal on Scientific Computing</i>, 32(5):2737–2764, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> H.&nbsp;Cheng, Z.&nbsp;Gimbutas, P.&nbsp;G. Martinsson, and V.&nbsp;Rokhlin. On the compression of low rank matrices. <i>SIAM Journal on Scientific Computing</i>, 26(4):1389–1404, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Anil Damle, Lin Lin, and Lexing Ying. Compressed representation of Kohn-Sham orbitals via selected columns of the density matrix. <i>J Chem Theory Comput</i>, 14:1463–1469, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Anil Damle, Victor Minden, and Lexing Ying. Simple, direct and eﬀicient multi-way spectral clustering. <i>Information and Inference: A Journal of the IMA</i>, 8(1):181–203, 06 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> James&nbsp;W. Demmel, Laura Grigori, Ming Gu, and Hua Xiang. Communication avoiding rank revealing QR factorization with column pivoting. <i>SIAM Journal on Matrix Analysis and
+Applications</i>, 36(1):55–89, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Jed&nbsp;A. Duersch and Ming Gu. Randomized QR with column pivoting. <i>SIAM Journal on Scientific Computing</i>, 39(4):C263–C291, January 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Ming Gu and Stanley&nbsp;C. Eisenstat. Eﬀicient algorithms for computing a strong rank-revealing QR factorization. <i>SIAM Journal on Scientific Computing</i>, 17(4):848–869, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Y.P. Hong and C.-T. Pan. Rank-revealing QR factorizations and the singular value decomposition. <i>Mathematics of Computation</i>, 58(197):213 – 232, 1992.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Michael&nbsp;W. Mahoney and Petros Drineas. CUR matrix decompositions for improved data analysis. <i>Proceedings of the National Academy of Sciences</i>, 106(3):697–702, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Per-Gunnar Martinsson, Gregorio Quintana&nbsp;Ortí, Nathan Heavner, and Robert van&nbsp;de Geijn. Householder QR factorization with randomization for column pivoting (HQRRP). <i>SIAM
+Journal on Scientific Computing</i>, 39(2):C96–C115, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> Victor Minden, Anil Damle, Kenneth&nbsp;L. Ho, and Lexing Ying. Fast spatial Gaussian process maximum likelihood estimation via skeletonization factorizations. <i>Multiscale Modeling &amp;
+Simulation</i>, 15(4):1584–1611, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> Gregorio Quintana-Ortí, Xiaobai Sun, and Christian&nbsp;H. Bischof. A BLAS-3 version of the QR factorization with column pivoting. <i>SIAM Journal on Scientific Computing</i>,
+19(5):1486–1494, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> Franco Woolfe, Edo Liberty, Vladimir Rokhlin, and Mark Tygert. A fast randomized algorithm for the approximation of matrices. <i>Applied and Computational Harmonic Analysis</i>,
+25(3):335–366, 2008.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

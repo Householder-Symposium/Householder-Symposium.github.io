@@ -1,0 +1,379 @@
+---
+layout: abstract
+absnum: 58
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\mleft }{\left }\)
+
+\(\newcommand {\mright }{\right }\)
+
+\(\newcommand {\mleftright }{}\)
+
+\(\newcommand {\mleftrightrestore }{}\)
+
+\(\newcommand {\mat }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\lowrank }[1]{\left [ \left [#1 \right ] \right ]}\)
+
+\(\newcommand {\norm }[1]{\left \| #1 \right \|}\)
+
+\(\newcommand {\order }{\mathcal {O}}\)
+
+\(\renewcommand {\hat }[1]{\widehat {#1}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomly Pivoted Cholesky: Near-Optimal Positive Semidefinite Low-Rank Approximation from a Small Number of Entry Evaluations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Ethan N. Epperly</span>, Yifan Chen, Joel A. Tropp, Robert J. Webber
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+This talk describes randomly pivoted Cholesky (<span class="textsc">RPCholesky</span>), a randomized algorithm for computing a low-rank approximation to a Hermitian postive semidefinite (psd) matrix. To compute a rank-\(k\)
+approximation to an \(N\times N\) matrix, <span class="textsc">RPCholesky</span> performs a \(k\)-step partial Cholesky decomposition with a pivot entry randomly chosen with probabilities proportional to diagonal entries of the current
+residual matrix (i.e., Schur complement). The algorithm requires \(\order (k^2N)\) operations and reads only \((k+1)N\) entries of the input matrix.
+</p>
+
+<p>
+The <span class="textsc">RPCholesky</span> method has an interesting history. The existence of the method was briefly noted in a 2017 paper of Musco and Woodruff [9], and it is algebraically related to an earlier “randomly pivoted QR”
+algorithm of Desphande, Rademacher, Vempala, and Wang (2006, [3]). Our paper [2], originally released in 2022, reintroduced the algorithm, described its connection to Cholesky decomposition, evaluated the method numerically, and provided new
+theoretical results.
+</p>
+
+<p>
+Surprisingly, this simple algorithm is guaranteed to produce a near-optimal low-rank approximation. The output of <span class="textsc">RPCholesky</span>, and any other partial Cholesky decomposition, is low-rank approximation of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                           b = A(:, S)A(S, S)† A(S, :),
+                                                                                                           A
+
+-->
+
+<p>
+
+\begin{equation*}
+\mat {\hat {A}} = \mat {A}(:,\set {S}) \mat {A}(\set {S},\set {S})^\dagger \mat {A}(\set {S},:),
+\end{equation*}
+
+</p>
+
+<p>
+where \(\set {S}\) denotes the set of pivots selected by the algorithm and \({}^\dagger \) denotes the Moore–Penrose pseudoinverse. This type of low-rank approximation is known as a <em>(column) Nyström approximation</em> and is used
+widely to accelerate kernel machine learning methods. It is known [7] that \(k \ge r/\varepsilon \) columns \(\set {S}\) are needed to produce a Nyström approximation \(\mat {\hat {A}}\) within a \(1+\varepsilon \) multiplicative factor
+of the best rank-\(r\) approximation \(\lowrank {\mat {A}}_r\), i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                             b ≤ (1 + ε) A − JAK
+                                                                                                        ∥A − A∥ ∗               r ∗.
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\norm {\smash {\mat {A} - \mat {\hat {A}}}}_* \le (1+\varepsilon ) \norm {\mat {A} - \lowrank {\mat {A}}_r}_*.
+\end{equation*}
+
+</p>
+
+<p>
+Here, \(\norm {\cdot }_*\) denotes the trace norm. In [2], we showed that <span class="textsc">RPCholesky</span> achieves the guarantee:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                          
+                                                                                                                                     r               1
+                                                                                               b
+                                                                                        E ∥A − A∥ ∗ ≤ (1 + ε) A − JAKr ∗       when k ≥ + r log                .
+                                                                                                                                       ε              εη
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathbb {E} \left [\norm {\smash {\mat {A} - \mat {\hat {A}}}}_*\right ] \le (1+\varepsilon ) \norm {\mat {A} - \lowrank {\mat {A}}_r}_* \quad \text {when } k \ge \frac {r}{\varepsilon } + r \log \left ( \frac
+{1}{\varepsilon \eta } \right ).
+\end{equation*}
+
+</p>
+
+<p>
+Here, \(\mat {\hat {A}}\) is the approximation produced by \(k\) steps of <span class="textsc">RPCholesky</span> and \(\eta = \norm {\mat {A} - \lowrank {\mat {A}}_r}_*/\norm {\mat {A}}_*\) denotes the relative error of the best
+rank-\(r\) approximation. In expectation, <span class="textsc">RPCholesky</span> achieves the optimal scaling \(k = r/\varepsilon \) up to an additive term that is logarithmic in the relative error \(\eta \).
+</p>
+
+<p>
+<span class="textsc">RPCholesky</span> has proven effective at accelerating kernel machine learning methods. Given a data set \(\vec {x}_1,\ldots ,\vec {x}_N\), kernel methods perform machine learning tasks such as regression and
+clustering by manipulating a psd kernel matrix \(\mat {A} = (\kappa (\vec {x}_i,\vec {x}_j))_{1\le i,j\le N}\), where \(\kappa \) is a given positive definite kernel function. When implemented directly, kernel methods require \(\order
+(N^3)\) operations and \(\order (N^2)\) storage. By replacing \(\mat {A}\) with a low-rank approximation \(\mat {\hat {A}}\) (say, of rank \(k = \order (1)\)), the storage and runtime costs of these methods are reduced to \(\order (N)\).
+This talk will present numerical experiments from [2], which show that an <span class="textsc">RPCholesky</span>-accelerated clustering method can be \(9\times \) to \(14\times \) more accurate than accelerated clustering methods using
+other low-rank approximation techniques. Subsequent papers have applied <span class="textsc">RPCholesky</span> to accelerate learning of committer functions in biochemistry [1], as a preconditioner for conjugate gradient [4], for quadrature
+in reproducing kernel Hilbert spaces [5], and compression of data sets [8].
+</p>
+
+<p>
+While the standard version of <span class="textsc">RPCholesky</span> is already fast, it is slower than it could be because it processes the columns of the input matrix one-by-one. A blocked version of the method is faster, but can produce
+approximations of lower accuracy. This talk will conclude by discussing the recently introduced <em>accelerated <span class="textsc">RPCholesky</span> method</em> [6], which simulates the performance of original <span
+class="textsc">RPCholesky</span> using a combination of rejection sampling and block-wise computations. The accelerated <span class="textsc">RPCholesky</span> method can be up to \(40\times \) faster than the original method
+while producing the same random output (in exact arithmetic).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> David Aristoff, Mats Johnson, Gideon Simpson, and Robert&nbsp;J. Webber. The fast committor machine: Interpretable prediction with kernels. <i>The Journal of Chemical Physics</i>,
+161(8):084113, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Yifan Chen, Ethan&nbsp;N. Epperly, Joel&nbsp;A. Tropp, and Robert&nbsp;J. Webber. Randomly pivoted Cholesky: Practical approximation of a kernel matrix with few entry evaluations.
+<i>Communications on Pure and Applied Mathematics, accepted</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Amit Deshpande, Luis Rademacher, Santosh Vempala, and Grant Wang. Matrix approximation and projective clustering via volume sampling. In <i>Proceedings of the 2006 Annual ACM-SIAM
+Symposium on Discrete Algorithms</i>, pages 1117–1126, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Mateo Díaz, Ethan&nbsp;N. Epperly, Zachary Frangella, Joel&nbsp;A. Tropp, and Robert&nbsp;J. Webber. Robust, randomized preconditioning for kernel ridge regression. <i>arXiv preprint
+arXiv:2304.12465</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Ethan&nbsp;N. Epperly and Elvira Moreno. Kernel quadrature with randomly pivoted Cholesky. In <i>Advances in Neural Information Processing Systems 36</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Ethan&nbsp;N. Epperly, Joel&nbsp;A. Tropp, and Robert&nbsp;J. Webber. Embrace rejection: Kernel matrix approximation by accelerated randomly pivoted Cholesky. <i>arXiv preprint
+arXiv:2410.03969</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Venkatesan Guruswami and Ali&nbsp;Kemal Sinop. Optimal column-based low-rank matrix reconstruction. In <i>Proceedings of the 2012 Annual ACM-SIAM Symposium on Discrete Algorithms</i>,
+pages 1207–1214. 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Lingxiao Li, Raaz Dwivedi, and Lester Mackey. Debiased distribution compression. <i>arXiv preprint arXiv:2404.12290</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> C.&nbsp;Musco and D.&nbsp;P. Woodruff. Sublinear Time Low-Rank Approximation of Positive Semidefinite Matrices. In <i>2017 IEEE Annual Symposium on Foundations of Computer
+Science</i>, pages 672–683, 2017.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,335 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+A Subspace-Conjugate Gradient Method for Linear Matrix Equations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Martina Iannacito</span><sup>1</sup><a id="paper-autopage-3"></a>, Davide Palitta<sup><a href="paper.html#fn:uniBO">1</a></sup>, Valeria Simoncini<sup><a
+href="paper.html#fn:uniBO">1</a></sup><sup>,</sup> <sup>2</sup>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The proposed talk is concerned with the numerical solution of the multiterm matrix equation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                           A1 XB 1 + A2 XB 2 + . . . + Aℓ XB ℓ = C,                                                                   (1)--><a id="eq:multitermeq"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:multitermeq} \mat {A}_1\mat {X}\mat {B}_1 + \mat {A}_2\mat {X}\mat {B}_2 + \ldots + \mat {A}_{\ell }\mat {X}\mat {B}_{\ell } = \mat {C} ,
+\end{equation}
+
+</p>
+
+<p>
+where \(\mat {A}_i \in \R ^{n_A\times n_A}\) and \(\mat {B}_i\in \R ^{n_B\times n_B}\) are symmetric, and \(\mat {C}\in \R ^{n_A\times n_B}\) is of low rank \(s_C \ll \min \{n_A, n_B\}\). Multiterm matrix equations arise in the
+algebraic formulation of many application problems, such as discretized multivariable PDEs, stochastic, parameterized or space-time PDEs and in the analysis of dynamical systems; we refer, e.g., to&nbsp;[20] and the references therein.
+</p>
+
+<p>
+Solving multiterm matrix equations is particularly challenging when \(\ell &gt; 2\), as the occurrence of many coeﬀicient matrices makes it diﬀicult to effectively employ decompositions of the sets of matrices \(\mat {A}_i\) and \(\mat {B}_i\).
+For this reason, iterative procedures are commonly employed.
+</p>
+
+<p>
+In recent years, efforts have been put into attacking the problem with methods whose complexity, in terms of memory and computational costs, scales modestly with the matrix dimensions. Among the existing techniques that take into account the
+underlying structure, splitting and projection techniques have played a major role. More precisely, if a leading portion of the operator is recognized, matrix-oriented splitting strategies can lead to very effective methods, see, e.g., [7, 19, 2, 9]. This is
+particularly so in problems in control, where some of the terms are often associated with a small section of the underlying domain [11, 4, 3]. Projection techniques are more balanced than splitting, though they may also be very problem dependent in
+selecting the matrices that contribute to the approximation space [12, 10, 18, 6]. Approaches that take a promising different angle have also been explored, relying for instance on optimization or plain greedy strategies &nbsp;[5, 14, 8].
+</p>
+
+<p>
+Disregarding the presence of multiple terms, the problem can be stated as approximately solving the large linear system
+</p>
+
+<p>
+\[ {\bm {\mathcal A}} {\bm x} = {\bm c}, \]
+</p>
+
+<p>
+where
+</p>
+
+<p>
+\[ {\bm {\mathcal A}}= \sum _{j=1}^{\ell }\mat {B}_j\kron \mat {A}_j, \quad {\bm x}=\text {vec}(\mat {X}), \,\, {\bm c} = \text {vec}(\mat {C}); \]
+</p>
+
+<p>
+here \(\kron \) stands for the Kronecker product, and vec is the matrix operator stacking all columns of the given matrix one below the other. Here and in the following we assume that \(\bm {\mathcal A}\) is symmetric and positive definite.
+While this formulation can take advantage of well-established iterative strategies (CG as a leading representative), some problem features are not exploited, such as the possible low rank of the solution. In addition, full vectors of length \(n_A\cdot
+n_B\) need to be stored, which can be very memory consuming for certain applications. A significant step ahead has been taken by rewriting the iteration using matrices instead of vectors throughout the process. Most importantly, these matrices are
+kept (and forced to remain) in factored low rank format, so as to limit memory and computational costs. This methodology appears to be successful when applied to quite different application problems [21, 17, 15, 16, 13, 1].
+</p>
+
+<p>
+In this contribution we build upon the matrix-oriented version of the CG method and try to exploit more thoroughly the presence of subspaces associated with the two sets of coeﬀicient matrices. While in matrix-oriented CG-type methods the local
+functional optimization is performed as in the vector case, so that the recurrence coeﬀicients are scalar, we generate coeﬀicients that are themselves “matrices”. They are determined so that they locally optimize the recurrence within a subspace at
+each iteration. To the best of our knowledge, the idea appears to be new. We will refer to the new method as subspaceCG.
+</p>
+
+<p>
+More precisely, let us define the linear operator \(\mathcal {L}\, : \, {\mathbb R}^{n_A\times n_B}\,\to \, {\mathbb R}^{n_A\times n_B}\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                         L(X) = A1 XB 1 + A2 XB 2 + . . . + Aℓ XB ℓ .                                                                                                         (2)
+
+-->
+
+<p>
+
+\begin{equation}
+\mathcal {L}(\mat {X}) = \mat {A}_1\mat {X}\mat {B}_1 + \mat {A}_2\mat {X}\mat {B}_2 + \ldots + \mat {A}_{\ell }\mat {X}\mat {B}_{\ell } .
+\end{equation}
+
+</p>
+
+<p>
+Following the derivation of the classical CG method, we introduce the function \(\Phi : \R ^{n_A\times n_B}\rightarrow \R \) defined as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                         1      ( )
+                                                                                                                Φ(X) =     ⟨X, L X ⟩ − ⟨X, C⟩,
+                                                                                                                         2
+-->
+
+<p>
+
+\begin{equation*}
+\Phi (\mat {X}) = \frac {1}{2}\langle \mat {X}, \mathcal {L}\bigl (\mat {X}\bigr )\rangle - \langle \mat {X}, \mat {C}\rangle ,
+\end{equation*}
+
+</p>
+
+<p>
+where \(\langle \mat {Y}, \mat {Z}\rangle = \text {trace}(\mat {Y}^{\T }\mat {Z})\). It can be shown that the solution of the multiterm matrix equation corresponds to a minimizer of \(\Phi \).
+</p>
+
+<p>
+Assuming the zero matrix as initial guess and \(\mat {P}_0= P_0^{(l)} (P_0^{(r)})^\T = \mat {C}\), the recurrence relations for the iterative solution and the residual matrix are
+</p>
+
+<p>
+\[ \mat {X}_{k+1} = \mat {X}_k + P_k^{(l)}\vec {\alpha }_k (P_k^{(r)})^{\T }, \qquad \mat {R}_{k+1} = \mat {R}_k - \mathcal {L}(P_k^{(l)}\vec {\alpha }_k(P_k^{(r)})^{\T }), \]
+</p>
+
+<p>
+where \(\vec {\alpha }_k\in \R ^{s\times s}\). We determine \(\vec {\alpha }_k\) as the minimizer of \(\phi (\vec {\alpha }) = \Phi (\mat {X}_k + P_k^{(l)}\vec {\alpha } (P_k^{(r)})^{\T })\) for fixed \(\mat {X}_k\) and
+\(P_k^{(l)}, P_k^{(r)}\). This minimization problem corresponds to imposing the orthogonality condition
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                                      (r)      (l)
+                                                                                                                vec(Rk+1 ) ⊥ range(Pk       ⊗ Pk ).                                                                     (3)--><a id="eq:ort:alpha"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ort:alpha} \text {vec}(\mat {R}_{k+1})\perp \text {range}(P_k^{(r)}\kron P_k^{(l)}) .
+\end{equation}
+
+</p>
+
+<p>
+Similar arguments lead to the computation of the \(s\times s\) matrix \(\vec {\beta }_k\) used to update the direction matrix as \(\mat {P}_{k+1} = \mat {R}_{k+1} + P_k^{(l)}\vec {\beta }_k (P_k^{(r)})^{\T }\).
+</p>
+
+<p>
+At each iteration the rank of the direction matrix grows. An affordable practical implementation of the method thus requires to maintain \(\mat {X}_{k}\), \(\mat {R}_{k}\) and \(\mat {P}_{k}\) in factorized format, with an allowed maximum
+rank. Hence, a truncation strategy for the factors needs to be considered so as to keep memory allocations under control, yielding \(P_{k+1}^{(l)} (P_{k+1}^{(r)})^{\T }\approx \mat {P}_{k+1}\), and similarly for the other iterates.
+</p>
+
+<p>
+During the presentation we will give more details on the derivation of the algorithm, and on the implementation devices that we have chosen to limit memory and time consumptions. Computational experiments will be reported to illustrate the
+competitiveness of the subspaceCG method with respect to currently used options.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;<a id="fn:uniBO"></a>Dipartimento di Matematica, Alma Mater Studiorum Università di Bologna, Piazza di Porta San Donato 5, I-40127 Bologna, Italy
+</p>
+
+
+<p>
+<sup>2</sup>&nbsp;IMATI-CNR, Pavia, Italy.
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> B.&nbsp;Beckermann, D.&nbsp;Kressner, and Ch. Tobler. An error analysis of Galerkin projection methods for linear systems with tensor product structure. <i>SIAM J. Numer. Anal.</i>,
+51(6):3307–3326, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> P.&nbsp;Benner and T.&nbsp;Breiten. Low Rank Methods for a Class of Generalized Lyapunov Equations and Related Issues. <i>Numerische Mathematik</i>, 124(3):441–470, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> P.&nbsp;Benner, A.&nbsp;Cohen, M.&nbsp;Ohlberger, and K.&nbsp;Willcox, editors. <i>Model reduction and approximation: theory and Algorithms</i>. Computational Science &amp; Engineering.
+SIAM, PA, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> P.&nbsp;Benner and T.&nbsp;Damm. Lyapunov equations, energy functionals, and model order reduction of bilinear and stochastic systems. <i>SIAM J. Control Optim.</i>, 49(2):686–711, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> I.&nbsp;Bioli, D.&nbsp;Kressner, and L.&nbsp;Robol. Preconditioned Low-Rank Riemannian Optimization for Symmetric Positive Definite Linear Matrix Equations. 2024. Preprint ArXiv: 2408.16416.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> A.&nbsp;Bouhamidi and K.Jbilou. A note on the numerical approximate solutions for generalized Sylvester matrix equations with applications. <i>Applied Math.Comp.</i>, 206:687–694, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> T.&nbsp;Breiten and E.&nbsp;Ringh. Residual-based iterations for the generalized Lyapunov equation. <i>BIT Num. Math.</i>, 59:823–852, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> J.-P. Chehab and M.&nbsp;Raydan. An implicit preconditioning strategy for large-scale generalized Sylvester equations. <i>Applied Math. and Comput.</i>, 217(21):8793–8803, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> T.&nbsp;Damm. Direct methods and ADI-preconditioned Krylov subspace methods for generalized Lyapunov equations. <i>Num. Lin. Alg. with Appl.</i>, 15:853–871, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Y.&nbsp;Hao and V.&nbsp;Simoncini. The Sherman–Morrison–Woodbury formula for generalized linear matrix equations and applications. <i>Num. Lin. Alg. with Appl.</i>, 28(5), 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> C.&nbsp;Hartmann, B.&nbsp;Schäfer-Bung, and A.&nbsp;Zueva. Balanced averaging of bilinear systems with applications to stochastic control. <i>SIAM J. Control Optim.</i>, 51:2356–2378, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> E.&nbsp;Jarlebring, G.&nbsp;Mele, D.&nbsp;Palitta, and E.&nbsp;Ringh. Krylov methods for low-rank commuting generalized Sylvester equations. <i>Num. Lin. Alg. with App.</i>, 25(6), 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> D.&nbsp;Kressner, M.&nbsp;Plešinger, and Ch. Tobler. A preconditioned low-rank cg method for parameter-dependent Lyapunov equations. <i>Num. Lin. Alg. Appl</i>, 21(5):666–684, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> D.&nbsp;Kressner and P.&nbsp;Sirković. Truncated low-rank methods for solving general linear matrix equations. <i>Num. Lin. Alg. with Appl.</i>, 22(3):564–583, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> D.&nbsp;Kressner and Ch. Tobler. Krylov subspace methods for linear systems with tensor product structure. <i>SIAM J. Matrix Anal. Appl.</i>, 31(4):1688–1714, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> D.&nbsp;Kressner and Ch. Tobler. Low-rank tensor Krylov subspace methods for parametrized linear systems. <i>SIAM. J. Matrix Anal. &amp; Appl.</i>, 32(4):1288–1316, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> D.&nbsp;Palitta and P.&nbsp;Kürschner. On the convergence of Krylov methods with low-rank truncations. <i>Numer Algor</i>, 88:1383–1417, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> C.&nbsp;E. Powell, D.&nbsp;Silvester, and V.&nbsp;Simoncini. An Eﬀicient Reduced Basis Solver for Stochastic Galerkin Matrix Equations. <i>SIAM J. Sci. Comput.</i>, 39(1):A141–A163, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> S.&nbsp;D. Shank, V.&nbsp;Simoncini, and D.&nbsp;B. Szyld. Eﬀicient low-rank solutions of generalized Lyapunov equations. <i>Numerische Mathematik</i>, 134(2):327–342, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> V.&nbsp;Simoncini. Computational methods for linear matrix equations. <i>SIAM Rev.</i>, 58(3):377–441, Sept 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[21]&#x2003;</span> V.&nbsp;Simoncini and Y.&nbsp;Hao. Analysis of the truncated conjugate gradient method for linear matrix equations. <i>SIAM J. Matrix Anal. Appl.</i>, 44(1):359–381, 2023.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

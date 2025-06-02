@@ -1,0 +1,281 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Minimizing the Condition Number via Aﬀine Preconditioning
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Emre Mengi</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The condition number of an invertible matrix \(A \in {\mathbb C}^{n\times n}\) given by
+</p>
+
+<p>
+\[ \kappa (A) \; = \; \| A \|_2 \| A^{-1} \|_2 \; = \; \frac {\sigma _{\max }(A)}{\sigma _{\min }(A)} \]
+</p>
+
+<p>
+not only determines the accuracy of a numerical solution of an associated linear system \(Ax = b\) in the presence of rounding errors but may also affect the convergence of iterative methods to solve the linear system. To improve the conditioning, a
+common practice employed is applying a preconditioner, e.g., the system \(Ax = b\) is turned into \(MAx = Mb\) by means of a preconditioner \(M \in {\mathbb C}^{n\times n}\) with the aim that \(\kappa (MA) \ll \kappa (A)\).
+</p>
+
+<p>
+Here, we consider a family of preconditioners in the aﬀine form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                                           X
+                                                                                                                                           d
+                                                                                                                     M (α) = M0 +                αj Mj                                                                     (1)--><a id="eq:defnM"></a><!--
+                                                                                                                                           j=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:defnM} M(\alpha ) \; = \; M_0 + \sum _{j=1}^d \alpha _j M_j \:
+\end{equation}
+
+</p>
+
+<p>
+for given matrices \(M_0, M_1, \dots , M_d \in {\mathbb C}^{n\times n}\), where \(\alpha = (\alpha _1, \dots , \alpha _d) \in {\mathbb C}^d\) is the vector of parameters, and aim to solve the minimization problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                                 σmax (M (α)A)
+                                                                                                         min κ(M (α)A)         =         min                                                                             (2)--><a id="eq:problem"></a><!--
+                                                                                                         α∈Ω                             α∈Ω     σmin (M (α)A)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:problem} \min _{\alpha \in \Omega } \; \kappa (M(\alpha ) A) \quad = \quad \min _{\alpha \in \Omega } \; \frac {\sigma _{\max }(M(\alpha ) A)}{\sigma _{\min }(M(\alpha ) A)}
+\end{equation}
+
+</p>
+
+<p>
+over a closed box \(\Omega \subset {\mathbb C}^d\). The largest singular value function \(\overline {\sigma }(\alpha ) := \sigma _{\max }(M(\alpha ) A)\) is convex. Yet, it turns out that the smallest singular value function \(\underline
+{\sigma }(\alpha ) := \sigma _{\min }(M(\alpha ) A)\) is not concave, which makes the global solution of the minimization problem in (<a href="paper.html#eq:problem">2</a>) diﬀicult.
+</p>
+
+<p>
+We assume \(M(\alpha )\) has additional structure, in particular that \(M_0, \dots , M_d\) in (<a href="paper.html#eq:defnM">1</a>) satisfy \(M_k^\ast M_j = 0 \;\; \forall k , j \in \{0, 1, \dots , d \} \text { such that }
+k\neq j \: . \) Under this assumption, the minimization problem in (<a href="paper.html#eq:problem">2</a>) is related to
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+                                                                                       λmax (A∗ G(β)A)
+                                                                                   min                 ,                           (3)                                                                                    --><a id="eq:problem2"></a><!--
+                                                                                  β∈Ω2 λmin (A∗ G(β)A)
+
+
+                                                                                                               X
+                                                                                                               d
+                                                                                  where G(β) := M0∗ M0 +             βj Mj∗ Mj ,     Ω2 := {(|α1 |2 , . . . , |αd |2 ) | (α1 , . . . , αd ) ∈ Ω} .
+                                                                                                               j=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+&amp; \min _{\beta \in \Omega ^2} \; \frac {\lambda _{\max }(A^\ast G(\beta ) A)}{\lambda _{\min }(A^\ast G(\beta ) A)} \: , \quad \label {eq:problem2} \\[.5em] &amp; \text {where} \quad G(\beta ) \; := \; M^\ast
+_0 M_0 + \sum _{j=1}^d \beta _j M_j^\ast M_j \: , \quad \Omega ^2 := \{ ( | \alpha _1 |^2 , \dots , | \alpha _d |^2 ) \: | \: (\alpha _1, \dots , \alpha _d ) \in \Omega \} \: . \nonumber
+\end{align}
+Specifically, the globally minimal values \(m_\ast \), \(g_\ast \) of the problems in (<a href="paper.html#eq:problem">2</a>), (<a href="paper.html#eq:problem2">3</a>), respectively, satisfy \(g_\ast = m_\ast ^2\). Moreover, \((\alpha
+_{\ast 1}, \dots , \alpha _{\ast d})\) is a global minimizer of (<a href="paper.html#eq:problem">2</a>) if and only if \((| \alpha _{\ast 1} |^2, \dots , | \alpha _{\ast d} |^2)\) is a global minimizer of (<a
+href="paper.html#eq:problem2">3</a>). Thus, it suﬀices to focus on the minimization problem in (<a href="paper.html#eq:problem2">3</a>).
+</p>
+
+<p>
+The largest eigenvalue function \(\overline {\lambda }(\beta ) := \lambda _{\max }(A^\ast G(\beta ) A)\) and smallest eigenvalue function \(\underline {\lambda }(\beta ) := \lambda _{\min }(A^\ast G(\beta ) A)\) in (<a
+href="paper.html#eq:problem2">3</a>) are convex and concave, respectively, which in turn imply that the minimization problem in (<a href="paper.html#eq:problem2">3</a>) is quasi-convex, i.e., the sublevel set
+</p>
+
+<p>
+\[ {\mathcal S}_\varphi \; := \; \left \{ \beta \; | \; \overline {\lambda }(\beta ) / \underline {\lambda }(\beta ) \: \leq \: \varphi \right \} \; = \; \left \{ \beta \; | \; \overline {\lambda }(\beta ) -
+\varphi \underline {\lambda }(\beta ) \: \leq \: 0 \right \} \]
+</p>
+
+<p>
+is convex for any \(\varphi \) (for \(\varphi &lt; 1\), we have \({\mathcal S}_\varphi = \emptyset \), which is convex trivially). An immediate consequence of quasi-convexity is, assuming minimizers of (<a
+href="paper.html#eq:problem2">3</a>) are strict minimizers, (<a href="paper.html#eq:problem2">3</a>) can have only one minimizer, which is the global minimizer of the problem.
+</p>
+
+<p>
+Solution of the minimization problem in (<a href="paper.html#eq:problem2">3</a>).<br />
+<br />
+We propose three approaches for the solution of (<a href="paper.html#eq:problem2">3</a>). The first one is to apply BFGS to the objective \(\lambda (\beta ) := \overline {\lambda }(\beta ) / \underline {\lambda }(\beta )\), which
+is generically not differentiable at \(\beta \) where the the largest eigenvalue \(\overline {\lambda }(\beta )\) or the smallest eigenvalue \(\underline {\lambda }(\beta )\) is not simple. BFGS with a proper line-search for such nonsmooth
+problems usually converges to a minimizer [2], which must be the global minimizer sought.
+</p>
+
+<p>
+Secondly, following the ideas in [1], by introducing additional variables and change of variables, we show that (<a href="paper.html#eq:problem2">3</a>) can be posed as a convex semidefinite program (SDP) of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                     min{c | βb ∈ B, η ∈ I, c ∈ R s.t. GL (β)
+                                                           b + ηG0 − cI ⪯ 0 and GL (β)
+                                                                                    b + ηG0 − I ⪰ 0}                                     (4)                                                                                  --><a id="eq:SDP1"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:SDP1} \min \{ c \; | \; \widehat {\beta } \in {\mathcal B}, \; \eta \in {\mathcal I}, \; c \in {\mathbb R} \;\; \text {s.t.} \;\; G_\mathrm {L}(\widehat {\beta }) + \eta G_0 - c I \preceq 0 \;\; \text
+{and} \;\; G_\mathrm {L}(\widehat {\beta }) + \eta G_0 - I \succeq 0 \} \:
+\end{equation}
+
+</p>
+
+<p>
+with \(G_\mathrm {L}(\widehat {\beta }) := \sum _{j=1}^d \widehat {\beta }_j A^\ast M_j^\ast M_j A\), \(G_0 := A^\ast M_0^\ast M_0 A\) and \(\mathcal B\), \(\mathcal I\) denoting a prescribed closed box in \({\mathbb R}^d\), a
+prescribed closed interval in \(\mathbb R\). The convex SDP in (<a href="paper.html#eq:SDP1">4</a>) can be solved via interior point methods.
+</p>
+
+<p>
+The third approach exploits the quasi-convexity of \(\lambda (\beta ) := \overline {\lambda }(\beta ) / \underline {\lambda }(\beta )\). In particular, letting
+</p>
+
+<p>
+\[ F(\varphi ) \;\: := \;\: \min _{\beta \in \Omega ^2} \: \overline {\lambda }(\beta ) - \varphi \, \underline {\lambda }(\beta ) \: , \]
+</p>
+
+<p>
+it can be shown that the optimal solution \(g_\ast \) of (<a href="paper.html#eq:problem2">3</a>) is the unique root of \(F\). Newton’s method with a backtracking line search is put in use to find the unique root of \(F\).
+</p>
+
+<p>
+Large-scale problems.<br />
+<br />
+When \(A\) is large, we tailor a subspace framework for the solution of (<a href="paper.html#eq:problem2">3</a>). At every iteration of the basic subspace framework, a projected problem of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                λmax (V ∗ A∗ G(β)AV )
+                                           min                                                                       (5)                                                                                      --><a id="eq:projected_problem"></a><!--
+                                           β∈Ω2 λmin (V ∗ A∗ G(β)AV )
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:projected_problem} \min _{\beta \in \Omega ^2} \; \frac {\lambda _{\max }(V^\ast A^\ast G(\beta ) A V)}{\lambda _{\min }(V^\ast A^\ast G(\beta ) A V)}
+\end{equation}
+
+</p>
+
+<p>
+is solved for a matrix \(V \in {\mathbb C}^{n\times r}\), \(r \ll n\) with orthonormal columns rather than (<a href="paper.html#eq:problem2">3</a>) by one of the approaches above. Then the projection matrix \(V\) is augmented with
+additional columns so that the subspace spanned by its columns also includes two eigenvectors corresponding to the largest and smallest eigenvalues of \(A^\ast G(\beta _\ast )A\), where \(\beta _\ast \) is the global minimizer of (<a
+href="paper.html#eq:projected_problem">5</a>). We provide formal arguments that support the convergence of the global minimizer of the projected problem (<a href="paper.html#eq:projected_problem">5</a>) to the actual global
+minimizer of (<a href="paper.html#eq:problem2">3</a>).
+</p>
+
+<p>
+Hermitian positive definite case.<br />
+<br />
+When \(A\) is Hermitian positive definite, it is natural to consider family of preconditioners of the form (<a href="paper.html#eq:defnM">1</a>) but now with Hermitian positive definite \(M_0, M_1, \dots , M_d \in {\mathbb C}^{n\times
+n}\) and \(\alpha = (\alpha _1, \dots , \alpha _d) \in {\mathbb R}^d\) so that \(M(\alpha )\) is also Hermitian positive definite. In this case, we solve
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                        λmax (M (α)A)       σmax (M (α)1/2 AM (α)1/2 )       λmax (A1/2 M (α)A1/2 )
+                   min                = min                            = min                                                         (6)                                                                                    --><a id="eq:Her_PD"></a><!--
+                    α∈Ω λmin (M (α)A)   α∈Ω σmin (M (α)1/2 AM (α)1/2 )   α∈Ω λmin (A1/2 M (α)A1/2 )
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Her_PD} \min _{\alpha \in \Omega } \; \frac {\lambda _{\max }(M(\alpha ) A)}{\lambda _{\min }(M(\alpha ) A)} \; = \; \min _{\alpha \in \Omega } \; \frac {\sigma _{\max }(M(\alpha )^{1/2} A M(\alpha
+)^{1/2})}{\sigma _{\min }(M(\alpha )^{1/2} A M(\alpha )^{1/2})} \; = \; \min _{\alpha \in \Omega } \; \frac {\lambda _{\max }(A^{1/2} M(\alpha ) A^{1/2})}{\lambda _{\min }(A^{1/2} M(\alpha ) A^{1/2})}
+\end{equation}
+
+</p>
+
+<p>
+over a closed box \(\Omega \in {\mathbb R}^d\), where \(M(\alpha )^{1/2}\), \(A^{1/2}\) are the Hermitian positive definite square-roots of \(M(\alpha )\), \(A\), respectively. This amounts to minimizing the condition number \(\kappa
+(M(\alpha )^{1/2} A M(\alpha )^{1/2})\) over the parameters when a two-sided preconditioner is to be used. The problem in (<a href="paper.html#eq:Her_PD">6</a>) is already quasi-convex, and we no longer require the conditions
+\(M_k^\ast M_j = 0\) for \(k , j \in \{0, 1, \dots , d \}\) s.t. \(k \neq j\) unlike the non-Hermitian case. The analogues of the approaches for the solution of (<a href="paper.html#eq:problem2">3</a>), including the subspace framework
+for the large-scale setting, are applicable to solve (<a href="paper.html#eq:Her_PD">6</a>).
+</p>
+
+<p>
+We illustrate the convergence, accuracy and eﬀiciency of the approaches proposed on synthetic examples, as well as examples that arise from finite-element discretizations of elliptic partial differential equations.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P. Maréchal, J. J. Ye, and J. Zhou, <em>K-optimal design via semidefinite programming and entropy optimization</em>, Math. Oper. Res., 40 (2015), pp. 495-512.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A. S. Lewis and M. L. Overton, <em>Nonsmooth optimization via quasi-Newton methods</em>, Math. Program., 141 (2013), pp. 135-163.
+</p>
+</li>
+</ul>
+

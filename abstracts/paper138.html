@@ -1,0 +1,208 @@
+---
+layout: abstract
+absnum: 138
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A block conjugate gradient method with polynomial filters for symmetric eigenvalue problems: practice and global quasi-optimality
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Fei Xue</span>, Tianqi Zhang
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+&#x2003;&#x2003;We propose a new block variant of the preconditioned conjugate gradient (PCG) method for computing the lowest eigenvalues of standard symmetric (\(Av = \lambda v\)) and product eigenvalue problems (\(KMv = \lambda ^2
+v\)) [1] that arise, for example, from the Bethe-Salpeter equation. The algorithm combines the well-known strengths of locally optimal PCG [4] and Chebyshev polynomial filter methods [2, 3] to exhibit robust and rapid convergence for computing
+potentially many lowest eigenvalues. The convergence of the new method is not very sensitive to the quality of the preconditioner or the parameters of the polynomial filter, which is usually critical for achieving good performance of PCG methods
+and polynomial-based algorithms. Numerical experiments show its improved robustness and runtime compared to several other algorithms, such as the \(M\)-LOBPCG [6], Chebyshev-Davidson [2, 3] and LOBP4DCG [5].
+</p>
+
+<p>
+&#x2003;&#x2003;On the theoretical side, we show that the ideal version of this algorithm (and similar others) exhibits a <em>global quasi-optimality</em> if the starting vector is not far from the eigenvector associated with the lowest eigenvalue: the
+Rayleigh quotient of the iterates computed by this locally optimal algorithm is close to the one computed by the corresponding globally optimal algorithm in early iterations, until the latter eventually outperforms. Such a behavior is similar to the
+global optimality of the conjugate gradient method for solving a symmetric positive definite system of linear equations [8, Section 5.1]. This theory provides insight into the competitiveness of the family of locally optimal methods with search
+directions, such as LOBPCG and thick-restarted Lanczos&#x202f;+&#x202f;\(k\) methods [7].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> T. Zhang and F. Xue, <i>A Chebyshev locally optimal block preconditioned conjugate gradient method for product and standard symmetric eigenvalue problems</i>, to appear on SIAM. J. Matrix Anal.
+Appl., 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Y. Zhou and Y. Saad, <i>A Chebyshev-Davidson algorithm for large symmetric eigenproblems</i>, SIAM. J. Matrix Anal. Appl., Vol. 29 (2007), pp. 954-971.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Y. Zhou, <i>A block Chebyshev-Davidson method with inner-outer restart for large eigenvalue problems</i>, J. Comput. Phys., Vol. 229 (2010), pp. 9188-9200.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A. V. Knyazev, <i>Toward the optimal preconditioned eigensolver: locally optimal block preconditioned conjugate gradient method</i>, SIAM. J. Sci. Comput., Vol. 23 (2001), pp. 517-541.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Z. Bai and R.-C. Li, <i>Minimization principles for the linear response eigenvalue problem II: Computation</i>, Vol. 34 (2013), pp. 392-416.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> E. Vecharynski, J. Brabec, M. Shao, N. Govind, and C. Yang, <i>Eﬀicient block preconditioned eigensolvers for linear response time-dependent density functional theory</i>, Comput. Phys. Commun.,
+Vol. 221 (2017), pp. 42-52.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> L. Wu, F. Xue, and A. Stathopoulos, <i>TRPL+k: Thick-restart preconditioned Lanczos+k method for large symmetric eigenvalue problems</i>, SIAM. J. Sci. Comput., Vol. 41 (2019), pp.
+A1013-A1040.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> J. Nocedal and S. J. Wright, <i>Numerical Optimization (2nd edition)</i>, Springer, New York, 2006.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

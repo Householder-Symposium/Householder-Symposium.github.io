@@ -1,0 +1,96 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Trace Approximation using GLT theory and the Matrix-less Method
+</h2>
+</div>
+<div class="center">
+
+<p>
+Nikos Barakitis, Sven-Erik Ekström, <span class="underline">David Meadon</span>, Stefano Serra-Capizzano
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The theory of Generalised Locally Toeplitz (GLT) Sequences, see for example [6], has been successfully used to study the spectra of different classes of Toeplitz(-like) matrix sequences such as Hermitian, non-Hermitian, block-valued, variable
+coeﬀicient, etc. Specifically, it is a tool that allows us to approximate the eigenvalues of Hermitian Toeplitz(-like) matrices by sampling a function, called the symbol, using an equispaced grid. GLT theory has also been extended to include the concept
+of momentary symbols, that is, symbols which change depending on the size of the matrix, see [2]. This is particularly useful in the case of, for example, PDE discetisations of some operators which may have some variety of grid size \(h\) in the
+symbol that would change depending on the matrix size, that is, it would change with refinement.
+</p>
+
+<p>
+The Matrix-less method, see [1,&#x202f;3–5], aims to use the inherent structure of Toeplitz matrices to accurately compute the spectrum of a much larger matrix in the sequence using a number of (much) smaller matrices. It computes so called
+“higher-order” symbols, and then using an interpolation-extrapolation scheme allow it to approximate the eigenvalues with much higher accuracy.
+</p>
+
+<p>
+We show that these methods, which approximate the eigenvalues of the operator, are able to cheaply approximate the trace of different matrix functions without having to actually construct the (potentially very large) matrix or do any computations
+on it. We investigate computing the traces of matrix functions such as \(\mathrm {Tr}\left (e^{-\beta \mathbf {A}}\right ),~\mathrm {Tr}\left (\mathbf {A}e^{-\beta \mathbf {A}}\right ),~-\mathrm {Tr}\left (\mathbf {A}\log
+\left (\mathbf {A}\right )\right )\) and others, where \(\mathbf {A}\) is the Toeplitz(-like) linear operator.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> G. Barbarino et al. “Matrix-less spectral approximation for large structured matrices”. In: <em>BIT. Numerical mathematics</em> (Jan. 2025). (In Press). <span class="textsc">doi</span>: <a
+href="10.1007/s10543-024-01041-w" target="_blank" >10.1007/s10543-024-01041-w</a>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M. Bolten et al. “Toeplitz momentary symbols: definition, results, and limitations in the spectral analysis of structured matrices”. In: <em>Linear Algebra and its Applications</em> 651 (Oct. 2022),
+pp. 51–82. <span class="textsc">issn</span>: 0024-3795. <span class="textsc">doi</span>: <a href="10.1016/j.laa.2022.06.017" target="_blank" >10.1016/j.laa.2022.06.017</a>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> S-E. Ekström. “Matrix-Less Methods for Computing Eigenvalues of Large Structured Matrices”. PhD thesis. Uppsala University, 2018. <span class="textsc">isbn</span>: 978-91-513-0288-1.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> S-E. Ekström, C. Garoni, and S. Serra-Capizzano. “Are the Eigenvalues of Banded Symmetric Toeplitz Matrices Known in Almost Closed Form?” In: <em>Experimental Mathematics</em> 27.4 (May
+2017), pp. 478–487. <span class="textsc">doi</span>: <a href="10.1080/10586458.2017.1320241" target="_blank" >10.1080/10586458.2017.1320241</a>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> S-E. Ekström and P Vassalos. “A matrix-less method to approximate the spectrum and the spectral function of Toeplitz matrices with real eigenvalues”. In: <em>Numerical Algorithms</em> 89.2 (June
+2021), pp. 701–720. <span class="textsc">issn</span>: 1572-9265. <span class="textsc">doi</span>: <a href="10.1007/s11075-021-01130-9" target="_blank" >10.1007/s11075-021-01130-9</a>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> C. Garoni and S. Serra-Capizzano. <em>Generalized Locally Toeplitz Sequences: Theory and Applications (Volume 1)</em>. Springer International Publishing, 2017. <span
+class="textsc">doi</span>: <a href="10.1007/978-3-319-53679-8" target="_blank" >10.1007/978-3-319-53679-8</a>.
+</p>
+</li>
+</ul>
+

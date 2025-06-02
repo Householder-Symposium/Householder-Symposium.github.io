@@ -1,0 +1,253 @@
+---
+layout: abstract
+absnum: 200
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Exploiting mathematical structures in spectral imaging to accelerate experiments and improve iterative reconstructions
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Maike Meier</span>, Hussam Al Daas, Boris Shustin, Lorenzo Lazzarino, and Paul Quinn
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Spectral imaging covers a range of techniques that aim to reconstruct the chemical state and structural properties of materials. Samples are simultaneously imaged in space, using methods such as microscopy, ptychography, or tomography, as well as
+resolved in the spectral dimension, giving information about chemical composition. Long acquisition times, sample degradation, and low signal-to-noise ratios plague spectral imaging; what is needed are ways to get more out of the data with fewer
+experiments.
+</p>
+
+<p>
+Although a spectral imaging dataset is necessarily a three-dimensional tensor, its underlying dimension is small. In real space, the sample consists of a small number of spectrally distinguishable components present in each pixel in varying thicknesses.
+We develop computational routines to exploit this low-dimensionality; both in the experimental design phase, as well as in the reconstruction phase. By leveraging established NLA techniques such as random leverage-score sampling&nbsp;[2], CUR
+decompositions&nbsp;[5], iterative non-negative factorisation&nbsp;[3], and regularisation, we accelerate spectral imaging experiments through subsampling and improve reconstructions.
+</p>
+
+<p>
+For example, consider spectro-microscopy, which combines spectroscopy and microscopy. The underlying structure of a (flattened) dataset is
+</p>
+
+<p>
+\[D = \text {Pois}(\mu t), \quad \mu \in \mathbb {R}_{\geq 0}^{n_E\times S}, \quad t\in \mathbb {R}_{\geq 0}^{S\times n_Xn_Y},\]
+</p>
+
+<p>
+where \(\mu \) are absorption spectra in \(n_E\) energies of \(S\) different components and \(t\) are thickness maps of the corresponding components in the \(n_Xn_Y\) pixels. We firstly develop a data-driven scheme to determine what entries of
+the dataset should be measured and what measurements can be skipped, building on&nbsp;[7]. The scheme is based on leverage score sampling important wavelengths and important pixels, determined on-the-fly. The result is a non-negative dataset
+with 80-95&#x202f;% missing entries. We show that if the measured entries are structured in columns and rows of the flattened dataset, reconstructions are significantly more accurate than random missing entries.
+</p>
+
+<p>
+Furthermore, we provide a novel algorithm to reconstruct a non-negative factorisation from a dataset with missing entries, which is especially eﬀicient for a CUR decomposition of the data. This algorithm also allows regularisation, and leads to more
+physically-relevant reconstructions than existing methods&nbsp;[4].
+</p>
+
+<p>
+We present similar schemes for spectro-ptychography&nbsp;[1], in which the low-rank structure is not readily present in the measured datasets. This leads to a combination of non-negative factorisation schemes combined with nonlinear conjugate
+gradient algorithms&nbsp;[6].
+</p>
+
+<p>
+The work demonstrates that numerical linear algebra results from the last two decades have a wealth of applications beyond straightforward large-scale matrix manipualtions. In particular, the ideas of modern NLA can be applied before any data has
+been obtained, to aid in experiment design and accelerating acquisition times.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Batey, D.J., Claus, D. and Rodenburg, J.M., 2014. <em>Information multiplexing in ptychography.</em> Ultramicroscopy, 138, pp.13-21.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Drineas, P., Mahoney, M.W. and Muthukrishnan, S., 2006. <em>Sampling algorithms for l2 regression and applications.</em> Proc. Annu. ACM-SIAM Symp. on Discrete Algorithms, pp.1127-1136.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Gillis, N., 2020. <em>Nonnegative matrix factorization.</em> SIAM.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Lerotic, M., Jacobsen, C., Schäfer, T. and Vogt, S., 2004. <em>Cluster analysis of soft X-ray spectromicroscopy data.</em> Ultramicroscopy, 100(1-2), pp.35-57.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Mahoney, M.W. and Drineas, P., 2009. <em>CUR matrix decompositions for improved data analysis</em>. PNAS, 106(3), pp.697-702.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Thibault, P. and Guizar-Sicairos, M., 2012. <em>Maximum-likelihood refinement for coherent diffractive imaging.</em> New J. Phys., 14(6), p.063004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Quinn, P.D., Sabaté Landman, M., Davis, T., Freitag, M., Gazzola, S. and Dolgov, S., 2024. <em>Optimal Sparse Energy Sampling for X-ray Spectro-Microscopy: Reducing the X-ray Dose and
+Experiment Time Using Model Order Reduction.</em> Chem. Biomed. Imaging, 2(4), pp.283-292.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

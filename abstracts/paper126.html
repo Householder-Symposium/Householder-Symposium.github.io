@@ -1,0 +1,359 @@
+---
+layout: abstract
+absnum: 126
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\DeclareMathOperator *{\argmin }{arg\ min}\)
+
+\(\DeclareMathOperator {\myvec }{vec}\)
+
+\(\DeclareMathOperator {\diag }{diag}\)
+
+\(\newcommand {\starM }{\star _{\bfM }}\)
+
+\(\DeclareMathOperator {\starMrank }{\starM -rank}\)
+
+\(\newcommand {\bfM }{\mathbf {M}}\)
+
+\(\newcommand {\bfa }{\mathbf {a}}\)
+
+\(\newcommand {\bfb }{\mathbf {b}}\)
+
+\(\newcommand {\bfp }{\mathbf {p}}\)
+
+\(\newcommand {\bfR }{\mathbf {R}}\)
+
+\(\newcommand {\TA }{\boldsymbol {\mathcal {A}}}\)
+
+\(\newcommand {\TB }{\boldsymbol {\mathcal {B}}}\)
+
+\(\newcommand {\TX }{\boldsymbol {\mathcal {X}}}\)
+
+\(\newcommand {\Rbb }{\mathbb {R}}\)
+
+\(\newcommand {\Xcal }{\mathcal {X}}\)
+
+\(\newcommand {\Ocal }{\mathcal {O}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Optimal Matrix-Mimetic Tensor Algebras
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Elizabeth Newman</span>, Katherine Keegan
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+With the explosion of big data, the need for explainable data analysis tools, eﬀicient representations, and structure-exploiting operations has exploded as well. Many data and operators are naturally multiway, and as a result, multilinear or tensor
+methods have revolutionized the interpretability of feature extraction, the compressibility of large-scale data, and the computational eﬀiciency of multiway operations. Despite numerous successes, many tensor frameworks suffer from a so-called “curse
+of multidimensionality;” that is, that fundamental linear algebra properties break down in higher dimensions, particularly the notion of optimality. Recent advances in matrix-mimetic tensor frameworks have made it possible to preserve linear
+algebraic properties for multilinear analysis and, as a result, obtain optimal representations of multiway data.
+</p>
+
+<p>
+Matrix mimeticity arises from interpreting tensors as operators that can be multiplied, factorized, and analyzed analogously to matrices. Underlying the tensor operation is an algebraic framework parameterized by an invertible linear transformation.
+Specifically, consider a third-order tensor \(\TA \in \Rbb ^{n_1\times n_2\times n_3}\); i.e., a multiway arrays with rows, columns, and depth indices. We can view \(\TA \) as an \(n_1\times n_2\) matrix where each entry is a \(1\times
+1\times n_3\) tube. We multiply tubes \(\bfa ,\bfb \in \Rbb ^{1\times 1\times n_3}\) using the \(\starM \)-product&nbsp;[5] (the prefix is pronounced “star-M”) via
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                     a ⋆M b = vec−1 (RM [a] vec(b))        where          RM [a] = M−1 diag(M vec(a))M,
+                                                                                                                                          (1)                                                                         --><a id="eq:tubeprod"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:tubeprod} \bfa \starM \bfb = \myvec ^{-1}\left (\bfR _{\bfM }[\bfa ] \myvec (\bfb ) \right )\qquad \text {where} \qquad \bfR _{\bfM }[\bfa ] = \bfM ^{-1}\diag (\bfM \myvec (\bfa )) \bfM ,
+\end{align}
+\(\myvec : \Rbb ^{1\times 1\times n_3} \to \Rbb ^n_3\) is a bijective map that vectorizes tubes and \(\diag : \Rbb ^{n_3} \to \Rbb ^{n_3\times n_3}\) forms a diagonal matrix from the entries of a vector. We say the action \(\bfa \)
+on \(\bfb \) under the \(\starM \)-product is equivalent to left multiplication by the structured matrix \(\bfR _{\bfM }[\bfa ]\). A given invertible matrix \(\bfM \) thereby induces a matrix subalgebra that equips the vector space of tubes with
+a bilinear operation given by \(\bfR _{\bfM }[\cdot ]\); the term <em>tensor algebra</em> refers to this operation.
+</p>
+
+<p>
+We define tensor-tensor products analogously to matrix-matrix products by replacing scalar with tubal multiplication given by&nbsp;<span class="textup">(<a href="paper.html#eq:tubeprod">1</a>)</span>. Using Matlab indexing notation,
+the tubal entrywise definition of the tensor-tensor product of \(\TA \in \Rbb ^{n_1\times m\times n_3}\) and \(\TB \in \Rbb ^{m\times n_2\times n_3}\) is
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                                                                ∑
+                                                                                                                                m
+                                                                                                          (A ⋆M B)i1 ,i2 ,: =         Ai1 ,k,: ⋆M Bk,i2 ,:                                                                                                 (2)
+                                                                                                                                k=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+(\TA \starM \TB )_{i_1,i_2,:} = \sum _{k=1}^m \TA _{i_1,k,:} \starM \TB _{k,i_2,:}
+\end{align}
+for \(i_1=1,\dots ,n_1\) and \(i_2=1,\dots ,n_2\). Under the algebraically-consistent \(\starM \)-product, we obtain matrix-mimetic generalizations of \(\starM \)-rank, -orthogonality, -transposition, more&nbsp;[6]. Notably, we can define a
+tensor singular value decomposition that satisfies an Eckart-Young-like theorem, resulting in optimal, low-rank approximations of multiway data&nbsp;[7].
+</p>
+
+<p>
+The choice of linear mapping \(\bfM \) and associated tensor algebra is crucial to approximation quality. Traditionally, \(\bfM \) is chosen heuristically to leverage expected correlations in the data. However, in many cases, these correlations are
+unknown and common heuristic mappings lead to suboptimal performance. This presentation, based on the work in&nbsp;[8], introduces \(\starM \)-optimization, an algorithm to learn optimal linear transformations and corresponding optimal
+tensor representations (e.g., low-\(\starM \)-rank) simultaneously. The new framework explicitly captures the coupling between the transformation and representation by solving the bilevel optimization problem
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                                                 min Φ(M, X (M))         s.t.         X (M) ∈ arg min Φ(M, X(3)
+                                                                                                                                                             ).                                                         --><a id="eq:bilevel"></a><!--
+                                                                                               M∈On3                                               X ∈X
+
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:bilevel} \min _{\bfM \in \Ocal _{n_3}} \Phi (\bfM , \TX (\bfM )) \qquad \text {s.t.} \qquad \TX (\bfM ) \in \argmin _{\TX \in \Xcal } \Phi (\bfM , \TX ).
+\end{align}
+Here, \(\TX \) is the desired representation belonging to feasible set \(\Xcal \), and \(\TX (\bfM )\) is an optimal representation for a given transformation, \(\bfM \). Our goal is to learn an invertible \(\bfM \), which we guarantee by optimizing
+over the orthogonal group of \(n_3\times n_3\) matrices, \(\Ocal _{n_3}\). The objective function \(\Phi : \Ocal _{n_3} \times \Xcal \to \Rbb \) measures the quality of the representation. We solve&nbsp;<span class="textup">(<a
+href="paper.html#eq:bilevel">3</a>)</span> for \(\bfM \) using Riemannian optimization over the orthogonal group&nbsp;[2, 1, 3].
+</p>
+
+<p>
+A key innovation of \(\starM \)-optimization is the use of variable projection to form \(\TX (\bfM )\), which eliminates the variable \(\TX \) via partial optimization&nbsp;[4]. We heavily leverage the optimality of \(\starM \)-representations to
+guarantee the existence of an optimal \(\TX (\bfM )\); other comparable tensor approaches typically only guarantee quasi-optimality.
+</p>
+
+<p>
+In the talk, we will highlight the generality of the \(\starM \)-optimization framework by considering two prototype problems for fitting tensor data and for finding compressed representations. We will present new theoretical results regarding the
+uniqueness and invariances of the \(\starM \)-operator and convergence guarantees of \(\starM \)-optimization. We will demonstrate the eﬀicacy of learning the transformation and provide interpretable insight into \(\starM \)-optimization
+behavior through several numerical examples, including image compression and reduced order modeling.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P.-A. Absil, R. Mahony, and R. Sepulchre, <em>Optimization Algorithms on Matrix Manifolds</em>, Princeton University Press, Princeton, NJ, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> N. Boumal, <em>An introduction to optimization on smooth manifolds</em>, Cambridge University Press, 2023, https://doi.org/10.1017/9781009166164.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A. Edelman, T. A. Arias, and S. T. Smith, <em>The geometry of algorithms with orthogonality constraints</em>, SIAM Journal on Matrix Analysis and Applications, 20 (1998), pp. 303–353,
+https://doi.org/10.1137/S0895479895290954.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> G. H. Golub and V. Pereyra, <em>The differentiation of pseudo-inverses and nonlinear least squares problems whose variables separate</em>, SIAM Journal on Numerical Analysis, 10 (1973), pp.
+413–432, https://doi.org/10.1137/0710036.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> E. Kernfeld, M. Kilmer, and S. Aeron, <em>Tensor–tensor products with invertible linear transforms</em>, Linear Algebra and its Applications, 485 (2015), pp. 545–570,
+https://doi.org/10.1016/j.laa.2015.07.021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Misha E. Kilmer, Karen Braman, Ning Hao, and Randy C. Hoover. <em>Third-order tensors as operators on matrices: A theoretical and computational framework with applications in imaging.</em>
+SIAM Journal on Matrix Analysis and Applications, 34(1):148–172, 2013, https://doi.org/10.1137/110837711.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M. E. Kilmer, L. Horesh, H. Avron, and E. Newman, <em>Tensor-tensor algebra for optimal representation and compression of multiway data</em>, Proceedings of the National Academy of Sciences of
+the United States of America, 118 (2021), https://doi.org/10.1073/pnas. 2015851118.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Elizabeth Newman and Katherine Keegan. <em>Optimal matrix-mimetic tensor algebras via variable projection</em>, 2024, https://arxiv.org/abs/2406.06942.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

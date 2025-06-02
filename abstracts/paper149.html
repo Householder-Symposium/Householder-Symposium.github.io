@@ -1,0 +1,710 @@
+---
+layout: abstract
+absnum: 149
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\C }{{\mathbb C}}\)
+
+\(\newcommand {\defby }{\mathrel {\mathop :}=}\)
+
+\(\newcommand {\conj }[1]{\overline {#1}}\)
+
+\(\newcommand {\bydef }{=\mathrel {\mathop :}}\)
+
+\(\newcommand {\OOM }{\mathcal {O}}\)
+
+\(\newcommand {\tlcomp }{\textsc {TLComp}}\)
+
+\(\newcommand {\abs }[1]{\lvert #1\rvert }\)
+
+\(\DeclareMathOperator {\rank }{rank}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A MATLAB Toolbox for Toeplitz-Like Matrix Computations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Robert Luce</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+A Toeplitz matrix \(T \in \C ^{n,n}\) is defined by \(2n - 1\) parameters \(t_{-n+1}, \dotsc , t_{n-1} \in \C \) by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                                   
+                                                                                                                                     t0       t1     ...       tn−1
+                                                                                                                                                     ..         .. 
+                                                                                                                 [      ]       t−1          t0         .        . 
+                                                                                                              T = t|i−j| i,j = 
+                                                                                                                                .
+                                                                                                                                                                    .
+                                                                                                                                                                    
+                                                                                                                                ..           ..      ..
+                                                                                                                                                 .       .      t 1
+                                                                                                                                    t−n+1     ...    t−1           t0
+
+-->
+
+<p>
+
+\begin{equation*}
+T = \left [ t_{\abs {i-j}} \right ]_{i,j} = \begin{bmatrix} t_0 &amp; t_1 &amp; \dots &amp; t_{n-1}\\ t_{-1} &amp; t_0 &amp; \ddots &amp; \vdots \\ \vdots &amp;\ddots &amp; \ddots &amp; t_1 \\ t_{-n+1} &amp; \dots
+&amp; t_{-1} &amp; t_0 \\ \end {bmatrix}.
+\end{equation*}
+
+</p>
+
+<p>
+Such matrices arise in many applications from signal processing to finance, and the design and analysis of algorithms for <em>computations with Toeplitz matrices</em> that take advantage of the matrix structure is an ever-continuing quest. In this
+work we present a MATLAB toolbox for convenient and eﬀicient computations with Toeplitz matrices and ”Toeplitz-like“ matrices, which we will define in the following, based on <em>displacement structure</em>. This more general class of structured
+matrices enables fast algorithms not only for Toeplitz matrices themselves, but all matrices that satisfy a certain low-rank property, which includes products, polynomials and rational functions of Toeplitz matrices.
+</p>
+
+<p>
+We will now discuss the crucial low-rank property that enables fast algorithms in more detail. In the following we need notation for the two unit circulant matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                                            
+                                                                                                                                                                        ±1
+                                                                                                                                               1                            
+                                                                                                                                                                            
+                                                                                                        Z±1 := [e2 , e3 , . . . , en , ±e1 ] =       ..                     ,
+                                                                                                                                                          .                 
+                                                                                                                                                               1
+
+-->
+
+<p>
+
+\begin{equation*}
+Z_{\pm 1} \defby [ e_2, e_3, \dotsc , e_n, \pm e_1 ] = \begin{bmatrix} &amp; &amp; &amp; \pm 1\\ 1 &amp; &amp; &amp; \\ &amp; \ddots &amp; &amp; \\ &amp; &amp; 1 \end {bmatrix},
+\end{equation*}
+
+</p>
+
+<p>
+and for a vector \(x \in \C ^n\) we denote \(Z_{\pm 1}(x) \defby \sum _{k=1}^{n} x_i Z_{\pm 1}^{k-1}\).
+</p>
+
+<p>
+For a matrix \(A \in \C ^{n,n}\) the <em>displacement of \(A\)</em> is defined as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                          ∇(A) := ∇Z1 ,Z−1 (A) := Z1 A − AZ−1 ∈ Cn,n .
+
+-->
+
+<p>
+
+\begin{equation*}
+\nabla (A) \defby \nabla _{Z_1, Z_{-1}}(A) \defby Z_1 A - A Z_{-1} \in \C ^{n,n}.
+\end{equation*}
+
+</p>
+
+<p>
+The <em>displacement rank</em> of \(A\) is the rank of \(\nabla (A)\), and when we have a decomposition
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                     ∇(A) = GB ∗ ,          G, B ∈ Cn,d ,
+
+-->
+
+<p>
+
+\begin{equation*}
+\nabla (A) = G B^*, \quad G, B \in \C ^{n,d},
+\end{equation*}
+
+</p>
+
+<p>
+we call the pair \((G, B)\) a <em>generator of \(A\)</em>. It is easily seen that the displacement rank of a Toeplitz matrix cannot exceed \(2\), and whenever \(\rank (\nabla (A)) \ll n\) we will say that \(A\) is <em>Toeplitz-like</em>. The
+overall mechanics of displacement structure are much more general than what we need for our purpose here; we refer to the classic volume of Kailath&nbsp;et.&nbsp;al.&nbsp;[4] for a broader presentation.
+</p>
+
+<p>
+The property of \(\nabla (A)\) having low rank has several important algorithmic consequences for computations involving Toeplitz-like matrices, which we take advantage of in our toolbox. For example, from a generator \((G, B)\) of \(A\),
+having columns \(g_1, \dotsc , g_d\) and \(b_1, \dotsc , b_d\), respectively, one obtains the representation (e.g., [6])
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                  ∑
+                                                                                  d
+                                                                             A=         Z1 (gk )Z−1 (Jbk ),     (\(J\) is the anti-identity), --><a id="eq:circprodsum"></a><!--
+                                                                                  k=1
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:circprodsum} A = \sum _{k=1}^{d} Z_1(g_k) Z_{-1}(J \conj {b_k}), \quad \text {($J$ is the anti-identity)},
+\end{equation*}
+
+</p>
+
+<p>
+enabling fast multiplication with \(A\) via the FFT without ever forming \(A\) explicitly.
+</p>
+
+<p>
+Another important property is that Schur complements of displacement structured matrices inherit the displacement rank&nbsp;[4]. A compact and constructive way to state this property is as follows.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-5"></a>
+<span class="amsthmnameplain">Theorem</span>. </span> <a id="thm:block_sc_gen"></a> Let \(M = \left [ \begin {smallmatrix} M_{11} &amp; M_{12} \\ M_{21} &amp; M_{22} \end {smallmatrix} \right ] \in \C ^{2n\times
+2n}\) with each block being an \(n \times n\) matrix. If \(M\) satisfies the displacement equation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                              [     ]
+                                                                                                                                  G1 [            ]
+                                                                                                                                                          ∗
+                                                                                             (Z1 ⊕ Z1 )M − M (Z−1 ⊕ Z−1 ) =              B1∗   B2∗ =: GM BM ,
+                                                                                                                                  G2
+
+-->
+
+<p>
+
+
+\begin{equation*}
+(Z_1 \oplus Z_{1}) M - M (Z_{-1} \oplus Z_{-1}) = \begin{bmatrix} G_1\\ G_2 \end {bmatrix} \begin{bmatrix} B_1^* &amp; B_2^* \end {bmatrix} \bydef G_M^{} B_M^*,
+\end{equation*}
+
+
+</p>
+
+<p>
+where \(G_M, B_M \in \C ^{2n \times d}\) are conformally partitioned with \(M\), then the Schur complement \(S \defby M_{22} - M_{21} M_{11}^{-1} M_{12}\) of \(M_{11}\) in \(M\) satisfies the displacement equation \(\nabla (S) = G_S
+B_S^*\) with
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                    −1                   ∗   −∗
+                                                                                                     GS = G2 − M21 M11 G1 ,   BS = B2 − M12 M11 B1 .
+
+-->
+
+<p>
+
+
+\begin{equation*}
+G_S = G_2 - M_{21}^{} M_{11}^{-1} G_1^{}, \quad B_S = B_2 - M_{12}^* M_{11}^{-*} B_1^{}.
+\end{equation*}
+
+
+</p>
+
+<p>
+In particular \(S\) has displacement rank at most \(d\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The preceding theorem actually applies to other displacement operators, and forms the basis of the famous GKO algorithm&nbsp;[3], which allows solving linear systems with \(A\) via an implicit LU factorization in \(\OOM (dn^2)\) (after
+transformation to a Cauchy-like matrix). A more immediate consequence though is that one can derive generator formulas for the result of algebraic operations with Toeplitz-like matrices directly from their generators. The case of a product of two
+Toeplitz-like matrices is an instructive example.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-6"></a>
+<span class="amsthmnameplain">Example</span>. </span> Let \(A_1, A_2 \in \C ^{n\times n}\) two Toeplitz-like matrices of displacement ranks \(d_1, d_2\) and with generators \((G_1, B_1)\) and \((G_2, B_2)\), respectively. Then a
+generator for the product \(A_1A_2\) can be obtained by using the preceding theorem on the embedding
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                   [              ]
+                                                                                                                                       −In   A2
+                                                                                                                          M=
+                                                                                                                                       A1    0
+
+-->
+
+<p>
+
+
+\begin{equation*}
+M = \begin{bmatrix} -I_n &amp; A_2\\ A_1 &amp; 0 \end {bmatrix}
+\end{equation*}
+
+
+</p>
+
+<p>
+which is seen to have displacement rank at most \(d_1 + d_2 + 1\), and a possible generator for \(M\) is
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                         [                     ]             [                     ]
+                                                                                                             e1     G2    0                      −2en   0     B1
+                                                                                                    G=                             ,    B=                             .
+                                                                                                             0       0    G1                      0     B2    0
+
+-->
+
+<p>
+
+
+\begin{equation*}
+G = \begin{bmatrix} e_1 &amp; G_2 &amp; 0\\ 0 &amp; 0 &amp; G_1 \end {bmatrix}, \quad B = \begin{bmatrix} -2 e_n &amp; 0 &amp; B_1\\ 0 &amp; B_2 &amp; 0 \end {bmatrix}.
+\end{equation*}
+
+
+</p>
+
+<p>
+Hence the preceding theorem asserts that \(S = A_1 A_2\) has displacement rank at most \(d_1 + d_2 + 1\) and a generator for \(A_1 A_2\) is
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                 [                          ]               [                            ]
+                                                                                             GS = A1 e 1          A1 G2   G1 ,          BS = −2A∗2 en        B2    A∗2 B1 .
+
+-->
+
+<p>
+
+
+\begin{equation*}
+G_S = \begin{bmatrix} A_1 e_1 &amp; A_1 G_2 &amp; G_1 \end {bmatrix}, \quad B_S = \begin{bmatrix} -2 A_2^* e_n &amp; B_2 &amp; A_2^* B1 \end {bmatrix}.
+\end{equation*}
+
+
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The preceding example is typical in the sense that the generator formulas provide a recipe for implementing matrix operations solely on the basis of the generators of the operands and resultant. Further important examples are integer powers,
+polynomials and rational functions.
+</p>
+
+<p>
+Our toolbox <span class="textsc">TLComp</span> implements algorithms for arithmetic and other computations with Toeplitz-like matrices, typically based either on the FFT or by delegation to unstructured, dense computations on their
+generators. Toeplitz and Toeplitz-like matrices are never stored as full matrices, but instead a generator representation is maintained throughout. Table <a href="paper.html#table:ops">1</a> lists a few examples of the supported operations and
+their computational complexity.
+</p>
+
+<p>
+In order to maintain the generator representation throughout, an underlying generator \((G, B)\), say, comprising \(d\) columns, will be <em>compressed</em> to the numerical rank of the displacement, or sharp rank bounds (if available). In our
+toolbox this is achieved by thin QR factorizations of both \(G\) and \(B\), followed by an SVD of a smaller \(d\)-by-\(d\) matrix to determine the rank. The overall complexity of this recompression procedure is only in \(\OOM (d^2n)\) and is
+typically dominated by other computational costs.
+</p>
+
+<p>
+Our workhorse for solving linear systems of equations with Toeplitz-like matrices is the GKO algorithm&nbsp;[3] as implemented in the excellent MATLAB toolbox “drsolve” by Aricò and Rodriguez&nbsp;[1]. It may be interesting to add an option
+for using super-fast solvers in applicable cases (e.g.,&nbsp;[5]), but in our experience the GKO approach is highly competitive in practice up to very large matrix dimensions despite having a worse complexity.
+</p>
+
+<figure id="autoid-1" class="table ">
+<div class="center">
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr>
+<td class="tdc">operation</td>
+<td class="tdc">\(\OOM \)-complexity</td>
+<td class="tdc">dominant operation</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc">\(A_1 + A_2\)</td>
+<td class="tdc">\(n (d_1 + d_2)^2\)</td>
+<td class="tdc">generator (re-)compression</td>
+</tr>
+
+<tr>
+<td class="tdc">\(A_1 b\)</td>
+<td class="tdc">\(d_1 n \log n\)</td>
+<td class="tdc">FFT</td>
+</tr>
+
+<tr>
+<td class="tdc">\(A_1 A_2\)</td>
+<td class="tdc">\(d_1 d_2 n \log n\)</td>
+<td class="tdc">FFT</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\mbox {full}(A_1)\)</td>
+<td class="tdc">\(d_1 n^2\)</td>
+<td class="tdc">None</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\mbox {mpower}(T, s)\)</td>
+<td class="tdc">\(s n \log n\)</td>
+<td class="tdc">FFT</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\mbox {polyvalm}(p, T)\)</td>
+<td class="tdc">\(s n \log n\)</td>
+<td class="tdc">FFT</td>
+</tr>
+
+<tr>
+<td class="tdc">\(\mbox {polyvalm}(p, A_1)\)</td>
+<td class="tdc">\(d_1 s n \log n\)</td>
+<td class="tdc">FFT</td>
+</tr>
+
+<tr>
+<td class="tdc">\(T \backslash b\)</td>
+<td class="tdc">\(n^2\)</td>
+<td class="tdc">GKO</td>
+</tr>
+
+<tr>
+<td class="tdc">\(A_1 \backslash b\)</td>
+<td class="tdc">\(d_1 n^2\)</td>
+<td class="tdc">GKO</td>
+</tr>
+</table>
+
+</div>
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Selected operations in <span class="textsc">TLComp</span>. Here \(T\) is a Toeplitz matrix, \(A_1\) and \(A_2\) are Toeplitz-like matrices of displacement rank \(d_1\) and \(d_2\), respectively, \(b \in \C ^n\) and \(p\)
+is a polynomial of degree \(s\).
+</p>
+</div>
+
+<a id="table:ops"></a>
+
+</figure>
+
+<p>
+In order to give an idea on how <span class="textsc">TLComp</span> can be used, we will show a few simple command prompts that involve our toolbox. Toeplitz matrices are represented by a <span class="verb">ToepMat</span> class. When
+possible, arithmetic with Toeplitz matrices yield Toeplitz matrices again:
+</p>
+<pre class="verbatim">
+% Generate data for two random Toeplitz matrices
+[c1, r1] = random_toeplitz(1000, 1000);
+[c2, r2] = random_toeplitz(1000, 1000);
+
+
+% We provide a class |ToepMat|
+TM1 = ToepMat(c1, r1);
+TM2 = ToepMat(c2, r2);
+
+
+% Addition, scalar multiplication yield a ToepMat object
+disp(TM1 + TM2)
+disp(TM1 - TM2)
+disp(2i*pi * TM1)
+
+
+  1000x1000 ToepMat
+  1000x1000 ToepMat
+  1000x1000 ToepMat
+
+</pre>
+
+<p>
+If the result of an operation cannot be represented as a Toeplitz matrix, it will be type-promoted to a Toeplitz-like matrix, represented by the <span class="verb">TLMat</span> class:
+</p>
+<pre class="verbatim">
+disp(TM1 * TM2)
+disp(TM1 \ TM2)
+
+
+  1000x1000 TLMat, displacement rank 4
+  1000x1000 TLMat, displacement rank 3
+
+</pre>
+
+<p>
+Evaluate Taylor polynomial of degree six for the exponential function:
+</p>
+<pre class="verbatim">
+p = 1./factorial(6:-1:0);
+E = polyvalm(p, TM1);   % No "full" arithmetic here!
+disp(E); % Result is a TLMat
+
+
+  1000x1000 TLMat, displacement rank 12
+
+
+EE = polyvalm(p, full(TM1)); % Compare with result from "full" computation
+disp(norm(E - EE, 'fro') / norm(EE, 'fro'));
+
+
+   6.8215e-15
+
+</pre>
+
+<p>
+A preliminary version of this toolbox with some fewer features has been used to facilitate the numerical experiments in&nbsp;[2]. This preliminary version is already available on GitHub at
+</p>
+<div class="center">
+
+<p>
+<a href="https://github.com/rluce/tlcomp" target="_blank" >https://github.com/rluce/tlcomp</a>
+</p>
+</div>
+
+<p>
+and we hope that it will aid our community and beyond to embrace structured matrix computations in research and applications.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-13">References</h4>
+<a id="paper-autopage-13"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Aricò and G.&nbsp;Rodriguez, <i>A fast solver for linear systems with displacement structure</i>, Numer. Algorithms, 55 (2010), pp.&nbsp;529–556.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> B.&nbsp;Beckermann, J.&nbsp;Bisch, and R.&nbsp;Luce, <i>On the rational approximation of Markov functions, with applications to the computation of Markov functions of Toeplitz
+matrices</i>, Numer. Algor., 91 (2022), pp.&nbsp;109–-144.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> I.&nbsp;Gohberg, T.&nbsp;Kailath, and V.&nbsp;Olshevsky, <i>Fast Gaussian elimination with partial pivoting for matrices with displacement structure</i>, Math. Comp., 64 (1995),
+pp.&nbsp;1557–1576.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> T.&nbsp;Kailath and A.&nbsp;H. Sayed, eds., <i>Fast reliable algorithms for matrices with structure</i>, Society for Industrial and Applied Mathematics (SIAM), Philadelphia, PA, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> S.&nbsp;Massei, L.&nbsp;Robol, and D.&nbsp;Kressner, <i>hm-toolbox: MATLAB Software for HODLR and HSS Matrices</i>, SIAM Journal on Sci. Comp., 42(2) (2020), pp.&nbsp;C43–C68.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> V.&nbsp;Y. Pan, <i>Structured matrices and polynomials</i>, Birkhäuser Boston, Inc., Boston, MA; Springer-Verlag, New York, 2001.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

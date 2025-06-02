@@ -1,0 +1,358 @@
+---
+layout: abstract
+absnum: 79
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Convergence Analysis for Nonlinear GMRES
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Yunhui He</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Department of Mathematics, University of Houston, Houston, USA
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We are interested in solving the following nonlinear system of equations
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                             g(x) = 0,                                                                                                         (1)
+
+-->
+
+<p>
+
+\begin{equation}
+g(x)=0,
+\end{equation}
+
+</p>
+
+<p>
+where \(x\in \mathbb {R}^n\) and \(g: \mathbb {R}^n \rightarrow \mathbb {R}^n\).
+</p>
+
+<p>
+Consider the following fixed-point iteration
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                   xk+1 = q(xk ) = xk − g(xk ).                                                                                                (2)
+
+-->
+
+<p>
+
+\begin{equation}
+x_{k+1}=q(x_k)=x_k-g(x_k).
+\end{equation}
+
+</p>
+
+<p>
+In practice, the fixed-point iteration converges slowly or even diverges. We seek methods to accelerate it.
+</p>
+
+<p>
+Define the k-th residual of the fixed-point iteration as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                   r(xk ) = xk − q(xk ) = g(xk ).                                                                                              (3)
+
+-->
+
+<p>
+
+\begin{equation}
+r(x_k)=x_k-q(x_k)=g(x_k).
+\end{equation}
+
+</p>
+
+<p>
+We revisit the nonlinear generalized minimal residual method (NGMRES) following [2, 1]. NGMRES has been used to accelerate the convergence of a fixed-point iteration, given by Algorithm <a href="paper.html#alg:NGMRES">1</a>. In practice,
+we consider the windowed NGMRES, i.e., fixing \(m\), denoted as NGMRES(\(m\)), which is different than restart GMRES.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;NGMRES with window size \(m\), denoted as (NGMRES(\(m\)))
+</p>
+</div>
+
+<a id="alg:NGMRES"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Given \(x_0\) and \(m\geq 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span>For \(k=1,2,\cdots \) until convergence Do:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> set \(m_k=\min \{k,m\}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> compute
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+<!--
+
+                                                                                                                                X
+                                                                                                                                mk
+                                                                                                                                       (k)
+                                                                                                              xk+1 = q(xk ) +         βi     (q(xk ) − xk−i ) ,                                                 (4)--><a id="eq:xkp1"></a><!--
+                                                                                                                                i=0
+-->
+<p>
+
+\begin{equation}
+\label {eq:xkp1} x_{k+1} = q(x_k) + \sum _{i=0}^{m_k}\beta _i^{(k)} \left (q(x_k)-x_{k-i} \right ),
+\end{equation}
+
+</p>
+<p>
+where \(\beta _i^{(k)}\) is obtained by solving the following least-squares problem
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+<!--
+                                                                                                                                                                  2
+                                                                                                                         X
+                                                                                                                         mk
+                                                                                                                                 (k)
+                                                                                                      min g(q(xk )) +           βi (g(q(xk )) − g(xk−i ))             .                                          (5)--><a id="eq:min"></a><!--
+                                                                                                       (k)
+                                                                                                      βi                  i=0                                     2
+-->
+<p>
+
+\begin{equation}
+\label {eq:min} \min _{\beta _i^{(k)}} \left \|g(q(x_k))+\sum _{i=0}^{m_k} \beta _i^{(k)} \left (g(q(x_k))-g(x_{k-i}) \right ) \right \|_2^2.
+\end{equation}
+
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+<p>
+EndDo
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+To the best of our knowledge, no convergence analysis exists for NGMRES(\(m\)) when applied to nonlinear problems. In this work, under some standard assumptions used for iterative methods in nonlinear problems, we prove that for general
+\(m&gt;0\), the residuals of NGMRES(\(m\)) converge r-linearly. For \(m=0\), we prove that the residuals of NGMRES(0) converge q-linearly.
+</p>
+
+<p>
+Finally, we present numerical results to demonstrate the performance of the NGMRES(\(m\)) method, and we make a comparison with the well-known Anderson acceleration [3]
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Sterck, Hans De, <em>Steepest descent preconditioning for nonlinear GMRES optimization</em>, Numerical Linear Algebra with Applications, 20(3): 453–471, 2013, Wiley Online Library
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Sterck, Hans De <em>A nonlinear GMRES optimization algorithm for canonical tensor decomposition</em>, SIAM Journal on Scientific Computing, 34(3): A1351–A1379, 2012, SIAM
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D. G. Anderson, <em>Iterative procedures for nonlinear integral equations</em>, J. Assoc. Comput. Mach., 12 (1965), pp. 547–560.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

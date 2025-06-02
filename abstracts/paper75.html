@@ -1,0 +1,581 @@
+---
+layout: abstract
+absnum: 75
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Matrix-less spectral approximation for large structured matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+Giovanni Barbarino, Melker Claesson, <span class="underline">Sven-Erik Ekström</span>,<br />
+Carlo Garoni, David Meadon, and Hendrik Speleers
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Sequences of structured matrices of increasing size arise in many scientific applications and especially in the numerical discretization of linear differential problems; for example by using Finite Differences (FD), Finite Elements (FE), Finite Volumes
+(FV), Discontinuous Galerkin (DG), Isogreometric Analysis (IgA). The eigenvalues \(\lambda _j(A_n)\) of matrices \(A_n\), belonging to such a sequence \(\{A_n\}_n\), can often be approximated by a regular expansion:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                         ∑
+                                                                                                         α
+                                                                                                                                                                        jπ
+                                                                                            λj (An ) =         ck (θj,n )hk + Ej,n,α ,   j = 1, . . . , n (1) θj,n =       ,                                           --><a id="eq:expansion"></a><!--
+                                                                                                                                                                       n+1
+                                                                                                         k=0
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:expansion} \lambda _j(A_n)= \sum _{k=0}^\alpha c_k(\theta _{j,n})h^k+E_{j,n,\alpha }, \qquad j=1,\ldots ,n\qquad \theta _{j,n}=\frac {j\pi }{n+1},
+\end{align}
+where \(c_k: [-\pi ,\pi ]\to \mathbb {C}\) (\(c_0\) is called the <i>spectral symbol</i> and \(c_k, k&gt;0\) are called <i>higher order symbols</i>) and the errors \(E_{j,n,\alpha }=\mathcal {O}(h^{\alpha +1})\).
+</p>
+
+<p>
+Hence, if we know these functions \(c_k(\theta )\), or approximate them since they are often not known analytically, we can accurately (and very fast) approximate some (or all) of the eigenvalues of any matrix \(A_n\) simply by evaluating <span
+class="textup">(<a href="paper.html#eq:expansion">1</a>)</span>.
+</p>
+
+<p>
+It was previously shown (under appropriate assumptions, [4, 5]) [1, 7, 8, 9, 10] that for Hermitian sequences \(\{A_n\}_n\), where \(c_0\) is known, that we can approximate \(c_k(\theta _{j,n_0}), k=1,\ldots ,\alpha \) at specified grid points
+\(\theta _{j,n_0}\) using so-called <i>matrix-less</i> methods. The name is derived from the fact that the spectrum for any matrix \(A_n\) in the sequence \(\{A_n\}_n\) can be approximated by <span class="textup">(<a
+href="paper.html#eq:expansion">1</a>)</span> <i>without ever constructing the matrix</i>; only the spectrum of a few small matrices have to be computed. That is, we have equality in <span class="textup">(<a
+href="paper.html#eq:expansion">1</a>)</span>, up to machine precision, for some chosen \(n=n_0\) and \(\alpha \). These approximations \(c_k(\theta _{j,n_0})\) can then be used for interpolation-extrapolation to any grid \(\theta
+_{j,n}\) (for any \(n\)) to approximate \(\lambda _j(A_n)\).
+</p>
+
+<p>
+In the current presentation, mainly inspired by [3], but also&nbsp;[6, 11], we extend the previous algorithms with two important features:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> The function \(c_0\) is not needed as an input and is approximated; this is necessary for most non-Hermitian matrix sequences, but also for discretizations of problems with variable coeﬀicients.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> The algorithm can handle discretizations of variable coeﬀicient problems, e.g., \((a(x)u&apos;(x))&apos;\).
+</p>
+</li>
+</ul>
+
+<p>
+We here briefly present these two new features.
+</p>
+<!--
+...... subsection 1. No knowledge of necessary. ......
+-->
+<h5 id="autosec-5">1. No knowledge of \(c_0\) necessary.</h5>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+We begin by presenting two simple but representative pure Toeplitz matrix sequences; one Hermitian \(\{T_n(f_1)\}_n\) and one non-Hermitian \(\{T_n(f_2)\}_n\).
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                            f1 (θ)=6−8 cos(θ)+2 cos(2θ)                                                                     f2 (θ)=−eiθ +3−3e−iθ +e−2iθ
+                                                                6   −4        1                                                                               3   −3    1                                     
+                                                               −4    6
+                                                                     −4
+                                                                              −4        1
+                                                                                       −4                                                                     −1    3
+                                                                                                                                                                     −1
+                                                                                                                                                                          −3        1
+                                                                                                                                                                                   −3                            
+                                                                1             6                     1                                                                   3                     1               
+                                                                                                                                                                                                              
+                                                              
+                                                    Tn (f1 ) =      ..       ..       ..       ..       ..          
+                                                                                                                     
+                                                                                                                                                              
+                                                                                                                                                     Tn (f2 )=           ..       ..       ..       ..          
+                                                                                                                                                                                                                 
+                                                              
+                                                              
+                                                                          .        .        .        .        .      
+                                                                                                                     
+                                                                                                                                                              
+                                                                                                                                                              
+                                                                                                                                                                               .        .        .        .      
+                                                                                                                                                                                                                 
+                                                                                  1   −4        6       −4        1                                                             −1        3       −3        1 
+                                                                                        1       −4        6       −4                                                                        −1        3       −3
+                                                                                                 1       −4        6                                                                                 −1        3
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp;\scriptstyle \hspace {1em}f_1(\theta )=6-8\cos (\theta )+2\cos (2\theta )&amp;&amp;\scriptstyle \hspace {3em}f_2(\theta )=-e^{\mathbf {i}\theta }+3-3e^{-\mathbf {i}\theta }+e^{-2\mathbf {i}\theta }\\
+\scriptstyle T_n(f_1)&amp;=\scriptstyle \left [\def \arraystretch {0.5} \begin{array}{rrrrrrrrr} \scriptstyle 6&amp;\scriptstyle -4&amp;\scriptstyle 1\\ \scriptstyle -4&amp;\scriptstyle 6&amp;\scriptstyle
+-4&amp;\scriptstyle 1\\ \scriptstyle 1&amp;\scriptstyle -4&amp;\scriptstyle 6&amp;\scriptstyle -4&amp;\scriptstyle 1\\ &amp;\scriptstyle \ddots &amp;\scriptstyle \ddots &amp;\scriptstyle \ddots &amp;\scriptstyle
+\ddots &amp;\scriptstyle \ddots \\ &amp;&amp;\scriptstyle 1&amp;\scriptstyle -4&amp;\scriptstyle 6&amp;\scriptstyle -4&amp;\scriptstyle 1\\ &amp;&amp;&amp;\scriptstyle 1&amp;\scriptstyle -4&amp;\scriptstyle
+6&amp;\scriptstyle -4\\ &amp;&amp;&amp;&amp;\scriptstyle 1&amp;\scriptstyle -4&amp;\scriptstyle 6\\ \end {array} \right ] &amp;&amp;\scriptstyle T_n(f_2)=\scriptstyle \left [\def \arraystretch {0.5}
+\begin{array}{rrrrrrrrr} \scriptstyle 3&amp;\scriptstyle -3&amp;\scriptstyle 1\\ \scriptstyle -1&amp;\scriptstyle 3&amp;\scriptstyle -3&amp;\scriptstyle 1\\ &amp;\scriptstyle -1&amp;\scriptstyle 3&amp;\scriptstyle
+-3&amp;\scriptstyle 1\\ &amp;&amp;\scriptstyle \ddots &amp;\scriptstyle \ddots &amp;\scriptstyle \ddots &amp;\scriptstyle \ddots \\ &amp;&amp;&amp;\scriptstyle -1&amp;\scriptstyle 3&amp;\scriptstyle
+-3&amp;\scriptstyle 1\\ &amp;&amp;&amp;&amp;\scriptstyle -1&amp;\scriptstyle 3&amp;\scriptstyle -3\\ &amp;&amp;&amp;&amp;&amp;\scriptstyle -1&amp;\scriptstyle 3\\ \end {array} \right ]
+\end{align*}
+For matrices in the Hermitian sequence \(\{T_n(f_1)\}_n\), we have that the eigenvalues can be approximated by \(\lambda _j(T_n(f_1))\approx c_0(\theta _{j,n})=f_1(\theta _{j,n})\) where \(\theta _{j,n}=j\pi /(n+1)\); the spectral
+symbol \(c_0\) is known and equal to \(f_1\).
+</p>
+
+<p>
+For matrices in the non-Hermitian sequence \(\{T_n(f_2)\}_n\), we have that \(\lambda _j(T_n(f_1))\not \approx f_1(\theta _{j,n})\), we only know that the eigenvalues lie in the convex hull of the complex valued function \(f_2\); the
+spectral symbol \(c_0\) is not equal to \(f_2\). For most non-Hermitian matrix sequences the \(c_0\) is not known analytically, and the new matrix-less method presented in&nbsp;[3, 11] does not require it to be know. However, the matrix-less
+method is more eﬀicient and accurate if it is provided.
+</p>
+<div class="theorembodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"> <span class="theoremheader">Remark 1</span> </span> In the specific case of a non-Hermitian sequence \(\{T_n(f_2)\}_n\) presented above we do know that the spectrum is real and the are many viable \(c_0\),
+e.g. \(c_0(\theta )=\sin ^3(\theta )/(\sin (\theta /3)\sin ^2(2\theta /3))\); see&nbsp;[13] for details.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+For clarity we show a Julia implementation below on how to compute a matrix \(C=[c_k(\theta _{j,n_0})]_{k,j=1}^{\alpha +1,n_0}\); the inputs are \(n_0\) (\(\approx 100\)), \(\alpha \) (\(\approx 3\)) and <kbd>eigfun</kbd> (a function
+that returns an ordered set of eigenvalues \(\lambda _j(A_n)\) for a matrix \(A_n\) in \(\{A_n\}_n\)).
+</p>
+
+<p>
+<kbd>function compute_C(\(n_0\), \(\alpha \), eigfun)</kbd>
+</p>
+
+<p>
+<span style="width:18pt; display:inline-block"><!----></span><kbd>hs = zeros(\(\alpha \)+1)</kbd>
+</p>
+
+<p>
+<span style="width:18pt; display:inline-block"><!----></span><kbd>E = zeros(\(\alpha \)+1,\(n_0\))</kbd>
+</p>
+
+<p>
+<span style="width:18pt; display:inline-block"><!----></span><kbd>for kk = 1:\(\alpha \)+1</kbd>
+</p>
+
+<p>
+<span style="width:36pt; display:inline-block"><!----></span><kbd>nk = 2^(kk-1)*(\(n_0\)+1)-1</kbd>
+</p>
+
+<p>
+<span style="width:36pt; display:inline-block"><!----></span><kbd>jk = 2^(kk-1)*(1:\(n_0\))</kbd>
+</p>
+
+<p>
+<span style="width:36pt; display:inline-block"><!----></span><kbd>hs[kk] = 1/(nk+1)</kbd>
+</p>
+
+<p>
+<span style="width:36pt; display:inline-block"><!----></span><kbd>E[kk,:] = eigfun(nk)[jk]</kbd>
+</p>
+
+<p>
+<span style="width:18pt; display:inline-block"><!----></span><kbd>end</kbd>
+</p>
+
+<p>
+<span style="width:18pt; display:inline-block"><!----></span><kbd>V=[hs[ii]^(jj-1) for ii=1:\(\alpha \)+1, jj=1:\(\alpha \)+1]</kbd>
+</p>
+
+<p>
+<span style="width:18pt; display:inline-block"><!----></span><kbd>return C=V\E</kbd>
+</p>
+
+<p>
+<kbd>end</kbd>
+</p>
+
+<p>
+As is seen above, the algorithm relies on the computed spectrum for \(\alpha +1\) small matrices (of sizes \(n_k=2^{k-1}(n_0+1)-1\), for \(k=1,\ldots ,\alpha +1\)) to compute the elements of \(C\). Subesequenly \(c_k(\theta _{j,n})\) is
+approximated, using interpolation-extrapolation, for arbitrary \(n\), and used in <span class="textup">(<a href="paper.html#eq:expansion">1</a>)</span> to approximate \(\lambda _j(A_n)\).
+</p>
+<div class="theorembodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"> <span class="theoremheader">Remark 2</span> </span> If the spectral symbol is non-monotone (e.g., the stiffness matrix for IgA or \(f(\theta )=6-8\cos (\theta )+4\cos (2\theta )\)), the matrix-less method
+does typically not work in the non-monotone region, since we usually do not know how to order the eigenvalues correctly.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... subsection 2. Variable coefficients. ......
+-->
+<h5 id="autosec-8">2. Variable coeﬀicients.</h5>
+<a id="paper-autopage-8"></a>
+
+
+<p>
+The spectral symbol \(f\) of the 2nd order FD discretization of \((a(x)u&apos;(x))&apos;\) is two-dimensional, namely \(f(x,\theta )=a(x)(2-2\cos (\theta ))\), where \(f: [0,1]\times [-\pi ,\pi ]\to \mathbb {C}\); e.g., see [12].
+</p>
+
+<p>
+In&nbsp;[3] we show that we can use the rearranged symbol&nbsp;[2] to compute an expansion&nbsp;<span class="textup">(<a href="paper.html#eq:expansion">1</a>)</span> for discretizations of variable coeﬀicient problems; i.e., we map the
+function \(f: [0,1]\times [-\pi ,\pi ]\to \mathbb {R}\) to a rearranged symbol \(g: [0,1]\to \mathbb {R}\). In the new matrix-less method we have \(c_0=g\).
+</p>
+<div class="theorembodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"> <span class="theoremheader">Remark 3</span> </span> We emphasize that the class of problems and matrices where this approach can be applied is extensive, e.g.,
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> multi-dimensional problems (size of matrices are then \(d_\mathbf {n}(\mathbf {n})\) and not \(n\));
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> block matrices (e.g., FE/FV/DG);
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> boundary conditions (\(c_0\) is the same, \(c_k, k&gt;0\) changes);
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> \(h\)-dependence, space-time, sums/inverses/products;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> eigenvectors, singular values, generalized eigenvaklue problems;
+</p>
+</li>
+</ul>
+
+<p>
+and the approach could also be used to construct preconditioners and other solver techniques.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Apart from the two main points mentioned above, we will also discuss the current framework in detail, possible extension and current developments, and possible applications.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Fayyaz Ahmad, Eman Salem Al-Aidarous, Dina Abdullah Alrehaili, Sven-Erik Ekström, Isabella Furci, and Stefano Serra-Capizzano, <em>Are the eigenvalues of preconditioned banded symmetric
+Toeplitz matrices known in almost closed form?</em>, Numerical Algorithms, 78(3), pp. 867-893 (2018)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Giovanni Barbarino, Davide Bianchi, and Carlo Garoni, <em>Constructive approach to the monotone rearrangement of functions</em>, Expositiones Mathematicae, 40(1), pp. 155–175 (2022)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Giovanni Barbarino, Melker Claesson, Sven-Erik Ekström, Carlo Garoni, David Meadon, and Hendrik Speleers, <em>Matrix-less spectral approximation for large structured matrices</em>, BIT
+Numerical Mathematics, (in press, 2024) DOI:10.1007/s10543-024-01041-w
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Mauricio Barrera, Albrecht Böttcher, Sergei M. Grudsky, and Egor A. Maximenko, <em>Eigenvalues of even very nice Toeplitz matrices can be unexpectedly erratic</em>, In: Böttcher, A., Potts, D.,
+Stollmann, P., Wenzel, D. (eds) The Diversity and Beauty of Applied Operator Theory. Operator Theory: Advances and Applications, vol 268. Birkhäuser, Cham. 2018
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Manuel Bogoya, Sven-Erik Ekström, and Stefano Serra-Capizzano, <em>Fast Toeplitz eigenvalue computations, joining interpolation-extrapolation matrix-less algorithms and simple-loop theory</em>,
+Numerical Algorithms, 91, pp. 1653-1676 (2022)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Manuel Bogoya, Sven-Erik Ekström, Stefano Serra-Capizzano, and Paris Vassalos, <em>Matrix-less methods for the spectral approximation of large non-Hermitian Toeplitz matrices: A concise
+theoretical analysis and a numerical study</em>, Numerical Linear Algebra with Applications, 34(4), pp. e2545 (2024)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Sven-Erik Ekström, Isabella Furci, Carlo Garoni, Carla Manni, Stefano Serra-Capizzano, and Hendrik Speleers, <em>Are the eigenvalues of the B-spline isogeometric analysis approximation of
+\(-\Delta u=\lambda u\) known in almost closed form?</em>, Numerical Linear Algebra with Applications, 25(5), pp. e2198 (2018)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Sven-Erik Ekström, Isabella Furci, and Stefano Serra-Capizzano, <em>Exact formulae and matrix-less eigensolvers for block banded symmetric Toeplitz matrices</em>, BIT Numerical Mathematics,
+58(4), pp. 937-968 (2018)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Sven-Erik Ekström and Carlo Garoni, <em>A matrix-less and parallel interpolation-extrapolation algorithm for computing the eigenvalues of preconditioned banded symmetric Toeplitz matrices</em>,
+Numerical Algorithms, 80(3), pp. 819-848 (2019)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Sven-Erik Ekström, Carlo Garoni, and Stefano Serra-Capizzano, <em>Are the Eigenvalues of Banded Symmetric Toeplitz Matrices Known in Almost Closed Form?</em>, Experimental Mathematics,
+27(4), pp. 478-487 (2018)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Sven-Erik Ekström and Paris Vassalos, <em>A Matrix-Less Method to Approximate the Spectrum and the Spectral Function of Toeplitz Matrices with Real Eigenvalues</em>, Numerical Algorithms, 89,
+pp. 701-720 (2022)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Carlo Garoni and Stefano Serra-Capizzano, <em>Generalized Locally Toeplitz Sequences: Theory and Applications: Volume I, Volume 1</em>, Springer, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Boris Shapiro, František Štampach, <em>Non-selfajoint Toeplitz matrices whose principal submatrices have real spectrum</em>, Constructive Approximation, 49(2), pp. 191–226 (2019)
+</p>
+</li>
+</ul>
+
+{% endraw %}

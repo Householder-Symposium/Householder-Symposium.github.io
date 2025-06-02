@@ -1,0 +1,336 @@
+---
+layout: abstract
+absnum: 153
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+From Zolotarev Problems in Linear Algebra to a New Approach to Quadrature
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Lloyd N. Trefethen</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Beckermann, Townsend, Wilber, and Rubin have recently drawn attention to the importance of the classical Zolotarev rational approximation problems, in their generalized forms as analyzed among others by Gonchar, Starke, Istace, Thiran, Druskin,
+Knizhnerman, and Simoncini, to large-scale linear algebra problems including ADI iteration, Lyapunov and Sylvester equations, and low-rank approximation&nbsp;[2, 3, 5, 12, 13, 18]. The paper by Beckermann and Townsend on this topic was
+selected for SIGEST as an exceptional contribution of recent years in the SIAM Journal on Matrix Analysis and its Applications.
+</p>
+
+<p>
+Specifically, at issue here are what are traditionally called the third and fourth Zolotarev problems, for which the following names are perhaps more memorable. The Zolotarev Ratio Problem is the problem of finding a rational function of prescribed
+degree \(n\) with a smallest possible ratio of its maximal size on one set \(E\) in the complex plane to its minimal size on another set \(F\). The Zolotarev Sign Problem is the problem of finding a rational function with \(r\approx -1\) on \(E\) and
+\(r\approx 1\) on \(F\). In linear algebra applications, \(E\) and \(F\) are related to the spectra of large matrices.
+</p>
+
+<p>
+Istace and Thiran showed that these two problems are mathematically equivalent&nbsp;[7], but no reliable method has been available for solving either of them numerically. In the first half of this talk I will present such a method, developed jointly
+with Heather Wilber&nbsp;[17]. In a fraction of a second on a laptop for typical examples, we can now compute numerical solutions to both Zolotarev problems to several digits of accuracy. Fourteen examples are displayed graphically in&nbsp;[17],
+which can be found online at <span class="verb">https://people.maths.ox.ac.uk/trefethen/trefethen_wilber.pdf</span>. These computations are based on the AAA and AAA-Lawson algorithms for best rational
+approximation&nbsp;[9, 10], but until 2024, these algorithms were not successful for Zolotarev problems. Wilber and I found we had to modify them for this study, and we acknowledge a crucial contribution here from Yuji Nakatsukasa.
+</p>
+
+<p>
+All this falls within a familiar frame of numerical linear algebra problems of current interest. However, investigating these new algorithms has led to something new that may eventually be of deeper importance in numerical analysis, and this will be
+the subject of the second half of my talk. It has long been known that there are connections between rational approximation and quadrature, and these connections have been exploited in various ways, for example in the FEAST
+eigensolver&nbsp;[1, 5, 11]. Building on the new Zolotarev algorithms, we have found a general framework of this kind that appears to encompass many problems. (It may also ultimately lead to a fulfillment of a dream a few of us have had of
+achieving a truly numerical realization of the theory of hyperfunctions.)
+</p>
+
+<p>
+I very much regret that Householder abstracts do not permit the inclusion of graphics, for a few pictures show strikingly the new connections that are emerging. (This work is being developed in unpublished memos of mine, which are not yet in a
+form for public circulation.) Here are four instances where rational approximation gives new insight into old methods and an easy route to methods for quadrature:
+</p>
+
+<p>
+1. Trapezoidal rule on the unit circle. It has been known since Lyness and Delves in 1967 that the trapezoidal rule applied in roots of unity gives exponential accuracy for functions analytic on the unit circle. Unexpectedly, this morphs into a
+Zolotarev sign problem if we consider the function \(\phi (z)\) defined by \(\phi (z) = 0\) for \(|z|&gt;1\) and \(\phi (z) = -1\) for \(|z|&lt;1\). Rational approximations to \(\phi \) put a string of poles along the unit circle, and via
+residue calculus, these can be converted to trapezoidal-style quadrature rules. (The nodes are the poles, and the weights are the residues.) Exponential convergence of the rational approximations becomes equivalent to exponential convergence of the
+quadrature formulas.
+</p>
+
+<p>
+2. Inverse Laplace transforms and Hankel contours. Another established topic is Bromwich or Fourier-Mellin or inverse-Laplace-transform quadrature involving an exponential kernel over Hankel contours in the complex plane. Here,
+following&nbsp;[16], we consider rational approximations to \(e^x\) for \(x\in (-\infty , 0 \kern .5pt]\). The poles of near-best approximations line up along Hankel contours curving around \((-\infty , 0 \kern .5pt]\), leading to
+near-optimal quadrature formulas.
+</p>
+
+<p>
+3. Computing functions of matrices like \(A^\alpha \) and \(\log (A)\). The “three Nicks paper”&nbsp;[6] applied conformal maps to derive exponentially accurate quadrature formulas for computing functions of matrices, which have had impact
+for example in electronic structure calculations&nbsp;[8]. The methods required tricky derivation via elliptic functions, but it turns out that on-the-fly Zolotarev approximation can achieve the same results. This time, the approximation problem
+consists of finding a rational function \(r\) with \(r(x)\approx 1\) for \(x\in [m,M]\) (an interval containing the spectrum of \(A\)) and \(r(x)\approx 0\) for \(x\in (-\infty , 0 \kern .5pt]\). In the rational approximation framework, it is
+an easy matter to drive variant formulas for cases where, say, \(A\) is a nonsymmetric matrix with spectrum in a complex domain rather than an interval.
+</p>
+
+<p>
+4. Gauss-Legendre and other quadrature formulas on \([-1,1]\). Ordinary Gauss-Legendre quadrature and other formulas for integration over \([-1,1]\) can be given the same kind of derivation, which is related to how Gauss originally derived his
+method in 1814 and was later exploited by Takahasi and Mori&nbsp;[14, 15]. Now the rational approximation problem is to find a function \(r(z)\) that closely approximates \(\log ((z+1)/(z-1))\) on a Bernstein ellipse enclosing \([-1,1]\).
+</p>
+
+<p>
+In summary, these are the connections that are emerging:
+</p>
+<div class="center">
+
+<p>
+Poles of Zolotarev rational approximations (computable by AAA-Lawson)
+</p>
+
+<p>
+\(\updownarrow \)
+</p>
+
+<p>
+Approximate branch cuts
+</p>
+
+<p>
+\(\updownarrow \)
+</p>
+
+<p>
+Quadrature formulas
+</p>
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A. P. Austin and L. N. Trefethen, <i>Computing eigenvalues of real symmetric matrices with rational filters in real arithmetic,</i> SIAM J. Sci. Comput., 37 (2015), A1365–A1387.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> B. Beckermann and A. Townsend, <i>Bounds on the singular values of matrices with displacement structure,</i> SIAM Rev., 61 (2019), 319–344.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> V. Druskin, L. Knizhnerman, and V. Simoncini, <i>Analysis of the rational Krylov subspace and ADI methods for solving the Lyapunov equation,</i> SIAM J. Numer. Anal., 49 (2011), 1875–1898.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A. A. Gonchar, <i>Zolotarev problems connected with rational functions,</i> Math. USSR-Sb., 7 (1969), 623–635.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> S. Güttel, E. Polizzi, P. T. P. Tang, and G. Viaud, <i>Zolotarev quadrature rules and load balancing for the FEAST eigensolver,</i> SIAM J. Sci. Comput., 37 (2015), A2100–A2122.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N. Hale, N. J. Higham, and L. N. Trefethen, <i>Computing \(A^\alpha \), \(\log (A)\), and related matrix functions by contour integrals,</i> SIAM J. Numer. Anal., 46 (2008), 2505–2523.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.-P. Istace and J.-P. Thiran, <i>On the third and fourth Zolotarev problems in the complex plane,</i> SIAM J. Numer. Anal., 32 (1995), 249–259.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> L. Lin, J. Lu, L. Ying, R. Car, and W. E, <i>Fast algorithm for extracting the diagonal of the inverse matrix with application to the electronic structure analysis of metallic systems,</i> Commun.
+Math. Sci., 130 (2009), 204511.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Y. Nakatsukasa, O. Sète, and L. N. Trefethen, <i>The AAA algorithm for rational approximation,</i> SIAM J. Sci. Comput., 40 (2018), A1494–A1522.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Y. Nakatsukasa and L. N. Trefethen, <i>An algorithm for real and complex rational minimax approximation,</i> SIAM J. Sci. Comput., 42 (2020), A3157–A3179.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> E. Polizzi, <i>Density-matrix-based algorithm for solving eigenvalue problems,</i> Phys. Rev. B, 79 (2009), 115112.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> D. Rubin, A. Townsend, and H. Wilber, <i>Bounding Zolotarev numbers using Faber rational functions,</i> Constr. Approx., 56 (2022), 207–232.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> G. Starke, <i>Optimal alternating direction implicit parameters for nonsymmetric systems of linear equations,</i> SIAM J. Numer. Anal., 28 (1991), 1431–1445.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> H. Takahasi and M. Mori, <i>Estimation of errors in the numerical quadrature of analytic functions,</i> Appl. Anal., 1 (1971), 201–229.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> L. N. Trefethen, <i>Is Gauss quadrature better than Clenshaw-Curtis?,</i> SIAM Rev., 50 (2008), 67–87.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> L. N. Trefethen, J. A. C. Weideman, and T. Schmelzer, <i>Talbot quadratures and rational approximations,</i> BIT Numer. Math., 46 (2006), 653–670.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> L. N. Trefethen and H. D. Wilber, <i>Computation of Zolotarev rational functions,</i> SIAM J. Sci. Comp., submitted. (<span
+class="verb">https://people.maths.ox.ac.uk/trefethen</span> <span class="verb">/trefethen_wilber.pdf</span>)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> H. D. Wilber, <i>Computing Numerically with Rational Functions,</i> PhD thesis, Dept. of Mathematics, Cornell U., 2021.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

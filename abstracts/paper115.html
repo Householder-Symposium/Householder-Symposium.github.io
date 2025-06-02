@@ -1,0 +1,236 @@
+---
+layout: abstract
+absnum: 115
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Convergence Analysis of SCF Iteration for Eigenvector-Dependent Nonlinear Eigenvalue Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Ding Lu</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Eigenvector-dependent Nonlinear Eigenvalue Problems (NEPv) are fundamental in computational science and engineering, presenting intriguing challenges for both analysis and computation. In an NEPv, the goal is to find an orthonormal matrix
+\(V\in \mathbb C^{n\times k}\), i.e., \(V^HV=I_k\), and a square matrix \(\Lambda \in \mathbb C^{k\times k}\) that satisfy the nonlinear equation:
+</p>
+
+<p>
+\[ H(V) V= V\Lambda ,\]
+</p>
+
+<p>
+where \(H(V)\in \mathbb C^{n\times n}\) is a Hermitian matrix that continuously depends on the eigenvectors \(V\). It is typically assumed that the matrix-valued function \(H(V)\) is right unitarily invariant, meaning \(H(VQ)=H(V)\) for any
+unitary matrix \(Q\in \mathbb C^{k\times k}\), and that the eigenvalues of \(\Lambda \equiv V^HH(V)V\) correspond to the \(k\) smallest (or largest) eigenvalues of \(H(V)\).
+</p>
+
+<p>
+NEPv arise in various fields, from traditional applications such as electronic structure calculations in computational physics and chemistry, to more recent uses in machine learning in data science, and signal processing of brain–computer interface in
+neuroscience and biomedical engineering.
+</p>
+
+<p>
+The self-consistent field (SCF) iteration, originally introduced in molecular quantum mechanics in the 1950s, is the most general and widely used method for solving NEPv and serves as a foundation for other approaches. Starting from an
+orthonormal matrix \(V_0 \in \mathbb C^{n\times k}\), SCF iteratively computes
+</p>
+
+<p>
+\[ H(V_i) V_{i+1} = V_{i+1}\Lambda _{i+1},\quad \text {for $i=0,1,2,\dots $,} \]
+</p>
+
+<p>
+where \(V_{i+1}\in \mathbb C^{n\times k}\) is orthonormal and \(\Lambda _{i+1}\) is a diagonal matrix containing the \(k\) smallest eigenvalues of \(H(V_i)\). This basic form is known as the plain SCF iteration. Despite its simplicity, plain
+SCF can suffer from slow convergence or even non-convergence in practice. Understanding when and how plain SCF converges has been a longstanding research challenge, as these insights are crucial for developing techniques to stabilize and
+accelerate the convergence of SCF iteration.
+</p>
+
+<p>
+In this presentation, we cover some of our recent advances in the convergence analysis of plain SCF and its variants. The first part focuses on the local convergence analysis of plain SCF. Using tangent-angle matrix as an intermediate measure for
+approximation error, we establish new formulas for two fundamental quantities that characterize the local convergence behavior of the plain SCF: the local contraction factor and the local asymptotic average contraction factor. Our new convergence
+rate estimates yield sharper bounds on the convergence speed compared to previously established results. These findings also provide a new justification for the guaranteed local convergence of a popular SCF variant—the level-shifted SCF. Details are
+found in&nbsp;[1]. We also mention&nbsp;[3], where we extended the analysis to an SCF-type iteration for unitarily-invariantizable NEPv.
+</p>
+
+<p>
+The second part presents a geometric interpretation of SCF to improve our understanding of its global convergence behavior. We begin by focusing on a class of NEPv which we refer to as monotone NEPv (mNEPv). Using a variational
+characterization of mNEPv, we can visualize plain SCF as a steepest feasible direction method for the associated optimization problem. This interpretation reveals the global and monotonic convergence of plain SCF for mNEPv; Further details can
+be found in&nbsp;[2]. Finally, we will show how to extend this geometric framework to the level-shifted SCF for general NEPv, thereby establishing its guaranteed global convergence.
+</p>
+
+<p>
+This presentation is based on joint work with Zhaojun Bai and Ren-Cang Li.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Zhaojun Bai, Ren-Cang Li, and Ding Lu. Sharp estimation of convergence rate for self-consistent field iteration to solve eigenvector-dependent nonlinear eigenvalue problems. <i>SIAM Journal on
+Matrix Analysis and Applications</i>, 43(1):301–327, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Zhaojun Bai and Ding Lu. Variational characterization of monotone nonlinear eigenvector problems and geometry of self-consistent field iteration. <i>SIAM Journal on Matrix Analysis and
+Applications</i>, 45(1):84–111, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Ding Lu and Ren-Cang Li. Locally unitarily invariantizable NEPv and convergence analysis of SCF. <i>Mathematics of Computation</i>, (93):2291–2329, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

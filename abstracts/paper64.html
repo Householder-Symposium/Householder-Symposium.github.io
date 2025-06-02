@@ -1,0 +1,82 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Stabilized Krylov subspace recurrences via randomized sketching
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Valeria Simoncini</span><sup>1</sup><a id="paper-autopage-3"></a>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Recurrences building orthonormal bases for polynomial Krylov spaces with nonsymmetric matrices have been classically used for approximation purposes in various numerical linear algebra contexts. Variants aiming to limit memory and
+computational costs by using truncated recurrences usually have convergence limitations. Recently, randomized linear algebra strategies have been devised that drastically improve the performance of these variants, while keeping the costs low. We
+provide a unifying framework for analyzing these randomized methods, based on Krylov decompositions [4]. This framework allows us to identify the key quantities – the canonical angles among the basis vectors – for assessing the effectiveness of the
+randomized strategy. Moreover, it also allows us to analyze the spectral properties of the obtained reduced matrices. Our results are illustrated with experiments using the nonsymmetric Lanczos iteration, which is inherently a three-term recurrence,
+so that no truncation is performed. Hence, randomized procedures applied to the Lanczos method may be viewed as a way to stabilize the approximation.
+</p>
+
+<p>
+This talk is based on the works [1, 2, 3] joint with Davide Palitta, YiHong Wang and Marcel Schweitzer.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp; Dipartimento di Matematica, (AM)\(^2\), Alma Mater Studiorum - Università di Bologna and IMATI-CNR, Via Ferrata 5/A, Pavia, Italia. E-mail: valeria.simoncini@unibo.it
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> D.&nbsp;Palitta, M.&nbsp;Schweitzer, and V.&nbsp;Simoncini, <i>Sketched and truncated polynomial Krylov methods: Evaluation of matrix functions</i>, Tech. Rep. 2306.06481, ArXiv, 2023.
+To appear in Numerical Linear Algebra w/Appl.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span>        , <i>Sketched and truncated polynomial Krylov methods: Sylvester matrix equations</i>, Tech. Rep. 2311.16019, ArXiv, 2023. To appear in Math. Comp. DOI:
+https://doi.org/10.1090/mcom/4002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> V. Simoncini and Y.H. Wang, <i>Stabilized short-term recurrences via randomized sketching</i>, hal-04661499v1, pp. 1-21, July 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> G.&nbsp;W. Stewart, <i>An Arnoldi-Schur algorithm for large eigenproblems</i>, SIAM Journal on Matrix Analysis and Appl., 23 (2001), pp.&nbsp;601–614.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

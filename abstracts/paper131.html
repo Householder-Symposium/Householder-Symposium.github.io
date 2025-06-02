@@ -1,0 +1,437 @@
+---
+layout: abstract
+absnum: 131
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\require {braket}\)
+
+\(\newcommand {\Rn }[1]{\mathbb {R}^{#1}}\)
+
+\(\newcommand {\Rnplus }[1]{\mathbb {R}_+^{#1}}\)
+
+\(\newcommand {\Tra }{{\sf T}}\)
+
+\(\newcommand {MakeUppercase}[1]{#1}\)
+
+\(\newcommand {\MakeLowercase }[1]{#1}\)
+
+\(\newcommand {\V }[2][]{{\bm {#1{\mathbf {\MakeLowercase {#2}}}}}}\)
+
+\(\newcommand {\M }[2][]{{\bm {#1{\mathbf {\MakeUppercase {#2}}}}}}\)
+
+\(\newcommand {\br }[1]{\left [#1\right ]}\)
+
+\(\newcommand {\pr }[1]{\left (#1\right )}\)
+
+\(\newcommand {\Curly }[1]{\left \{ #1 \right \}}\)
+
+\(\newcommand {\prby }[2]{\ensuremath {{#1}\times {#2}}\xspace }\)
+
+\(\newcommand {\norm }[1]{\left \lVert #1\right \rVert }\)
+
+\(\newcommand {\abs }[1]{\left |#1\right |}\)
+
+\(\newcommand {\rank }[1]{\mathrm {rank}\pr {#1}}\)
+
+\(\newcommand {\bmat }[1]{\begin {bmatrix} #1 \end {bmatrix}}\)
+
+\(\newcommand {\logdet }{\mathsf {logdet}\,}\)
+
+\(\newcommand {\trace }{\mathsf {trace}\,}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Bayesian Optimal Experiment Design via Column Subset Selection
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Srinivas Eswar</span>, Amit N. Subrahmanya, Vishwas Rao, Arvind K. Saibaba
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Inverse problems involve the process of calculating parameters of a mathematical model from observational data [3]. Often these problems are ill-posed and a Bayesian approach is used to produce a posterior distribution for the unobservable
+parameters. A key question is “how best to acquire data” in such a setting. We consider the case of Bayesian linear inverse problems where there are \(m\) candidate sensor locations, and we need to pick the \(k\) “best” ones.
+</p>
+
+<p>
+Consider the measurement equation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                                d = Fm + ϵ,                                                                                                             (1)
+
+-->
+
+<p>
+
+\begin{equation}
+\V {d} = \M {F}\V {m} + \V {\epsilon },
+\end{equation}
+
+</p>
+
+<p>
+where \(\V {d} \in \Rn {m}\) is the data, \(\M {F} \in \Rn {m \times n}\) is the mathematical model, and \(\V {m} \in \Rn {n}\) is the parameter to be reconstructed. The observations are assumed to be perturbed with additive
+uncorrelated Gaussian noise, i.e. \(\V {\epsilon } \sim \mathcal {N}(\V {0}, \M {\Gamma }_{\rm noise})\). We assume that \(m &lt; n\), which makes the problem underdetermined. If we assume our prior to also be Gaussian, \(\V {m}
+\sim \mathcal {N}(\V {\mu }_{\rm pr}, \M {\Gamma }_{\rm pr})\), the posterior will also be a Gaussian with covariance \(\M {\Gamma }_{\rm post} = (\M {F}^\Tra \M {\Gamma }_{\rm noise}^{-1}\M {F}+ \M {\Gamma }_{\rm
+pr}^{-1})^{-1}\) and mean \(\V {\mu }_{\rm post} = \M {\Gamma }_{\rm post}(\M {F}^\Tra \M {\Gamma }_{\rm noise}^{-1}\V {d} + \M {\Gamma }_{\rm pr}^{-1}\V {\mu }_{\rm pr})\).
+</p>
+
+<p>
+The rows of \(\M {F}\) correspond to the \(m\) different candidate sensor locations and we would like to select only \(k\) locations to collect data. To determine the optimal sensor placements, we solve the following combinatorial optimization problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                  min         ϕ(W ),   subject to |W | ≤ k.                                                                                             (2)
+                                                                                                              W ⊂{1,··· ,m}
+
+
+-->
+
+<p>
+
+\begin{equation}
+\underset {W \subset \Curly {1, \cdots , m}}{\min } \phi (W), \quad \text {subject to}~\abs {W} \le k.
+\end{equation}
+
+</p>
+
+<p>
+Here \(\phi (W)\) is a set-valued function which determines the quality of the sensor placement. In this work we focus on the A-optimality criterion, which minimizes average posterior variance, and D-optimality, which measures the information gain
+from the prior to the posterior. These criteria amounts to measuring the trace and log-determinant of the posterior covariance matrices respectively. For the current problem, these criteria take the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                       −1                                          
+                                                                                    ϕA (W ) = trace       Γ1/2
+                                                                                                           pr    I + CCT     Γ1/2
+                                                                                                                              pr           and ϕD (W ) = −logdet I + CCT ,                                                                              (3)
+
+-->
+
+<p>
+
+\begin{equation}
+\phi _A(W) = \trace \pr {\M {\Gamma }_{\rm pr}^{1/2}\pr {\M {I} + \M {C}\M {C}^\Tra }^{-1}\M {\Gamma }_{\rm pr}^{1/2}}\quad \text {and}\quad \phi _D(W) = -\logdet \pr {\M {I} + \M {C}\M {C}^\Tra },
+\end{equation}
+
+</p>
+
+<p>
+where \(\M {C} = \M {A}(:, W)\) are the columns of an appropriately formed matrix indexed by \(W\). Here \(\M {A} \coloneqq \M {\Gamma }_{\rm pr}^{1/2}\M {F}^{\Tra }\M {\Gamma }_{\rm noise}^{-1/2} \in \Rn {n \times m}\) is the
+prior-preconditioned forward operator and selecting \(k\) columns is akin to selecting sensors. Note that we use \(\phi (W)\) and \(\phi (\M {C})\) interchangeably.
+</p>
+
+<p>
+Assuming the following partitioned SVD of \(\M {A}\) with \(1 \le k \le m\),
+</p>
+
+<p>
+\[ \M {A} = \bmat {\M {U}_k &amp; \M {U}_{\perp }} \bmat {\M {\Sigma }_k &amp; \\ &amp; \M {\Sigma }_{\perp }} \bmat {\M {V}_k &amp; \M {V}_{\perp }}^\Tra . \]
+</p>
+
+<p>
+Now our structural bounds are for column selection of the form \(\M {A}\M {\Pi } = \bmat {\M {A}\M {\Pi }_1 &amp; \M {A}\M {\Pi }_2} = \bmat {\M {C} &amp; \M {T}}\) with an identical permutation of the truncated right singular
+vectors \(\M {V}_k^\Tra \M {\Pi } = \bmat {\M {V}_{11} &amp; \M {V}_{12}}\).
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 1 </span></span> [1] Let \(\M {A} \in \Rn {n \times m}\) with \(k \le \rank {\M {A}}\). Then for any permutation \(\M {\Pi }\) such that \(\rank {\M {V}_{11}} = k\)
+and \(\M {A}\M {\Pi } = \bmat {\M {C} &amp; \M {T}}\) we have,
+</p>
+
+<p>
+\[ \frac {\sigma _i(\M {A})}{\norm {\M {V}_{11}^{-1}}_2} \le \sigma _i(\M {C}) \le \sigma _i(\M {A}), \quad 1 \le i \le k. \]
+</p>
+
+<a id="thm:svalbounds"></a>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The bounds on individual singular values of \(\M {C}\) are key to obtaining bounds and algorithms for the different OED objectives. Let \(\M {C}_D^{\rm opt}\) denote the optimal selection for the D-optimality criteria (respectively \(\M
+{C}_A^{\rm opt}\) for A-optimality). Then utilizing Theorem&nbsp;<a href="paper.html#thm:svalbounds">1</a>, we can see that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                                     −1  
+                                                                                                   ϕD (A) ≤ ϕD (Σk ) ≤ ϕD (Copt
+                                                                                                                            D ) ≤ ϕD (C) ≤ ϕD Σk / V11 2   and
+                                                                                      t (Σk ) + (n − k)                                       −1                                                              (4)--><a id="eqn:oedbounds"></a><!--
+                                                                                                        ≤ ϕA (CA ) ≤ ϕA (C) ≤ ∥Γpr ∥2 t Σk / V11 2 + (n − k) ,
+                                                                                                               opt
+                                                                                            Γ−1
+                                                                                              pr 2
+
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{aligned} \phi _D(\M {A}) \le \phi _D(\M {\Sigma }_k) \le \phi _D(\M {C}_D^{\rm opt}) \le \phi _D(\M {C}) \le \phi _D\pr {\M {\Sigma }_k/\norm {\M {V}_{11}^{-1}}_2} ~\text {and} \\ \frac { t\pr {\M {\Sigma
+}_k} + (n-k)}{\norm {\M {\Gamma }_{\rm pr}^{-1}}_2} \le \phi _A(\M {C}_A^{\rm opt}) \le \phi _A\pr {\M {C}} \le \norm {\M {\Gamma }_{\rm pr}}_2\pr { t\pr {\M {\Sigma }_k/\norm {\M {V}_{11}^{-1}}_2} + (n-k)}, \label
+{eqn:oedbounds} \end {aligned}
+\end{equation}
+
+</p>
+
+<p>
+where \(t(\M {X}) = \sum _{i=1}^{\rank {\M {X}}} \frac {1}{1+\sigma _j^2(\M {X})}\). Not surprisingly, the performance of the selected columns depend on the top-\(k\) singular values of \(\M {A}\). If the discarded singular values, \(\M
+{\Sigma }_{\perp }\), are not negligible, we cannot expect \(\M {C}^{\rm opt}\) to be close to \(\M {A}\) in either criterion. Note that the error bounds for the D-optimality case is much cleaner than A-optimality due to the absence of the prior
+term which factors out as a constant because of the \(\logdet \) objective. Another point of concern is the presence of the terms with \(n\) for A-optimality, which in principle can be extremely large. This term arises due to the ill-posed nature of
+the inverse problem and corresponds to the singular values of 1 in \(\M {I}_n + \M {C}\M {C}^\Tra \). These values multiply out for D-optimality but are harder to remove in the A-optimality case prompting the development of relative bounds.
+</p>
+
+<p>
+Equation&nbsp;<span class="textup">(<a href="paper.html#eqn:oedbounds">4</a>)</span> clearly identifies the factor \(\norm {\M {V}_{11}^{-1}}_2\) to optimize for in an OED algorithm. Also since \(\M {V}_{11}\) is an invertible
+submatrix of \(\M {V}_k\), we have \(\norm {\M {V}_{11}^{-1}}_2 \ge 1\). We wish to make this value as close to 1 as possible by finding a set of \(k\) well-conditioned columns of \(\M {V}_k^\Tra \). This is exactly the Golub-Klema-Stewart
+approach for subset selection [4], which we further accelerate using randomized approaches. Inspired by rank-revealing factorizations [2] and exchange algorithms for OED [5], we also investigate column-swapping based methods on model inverse
+problems.
+</p>
+
+<p>
+The explicit connection to column subset selection gives us many avenues for future work. Is it possible to extend our techniques to the correlated noise or to nonlinear problems? Can we reduce the gap to \(\phi (\M {\Sigma }_k)\) by combining
+sensor information in a sensible manner? What if our optimization criteria is some user specified goal?
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Eswar, S., Rao, V. &amp; Saibaba, A. Bayesian D-Optimal Experimental Designs via Column Subset Selection. <i>ArXiv Preprint ArXiv:2402.16000</i>. (2024)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Gu, M. &amp; Eisenstat, S. Eﬀicient algorithms for computing a strong rank-revealing QR factorization. <i>SIAM Journal On Scientific Computing</i>. <b>17</b>, 848-869 (1996)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Hansen, P. Rank-deficient and discrete ill-posed problems: numerical aspects of linear inversion. (SIAM,1998)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Golub, G., Klema, V. &amp; Stewart, G. Rank degeneracy and least squares problems. (Stanford University,1976)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Fedorov, V. Theory of optimal experiments. (Academic Press,1972)
+</p>
+</li>
+</ul>
+
+{% endraw %}

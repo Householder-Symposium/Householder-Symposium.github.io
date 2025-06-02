@@ -1,0 +1,664 @@
+---
+layout: abstract
+absnum: 82
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\N }{\mathbb {N}}\)
+
+\(\newcommand {\C }{\mathbb {C}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+On the Convergence of the CROP-Anderson Acceleration Method
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Agnieszka Międlar</span>, Ning Wan
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Consider the following problem: Given a function \(g:    \C ^n \rightarrow \C ^n\) ﬁnd \(x \in \C ^n\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                x = g(x),                or alternatively                      f (x) = 0, with f (x) := g(x) − x.                                                                    (1)--><a id="eq:MainProblem"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+x \ \ = \ g(x), \quad \mbox { or alternatively } \quad f(x) \ \ = \ 0, \\ \label {eq:MainProblem} \ \mbox { with } \ f(x):                                                                              = g(x) - x.
+\end{equation}
+
+</p>
+
+<p>
+Obviously, a simplest method of choice to solve this problem is the ﬁxed-point iteration
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                                x(k+1) = g(x(k) ), for all k ∈ N.                                                                                                                                        (2)
+
+-->
+
+<p>
+
+\begin{equation}
+x^{(k+1)} = g(x^{(k)}), \ \mbox { for all } \ k \in \N .
+\end{equation}
+
+</p>
+
+<p>
+Unfortunately, its convergence is often extremely slow. The problem of slow (or no) convergence of a sequence of iterates has been extensively studied by researchers since the early 20th century. Aitken’s delta-squared process was introduced in
+1926&nbsp;[1] for nonlinear sequences, and since then, people have been investigating various extrapolation and convergence acceleration methods with Shanks transformation&nbsp;[2] providing one of the most important and fundamental ideas. In
+the following, we will consider two mixing acceleration methods: the Anderson Acceleration&nbsp;[3, 4] (also referred to as Pulay mixing&nbsp;[5, 6] in computational chemistry) and the <b>C</b>onjugate <b>R</b>esidual algorithm with
+<b>OP</b>timal trial vectors (CROP)&nbsp;[7, 8]. Anderson Acceleration method has a long history in mathematics literature, which goes back to Anderson’s 1965 seminal paper&nbsp;[3]. Over the years, the method has been successfully applied to
+many challenging problems&nbsp;[9, 10, 11]. An independent line of research on accelerating convergence of nonlinear solvers established by physicists and chemists has led to developments of techniques such as Pulay mixing&nbsp;[5, 6], also known
+as the Direct Inversion of the Iterative Subspace (DIIS) algorithm, which is instrumental in accelerating the Self-Consistent Field (SCF) iteration method in electronic structure calculations&nbsp;[12]. It is well-known that Anderson Acceleration
+method has connections with the Generalized Minimal Residual Method (GMRES) algorithm&nbsp;[13, Section 6.5] and can be categorized as a multisecant method&nbsp;[14, 15, 16, 17]. The ﬁrst convergence theory for Anderson Acceleration, under
+the assumption of a contraction mapping, appears in&nbsp;[18]. The convergence of Anderson(1), a topic of particular interest to many researchers, is discussed separately in [19, 20]. The acceleration properties of Anderson Acceleration are
+theoretically justiﬁed in [21, 22]. For detailed and more comprehensive presentation of history, theoretical and practical results on the acceleration methods and their applications we refer readers to&nbsp;[23, 24] and references therein.
+</p>
+
+<p>
+Given Anderson iterates \(\displaystyle x_A^{(k)}, k = 0, 1, \ldots \) and corresponding residual (error) vectors, e.g., \(\displaystyle f_A^{(k)} := g(x_A^{(k)}) - x_A^{(k)}\), consider weighted averages of the prior iterates, i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                  (k)                                                                     (k)
+                                                                                                                 mA                                                                      mA
+                                                                                                      (k)
+                                                                                                                 X       (k) (k−mA +i)
+                                                                                                                                          (k)
+                                                                                                                                                                          (k)
+                                                                                                                                                                                         X         (k)
+                                                                                                                                                                                                                  (k)
+                                                                                                                                                                                                          (k−mA +i)
+                                                                                                    x̄A :=              αA,i xA                               and       f¯A :=                    αA,i fA                  ,                                                (3)--><a id="eq:WAvg"></a><!--
+                                                                                                                 i=0                                                                     i=0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:WAvg} \displaystyle \bar x_A^{(k)} :=\sum _{i=0}^{m_A^{(k)}}\alpha _{A,i}^{(k)}x_A^{(k-m_A^{(k)}+i)} \quad \mbox { and } \quad \bar f_A^{(k)}:=\sum _{i=0}^{m_A^{(k)}}\alpha
+_{A,i}^{(k)}f_A^{(k-m_A^{(k)}+i)},
+\end{equation}
+
+</p>
+
+<p>
+with weights \(\displaystyle \alpha _{A,0}^{(k)}, \ldots , \alpha _{A,m_A^{(k)}}^{(k)} \in \R \) satisfying \(\displaystyle \sum \limits _{i=0}^{m_A^{(k)}}\alpha _{A,i}^{(k)}=1\), a ﬁxed depth (history or window size)
+parameter \(\displaystyle m\) and a truncation parameter \(\displaystyle m_A^{(k)} := \min \{m,k\}\). Anderson Acceleration achieves a faster convergence than a simple ﬁxed-point iteration by using the past information to generate new
+iterates as linear combinations of previous \(m_A^{(k)}\) iterates&nbsp;[5, 6, 14], i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                   (k+1)         (k)               (k)
+                                                                                                xA          = x̄A + β (k) f¯A
+                                                                                                                                   (k)                                                   (k)
+                                                                                                                                mA                          mA
+                                                                                                                                X             (k)
+                                                                                                                                      (k) (k−mA +i)
+                                                                                                                                                            X (k)           (k)
+                                                                                                                                                                                                                                                                        (4)--><a id="eq:Anderson"></a><!--
+                                                                                                            = (1 − β     (k)
+                                                                                                                               )     αA,i xA        + β (k)     αA,i g(x(k−mA +i) ),
+                                                                                                                                 i=0                        i=0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Anderson} \begin{aligned} \displaystyle x_A^{(k+1)} &amp; = \bar x_A^{(k)} + \beta ^{(k)} \bar f_A^{(k)} \\ &amp; = (1-\beta ^{(k)}) \sum \limits _{i=0}^{m_A^{(k)}} \alpha _{A,i}^{(k)}
+x_A^{(k-m_A^{(k)}+i)} + \beta ^{(k)} \sum \limits _{i=0}^{m_A^{(k)}} \alpha _{A,i}^{(k)}g(x^{(k-m_A^{(k)}+i)}), \end {aligned}
+\end{equation}
+
+</p>
+
+<p>
+with given relaxation (or damping) parameters \(\beta ^{(k)} \in \R ^{+}\) and mixing coeﬃcients \(\alpha _{A,i}^{(k)} \in \R , \ i = 0, \ldots , m_A^{(k)}\) selected to minimize the linearized residual (error) of a new iterate within
+an aﬃne space Aﬀ\(\big \{f_A^{(k-m_A^{(k)})},\ldots , f_A^{(k)}\big \}\), i.e., obtained as a solution of the least-squares problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                                                                     (k)                                                          (k)
+                                                                                                                                   mA                                                         mA
+                                                                                                                                   X           (k−mA +i)
+                                                                                                                                                               (k)         2                   X
+                                                                                                                   min                     αi fA                                 s. t.                  αi = 1.                                                    (5)--><a id="eq:constainedLSA"></a><!--
+                                                                                                             α0 ,...,α    (k)
+                                                                                                                         m         i=0                                     2                   i=0
+                                                                                                                          A
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:constainedLSA} \displaystyle \min \limits _{\alpha _{0},\ldots , \alpha _{m_A^{(k)}}} \bigg \| \sum \limits _{i=0}^{m_A^{(k)}} \alpha _{i}f_A^{(k-m_A^{(k)}+i)}\bigg \|_2^2 \quad \mbox {s.                                                                                     t.}   \quad
+\sum \limits _{i=0}^{m_A^{(k)}} \alpha _{i} = 1.
+\end{equation}
+
+</p>
+
+<p>
+Note that in the case of \(\beta ^{(k)} = 1\) a general formulation <span class="textup">(<a href="paper.html#eq:Anderson">4</a>)</span> introduced in the original work of Anderson&nbsp;[3, 4] reduces to the Pulay mixing&nbsp;[5, 6], i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                                                        (k)
+                                                                                                                                                mA
+                                                                                                                                 (k+1)
+                                                                                                                                                    X          (k)      (k−mA +i)
+                                                                                                                                                                                   (k)
+                                                                                                                                xA     =                      αA,i g(xA                      ).                                                                            (6)--><a id="eq:Pulay"></a><!--
+                                                                                                                                                    i=0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Pulay} x_A^{(k+1)} = \sum _{i=0}^{m_A^{(k)}} \alpha _{A,i}^{(k)} g(x_A^{(k-m_A^{(k)}+i)}).
+\end{equation}
+
+</p>
+
+<p>
+The CROP method, introduced in&nbsp;[7], is a generalization of the Conjugate Residual (CR) method&nbsp;[13, Section 6.8], which is a well-known iterative algorithm for solving linear systems. Analogously, we consider iterates \(\displaystyle
+x_C^{(k)}\), a sequence of recorded search directions \(\displaystyle \Delta x_C^{(i)} := x_C^{(i+1)} - x_C^{(i)}, \ i = k - m_C^{(k)},\ldots ,k-1\), and the residual (error) vectors \(\displaystyle f_C^{(k)}\) generated by the
+CROP algorithm. Then the new search direction \(\displaystyle \Delta x_C^{(k)}=x_C^{(k+1)}-x_C^{(k)}\) is chosen in the space spanned by the prior \(\displaystyle m_C^{(k)}\) search directions \(\displaystyle \Delta x_C^{(i)}, i
+= k - m_C^{(k)}, \ldots , k-1\) and the most recent residual (error) vector \(\displaystyle f_C^{(k)}\), i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                          (k+1)                     (k)
+                                                                                                                                                                     X
+                                                                                                                                                                     k−1
+                                                                                                                                                                                         (i)              (k)
+                                                                      --><a id="eq:CROPiterate"></a><!--xC                            =         xC +                             ηi ∆xC + ηk fC ,                  with some           ηk−m(k) , . . . , ηk ∈ R.
+                                                                                                                                                                                                                                              C
+                                                                                                                                                                           (k)
+                                                                                                                                                                i=k−mC
+
+
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {eq:CROPiterate} x_C^{(k+1)} &amp; = &amp;x_C^{(k)} + \sum \limits _{i=k-m_C^{(k)}}^{k-1} \eta _i\Delta x_C^{(i)} + \eta _k f_C^{(k)}, \nonumber \quad \mbox {with some} \quad \eta _{k-m_C^{(k)}}, \ldots ,
+\eta _{k} \in \R .
+\end{eqnarray}
+
+</p>
+
+<p>
+Let us assume we have carried \(\displaystyle k\) steps of the CROP algorithm, i.e., we have the subspace of optimal vectors span\(\displaystyle \{x_C^{(1)}, \ldots , x_C^{(k)}\}\) at hand. From the residual vector \(\displaystyle
+f_C^{(k)}\), we can introduce a preliminary improvement of the current iterate \(x_C^{(k)}\), i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                           (k+1)                 (k)           (k)
+                                                                                                                                          eC
+                                                                                                                                          x               := xC + fC .                                                                                                    (7)--><a id="eq:tildex"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:tildex} \displaystyle \widetilde x_C^{(k+1)} := x_C^{(k)} + f_C^{(k)}.
+\end{equation}
+
+</p>
+
+<p>
+Now, since <span class="textup">(<a href="paper.html#eq:tildex">7</a>)</span> is equivalent to \(\displaystyle f_C^{(k)} = \widetilde x_C^{(k+1)} - x_C^{(k)}\), we can ﬁnd the optimal vector \(\displaystyle x_C^{(k+1)}\)
+within the aﬃne subspace span\(\displaystyle \{x_C^{(1)}, \ldots , x_C^{(k)}, \widetilde x_C^{(k+1)}\}\), i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                                    (k+1)                                                                                                          (k+1)
+
+                                                                                         (k+1)
+                                                                                                   mC
+                                                                                                      X −1        (k+1) (k+1−mC
+                                                                                                                                         (k+1)
+                                                                                                                                                        +i)          (k+1)   (k+1)
+                                                                                                                                                                                                                mC
+                                                                                                                                                                                                                   X           (k+1)
+                                                                                        xC     =                 αC,i xC                                      +α           eC
+                                                                                                                                                                     (k+1) x       ,                 with                  αC,i        = 1.                               (8)--><a id="eq:ufCROP"></a><!--
+                                                                                                                                                                 C,m    C
+                                                                                                      i=0                                                                                                          i=0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ufCROP} \displaystyle x_C^{(k+1)} = \sum \limits _{i=0}^{m_C^{(k+1)}-1}\alpha _{C,i}^{(k+1)}x_C^{(k+1-m_C^{(k+1)}+i)} + \alpha _{C,m_C^{(k+1)}}^{(k+1)}\widetilde x_C^{(k+1)}, \quad \mbox {with} \quad
+\sum \limits _{i=0}^{m_C^{(k+1)}}\alpha _{C,i}^{(k+1)}=1.
+\end{equation}
+
+</p>
+
+<p>
+The estimated residual (error) \(\displaystyle f_C^{(k+1)}\) corresponding to the iterate \(\displaystyle x_C^{(k+1)}\) is constructed as the linear combination of the estimated residuals of each component in <span class="textup">(<a
+href="paper.html#eq:ufCROP">8</a>)</span> with the same coeﬃcients, i.e.,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                          (k+1)
+                                                                                                                        mC
+                                                                                                                             X −1                                      (k+1)
+                                                                                                                                                                                                            feC
+                                                                                                         (k+1)                             (k+1) (k+1−mC                         +i)         (k+1)            (k+1)
+                                                                                                        fC     =                         αC,i   fC                                     +α           (k+1)           .                                                    (9)--><a id="eq:uffCROP"></a><!--
+                                                                                                                                                                                             C,mC
+                                                                                                                             i=0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:uffCROP} \displaystyle f_C^{(k+1)} = \sum \limits _{i=0}^{m_C^{(k+1)}-1}\alpha _{C,i}^{(k+1)}f_C^{(k+1-m_C^{(k+1)}+i)} + \alpha _{C,m_C^{(k+1)}}^{(k+1)}\widetilde f_C^{(k+1)}.
+\end{equation}
+
+</p>
+
+<p>
+Note that in general, unlike for the Anderson Acceleration method, \(\displaystyle f_C^{(k+1)} \neq f(x_C^{(k+1)}\). Minimizing the norm of the residual (error) deﬁned in <span class="textup">(<a
+href="paper.html#eq:uffCROP">9</a>)</span> results in a constrained least-squares problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{9}\)</span>
+
+<!--
+
+                                                                                (k+1)                                                                                                  (k+1)
+                                                                               mC
+                                                                                 X −1              (k+1)                                        2                                 mC
+                                                                                                                                                                                       X
+                                                                                                                 + αm(k+1) feC
+                                                                                            (k+1−mC        +i)               (k+1)                                                                (k+1)
+                                                                min                     αi fC                                                       ,         such that                        αC,i         = 1.                                                       (10)--><a id="eq:coefCROP"></a><!--
+                                                          α0 ,...,α    (k+1)                                             C
+                                                                      m          i=0                                                            2                                      i=0
+                                                                       C
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:coefCROP} \displaystyle \min \limits _{\alpha _0,\ldots , \alpha _{m_C^{(k+1)}}} \bigg \| \sum _{i=0}^{m_C^{(k+1)}-1} \alpha _if_C^{(k+1-m_C^{(k+1)}+i)}+\alpha _{m_C^{(k+1)}}\widetilde f_C^{(k+1)} \bigg
+\|_2^2, \quad \mbox { such that} \quad \sum \limits _{i=0}^{m_C^{(k+1)}}\alpha _{C,i}^{(k+1)}=1.
+\end{equation}
+
+</p>
+
+<p>
+Anderson Acceleration method is a well-established method that allows to speed up or encourage convergence of ﬁxed-point iterations and it has been successfully used in a variety of applications. In recent years, the Conjugate Residual with OPtimal
+trial vectors (CROP) algorithm was introduced and shown to have a better performance than the classical Anderson Acceleration with less storage needed. In this work we aim to delve into the intricate connections between the classical Anderson
+Acceleration method and the CROP algorithm. Our objectives include a comprehensive study of their convergence properties, explaining the underlying relationships, and substantiating our ﬁndings through some numerical examples. Through this
+exploration, we contribute valuable insights that can enhance the understanding and application of acceleration methods in practical computations, as well as the developments of new and more eﬃcient acceleration schemes. In particular, we will
+discuss the connection between the CROP algorithm and some other well-known methods, analyze its equivalence with Anderson Acceleration method and investigate convergence for linear and nonlinear problems. We will present a uniﬁed
+Anderson-type framework and show the equivalence between Anderson Acceleration method and the CROP algorithm. Moreover, we will compare the CROP algorithm with some Krylov subspace methods for linear problems and with multisecant
+methods in the general case. We will illustrate the connection between the CROP algorithm and Anderson Acceleration method and explain the CROP-Anderson variant. Furthermore, we will show situations in which CROP and CROP-Anderson
+algorithms work better than Anderson Acceleration method. We will discuss the convergence results for CROP and CROP-Anderson algorithms for linear and nonlinear problems, and extend CROP and CROP-Anderson algorithms to rCROP and
+rCROP-Anderson, respectively, by incorporating real residuals to make them work better for nonlinear problems.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;C. Aitken. On Bernoulli’s Numerical Solution of Algebraic Equations. <i>Proc. R. Soc. Edinb.</i>, 46:289–305, 1926.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> D.&nbsp;Shanks. Non-linear transformations of divergent and slowly convergent sequences. <i>J. Math. Phys</i>, 34(1-4):1–42, 1955.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D.&nbsp;G. Anderson. Iterative procedures for nonlinear integral equations. <i>J. ACM</i>, 12(4):547–560, 1965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> D.&nbsp;G.&nbsp;M. Anderson. Comments on “Anderson acceleration, mixing and extrapolation”. <i>Numer. Algorithms</i>, 80(1):135–234, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> P.&nbsp;Pulay. Convergence acceleration of iterative sequences. The case of SCF iteration. <i>Chem. Phys. Lett.</i>, 73(2):393–398, 1980.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> P.&nbsp;Pulay. Improved SCF convergence acceleration. <i>J. Comput. Chem.</i>, 3(4):556–560, 1982.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.&nbsp;Ziółkowski, V.&nbsp;Weijo, P.&nbsp;Jørgensen, and J.&nbsp;Olsen. An eﬃcient algorithm for solving nonlinear equations with a minimal number of trial vectors: Applications to
+atomic-orbital based coupled-cluster theory. <i>J. Chem. Phys</i>, 128(20):204105, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> P.&nbsp;Ettenhuber and P.&nbsp;Jørgensen. Discarding information from previous iterations in an optimal way to solve the coupled cluster amplitude equations. <i>J. Chem. Theory. Comput.</i>,
+11(4):1518–1524, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> E.&nbsp;Cancès and C.&nbsp;Le Bris. On the convergence of SCF algorithms for the Hartree-Fock equations. <i>M2AN Math. Model. Numer. Anal.</i>, 34(4):749–774, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> L.&nbsp;Lin, J.&nbsp;Lu, and L.&nbsp;Ying. Numerical methods for Kohn-Sham density functional theory. <i>Acta Numer.</i>, 28:405–539, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> G.&nbsp;Kemlin E.&nbsp;Cancès and A.&nbsp;Levitt. Convergence analysis of direct minimization and self-consistent iterations. <i>SIAM J. Matrix Anal. Appl.</i>, 42(1):243–274, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> P.&nbsp;Ni. <i>Anderson acceleration of ﬁxed-point iteration with applications to electronic structure computations</i>. PhD thesis, Worcester Polytechnic Institute, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Y.&nbsp;Saad. <i>Iterative methods for sparse linear systems</i>. Society for Industrial and Applied Mathematics, Philadelphia, PA, second edition, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> H.&nbsp;F. Walker and P.&nbsp;Ni. Anderson acceleration for ﬁxed-point iterations. <i>SIAM J. Numer. Anal.</i>, 49(4):1715–1735, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> T.&nbsp;Rohwedder and R.&nbsp;Schneider. An analysis for the DIIS acceleration method used in quantum chemistry calculations. <i>J. Math. Chem.</i>, 49(9):1889–1914, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> V.&nbsp;Eyert. A comparative study on methods for convergence acceleration of iterative vector sequences. <i>J. Comput. Phys.</i>, 124(2):271–285, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> H.&nbsp;Fang and Y.&nbsp;Saad. Two classes of multisecant methods for nonlinear acceleration. <i>Numer. Linear Algebra Appl.</i>, 16(3):197–221, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> A.&nbsp;Toth and C.&nbsp;T. Kelley. Convergence analysis for Anderson acceleration. <i>SIAM J. Numer. Anal.</i>, 53(2):805–819, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> L.&nbsp;G. Rebholz and M.&nbsp;Xiao. The eﬀect of Anderson Acceleration on superlinear and sublinear convergence. <i>SIAM J. Sci. Comput.</i>, 96(34), 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> H.&nbsp;De Sterck and Y.&nbsp;He. Linear asymptotic convergence of Anderson Acceleration: Fixed-point analysis. <i>SIAM J. Matrix Anal. Appl.</i>, 43(4):1755–1783, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[21]&#x2003;</span> M.&nbsp;Chupin, M.-S. Dupuy, G.&nbsp;Legendre, and É.&nbsp;Séré. Convergence analysis of adaptive DIIS algorithms with application to electronic ground state calculations.
+<i><kbd>arXiv:2002.12850</kbd></i>, 2020. <a href="https://arxiv.org/abs/2002.12850" target="_blank" >https://arxiv.org/abs/2002.12850</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[22]&#x2003;</span> C.&nbsp;Evans, S.&nbsp;Pollock, L.&nbsp;G. Rebholz, and M.&nbsp;Xiao. A proof that Anderson acceleration improves the convergence rate in linearly converging ﬁxed-point methods (but not in
+those converging quadratically). <i>SIAM J. Numer. Anal.</i>, 58(1):788–810, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[23]&#x2003;</span> C.&nbsp;Brezinski. Convergence acceleration during the 20th century. In <i>Numerical analysis 2000, Vol. II: Interpolation and extrapolation</i>, volume 122 of <i>J. Comput. Appl. Math.</i>,
+pages 1–21. 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[24]&#x2003;</span> C.&nbsp;Brezinski, S.&nbsp;Cipolla, M.&nbsp;Redivo-Zaglia, and Y.&nbsp;Saad. Shanks and Anderson-type acceleration techniques for systems of nonlinear equations. <i>IMA J. Numer.
+Anal.</i>, 42(4):3058–3093, 2022.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

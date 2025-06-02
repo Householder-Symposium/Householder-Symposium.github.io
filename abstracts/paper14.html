@@ -1,0 +1,427 @@
+---
+layout: abstract
+absnum: 14
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Riemannian optimization for matrix nearness problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Vanni Noferini</span>, Froilán Dopico, Miryam Gnazzo, Lauri Nyman, Federico Poloni
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Matrix nearness problems are central to numerical linear algebra and matrix theory. As highlighted in [6], these problems have wide-ranging applications. The proposed talk, outlined below, is based on several recent papers of mine, written with
+different coauthors [3, 4, 7].
+</p>
+<!--
+...... section Overview of matrix nearness problems ......
+-->
+<h4 id="autosec-5">Overview of matrix nearness problems</h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+Let us start with a general description, inspired in part by Nick Higham’s PhD thesis [5].
+</p>
+
+<p>
+A matrix nearness problem involves finding a matrix \(B \) that is closest to a given matrix \(A \), such that \(B \) satisfies a specific property \(\mathfrak {P}\) which \(A \) does not. Formally, if \(\mathcal {Q} \) represents the set of matrices
+that possess property \(\mathfrak {P} \), the goal is to solve the following optimization problem:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                           min ∥A − X∥    subject to   X ∈ Q.                                                                              (1)--><a id="eq:1"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:1} \min \| A - X \| \quad \text {subject to} \quad X \in \mathcal {Q}.
+\end{equation}
+
+</p>
+
+<p>
+The distance to be minimized in <span class="textup">(<a href="paper.html#eq:1">1</a>)</span> is typically the Euclidean one, i.e., the distance induced by the Frobenius norm \(\| X \|_F^2 = \text {tr}(X^* X) \), though other options
+can also be considered. Matrix nearness problems can be generalized to matrix pencils or matrix polynomials. For example, given a matrix polynomial \(A(z) = \sum _{i=0}^d A_i z^i \), the objective becomes finding a polynomial \(B(z) = \sum
+_{i=0}^d B_i z^i \) that minimizes the squared distance \(\sum _{i=0}^d \| A_i - B_i \|^2 \) while ensuring that \(B(z) \) has the desired property \(\mathfrak {P} \), which \(A(z) \) lacks.
+</p>
+
+<p>
+Some matrix nearness problems have well-understood, eﬀicient solutions. For example, by the Eckart–Young–Mirsky theorem, the nearest singular matrix to a full-rank matrix \(A \in GL(n, \mathbb {C}) \) can be found via singular value
+decomposition (SVD). The solution is \(B = \sum _{i=0}^{n-1} \sigma _i u_i v_i^* \), with the distance given by the smallest singular value \(\sigma _n \).
+</p>
+
+<p>
+However, many matrix nearness problems are more diﬀicult, and have been either shown or conjectured to be NP-hard. The feasible set \(\mathcal {Q} \) is often non-convex, making it challenging to find anything beyond a local minimum.
+Moreover, optimization algorithms that attempt the task are frequently quite slow and ineﬀicient, making it almost impossible in practice to find even a local minimizer when the input size grows beyond very small matrices.
+</p>
+<!--
+...... section A new approach ......
+-->
+<h4 id="autosec-6">A new approach</h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+In this talk, I will propose a new method to solve matrix nearness problems. There are three key features of the new approach:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> It can handle a broad class of matrix nearness problems, including many described in the literature;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> In extensive numerical experiments, the new method consistently outperforms existing algorithms, especially in challenging cases;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> The problem is reformulated as an optimization task over Riemannian manifolds, offering a novel approach to previously intractable problems.
+</p>
+</li>
+</ul>
+
+<p>
+Our method is based on a key insight: many matrix nearness problems become more tractable when supplemented with additional information about the minimizer. This is akin to the concept of an “oracle” in theoretical computer science: an
+abstract machine that can solve specific problem instances in one step.
+</p>
+
+<p>
+Let us denote the supplementary information about the optimizer by \(\theta \). The problem can then be stiffened by restricting the feasible set to matrices that share this information. Specifically, if we decompose the set \(\mathcal {Q} \) as
+\(\mathcal {Q} = \bigcup _\theta \mathcal {Q}_\theta \), where \(\mathcal {Q}_\theta \) represents matrices with property \(\mathfrak {P} \) and the additional attribute \(\theta \), we can solve the restricted problem:
+</p>
+
+<p>
+\[ f(\theta ) = \min \| A - X \| \quad \text {subject to} \quad X \in \mathcal {Q}_\theta . \]
+</p>
+
+<p>
+The original problem can then by equivalently reformulated by optimizing over \(\theta \):
+</p>
+
+<p>
+\[ \min _\theta f(\theta ). \]
+</p>
+
+<p>
+This often reduces the problem to an optimization task over a Riemannian manifold. For example, if \(\theta \) is an eigenvector, the optimization is over the unit sphere. If \(\theta \) represents a set of \(d \) independent eigenvectors, the
+optimization is over the Grassmann manifold of \(d \)-dimensional subspaces.
+</p>
+
+<p>
+Of course, the idea to use Riemannian optimization to solve nearness problems is not new. Many works have applied manifold optimization to specific matrix nearness problems, but typically in a much more direct manner than the approach that I
+will present in this talk. To give but a couple of the many examples, Vandereycken [8] addressed low-rank matrix completion via optimization on fixed-rank manifolds, and Borsdorf [1] used augmented Lagrangian techniques for a chemistry-related
+problem over the Stiefel manifold. Oracle-based strategies have also previously appeared, such as the method by Byers [2] for finding the distance to Hurwitz instability.
+</p>
+
+<p>
+However, our recent work has further advanced these ideas, and its distinctive feature is to use at the same time both oracles and Riemannian optimization, as well as other classical optimization tools such as regularization. It is, to my knowledge, the
+first time that this strategy has been attempted in a systematic way to tackle a wide range of matrix nearness problems.
+</p>
+<!--
+...... section A two-level optimization framework ......
+-->
+<h4 id="autosec-7">A two-level optimization framework</h4>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+More in detail, our method introduces a two-level optimization framework:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> <b>Inner Problem: Minimize the distance over \(\mathcal {Q}_\theta \)</b>. The inner subproblem is chosen so that it has a closed-form solution, or at least so that its solution can be computed
+cheaply.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> <b>Outer Problem: Minimize \(f(\theta )\) over the manifold of all possible \(\theta \)</b>. Riemannian optimization is then used to eﬀiciently solve the outer problem.
+</p>
+</li>
+</ul>
+
+<p>
+We refer to this strategy as the <i>Riemann-Oracle</i> approach.
+</p>
+
+<p>
+In the talk, I plan to describe how and why the Riemann-Oracle method can be applied to several matrix nearness problems of practical importance, including applications in numerical linear algebra, control theory, and computer algebra. Our
+experiments show that this approach consistently outperforms many specialized algorithms in both speed and accuracy.
+</p>
+
+<p>
+I will explore in the talk both the theoretical details and the practical implementation aspects of this method. Furthermore, I will provide numerical experiments demonstrating concrete success stories. Examples include:
+</p>
+
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> Finding the nearest matrix whose eigenvalues are all in a given set \(\Omega \) (nearest stable matrix) [7]. Here the information \(\theta \) is a unitary matrix that brings the solution into Schur form;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> Finding the nearest singular pencil to a given one [3], including variants of the problem such as the nearest pencil with a prescribed minimal index. Here the information \(\theta \) is a pair of unitary matrices
+that bring the solution into generalized Schur form;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> Finding the nearest singular matrix with an additional linear constraint (e.g. sparsity pattern, Toeplitz structure, etc.) [4]. Here the information \(\theta \) is an eigenvector;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4.</span> Finding the nearest matrix of prescribed rank \(r\) and an additional linear constraint [4]. Here the information \(\theta \) is a set of \(n-r\) eigenvectors;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5.</span> Finding the nearest unstable matrix, i.e., requiring at least one eigenvalue to lie outside the set \(\Omega \) [4]. Here the information \(\theta \) is an eigenvector;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6.</span> Finding the nearest matrix polynomial of prescribed rank [4]. Here the information \(\theta \) is a null polynomial vector;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7.</span> Finding the approximate GCD of two scalar polynomials [4]. Here the information \(\theta \) is a vector contatining the coeﬀicients of two polynomials related to the problem.
+</p>
+</li>
+</ul>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> R. Borsdorf. An algorithm for finding an optimal projection of a symmetric matrix onto a diagonal matrix. <em>SIAM J. Matrix Anal. Appl.</em>, 35(1):198–224, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> R. Byers. A bisection method for measuring the distance of a stable matrix to the unstable matrices. <em>SIAM J. Sci. Stat. Comput.</em>, 9(5):875–881, 1988.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> F. Dopico, V. Noferini, and L. Nyman. A Riemannian optimization method to compute the nearest singular pencil. <em>SIAM J. Matrix Anal. Appl.</em>, To appear, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M. Gnazzo, V. Noferini, L. Nyman, and F. Poloni. Riemann-Oracle: A general-purpose Riemannian optimizer to solve nearness problems in matrix theory. Preprint, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> N. J. Higham. <em>Nearness Problems in Numerical Linear Algebra.</em> PhD thesis, University of Manchester, 1985.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> N. J. Higham. Matrix nearness problems and applications. In <em>M. J. C. Gover and S. Barnett, editors, Applications of Matrix Theory</em>, pages 1–27. Oxford University Press, 1989.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> V. Noferini and F. Poloni. Nearest \(\Omega \)-stable matrix via Riemannian optimization. <em>Numer. Math.</em>, 148:817–851, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> B. Vandereycken. Low-rank matrix completion by Riemannian optimization. <em>SIAM Journal on Optimization</em>, 23(2):1214–1236, 2013.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

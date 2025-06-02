@@ -1,0 +1,758 @@
+---
+layout: abstract
+absnum: 204
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\def \CH {{\mathcal {H}}}\)
+
+\(\def \CL {{\mathcal {L}}}\)
+
+\(\newcommand {\bbbred }{\ensuremath {\mathbb {b}}}\)
+
+\(\newcommand {\bbcred }{\ensuremath {\mathbb {c}}}\)
+
+\(\newcommand {\bbmred }{\ensuremath {\mathbb {m}}}\)
+
+\(\newcommand {\trans }{\ensuremath {\mkern -1.5mu\mathsf {T}}}\)
+
+\(\def \R {{\mathbb R}}\)
+
+\(\def \C {{\mathbb C}}\)
+
+\(\def \Cpm {\C ^{p\times m}}\)
+
+\(\def \Rn {\R ^n}\)
+
+\(\def \Rm {\R ^m}\)
+
+\(\def \Rp {\R ^p}\)
+
+\(\def \Rr {\R ^r}\)
+
+\(\def \Rnn {\R ^{n\times n}}\)
+
+\(\def \Rnm {\R ^{n\times m}}\)
+
+\(\def \Rpn {\R ^{p\times n}}\)
+
+\(\def \Bzero {{\bf 0}}\)
+
+\(\def \BA {{\bf A}}\)
+
+\(\def \BB {{\bf B}}\)
+
+\(\def \BC {{\bf C}}\)
+
+\(\def \BH {{\bf H}}\)
+
+\(\def \BI {{\bf I}}\)
+
+\(\def \BM {{\bf M}}\)
+
+\(\def \Bu {{\bf u}}\)
+
+\(\def \Bx {{\bf x}}\)
+
+\(\def \By {{\bf y}}\)
+
+\(\def \wh #1{\widehat {#1}}\)
+
+\(\def \BAr {\wh {\bf A}}\)
+
+\(\def \BBr {\wh {\bf B}}\)
+
+\(\def \Bbr {\wh {\bf b}}\)
+
+\(\def \BCr {\wh {\bf C}}\)
+
+\(\def \Bcr {\wh {\bf c}}\)
+
+\(\def \BDr {\wh {\bf D}}\)
+
+\(\def \Bdr {\wh {\bf d}}\)
+
+\(\def \BEr {\wh {\bf E}}\)
+
+\(\def \BMr {\wh {\bf M}}\)
+
+\(\def \BHr {\wh {\BH }}\)
+
+\(\def \Bxr {\wh {\bf x}}\)
+
+\(\def \BVr {\wh {\bf V}}\)
+
+\(\def \BWr {\wh {\bf W}}\)
+
+\(\def \yr {\wh {y}}\)
+
+\(\def \Byr {\wh {\bf y}}\)
+
+\(\def \Sys {\Sigma }\)
+
+\(\def \Sysred {\wh \Sys }\)
+
+\(\newcommand {\imunit }{{\dot {\imath \hspace *{-0.2em}\imath }}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+\(\CH _2\) optimal model reduction of linear systems with quadratic outputs: from rational function interpolation to data-driven modeling
+</h2>
+</div>
+<div class="center">
+
+<p>
+Sean Reiter , <span class="underline">Ion Victor Gosea</span>, Igor Pontes Duff, Serkan Gugercin<br />
+<br />
+
+
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+\(\mathcal {H}_2\) optimal reduction of linear dynamical systems represents a long-lasting, worthwhile problem in system-theoretical model order reduction. In this short note, we propose extensions of first-order necessary conditions, both based on
+system Gramians and transfer functions, to the \(\mathcal {H}_2\) problem for the class of linear systems with quadratic outputs.
+</p>
+<!--
+...... section Introduction ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Introduction</h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+Model-order reduction (<span class="textsf">MOR</span>) refers to the procedure by which one approximates a large-scale dynamical system, modeled by systems of ordinary differential equations, with a comparatively lower-order surrogate
+model which can be used as a cheap-to-evaluate surrogate in downstream computational tasks, such as optimization or control. In order to be an effective surrogate, the computed reduced-order model (<span class="textsf">ROM</span>) should
+recover the dominant input-to-output response characteristics of the original complex system, as well as preserve qualitative features like internal structures. We refer to [1,&#x202f;2] for more details on system-theoretical <span
+class="textsf">MOR</span>, since this category is of interest to us.
+</p>
+
+<p>
+The primary consideration of this work is the development of methods for the <span class="textsf">MOR</span> of linear dynamical systems which contain quadratic output functions, or linear quadratic-output (<span
+class="textsf">LQO</span>) systems. Here, we develop extensions of classical <span class="textsf">MOR</span> approaches applicable solely to systems with linear dynamics and linear outputs. Our contributions are threefold: First, we
+consider the \(\CH _2\) optimal model reduction problem, and derive first-order necessary conditions for \(\CH _2\) optimality based on rational transfer function interpolation. These provide a natural extension of the well-known interpolation-based
+\(\CH _2\) optimality framework of Meier and Leunberger&nbsp; [7,&#x202f;8] for linear model reduction. Based on the developed theoretical optimality framework, we propose an extension of the well-known iterative rational Krylov algorithm
+(<span class="textsf">IRKA</span>)&nbsp; [7] for linear \(\CH _2\) optimal model reduction. Finally, we show how to compute \(\CH _2\) optimal reduced models using only evaluations of the linear- and quadratic-output transfer functions.
+</p>
+<!--
+...... section Transfer functions, norms and MOR of LQO systems ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">2&#x2003;</span>Transfer functions, norms and <span class="textsf">MOR</span> of <span class="textsf">LQO</span> systems</h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+In this work, we consider large-scale dynamical systems with linear dynamics and outputs which are (up to) quadratic functions of the state vector. In state-space, such systems are formulated as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                    (
+                                                                                                                        ẋ(t) = Ax(t) + Bu(t),
+                                                                                                          Σ:                                                                                        (1)            --><a id="eq:lqosys"></a><!--
+                                                                                                                        y(t) = Cx(t) + M (x(t) ⊗ x(t)),
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:lqosys} \Sys : \quad \begin{cases} \dot {\Bx }(t)=\BA \Bx (t)+\BB \Bu (t), \\ \By (t)={\BC \Bx (t)} + {\BM \left (\Bx (t)\otimes \Bx (t)\right )}, \end {cases}
+\end{align}
+where \(\Bx (t)\in \Rn \) is the system’s internal state, \(\Bu (t) \in \Rm \) are the control inputs, and \(\By (t)\in \Rp \) are the observed outputs. The system matrices satisfy \(\BA \in \Rnn \), \(\BB \in \Rnm \), \(\BC \in \Rpn \)
+and \(\BM \in \R ^{p\times n^2}\). We assume that the system in&nbsp;<span class="textup">(<a href="paper.html#eq:lqosys">1</a>)</span> is asymptotically stable, i.e., the eigenvalues of \(\BA \) to be in the left-half plane. Systems
+that consider quadratic observables as quantities of interest arise in a variety of applications, and particularly whenever one is interested in observing quantities computed as the product of time or frequency-domain components of the
+state&nbsp; [4,&#x202f;11].
+</p>
+
+<p>
+The frequency-domain response of system&nbsp;<span class="textup">(<a href="paper.html#eq:lqosys">1</a>)</span> is fully specified by \(2\) rational transfer functions [4,&#x202f;6]:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                        
+                                                                                       H1 (s) = C(sI − A)−1 B            and                       A)−1 B ⊗ (zI − A)−1 B .
+                                                                                                                               H2 (s, z) = M (sI − (2)                                                                 --><a id="eq:tfs"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:tfs} \BH _1(s)=\BC (s\BI -\BA )^{-1}\BB ~~~\mbox {and}~~~\BH _2(s,z)=\BM \left ((s \BI -\BA )^{-1}\BB \otimes (z\BI -\BA )^{-1}\BB \right ).
+\end{align}
+The first function \(\BH _1(s)\) is the typical transfer function of a linear-output system, and describes the transfer from input \(\Bu (t)\) to output \(\By _1(t):= \BC \Bx (t)\), which is linear in \(\Bx (t)\). The second bivariate function
+\(\BH _2(s,z)\) the transfer from input \(\Bu (t)\) to output \(\By _2(t):= \BM \left (\Bx (t)\otimes \Bx (t)\right )\), which is quadratic in \(\Bx (t)\). The \(\CH _2\) norm for systems of the form&nbsp;<span class="textup">(<a
+href="paper.html#eq:lqosys">1</a>)</span> can be defined via these transfer functions as&nbsp; [4,&#x202f;5]
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+                                                                                                        Z ∞                                Z ∞ Z ∞
+                                                                                                    1                                1
+                                                                                       ∥Σ∥2H2 :=              ∥H1 (ı̇ıω)∥2F dω +                     ∥H(3)                2
+                                                                                                                                                       2 (ı̇ıω1 , ı̇ıω2 )∥F dω1 dω2 .                                   --><a id="eq:h2"></a><!--
+                                                                                                   2π   −∞                         (2π)2   −∞   −∞
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:h2} \|\Sigma \|_{\CH _2}^2:= \frac {1}{2\pi }\int _{-\infty }^\infty \|{\BH _1(\imunit \omega )}\|_{\textsf {F}}^2 \, d\omega + \frac {1}{(2\pi )^2}\int _{-\infty }^\infty \int _{-\infty }^\infty \|{\BH
+_2(\imunit \omega _1,\imunit \omega _2)}\|_{\textsf {F}}^2 \, d\omega _1 \, d\omega _2.
+\end{align}
+We note that when \(\BM = \mathbf {0}\), it implies that \(\BH (s,z) = 0\), and the formula above simplifies to the first integral term only, which is the standard formula as used in [7].
+</p>
+
+<p>
+In practical applications, the state dimension \(n\) can be rather large, e.g., in the order of the millions, and any repeated action involving the full-order model (<span class="textsf">FOM</span>)&nbsp;<span class="textup">(<a
+href="paper.html#eq:lqosys">1</a>)</span> becomes prohibitively expensive. Model reduction seeks to remedy this problem with the construction of cheap-to-evaluate surrogate models having the same form as&nbsp;<span class="textup">(<a
+href="paper.html#eq:lqosys">1</a>)</span>, but described by a comparatively much smaller number of differential equations. Mathematically, this amounts to computing a system
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                                                    (
+                                                                                                                        ḃ = Ab
+                                                                                                                        x(t)    b x(t) + Bu(t),
+                                                                                                                                         b
+                                                                                                          b:
+                                                                                                          Σ                                                                                   (4)               --><a id="eq:lqosysred"></a><!--
+                                                                                                                                b
+                                                                                                                        b (t) = Cb
+                                                                                                                        y                c         b(t)),
+                                                                                                                                            x(t) ⊗ x
+                                                                                                                                  x(t) + M (b
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:lqosysred} \Sysred : \quad \begin{cases} \dot {\Bxr }(t)=\BAr \Bxr (t)+\BBr \Bu (t), \\ \Byr (t)={\BCr \Bxr (t)} + {\BMr \left (\Bxr (t)\otimes \Bxr (t)\right )}, \end {cases}
+\end{align}
+with a significantly reduced dimension \(1\leq r\ll n\). \(\Bxr (t) \in \Rr \) contains the reduced-order state variables, and \(\Byr (t) \in \Rp \) are the approximateds output. The reduced-order matrix operators satisfy \(\BAr \in \R
+^{r\times r}\), \(\BBr \in \R ^{r\times m}\), \(\BCr \in \R ^{p\times r}\), and \(\BMr \in \R ^{p\times r^2}\). In order to be an effective surrogate, the reduced model&nbsp;<span class="textup">(<a
+href="paper.html#eq:lqosysred">4</a>)</span> should replicate the input-to-output response characteristics of the large-scale system&nbsp;<span class="textup">(<a href="paper.html#eq:lqosys">1</a>)</span>. In order words, for a given
+tolerance \(\tau &gt; 0\), the output deviation should satisfy \(\|\By -\Byr \|\leq \tau \|\Bu \|\) in an appropriate norm for a range of admissible inputs \(\Bu \).
+</p>
+
+<p>
+Suppose that one is interested in controlling the \(\CL ^p_\infty \), or “worst case” deviation in the output \(\|\By -\Byr \|_{\CL ^p_\infty }:=\sup _{t\geq 0}\|\By (t)-\Byr (t)\|_\infty \). Significantly, one can show following error
+bound&nbsp; [4]:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                                                  1/2
+                                                                              b H2 ∥u∥2Lm + ∥u ⊗ u∥2 m2
+                                                                b ∥Lp∞ ≤ ∥Σ − Σ∥
+                                                           ∥y − y                                                        .                                                                           (5)            --><a id="eq:bound"></a><!--
+                                                                                        2          L          2
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:bound} \|{\By -\Byr }\|_{\CL _\infty ^p} \leq {\|{\Sys -\Sysred }\|_{\CH _2}} \big (\|\Bu \|_{\CL ^m_2}^2+\|\Bu \otimes \Bu \|_{\CL ^{m^2}_2}^2\big )^{1/2}.
+\end{equation}
+
+</p>
+
+<p>
+In other words, the \(\CH _2\) model error bounds the \(\CL ^p_\infty \) output error. Based on the bound&nbsp;<span class="textup">(<a href="paper.html#eq:bound">5</a>)</span>, we consider the \(\CH _2\) optimal model reduction
+problem for the <span class="textsf">LQO</span> system class&nbsp;<span class="textup">(<a href="paper.html#eq:lqosys">1</a>)</span>. Given the system in&nbsp;<span class="textup">(<a
+href="paper.html#eq:lqosys">1</a>)</span>, find a <span class="textsf">ROM</span> such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                                                                min         b
+                                                                         J (Σ),      b := ∥Σ − Σ∥
+                                                                                  J (Σ)        b 2H .                                                                                   (6)                 --><a id="eq:H2optimalMOR"></a><!--
+                                                                                                   2
+                                                              dim(Σ)=r
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:H2optimalMOR} \min _{\dim ({\Sys })=r} \mathcal {J}(\Sysred ),~~~\mathcal {J}(\Sysred ):=\|\Sys -{\Sysred }\|_{\CH _2}^2.
+\end{equation}
+
+</p>
+<!--
+...... section One main result ......
+-->
+<h4 id="autosec-7"><span class="sectionnumber">3&#x2003;</span>One main result</h4>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+We follow here the results in [9]. To simplify the approximation problem, we assume the approximate system in&nbsp;<span class="textup">(<a href="paper.html#eq:lqosysred">4</a>)</span> has simple poles. Then, the reduced-order linear-
+and quadratic-output transfer functions can be expressed in pole-residue form:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                           X
+                                                           r
+                                                             𝕔i 𝕓Ti                            X
+                                                                                               r X
+                                                                                                 r
+                                                                                                   𝕞j,k (𝕓j ⊗ 𝕓k )T
+                                               b 1 (s) =
+                                               H                          and   b 2 (s, z) =
+                                                                                H                                             ,                            (7)                                       --><a id="eq:poleResidue"></a><!--
+                                                           i=1
+                                                                 s − λi                        j=1 k=1
+                                                                                                         (s − λj )(z − λk )
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:poleResidue} \widehat {\BH }_1(s)=\sum _{i=1}^r\frac {\bbcred _i\bbbred _i^{\trans }}{s-\lambda _i}~~~\mbox {and}~~~\widehat {\BH }_2(s,z)=\sum _{j=1}^r\sum _{k=1}^r\frac {\bbmred _{j,k}\left (\bbbred
+_j\otimes \bbbred _k\right )^{\trans }}{(s-\lambda _j)(z-\lambda _k)},
+\end{equation}
+
+</p>
+
+<p>
+where \(\bbbred _k\in \C ^{m}\), and \(\bbcred _k\in \C ^p,\bbmred _{j,k}\in \C ^{p}\), for all \(j,k=1,\ldots ,r\). We define \(\bbcred _i\bbbred _i^{\trans }\in \Cpm \) and \(\bbmred _{j,k}(\bbbred _i\otimes \bbbred
+_i)^{\trans }\in \C ^{p\times m^2}\) to be the <em>residues</em> of \(\widehat {\BH }_1(s)\) and \(\widehat {\BH }_2(s,z)\) corresponding to \(\lambda _i\) and \((\lambda _j,\lambda _k)\), respectively. We are able to show that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                                                                  !
+                                                                  X
+                                                                  r                   X
+                                                                                      r X
+                                                                                        r
+                                        b 2H = ∥Σ∥2H − 2
+                                   ∥Σ − Σ∥                          𝕔Ti H1 (−λi )𝕓i +     𝕞Tj,k H2 (−λj , −λk ) (𝕓j ⊗ 𝕓k )               b 2H .
+                                                                                                                                      + ∥Σ∥                      (8)                                     --><a id="eq:h2error"></a><!--
+                                            2       2                                                                                        2
+                                                                  i=1                 j=1 k=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:h2error} \|\Sys -\Sysred \|_{\CH _2}^2=\|\Sys \|_{\CH _2}^2 -2\left ( \sum _{i=1}^r {\bbcred _i^{\trans }} \BH _1({-\lambda _i}){\bbbred _i} +\sum _{j=1}^r\sum _{k=1}^r {\bbmred _{j,k}^{\trans }} \BH
+_2({-\lambda _j},-{\lambda _k})\left ({\bbbred _j}\otimes {\bbbred _k}\right ) \right )+ {\|\Sysred \|_{\CH _2}^2}.
+\end{equation}
+
+</p>
+
+<p>
+This makes the \(\CH _2\) optimal model reduction problem tractable by minimally parameterizing the <span class="textsf">ROM</span> in&nbsp;<span class="textup">(<a href="paper.html#eq:lqosysred">4</a>)</span> in terms of the
+transfer function poles and residues.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 1 </span></span> Suppose that \(\Sysred \) has simple poles \({\lambda _1,\ldots ,\lambda _r}\in \C _-\), and is a local minimizer of the squared \(\CH _2\) error
+\(\|\Sys -\Sysred \|_{\CH _2}^2\). Then, for all \(i,j,k=1,\ldots ,r\), it holds that
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+
+
+<!--
+
+
+                                                                                                 
+                                                                                        b 1 (−λi ) 𝕓i ,
+                                                                        0 = H1 (−λi ) − H
+                                                                                                             
+                                                                                              b 2 (−λj , −λk ) (𝕓j ⊗ 𝕓k ) ,
+                                                                        0 = H2 (−λj , −λk ) − H
+                                                                                                      X r                                          
+                                                                                            b 1 (−λk ) +
+                                                                        0 = 𝕔Tk H1 (−λk ) − H                𝕞Tk,ℓ H2 (−λk , −λℓ ) − Hb 2 (−λk , −λℓ ) (Im ⊗ 𝕓ℓ )
+                                                                                   Xr                   ℓ=1                  
+                                                                                 +                            b 2 (−λℓ , −λk ) (𝕓ℓ ⊗ Im ) ,
+                                                                                      𝕞Tℓ,k H2 (−λℓ , −λk ) − H
+                                                                                        ℓ=1
+                                                                                                                         Xr                                                  
+                                                                                      d                 d b                             ∂                     ∂ b
+                                                                        0 = 𝕔Tk          H1 (−λk ) −      H1 (−λk ) 𝕓k +       𝕞Tk,ℓ       H2 (−λk , −λℓ ) −     H2 (−λk , −λℓ ) (𝕓k ⊗ 𝕓ℓ )
+                                                                                      ds               ds                              ∂s1                   ∂s1
+                                                                                         Xr                               ℓ=1
+                                                                                                                                               
+                                                                                                      ∂                     ∂  b 2 (−λℓ , −λk ) (𝕓ℓ ⊗ 𝕓k ) .
+                                                                                      +      𝕞Tℓ,k       H2 (−λℓ , −λk ) −     H
+                                                                                                     ∂s2                   ∂s2
+                                                                                        ℓ=1
+
+
+
+
+-->
+
+
+
+<p>
+
+
+\begin{align*}
+\Bzero &amp;=\left (\BH _1({-\lambda _i})-\BHr _1({-\lambda _i})\right ){\bbbred _i},\\ \Bzero &amp;= \left (\BH _2({-\lambda _j},{-\lambda _k})-\BHr _2({-\lambda _j},{-\lambda _k})\right )\left ({\bbbred
+_{j}}\otimes {\bbbred _k}\right ),\\ \Bzero &amp;= {\bbcred _k^{\trans }}\left (\BH _1({-\lambda _k})-\BHr _1({-\lambda _k})\right ) +\sum _{\ell =1}^r{\bbmred _{k,\ell }^{\trans }} \left (\BH _2({-\lambda
+_k},{-\lambda _\ell })-\BHr _2({-\lambda _k},{-\lambda _\ell })\right )\left (\BI _m\otimes {\bbbred _\ell }\right ) \\[-2ex] &amp;~~~~~~~~~+\sum _{\ell =1}^r{\bbmred _{\ell ,k}^{\trans }}\left (\BH _2({-\lambda
+_\ell },{-\lambda _k})-\BHr _2({-\lambda _\ell },{-\lambda _k})\right )\left ({\bbbred _\ell }\otimes \BI _m\right ),\\ 0&amp;= {\bbcred _k^{\trans }}\left (\frac {d}{ds}\BH _1({-\lambda _k})-\frac {d}{ds}\BHr
+_1({-\lambda _k})\right ){\bbbred _k} +\sum _{\ell =1}^r{\bbmred _{k,\ell }^{\trans }} \left (\frac {\partial }{\partial s_1}\BH _2({-\lambda _k},{-\lambda _\ell })-\frac {\partial }{\partial s_1}\BHr _2({-\lambda
+_k},{-\lambda _\ell })\right )\left ({\bbbred _k}\otimes {\bbbred _\ell }\right ) \\[-1ex] &amp;~~~~~~~~~+\sum _{\ell =1}^r{\bbmred _{\ell ,k}^{\trans }}\left (\frac {\partial }{\partial s_2}\BH _2({-\lambda _\ell
+},{-\lambda _k})-\frac {\partial }{\partial s_2}\BHr _2({-\lambda _\ell },{-\lambda _k})\right )\left ({\bbbred _\ell }\otimes {\bbbred _k}\right ).
+\end{align*}
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In other words, tangential interpolation is a necessary condition for \(\CH _2\) optimality. We also note that when \(\BM = \mathbf {0}\), it implies that the formulae above simplify accordingly to the standard interpolation-based <span
+class="textsf">FONC</span>’s for classical linear systems, as in [7,&#x202f;8].
+</p>
+<!--
+...... section Summary of all proposed results ......
+-->
+<h4 id="autosec-9"><span class="sectionnumber">4&#x2003;</span>Summary of all proposed results</h4>
+<a id="paper-autopage-9"></a>
+
+
+<p>
+Based on the bound in (<a href="paper.html#eq:bound">5</a>), we have considered the \(\CH _2\) optimal model reduction problem for the class of systems in&nbsp;<span class="textup">(<a href="paper.html#eq:lqosys">1</a>)</span>.
+We went about this in two different ways, corresponding to two types of <span class="textsf">FONC</span>s, namely for the first one mentioned earlier introduced in [8]. Then, for the second, e.g., the Gramian-based <span
+class="textsf">FONC</span>s as introduced in [13], we analyzed it in [10].
+</p>
+
+<p>
+Our contributions to the interpolation-based formulation are threefold:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">A.</span> First, we derive interpolation-based first-order necessary conditions for \(\CH _2\) optimal model reduction. These amount to tangential interpolation of a weighted sum of the transfer functions in&nbsp;<span
+class="textup">(<a href="paper.html#eq:tfs">2</a>)</span>, and generalize the analogous optimality conditions for linear \(\CH _2\) model reduction. We show how to enforce these conditions in the construction of the <span
+class="textsf">ROM</span> using projection.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">B.</span> Secondly, we show that these conditions are equivalent to the Gramian-based \(\CH _2\) optimality conditions for <span class="textsf">LQO</span> systems as in&nbsp;<span class="textup">(<a
+href="paper.html#eq:lqosys">1</a>)</span>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">C.</span> Thirdly, we propose an extension of <span class="textsf">TF-IRKA</span> in [3] to systems of the form&nbsp;<span class="textup">(<a href="paper.html#eq:lqosys">1</a>)</span>. The algorithm
+enforces the necessary \(\CH _2\) optimality conditions at every step and produces locally \(\CH _2\) optimal approximants upon convergence. Additionally, at every step, the matrices of the <span class="textsf">ROM</span> are computed
+solely in terms of data, i.e., samples of the two transfer functions in (<a href="paper.html#eq:tfs">2</a>).
+</p>
+</li>
+</ul>
+
+<p>
+Due to space limitations, we are not able to go into a detailed analysis of the results concerning Gramian-based <span class="textsf">FONC</span>s, as presented in [10]. In short, we derive gradients of the squared \(\CH _2\) system error with
+respect to the system matrices of the <span class="textsf">LQO</span>-<span class="textsf">ROM</span> as parameters. The stationary points of these gradients directly yield Gramian-based <span class="textsf">FONC</span>s for \(\CH
+_2\) optimality. These results generalize the analogous Gramian-based <span class="textsf">FONC</span>s for linear \(\CH _2\) optimal model&nbsp; [12,&#x202f;13] to the <span class="textsf">LQO</span> setting. We also show that a
+\(\CH _2\) optimal <span class="textsf">LQO</span>-<span class="textsf">ROM</span> is necessarily defined by Petrov-Galerkin projection. The relevant projection matrices are obtained as solutions to a pair of Sylvester equations.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;C. Antoulas. <i>Approximation of Large-Scale Dynamical Systems</i>, volume&nbsp;6 of <i>Adv. Des. Control</i>. SIAM Publications, Philadelphia, PA, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A.&nbsp;C. Antoulas, C.&nbsp;A. Beattie, and S.&nbsp;Gugercin. <i>Interpolatory Methods for Model Reduction</i>. Computational Science &amp; Engineering. SIAM, Philadelphia, PA, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> C.&nbsp;A. Beattie and S.&nbsp;Gugercin. Realization-independent \(\mathcal {H}_2\)-approximation. In <i>51st IEEE Conference on Decision and Control (CDC)</i>, pages 4953–4958, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> P.&nbsp;Benner, P.&nbsp;Goyal, and I.&nbsp;Pontes&nbsp;Duff. Gramians, energy functionals and balanced truncation for linear dynamical systems with quadratic outputs. <i>IEEE Trans. Autom.
+Control</i>, 67(2):886–893, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> I.&nbsp;V. Gosea and A.&nbsp;C. Antoulas. A two-sided iterative framework for model reduction of linear systems with quadratic output. In <i>58th IEEE Conference on Decision and Control
+(CDC), December 11–13, Nice, France</i>, pages 7812–7817, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> I.&nbsp;V. Gosea and S.&nbsp;Gugercin. Data-driven modeling of linear dynamical systems with quadratic output in the AAA framework. <i>J. Sci. Comput.</i>, 91(1):1–28, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> S.&nbsp;Gugercin, A.&nbsp;C. Antoulas, and C.&nbsp;Beattie. \(\mathcal {H}_2\) model reduction for large-scale linear dynamical systems. <i>SIAM J. Matrix Anal. Appl.</i>, 30(2):609–638,
+2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> L.&nbsp;Meier and D.&nbsp;Luenberger. Approximation of linear constant systems. <i>IEEE Trans. Autom. Control</i>, 12(5):585–588, 1967.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> S.&nbsp;Reiter, I.&nbsp;V. Gosea, I.&nbsp;Pontes&nbsp;Duff, and S.&nbsp;Gugercin. Interpolatory and realization-free approximation of linear quadratic systems. e-print, 2024. to be submitted to
+<i>SIAM J. Matrix Anal. Appl.</i>
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> S.&nbsp;Reiter, I.&nbsp;Pontes&nbsp;Duff, I.&nbsp;V. Gosea, and S.&nbsp;Gugercin. \(\mathcal {H}_2\) optimal model reduction of linear systems with multiple quadratic outputs. e-print
+2405.05951, arXiv, 2024. math.NA, eess.SY, math.DS, math.OC.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> S.&nbsp;Reiter and S.&nbsp;W.&nbsp;R. Werner. Interpolatory model order reduction of large-scale dynamical systems with root mean squared error measures. e-print 2403.08894, arXiv, 2024.
+math.NA, eess.SY, math.DS, math.OC.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> P.&nbsp;Van&nbsp;Dooren, K.&nbsp;A. Gallivan, and P-A Absil. \(H_2\)-optimal model reduction of MIMO systems. <i>Appl. Math. Lett.</i>, 21(12):1267–1273, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> D.&nbsp;A. Wilson. Optimum solution of model-reduction problem. In <i>Proceedings of the Institution of Electrical Engineers</i>, volume 117, pages 1161–1165. IET, 1970.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,278 @@
+---
+layout: abstract
+absnum: 173
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Surrogate-based Autotuning for Randomized Numerical Linear Algebra
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Younghyun Cho</span>, James W. Demmel, Michał&nbsp;Dereziński, Haoyun Li, Hengrui Luo,<br />
+Michael W. Mahoney, Riley J. Murray
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The field of Randomized Numerical Linear Algebra (RandNLA) has made significant developments and shown high quality empirical performance in some scenarios (e.g., overdetermined least-squares solvers). However, the practical performance of a
+RandNLA method usually hinges on the careful selection of multiple algorithm-specific tuning parameters. In addition, such a parameter selection would affect both the runtime of the algorithm and the accuracy of the result, which makes the
+parameter selection even harder. This motivates us to develop an automated process that helps find the (near-)optimal parameters for practical performance, with a focus on the applications relevant to RandNLA practitioners.
+</p>
+
+<p>
+This extended abstract, which is based on our ongoing work&nbsp;[1], presents a surrogate-based autotuning approach for tuning RandNLA algorithms. We present a tuning pipeline that is built based on Bayesian optimization (BO) with Gaussian
+Process (GP) regression, which is an empirical approach where we aim to find the optimal parameter selection for a given tuning budget. At a high level, our pipeline follows the typical BO procedure, where we evaluate several parameter
+configurations, (iteratively) build a surrogate performance model based on the obtained evaluation results, and then find the next sample to evaluate until we reach the given tuning budget, along with an objective function to minimize the runtime of
+the algorithm while providing a satisfactory accuracy. Furthermore, we also apply a transfer learning approach to further reduce the tuning cost, especially when there are previously collected evaluation data from other similar but different tasks
+(e.g., the same algorithm but solving with different input data matrices). This makes the tuning approach more cost eﬀicient and practical for RandNLA practitioners. The tuning pipeline uses GPTune&nbsp;[11] as the BO framework. GPTune is an
+open-source autotuner that was originally designed for tuning large-scale high-performance computing codes but is also general and can support tuning other domains of codes.
+</p>
+
+<p>
+In particular, we show the eﬀicacy of our tuning pipeline, in the context of sketch-and-precondition (SAP) based randomized least squares methods in solving large-scale overdetermined problems, minimizing \(\|\bm {A}\bm {x} - \bm {b}\|_2^2\),
+where \(\bm {A}\) is with the size of \(m\) by \(n\) with \(m \gg n\), as SAP-based randomized least squares solvers that have been one of the successful applications in RandNLA. The SAP least squares approach can be summarized into following
+five steps: (1) Construct a sketching matrix \(\bm {S}\) (with size of \(d\) by \(m\); multiple schemes exist such as Sparse Johnson–Lindenstrauss Transform (SJLT)&nbsp;[5] and LessUniform [6, 7] to form a sketching matrix) to approximate the
+input data matrix \(\bm {A}\), (2) Compute \({\bm {\hat {A}}} = \bm {S}\bm {A}\), (3) Generate a preconditioner matrix \(\bm {M}\) from \(\bm {\hat {A}}\) (e.g., using QR or SVD), (4) Use an iterative method for the preconditioned least
+squares for minimizing \(\|\bm {A}\bm {M}\bm {z} = \bm {b}\|_2^2\) (e.g., using preconditioned LSQR or preconditioned gradient descent (PGD)), and finally (5) Compute the result vector, \(\bm {M}\bm {z}\).
+</p>
+
+<p>
+We observe that the SAP-based least squares solver has multiple types of parameters to be tuned. The possible tuning parameters include some categorical variables to choose what the sparse sketching operator and the iterative solver for the
+preconditioned least squares to be used, as well as continuous/integer parameters to configure the size of the sketching matrix (\(d\) of \(\bm {S}\)) as well as the sparsity of the sketching matrix (i.e., number of nonzero elements per row or column
+of \(\bm {S}\)). In our experiments, we search this categorical space, using several implementations that are motivated by the well-known works such as Blendenpik&nbsp;[2], LSRN&nbsp;[3], and NewtonSketch&nbsp;[4]. Then, we search a certain
+range of continuous/integer parameters to configure the sketching matrix, in terms of the size of the sketching matrix and the sparsity of the sketching matrix. In addition, the iterative solvers such as LSQR&nbsp;[8] and PGD finish their iterations
+based on the termination criteria with a desired level of accuracy (which we call “safety factor”). We regard that as a tuning parameter, and our tuning pipeline computes a relative residual error by comparing the results of the SAP least squares
+solver and the result obtained from a traditional direct solver. The relative error is used as the key indicator to quantify the quality of the SAP least squares solver for a given parameter configuration as well as the running time of the algorithm. For
+the SAP least squares solvers, we used a Python version prototype RandNLA package, PARLA&nbsp;[9], that provides the implementations for the SAP least squares solvers with the interface to control the abovementioned parameters.
+</p>
+
+<p>
+We use multiple synthetic matrices and several real-world input matrices to test the eﬀicacy of our tuning pipeline&nbsp;[1]. Our experimental results show promising results that GP-based BO approach is effective in tuning the parameters for
+RandNLA algorithms, in comparison with other primitives such as random search or grid search. Moreover, we also show that transfer learning can further improve the tuning eﬀiciency by leveraging the data obtained from other input data matrices.
+For transfer learning, within the Bayesian optimization process, our tuner chooses the categorical variable, i.e., the SAP algorithm and the sketching operator, using the Upper Confidence Bound (UCB) bandit function, and then we apply a GP-based
+multitask learning technique&nbsp;[12], called Linear Coregionalization Model (LCM), in order to learn from historical samples within the same chosen category from the source matrices. That improves the tuning quality and cost, compared to non
+transfer learning-based tuning. Overall, the success of the empirical tuning approach suggests possible practical use cases. For example, users can use our autotuning pipeline in order select the parameters for running a RandNLA algorithm. If the
+user has a larger dataset size, the user can down-sample their input data and perform autotuning (with or without transfer learning), and then use the chosen parameter configuration to run the algorithm on a larger dataset.
+</p>
+
+<p>
+For future work, our tuning pipeline can be extended or tested for other RandNLA problems. While our experiments have primarily focused on the problem of overdetermined least squares, the basic lessons from our work are applicable in other
+contexts, such as low-rank approximation, and also for tuning large-scale high-performance computing applications. In addition, our tuning pipeline can further be improved to be even more robust and effective in tuning RandNLA workloads that are
+hard to achieve valid parameter configurations for a given residual accuracy requirement. From a theoretical perspective, the integration of surrogate-based optimization techniques with RandNLA algorithms opens up new avenues for research at the
+intersection of machine learning and numerical linear algebra. We can also explore how these autotuning techniques could be incorporated directly into adaptive algorithms, allowing numerical methods to automatically adjust their behavior based on
+the properties of the input data. In conclusion, the development of these surrogate-based autotuning techniques represents a significant step forward in bridging the gap between theoretical advances in RandNLA and their practical performance
+engineering.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Y.&nbsp;Cho, J.&nbsp;W. Demmel, M.&nbsp;Dereziński, H.&nbsp;Li, H.&nbsp;Luo, M.&nbsp;W. Mahoney, R.&nbsp;J. Murray, <i>Surrogate-based Autotuning for Randomized Sketching
+Algorithms in Regression Problems</i>, in arXiv:2308.15720 (2023).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> H.&nbsp;Avron, P.&nbsp;Maymounkov, and S.&nbsp;Toledo, <i>Blendenpik: Supercharging LAPACK’s Least-Squares Solver</i>, SIAM Journal on Scientific Computing, 32 (2010).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> X.&nbsp;Meng, M.&nbsp;A. Saunders, and M.&nbsp;W. Mahoney, <i>LSRN: A parallel iterative solver for strongly over- or underdetermined systems</i>, SIAM Journal on Scientific
+Computing, 36 (2014).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M.&nbsp;Pilanci and M.&nbsp;J. Wainwright, <i>Newton Sketch: A near linear-time optimization algorithm with linear-quadratic convergence</i>, SIAM Journal on Optimization, 27 (2017).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> A.&nbsp;Dasgupta, R.&nbsp;Kumar, and T.&nbsp;Sarlos, <i>A sparse Johnson-Lindenstrauss transform</i>, in Proceedings of the Forty-Second ACM Symposium on Theory of Computing
+(STOC), STOC ’10, 2010, Association for Computing Machinery, p.&nbsp;341–350.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M.&nbsp;Dereziński, Z.&nbsp;Liao, E.&nbsp;Dobriban, and M.&nbsp;Mahoney, <i>Sparse sketches with small inversion bias</i>, in Conference on Learning Theory (COLT), PMLR, 2021,
+pp.&nbsp;1467–1510.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.&nbsp;Dereziński, J.&nbsp;Lacotte, M.&nbsp;Pilanci, and M.&nbsp;W. Mahoney, <i>Newton-LESS: Sparsification without trade-offs for the sketched Newton update</i>, Advances in
+Neural Information Processing Systems, 34 (2021).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> C.&nbsp;C. Paige and M.&nbsp;A. Saunders, <i>LSQR: An algorithm for sparse linear equations and sparse least squares</i>, ACM Trans. Math. Softw., 8 (1982), pp.&nbsp;43–71.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Ballistic, <i>Python Algorithms for Randomized Linear Algebra (PARLA)</i>, 2022, <a href="https://github.com/BallisticLA/parla/tree/main" target="_blank"
+>https://github.com/BallisticLA/parla/tree/main</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> R.&nbsp;Murray, J.&nbsp;Demmel, M.&nbsp;W. Mahoney, N.&nbsp;B. Erichson, M.&nbsp;Melnichenko, O.&nbsp;A. Malik, L.&nbsp;Grigori, P.&nbsp;Luszczek,
+M.&nbsp;Dereziński, M.&nbsp;E. Lopes, T.&nbsp;Liang, H.&nbsp;Luo, and J.&nbsp;Dongarra, <i>Randomized Numerical Linear Algebra : A perspective on the field with an eye to software</i>, arXiv:2302.11474v2 (2023).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Y.&nbsp;Cho, J.&nbsp;W. Demmel, G.&nbsp;Dinh, X.&nbsp;S. Li, Y.&nbsp;Liu, H.&nbsp;Luo, O.&nbsp;Marques, and W.&nbsp;M. Sid-Lakhdar, <i>GPTune user guide</i>. <a
+href="https://gptune.lbl.gov/documentation/gptune-user-guide" target="_blank" >https://gptune.lbl.gov/documentation/gptune-user-guide</a>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Y.&nbsp;Liu, W.&nbsp;M. Sid-Lakhdar, O.&nbsp;Marques, X.&nbsp;Zhu, C.&nbsp;Meng, J.&nbsp;W. Demmel, and X.&nbsp;S. Li, <i>GPTune: Multitask learning for autotuning exascale
+applications</i>, in Proceedings of the 26th ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming, PPoPP ’21, 2021, Association for Computing Machinery, pp.&nbsp;234–246.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

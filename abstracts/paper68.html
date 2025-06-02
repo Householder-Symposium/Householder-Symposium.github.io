@@ -1,0 +1,365 @@
+---
+layout: abstract
+absnum: 68
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A low-memory Lanczos method with rational Krylov compression for matrix functions
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Angelo A. Casulli</span>, Igor Simunec
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+A fundamental problem in numerical linear algebra is the approximation of the action of a matrix function \(f(A)\) on a vector \(\boldsymbol b\), where \(A \in \mathbb {C}^{n \times n}\) is a matrix that is typically large and sparse,
+\(\boldsymbol b \in \mathbb {C}^n\) is a vector and \(f\) is a function defined on the spectrum of \(A\). In this work, we focus on the case of a Hermitian matrix \(A\). We recall that when \(A\) is Hermitian, given an eigendecomposition \(A =
+U D U^H\), the matrix function \(f(A)\) is defined as \(f(A) = U f(D) U^H\), where&nbsp;\(f(D)\) is a diagonal matrix obtained by appliying \(f\) to each diagonal entry of \(D\). We refer to [12] for an extensive discussion of matrix functions.
+</p>
+
+<p>
+Popular methods for the approximation of \(f(A) \boldsymbol b\) are polynomial&nbsp;[16, 13, 8, 7, 11] and rational Krylov methods&nbsp;[6, 15, 9, 1, 3]. The former only access \(A\) via matrix-vector products, while the latter require the
+solution of shifted linear systems with \(A\). When the linear systems can be solved eﬀiciently, rational Krylov methods can be more effective than polynomial Krylov methods since they usually require much fewer iterations to converge. However,
+there are several situations in which rational Krylov methods are not applicable, either because the matrix&nbsp;\(A\) is only available implicitly via a function that computes matrix-vector products, or because \(A\) is very large and the solution of
+linear systems is prohibitively expensive.
+</p>
+
+<p>
+When \(A\) is Hermitian, the core component of a polynomial Krylov method is the Lanczos algorithm&nbsp;[14], which constructs an orthonormal basis \(\mathbf {Q}_M = [\boldsymbol q_1 \: \dots \: \boldsymbol q_M]\) of the polynomial
+Krylov subspace \(\mathcal {K}_M(A, \boldsymbol b) = \mathrm {span}\{ \boldsymbol b, A \boldsymbol b, \dots , A^{M-1} \boldsymbol b \}\) by exploiting a short-term recurrence. The product&nbsp;\(f(A) \boldsymbol b\) can then
+be approximated by the Lanczos approximation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                        f M := QM f (TM )e1 ∥b∥2 ,           TM := QH
+                                                                                                                                                    M AQM ,                                                   (1)--><a id="eqn:lancz-approx"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:lancz-approx} \boldsymbol f_M := \mathbf Q_M f(\mathbf T_M) \boldsymbol e_1 {\lVert \boldsymbol b\rVert }_2, \qquad \mathbf T_M := \mathbf Q_M^H A \mathbf Q_M,
+\end{equation}
+
+</p>
+
+<p>
+where \(\boldsymbol e_1\) denotes the first unit vector. The Lanczos algorithm uses a short-term recurrence in the orthogonalization step, so each new basis vector is orthogonalized only against the last two basis vectors, and only three vectors
+need to be kept in memory to compute the basis \(\mathbf Q_M\). Although the basis \(\mathbf Q_M\) and the projected matrix \(\mathbf T_M\) can be computed by using the short-term recurrence that only requires storage of the last three basis
+vectors, forming the approximate solution \(\boldsymbol f_M\) still requires the full basis \(\mathbf Q_M\). When the matrix \(A\) is very large, there may be a limit on the maximum number of basis vectors that can be stored, so with a
+straightforward implementation of the Lanczos method there is a limit on the number of iterations of Lanczos that can be performed and hence on the attainable accuracy. In the literature, several strategies have been proposed to deal with low
+memory issues. See the recent surveys&nbsp;[10, 11] for a comparison of several low-memory methods.
+</p>
+
+<p>
+In this presentation we propose a new low-memory algorithm for the approximation of \(f(A) \boldsymbol b\). Our method combines an outer Lanczos iteration with an inner rational Krylov subspace, which is used to compress the outer Krylov
+basis whenever it reaches a certain size.
+</p>
+
+<p>
+The fundamental insight underlying this method is that, leveraging the results presented in [2], the vector \(\boldsymbol {f}_M\) defined in <span class="textup">(<a href="paper.html#eqn:lancz-approx">1</a>)</span> (for simplicity,
+assuming \({\lVert \boldsymbol {b} \rVert }_2 = 1\)) can be approximated by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                       [                                       ]      [           ] ([ H       ]        [            ]) [          ]
+                                                                                           f (T1 )e1 − U1 f (U1H T1 U1 )U1H e1          U1            U1                    U1              U1H e1
+                                                                            f M ≈ QM                                             + QM              f               TM                                ,
+                                                                                                            0                                 I            I                     I            0
+
+-->
+
+<p>
+
+\begin{equation*}
+\boldsymbol {f}_M \approx \mathbf {Q}_M\begin{bmatrix} f(T_1)\boldsymbol {e}_1 - U_1f(U_1^HT_1U_1)U_1^H\boldsymbol {e}_1 \\ 0 \end {bmatrix} + \mathbf {Q}_M\begin{bmatrix} U_1 \\ &amp; I \end {bmatrix} f\left
+(\begin{bmatrix} U_1^H \\ &amp; I \end {bmatrix}\mathbf {T}_M\begin{bmatrix} U_1 \\ &amp; I \end {bmatrix}\right )\begin{bmatrix} U_1^H \boldsymbol {e}_1 \\ 0 \end {bmatrix},
+\end{equation*}
+
+</p>
+
+<p>
+where \(T_1\) is an \(m \times m\) leading principal submatrix of \(\mathbf {T}_M\), and \(U_1\) is an orthonormal basis of a rational Krylov subspace generated using the small matrix \(T_1\). One can observe that the first summand of this
+expression can be computed after \(m\) steps of the Lanczos algorithm. Moreover, once the first term has been computed, it is no longer necessary to keep all the first \(m\) columns of the matrix \(\mathbf {Q}_M\) in memory, since computing the
+second term only requires the few vectors obtained by multiplying the first \(m\) columns of \(\boldsymbol {Q}_M\) on the right by the matrix \(U_1\). Finally, the second term can be computed by recursively applying the same procedure.
+</p>
+
+<p>
+Similarly to [4], the inner rational Krylov subspace does not involve the matrix \(A\), but only small matrices. This is fundamental, since constructing a basis of the inner subspace does not require the solution of linear systems with \(A\), and hence
+it is cheap compared to the cost of the outer Lanczos iteration. Theoretical results show that the approximate solutions computed by our algorithm coincide with the ones constructed by the outer Krylov subspace method when \(f\) is a rational
+function, and for a general function they differ by a quantity that depends on the best rational approximant of \(f\) with the poles used in the inner rational Krylov subspace.
+</p>
+
+<p>
+If the outer Krylov basis is compressed every \(m\) iterations and the inner rational Krylov subspace has \(k\) poles, our approach requires the storage of approximately \(m + k\) vectors. Additionally, due to the basis compression, our
+approximation involves the computation of matrix functions of size at most \((m+k) \times (m+k)\), so the cost does not grow with the number of iterations. This represents an important advantage with respect to the Lanczos method, since when
+the number of iterations is very large the evaluation of \(f\) on the projected matrix can become quite expensive.
+</p>
+
+<p>
+Numerical experiments show that the proposed algorithm is competitive with other low-memory methods based on polynomial Krylov subspaces.
+</p>
+
+<p>
+The content of this presentation draws on the findings presented in&nbsp;[5].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> L.&nbsp;Aceto, D.&nbsp;Bertaccini, F.&nbsp;Durastante, and P.&nbsp;Novati. Rational Krylov methods for functions of matrices with applications to fractional partial differential equations. <i>J.
+Comput. Phys.</i>, 396:470–482, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Bernhard Beckermann, Alice Cortinovis, Daniel Kressner, and Marcel Schweitzer. Low-rank updates of matrix functions II: rational Krylov methods. <i>SIAM J. Numer. Anal.</i>, 59(3):1325–1347,
+2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Michele Benzi and Igor Simunec. Rational Krylov methods for fractional diffusion problems on graphs. <i>BIT</i>, 62(2):357–385, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Angelo&nbsp;A. Casulli, Daniel Kressner, and Leonardo Robol. Computing functions of symmetric hierarchically semiseparable matrices, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Angelo&nbsp;A. Casulli and Igor Simunec. A low-memory Lanczos method with rational Krylov compression for matrix functions. <i>arXiv preprint arXiv:2403.04390</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Vladimir Druskin and Leonid Knizhnerman. Extended Krylov subspaces: approximation of the matrix square root and related functions. <i>SIAM J. Matrix Anal. Appl.</i>, 19(3):755–771, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Andreas Frommer, Stefan Güttel, and Marcel Schweitzer. Eﬀicient and stable Arnoldi restarts for matrix functions based on quadrature. <i>SIAM J. Matrix Anal. Appl.</i>, 35(2):661–683, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Andreas Frommer and Valeria Simoncini. Matrix functions. In <i>Model Order Reduction: Theory, Research Aspects and Applications</i>, volume&nbsp;13 of <i>Math. Ind.</i>, pages 275–303.
+Springer, Berlin, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Stefan Güttel. Rational Krylov approximation of matrix functions: numerical methods and optimal pole selection. <i>GAMM-Mitt.</i>, 36(1):8–31, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Stefan Güttel, Daniel Kressner, and Kathryn Lund. Limited-memory polynomial methods for large-scale matrix functions. <i>GAMM-Mitt.</i>, 43(3):e202000019, 19, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Stefan Güttel and Marcel Schweitzer. A comparison of limited-memory Krylov methods for Stieltjes functions of Hermitian matrices. <i>SIAM J. Matrix Anal. Appl.</i>, 42(1):83–107, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Nicholas&nbsp;J. Higham. <i>Functions of Matrices: Theory and Computation</i>. Society for Industrial and Applied Mathematics (SIAM), Philadelphia, PA, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Marlis Hochbruck and Christian Lubich. On Krylov subspace approximations to the matrix exponential operator. <i>SIAM J. Numer. Anal.</i>, 34(5):1911–1925, 1997.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Cornelius Lanczos. An iteration method for the solution of the eigenvalue problem of linear differential and integral operators. <i>J. Research Nat. Bur. Standards</i>, 45:255–282, 1950.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> I.&nbsp;Moret and P.&nbsp;Novati. RD-rational approximations of the matrix exponential. <i>BIT</i>, 44(3):595–615, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> Y.&nbsp;Saad. Analysis of some Krylov subspace approximations to the matrix exponential operator. <i>SIAM J. Numer. Anal.</i>, 29(1):209–228, 1992.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,402 @@
+---
+layout: abstract
+absnum: 147
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Quantum Krylov Methods for Eigenvalue Calculations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Roel Van Beeumen</span>, Daan Camps, Katherine Klymko, Yizhi Shen, Niel Van Buggenhout
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the problem of computing a few of the smallest eigenvalues of the Hermitian eigenvalue problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                           Hx = λx,                                                                                    (1)--><a id="eq:hep"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+H x = \lambda x, \label {eq:hep}
+\end{equation}
+
+</p>
+
+<p>
+where \(H\) is a Hermitian matrix of exponential dimension \(N = 2^n\). This problem is of critical importance in fields such as condensed matter physics, quantum chemistry, and materials science, where solving such eigenvalue problems yields
+ground and excited state energies of quantum many-body Hamiltonians.
+</p>
+
+<p>
+Classical numerical methods based on Krylov subspaces rank among the most successful techniques in numerical linear algebra. In this talk, we introduce various <em>quantum Krylov methods</em> for solving the Hermitian eigenvalue problem <span
+class="textup">(<a href="paper.html#eq:hep">1</a>)</span>. These quantum subspace techniques present promising tools within the growing field of hybrid quantum-classical algorithms. Hybrid strategies deploy a quantum computer for the
+tasks where it excels, for example evolving a wavefunction with unitary operators, while offloading other parts of the computation to a classical computer. The hybrid quantum-classical paradigm allows to bridge the gap between the current noisy
+intermediate-scale quantum (NISQ) devices with all their limitations and the era of large-scale fault-tolerant quantum computers. We focus on quantum eigenvalue algorithms that are particularly well-suited for near-term applications on NISQ
+hardware.
+</p>
+
+<p>
+The first and oldest class of hybrid quantum-classical methods for solving <span class="textup">(<a href="paper.html#eq:hep">1</a>)</span> are <em>variational quantum algorithms</em> [1]. In these algorithms, we employ a parameterized
+<em>ansatz</em> eigenvector \(x(\theta )\) and optimize the Rayleigh quotient
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                 R(H, x(θ)) = x(θ)∗ Hx(θ),                                                                                                           (2)
+
+-->
+
+<p>
+
+\begin{equation}
+R(H,x(\theta )) = x(\theta )^* H x(\theta ),
+\end{equation}
+
+</p>
+
+<p>
+which can be measured on a quantum computer as the expectation value of the observable corresponding to \(H\) when the system is in state \(x(\theta )\). A classical optimizer iteratively updates the parameters \(\theta \) based on the
+expectation values measured on the quantum computer. However, variational quantum algorithms face challenges, notably the phenomenon of barren plateaus, where the gradient of the optimization landscape vanishes exponentially, making it
+diﬀicult for classical optimizers to converge [7].
+</p>
+
+<p>
+Recently, <em>quantum subspace methods</em> have emerged as a robust alternative class of hybrid eigenvalue algorithms [2, 3, 5]. These methods operate within subspaces, rather than iteratively optimizing a single vector, and often achieve faster
+convergence than variational quantum algorithms. We focus on quantum Krylov subspaces constructed via real-time evolution
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                        v0 → e−iHt v0 ,                                                                                                              (3)
+
+-->
+
+<p>
+
+\begin{equation}
+v_0 \to e^{-iHt} v_0,
+\end{equation}
+
+</p>
+
+<p>
+a unitary operation native to quantum hardware and well-suited for NISQ implementations, via, for example, Trotterization using Lie product formulas [4]. The corresponding Krylov subspace is constructed as follows
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                    [                                     ]
+                                                                                                       Km (U, v0 ) = v0 , U v0 , U 2 v0 , . . . , U m−1 v0 ,                                                       (4)--><a id="eq:krylov"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\mathcal {K}_m(U,v_0) = \left [ v_0, U v_0, U^2 v_0, \ldots , U^{m-1} v_0 \right ], \label {eq:krylov}
+\end{equation}
+
+</p>
+
+<p>
+where \(U^k = e^{-iHk\Delta {t}}\) is the unitary obtained from evolving \(H\) over time \(t = k\Delta {t}\).
+</p>
+
+<p>
+Unlike classical Krylov subspace methods, we do not construct the subspace explicitly on the quantum computer. Instead, we obtain the projected eigenvalue problem through quantum measurements and solve this small projected problem classically.
+To compute the matrix elements of the projected Hamiltonian \(\hat {H}\), we start by preparing the initial quantum state \(v_0\) and evolving it over time \(k\Delta {t}\), resulting in \(v_k = e^{-iHk\Delta {t}} v_0\). We then measure the
+matrix elements
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                                        Ĥj,k = vj∗ Hvk .                                                                                                            (5)
+
+-->
+
+<p>
+
+\begin{equation}
+\hat {H}_{j,k} = v_j^* H v_k.
+\end{equation}
+
+</p>
+
+<p>
+Because orthogonalizing vectors on a quantum computer is challenging and definitely impossible in the NISQ era, quantum subspace methods utilize non-orthogonal bases. Consequently, we also need to measure the inner products
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                                                                                                                         Ŝj,k = vj∗ vk ,                                                                                                            (6)
+
+-->
+
+<p>
+
+\begin{equation}
+\hat {S}_{j,k} = v_j^* v_k,
+\end{equation}
+
+</p>
+
+<p>
+leading to the projected <em>generalized</em> eigenvalue problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+
+                                                                                                                          Ĥx = λŜx.                                                                                  (7)--><a id="eq:gep"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\hat {H} x = \lambda \hat {S} x. \label {eq:gep}
+\end{equation}
+
+</p>
+
+<p>
+However, solving for the Ritz values of this generalized eigenvalue problem <span class="textup">(<a href="paper.html#eq:gep">7</a>)</span> is often challenging due to the ill-conditioning of the problem. To address this issue, we present a
+dynamic mode decomposition approach, a method designed to circumvent this ill-conditioning and capable of robustly obtaining eigenvalue estimations from noise quantum observables [5]. In this talk, we present a numerical linear algebra perspective
+on quantum subspace algorithms, discuss strategies to avoid ill-conditioned eigenvalue problems, and provide both theoretical and numerical evidence of convergence. Additionally, we introduce strategies to enhance robustness, particularly in noisy
+quantum environments.
+</p>
+
+<p>
+A third class of hybrid quantum-classical eigenvalue methods leverages rational functions, which offer rapid convergence in scientific computing but remain underexplored in quantum algorithms. We present eﬀicient implementations of rational
+transformations on quantum hardware [6]. By using integral representations of the resolvent, we can eﬀiciently perform quantum rational transformations through Hamiltonian simulations and the linear-combination-of-unitaries (LCU) method. We
+introduce two complementary LCU-based strategies—discrete-time and continuous-time—offering flexible approaches for quantum rational transformations. We also illustrate these novel methods through numerical simulations on spin systems,
+achieving precise calculations of low-lying eigenvalues.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;Cerezo, A.&nbsp;Arrasmith, R.&nbsp;Babbush, S.C. Benjamin, S.&nbsp;Endo, K.&nbsp;Fujii, J.R. McClean, et&nbsp;al., <i>Variational quantum algorithms</i>, <a
+href="https://doi.org/10.1038/s42254-021-00348-9" target="_blank" >Nature Reviews Physics, 3 (2021), pp.&nbsp;625–644</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> E.N. Epperly, L.&nbsp;Lin, and Y.&nbsp;Nakatsukasa, <i>A theory of quantum subspace diagonalization</i>, <a href="https://doi.org/10.1137/21M145954X" target="_blank" >SIAM Journal
+on Matrix Analysis and Applications, 43 (2022), pp.&nbsp;1263–1290</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> W.&nbsp;Kirby, M.&nbsp;Motta, and A.&nbsp;Mezzacapo, <i>Exact and eﬀicient Lanczos method on a quantum computer</i>, <a href="https://doi.org/10.22331/q-2023-05-23-1018"
+target="_blank" >Quantum, 7 (2023), p.&nbsp;1018</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> K.&nbsp;Klymko, C.&nbsp;Mejuto-Zaera, S.J. Cotton, F.&nbsp;Wudarski, M.&nbsp;Urbanek, D.&nbsp;Hait, M.&nbsp;Head-Gordon, et&nbsp;al., <i>Real-time evolution for ultracompact
+Hamiltonian eigenstates on quantum hardware</i>, <a href="https://doi.org/10.1103/PRXQuantum.3.020323" target="_blank" >PRX Quantum, 3 (2022), p.&nbsp;20323</a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y.&nbsp;Shen, D.&nbsp;Camps, A.&nbsp;Szasz, S.&nbsp;Darbha, K.&nbsp;Klymko, D.B. Williams-Young, N.M. Tubman, and R.&nbsp;Van Beeumen, <i>Estimating eigenenergies from quantum
+dynamics: A unified noise-resilient measurement-driven approach</i>, 2023, <a href="https://doi.org/10.48550/arXiv.2306.01858" target="_blank" ><kbd>arXiv.2306.01858</kbd></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Y.&nbsp;Shen, N.&nbsp;Van&nbsp;Buggenhout, D.&nbsp;Camps, K.&nbsp;Klymko, and R.&nbsp;Van Beeumen, <i>Quantum rational transformation using linear combinations of Hamiltonian
+simulations</i>, 2024, <a href="https://doi.org/10.48550/arXiv.2408.07742" target="_blank" ><kbd>arXiv.2408.07742</kbd></a>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> S.&nbsp;Wang, E.&nbsp;Fontana, M.&nbsp;Cerezo, K.&nbsp;Sharma, A.&nbsp;Sone, L.&nbsp;Cincio, and P.J. Coles, <i>Noise-induced barren plateaus in variational quantum algorithms</i>, <a
+href="https://doi.org/10.1038/s41467-021-27045-6" target="_blank" >Nature Communications, 12 (2021), p.&nbsp;6961</a>.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

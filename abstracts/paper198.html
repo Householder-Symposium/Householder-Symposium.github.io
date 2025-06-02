@@ -1,0 +1,514 @@
+---
+layout: abstract
+absnum: 198
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand \R {\ensuremath {\mathbb {R}}}\)
+
+\(\newcommand {\Rn }{\ensuremath {\R ^{n}}}\)
+
+\(\newcommand {\Rnn }{\ensuremath {\R ^{n\times n}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Learning Globally Stable Dynamics — a Matrix-theoretic Perspective
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Peter Benner</span>, Pawan K. Goyal, Siddarth Mamidisetti, Igor Pontes Duff, Süleyman Yildiz
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+<!--
+...... section Motivation ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Motivation</h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+The identification of dynamical systems from data has been considered for several decades, basically ever since <em>Cybernetics</em> emerged as a discipline from the wider research area of systems theory [Wiener (1948)]. In systems and control
+theory, system identification is an important and widely used technique in computer-aided control system design, available in any relevant software package, see, e.g., [Ljung (1999), Sima and Benner (2007), Benner et&nbsp;al. (2010)]. Nevertheless,
+most available identification tools are for linear systems, and do not necessarily consider constraints like <em>stability</em> or other physical properties. On the other hand, due to the advance of machine and deep learning methods, learning
+dynamical systems from data, in particular nonlinear systems, has recently become a field of renewed and massively growing interest. This is due, on the one hand, to the vast availability of measurement data in areas like the Earth system (weather
+and climate), biology, sociology, traﬀic etc., where traditionally no first principle mathematical models are available, but models are needed for prediction, while, on the other hand, the massive advancement in computational power nowadays allows to
+study large data sets using methods from artificial intelligence.
+</p>
+
+<p>
+Nevertheless, the trajectories of time-dependent problems are often constrained by underlying physical principles that are usually not respected by classical black-box methods in machine and deep learning. Thus, physics-informed and
+physics-enhanced or ”scientific” machine learning have emerged as new subdisciplines in the computational sciences and engineering and applied mathematics. Here, we will study in particular the stability of learned dynamical systems. In other
+words, we answer the question how to <em>guarantee</em> that the learned model of a dynamical system has desired stability properties, where we assume that some prior knowledge about the expected stability class is available. We show that
+stability constraints can be hard-coded into the learning model to guarantee, e.g., (asymptotic/Lyapunov/exponential) stability of linear systems, global asymptotic stability of nonlinear systems, and global stability of Hamiltonian systems. The used
+ideas stem from partially simple and obvious results in the theory of matrices and tensors. We will show that explicit parameterizations of the learned operators (matrices and tensors) defining the dynamical systems lead to constrained least-squares
+problems that can be solved using optimization routines that are now widely available in all software stacks for machine learning.
+</p>
+
+<p>
+Exemplarily, we will demonstrate this approach for linear, uncontrolled, systems. In the talk, we will focus on the more challenging problems for nonlinear systems.
+</p>
+<!--
+...... section Learning Stable Linear Systems ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">2&#x2003;</span>Learning Stable Linear Systems</h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+Consider uncontrolled linear systems of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                ẋ(t) = Ax(t),    x(0) = x0 ,                                                                              (1)--><a id="eq:lin"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:lin} \dot {x}(t) = A x(t), \qquad x(0)=x_0,
+\end{equation}
+
+</p>
+
+<p>
+where \(A\in \Rnn \), \(x(t) \in \Rn \) is the state of the system at time \(t\geq 0\), \(\dot {x}\) denotes the derivative of \(x\) with respect to time, and \(x_0\in \Rn \) is the initial value.
+</p>
+
+<p>
+If time-series data for x(t) and \(\dot {x}(t)\) are available, i.e., we have measured or computed vectors
+</p>
+
+<p>
+\[ x_0=x(0), \quad x_1=x(t_1),\quad \ldots , \quad x_{\ell }=x(t_{\ell }) \]
+</p>
+
+<p>
+and
+</p>
+
+<p>
+\[ x&apos;_0=\dot {x}(0), \quad x&apos;_1=\dot {x}(t_1), \quad \ldots , \quad x&apos;_{\ell }=\dot {x}(t_{\ell }) \]
+</p>
+
+<p>
+at a sequence of time points \(t_0=0 &lt; t_1 &lt; t_2 &lt; \ldots &lt; t_{\ell }\), then a very simple way to infer the matrix \(A\) from the available data is to set up a linear least-squares problem using the data matrices
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<p>
+
+\begin{eqnarray*}
+X &amp;=&amp; \left [ x_0, \ldots , x_{\ell }\right ] \in \R ^{n\times \ell +1},\\ X&apos; &amp;=&amp; \left [ x&apos;_0, \ldots , x&apos;_{\ell }\right ]\in \R ^{n\times \ell +1}.
+\end{eqnarray*}
+
+</p>
+
+<p>
+For <span class="textup">(<a href="paper.html#eq:lin">1</a>)</span>, a possible formulation of an <em>operator inference problem (OpInf)</em> is then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                             A∗ := arg minA ∥X ′ − AX∥2F + R(A)                                                                       (2)--><a id="eq:lls-lin"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:lls-lin} A_\ast := {\arg \min }_{A}\| X&apos; - A X \|^2_F + \mathcal {R}(A)
+\end{equation}
+
+</p>
+
+<p>
+with a potential regularization term \(\mathcal {R}(A)\), e.g., for classical Tikhonov regularization (aka “ridge regression” in the machine learning community) \(\mathcal {R}(A)=\beta \| A \|^2_F\), where \(\beta &gt;0\) would be a
+regularization parameter. Here, one might also use a sparsity-promoting norm, e.g., \(\mathcal {R}(A)=\beta \| A \|_q\), \(q=0,1\). Note that for \(\beta = 0\), or in general, \(\mathcal {R}(A) \equiv 0\), <span class="textup">(<a
+href="paper.html#eq:lin">1</a>)</span> represents a standard linear least-squares problem, as the Frobenius norm turns into the standard Euclidian vector norm once \(X&apos; - A X\) is vectorized. From this, it is also obvious that this
+becomes a classical overdetermined system once \(\ell \ge n\). Then minimization problem <span class="textup">(<a href="paper.html#eq:lin">1</a>)</span> can be solved using classical solution methods for linear least-squares problems
+like pivoted QR factorization or singular value decomposition (SVD).
+</p>
+
+<p>
+The OpInf framework described so far has seen numerous applications and extensions in recent years. One of its major drawbacks still is that the inferred models can not be guaranteed to be stable (regarding local or global, asymptotic or Lyapunov
+stability) even if it is known that the data-generating model has a certain stability property. Some stability promoting weak enforcement strategies have been suggested, see, e.g., [Kaptanoglu et&nbsp;al. (2021)], but so far no certified stable models
+could be produced using the OpInf problem <span class="textup">(<a href="paper.html#eq:lls-lin">2</a>)</span>. Our goal is to introduce a parametrization of stability directly in the least-squares problem and in this way to obtain
+guaranteed stable models, following [Goyal et&nbsp;al. (2023b)]. Note that a very similar idea is also used in model reduction methods for port-Hamiltonian systems [Schwerdtner and Voigt (2023)].
+</p>
+
+<p>
+The inference of asymptotically stable linear models with guarantee is based on the following somewhat surprising result, that was stated in [Gillis and Sharma (2017)], whereby related partial results can also be found in earlier literature. First, note
+that asymptotic stability of linear systems of the form <span class="textup">(<a href="paper.html#eq:lin">1</a>)</span> is fully characterized by the spectrum of \(A\), \(\Lambda (A)\), and in particular by the property that \(\Lambda (A)
+\subset \mathbb {C}^{-}\), i.e., that the spectrum of \(A\) is fully contained in the open left half of the complex plane. The proof of the theorem is entirely based on this characterization.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-7"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2.1</span></span><span class="amsthmnoteplain"> ([Gillis and Sharma (2017)])</span>. </span> <a id="thm:linstab"></a> A
+matrix \(A\in \Rnn \) is asymptotically stable (Hurwitz, Lyapunov stable) if and only if it can be represented as
+</p>
+
+<p>
+\[A = (J - R)Q,\]
+</p>
+
+<p>
+where \(J=-J^T\) and \(R=R^T\), \(Q=Q^T\) are both positive definite.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Now, it is straightforward to replace the linear least-squares problem <span class="textup">(<a href="paper.html#eq:lls-lin">2</a>)</span> by the following inference problem:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                       (J∗ , R∗ , Q∗ ) := arg min J=−J T ∥X ′ − (J − R)QX∥2F + R(J, Q, R).                                                              (3)--><a id="eq:lls-lin-stable"></a><!--
+                                                                                                 R=RT ≻0
+                                                                                                 Q=QT ≻0
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:lls-lin-stable} (J_\ast ,R_\ast ,Q_\ast ) := {\arg \min }_{{J=-J^T \atop R = R^T\succ 0} \atop Q = Q^T \succ 0}\| X&apos; - (J-R)Q X \|^2_F + \mathcal {R}(J,Q,R).
+\end{equation}
+
+</p>
+
+<p>
+Unfortunately, this problem is relatively hard to solve due to the positive definiteness constraints. Therefore, in [Goyal et&nbsp;al. (2023b)], we suggest to use the following parametrization:
+</p>
+
+<p>
+\[ J = S - S^T, \quad R = L^T L, \quad Q = K^T K, \]
+</p>
+
+<p>
+where \(S\in \Rnn \) is a general square matrix and \(L,K\in \Rnn \) are upper-triangular matrices (or Cholesky factors). Then the OpInf problem for linear systems becomes
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                                    (                                             )
+                                                            (S∗ , L∗ , K∗ )   :=   arg min L,K upper ∥X ′ − (S − S T − LT L)K T KX∥2F + R(L, K, S) .--><a id="eq:lls-lin-stable2"></a><!--                                                        (4)
+                                                                                          triangular
+
+
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+(S_\ast ,L_\ast ,K_\ast ) &amp;:=&amp; {\arg \min }_{L,K~\texttt {upper}\atop \text {triangular}} \bigg ( \| X&apos; - (S-S^T - L^T L)K^T K X \|^2_F + \mathcal {R}(L,K,S) \bigg ). \label {eq:lls-lin-stable2}
+\end{eqnarray}
+
+</p>
+
+<p>
+If this problem can be solved, the obtained matrix
+</p>
+
+<p>
+\[ A_\ast = \left ( S_\ast - S_\ast ^T - L_\ast ^T L_\ast \right ) K_\ast ^T K_\ast \]
+</p>
+
+<p>
+is guaranteed to be asymptotically stable due to Theorem&nbsp;<a href="paper.html#thm:linstab">2.1</a> and solves <span class="textup">(<a href="paper.html#eq:lls-lin">2</a>)</span> under the asymptotic stability constraint. The
+price paid for inferring a model with stability certificate is that even for a zero regularizer, the inference problem <span class="textup">(<a href="paper.html#eq:lls-lin-stable2">4</a>)</span> is nonlinear in the entries of \(L,K\).
+Fortunately, with the advance of machine learning methods, such problems can be solved using (stochastic) gradient descent methods implemented in tools like PyTorch.<sup>1</sup>
+</p>
+
+<p>
+In our talk, we will describe how this result and the related stability-guaranteed OpInf problem can be extended to controlled systems \(\dot {x}=Ax+Bu\), where \(u\) is a control input [Pontes Duff et&nbsp;al. (2024)] and to parameter dependent
+systems, where \(A=A(\mu )\) depends on a parameter vector \(\mu \in \R ^q\).
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-8"></a>
+<p>
+<sup>1</sup>&nbsp;<a href="https://pytorch.org/" target="_blank" >https://pytorch.org/</a>
+</p>
+
+
+</div>
+<!--
+...... section Outlook: Nonlinear Systems ......
+-->
+<h4 id="autosec-9"><span class="sectionnumber">3&#x2003;</span>Outlook: Nonlinear Systems</h4>
+<a id="paper-autopage-9"></a>
+
+
+<p>
+While for linear systems, local and global stability as well as asymptotic, Lyapunov, and exponential stability concepts are equivalent, these have to be distinguished for nonlinear systems. Obviously, using the parametrization of \(A\) from <span
+class="textup">(<a href="paper.html#eq:lls-lin-stable2">4</a>)</span> to an operator inference problem for a nonlinear system with linear part \(Ax(t)\), the inferred system will be locally Lyapunov stable with Lyapunov function
+</p>
+
+<p>
+\[V(x) := \frac 12 x^T Q x.\]
+</p>
+
+<p>
+In [Goyal et&nbsp;al. (2023a)], we additionally study the identification of globally Lyapunov stable quadratic systems as well as systems with bounded domain of attraction. This is again based on explicit parameterizations of matrices and tensors.
+These results will be presented in the talk as well as ideas on how to guarantee global stability of Hamiltonian systems, where we employ techniques from deep learning and elementary properties of symplectic matrices [Goyal et&nbsp;al. (2023c)].
+The theoretical findings will be illustrated by several numerical examples.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[Benner et&nbsp;al. (2010)]&#x2003;</span> Benner, P., Kressner, D., Sima, V., and Varga, A. (2010). Die SLICOT-Toolboxen für MATLAB. <em>at-Automatisierungstechnik</em>, 58(1), 15–25.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Gillis and Sharma (2017)]&#x2003;</span> Gillis, N. and Sharma, P. (2017). On computing the distance to stability for matrices using linear dissipative Hamiltonian systems. <em>Automatica</em>, 85, 113–121.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Goyal et&nbsp;al. (2023a)]&#x2003;</span> Goyal, P., Pontes Duff, I., and Benner, P. (2023a). Guaranteed stable quadratic models and their applications in SINDy and operator inference. e-print arXiv:2308.13819.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Goyal et&nbsp;al. (2023b)]&#x2003;</span> Goyal, P., Pontes Duff, I., and Benner, P. (2023b). Stability-guaranteed learning of linear models. e-print arXiv:2301.10060.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Goyal et&nbsp;al. (2023c)]&#x2003;</span> Goyal, P., Benner, P., and Yıldız, S. (2023c). Deep learning for structure-preserving universal stable Koopman-inspired embeddings for nonlinear canonical Hamiltonian
+dynamics. e-print arXiv:2308.13835.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Kaptanoglu et&nbsp;al. (2021)]&#x2003;</span> Kaptanoglu, A., Callaham, J., Aravkin, A., Hansen, C., and Brunton, S. (2021). Promoting global stability in data-driven models of quadratic nonlinear dynamics.
+<em>Physical Review Fluids</em>, 6(9), 094401.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Ljung (1999)]&#x2003;</span> Ljung, L. (1999). <em>System Identification – Theory for the User</em>. Prentice-Hall, Upper Saddle River, NJ, 2nd edition.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Peherstorfer and Willcox (2016)]&#x2003;</span> Peherstorfer, B. and Willcox, K. (2016). Data-driven operator inference for nonintrusive projection-based model reduction. <em>Computer Methods in Applied Mechanics
+and Engineering</em>, 306, 196–215.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Pontes Duff et&nbsp;al. (2024)]&#x2003;</span> Pontes Duff, I., Goyal, P., and Benner, P. (2024). Stability-certified learning of control systems with quadratic nonlinearities. <em>IFAC-PapersOnLine</em>, 58(17),
+151–156..
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Schwerdtner and Voigt (2023)]&#x2003;</span> Schwerdtner, P. and Voigt, M. (2023). SOBMOR: Structured optimization-based model order reduction <em>SIAM Journal on Scientific Computing</em> 45(2),
+A502–A529.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Sima and Benner (2007)]&#x2003;</span> Sima, V. and Benner, P. (2007). Fast system identification and model reduction solvers. In B.R. Andrievsky and A.L. Fradkov (eds.), <em>Preprints 9th IFAC Workshop
+“Adaptation and Learning in Control and Signal Processing” (ALCOSP 2007), August, 29-31, 2007, Saint Petersburg, Russia</em>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Wiener (1948)]&#x2003;</span> Wiener, N. (1948). <em>Cybernetics: Or Control and Communication in the Animal and the Machine</em>. MIT Press, Cambridge, Massachusetts.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

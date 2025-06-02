@@ -1,0 +1,283 @@
+---
+layout: abstract
+absnum: 202
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Filtration of Lanczos vectors in hybrid CG Tikhonov iteration
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Kirk M. Soodhalter</span>, Daniel Gerth
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider iterative methods for solving a linear ill-posed problem of the form
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                     Ax ≈ y = y δ − δ · n
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+Ax\approx y = y^\delta - \delta \cdot n
+\end{align*}
+wherein \(A:\mathcal {X}\rightarrow \mathcal {Y}\) is a compact linear operator, and \(y^\delta \) is a version of the right-hand side obtained by noisy measurements, with \(\left \|n\right \| =1\) and \(0 &lt; \delta \ll 1\). We
+assume that we only have access to \(y^\delta \). It is well known that naïve solution using the pseudoinverse operator \(A^\dagger y^\delta \) may lead to amplification of the measurement noise, unbounded in the infinite-dimensional case and
+bounded but large in the finite-dimensional case.
+</p>
+
+<p>
+Conjugate gradients applied to the normal equations (CG) \(A^\ast A x^\delta = A^\ast y^\delta \) with an appropriate stopping rule and CG applied to the system solving for a Tikhonov-regularized solution (CGT) \((A^\ast A + c
+I_{\mathcal {X}}) x^{(\delta ,c)} = A^\ast y^\delta \) (\(c&gt;0\) is the Tikhonov parameter) are closely related methods. It has been long observed that they build iterates from the same family of Krylov subspaces, due to the scalar shift
+invariance property of Krylov subspaces [4]; i.e., \(\mathcal {K}_m(A^\ast A, A^\ast y^\delta ) = \mathcal {K}_m(A^\ast A + c I_{\mathcal {X}}, A^\ast y^\delta )\). With this in mind, one can express both CG-based iterates with
+respect to the same Lanczos basis. In particular, one can use this to understand how the representation of the CGT iterates change as a function of \(c\) with \(c\rightarrow 0\) yielding a CG iterate. Let \(x^\delta _m = \sum
+_{i=1}^{m}z_i^{(m)}v_i\) be the CG iterate where \(\left \lbrace v_i\right \rbrace _{i=1}^m\) is the Lanczos basis for \(\mathcal {K}_m(A^\ast A, A^\ast y^\delta )\). Via linear algebraic manipulations, one can show that the CGT
+iterate can be expressed as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                            ∑
+                                                                                                                            m
+                                                                                                                                   (m)       (m)
+                                                                                                                 x(δ,c)
+                                                                                                                  m     =         γi     (c)zi     vi ,
+                                                                                                                            i=1
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+x^{(\delta ,c)}_m = \sum _{i=1}^{m} \gamma ^{(m)}_i(c) z_i^{(m)}v_i,
+\end{align*}
+where \(\left \lbrace \gamma _i^{(m)}(c)\right \rbrace _{i=1}^m\) are functions of the Tikhonov parameter. These coeﬀicient multiplier functions can be shown to have decay properties as \(c\rightarrow \infty \) with the speed of decay
+increasing with \(i\), asymptotically. This has the effect of filtering out the contribution of the later terms of the CG iterate. Thus, we call these functions <em>Lanczos filters</em>, as they express the effect of CGT regularization in terms of the CG
+expressed in the Lanczos basis rather than in terms of the singular vector basis, as is the case of classical definition of filter function in regularization theory [3].
+</p>
+
+<p>
+Much of this work is explored in the context of infinite dimensional ill-posed problems to present the analysis as generally as possible. For this, we build upon the work in [1] (which works with the equivalent Golub-Kahan/LSQR formulation of these
+methods) to prove some additional convergence results, to help us understand the beahvior of the CG and CGT iterates.
+</p>
+
+<p>
+If we restrict our focus on the behavior of these methods when applied to finite-dimensional discrete ill-posed problems, we can understand these filters as dampening the influence of Lanczos vectors that are more highly polluted with noise. The
+mechanics by which noise comes to pollute the Lanczos vectors has been illuminated by means of Gauss-Radau quadrature in [5, 6], and the review [2] and references therein discuss how this has been previously used for Tikhonov parameter selection.
+</p>
+
+<p>
+We demonstrate with numerical experiments that good parameter choices correspond to appropriate damping of the Lanczos vectors corresponding to larger amplifications of the measurement noise. Building on this idea, one can consider approaches
+other than Tikhonov for damping amplified noise. We conclude by noting that analysis of other hybrid regularization schemes via damping of (Krylov) subspace basis vectors from the iteration itself may be a useful avenue for understanding the
+behavior of these methods for different choice of parameter, etc.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Alqahtani, R.&nbsp;Ramlau, and L.&nbsp;Reichel, <i>Error estimates for Golub–Kahan bidiagonalization with tikhonov regularization for ill–posed operator equations</i>, 39,
+p.&nbsp;025002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;Chung and S.&nbsp;Gazzola, <i>Computational methods for large-scale inverse problems: A survey on hybrid projection methods</i>, 66, pp.&nbsp;205–284.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> H.&nbsp;W. Engl, M.&nbsp;Hanke, and A.&nbsp;Neubauer, <i>Regularization of inverse problems</i>, vol.&nbsp;375 of Mathematics and its Applications, Kluwer Academic Publishers Group,
+Dordrecht, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A.&nbsp;Frommer and P.&nbsp;Maass, <i>Fast CG-based methods for Tikhonov–Phillips regularization</i>, 20, pp.&nbsp;1831–1850.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> I.&nbsp;Hnětynková, M.&nbsp;Kubínová, and M.&nbsp;Plešinger, <i>Noise representation in residuals of LSQR, LSMR, and CRAIG regularization</i>, 533, pp.&nbsp;357–379.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> I.&nbsp;Hnětynková, M.&nbsp;Plešinger, and Z.&nbsp;Strakoš, <i>The regularizing effect of the Golub-Kahan iterative bidiagonalization and revealing the noise level in the data</i>, 49,
+pp.&nbsp;669–696.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

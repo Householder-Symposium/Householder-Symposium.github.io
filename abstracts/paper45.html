@@ -1,0 +1,365 @@
+---
+layout: abstract
+absnum: 45
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\T }{\mathsf {T}}\)
+
+\(\newcommand {\bcg }{\vec {x}^{\textup {b-CG}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Preconditioning without a preconditioner: faster ridge-regression and Gaussian sampling with randomized block Krylov methods
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Tyler Chen</span>, Caroline Huber, Ethan Lin, Hajar Zaid
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+One of the most important tasks in numerical linear algebra is solving the linear system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                      Ax = b,                                                                        (1)--><a id="eqn:regularized_ls"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:regularized_ls} \vec {A} \vec {x} = \vec {b},
+\end{equation}
+
+</p>
+
+<p>
+where \(\vec {A}\in \mathbb {R}^{d\times d}\) is symmetric positive definite with eigenvalues \(\lambda _1\geq \lambda _2 \geq \cdots \geq \lambda _d &gt; 0\). Krylov subspace methods (KSMs) such as the conjugate gradient method
+are among the most powerful methods for this problem and are guaranteed to converge extremely rapidly if the system is well-conditioned; i.e. if \(\lambda _1\approx \lambda _d\). For ill-conditioned systems, <em>preconditioning</em> can greatly
+accelerate the convergence of KSMs. When \(\vec {A}\) has a rapidly decaying spectrum, a technique called Nyström preconditioning has proven effective [1].
+</p>
+
+<p>
+Consider the Nyström approximation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                        A⟨Ks ⟩ := (AKs )(KTs AKs )† (KTs A),                                                         (2)--><a id="eqn:nystromBKI_def"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:nystromBKI_def} \vec {A}\langle \vec {K}_s \rangle := (\vec {A}\vec {K}_s)(\vec {K}_s^\T \vec {A}\vec {K}_s)^\dagger (\vec {K}_s^\T \vec {A}),
+\end{equation}
+
+</p>
+
+<p>
+where \(\vec {\Omega }\in \mathbb {R}^{d\times (r+2)}\) is a matrix of independent standard normal random variables and \(\vec {K}_s := [\vec {\Omega }~\vec {A}\vec {\Omega }~\cdots ~\vec {A}^{s-1}\vec {\Omega }] \in
+\mathbb {R}^{d\times s(r+2)}\). It can be guaranteed that if \(s=O(\log (d))\), then with high probability, \(\vec {A}\langle \vec {K}_s\rangle \) approximates \(\vec {A}\) with spectral-norm error comparable to the best-possible
+rank-\(r\) approximation to \(\vec {A}\); i.e. \(\|\vec {A} - \vec {A}\langle \vec {K}_s\rangle \| = O(\lambda _{r+1})\) [3]. Define a preconditioner
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                  1
+                                                                                                          P :=        UDUT + (I − UUT ),                                                                 (3)--><a id="eqn:precond_def"></a><!--
+                                                                                                                 λr+1
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:precond_def} \vec {P} := \frac {1}{\lambda _{r+1}} \vec {U}\vec {D}\vec {U}^\T + (\vec {I} - \vec {U}\vec {U}^\T ),
+\end{equation}
+
+</p>
+
+<p>
+where \(\vec {U}\vec {D}\vec {U}^\T \) is the eigendecomposition of \(\vec {A}\langle \vec {K}_s\rangle \). Following the approach of [1], we show that if \(\theta \in [\lambda _d,\lambda _{r+1}]\) and \(s = O(\log (d))\), then
+with high probability, then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                                          κ(P−1/2 AP−1/2 ) = O(λr+1 /λd ).                                                                                                       (4)
+
+-->
+
+<p>
+
+\begin{equation}
+\kappa (\vec {P}^{-1/2}\vec {A}\vec {P}^{-1/2}) = O(\lambda _{r+1} / \lambda _d).
+\end{equation}
+
+</p>
+
+<p>
+As a result, preconditioned-CG with the preconditioner (<a href="paper.html#eqn:precond_def">3</a>) converges at a rate depending on \(\sqrt {\lambda _{r+1}/\lambda _d}\) [2]. If \(\vec {A}\) has just \(r\) large eigenvalues, the
+convergence of preconditioned-CG will be extremely rapid.
+</p>
+
+<p>
+One downside to Nyström preconditioning is the need to choose hyperparameters such as \(\theta \) and \(s\). Our observation is that, after \(t\) iterations, block-CG with a starting block \([\vec {b}~\vec {\Omega }]\) has error at most that
+of Nyström preconditioned CG after \(t-s-1\) iterations. Thus, <em>block-CG enjoys the effects of (Nyström) preconditioning, without the need for constructing a preconditioner or choose parameters</em>.<sup>1</sup><a
+id="paper-autopage-4"></a> This allows us to prove the following convergence guarantee.<sup>2</sup>
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+
+<p>
+<sup>1</sup>&nbsp;We are assuming iterations, not matrix-vector products, are the dominant cost.
+</p>
+
+<p>
+<sup>2</sup>&nbsp;This bound is reminiscent of the “killing off the top eigenvalues” bounds for CG. However, instead of a burn-in period of \(r\) iterations, we require a burn-in period of \(O(\log (d))\) iterations (independent of \(r\)).
+</p>
+
+
+</div>
+
+
+
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker">
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="thm:bcg_bd"></a> Fix a value \(r\geq 0\) and let \(\vec {b}_2, \ldots , \vec {b}_{r+2}\)
+be independent standard Gaussian vectors. Then after \(t\) iterations the block-CG iterate \(\bcg _t\) corresponding to a starting block \([\vec {b}~\vec {b}_2~\cdots ~\vec {b}_{r+2}]\) satisfies, with probability at least \(99/100\),
+</p>
+
+<p>
+\[ \frac {\| \vec {A}^{-1}\vec {b} - \bcg _t \|_{\vec {A}}}{\| \vec {A}^{-1}\vec {b} \|_{\vec {A}}} \leq 2 \exp \left ( - \frac {t-(3+\log (d)/2)}{3\sqrt {\lambda _{r+1}/\lambda _d}}\right ). \]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+More generally, for any \(\mu \geq 0\), block-CG (and Nyström preconditioned CG) can be used to solve the regularized linear system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                                    (A + µI)x = b.                                                                     (5)--><a id="eqn:regularized_ls2"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn:regularized_ls2} (\vec {A}+\mu \vec {I}) \vec {x} = \vec {b}.
+\end{equation}
+
+</p>
+
+<p>
+Systems of the form (<a href="paper.html#eqn:regularized_ls">1</a>) arise in a variety of settings, but we are particularly motivated by two critical tasks in machine learning and data science: solving ridge-regression problems and sampling
+Gaussian vectors. By adapting our bound Theorem&nbsp;<a href="paper.html#thm:bcg_bd">1</a> for block-CG, we obtain state-of-the-art convergence guarantees for existing Lanczos-based methods used to solve these tasks.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Z. Frangella, J. Tropp, and M. Udell (2023). Randomized Nyström Preconditioning. <em>SIAM Journal on Matrix Analysis and Applications</em>, 44(2), 718–752.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A. Greenbaum (1997). <em>Iterative Methods for Solving Linear Systems</em>. Society for Industrial and Applied Mathematics.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J. Tropp and R. Webber (2023). Randomized algorithms for low-rank matrix approximation: Design, analysis, and applications.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

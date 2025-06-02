@@ -1,0 +1,398 @@
+---
+layout: abstract
+absnum: 145
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Online Machine Learning for Solving a Sequence of Linear Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+Mikhail Khodak, <span class="underline">Edmond Chow</span>, Maria-Florina Balcan, Ameet Talwalkar
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Machine learning is often presented as an alternative to well-established and effective numerical methods. In this work, we present an example where machine learning is used to augment existing numerical methods.
+</p>
+
+<p>
+Consider solving a sequence of linear systems
+</p>
+
+<p>
+\[ A_t x = f_t, \quad t = 1,\ldots ,T \]
+</p>
+
+<p>
+with SOR(\(\omega \)), or some other preconditioner–solver combination in general, where we need to choose a parameter for the preconditioner or solver for each system. We are to solve each system before the next system is presented to us. Our
+goal is to choose the SOR parameter \(\omega \) for each system to minimize the total number of iterations. To accomplish this, we can make use of the information about the number of iterations used to solve previous systems.
+</p>
+
+<p>
+There must be some assumptions for us to do anything interesting. We could assume, for example, that the sequence of matrices \(\{A_t\}\) changes slowly. This type of assumption could be useful if we are further allowed to use a method to obtain
+a good estimate of \(\omega \), when needed. Then, we could use this value of \(\omega \) for solving several linear systems until the number of iterations required for a system becomes so large that it becomes profitable to estimate a new value of
+\(\omega \). This kind of strategy has appeared in various guises in the literature and is perhaps the best competitor strategy to what we will present here.
+</p>
+
+<p>
+In this work, we consider using multi-armed bandits from online machine learning to select the value of \(\omega \) for solving each system. Such algorithms are very effective for the following class of practical problems. Suppose every time a user
+visits your web page, you have the choice of showing an advertisement in one of four locations: top, bottom, left, and right. You wish to choose the location each time to maximize the total number of times users visiting your web page will click on
+the advertisement. The underlying assumption is that there is an unknown probability that a user will click on the advertisement in each of the four cases. Your problem is to discover the case that has the highest such probability (exploration), while
+also trying to maximize the number of clicks (exploitation) by not wasting time on low probability cases, and possibly not knowing the number of users your web page will ultimately have. Formally, the multi-armed bandit problem is the following:
+</p>
+
+<p>
+Multi-armed bandit problem
+</p>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(t=1,\dots ,T\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Choose and perform action \(a_t\) from \(\{1,\ldots ,d\}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Receive reward (or loss) \(y_t\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span><span style="width:36pt; display:inline-block"><!----></span> Different actions lead to different rewards.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span><span style="width:36pt; display:inline-block"><!----></span> Do not see rewards for actions not taken.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+<p>
+The actions are choosing among the four locations where we can place the advertisement. For our sequence of linear systems, the actions are choosing a (discretized) value of \(\omega \). The goal is to choose the actions such that the cumulative
+regret is minimized. The cumulative regret is the difference between the expected reward for the single best action and the expected reward for our choice of actions, summed over \(t\) rounds. In particular, the goal is to obtain strategies that give
+cumulative regret that is sublinear in \(t\).
+</p>
+
+<p>
+We address two types of assumptions about our sequence of linear systems: (1) the optimal \(\omega \) follows a fixed distribution and (2) the optimal \(\omega \) follows a distribution that changes. Case (1) can be handled with stochastic bandits
+such as UCB1, an upper confidence bound algorithm. Case (2) can be handled with adversarial bandits such as Exp3, the exponential-weight algorithm for exploration and exploitation. We further look at sequences of matrices of the form \(A_t = A
++ c_t I\) where the scalar shift \(c_t\) is known before \(\omega \) is chosen. This case can be handled by contextual bandits.
+</p>
+
+<p>
+The simplest contextual bandit algorithm will discretize the contexts (shifts) into intervals and use an adversarial bandit separately on each interval. However, we want an approach that exploits the smoothness of the optimal mapping from the
+context (shift \(c\)) to the action (\(\omega \)). For this, we reduce the online contextual bandit problem to a problem of online regression to finding a weight vector \(w\) given observations that arrive in sequence:
+</p>
+
+<p>
+Online regression protocol for \(y = f(x;w)\)
+</p>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span>Initialize regression weights \(w\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(t=1,\dots ,T\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Observe \(x_t\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Predict \(\hat {y}_t = f(x_t;w)\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Observe \(y_t\) and suffer loss \((\hat {y}_t - y_t)^2\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Update \(w\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+<p>
+In online regression, the goal is to choose the weights to minimize the cumulative loss. For our contextual bandit, we assume we have a good method for solving this problem (the oracle). In particular, in our contextual bandit, we use online
+regression to fit the loss vs. (context, action), i.e., \(y\) = number of iterations vs. \(x = (c, \omega )\).
+</p>
+
+<p>
+An example of such an approach is the SquareCB algorithm (Foster and Rakhlin, 2020):
+</p>
+
+<p>
+SquareCB algorithm
+</p>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span>Input: learning rate \(\eta &gt; 0\), exploration parameter \(\mu &gt; 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(t=1,\dots ,T\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Observe context \(c_t\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Compute \(\hat {y}_{t,a} = f(c_t,a;w)\) for all possible \(a\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>\(b_t = \arg \min _{a} \hat {y}_{t,a}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>\(p_{t,a} = \frac {1}{\mu + \eta (\hat {y}_{t,a} - \hat {y}_{t,b_t})}, \quad \forall a \ne b_t\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>\(p_{t,b_t} = 1-\sum _{a \ne b_t} p_{t,a}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Sample \(a_t \sim p_t\) and perform action \(a_t\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Observe actual loss \(y_t\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>        <span style="width:9pt; display:inline-block;"></span>Update the online regression oracle with example \(((c_t,a_t), y_t)\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+<p>
+Above, the action \(a\) can be associated with possible values of \(\omega \) for our setting of solving a sequence of linear systems.
+</p>
+
+<p>
+We develop a contextual bandit called ChebCB, a contextual bandit using Chebyshev regression. For each action (possible \(\omega \)) separately, we fit the loss vs. context \(c\) using regularized polynomial regression. In particular, we use
+polynomials in a Chebyshev basis with coeﬀicients for each Chebyshev polynomial constrained to be small.
+</p>
+
+<p>
+We do not show the results here, but tests on a 2-D heat equation with time-dependent coeﬀicients and time-dependent forcing show that the ChebCB contextual bandit method asymptotically achieves the performance of the instance-optimal policy,
+which selects the best \(\omega \) for each instance.
+</p>
+
+<p>
+In summary, this work shows the potential of using well-understood learning algorithms to augment and speed up linear system solvers, without sacrificing the ability to obtain high accuracy. Additional information can be found in the reference below.
+</p>
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M. Khodak, E. Chow, M.-F. Balcan, and A. Talwalkar, Learning to Relax: Setting Solver Parameters Across a Sequence of Linear System Instances, Proceedings of the 12th International Conference
+on Learning Representations (ICLR), 2024. Spotlight. <span class="underline">https://arxiv.org/abs/2310.02246</span>
+</p>
+</li>
+</ul>
+
+{% endraw %}

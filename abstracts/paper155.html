@@ -1,0 +1,458 @@
+---
+layout: abstract
+absnum: 155
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Matrix equations from the \(\star \)-algebra with quantum chemistry applications
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Stefano Pozza</span>, Christian Bonhomme, Lorenzo Lazzarino, Niel Van Buggenhout
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Consider the matrix-valued function \(\tilde {A}(t) \in \mathbb {C}^{N \times N}\) analytic over the bounded interval \(\mathcal {I}=[a, b]\), the vector \(v \in \mathbb {C}^N\), and let \(\tilde {u}(t) \in \mathbb {C}^{N \times
+N}\) be the solution of the non-autonomous ordinary differential equation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                      ∂
+                                                                                                         ũ(t) = Ã(t)ũ(t),   ũ(a) = v,   t ∈ I = [a, b].                                                             (1)--><a id="eq:ode"></a><!--
+                                                                                                      ∂t
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ode} \frac {\partial }{\partial t}\tilde {u}(t) = \tilde {A}(t)\tilde {u}(t), \quad \tilde {u}(a) = v, \quad t \in \mathcal {I}=[a,b].
+\end{equation}
+
+</p>
+
+<p>
+When \(\tilde {A}(t)\) commutes with itself at different times, i.e., \(\tilde {A}(t_1)\tilde {A}(t_2) = \tilde {A}(t_2)\tilde {A}(t_1)\), the solution is given through the matrix exponential as \(\tilde {u}(t) = \exp (\int _a^t
+\tilde {A}(\tau ) \text {d}\tau ) v\), \(t \in [a,b]\). However, in the general case, there is no explicit formula for \(\tilde {U}(t)\) in terms of usual matrix functions. In quantum chemistry, spin dynamics are often modeled by
+Eq.&nbsp;<span class="textup">(<a href="paper.html#eq:ode">1</a>)</span> where the time-dependent matrix takes the form
+</p>
+
+<p>
+\[\tilde {A}(t) = A_1 f_1(t) + \dots A_k f_k(t),\]
+</p>
+
+<p>
+with \(A_1, \dots , A_k\) (constant) large and sparse matrices, \(f_1(t), \dots , f_k(t)\) scalar analytic functions, and \(k\) a small integer; see, e.g., [11]
+</p>
+
+<p>
+In [16,&#x202f;17], we introduced a new spectral approach for this kind of ODEs, that gives the solution in terms of the coeﬀicients of the expansion \(\tilde {u}(t) = \sum _{j=0}^\infty u_j p_j(t)\), \(t \in [-1, 1]\), with \(p_0(t),
+p_1(t), p_2(t), \dots \) the orthonormal Legendre polynomials, and \(u_j \in \mathbb {C}^N\). For a large enough integer \(m\), it is possible to approximate the coeﬀicients \(u_0, \dots , u_m\) of the truncated expansion \(\tilde {u}(t)
+\approx \sum _{j=0}^{m-1} u_j p_j(t)\) by solving the matrix equation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                           X − F1 XAT1 − · · · − Fk XATk = ϕv T ,                                                                     (2)--><a id="eq:mtxeq"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:mtxeq} X - F_1 X A_1^T - \dots - F_k X A_k^T = \phi v^T,
+\end{equation}
+
+</p>
+
+<p>
+for a certain vector \(\phi \), where the \(m \times m\) matrices \(F_1, \dots , F_k\) represents the functions \(f_1(t), \dots , f_k(t)\) in the so-called \(\star \)-algebra [18]. We named the described strategy <em>\(\star
+\)-approach</em>. The matrix equation <span class="textup">(<a href="paper.html#eq:mtxeq">2</a>)</span> enjoys many properties: (i) the matrices \(F_1, \dots , F_k\) are banded; (ii) in the applications of interest, the matrices \(A_1,
+\dots , A_k\) have a Kronecker structure; (iii) the equation has a rank 1 right-hand side. We can solve the matrix equation by iterative methods exploiting properties (i) and (ii) to reduce the cost of matrix-vector multiplication. Moreover, the rank
+1 right-hand side suggests that the solution \(X\) might be numerically low-rank. Indeed, this is the case in all the applications we treated (e.g., [16]). Hence, property (iii) allows for the use of low-rank approximation.
+</p>
+
+<p>
+This novel numerical approach has proved highly competitive in the solution of ODEs related to a specific model, the <em>generalized Rosen-Zener model</em>. In [2], with Christian Bonhomme (Sorbonne University) and Niel Van Buggenhout
+(Universidad Carlos III), we introduced a new algorithm, named <em>\(\star \)-method</em>, that exploits properties (i)–(iii). Its computational cost scales linearly with the model size (Fig&nbsp;2, [2]) and is also highly competitive for increasing
+interval sizes (Fig&nbsp;4, [2]). These first results might open the way to more general eﬀicient methods for spin simulations. However, the spectral properties and structure of other, more complex, quantum problems can make the solution of
+Eq.&nbsp;<span class="textup">(<a href="paper.html#eq:mtxeq">2</a>)</span> challenging. For instance, we are working on the solution of an ODE system that considers dipolar interactions in a Nuclear Magnetic Resonance application [12].
+In this case, the strategies used in [2] are not eﬀicient enough. This is why we are currently testing randomized approaches (joint work with Lorenzo Lazzarino, University of Oxford) and tensor methods, with promising results.
+</p>
+<!--
+...... subsection A closer look into the -approach ......
+-->
+<h5 id="autosec-5">A closer look into the \(\star \)-approach</h5>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+The diﬀiculties emerging in the numerical solution of Eq.&nbsp;<span class="textup">(<a href="paper.html#eq:ode">1</a>)</span> are linked with the lack of a general analytic expression of \(\tilde {u}(t)\). Analytic approaches are
+typically based on Floquet formalism [10,&#x202f;19], Magnus series [1,&#x202f;13], or hybrids of these with ad-hoc approximate/numerical methods [3,&#x202f;14,&#x202f;20]. These analytic approaches rarely provide exact solutions in a finite
+number of steps, might suffer from convergence issues [1], and be intractable [4]. There is a perception in the physics community that no exact solutions are achievable [7]. This also influences the development of numerical solvers since the most
+advanced numerical methods are typically built on analytical approaches [1,&#x202f;9,&#x202f;10]. As noted by M. Grifoni and P. Hänggi in [8]: “Solving the time-dependent Schrödinger equation necessitates the development of novel analytic and
+computational schemes [...] in a nonperturbative manner” – a remark still relevant today. The \(\star \)-approach follows this suggestion as it is based on a new nonperturbative expression for \(\tilde {u}(t)\), obtained through the so-called
+\(\star \)-product.
+</p>
+
+<p>
+Let us define the set \(\mathcal {A}(\mathcal {I})\) of the bivariate distributions for which there exists a finite \(k\) so that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                          f (t, s) = f˜−1 (t, s)Θ(t − s) + f˜0 (t, s)δ(t − s) + · · · + f˜k (t, s)δ (k) (t − s),
+
+-->
+
+<p>
+
+\begin{equation*}
+f(t,s) = \tilde {f}_{-1}(t,s)\Theta (t-s) + \tilde {f}_{0}(t,s)\delta (t-s) + \dots + \tilde {f}_{k}(t,s)\delta ^{(k)}(t-s),
+\end{equation*}
+
+</p>
+
+<p>
+where \(\Theta (t-s)\) is the Heaviside function (\(\Theta (t-s) = 1\) for \(t \geq s\), and \(0\) otherwise), and \(\delta (t-s), \delta &apos;(t-s), \delta ^{(2)}(t-s), \dots \) are the Dirac delta and its derivatives. The
+<em>\(\star \)-product</em> of \(f, g \in \mathcal {A}(\mathcal {I})\) is the non-commutative product defined as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                               ∫
+                                                                                                            (f ⋆ g)(t, s) :=           f (t, τ )g(τ, s) dτ ∈ A(I);
+                                                                                                                                   I
+
+-->
+
+<p>
+
+\begin{equation*}
+(f \star g)(t,s) := \int _\mathcal {I} f(t,\tau ) g(\tau ,s) \,\text {d}\tau \in \mathcal {A}(\mathcal {I});
+\end{equation*}
+
+</p>
+
+<p>
+see [18]. The \(\star \)-product straightforwardly extends to a scalar-matrix \(\star \)-product and to a matrix-matrix (matrix-vector) \(\star \)-product for matrices with compatible sizes composed of elements from \(\mathcal {A}(\mathcal
+{I})\). We denote with \(\mathcal {A}^{N \times M}(\mathcal {I})\) the space of the \(N \times M\) matrices with elements from \(\mathcal {A}(\mathcal {I})\). Note that \(I_\star = I \delta (t-s)\) is the identity matrix in
+\(\mathcal {A}^{N \times N}(\mathcal {I})\). As shown in [5], the solution \(\tilde {u}(t)\) of the Eq.&nbsp;<span class="textup">(<a href="paper.html#eq:ode">1</a>)</span> can then be expressed as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                                                            ũ(t) = u(t, a), u(t, s) = Θ(t − s) ⋆ x(t, s),                                                                                            (3)
+                                                                                                    (                      )
+                                                                                                        I⋆ − Ã(t)Θ(t − s) ⋆ x(t, s) = ṽδ(t − s), t ∈ [a, b],           (4)                                    --><a id="eq:sol:star:vec"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\tilde {u}(t) = u(t,a), \quad u(t,s) &amp;= \Theta (t-s) \star x(t,s), \\ \left (I_\star - \tilde {A}(t)\Theta (t-s)\right ) \star x(t,s) &amp;= \tilde {v}\delta (t-s), \quad t \in [a,b], \label {eq:sol:star:vec}
+\end{align}
+with \(x(t,s) \in \mathcal {A}^{N}(\mathcal {I})\). Therefore, solving a system of non-autonomous linear ODEs is equivalent to solving a linear system in the \(\star \)-algebra. Note that, for \(m= \infty \), the matrix equation <span
+class="textup">(<a href="paper.html#eq:mtxeq">2</a>)</span> is the matrix algebra counterpart of the \(\star \)-linear system <span class="textup">(<a href="paper.html#eq:sol:star:vec">4</a>)</span>;
+see [15,&#x202f;16,&#x202f;17]. As a consequence, numerical methods for the solution of Eq.&nbsp;<span class="textup">(<a href="paper.html#eq:mtxeq">2</a>)</span> can be interpreted as algorithms in the \(\star \)-algebra. Vice versa, it
+is possible to devise new techniques (such as preconditioners) and numerical methods (e.g., the \(\star \)-Lanczos algorithm [6]) in the \(\star \)-algebra and then map them in the usual algebra of matrices [15] where they can be implemented.
+</p>
+
+<p>
+In conclusion, the \(\star \)-approach has proved extremely fast in certain quantum applications [2]. Its success is based, on the one hand, on advanced linear algebra techniques and, on the other, on applying \(\star \)-algebra results in numerical
+linear algebra.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> S.&nbsp;Blanes, F.&nbsp;Casas, J.&nbsp;A. Oteo, and J.&nbsp;Ros. The Magnus expansion and some of its applications. <i>Phys. Rep.</i>, 470(5):151 – 238, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C.&nbsp;Bonhomme, S.&nbsp;Pozza, and N.&nbsp;Van&nbsp;Buggenhout. A new fast numerical method for the generalized Rosen-Zener model. <i><em>arXiv:2311.04144 [math.NA]</em></i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A.&nbsp;Brinkmann. Introduction to average Hamiltonian theory. I. Basics. <i>Concepts in Magnetic Resonance Part A: Bridging Education and Research</i>, 45A:e21414, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M.&nbsp;Dalgaard and F.&nbsp;Motzoi. Fast, high precision dynamics in quantum optimal control theory. <i>J. Phys. B</i>, 55(8):085501, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> P.-L. Giscard, K.&nbsp;Lui, S.&nbsp;J. Thwaite, and D.&nbsp;Jaksch. An exact formulation of the time-ordered exponential using path-sums. <i>J. Math. Phys.</i>, 56(5):053503, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> P.-L. Giscard and S.&nbsp;Pozza. A Lanczos-like method for non-autonomous linear ordinary differential equations. <i>Boll. Unione Mat. Ital.</i>, 16:81–102, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> C.&nbsp;Graf, A.&nbsp;Rund, C.&nbsp;S. Aigner, and R.&nbsp;Stollberger. Accuracy and performance analysis for Bloch and Bloch-McConnell simulation methods. <i>J. Magn. Reson.</i>,
+329:107011, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> M.&nbsp;Grifoni and P.&nbsp;Hänggi. Driven quantum tunneling. <i>Phys. Rep.</i>, 304(5):229–354, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> M.&nbsp;Hochbruck and C.&nbsp;Lubich. On Magnus integrators for time-dependent Schrödinger equations. <i>SIAM J. Numer. Anal.</i>, 41(3):945–963, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> K.&nbsp;L. Ivanov, K.&nbsp;R. Mote, M.&nbsp;Ernst, A.&nbsp;Equbal, and P.&nbsp;K. Madhu. Floquet theory in magnetic resonance: Formalism and applications. <i>Prog. Nucl. Magn. Reson.
+Spectrosc.</i>, 126-127:17–58, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> I.&nbsp;Kuprov. <i>Spin: From Basic Symmetries to Quantum Optimal Control</i>. Springer International Publishing, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> L.&nbsp;Lazzarino. <i>Numerical approximation of the time-ordered exponential for spin dynamic simulation</i>. PhD thesis, Univerzita Karlova, Prague, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> W.&nbsp;Magnus. On the exponential solution of differential equations for a linear operator. <i>Comm. Pure Appl. Math.</i>, 7(4):649–673, 1954.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> E.&nbsp;Mananga. Theoretical perspectives of spin dynamics in solid-state Nuclear Magnetic Resonance and physics. <i>J. Mod. Phys.</i>, 9:1645–1659, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> S.&nbsp;Pozza. A new closed-form expression for the solution of ODEs in a ring of distributions and its connection with the matrix algebra. <i>Linear Multilinear Algebra</i>, advance online
+publication, DOI:10.1080/03081087.2024.2303058, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> S.&nbsp;Pozza and N.&nbsp;Van&nbsp;Buggenhout. A new matrix equation expression for the solution of non-autonomous linear systems of ODEs. <i>PAMM</i>, 22:e202200117, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> S.&nbsp;Pozza and N.&nbsp;Van&nbsp;Buggenhout. A new Legendre polynomial-based approach for non-autonomous linear ODEs. <i>Electron. Trans. Numer. Anal.</i>, 60:292–326, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> M.&nbsp;Ryckebusch. A Fréchet-Lie group on distributions. <i><em>arXiv:2307.09037 [math.FA]</em></i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> J.&nbsp;H. Shirley. Solution of the Schrödinger equation with a Hamiltonian periodic in time. <i>Phys. Rev.</i>, 138:B979–B987, 1965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> M.&nbsp;Vogl, P.&nbsp;Laurell, A.&nbsp;D. Barr, and G.&nbsp;A. Fiete. Flow equation approach to periodically driven quantum systems. <i>Phys. Rev. X</i>, 9:021037, 2019.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

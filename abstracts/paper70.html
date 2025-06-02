@@ -1,0 +1,526 @@
+---
+layout: abstract
+absnum: 70
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Fast Randomized Column Subset Selection Using Strong Rank-revealing QR
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Alice Cortinovis</span> and Lexing Ying
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Many large-scale matrices arising in applications have a low numerical rank, and while the truncated singular value decomposition gives a way to construct the <em>best</em> low-rank approximation with respect to all unitarily invariant norms, this is
+often too expensive to compute. For this reason, different types of low-rank approximation strategies have been analyzed in the literature, for example, approximations constructed from some rows and columns of the matrix. In practice, the strategy
+for choosing rows and columns depends on the properties and the size of the matrix. Several deterministic and randomized strategies for selecting rows and columns for CUR approximation have been developed; see, e.g.,&nbsp;[1] for an overview.
+</p>
+
+<p>
+This talk is concerned with the analysis of a randomized algorithm that selects suitable rows and columns. The algorithm is based on an initial uniformly random selection of rows and columns, followed by a refinement of this choice using a strong
+rank-revealing QR factorization. We show bounds on the error of the corresponding low-rank approximation (more precisely, the CUR approximation error) when the matrix is a perturbation of a low-rank matrix that can be factorized into the
+product of matrices with suitable incoherence and/or sparsity assumptions. The talk is based on the paper&nbsp;[2].
+</p>
+<!--
+...... subsection The column subset selection problem ......
+-->
+<h5 id="autosec-5">The column subset selection problem</h5>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+Let \(A \in \mathbb {R}^{n \times n}\) be the matrix we want to approximate (the discussion easily generalizes to rectangular matrices). Let us denote by \(I,J \in \{1, \ldots , n\}^\ell \) ordered index sets that correspond to rows and
+columns of \(A\), respectively, for some \(\ell \ll n\), and let us denote by \(A(I,:) \in \mathbb {R}^{\ell \times n}\) and \(A(:,J) \in \mathbb {R}^{n \times \ell }\) the submatrices of \(A\) corresponding to the rows indexed by
+\(I\) and the columns indexed by \(J\), respectively. An approximation of \(A\) using these rows and columns has the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                 A ≈ A(:, J)M A(I, :),
+
+-->
+
+<p>
+
+\begin{equation*}
+A \approx A(:,J) M A(I,:),
+\end{equation*}
+
+</p>
+
+<p>
+for some matrix \(M \in \mathbb {R}^{\ell \times \ell }\). The choice of \(M\) that minimizes the low-rank approximation error \(\|A - A(:,J) M A(I,:)\|_F\) in the Frobenius norm is the orthogonal projection \(M = A(:,J)^{\dagger } A
+A(I,:)^{\dagger }\), where \(\dagger \) denotes the Moore-Penrose pseudoinverse of a matrix. The resulting approximation is usually called a “CUR approximation”.
+</p>
+
+<p>
+The quality of the low-rank approximation, that is, the norm of the error matrix \(A - A(:,J)MA(I,:),\) depends on the choice of rows and columns, and can be bounded, in the spectral norm, by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                     ∥A − A(:, J)M A(I, :)∥2 ≤ ∥A − A(:, J)A(:, J)† A∥2 + ∥A − AA(I, :)† A(I, :)∥2 ,                                            (1)--><a id="eq:curbound"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:curbound} \|A - A(:,J)MA(I,:)\|_2 \le \|A - A(:,J)A(:,J)^\dagger A\|_2 + \|A - A A(I,:)^\dagger A(I,:)\|_2,
+\end{equation}
+
+</p>
+
+<p>
+where the two terms on the right-hand-side are the column and row subset selection error, respectively. For the remaining part of the talk, we focus on the problem of choosing columns, because the rows can be selected in the same way and the error
+of the corresponding CUR approximation is bounded as in&nbsp;<span class="textup">(<a href="paper.html#eq:curbound">1</a>)</span>.
+</p>
+<!--
+...... subsection The proposed strategy ......
+-->
+<h5 id="autosec-6">The proposed strategy</h5>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+The simplest method to select columns is to choose some columns uniformly at random, which gives good low-rank approximations in many cases of interest. In&nbsp;[3], it was shown that if \(A\) is a rank-\(k\) matrix that admits a low-rank
+decomposition with <em>incoherent</em> factors, uniform sampling of rows and columns allows to recover the matrix. Given a matrix \(X \in \mathbb {R}^{n \times k}\) with orthonormal columns, the coherence of \(X\) is defined as
+</p>
+
+<p>
+\[\mu := n \max _{1 \le i \le n \atop 1 \le j \le k} |x_{ij}|^2,\]
+</p>
+
+<p>
+and we say that \(X\) is \(\mu \)-coherent. We say that a matrix is incoherent when \(\mu \) is small. The concept of incoherence informally means that the information about the matrix is “evenly spread out” across all rows and columns.
+</p>
+
+<p>
+The favorable property of uniform sampling can be extended to matrices that have low <em>numerical</em> rank&nbsp;[4]. When the matrix \(A\) does not satisfy these incoherence assumptions, heuristic approaches were considered, e.g.,
+in&nbsp;[5, 6], where the idea is to refine the choice of the uniform sampled columns using a rank-revealing decomposition. The algorithm that we consider is the following.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"><b>Require:</b></span> Matrix \(A\), number of indices \(\ell _0, \ell _a, \ell _b\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"><b>Ensure:</b></span> Column index set \(J\) of cardinality \(\ell _a + \ell _b\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Select \(\ell _0\) rows of \(A\) uniformly at random (index set \(I_0\))
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span>Select \(\ell _a\) columns of \(A(I_0,:)\) by sRRQR (index set \(J_a\))
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span>Select another \(\ell _b\) columns of \(A\) uniformly at random (index set \(J_b\))
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> <span style="width:0pt; display:inline-block;"></span>Return the column index set \(J = (J_a, J_b)\)
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Proposed algorithm for column subset selection
+</p>
+</div>
+
+<a id="alg:randsRRQR"></a>
+
+</figure>
+
+<p>
+Here, sRRQR denotes the strong rank-revealing QR factorization&nbsp;[7]. Informally, this is a partial pivoted QR factorization that ensures that the first \(\ell _a\) columns of \(A(I_0,:)\) are a good approximation of the range of the columns
+of \(A(I_0,:)\). A rank-\(k\) sRRQR factorization for an \(m \times n\) matrix can be computed in time \(\mathcal O(mnk \log n)\), therefore the algorithm runs in time \(\mathcal O (n\ell ^2 \log n)\), where \(\ell = \max \{\ell
+_0,\ell _a,\ell _b\}\); in particular, the cost is sublinear with respect to the size of the matrix.
+</p>
+<!--
+...... subsection When is there hope for Algorithm-<a href=paper.html#alg:randsRRQR>1</a> to work? ......
+-->
+<h5 id="autosec-7">When is there hope for Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> to work?</h5>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+Let us look at a few illustrative examples to see when Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> is likely to return a good column set for low-rank approximation purposes. For example, if \(A\) is a matrix of all ones (and thus
+has rank \(1\)), uniformly sampling just one single column gives a vector that spans the range of \(A\). The singular vectors of \(A\) are as incoherent as they could possibly be. Now consider, instead, a matrix \(B\) which is made of zeros except for
+one entry: in this case, neither uniform sampling nor Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> will be able to correctly locate the only important column with high probability. The singular vectors of \(B\) have coherence
+\(n\), the highest possible value.
+</p>
+
+<p>
+There is some interesting middle ground in which uniform sampling alone is not good enough, but the combination with sRRQR gives us a good column subset. For example, consider the case of a rank-\(2\) matrix \(C \in \mathbb {R}^{n \times
+n}\) that has entries \(c_{1j} = c_{j1} = 1\) for \(1 \le j \le n\) and zeros elsewhere. The row set \(I_0\), chosen uniformly at random, will likely not include the first row. However, when looking at the matrix \(C(I_0,:)\), the sRRQR
+algorithm will select a set \(J_a\) containing the first column, plus some other \(\ell _a-1\) columns sampled uniformly at random. Now, the set \(J\) will contain the first column and at least another column; therefore, it is enough to span the
+range of \(C\). We can decompose
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                              1        
+                                                                                               √     1
+                                                                                              n
+                                                                                           √1       0
+                                                                                           n            [√            ][                                  ]
+                                                                                           √1       0      n               1    0      0     ···    0
+                                                                                        C= n                   √ 0                                            = XZY T .
+                                                                                                                n−1        0   √1     √1     ···   √1
+                                                                                              ..    ..  0                       n−1    n−1          n−1
+                                                                                              .      .
+                                                                                               √1    0
+                                                                                                 n
+
+
+-->
+
+<p>
+
+\begin{equation*}
+C = \begin{bmatrix} \frac {1}{\sqrt n} &amp; 1 \\ \frac {1}{\sqrt n} &amp; 0 \\ \frac {1}{\sqrt n} &amp; 0 \\ \vdots &amp; \vdots \\ \frac {1}{\sqrt n} &amp; 0 \end {bmatrix} \begin{bmatrix} \sqrt {n} &amp; 0 \\ 0
+&amp; \sqrt {n-1} \end {bmatrix} \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; \frac {1}{\sqrt {{n-1}}} &amp; \frac {1}{\sqrt {{n-1}}} &amp; \cdots &amp; \frac {1}{\sqrt {{n-1}}} \end {bmatrix}
+= X Z Y^T.
+\end{equation*}
+
+</p>
+
+<p>
+Note that, for each \(j=1,2\), one between the \(j\)-th column of \(X\) and the \(j\)-th column of \(Y\) is sparse and the other one is incoherent. This example suggests that when a matrix has a rank-\(k\) decomposition \(XZY^T\) (possibly, up to
+an additive error \(E\)), there is hope for Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> to work when, for each \(i=1,\ldots ,k\), one between the \(i\)-th columns of \(X\) and of \(Y\) is sparse, and the other is incoherent.
+</p>
+<!--
+...... subsection Analysis of column quality ......
+-->
+<h5 id="autosec-8">Analysis of column quality</h5>
+<a id="paper-autopage-8"></a>
+
+
+<p>
+Our analysis considers the case in which \(A\) has rank exactly \(k\) and the case in which \(A\) is a small perturbation of the exact case. For simplicity, we state our results in the perturbed case, with slightly simplified assumptions, and we omit
+explicit constants; the precise results are in our paper&nbsp;[2].
+</p>
+<!--
+...... paragraph Assumptions. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-9">Assumptions.</span>
+<a id="paper-autopage-9"></a>
+We assume that \(A\) admits an approximate rank-\(k\) factorization \(A = XZY^T + E\), for some \(X \in \mathbb {R}^{n \times k}\) and \(Y \in \mathbb {R}^{n \times k}\), where \(X\) and \(Y\) have orthonormal columns, \(Z \in
+\mathbb {R}^{k \times k}\) is diagonal, and the corresponding pairs of vectors of \(X\) and \(Y\) are either both incoherent (\(\mu \)-coherent with a small value of \(\mu \)) or one is sparse and the other one is incoherent. Moreover, we assume
+that \(\|E\|_2 \le \varepsilon \).
+</p>
+<!--
+...... paragraph Main theorem. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-10">Main theorem.</span>
+<a id="paper-autopage-10"></a>
+If the assumptions hold and we take \(\ell _0, \ell _a, \ell _b\) to be a small multiple of \(\mu k\), then the column index \(J\) returned by Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> satisfies
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                          (        √                   )
+                                                                                                              †                        k σ1 (XZY T )
+                                                                                            ∥A − A(:, J)A(:, J) A∥2 ≤ O       εn        ·
+                                                                                                                                       ℓ σk (XZY T )
+
+-->
+
+<p>
+
+\begin{equation*}
+\|A - A(:,J)A(:,J)^\dagger A\|_2 \le \mathcal O\left (\varepsilon n\sqrt {\frac {k}{\ell }} \cdot \frac {\sigma _1(XZY^T)}{\sigma _k(XZY^T)} \right )
+\end{equation*}
+
+</p>
+
+<p>
+with high probability.
+</p>
+<!--
+...... paragraph Sketch of proof ingredients. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-11">Sketch of proof ingredients.</span>
+<a id="paper-autopage-11"></a>
+One important ingredient in the proof of our main result is the fact that selecting uniformly random rows from a matrix with orthonormal columns gives, with high probability, a well conditioned matrix&nbsp;[8]. The second ingredient is the sRRQR,
+which allows us to determine what are the most “important” columns in a given matrix (since this is used on a rectangular matrix which is much smaller than \(A\), this is fast to do).
+</p>
+
+<p>
+Intuitively, the columns corresponding to the index set \(J_a\) generated by lines 1 and 2 of Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> are a good approximation to the part of \(A\) that corresponds to the pairs of vectors of
+\(X\) and \(Y\) that are of type (incoherent,incoherent) or (incoherent,sparse). The additional selection of \(\ell _b\) uniformly random columns in line 3 ensures that, with high probability, also the information from the pairs of vectors of \(X\)
+and \(Y\) of type (sparse,incoherent) is taken care of.
+</p>
+<!--
+...... subsection Take-away messages and open questions ......
+-->
+<h5 id="autosec-12">Take-away messages and open questions</h5>
+<a id="paper-autopage-12"></a>
+
+
+<p>
+The analysis of Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a> shows that this combination of randomness and sRRQR is able to combine the speed of randomized algorithms with the reliability of sRRQR, for the matrices that
+admit a decomposition with the assumptions above. While it is diﬀicult, in general, to check whether a matrix \(A\) admits a decomposition satisfying these assumptions, the objective of this talk is to shed some light on the excellent practical
+performance of simple sublinear-time algorithms for column and row subset selection. It is easier to think of \(XZY^T\) as the singular value decomposition of \(A\) or its best rank-\(k\) approximation, but actually, we do not require \(X\) and \(Y\)
+to have orthonormal columns, as long as they are well-conditioned. This flexibility allows us to apply our bounds to a larger class of matrices.
+</p>
+
+<p>
+Our results do not cover all the matrices for which <em>there is hope</em>. For example, a scenario that is not covered by the current theory and is left for future work consists of matrices that have some pairs of vectors of \(X\) and \(Y\) for which
+one of them is incoherent and the other one does not have any specific assumption (that is, it may be coherent but not sparse).
+</p>
+
+<p>
+It is possible to formulate an iterative version of Algorithm&nbsp;<a href="paper.html#alg:randsRRQR">1</a>, such as the one considered in&nbsp;[6], in which one, after line 3, again performs an sRRQR factorization, adds some uniformly
+sampled rows, and then repeats this procedure a couple of times alternating between the selection of rows and columns. While the practical benefits of this “iterative refinement” for many matrices have been well documented, a theoretical analysis is
+still lacking and is an interesting direction for future research.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-13">References</h4>
+<a id="paper-autopage-13"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P.-G. Martinsson and J. Tropp, Randomized numerical linear algebra: Foundations and algorithms, <i>Acta Numerica</i>, 29 (2020), pp. 403–572.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A. Cortinovis and L. Ying, A sublinear-time randomized algorithm for column and row subset selection based on strong rank-revealing QR factorizations, <i>SIAM J. Matrix Anal. Appl. (to
+appear)</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A. Talwalkar and A. Rostamizadeh, Matrix coherence and the Nyström method, in <i>Proceedings of the Twenty-Sixth Conference on Uncertainty in Artificial Intelligence</i>, 2010, pp. 572–579.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J. Chiu and L. Demanet, Sublinear randomized algorithms for skeleton decompositions, <i>SIAM J. Matrix Anal. Appl.</i>, 34 (2013), pp. 1361–1383.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y. Li, H. Yang, E. R. Martin, K. L. Ho, and L. Ying, Butterfly factorization, <i>Multiscale Model. Simul.</i>, 13 (2015), pp. 714–732.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> J. Xia, Making the Nyström method highly accurate for low-rank approximations, <i>SIAM J. Sci. Comput.</i>, 46 (2024), pp. A1076–A1101.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M. Gu and S. C. Eisenstat, Eﬀicient algorithms for computing a strong rank-revealing QR factorization, <i>SIAM J. Sci. Comput.</i>, 17 (1996), pp. 848–869.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> J. A. Tropp, Improved analysis of the subsampled randomized Hadamard transform, <i>Adv. Adapt. Data Anal.</i>, 3 (2011), pp. 115–126.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,170 @@
+---
+layout: abstract
+absnum: 19
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Structured rational matrices: properties and strongly minimal linearizations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Froilán Dopico</span>, Vanni Noferini, María C. Quintana and Paul Van Dooren
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Rational matrices, that is, matrices whose entries are univariate rational functions appear in control problems and also in the numerical solution of non-linear eigenvalue problems as approximations of other matrices whose entries are more general
+univariate functions. Very often the rational matrices arising in applications have particular structures that should be preserved/used in the numerical computation of the their poles, zeros and minimal indices.
+</p>
+
+<p>
+In this talk, we consider three classes of rational matrices \(R(z)\) that are Hermitian upon evaluation on (a) the real axis, (b) the imaginary axis, or (c) the unit circle. Our goal is to show how to construct linear polynomial system matrices, i.e.,
+pencils, for those \(R(z)\) that preserve the corresponding structures and are strongly minimal, a property that guarantee that such polynomial system matrices allow for a complete recovery of the poles, zeros, and minimal indices of \(R(z)\). Thus,
+structured generalized eigenvalue algorithms applied to these pencils will allow us to compute all these quantities in a structure preserving manner.
+</p>
+
+<p>
+Our goal is fully achieved for the Hermitian structures on the real and on the imaginary axes, but for the Hermitian structure on the unit circle some obstacles arise, which require to modify the original problem at some extent and to construct a
+structured linear polynomial system matrix for the rational function \((1+z) R(z)\) instead of for \(R(z)\). In order to do this, we need to prove a number of previously unknown properties of rational matrices which are Hermitian on the unit circle.
+</p>
+
+<p>
+The results presented in this talk are based on the references [1] and [2].<br />
+
+</p>
+<div class="center">
+
+<p>
+References
+</p>
+</div>
+
+<p>
+[1] F. Dopico, M.C. Quintana, P. Van Dooren, Strongly minimal self-conjugate linearizations for polynomial and rational matrices, SIAM J. Matrix Anal. Appl. <b>43</b>, (2022), 1354–1381.<br />
+<br />
+[2] F. Dopico, V. Noferini, M.C. Quintana, P. Van Dooren, Para-Hermitian rational matrices, to appear in SIAM J. Matrix Anal. Appl. (arXiv:2407.13563).<br />
+
+</p>
+
+<p>
+This work has been partially supported by the Agencia Estatal de Investigación of Spain<br />
+MCIN/AEI/10.13039/501100011033/ through grant PID2023-147366NB-I00.
+</p>
+
+{% endraw %}

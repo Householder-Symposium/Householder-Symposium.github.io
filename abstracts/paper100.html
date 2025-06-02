@@ -1,0 +1,337 @@
+---
+layout: abstract
+absnum: 100
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Subspace accelerated contour integration methods for eigenvalue problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Luka Grubišić</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In this talk, we will present a class of adaptive approximation methods for computing the partial solution of eigenvalue problems. We will concentrate on algorithms which are matrix-free in the sense that they treat a matrix \(A\), or its shifted
+inverse \((z-A)^{-1}\), as a mapping \(A:x\mapsto Ax\), and \((z-A)^{-1}:x\mapsto (z-A)^{-1}x\), respectively. We present a Beyn-type eigensolver (see [1]) accelerated by the use of adaptive reduced-order model of the matrix resolvent. As
+prototype examples, we will consider both linear as well as nonlinear (in the spectral parameter) eigenvalue problems. In particular, we will study examples from thermoacoustics applications [14].
+</p>
+
+<p>
+In the interest of clarity, let us first concentrate on the standard linear eigenvalue problem for a diagonalisable matrix \(A\). When the resolvent is given as a mapping \((z-A)^{-1}:x\mapsto (z-A)^{-1}x\), one has to incorporate the inexactness
+(due to the approximation truncation) of the evaluation of this mapping into an analysis. This is a known and structurally challenging problem in the theory of Krylov-type solvers [10, 16]. An alternative approach is to transform the problem of
+approximating the eignvalue cluster enclosed by the finite contour \(\Gamma \) into an eigenvector problem for the spectral projector \(P_\Gamma \)
+</p>
+
+<p>
+\[ P_\Gamma = \frac {1}{2\pi \mathrm {i}}\int _\Gamma (z-A)^{-1}~dz\approx \mathbf {\Pi _\Gamma }:=\sum _{i=1}^N\omega _i(z_i-A)^{-1}. \]
+</p>
+
+<p>
+One can then apply the standard subspace iteration to extract eigenvector information using the approximation
+</p>
+
+<p>
+\[ x_j\mapsto P_\Gamma x_j = \frac {1}{2\pi \mathrm {i}}\int _\Gamma (z-A)^{-1}x_j~dz\approx \sum _{i=1}^N\omega _i(z_i-A)^{-1}x_j,\;\;j=1,\cdots ,d \]
+</p>
+
+<p>
+For this talk we choose not to discuss the implications of embarrassing paralelism (in terms of sampling the resolvent with respect to the spectral parameter \(z_i\) and vectors \(x_j\)) on the evaluation of the action of \(P_\Gamma \).
+</p>
+
+<p>
+We will loosely call this approach interpolatory and nonintrusive. Namely, to produce a reliable eigenvalue/vector approximation method, one only needs a solver for the shifted system \((z, x)\mapsto (z-A)^{-1}x\) as a black box, but with an
+error estimate and error control. The projection \(P_\Gamma \) is a dense, but low-rank matrix. The dimension of its range equals the joint algebraic multiplicity of the eigenvalues enclosed by the contour \(\Gamma \), denoted by \(\#\Gamma \). The
+problem of computing an orthonormal basis of the eigensubspace associated with the enclosed cluster of eigenvalues can now be reduced to the calculation of the SVD of a large implicitly defined matrix \(P_\Gamma \) of low rank. This orthonormal
+basis can then be used to construct a small auxiliary spectral problem from which eigenvector/eigenvalue information can be directly and robustly extracted (not the topic of this talk). Randomized SVD has distinguished itself as a method of choice
+for analyzing approximate low rank matrices. It has been studied in many settings, including its infinite-dimensional incarnation [13, 3, 2], which is suitable for the study of numerical methods applied to discretizations of partial differential operators
+in physics and engineering. Note that in our notation the randomized SVD algorithm for \(\Pi _\Gamma \approx P_\Gamma \) starts with the random draw of the interpolation directions \(x_j\), \(j=1,\cdots ,d\) for \(d\geq \#\Gamma +2\).
+Here we assume that \(x_j\) have been drawn appropriately, [2].
+</p>
+
+<p>
+The nonintrusive nature of contour integration methods is the reason for inclusion in SLEPc or even as <span class="textsf">Extended Eigensolver Routines</span> in the Intel MKL library. This is the easiest way to incorporate any monolithic
+solver for the shifted system into an eigenvalue/eigenvector approximation routine. Large-scale matrices in NLA are typically discretizations of partial differential operators, and the use of contour integration approach allows more flexibility to
+seamlessly incorporate various discretisations of the shifted system (called in the engineering jargon the Helmholtz solvers). These include rectangular approximations of the resolvent such as those from [8] used in <span
+class="textsf">chebop</span> object or the Discontinuous Petrov Gelerkin approach which also leads to rectangular approximations of the resolvent [11, 9, 7].
+</p>
+
+<p>
+Based on the (infinite-dimensional) randomized SVD for Hilbert–Schmidt operators, an extension of Beyn’s contour integration method for operators in Hilbert spaces has been described in&nbsp;[5]. The key ingredient, encapsulated in the phrase
+<i>solve than discretize</i>, is adaptive error control for the Helmholtz solver. Pushing discretization by adaptivity to the later stage, the randomized part of the algorithm gives us means to explore the Hilbert space more broadly and generate an
+accelerating subspace with better candidates for eigenvector approximations.
+</p>
+
+<p>
+The use of advances in the rational function approximation problem in the context of the solution of the spectral problem has been thoroughly analyzed, in a slightly different context, in [6]. To coarsely assess the performance of this method, consider
+a finite difference discretization of \(A=-\triangle - V\), \(V&gt;0\), with Gaussian potential \(V\), \(\|V\|_\infty &lt;\infty \). Using the Matlab toolbox <kbd>SpecSolve</kbd><sup>1</sup><a id="paper-autopage-4"></a> on a computer
+with \(10\) cores, it took \(104\) seconds to approximate the spectral density in the interval \(\left [-\|V\|_\infty ,0\right ]\) with tolerance \(\varepsilon =0.05\). In comparison, <span class="textsc">Matlab</span> <kbd>eigs</kbd>
+on the same machine applied to a \(10^4\times 10^4\) discretization computed all eigenvalues in the same interval within \(0.5\) seconds. Apart from the further use of obvious embarrassing parallelism in the sampling of the resolvent, a speedup
+can be achieved by exploiting the product structure in the construction of random vectors [4] (not this talk) or by speeding up the evaluation of the resolvent using subspace acceleration [14] (this talk).
+</p>
+
+<p>
+As prototypes, we will consider a large class of (nonlinear) eigenvalue problems which are defined by the generalized resolvent
+</p>
+
+<p>
+\[ R(z)=(A_0+ f_1(z)A_1+\cdots +f_s(z)A_s)^{-1} \]
+</p>
+
+<p>
+with self-adjoint coeﬀicients \(A_i\), \(i=0,\dots ,s\) and scalar functions \(f_i\), \(i=1,\dots ,s\). We will present an analysis and improvements of the method described in [14] which uses subspace acceleration together with reduced-order
+interpolatory modeling of the nonlinear resolvent \(R\). Our method will be cast within the context of scientific computing with particular emphasis on problems in thermoacoustics. We will discuss the comparison of the performance of the contour
+integration method with the performance of the method based on the direct rational interpolation of the resolvent and the application of the rational Arnoldi to its linearization [15, 12]. Finally, we will present a general analysis of the randomized
+SVD algorithm for operators of the form
+</p>
+
+<p>
+\[ \mathsf {r}(A_0+V)+W~. \]
+</p>
+
+<p>
+Here \(\mathsf {r}\) is a rational function approximation of an indicator function, \(A_0\) is self-adjoint and positive definite, potential \(V\) is relatively compact with respect to \(A_0\), and we use functions of \(A_0\) to construct a Gaussian
+kernel for random sampling. Finally, \(W\) (not necessarily self-adjoint) is a small bounded operator presenting the errors caused by adaptive discretization.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;<a href="https://github.com/SpecSolve/SpecSolve" target="_blank" >https://github.com/SpecSolve/SpecSolve</a>
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Wolf-Jürgen Beyn (2012). An integral method for solving nonlinear eigenvalue problems. <i>Linear Algebra and its Applications</i>, 436(10), p.3839-3863.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> N.&nbsp;Boullé and A.&nbsp;Townsend (2022), A generalization of the randomized singular value decomposition, in <i>International Conference on Learning Representations</i>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> N.&nbsp;Boullé and A.&nbsp;Townsend (2023), ‘Learning elliptic partial differential equations with randomized linear algebra’, <i>Found. Comput. Math.</i> 23(2),&nbsp;709–739.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Zvonimir Bujanović and Luka Grubišić and Daniel Kressner and Hei Yin Lam (2024), Subspace embedding with random Khatri-Rao products and its application to eigensolvers,
+<i>arXiv:2405.11962</i>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M.&nbsp;Colbrook and A.&nbsp;Townsend (2023), Avoiding discretization issues for nonlinear eigenvalue problems, arXiv:2305.01691.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M.&nbsp;Colbrook, A.&nbsp;Horning and A.&nbsp;Townsend (2021), ‘Computing spectral measures of self-adjoint operators’, <i>SIAM Review</i> 63(3),&nbsp;489–524.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> L.&nbsp;Demkowicz and J.&nbsp;Gopalakrishnan (2017), <i>Discontinuous Petrov–Galerkin (DPG) Method</i>, John Wiley and Sons, Ltd, pp.&nbsp;1–15.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> T.&nbsp;A. Driscoll and N.&nbsp;Hale (2016), ‘Rectangular spectral collocation’, <i>IMA Journal of Numerical Analysis</i> 36(1),&nbsp;108–132.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> X.&nbsp;Feng and H.&nbsp;Wu (2009), ‘Discontinuous galerkin methods for the helmholtz equation with large wave number’, <i>SIAM Journal on Numerical Analysis</i> 47(4),&nbsp;2872–2896.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Freitag, M. and Spence, A. (2010). Shift-Invert Arnoldi’s Method with Preconditioned Iterative Solves. <i>SIAM Journal on Matrix Analysis and Applications</i>, 31(3), 942-969.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> J.&nbsp;Gopalakrishnan, L.&nbsp;Grubišić, J.&nbsp;Ovall and B.&nbsp;Parker (2019), ‘Analysis of FEAST spectral approximations using the DPG discretization’, <i>Comput. Methods Appl.
+Math.</i> 19(2),&nbsp;251–266.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> S.&nbsp;Güttel, R.&nbsp;V. Beeumen, K.&nbsp;Meerbergen and W.&nbsp;Michiels (2013), NLEIGS: a class of robust fully rational Krylov methods for nonlinear eigenvalue problems, TW Reports,
+TW633, Department of Computer Science, KU Leuven.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> P.-G. Martinsson and J.&nbsp;A. Tropp (2020), ‘Randomized numerical linear algebra: foundations and algorithms’, <i>Acta Numer.</i> 29,&nbsp;403–572.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> G.&nbsp;A. Mensah, A.&nbsp;Orchini, P.&nbsp;E. Buschmann and L.&nbsp;Grubišić (2022), ‘A subspace-accelerated method for solving nonlinear thermoacoustic eigenvalue problems’, <i>Journal
+of Sound and Vibration</i> 520,&nbsp;116553.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> M.&nbsp;Merk, P.&nbsp;E. Buschmann, J.&nbsp;P. Moeck and W.&nbsp;Polifke (2022), ‘The Nonlinear Thermoacoustic Eigenvalue Problem and Its Rational Approximations: Assessment of
+Solution Strategies’, <i>Journal of Engineering for Gas Turbines and Power</i> 145(2),&nbsp;021028.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> V.&nbsp;Simoncini and D.&nbsp;B. Szyld (2003), ‘Theory of inexact krylov subspace methods and applications to scientific computing’, <i>SIAM Journal on Scientific Computing</i>
+25(2),&nbsp;454–477.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

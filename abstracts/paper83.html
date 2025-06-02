@@ -1,0 +1,376 @@
+---
+layout: abstract
+absnum: 83
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Symmetric Pseudospectral Shattering and Fast Divide-and-Conquer for the Definite Generalized Eigenvalue Problem
+</h2>
+</div>
+<div class="center">
+
+<p>
+James Demmel, Ioana Dumitriu, and <span class="underline">Ryan Schneider</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+<b>Overview:</b> We adapt the asymptotically fastest-known algorithm for diagonalizing arbitrary matrix pencils – as well as the related phenomenon of pseudospectral shattering – to the definite generalized eigenvalue problem. Put simply, we
+obtain significant eﬀiciency gains by preserving and exploiting structure, in this case symmetry. In doing so, our work provides a general road map for tailoring fast diagonalization to structured problems.
+</p>
+
+<p>
+Recent work in randomized numerical linear algebra produced the first sub-\(O(n^3)\) algorithms for diagonalizing any matrix \(A\) or matrix pencil \((A,B)\) [3, 5]. The key insight of this work is the phenomenon of <i>pseudospectral
+shattering</i>, where a random perturbation to a matrix, or pencil, has a regularizing effect on its (pseudo)spectrum. A result of smoothed analysis [11], shattering is characterized by a minimum eigenvalue gap and minimally well-conditioned
+eigenvectors. Moreover, it implies success for fast divide-and-conquer eigensolvers, which can diagonalize a perturbed matrix/pencil with essentially optimal complexity (that is, complexity equal to matrix multiplication up to log factors). The name
+“pseudospectral shattering” is derived from the fact that a random grid covering the \(\epsilon \)-pseudospectra of the perturbed problem separates its disjoint components, and the eigenvalues they contain, into separate grid boxes for \(\epsilon
+\) suﬀiciently small – i.e., inverse polynomial in \(n\).
+</p>
+
+<p>
+Pseudospectral shattering suggests a simple, high-level approach to eigenvalue problems: apply a random perturbation and run a fast version of divide-and-conquer, where the shattering grid can be used to reliably divide the spectrum at each step.
+The result is an accurate diagonalization, in the backward-error sense, provided the initial perturbation is small. Prior to [3], which introduced pseudospectral shattering in the context of the standard eigenvalue problem, no way of leveraging
+divide-and-conquer’s natural parallelization to obtain fast diagonalizations of arbitrary matrices (or pencils) was known. Importantly, [5] established that this approach can be implemented without relying on matrix inversion, thereby promoting
+stability while also minimizing associated communication costs (following Ballard et al. [2]).
+</p>
+
+<p>
+These randomized eigensolvers, which we refer to collectively as pseudospectral divide-and-conquer, are fully general. In particular, both [3] and [5] allow matrices to be arbitrary and apply Ginibre perturbations to obtain a guarantee of
+pseudospectral shattering. This begs the question: how can we adapt these algorithms to better handle symmetric or sparse inputs, for which dense Gaussian perturbations are structure-destroying? Going further: if we can achieve pseudospectral
+shattering while maintaining structure – i.e., via structured perturbations – how can we translate that into eﬀiciency gains in divide-and-conquer?
+</p>
+
+<p>
+We answer these question for the definite generalized eigenvalue problem, which corresponds to pencils \((A,B)\) in which \(A\) and \(B\) are Hermitian and the <i>Crawford number</i> \(\gamma (A,B)\) satisfies
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                              γ(A, B) = min |xH (A + iB)x| > 0.                                                                                                                 (1)
+                                                                                                                            ||x||2 =1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\gamma (A,B) = \min _{||x||_2 = 1} |x^H(A+iB)x| &gt; 0.
+\end{equation}
+
+</p>
+
+<p>
+Pencils arising in scientific computing and machine learning are often definite [7, 6]. We note two important sub-problems in particular: (1) the Hermitian eigenvalue problem, corresponding to \(B = I\), and (2) the generalized symmetric definite
+eigenvalue problem, in which \(B\) is positive definite.
+</p>
+
+<p>
+As inputs to divide-and-conquer, definite pencils exhibit a number of properties that can be leveraged for improved eﬀiciency. Most notably, the eigenvalues of a definite pencil \((A,B)\) are real (and in fact any \(\epsilon \)-pseudospectrum that
+considers only Hermitian perturbations to \(A\) and \(B\) will be constrained to the real axis for \(\epsilon \) suﬀiciently small). Additionally, definite pencils are regular and satisfy stronger eigenvalue/eigenvector perturbation bounds than the
+generic case (see e.g., [12]). Finally, where an arbitrary pencil \((A,B)\) is diagonalized by a pair of eigenvector matrices – if it is diagonalizable at all – a definite pencil can always be diagonalized by a single matrix. That is, for any definite pencil
+\((A,B)\) there exists invertible \(X\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                     (X H AX, X H BX) = (ΛA , ΛB )                                                               (2)--><a id="eqn: definite_diag"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eqn: definite_diag} (X^HAX, X^HBX) = (\Lambda _A, \Lambda _B)
+\end{equation}
+
+</p>
+
+<p>
+for \(\Lambda _A\) and \(\Lambda _B\) diagonal.
+</p>
+
+<p>
+Motivated by these observations, we devise a version of pseudospectral divide-and-conquer that pursues eﬀiciency by maintaining definiteness through both the initial random perturbation and the subsequent recursive procedure. The main
+ingredients are the following:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> We prove shattering for a symmetric pseudospectrum
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+<!--
+                                                                                                                {                                                   }
+                                                                                                Λsym (A, B) =       z:                    √ for u ̸= 0 and
+                                                                                                                       (A + E)u = z(B + F )u
+                                                                                                                                                                                                                                                                (3)
+                                                                                                 ϵ
+                                                                                                                       E, F Hermitian with ||E||22 + ||F ||22 ≤ ϵ
+-->
+<p>
+
+\begin{equation}
+\Lambda _{\epsilon }^{\text {sym}}(A,B) = \left \{z : \begin{array}{l} (A+E)u = z(B+F)u \; \; \text {for} \; \; u \neq 0 \; \; \text {and} \\ E,F \; \text {Hermitian with} \; \sqrt {||E||_2^2 + ||F||_2^2} \leq
+\epsilon \\ \end {array} \right \}
+\end{equation}
+
+</p>
+<p>
+under random perturbations that are either diagonal or sampled from the Gaussian Unitary Ensemble (GUE). The diagonal case builds on work of Minami [8] and implies a remarkably simple path to structured shattering for (Hermitian) banded
+matrices. The GUE case, meanwhile, leverages recent results of Aizenman et al. [1]. In both settings, the key insight is a bound on the probability that a perturbed Hermitian matrix has a certain number of eigenvalues in a given interval of the real
+axis.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> Next, we demonstrate that (inverse-free) iterative methods for computing spectral projectors of \((A,B)\) – i.e., projectors onto deflating subspaces corresponding to sets of eigenvalues, which are the key to the
+recursive splits of divide-and-conquer – can be optimized for fast convergence on problems with real eigenvalues [4]. This is the primary advantage we gain access to by preserving definiteness (and itself generalizes work of Nakatsukasa et al. [10]).
+</p>
+</li>
+</ul>
+
+<p>
+Combining points one and two yields a specialized version of pseudospectral divide-and-conquer that is significantly more eﬀicient on definite inputs. Ongoing work seeks high performance implementations of both standard pseudospectral
+divide-and-conquer and this specialization. Accordingly, and in parallel with broader efforts to deploy randomized algorithms in numerical linear algebra [9], our work represents an important step towards bringing fast, randomized diagonalization to
+practice.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;Aizenman, R.&nbsp;Peled, J.&nbsp;Schenker, M.&nbsp;Shamis, and S.&nbsp;Sodin. Matrix regularizing effects of Gaussian perturbations. <i>Communications in Contemporary
+Mathematics</i>, 19(03):1750028, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> G.&nbsp;Ballard, J.&nbsp;Demmel, O.&nbsp;Holtz, and O.&nbsp;Schwartz. Minimizing Communication in Numerical Linear Algebra. <i>SIAM Journal on Matrix Analysis and Applications</i>,
+32(3):866–901, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.&nbsp;Banks, J.&nbsp;Garza-Vargas, A.&nbsp;Kulkarni, and N.&nbsp;Srivastava. Pseudospectral Shattering, the Sign Function, and Diagonalization in Nearly Matrix Multiplication Time.
+<i>Foundations of Computational Mathematics</i>, 23:1959–2047, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.&nbsp;Demmel, I.&nbsp;Dumitriu, and R.&nbsp;Schneider. Fast and Inverse-Free Algorithms for Deflating Subspaces. arXiv:2310.00193, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> J.&nbsp;Demmel, I.&nbsp;Dumitriu, and R.&nbsp;Schneider. Generalized Pseudospectral Shattering and Inverse-Free Matrix Pencil Diagonalization. <i>Foundations of Computational
+Mathematics</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> B.&nbsp;Ford and G.&nbsp;Hall. The generalized eigenvalue problem in quantum chemistry. <i>Computer Physics Communications</i>, 8(5):337–348, 1974.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> O.&nbsp;Mangasarian and E.&nbsp;Wild. Multisurface proximal support vector machine classification via generalized eigenvalues. <i>IEEE Transactions on Pattern Analysis and Machine
+Intelligence</i>, 28(1):69–74, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> N.&nbsp;Minami. Local fluctuation of the spectrum of a multidimensional Anderson tight binding model. <i>Communications in Mathematical Physics</i>, 177(3):709–725, 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> R.&nbsp;Murray, J.&nbsp;Demmel, M.&nbsp;W. Mahoney, N.&nbsp;B. Erichson, M.&nbsp;Melnichenko, O.&nbsp;A. Malik, L.&nbsp;Grigori, P.&nbsp;Luszczek, M.&nbsp;Derezinski, M.&nbsp;E.
+Lopes, T.&nbsp;Liang, H.&nbsp;Luo, and J.&nbsp;Dongarra. Randomized Numerical Linear Algebra: A Perspective on the Field with an Eye to Software. Technical Report UCB/EECS-2023-19, EECS Department, University of California, Berkeley,
+Feb 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Y.&nbsp;Nakatsukasa, Z.&nbsp;Bai, and F.&nbsp;Gygi. Optimizing Halley’s Iteration for Computing the Matrix Polar Decomposition. <i>SIAM Journal on Matrix Analysis and Applications</i>,
+31(5):2700–2720, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> D.&nbsp;A. Spielman and S.-H. Teng. Smoothed analysis of algorithms: Why the simplex algorithm usually takes polynomial time. <i>Journal of the ACM (JACM)</i>, 51(3):385–463, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> G.&nbsp;W. Stewart. Perturbation bounds for the definite generalized eigenvalue problem. <i>Linear Algebra and its Applications</i>, 23:69–85, 1979.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

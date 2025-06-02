@@ -1,0 +1,673 @@
+---
+layout: abstract
+absnum: 189
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\def \hot #1{\textcolor {red}{#1}}\)
+
+\(\def \cool #1{\textcolor {blue}{#1}}\)
+
+\(\newcommand {\bb }[1]{\mathbb {#1}}\)
+
+\(\newcommand {\mbf }[1]{\mathbf {#1}}\)
+
+\(\newcommand {\tbf }[1]{\textbf {#1}}\)
+
+\(\newcommand {\mc }[1]{\mathcal {#1}}\)
+
+\(\newcommand {\bmat }[1]{\begin {bmatrix}#1\end {bmatrix}}\)
+
+\(\newcommand {\sbmat }[1]{\bigl [ \begin {smallmatrix}#1\end {smallmatrix} \bigr ]}\)
+
+\(\newcommand {\orth }{\textup {\texttt {orth}}}\)
+
+\(\newcommand {\range }{\textup {\texttt {range}}}\)
+
+\(\newcommand {\MATLAB }{\textsc {Matlab}\xspace }\)
+
+\(\DeclareMathOperator {\rank }{rank}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Leveraging Numerical Linear Algebra for Robust Learning of Optimal \(\mathcal H_2\) models from time-domain data
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Michael S. Ackermann</span>, Serkan Gugercin
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We investigate the optimal \(\mathcal {H}_2\) approximation of a discrete-time, single-input single-output system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                       x[k + 1] = Ax[k] + bu[k]
+                                                                                     with transfer function            H(z) = c⊤ (zI − A)−1 b,                                             (1)--><a id="eq:LinSysAndTransferFunction"></a><!--
+                                                           y[k] = c⊤ x[k]
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{aligned} \mbf x[k+1] &amp;= \mbf A\mbf x[k] + \mbf bu[k]\\ y[k] &amp;= \mbf c^{\top }\mbf x[k] \end {aligned} ~~~~~~\mbox {with~transfer~function}~~~~~~H(z) = \mbf c^{\top }(z\mbf I-\mbf A)^{-1}\mbf b,
+\label {eq:LinSysAndTransferFunction}
+\end{equation}
+
+</p>
+
+<p>
+where \(\mbf x[k] \in \bb R^{n}\), \(u[k] \in \bb R\), and \(y[k] \in \bb R\) are, respectively, the states, input, and output at time \(k\); \(\mbf A \in \bb R^{n \times n},\mbf b \in \bb R^n,\) and \(\mbf c \in \bb R^n\). Even
+though we explicitly write the state-space matrices in&nbsp;<span class="textup">(<a href="paper.html#eq:LinSysAndTransferFunction">1</a>)</span>, in this work, we will <em>never</em> assume access to the system matrices, system state,
+or evaluations of the transfer function, but only to <em>time-domain input-output data</em>
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                             U = [u[0] . . . u[T ]]⊤ ∈ RT +1       and Y = [y[0] . . . y[T ]]⊤ ∈ RT +1 .                               (2)--><a id="eq:TimeDomainData"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:TimeDomainData} \bb U = [u[0]\,\ldots \,u[T]]^{\top }\in \bb R^{T+1}\quad \text {and}\quad \bb Y = [y[0]\,\ldots \,y[T]]^{\top }\in \bb R^{T+1}.
+\end{equation}
+
+</p>
+
+<p>
+Given the input/output data&nbsp;<span class="textup">(<a href="paper.html#eq:TimeDomainData">2</a>)</span>, we seek to construct a data-driven reduced-order model (DDROM)
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                xr [k + 1] = Ar xr [k] + br u[k]
+                                                                                   with transfer function         Hr (z) = c⊤
+                                                                                                                            r (zIr − Ar )
+                                                                                                                                          −1
+                                                                                                                                             br ,                                     (3)--><a id="eq:ReducedSysAndTransferFunction"></a><!--
+                                                    yr [k] = c⊤
+                                                              r xr [k]
+
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{aligned} \mbf x_r[k+1] &amp;= \mbf A_r\mbf x_r[k] + \mbf b_ru[k]\\ y_r[k] &amp;= \mbf c_r^{\top }\mbf x_r[k] \end {aligned} ~~~~~~\mbox {with~transfer~function}~~~~~~H_r(z) = \mbf c_r^{\top }(z\mbf I_r-\mbf
+A_r)^{-1}\mbf b_r, \label {eq:ReducedSysAndTransferFunction}
+\end{equation}
+
+</p>
+
+<p>
+where \(\mbf x_r[k] \in \bb R^r\) is the reduced state, \(y_r[k]\) is the reduced output, and \(\mbf A_r \in \bb R^{r \times r},\mbf b_r \in \bb R^r,\) and \(\mbf c_r \in \bb R^r\) with \(r \ll n\). Specifically, we would like the
+DDROM&nbsp;<span class="textup">(<a href="paper.html#eq:ReducedSysAndTransferFunction">3</a>)</span> to minimize the \(\mathcal {H}_2\) distance
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                  Z π
+                                                                                                                              1
+                                                                                                      ∥H − Hr ||2H2 =                   |H(eiω ) − Hr (eiω )|2 dω.                                             (4)--><a id="eq:H2Error"></a><!--
+                                                                                                                             2π    −π
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:H2Error} \| H - H_r ||^2_{\mathcal {H}_2} = \frac {1}{2\pi }\int _{-\pi }^{\pi } |H(e^{\mbf i \omega }) - H_r(e^{\mbf i \omega })|^2 d\omega .
+\end{equation}
+
+</p>
+
+<p>
+The optimal \(\mc H_2\) reduced order modeling problem is of interest because the \(\mc H_2\) error&nbsp;<span class="textup">(<a href="paper.html#eq:H2Error">4</a>)</span> provides a bound on the output error for finite energy inputs
+[4], more specifically,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                                 ∥y − yr ∥L∞ ≤ ∥H − Hr ∥H2 ∥u∥L2 .                                                          (5)--><a id="eq:h2Errbound"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:h2Errbound} \| y - y_r\|_{{\mc L}_{\infty }} \leq \|H - H_r \|_{\mathcal H_2} \| u\|_{{\mc L}_{2}}.
+\end{equation}
+
+</p>
+
+<p>
+The Realization independent Iterative Rational Krylov Algorithm (TF-IRKA) [5] constructs \(\mc H_2\) optimal DDROMs using only samples of the transfer function \(H(\sigma )\) and \(H&apos;(\sigma )\) without explicit access to the
+underlying dynamics. However, TF-IRKA requires repeated evaluations of \(H(z)\) and \(H&apos;(z)\) at a priori unknown points outside the unit disc, i.e., \(|\sigma | &gt; 1\). In some settings, one cannot actively re-sample \(H(z)\), but is
+only provided input-output time-domain data as in&nbsp;<span class="textup">(<a href="paper.html#eq:TimeDomainData">2</a>)</span>.
+</p>
+
+<p>
+In a recent work by Burohman et al. [8], a new method to calculate transfer function evaluations from time-domain data was presented. This method takes the form of a linear system relating the transfer function value \(H(\sigma )\) to the time
+domain data \((\bb U,\bb Y)\):
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                                                     
+                                                                                                                Hn (U)       0             ξ       γn (σ)
+                                                                                                                                                =           ,                                               (6)--><a id="eq:calcM0Orig"></a><!--
+                                                                                                                Hn (Y)     −γn (σ)        H(σ)       0
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{bmatrix}\bb H_n(\bb U)&amp;\mbf 0\\\bb H_n(\bb Y)&amp;-\gamma _n(\sigma )\end {bmatrix} \begin{bmatrix}\xi \\H(\sigma )\end {bmatrix} = \begin{bmatrix}\gamma _n(\sigma )\\\mbf 0\end {bmatrix}, \label
+{eq:calcM0Orig}
+\end{equation}
+
+</p>
+
+<p>
+where
+</p>
+
+<p>
+\[\bb H_n(\bb U) = \begin {bmatrix} u[0]&amp;\ldots &amp;u[{T-n}]\\ \vdots &amp;\ddots &amp; \vdots \\ u[n] &amp; \ldots &amp; u[T] \end {bmatrix} \in \bb R^{(n+1) \times (T-n + 1)} \quad \text {and} \quad \gamma
+_n(\sigma ) = \bmat {1\\\sigma \\ \vdots \\ \sigma ^n} \in \bb C^{n+1}.\]
+</p>
+
+<p>
+A similar linear system also relates \(H&apos;(\sigma )\) to the time-domain data \((\bb U,\bb Y)\). While in exact arithmetic&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span> enables recovery of
+\(H(\sigma )\) from time domain data&nbsp;<span class="textup">(<a href="paper.html#eq:TimeDomainData">2</a>)</span>, the numerics of the problem are much more subtle. In particular, the stacked Hankel matrices are expected to be
+extremely ill-conditioned [3, 6, 7], and the presence of \(\sigma ^n\) in \(\gamma _n(\sigma )\) could lead to overflow for large \(n\) and \(|\sigma | &gt; 1\). It is these numerical linear algebra considerations that we cover in this talk.
+</p>
+
+<p>
+Consider the classical method to solve&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span> via the singular value decomposition of the coeﬀicient matrix in&nbsp;<span class="textup">(<a
+href="paper.html#eq:calcM0Orig">6</a>)</span>
+</p>
+
+<p>
+\[\widehat {\mbf U} \widehat {\Sigma } \widehat {\mbf V}^{\top } = \begin {bmatrix}\bb H_n(\bb U)&amp;\mbf 0\\\bb H_n(\bb Y)&amp;-\gamma _n(\sigma )\end {bmatrix}.\]
+</p>
+
+<p>
+We may then solve&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span> by computing
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                             
+                                                                                                                        ξ      bΣ     b ⊤ γn (σ) .
+                                                                                                                                 b −1 U
+                                                                                                                              =V                                                                           (7)--><a id="eq:SVDSolution"></a><!--
+                                                                                                                       H(σ)                 0
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:SVDSolution} \begin{bmatrix}\xi \\H(\sigma )\end {bmatrix} = \widehat {\mbf V}\widehat {\Sigma }^{-1}\widehat {\mbf U}^{\top } \begin{bmatrix}\gamma _n(\sigma )\\\mbf 0\end {bmatrix}.
+\end{equation}
+
+</p>
+
+<p>
+If the solution is computed as in&nbsp;<span class="textup">(<a href="paper.html#eq:SVDSolution">7</a>)</span>, we expect the ill-conditioning present in the coeﬀicient matrix (and reflected in the singular values \(\widehat {\Sigma }\))
+to negatively affect the solution accuracy, especially if the data in \((\bb U,\bb Y)\) are noisy.
+</p>
+
+<p>
+Our first contribution&nbsp;[1] makes use of the fact that we do not need to solve for the whole vector in the linear system&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span>; indeed the information in \(\xi \) is
+not used at all; we only require the last entry of the solution vector to recover \(H(\sigma )\). This allows us to replace all but the last column in the coeﬀicient matrix of&nbsp;<span class="textup">(<a
+href="paper.html#eq:calcM0Orig">6</a>)</span> by an orthonormal basis for their range and still recover the same last component of the solution vector without needing to invert any singular values.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-5"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="thm:OrthogonalBasisSubstitution"></a> Assume access to the data&nbsp;<span
+class="textup">(<a href="paper.html#eq:TimeDomainData">2</a>)</span> and define
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                                                               "            #!
+                                                                                                                                   Hn (U)
+                                                                                                                U = orth                           .                                                                                           (8)
+                                                                                                                                   Hn (Y)
+
+-->
+
+<p>
+
+
+\begin{equation}
+\mbf U = \orth \left (\bmat { \bb H_n(\bb U)\\ \bb H_n(\bb Y) }\right ).
+\end{equation}
+
+
+</p>
+
+<p>
+Then, the solution to the new linear system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                        "                 #"          #       "            #
+                                                                                                                   0            ξˆ                γn (σ)
+                                                                                                            U                             =                                                              (9)--><a id="eq:calcM0Orth"></a><!--
+                                                                                                                −γn (σ)        H(σ)                    0
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:calcM0Orth} \bmat { \multirow {2}{*}{\ensuremath {\mbf U}} &amp; \mbf 0\\ &amp; -\gamma _n(\sigma ) } \begin{bmatrix}\hat \xi \\H(\sigma )\end {bmatrix} = \begin{bmatrix}\gamma _n(\sigma )\\\mbf 0\end
+{bmatrix}
+\end{equation}
+
+
+</p>
+
+<p>
+has the same last component as the original linear system&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span>.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Therefore, the highly ill-conditioned stacked Hankel matrices may be replaced by an orthonormal basis for their range without changing the last component of the solution vector. Note that this is different than the solution formula&nbsp;<span
+class="textup">(<a href="paper.html#eq:SVDSolution">7</a>)</span> where the whole vector is constructed. While theoretically equivalent, Theorem&nbsp;<a href="paper.html#thm:OrthogonalBasisSubstitution">1</a> does not require
+inverting (small/any) singular values as solving&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span> via&nbsp;<span class="textup">(<a href="paper.html#eq:SVDSolution">7</a>)</span> requires. The effect
+of&nbsp;Theorem&nbsp;<a href="paper.html#thm:OrthogonalBasisSubstitution">1</a> is quite dramatic, in some examples reducing the condition number of the coeﬀicient matrix from \(10^{16}\) to \(10^1\). Another advantage of
+Theorem&nbsp;<a href="paper.html#thm:OrthogonalBasisSubstitution">1</a> is that when one must recover \(H(\sigma _i)\) for many different \(\sigma _i\) (as is required for \(\mc H_2\) optimality), the orthonormal basis \(\mbf U\) may
+be precomputed once and recycled for many transfer function evaluations, reducing the online runtime from \(\mc O(n^3)\) to \(\mc O(n^2)\).
+</p>
+
+<p>
+While&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orth">9</a>)</span> offers great conditioning improvements over&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orig">6</a>)</span> when \(|\sigma | =
+1\), the presence of \(\sigma ^n\) in \(\gamma _n(\sigma )\) causes the coeﬀicient matrix in&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orth">9</a>)</span> to be badly scaled when \(|\sigma | &gt; 1\). As we seek to
+construct \(\mc H_2\) optimal reduced models, recovering \(H(\sigma )\) where \(|\sigma | &gt; 1\) is required. Exploration of this issue leads to the problem of finding eigenpairs of a rank-one update to an orthogonal projection
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{9}\)</span>
+
+<!--
+
+
+                                                                                                                       QQH + zzH                                                              (10)--><a id="eq:Rank1UpdateOrthProj"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Rank1UpdateOrthProj} \mbf Q\mbf Q^H + \mbf z\mbf z^H
+\end{equation}
+
+</p>
+
+<p>
+where \(\mbf Q \in \bb C^{m\times n}\) is subunitary and \(\mbf z \in \bb C^m\) is arbitrary. In our work [2], we give explicit formulas for the eigenvectors and eigenvalues of&nbsp;<span class="textup">(<a
+href="paper.html#eq:Rank1UpdateOrthProj">10</a>)</span>.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-6"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2</span></span>. </span> <a id="thm:Eigenpairs"></a> Let \(\mbf Q \in \bb C^{m \times n}\) with \(m&gt;n\) be subunitary
+and \(\mbf z \in \bb C^m\). Let \(\mbf u = \mbf Q \mbf Q^H\mbf z\) and \(\mbf v = (\mbf I - \mbf Q \mbf Q^H)\mbf z\). Assume \(\|\mbf v\| \neq 0\) and \(\|\mbf u\| \neq 0\). Then the extreme nonzero eigenvalues of \(\mbf
+Q\mbf Q^H + \mbf z\mbf z^H\) are
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{10}\)</span>
+
+<!--
+
+
+                                                                                                        1           p                         
+                                                                                                   λ=      1 + ∥z∥2 ± 1 + ∥z∥4 + 2∥z∥2 − 4∥v∥2                                                                (11)--><a id="eq:eigUUhxxh"></a><!--
+                                                                                                        2
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:eigUUhxxh} \lambda = \frac {1}{2}\left (1+ \|\mbf z\|^2 \pm \sqrt {1+\|\mbf z\|^4+2\|\mbf z\|^2-4\|\mathbf v\|^2}\right )
+\end{equation}
+
+
+</p>
+
+<p>
+with associated eigenvectors
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{11}\)</span>
+
+<!--
+
+
+                                                                                           1                    p                               
+                                                                                              2
+                                                                                                1 − ∥v∥2 + ∥u∥2 ± (∥v∥2 − ∥u∥2 − 1)2 + 4∥u∥2 ∥v∥2 u + v.                                                                                           (12)
+                                                                                         2∥u∥
+
+-->
+
+<p>
+
+
+\begin{equation}
+\frac {1}{2\|\mathbf u\|^2}\left (1-\|\mathbf v\|^2+\|\mathbf u\|^2\pm \sqrt {(\|\mathbf v\|^2-\|\mathbf u\|^2-1)^2+4\|\mathbf u\|^2\|\mathbf v\|^2}\right )\mbf u + \mbf v.
+\end{equation}
+
+
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We remark that the expression for the smallest nonzero eigenvalue of \(\mbf Q \mbf Q^* + \mbf z \mbf z^*\) appears similar to the lower bound for the smallest eigenvalue of a perturbed Hermitian matrix found in [9]. While the expressions are
+similar, we provide an <em>exact</em> expression for the updated extreme nonzero eigenvalues and associated eigenvectors under the additional assumption that the unperturbed matrix is an orthogonal projection.
+</p>
+
+<p>
+Clearly, Theorem&nbsp;<a href="paper.html#thm:Eigenpairs">2</a> also gives the condition number of the matrix \(\bmat {\mbf Q &amp; \mbf z}\), which gives us a formula for the condition number of the coeﬀicient matrix in&nbsp;<span
+class="textup">(<a href="paper.html#eq:calcM0Orth">9</a>)</span>. Expressing this condition number formula in terms of only \(\|\mbf z\|\) allows us to prove that normalizing \(\mbf z\) in&nbsp;<span class="textup">(<a
+href="paper.html#eq:calcM0Orth">9</a>)</span> is the optimal scaling for&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orth">9</a>)</span>. This optimal scaling is extremely effective at further reducing the condition
+number of&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orth">9</a>)</span> and opens the door for further analysis.
+</p>
+
+<p>
+Results of this analysis include a connection between the underlying dynamical system&nbsp;<span class="textup">(<a href="paper.html#eq:LinSysAndTransferFunction">1</a>)</span> that produced the data&nbsp;<span
+class="textup">(<a href="paper.html#eq:TimeDomainData">2</a>)</span> and the condition number of the coeﬀicient matrix in&nbsp;<span class="textup">(<a href="paper.html#eq:calcM0Orth">9</a>)</span>. Specifically, we show that
+conditioning is worse when the relative derivative \(|H&apos;(\sigma )/H(\sigma )|\) is large, a link that is not unexpected from the definition of relative condition number for functions. This leads to a method for preventing overflow in initial
+computation of \(\gamma _n(\sigma )\).
+</p>
+
+<p>
+We will expand upon these contributions in the talk, and in addition will showcase the eﬀicacy of our final algorithm on benchmark examples. Comparisons with the TF-IRKA algorithm [5] show that obtaining the data \(H(\sigma )\) from time
+domain data \((\bb U,\bb Y)\) does not degrade the approximation quality. Also included in these examples will be a demonstration that we can construct \(\mc H_2\) optimal DDROMs from time-domain data obtained from a black-box PDE
+solver, an exciting indication that we may not require data explicitly obtained from a discrete-time LTI system as in&nbsp;<span class="textup">(<a href="paper.html#eq:LinSysAndTransferFunction">1</a>)</span>.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-7">References</h4>
+<a id="paper-autopage-7"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;S. Ackermann and S.&nbsp;Gugercin. Frequency-based reduced models from purely time-domain data via data informativity. <i>arXiv:2311.05012</i>, Jan. 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;S. Ackermann and S.&nbsp;Gugercin. Time-domain iterative rational Krylov method. <i>arXiv:2407.12670</i>, July 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> S.&nbsp;Al-Homidan, M.&nbsp;M. Alshahrani, C.&nbsp;G. Petra, and F.&nbsp;A. Potra. Minimal condition number for positive definite Hankel matrices using semidefinite programming. <i>Linear
+Algebra and its Applications</i>, 433(6):1101–1109, Nov. 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A.&nbsp;Antoulas, C.&nbsp;Beattie, and S.&nbsp;Gügercin. <i>Interpolary Methods for Model Reduction</i>. Computational Science and Engineering. SIAM, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> C.&nbsp;Beattie and S.&nbsp;Gugercin. Realization-independent \(H_2\)-approximation. In <i>2012 IEEE 51st IEEE Conference on Decision and Control (CDC)</i>, pages 4953–4958, Maui, HI,
+USA, Dec. 2012. IEEE.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> B.&nbsp;Beckermann. The condition number of real Vandermonde, Krylov and positive definite Hankel matrices. <i>Numerische Mathematik</i>, 85(4):553–577, June 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> B.&nbsp;Beckermann and A.&nbsp;Townsend. Bounds on the singular values of matrices with displacement structure. <i>SIAM Review</i>, 61(2):319–344, Jan. 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> A.&nbsp;M. Burohman, B.&nbsp;Besselink, J.&nbsp;M.&nbsp;A. Scherpen, and M.&nbsp;K. Camlibel. From data to reduced-order models via moment matching. <i>arXiv:2011.00150</i>, Oct. 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> I.&nbsp;C.&nbsp;F. Ipsen and B.&nbsp;Nadler. Refined Perturbation Bounds for Eigenvalues of Hermitian and Non-Hermitian Matrices. <i>SIAM Journal on Matrix Analysis and Applications</i>,
+31(1):40–53, Jan. 2009.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

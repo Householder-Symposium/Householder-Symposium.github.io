@@ -1,0 +1,285 @@
+---
+layout: abstract
+absnum: 150
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Accelerating Operator Sinkhorn Iteration with Overrelaxation
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">André Uschmajew</span>, Tasuku Soma
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In <em>operator scaling</em>, we are given matrices \(A_1, \dots , A_k \in \mathbb R^{m \times n}\) and the goal is to find a joint transformation \(\bar A_i = L A_i R^\top \) by square invertible matrices \(L\) and \(R\) such that
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                           ( k                     )
+                                                                                                       ∑
+                                                                                                       k                    ∑                                 1
+                                                                                                             Āi Ā⊤
+                                                                                                                   i = L          Ai R   ⊤
+                                                                                                                                             RA⊤
+                                                                                                                                               i       L⊤ =     Im
+                                                                                                       i=1                  i=1
+                                                                                                                                                              m
+
+and
+                                                                                                                           ( k                 )
+                                                                                                       ∑
+                                                                                                       k                    ∑                                 1
+                                                                                                             Ā⊤
+                                                                                                               i Āi = R          A⊤  ⊤
+                                                                                                                                   i L LAi             R⊤ =     In ,
+                                                                                                       i=1                  i=1
+                                                                                                                                                              n
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\sum _{i=1}^k \bar A_i^{} \bar A_i^\top &amp;= L \left ( \sum _{i=1}^k A_i^{} R^\top R A_i^\top \right ) L^\top = \frac {1}{m}I_m \\ \intertext {and} \sum _{i=1}^k \bar A_i^\top \bar A_i^{} &amp;= R \left ( \sum
+_{i=1}^k A_i^\top L^\top L A_i \right ) R^\top = \frac {1}{n}I_n,
+\end{align*}
+where \(I_m\) and \(I_n\) denote identity matrices. In several respects, this problem naturally generalizes the famous matrix scaling problem, where one is given a nonnegative matrix and looks for a scaling of the columns and rows such that the
+matrix becomes doubly stochastic. While introduced by Gurvits in a quantum complexity context&nbsp;[1], operator scaling actually has found various applications, including non-commutative polynomial identity testing, computational invariant
+theory, functional analysis, scatter estimation, and signal processing.
+</p>
+
+<p>
+The <em>operator Sinkhorn iteration</em> (OSI) is an iterative algorithm for finding a solution to the scaling problem. It is based on the observation that each single condition can be easily satisfied when ignoring the other. For instance, when fixing
+\(R\), it is easy to find \(L\) in the first equation using a Cholesky decomposition of the term in brackets, and similar vice versa. Updating \(L\) and \(R\) in an alternating way yields OSI. It admits a natural interpretation as an alternating
+minimization method on cones of symmetric positive definite matrices. Indeed, substituting \(X = L^\top L\) and \(Y = R^\top R\), the operator scaling problem can be rewritten as a coupled fixed point equation
+</p>
+
+<p>
+\[ X = \frac {1}{m} \Phi (Y)^{-1}, \qquad Y = \frac {1}{n} \Phi ^*(X)^{-1} \]
+</p>
+
+<p>
+where \(\Phi (Y) = \sum _{i=1}^k A_i^{} Y A_i^\top \) \(\Phi \) is a completely positive map, and \(\Phi ^*\) is its adjoint. As it turns out, these equations are the first-order optimiality conditions for the function
+</p>
+
+<p>
+\[ f(X,Y) = \tr ( X \Phi (Y)) - \frac {1}{m} \log \det (X) - \frac {1}{n} \log \det (Y), \]
+</p>
+
+<p>
+which is known to be geodesically convex with respect to the so called aﬀine invariant metric on symmetric positive definite matrices. As a result, OSI can be interpreted as an alternating minimization method for finding the global minimum of \(f\).
+Its global convergence (under some additional conditions) is well known and can be established using nonlinear Perron–Frobenius theory, which implies that the underlying fixed point iteration is a contraction in the Hilbert metric on positive definite
+matrices. However, in certain applications the convergence rate is observed to be slow. The goal of this work is to accelerate OSI using overrelaxation.
+</p>
+
+<p>
+Conceptually, an OSI including relaxation could be an iteration of the form
+</p>
+
+<p>
+\[ X_{t+1} = \omega \frac {1}{m} \Phi (Y_t)^{-1} + (1-\omega ) X_t, \qquad Y_{t+1} = \omega \frac {1}{n} \Phi ^*(X_{t+1})^{-1} + (1-\omega ) Y_t, \]
+</p>
+
+<p>
+that is, combining old and new iterates with a relaxation parameter \(\omega &gt; 0\). While this particular version can work in certain instances, it is not well defined in general when \(\omega &gt; 1\) (which is the case of interest), since it is
+not guaranteed that positive definite matrices are produced. Among other variants, we therefore propose a more natural way of combining iterates along geodesics with respect to the Hilbert metric. For two such matrices \(X\) and \(\tilde X\), the
+geodesic connecting them is known to be \(X \#_\omega \tilde X = X^{1/2}(X^{-1/2} \tilde X X^{-1/2})^\omega X^{1/2}\) with \(\omega \ge 0\). Importantly, here \(\omega \) can be larger than one. By replacing the above aﬀine linear
+combinations with this operation, we obtain a geodesic version of overrelaxation. This version in fact is a natural generalization of the overrelaxation methods proposed in&nbsp;[4] and&nbsp;[2] for the matrix Sinkhorn iteration based on
+log-coordinates.
+</p>
+
+<p>
+The mathematical contributions of this work include a rigorous local convergence analysis for the proposed overrelaxation methods based on linearization, which allows to determine the asymptotically optimal relaxation parameter \(\omega \) (which
+is larger than one) using a variant of Young’s linear SOR theorem. This analysis follows an established pattern as in&nbsp;[4, 2], but executing it for OSI requires several nontrivial steps that provide additional insight into the problem and the
+geometry of positive definite matrices. For the version based on geodesic relaxation we can establish its global convergence at least in a limited range of \(\omega \) which contains values larger than one. As for practical results, we demonstrate with
+an instance of frame scaling that OSI with overrelaxation can significantly accelerate the standard variant in certain applications.
+</p>
+
+<p>
+The talk is based on the preprint&nbsp;[3].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> L.&nbsp;Gurvits. Classical complexity and quantum entanglement. <i>J. Comput. System Sci.</i>, 69(3):448–484, 2004.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> T.&nbsp;Lehmann, M.-K. von Renesse, A.&nbsp;Sambale, and A.&nbsp;Uschmajew. A note on overrelaxation in the Sinkhorn algorithm. <i>Optim. Lett.</i>, 16(8):2209–2220, 2022.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> T.&nbsp;Soma, A.&nbsp;Uschmajew. Accelerating operator Sinkhorn iteration with overrelaxation. <i>arXiv:2410.14104</i>, 2024.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A.&nbsp;Thibault, L.&nbsp;Chizat, C.&nbsp;Dossal, and N.&nbsp;Papadakis. Overrelaxed Sinkhorn-Knopp algorithm for regularized optimal transport. <i>Algorithms (Basel)</i>, 14(5):Paper No.
+143, 16, 2021.
+</p>
+</li>
+</ul>
+
+{% endraw %}

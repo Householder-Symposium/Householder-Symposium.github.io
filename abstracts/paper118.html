@@ -1,0 +1,317 @@
+---
+layout: abstract
+absnum: 118
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized Householder-Cholesky QR Factorization with Multisketching
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Andrew J. Higgins</span>, Daniel B. Szyld, Erik G. Boman, Ichitaro Yamazaki
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Computing the QR factorization of tall-and-skinny matrices is a critical component of many scientific and engineering applications, including the solution of least squares problems, block orthogonalization kernels for solving linear systems and
+eigenvalue problems within block or \(s\)-step Krylov methods, dimensionality reduction methods for data analysis like Principal Component Analysis, and many others. Two of the most popular high performance QR algorithms for tall-and-skinny
+matrices are the CholeskyQR2 and shifted CholeskyQR3 algorithms&nbsp;[3, 4], thanks to their communication-avoiding properties along with their exploitation of vendor provided highly-optimized dense linear algebra subroutines, allowing them to
+achieve high performance on rapidly evolving modern computer architectures. However, CholeskyQR2 may fail to accurately factorize a matrix \(V\) when its condition number \(\kappa (V) \gtrapprox \textbf {u}^{-1/2}\), where \(\textbf
+{u}\) is unit roundoff [12]. Shifted CholeskyQR3 is numerically stable as long as \(\kappa (V) \lessapprox \textbf {u}^{-1}\), but it requires over \(50\%\) more computational and communication cost than CholeskyQR2 [3]. Although
+TSQR&nbsp;[2] is a more stable communication-avoiding algorithm than the aforementioned Cholesky-based methods, it relies on a non-standard reduction operator, which can make it substantially slower than CholeskyQR2 in practice [4], and is
+significantly harder to implement eﬀiciently on high performance GPUs. Hence, Cholesky-based QR methods remain popular on modern architectures.
+</p>
+
+<p>
+Random sketching has become a popular dimension reduction technique in the fields of numerical linear algebra and data analysis. The central premise of random sketching is to embed a set \(\mathcal {V} \subset \mathbb {R}^n\) into a
+lower-dimensional space via some random projection \(S: \mathbb {R}^n \rightarrow \mathbb {R}^s\), with \(s \ll n\). In numerical linear algebra applications, the random sketch matrix \(S \in \mathbb {R}^{s \times n}\) is often selected
+to be an \((\varepsilon ,d,m)\) oblivious subspace embedding, i.e., for any \(m\)-dimensional subspace \(\mathcal {V} \subset \mathbb {R}^n\) and \(x \in \mathcal {V}\), there is some \(\varepsilon \in [0,1)\) such that
+</p>
+
+<p>
+\[\sqrt {1-\varepsilon }~\|x\|_2 \leq \|Sx\|_2 \leq \sqrt {1+\varepsilon }~\|x\|_2,\]
+</p>
+
+<p>
+with probability at least \(1-d\) [8, 9]. Such \((\varepsilon ,d,m)\) oblivious subspace embeddings \(S\) are attractive in numerical linear algebra, because if one chooses the subspace \(\mathcal {V} \subset \mathbb {R}^n\) to be the column
+space of a matrix \(V \in \mathbb {R}^{n \times m}\), the embeddings can be shown to approximately preserve singular values,
+</p>
+
+<p>
+\[(1+\varepsilon )^{-1/2}~\sigma _{min}(SV) \leq \sigma _{min}(V) \leq \sigma _{max}(V) \leq (1-\varepsilon )^{-1/2}~\sigma _{max}(SV),\]
+</p>
+
+<p>
+and therefore approximately preserve condition numbers,
+</p>
+
+<p>
+\[\kappa (V) \leq \sqrt {\frac {1+\varepsilon }{1-\varepsilon }}~\kappa (SV),\]
+</p>
+
+<p>
+with probability at least \(1-d\). In the context of QR factorizations, one can factorize the small sketched matrix \(QR = SV\), and use the triangular factor \(R\) as a preconditioner for the large unsketched matrix \(V\), which is effective because
+</p>
+
+<p>
+\[\kappa (VR^{-1}) \leq \sqrt {\frac {1+\varepsilon }{1-\varepsilon }}~\kappa (SVR^{-1}) = \sqrt {\frac {1+\varepsilon }{1-\varepsilon }} = O(1),\]
+</p>
+
+<p>
+for \(\varepsilon \) suﬀiciently below \(1\). This approach is known as the <em>sketch-and-precondition</em> framework [7].
+</p>
+
+<p>
+In this talk, we present the results from our recent work [5], which analyzes a randomized tall-skinny QR algorithm called randomized Householder-Cholesky QR (<kbd>rand_cholQR</kbd>). The algorithm uses the sketch-and-precondition framework
+with Householder QR as a preprocessing step before following up with a pass of CholeskyQR to fully orthogonalize the preconditioned matrix with little computational and communication cost. In order to reduce the cost of the computations even
+further, we propose to use “multisketching,” i.e., the use of two consecutive random sketch matrices, within the sketch-and-precondition framework. Our approach is general in the sense that our analysis applies to any two oblivious subspace
+embedding sketching matrices, but is specifically motivated by the use of a large sparse sketch followed by a smaller dense sketch, such as a Gaussian or Radamacher sketch [1], as this particular strategy significantly reduces the complexity of applying
+the sketch operator. Our analysis applies in particular to Count-Gauss (one application of CountSketch followed by a Gaussian sketch), as described in [6, 10, 11].
+</p>
+
+<p>
+We prove that with high probability, the orthogonality error of <kbd>rand_cholQR</kbd> is on the order of unit roundoff for any numerically full-rank matrix \(V\) (i.e., \(\kappa (V) \lessapprox \textbf {u}^{-1}\)) and hence it is as stable as
+shifted CholeskyQR3 and it is significantly more numerically stable than CholeskyQR2. Our numerical experiments ilustrate the theoretical results and suggest that <kbd>rand_cholQR</kbd> often succeeds for numerically rank-deficient problems as
+well, unlike either CholeskyQR2 or shifted CholeskyQR3. In addition, the <kbd>rand_cholQR</kbd> algorithm may be implemented using the same basic linear algebra kernels as CholeskyQR2. Therefore, it is simple to implement and has the same
+communication-avoiding properties. We perform a computational study on a state-of-the-art GPU to demonstrate that <kbd>rand_cholQR</kbd> can perform up to \(4\%\) faster than CholeskyQR2 and \(56.6\%\) faster than shifted CholeskyQR3,
+while significantly improving the robustness of CholeskyQR2.
+</p>
+
+<p>
+In summary, our primary contribution consists of a new error analysis of a multisketched randomized QR algorithm, proving it can be safely used for matrices of larger condition number than CholeskyQR2 can handle. Numerical experiments confirm
+and illustrate the theory. Our secondary contribution is a computational study on a state-of-the-art GPU that tangibly demonstrates that the multisketched algorithm has superior performance over the single sketch algorithms and similar
+performance to the high performance but less stable CholeskyQR2 algorithm.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Dimitris Achlioptas. Database-friendly random projections: Johnson- Lindenstrauss with binary coins. <i>Journal of Computer and System Sciences</i>, 66:671–687, 2003. Special Issue on PODS
+2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> James W. Demmel, Laura Grigori, Mark Hoemmen, and Julien Langou. Communication-optimal parallel and sequential QR and LU factorizations. <i>SIAM Journal on Scientific Computing</i>,
+34:A206–A239, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Takeshi Fukaya, Ramaseshan Kannan, Yuji Nakatsukasa, Yusaku Yamamoto, and Yuka Yanagisawa. Shifted Cholesky QR for computing the QR factorization of ill-conditioned matrices. <i>SIAM
+Journal on Scientific Computing</i>, 42:477-503, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Takeshi Fukaya, Yuji Nakatsukasa, Yuka Yanagisawa, and Yusaku Yamamoto. CholeskyQR2: A simple and communication-avoiding algorithm for computing a tall-skinny QR factorization on a
+large-scale parallel system. In <i>Proceedings of ScalA: 5th Workshop on Latest Advances in Scalable Algorithms for Large-Scale Systems</i>, pages 31-38, Los Alamitos, CA, 2014. IEEE Computer Society.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Andrew J. Higgins, Daniel B. Szyld, Erik G. Boman, and Ichitaro Yamazaki. Analysis of Randomized Householder-Cholesky QR Factorization with Multisketching, 2024. arXiv:2309.05868.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Michael Kapralov, Vamsi Potluru, and David Woodruff. How to fake multiply by a Gaussian matrix. In <i>Proceedings of The 33rd International Conference on Machine Learning</i>, volume 48,
+pages 2101–2110. Proceedings of Machine Learning Research, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Per-Gunnar Martinsson and Joel A. Tropp. Randomized numerical linear algebra: foundations and algorithms. <i>Acta Numerica</i>, 29:403–572, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Yuji Nakatsukasa and Joel A. Tropp. Fast &amp; accurate randomized algorithms for linear systems and eigenvalue problems, 2021. arXiv:2111.00113.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Tamás Sarlós. Improved approximation algorithms for large matrices via random projections. In <i>Proceedings of 47th Annual IEEE Symposium on Foundations of Computer Science (FOCS’06)</i>,
+pages 143–152, Los Alamitos, CA, 2006. IEEE Computer Society.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Aleksandros Sobczyk and Efstratios Gallopoulos. Estimating leverage scores via rank revealing methods and randomization. <i>SIAM Journal on Matrix Analysis and Applications</i>, 42:199–1228,
+2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Aleksandros Sobczyk and Efstratios Gallopoulos. pylspack: Parallel algo- rithms and data structures for sketching, column subset selection, regres- sion, and leverage scores. <i>ACM Transactions on
+Mathematical Software</i>, 48:1–27, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Yusaku Yamamoto, Yuji Nakatsukasa, Yuka Yanagisawa, and Takeshi Fukaya. Roundoff error analysis of the Cholesky QR2 algorithm. <i>Electronic Transactions on Numerical Analysis</i>,
+44:306–326, 2015.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

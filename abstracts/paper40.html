@@ -1,0 +1,303 @@
+---
+layout: abstract
+absnum: 40
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized Nyström approximation of non-negative self-adjoint operators
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">David Persson</span>, Nicolas Boullé, Daniel Kressner
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+A ubiquitous task in numerical linear algebra is to compute a low-rank approximation to a matrix \(\bm {A}\). Randomized techniques&nbsp;[8, 9, 10, 12] are becoming increasingly popular for computing cheap, yet accurate, low-rank
+approximations to matrices. Most notably, the <em>randomized singular value decomposition</em> (SVD)&nbsp;[9] has evolved into one of the primary choices, due to its simplicity, performance, and reliability. In its most basic form, the randomized
+SVD performs the approximation \(\bm {Q} \bm {Q}^* \bm {A}\approx \bm {A}\), where \(\bm {Q}\) is an orthonormal basis for the range of \(\bm {A} \bm {\Omega }\), with \(\bm {\Omega }\) being a tall and skinny random sketch matrix.
+In many applications of low-rank approximation, such as \(k\)-means clustering [13], PCA [14], and Gaussian process regression [7], it is known that \(\bm {A}\) is symmetric positive semi-definite. In this case, one usually prefers the so-called
+<em>randomized Nyström approximation</em> [8]
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                b := AΩ(Ω∗ AΩ)† Ω∗ A ≈ A,
+                                                                                                                A                                                                                                       (1)--><a id="eq:nystrom"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:nystrom} \widehat {\bm {A}} := \bm {A} \bm {\Omega }(\bm {\Omega }^* \bm {A} \bm {\Omega })^{\dagger } \bm {\Omega }^*\bm {A} \approx \bm {A},
+\end{equation}
+
+</p>
+
+<p>
+where \(\bm {\Omega }\) is, again, a random sketch matrix. This approximation has received significant attention in the literature [8, 11, 12] and, like the randomized SVD, it enjoys strong theoretical guarantees. With the same number of
+matrix-vector products, the randomized Nyström approximation is typically significantly more accurate than the randomized SVD when the matrix has rapidly decaying singular values. Additionally, the Nyström method requires only a single pass
+over the matrix, compared to two passes for the randomized SVD, enabling all matrix-vector products to be performed in parallel.
+</p>
+
+<p>
+Recently, Boullé and Townsend&nbsp;[4, 5] generalized the randomized SVD from matrices to Hilbert-Schmidt operators. Subsequent works&nbsp;[3, 6] employed this infinite-dimensional generalization of the randomized SVD to learn Green’s
+functions associated with an elliptic or parabolic partial differential equations (PDE) from a few solutions of the PDE. This approach uses hierarchical low-rank techniques and exploits the fact that Green’s functions are smooth away from the
+diagonal and therefore admit accurate off-diagonal low-rank approximations&nbsp;[1, 2]. Other applications, like Gaussian process regression and Support Vector Machines, involve integral operators that feature positive and <em>globally</em> smooth
+kernels. In turn, the operator is not only self-adjoint and positive but it also allows for directly applying low-rank approximation, without the need to resort to hierarchical techniques. Given existing results on matrices, it would be sensible to use an
+infinite-dimensional extension of the randomized Nyström approximation in such situations.
+</p>
+
+<p>
+In this work, we present and analyze an infinite-dimensional extension of the randomized Nyström approximation for computing low-rank approximations to self-adjoint, positive, trace class operators. A significant advantage of the proposed
+framework is that once a low-rank approximation of the operator is computed, one can use this approximation to compute a low-rank approximation to <em>any</em> discretization of the operator.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Mario Bebendorf. <i>Hierarchical matrices</i>. Springer, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Mario Bebendorf and Wolfgang Hackbusch. Existence of \(\mathcal {H}\)-matrix approximants to the inverse FE-matrix of elliptic operators with \(L^\infty \)-coeﬀicients. <i>Numer. Math.</i>,
+95:1–28, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Nicolas Boullé, Seick Kim, Tianyi Shi, and Alex Townsend. Learning Green’s functions associated with time-dependent partial differential equations. <i>J. Mach. Learn. Res.</i>, 23(1):9797–9830,
+2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Nicolas Boullé and Alex Townsend. A generalization of the randomized singular value decomposition. In <i>International Conference on Learning Representations</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Nicolas Boullé and Alex Townsend. Learning elliptic partial differential equations with randomized linear algebra. <i>Found. Comput. Math.</i>, 23(2):709–739, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Nicolas Boullé, Diana Halikias, and Alex Townsend. Elliptic PDE learning is provably data-eﬀicient. <i>Proc. Natl. Acad. Sci. U.S.A.</i>, 120(39):e2303904120, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Jacob Gardner, Geoff Pleiss, Kilian&nbsp;Q Weinberger, David Bindel, and Andrew&nbsp;G Wilson. GPyTorch: Blackbox matrix-matrix Gaussian process inference with GPU acceleration. In
+<i>Advances in Neural Information Processing Systems</i>, volume&nbsp;31, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Alex Gittens and Michael&nbsp;W. Mahoney. Revisiting the Nyström method for improved large-scale machine learning. <i>J. Mach. Learn. Res.</i>, 17:Paper No. 117, 65, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> N.&nbsp;Halko, P.&nbsp;G. Martinsson, and J.&nbsp;A. Tropp. Finding Structure with Randomness: Probabilistic Algorithms for Constructing Approximate Matrix Decompositions. <i>SIAM
+Rev.</i>, 53(2):217–288, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Yuji Nakatsukasa. Fast and stable randomized low-rank matrix approximation. <i>arXiv preprint arXiv:2009.11392</i>, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> David Persson and Daniel Kressner. Randomized low-rank approximation of monotone matrix functions. <i>SIAM J. Matrix Anal. Appl.</i>, 44(2):894–918, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Joel&nbsp;A Tropp, Alp Yurtsever, Madeleine Udell, and Volkan Cevher. Fixed-rank approximation of a positive-semidefinite matrix from streaming data. In <i>Advances in Neural Information
+Processing Systems</i>, volume&nbsp;30, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Shusen Wang, Alex Gittens, and Michael&nbsp;W Mahoney. Scalable kernel K-means clustering with Nyström approximation: relative-error bounds. <i>J. Mach. Learn. Res.</i>, 20(1):431–479,
+2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Kai Zhang, Ivor&nbsp;W. Tsang, and James&nbsp;T. Kwok. Improved Nyström low-rank approximation and error analysis. In <i>Proc. International Conference on Machine Learning</i>, pages
+1232–1239, 2008.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,377 @@
+---
+layout: abstract
+absnum: 42
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+On the Convergence of the Singular Value Expansion of 2D functions
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Sungwoo Jeong</span>, Alex Townsend
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In this work we study the convergence of the singular value expansion (SVE) of 2D functions (kernels). Consider a square-integrable kernel \(K:[a, b]\times [c, d]\to \mathbb {R}\), where \([a, b], [c, d]\subset \mathbb {R}\). We define
+(i) Right singular functions denoted by \(u_1,u_2,\ldots \), which are orthonormal with respect to \(L^2([a,b])\) and (ii) Left singular functions denoted by \(v_1,v_2,\ldots \), which are orthonormal with respect to \(L^2([c,d])\). These
+singular functions are defined to satisfy the relationships
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                        ∫ d                                              ∫ b
+                                                                                          σn un (x) =         K(x, y)vn (y)dy,             σn vn (y) =         K(x, y)un (x)dx.                                                                        (1)
+                                                                                                         c                                                a
+
+-->
+
+<p>
+
+\begin{equation}
+\sigma _n u_n(x) = \int _c^d K(x, y)v_n(y) dy, \hspace {1cm} \sigma _n v_n(y) = \int _a^b K(x, y) u_n(x) dx.
+\end{equation}
+
+</p>
+
+<p>
+The values \(\sigma _1\geq \sigma _2\geq \cdots &gt;0\) are called the (positive) singular values of \(K\). The SVE of \(K\) is then defined as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                ∑
+                                                                                                                                ∞
+                                                                                                                   K(x, y) =          σn un (x)vn (y).                                                                   (2)--><a id="eq:sve"></a><!--
+                                                                                                                                n=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:sve} K(x, y) = \sum _{n=1}^\infty \sigma _n u_n(x) v_n(y).
+\end{equation}
+
+</p>
+
+<p>
+Recall that the singular vectors of a matrix \(A\) is defined with relationships \(Av_n = \sigma _n u_n\), \(u_n^*A = \sigma _n v_n^*\) and the singular value decomposition (SVD) can be defined as \(A = \sum _n \sigma _n u_n v_n^*\).
+Thus, the SVE can be thought of as a continuous analogue of the SVD [1].
+</p>
+
+<p>
+Before the SVD of a matrix, several pioneers of modern functional analysis in the early 20th century figured out the existence and properties of the SVE for a general square-integrable kernel. Within these developments, Mercer [2], in 1909, showed
+that any continuous, symmetric positive definite kernel \(K:[a,b]\times [a,b]\rightarrow \mathbb {R}\) has a uniformly and absolutely converging SVE,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                  ∑
+                                                                                                                  ∞
+                                                                                                   K(x, y) =            λn un (x)un (y),    (x, y) ∈ [a, b] × [a, b],                                                                                  (3)
+                                                                                                                  n=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+K(x,y) = \sum _{n=1}^\infty \lambda _n u_n(x) u_n(y), \quad (x,y)\in [a,b]\times [a,b],
+\end{equation}
+
+</p>
+
+<p>
+which is also equivalent to its eigenfunction expansion. This is often called Mercer’s theorem. For general kernels without positive definiteness or symmetricity, the convergence property (pointwise, uniform, and absolute) of the SVE is an open
+problem.
+</p>
+
+<p>
+In this work, we first prove that the conclusion of Mercer’s theorem does not hold for general symmetric and asymmetric kernels, whenever the positive-definiteness condition is dropped. We provide novel examples which lead to the following result.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-5"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> For any \([a, b]\subset \mathbb {R}\) there are continuous symmetric indefinite kernels on
+\([a,b]\times [a,b]\) such that the SVE, equation <span class="textup">(<a href="paper.html#eq:sve">2</a>)</span>, (i) does not converge pointwise, (ii) converges pointwise but not uniformly, or (iii) converges pointwise but not absolutely.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We hope this theorem will clarify some confusion in the literature regarding the convergence of the SVE whenever a symmetric kernel is not positive definite. In practice, a symmetric indefinite kernel often possesses a pointwise converging SVE but
+we prove that such convergence is not always guaranteed. Our work provides a rigorous underpinning for kernel methods using indefinite and asymmetric kernels.
+</p>
+
+<p>
+We then prove our second main result, which is the convergence result of the SVE when a kernel is equipped with a mild regularity condition. We say a kernel \(K:[a, b]\times [c, d]\to \mathbb {R}\) is of <i>uniform bounded variation</i> if
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                    ∫ b                       ∫ d
+                                                                                                          ∂                         ∂
+                                                                                                             K(x, y)dx < V,            K(x, y)dy < V,                                                                   (4)--><a id="eq:bv"></a><!--
+                                                                                                     a    ∂x                   c    ∂y
+
+-->
+
+<p>
+
+\begin{equation}
+\int _a^b \frac {\partial }{\partial x}K(x,y)dx &lt;V, \qquad \int _c^d \frac {\partial }{\partial y}K(x,y)dy &lt;V, \label {eq:bv}
+\end{equation}
+
+</p>
+
+<p>
+holds for any fixed \(x, y\) and a uniform constant \(V&gt;0\). We remark that this is a larger class of general continuous kernels which includes, for instance, Lipschitz continuous kernels. For a continuous kernel of uniform bounded variation, we
+prove the following result using the singular value decay and a generalization of the Rademacher-Menchov theorem. (In fact, we prove that the same conclusion holds for any continuous kernel that has a singular value decay \(\sigma _n = \mathcal
+{O}(n^{-\alpha })\) with \(\alpha &gt;\frac {1}{2}\).)
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-6"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2</span></span>. </span> For any \([a, b], [c, d]\subset \mathbb {R}\), let \(K:[a,b]\times [c,d]\to \mathbb {R}\) be a
+continuous kernel of uniform bounded variation (see equation&nbsp;<span class="textup">(<a href="paper.html#eq:bv">4</a>)</span>). Then, the SVE of \(K\), equation <span class="textup">(<a
+href="paper.html#eq:sve">2</a>)</span>, converges pointwise almost everywhere, unconditionally almost everywhere, and almost uniformly.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+To prove the second theorem, we also provide a new bound on the decay of singular values, which is state in the following proposition. We use a recent result [3] on the decay of the error of truncated Legendre series approximation to prove the decay
+bound.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-7"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="prop:singularvaluebound"></a> For any \([a, b], [c, d]\subset \mathbb {R}\), a
+continuous kernel \(K:[a,b]\times [c,d]\rightarrow \mathbb {R}\) of uniform bounded variation has \(\sigma _n = \mathcal {O}(n^{-1})\) as \(n\rightarrow \infty \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Furthermore, we provide an eﬀicient numerical algorithm for computing the SVE of a given function. The algorithm is divided into two steps. In the first step, we compute a pseudo-skeleton approximation using Gaussian elimination with complete
+pivoting (GECP), which is an iterative procedure to approximate the kernel \(K(x,y)\) as a sum of rank-1 functions [4]. After we have computed a rank \(\leq R\) pseudo-skeleton approximation, \(K_R(x, y)\), in the first step, we improve it by
+performing a low-rank SVD. The SVD decomposes \(K_R(x, y)\) into a sum of outer products of orthonormal functions with singular values and gives us an accurate truncated singular value expansion of \(K\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Alex Townsend and Lloyd N Trefethen. Continuous analogues of matrix factorizations. <i>Proc. Roy. Soc. A</i>, 471(2173):20140585, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> James Mercer. XVI. Functions of positive and negative type, and their connection the theory of integral equations. <i>Philosophical Transactions of the Royal Society of London. Series A</i>,
+209(441-458):415–446, 1909.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Haiyong Wang. New error bounds for Legendre approximations of differentiable functions. <i>Journal of Fourier Analysis and Applications</i>, 29(4):42, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Alex Townsend and Lloyd N Trefethen, An extension of Chebfun to two dimensions. <i>SIAM Journal on Scientific Computing</i>, 35(6):C495–C518, 2013.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,293 @@
+---
+layout: abstract
+absnum: 105
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Preconditioned Low-Rank Riemannian Optimization for Symmetric Positive Definite Linear Matrix Equations
+</h2>
+</div>
+<div class="center">
+
+<p>
+Ivan Bioli, Daniel Kressner, <span class="underline">Leonardo Robol</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The topic of this work is the solution of multiterm linear matrix equations of the form
+</p>
+
+<p>
+\[ \mathcal L(X) := A_1 X B_1 + \ldots + A_\ell X B_{\ell } = F, \]
+</p>
+
+<p>
+under the assumption that the linear operator \(\mathcal L\) is positive definite. These equations often appear when discretizing elliptic PDEs, and in control problems. In this setting, it is often the case that \(F\) is either a low-rank matrix, or can
+be well-approximated in this way, i.e., it has fast decaying singular values. Throughout this work, we assume that \(F\) is a low-rank matrix.
+</p>
+
+<p>
+A few special cases are easy to handle, and we can prove that the low-rank structure of \(F\) is inherited by \(X\). If \(\ell = 1\), \(X\) and \(F\) have the same rank; if \(\ell = 2\) we have an elegant theory based on rational approximation that
+provides upper bounds for the singular values of \(X\) with a weak dependency on the condition number of the operator \(\mathcal L\) [2].
+</p>
+
+<p>
+When \(\ell &gt; 2\), most theoretical guarantees are lost: except for a few special cases, none of the arguments used for \(\ell = 2\) can be extended easily. Nevertheless, it can be experimentally verified that the structure is often present in
+\(X\); sometimes, this can be justified via other means (such as the regularity of the solution of the discretized PDE).
+</p>
+
+<p>
+Algorithmically, we face similar challenges: the cases \(\ell = 1\) and \(\ell = 2\) are well understood, and eﬀicient low-rank solvers are available (examples include rational and extended Krylov methods, or the Alternative Direction Implicit
+method, known as ADI). When \(\ell &gt; 2\), fewer and less appealing options are available, mainly based on Krylov solvers for \(\mathcal L\) with low-rank truncation [5]. A major issue with this class of methods is that the intermediate
+iterates often have much higher ranks than the final solution, and aggressive truncations lead to degraded convergence properties.
+</p>
+
+<p>
+We focus on the case \(\ell &gt; 2\), assuming that \(X\) is the discretization of the solution to an elliptic PDE. Assuming that \(X\) is well-approximated by a matrix of rank \(k\), the problem can be recast into the optimization problem
+</p>
+
+<p>
+\[ \text {Find } \min _{X} \Phi (X), \qquad \text {subject to } \mathrm {rank}(X) = k, \qquad \Phi (X) := \frac {1}{2}\langle \mathcal L(X), X \rangle - \langle F, X \rangle , \]
+</p>
+
+<p>
+for some moderate \(k\), where \(\langle \cdot , \cdot \rangle \) is the standard scalar product inducing the Frobenius norm. The matrices of rank \(k\) have a Riemannian manifold structure, and thus the problem can be conveniently solved
+using Riemannian optimization [1, 4]. This idea has been successfully exploited in the past to solve positive definite Lyapunov equations, which correspond to \(\ell = 2\) [6]. This strategy restricts our search to matrices of rank \(k\), and avoids
+the rank-growth phenomenon often observed in Krylov methods. The convergence theory for Riemannian optimization schemes can be used to prove convergence.
+</p>
+
+<p>
+However, a straightforward application of a vanilla Riemannian optimization method presents a major issue: when \(\mathcal L\) arises from an elliptic PDE, it is often ill-conditioned, and so is the Hessian of the objective function \(\Phi (X)\).
+This leads to poor convergence for first-order optimization schemes.
+</p>
+
+<p>
+We discuss how the idea of preconditioning can be extended to this setting, and show that one can design effective modifications to the problem that drastically improve the convergence. The key ingredient is finding a map \(\mathcal P_X\) on the
+tangent space at \(X\) which is positive definite and approximates the Hessian in a suitable sense. Then, the preconditioning can be described in two similar ways, which are only approximately equivalent:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> We may take gradients with respect to the inner product induced by \(\mathcal P_X\), instead of the canonical one; this turns the first-order method to be closer to a quasi-Newton scheme.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> Alternatively, we may use \(\mathcal P_X\) to define a non-standard metric and inner product on the Riemannian manifold, and then apply the first-order scheme in this new setup.
+</p>
+</li>
+</ul>
+
+<p>
+We discuss differences, advantages, and disadvantages of these strategies; we show that is possible to employ both at the same time at once to design preconditioners for a large class of PDE problems discretize with finite element methods.
+</p>
+
+<p>
+In the examples that we consider, the multiterm matrix equation is often obtained by non-constant diffusion coeﬀicients in 2D diffusion problems; in this setting it is natural to choose \(\mathcal P_X\) as the projection of the operator obtained
+discretizing the same equation, but with constant diffusion coeﬀicients; this typically is an operator of the same form, but with \(\ell = 2\). Hence, we consider preconditioners of the form \(\mathcal P_X = AXB\), \(\mathcal P_X = AX + XB\),
+and \(\mathcal P_X = AXB + CXD\). Applying these preconditioners in any of the sense described above require to solve an equation on the tangent space, which is low-dimensional. This is relatively easy to do in the first two cases, but it proves
+challenging in the latter, when \(A,B,C,D \neq I\). We show how to this effectively by combining the two viewpoints discussed above, and interpreting this preconditioner as a composition of the first two options.
+</p>
+
+<p>
+The proposed algorithm is competitive or faster than the state-of-the art in most cases, and in particular when the target rank \(k\) is moderate. When \(k\) is larger, solving the equations on the tangent space can become a bottleneck. For these
+cases, we propose yet another preconditioner, obtained generalizing the ADI iteration to an iteration on the tangent space of the manifold; our experiment show that it preserves the good convergence properties of the classical ADI scheme for matrix
+equations, while being much cheaper to compute than the previous approaches. A few steps of this “tangent ADI” iteration will prove to be a very good preconditioner for a large class of problems.
+</p>
+
+<p>
+Time permitting, a few extra details essential to produce a robust implementation will be discussed, such as rank-adaptivity, and the use of randomized linear algebra to effectively estimate the residual; the latter helps in detectubg possible stagnation
+due to wrong estimates for the solution rank, and is essential for deciding when to perform rank changes inside the rank-adaptive scheme.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P-A Absil, Robert Mahony, and Rodolphe Sepulchre. <i>Optimization algorithms on matrix manifolds</i>. Princeton University Press, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Bernhard Beckermann and Alex Townsend. On the singular values of matrices with displacement structure. <i>SIAM Journal on Matrix Analysis and Applications</i>, 38(4):1227–1248, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Ivan Bioli, Daniel Kressner, and Leonardo Robol. Preconditioned Low-Rank Riemannian Optimization for Symmetric Positive Definite Linear Matrix Equations. <i>arXiv preprint
+arXiv:2408.16416</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Nicolas Boumal. <i>An introduction to optimization on smooth manifolds</i>. Cambridge University Press, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Davide Palitta and Patrick Kürschner. On the convergence of Krylov methods with low-rank truncations. <i>Numerical Algorithms</i>, 88(3):1383–1417, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Bart Vandereycken and Stefan Vandewalle. A Riemannian optimization approach for computing low-rank solutions of Lyapunov equations. <i>SIAM Journal on Matrix Analysis and Applications</i>,
+31(5):2553–2579, 2010.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

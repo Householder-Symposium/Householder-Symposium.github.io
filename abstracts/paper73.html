@@ -1,0 +1,849 @@
+---
+layout: abstract
+absnum: 73
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\def \LWRbooktabscmidruleparen (#1)#2{}\)
+
+\(\newcommand {\LWRbooktabscmidrulenoparen }[1]{}\)
+
+\(\newcommand {\cmidrule }[1][]{\ifnextchar (\LWRbooktabscmidruleparen \LWRbooktabscmidrulenoparen }\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bof }{\mbox {$\mathbf {f}$}}\)
+
+\(\newcommand {\bx }{\mbox {$\mathbf {x}$}}\)
+
+\(\newcommand {\bzero }{{\bf 0}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Iterative Methods for Sylvester-like Variational Inequality Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Ning Zheng</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the solution of Sylvester-like variational inequality problem (SVIP), or linear matrix equation complementarity problem (LMECP),
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                   X ≥ 0,     W = AX + XB − F ≥ 0          and    ⟨X, W ⟩ = 0      (1)                                                   --><a id="eqn:lmecp"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eqn:lmecp} X\geq \bzero ,\quad W=AX+XB-F\geq \bzero \quad \mbox {and}\quad \langle X, W\rangle = \bzero
+\end{align}
+where \(A\in {\bf R}^{m\times m}\), \(B\in {\bf R}^{n\times n}\) and \(F\in {\bf R}^{m\times n}\) are large, sparse and structured discretization matrices from partial differential operators, and \(X\in {\bf R}^{m\times n}\) is an
+unknown matrix. Here, \(\langle X,W \rangle ={\rm Tr}(X^{\top }W)\) denotes the Frobenius inner product of two matrices, where \(X^{\top }\) denotes the transpose of the matrix \(X\). If \(B=A^{\top }\) and \(F\) is symmetric, we refer
+<span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> as the Lyapunov-like linear matrix equation complementarity problem. LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> generally
+arises from the finite discretization of free boundary problems
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                          v(x) ≥ g(x),    w(x) = Lv(x) − f (x) ≥ 0      and       (2)− g(x))w(x) = 0,
+                                                                                                                                              (v(x)                                                                     --><a id="eqn:lcppde"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eqn:lcppde} v(x)\geq g(x),\quad w(x)=\mathcal {L}v(x)-f(x)\geq 0 \quad \mbox {and}\quad (v(x)-g(x))w(x)=0,
+\end{align}
+where \(\mathcal {L}\) is a given partial differential operator, and \(x\in D\subseteq {\bf R}^n\) where \(D\) is a given domain with boundary \(\partial D\). The boundary condition of <span class="textup">(<a
+href="paper.html#eqn:lcppde">2</a>)</span> is \(v(x)=g(x),~x\in \partial D\). Well known examples of free boundary problems which can be written in the form <span class="textup">(<a href="paper.html#eqn:lcppde">2</a>)</span>
+include American option pricing, porous flow through dams, journal bearing lubrication, and elastic-plastic torsion, etc.
+</p>
+
+<p>
+The vectorization of the LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> gives a mathematically equivalent linear complementarity problem (LCP),
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                                                       x ≥ 0,    Ax − f ≥ 0      and x⊤ (Ax − f ) = 0,                   (3)                                         --><a id="eqn:lmecp-vec"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eqn:lmecp-vec} \bx \geq \bzero ,\quad \mathcal {A}\bx -\bof \geq \bzero \quad \mbox {and}\quad \bx ^{\top }(\mathcal {A}\bx -\bof )=0,
+\end{align}
+where \(\mathcal {A}=I_n\otimes A+B^{\top }\otimes I_m\in {\bf R}^{mn\times mn}\), \(\bof ={\rm vec}(F)\in {\bf R}^{mn\times 1}\) and \(\bx ={\rm vec}(X)\in {\bf R}^{mn\times 1}\). Here, the symbol \(\otimes \) denotes the
+Kronecker product, and \({\rm vec}(\cdot )\) denotes the vectorization operator that converts a matrix into a vector by stacking the columns of the matrix on top of one another. There are few numerical methods specifically designed for solving
+LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span>. Numerical methods [6, 4, 2, 3, 7] for LCP <span class="textup">(<a href="paper.html#eqn:lmecp-vec">3</a>)</span> are generally not eﬀicient for directly
+solving LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> due to the large storage and complexity.
+</p>
+
+<p>
+When the matrix \(\mathcal {A}\) arises from the finite difference discretization of elliptic and parabolic partial differential equations, it has structure that contains discretization components from different spatial derivatives. Hence, the idea of
+alternating direction implicit (ADI) method is to split the finite difference operator into separate operators, where each operator corresponds to the discretization of one-dimensional spatial derivative term, so that the solution of discretized system
+can be transformed to the alternative solutions of discretized sub-systems, which have a simpler structure that requires fewer storage and computational costs. Let \(\mathcal {A}=\mathcal {H}+\mathcal {V}\) be the matrix splitting of \(\mathcal
+{A}\), where \(\mathcal {H}=I_n\otimes A\) and \(\mathcal {V}=B^{\top }\otimes I_m\) are respectively generated from discrete central difference approximations to the particular one-dimensional equation. The Peaceman-Rachford ADI for
+LCP <span class="textup">(<a href="paper.html#eqn:lmecp-vec">3</a>)</span> proposed by Lin and Cryer [5], and the matricization of ADI is described as follows.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Peaceman-Rachford ADI for LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span>
+</p>
+</div>
+
+<a id="alg:ADI-LMECP"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Input an initial guess \(X^{(0)}\) and positive parameters \(r_k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(k=0, 1, 2, \cdots \) until convergence <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span>    <span style="width:14pt; display:inline-block;"></span>Compute \(X^{\left (k+\frac {1}{2}\right )}\) by solving the LCP subproblem
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                             {         1                        1
+                                                                                                 W (k+ 2 ) = (A +⟨rk Im )X (k+ 2 ) + X⟩(k) (B − rk In ) − F ≥ 0,
+                                                                                                       1                 1          1              (4)                                                            --><a id="eqn:ADI-LMECP-1"></a><!--
+                                                                                                 X (k+ 2 ) ≥ 0,   X (k+ 2 ) , W (k+ 2 ) = 0
+
+-->
+
+<p>
+
+\begin{align}
+\left \{ \begin{array}{ll} W^{\left (k+\frac {1}{2}\right )}=(A+r_k I_m)X^{\left (k+\frac {1}{2}\right )}+X^{(k)}(B-r_k I_n)-F \geq \bzero ,&amp; \\ X^{\left (k+\frac {1}{2}\right )}\geq \bzero ,\quad \left \langle
+X^{\left (k+\frac {1}{2}\right )}, W^{\left (k+\frac {1}{2}\right )}\right \rangle =0 &amp; \end {array} \right . \label {eqn:ADI-LMECP-1}
+\end{align}
+
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span>    <span style="width:14pt; display:inline-block;"></span>Compute \(X^{(k+1)}\) by solving the LCP subproblem
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                            {                                                       1
+                                                                                                                                             (k+ 2 )
+                                                                                                 W (k+1) = X (k+1)               ⟩ − rk Im )X (5) − F ≥ 0,
+                                                                                                               ⟨ (B + rk In ) + (A                                                                                --><a id="eqn:ADI-LMECP-2"></a><!--
+                                                                                                 X (k+1) ≥ 0,   W (k+1) , X (k+1) = 0.
+
+-->
+
+<p>
+
+\begin{align}
+\left \{ \begin{array}{ll} W^{(k+1)}=X^{(k+1)}(B+r_k I_n)+(A-r_k I_m)X^{\left (k+\frac {1}{2}\right )}-F \geq \bzero ,&amp; \\ X^{(k+1)}\geq \bzero ,\quad \left \langle W^{(k+1)}, X^{(k+1)}\right \rangle =0. &amp;
+\end {array} \right . \label {eqn:ADI-LMECP-2}
+\end{align}
+
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+First, we propose a projection method for solving LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> by transforming the matrix equation into LCP <span class="textup">(<a
+href="paper.html#eqn:lmecp-vec">3</a>)</span> with a vector form by means of the Kronecker product. We can reformulate LCP <span class="textup">(<a href="paper.html#eqn:lmecp-vec">3</a>)</span> to an equivalent fixed-point
+equation
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                  x = Proj(x − α[Ax − f ]),
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\bx ={\bf Proj}(\bx -\alpha [\mathcal {A}\bx -\bof ]),
+\end{align*}
+where \(\alpha &gt;0\) is a scalar and \({\bf Proj}(\cdot )=\max (\cdot ,0)\) denotes the orthogonal projection of vector or matrix onto nonnegative cone. The matricization form gives
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+
+<!--
+
+
+
+                                                                                                             X = Proj(X − α(AX + XB − F )).
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+X={\bf Proj}(X-\alpha (AX+XB-F)).
+\end{align*}
+
+</p>
+
+<p>
+The gradient projection method for LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> is listed in Algorithm&nbsp;<a href="paper.html#alg:projection">2</a>.
+</p>
+
+<figure id="autoid-2" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;2:&nbsp;Projection method for LMECP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span>
+</p>
+</div>
+
+<a id="alg:projection"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Input an initial guess \(X^{(0)}\) and positive parameter \(\alpha \)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(k=0, 1, 2, \cdots \) until convergence <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span>         <span style="width:14pt; display:inline-block;"></span>Compute the residual \(R^{(k)}=F-AX^{(k)}-X^{(k)}B\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span>    <span style="width:14pt; display:inline-block;"></span>Compute
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+                                                                                                                X (k+1) = Proj(X (k) + αR(k) ).                                (6)                      --><a id="eqn:projection-iteration"></a><!--
+
+
+-->
+
+<p>
+
+\begin{align}
+\label {eqn:projection-iteration} X^{(k+1)}={\bf Proj}(X^{(k)}+\alpha R^{(k)}).
+\end{align}
+
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+Next, we discuss the convergence of Peaceman-Rachford ADI algorithm Algorithm&nbsp;<a href="paper.html#alg:ADI-LMECP">1</a> for the non-Hermitian case. Unlike the symmetric case [1, 5], convergence properties for nonsymmetric situations
+cannot be established relying on the descent function of the quadratic form. Rather, as with most iterative methods for solving systems of equations, the recursive relation between two successive iterations will be utilized here. We first equivalently
+reformulate the LCP <span class="textup">(<a href="paper.html#eqn:lmecp">1</a>)</span> as an implicit fixed-point equation by variable transformation, and thus the ADI Algorithm&nbsp;<a href="paper.html#alg:ADI-LMECP">1</a> can
+be correspondingly reformulated. Then the recursive error relations are constructed based on the fixed-point equations. In addition, we consider the case when \(\mathcal {H}\) and \(\mathcal {V}\) are \(H_+\)-matrices. We study the convergence
+analysis of ADI algorithm for LMECP when \(\mathcal {H}\mathcal {V}=\mathcal {V}\mathcal {H}\) does not necessary hold.
+</p>
+
+<p>
+Denote
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+<!--
+
+
+
+                                                                                                          Lα (H) = |(αI + H + rk I)−1 (αI − H − rk I)|,
+                                                                                                          Lβ (V) = |(βI + V + rk I)−1 (βI − V − rk I)|,
+                                                                                                       Kα (H, V) = 2|(αI + H + rk I)−1 (V − rk I)|
+                                                                                                       Kβ (V, H) = 2|(βI + V + rk I)−1 (H − rk I)|
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+L_{\alpha }(\mathcal {H}) &amp;=|(\alpha I+\mathcal {H}+r_kI)^{-1}(\alpha I-\mathcal {H}-r_kI)|, \\ L_{\beta }(\mathcal {V}) &amp;=|(\beta I+\mathcal {V}+r_kI)^{-1}(\beta I-\mathcal {V}-r_kI)|, \\ K_{\alpha
+}(\mathcal {H},\mathcal {V}) &amp;=2|(\alpha I+\mathcal {H}+r_kI)^{-1}(\mathcal {V}-r_k I)| \\ K_{\beta }(\mathcal {V},\mathcal {H}) &amp;=2|(\beta I+\mathcal {V}+r_kI)^{-1}(\mathcal {H}-r_k I)|
+\end{align*}
+We have the following convergence theorem.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 1 </span></span> <a id="thm:convcondabs"></a> Peaceman-Rachford ADI algorithm converges to the unique solution for any initial vector if \(\rho (L_{\alpha }(\mathcal
+{H}))&lt;1\), \(\rho (L_{\beta }(\mathcal {V}))&lt;1\) and \(\rho (G)&lt;1\), where \(\rho (\cdot )\) denotes for the spectral radius of the matrix and
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+
+<!--
+
+
+
+                                                                                           G = [I − Lβ (V)]−1 Kβ (V, H)[I − Lα (H)]−1 Kα (H, V).
+
+
+
+-->
+
+
+
+<p>
+
+
+\begin{align*}
+G=[I-L_{\beta }(\mathcal {V})]^{-1}K_{\beta }(\mathcal {V},\mathcal {H})[I-L_{\alpha }(\mathcal {H})]^{-1}K_{\alpha }(\mathcal {H},\mathcal {V}).
+\end{align*}
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Consider the case when both \(\mathcal {H}\) and \(\mathcal {V}\) are \(H_+\)-matrices. Let \(\mathcal {H}=D_{\mathcal {H}}+B_{\mathcal {H}}\) and \(\mathcal {V}=D_{\mathcal {V}}+B_{\mathcal {V}}\), where \(D_\mathcal {H}\)
+and \(B_\mathcal {H}\) are the diagonal and off-diagonal parts of \(\mathcal {H}\), respectively, and \(D_\mathcal {V}\) and \(B_\mathcal {V}\) are the diagonal and off-diagonal parts of \(V\), respectively.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 2 </span></span> <a id="thm:convH+"></a> Peaceman-Rachford ADI algorithm converges to the unique solution for any initial vector, provided that \(\mathcal {H}\) and
+\(\mathcal {V}\) are \(H_+\)-matrices and
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+
+<!--
+
+
+
+                                                                                                      (α − rk )I − DH ≥ 0      and   DV − rk I ≤ 0,
+                                                                                                      (β − rk )I − DV ≥ 0      and   DH − rk I ≤ 0,
+
+
+
+-->
+
+
+
+<p>
+
+
+\begin{align*}
+(\alpha -r_k)I-D_\mathcal {H}\geq \bzero &amp; \quad \mbox {and}\quad D_\mathcal {V}-r_kI\leq \bzero , \\ (\beta -r_k)I-D_\mathcal {V}\geq \bzero &amp; \quad \mbox {and}\quad D_\mathcal {H}-r_kI\leq \bzero ,
+\end{align*}
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+In the following analysis, we assume that \(\mathcal {H}\) and \(\mathcal {V}\) are commute, that is to say, \(\mathcal {H}\mathcal {V}=\mathcal {V}\mathcal {H}\). Remark that for \(\mathcal {H}\) and \(\mathcal {V}\) arising from the
+finite difference discretization of a separable second-order elliptic operator in a rectangular region, it can be shown that \(\mathcal {H}\mathcal {V}=\mathcal {V}\mathcal {H}\) holds.
+</p>
+
+<p>
+Instead of taking the absolute value, we give another general convergence result based on the matrix norm as follows. Denote
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+<!--
+
+
+
+                                                                                                     δα (H) = ∥(αI + H + rk I)−1 (αI − H − rk I)∥,
+                                                                                                     δβ (V) = ∥(βI + V + rk I)−1 (βI − V − rk I)∥,
+                                                                                                     τα (H) = 2∥(αI + H + rk I)−1 (V − rk I)∥,
+                                                                                                     τβ (V) = 2∥(βI + V + rk I)−1 (H − rk I)∥,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\delta _{\alpha }(\mathcal {H}) &amp; = \|(\alpha I+\mathcal {H}+r_kI)^{-1}(\alpha I-\mathcal {H}-r_kI)\|, \\ \delta _{\beta }(\mathcal {V}) &amp; = \|(\beta I+\mathcal {V}+r_kI)^{-1}(\beta I-\mathcal {V}-r_kI)\|,
+\\ \tau _{\alpha }(\mathcal {H}) &amp; =2\|(\alpha I+\mathcal {H}+r_kI)^{-1}(\mathcal {V}-r_k I)\|, \\ \tau _{\beta }(\mathcal {V}) &amp; =2\|(\beta I+\mathcal {V}+r_kI)^{-1}(\mathcal {H}-r_k I)\|,
+\end{align*}
+where \(\|\cdot \|\) denotes for matrix norm.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 3 </span></span> <a id="thm:convcondnorm"></a> Peaceman-Rachford ADI algorithm converges to the unique solution for any initial vector if
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+
+<!--
+
+
+
+                                                                                                                                 τα (H)τβ (V)
+                                                                                          δα (H) < 1,   δβ (V) < 1   and                      (7) < 1.                                            --><a id="eqn:convcondition"></a><!--
+                                                                                                                           [1 − δα (H)][1 − δβ (V)]
+
+
+
+-->
+
+
+
+<p>
+
+
+\begin{align}
+\label {eqn:convcondition} \delta _{\alpha }(\mathcal {H})&lt;1,\quad \delta _{\beta }(\mathcal {V})&lt;1 \quad \mbox {and}\quad \frac {\tau _{\alpha }(\mathcal {H})\tau _{\beta }(\mathcal {V})}{[1-\delta _{\alpha
+}(\mathcal {H})][1-\delta _{\beta }(\mathcal {V})]}&lt;1.
+\end{align}
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Consider the case when both \(\mathcal {H}\) and \(\mathcal {V}\) are Hermitian positive definite matrices, and thus \(\mathcal {A}=\mathcal {H}+\mathcal {V}\) is Hermitian positive definite.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 4 </span></span> Suppose that \(\mathcal {H}\) and \(\mathcal {V}\) are Hermitian positive definite matrices, and \(\mathcal {H}\) and \(\mathcal {V}\) are commute. If
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+
+                                                                                                                   1
+                                                                                                            rk ≥     max(λ1 + λn , σ1 + σn ),
+                                                                                                                   2
+
+-->
+
+<p>
+
+
+\begin{equation*}
+r_k\geq \frac {1}{2}\max (\lambda _1+\lambda _n,\sigma _1+\sigma _n),
+\end{equation*}
+
+
+</p>
+
+<p>
+then Peaceman-Rachford ADI algorithm for LCP converges to the unique solution for any initial vector.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Finally, we present numerical experiments to show the convergence of proposed methods. We consider the free boundary problem arises from fractional Black-Scholes American option pricing. Assume that the asset prices \(S_1\) and \(S_2\) satisfy
+independent Lévy stochastic processes
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+
+<!--
+
+
+                                                                                                     ∂u      ∂u      ∂u     [        ]    [        ]
+                                                                                            Lu = −      + a1    + a2    − b1 −∞ Dxα u − b2 −∞ Dyβ u + ru
+                                                                                                     ∂t      ∂x      ∂y
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\mathcal {L}u=-\frac {\partial u}{\partial t}+a_1 \frac {\partial u}{\partial x}+a_2 \frac {\partial u}{\partial y}-b_1\left [ \prescript {}{-\infty }{D_x^\alpha u}\right ]-b_2\left [\prescript {}{-\infty
+}{D_y^\beta u}\right ]+r u
+\end{align*}
+where \(x=\ln S_1\) and \(y=\ln S_2\). Here, \(\prescript {}{-\infty }{D_x^\alpha u}\) and \(\prescript {}{-\infty }{D_y^\beta u}\) represents Caputo derivatives of \(u\) on \(x\) and \(y\), and \(\alpha , \beta \in (1,2)\).
+</p>
+
+<p>
+\[ \begin {array}{ll} a_1=-r-\frac {1}{2} \sigma _1^\alpha \sec \left (\frac {\alpha \pi }{2}\right ), &amp; b_1=-\frac {1}{2} \sigma _1^\alpha \sec \left (\frac {\alpha \pi }{2}\right ) \\ a_2=-r-\frac {1}{2}
+\sigma _2^\beta \sec \left (\frac {\beta \pi }{2}\right ), &amp; b_2=-\frac {1}{2} \sigma _2^\beta \sec \left (\frac {\beta \pi }{2}\right ) \end {array} \]
+</p>
+
+<p>
+\(\sigma _1, \sigma _2\) are volatilities of asset prices. By finite difference discretization of the model, we apply the projection method and ADI algorithm to solve the resulting LMECP, and the numerical results further confirm our convergence
+analysis.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-9">References</h4>
+<a id="paper-autopage-9"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> B. H. Ahn, <i>Solution of nonsymmetric linear complementarity problems by iterative methods</i>, Journal of Optimization Theory and Applications, 33 (1981), pp. 175–185.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Z.-Z. Bai, <i>Modulus-based matrix splitting iteration methods for linear complementarity problems</i>, Numerical Linear Algebra with Applications, 6 (2010), pp. 917–933.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A. Hadjidimos and M. Tzoumas, <i>Nonstationary extrapolated modulus algorithms for the solution of the linear complementarity problem</i>, Linear Algebra and Its Applications, 12 (2009), pp.
+197–210.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> N. W. Kapple and L. T. Watson, <i>Iterative algorithms for the linear complementarity problem</i>, International Journal of Computer Mathematics, 19 (1986), pp. 273–297.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y. Lin and C. W. Cryer, <i>An alternating direction implicit algorithm for the solution of linear complementarity problems arising from free boundary problems</i>, Applied Mathematics and
+Optimization, 13 (1985), pp. 1–17.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> K. G. Murty and F.-T. Yu, <i>Linear complementarity, linear and nonlinear programming</i>, volume 3, Citeseer, 1988.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> N. Zheng, K. Hayami and J.-F. Yin, <i>Modulus-type inner outer iteration methods for nonnegative constrained least squares problems</i>, SIAM Journal on Matrix Analysis and Applications, 37
+(2016), pp. 1250–1278.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

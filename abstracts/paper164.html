@@ -1,0 +1,273 @@
+---
+layout: abstract
+absnum: 164
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Parallelization of all-at-once preconditioned solvers for time-dependent PDEs
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Matthias Bolten</span>, Ryo Yoda
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Modern high performance computers provide tremendous compute power by utilizing large amounts of cores. As a consequence, traditional spatial parallelization schemes lead to a saturation of the speedup more often. This motivated the use of
+parallelization in the time diretion, as well. Various approaches exist and often two- and multilevel approaches like parareal or space-time multigrid are chosen that introduce a coarse level—or multiple coarse levels—to propagate information faster in
+time, usually in a serial manner. An alternative that is very natural from a numerical linear algebra viewpoint is to consider all-at-once systems. Consider a linear time dependent PDE:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                    ∂u(x, t)
+                                                                             = Lu(x, t) + f (x, t),                                                                 (x, t) ∈ Ω × (0, T ],
+                                                                      ∂t
+                                                                           u = g,                                                                                   (x, t) ∈ ∂Ω × (0, T ],
+                                                                     u(x, 0) = u0 (x),                                                                              x ∈ Ω.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\frac {\partial u(x,t)}{\partial t} &amp; = \mathcal {L} u(x,t) + f(x,t), &amp; &amp; (x,t) \in \Omega \times (0,T],\\ u &amp; = g, &amp; &amp; (x,t) \in \partial \Omega \times (0,T],\\ u(x,0) &amp; = u_0(x), &amp;
+&amp; x \in \Omega .
+\end{align*}
+Discretization using finite elements and denoting the mass matrix by \(M\) and the stiffness matrix by \(K\) in each time step with step width \(\tau = \frac {T}{n}\) yields
+</p>
+
+<p>
+\[ M \left ( \frac {\mathbf {u}^{(k+1)} - \mathbf {u}^{(k)}}{\tau } \right ) = K \mathbf {u}^{(k+1)} + \mathbf {f}^{(k+1)}, \]
+</p>
+
+<p>
+writing the resulting \(n\) linear systems into one finally gives
+</p>
+
+<p>
+\[ \begin {bmatrix} M - \tau K &amp; &amp; &amp; \\ -M &amp; M - \tau K &amp; &amp; \\ &amp; \ddots &amp; \ddots &amp; \\ &amp; &amp; -M &amp; M - \tau K \\ \end {bmatrix} \begin {bmatrix} \mathbf {u}^{(1)} \\
+\mathbf {u}^{(2)} \\ \vdots \\ \mathbf {u}^{(n)} \end {bmatrix} = \begin {bmatrix} \mathbf {f}^{(1)} + M \mathbf {u}_0 \\ \mathbf {f}^{(2)} \\ \vdots \\ \mathbf {f}^{(n)} \\ \end {bmatrix}. \]
+</p>
+
+<p>
+This large system can be solved iteratively using, e.g., GMRES. Further, when \(M\) and \(K\) are symmetric or can be made symmetric simultaneously and when they are not changing like in the example provided, the matrix can be symmetrized by
+applying a reordering technique allowing to use methods like MINRES. If \(M\) and \(K\) do not change over time preconditioners for block Toeplitz or block Hankel matrices can be used in both cases. The GMRES case has been studied, e.g., in [3],
+the MINRES case was considered, e.g., in [2, 4, 5, 6]. The preconditioners studied are either block circulant or block \(\epsilon \)-circulant and thus multiplication and inversion can be carried out in almost optimal, i.e., \(\mathcal {O}(n \log
+n)\), complexity by using the FFT. Additionally, the blocks have to be solved eﬀiciently which is usually carried out using the method used for the sequential time-stepping. While the study of the preconditioners is extensive, the actual parallel
+implementation is studied very little. One option to implement these kinds of methods is the usage of a parallel FFT as studied in [1]. Yet, an eﬀicient parallelization of the FFT is relatively diﬀicult given that it requires a lot of communication in
+comparison to very few arithmetic operations. This is one reason why multi-dimensional FFTs usually transpose the data such that the individual 1D-FFTs can be carried out sequentially. For the preconditioners considered in this case, in general
+only 1D-FFTs are needed.
+</p>
+
+<p>
+Given the results obtained using eﬀicient multi-dimensional FFTs on parallel computers as an alternative to a direct parallelization of the FFT we propose to transpose the data such that sequential 1D-FFTs can be used and to transpose it back
+before solving the individual blocks. The method resulting from a parallel implementation of the method proposed in [3] in this way provides an excellent scaling behavior, yielding an additional speedup after saturation of pure time-stepping with
+parallel solves of the spatial problem alone.
+</p>
+
+<p>
+The applications of the preconditioners require the solution of usually complex block system that have the dimension of the spatial problem. Our implementation currently uses smoothed aggregation multigrid from Trilinos to solve these systems. We
+have used this approach on machines based on CPUs as well as on clusters with GPUs. In all cases we can achieve good scaling results, providing eﬀicient parallelization in time by using preconditioning.
+</p>
+
+<p>
+We will provide an overview over the different preconditioners that can be implemented in the proposed way, present the parallelization approach in detail, discuss the solution of the blocks and demonstrate the achieved performance.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> G.&nbsp;Caklovic, R.&nbsp;Speck, and M.&nbsp;Frank, <i>A parallel-in-time collocation method using diagonalization: theory and implementation for linear problems</i>, 2023,
+arXiv:2103.12571 [math.NA].
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> S.&nbsp;Hon, <i>Optimal block circulant preconditioners for block Toeplitz systems with application to evolutionary PDEs</i>, J. Comput. Appl. Math., 407 (2022), p.&nbsp;15. Id/No 113965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> X.-l. Lin and M.&nbsp;Ng, <i>An all-At-once preconditioner for evolutionary partial differential equations</i>, SIAM J. Sci. Comput., 43 (2021), pp.&nbsp;a2766–a2784.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> E.&nbsp;McDonald, S.&nbsp;Hon, J.&nbsp;Pestana, and A.&nbsp;Wathen, <i>Preconditioning for nonsymmetry and time-dependence</i>, in Domain decomposition methods in science and
+engineering XXIII. Proceedings of the 23rd international conference, Jeju Island, South Korea, July 6–10, 2015, Cham: Springer, 2017, pp.&nbsp;81–91.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> E.&nbsp;McDonald, J.&nbsp;Pestana, and A.&nbsp;Wathen, <i>Preconditioning and iterative solution of all-at-once systems for evolutionary partial differential equations</i>, SIAM J. Sci.
+Comput., 40 (2018), pp.&nbsp;a1012–a1033.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> J.&nbsp;Pestana and A.&nbsp;J. Wathen, <i>A preconditioned MINRES method for nonsymmetric Toeplitz matrices</i>, SIAM J. Matrix Anal. Appl., 36 (2015), pp.&nbsp;273–288.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

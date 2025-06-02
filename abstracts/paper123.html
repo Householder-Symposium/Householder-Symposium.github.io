@@ -1,0 +1,372 @@
+---
+layout: abstract
+absnum: 123
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\def \LWRbooktabscmidruleparen (#1)#2{}\)
+
+\(\newcommand {\LWRbooktabscmidrulenoparen }[1]{}\)
+
+\(\newcommand {\cmidrule }[1][]{\ifnextchar (\LWRbooktabscmidruleparen \LWRbooktabscmidrulenoparen }\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\DeclareMathOperator {\trace }{tr}\)
+
+\(\newcommand {\R }{\mathbb {R}}\)
+
+\(\newcommand {\graph }{\mathcal {G}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Analysis of Stochastic Probing Methods for Estimating the Trace of Functions of Sparse Symmetric Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+Andreas Frommer, <span class="underline">Michele Rinelli</span>, Marcel Schweitzer
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Estimating the trace of an implicitly given matrix \(B \in \R ^{n \times n}\),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                          ∑
+                                                                                                                          n
+                                                                                                                tr(B) =         [B]ii ,                                                                          (1)--><a id="eq:trB"></a><!--
+                                                                                                                          i=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:trB} \trace (B) = \sum \limits _{i=1}^n [B]_{ii},
+\end{equation}
+
+</p>
+
+<p>
+is an important task in many areas of applied mathematics and computer science. In many of these applications, we have \(B = f(A)\), where \(A \in \R ^{n \times n}\) is a large and sparse (or structured) matrix. A common practice is to
+approximate <span class="textup">(<a href="paper.html#eq:trB">1</a>)</span> with an estimator of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                        ∑
+                                                                                                                        N
+                                                                                                              tr(B) ≈         vkT Bvk ,                                                          (2)--><a id="eq:estimator-generic"></a><!--
+                                                                                                                        k=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:estimator-generic} \trace (B) \approx \sum _{k=1}^N \vec v_k^T B \vec v_k,
+\end{equation}
+
+</p>
+
+<p>
+for suitably crafted vectors \(\vec v_1,\dots ,\vec v_N\). With this approach, approximating&nbsp;<span class="textup">(<a href="paper.html#eq:trB">1</a>)</span> relies on matrix-vector products or quadratic forms with \(B\), which
+are, e.g., performed by applying a polyomial (or rational) Krylov subspace method or a Chebyshev expansion for approximating \(f(A)\vec v\) or \(\vec v^T\!f(A)\vec v\), avoiding the often prohibitive tasks of forming \(B\) or computing the
+eigenvalues of \(A\).
+</p>
+
+<p>
+Prominent examples are <em>stochastic estimators</em>, including Hutchinson’s method&nbsp;[5], based on choosing random vectors in <span class="textup">(<a href="paper.html#eq:estimator-generic">2</a>)</span>, and recent variants
+based on low-rank approximations, Hutch++&nbsp;[6] and XTrace&nbsp;[2], which work especially well if a fast decay is present in the singular values of \(B\).
+</p>
+
+<p>
+When \(B = f(A)\) with sparse, symmetric \(A\), a popular other class of methods are based on <em>probing</em>&nbsp;[4, 7]. This approach requires the computation of a distance-\(d\) coloring of the graph \(\graph
+(A)\) associated with \(A\), which is a feasible task only under suitable assumptions; see [4]. The <em>probing estimator</em> is obtained by using <em>probing vectors</em> in <span class="textup">(<a
+href="paper.html#eq:estimator-generic">2</a>)</span>, i.e., vectors associated with each color whose entries are \(0\) or \(1\) depending on the coloring pattern. In&nbsp;[4], the authors show that the error of the
+probing approximation is bounded by \(n\cdot \eta _d\), where \(\eta _d\) decays with a rate that depends on how regular \(f\) is over the spectrum of \(A\). The numerical experiments in [4] prove that \(O(n)\)
+bounds are the best we can achieve with this method.
+</p>
+
+<p>
+We consider a <em>stochastic probing</em> approach, given by the combination of probing techniques with stochastic estimators. The nonzero entries of the <em>stochastic probing vectors</em> are the same as the
+deterministic counterparts, but filled with \(\pm 1\) with a uniform distribution (Rademacher entries). This allows to average more than one vector per color, with an improvement on the convergence related to
+Hutchinson’s estimator. Although this combination is algorithmically quite straightforward and has already been used before by practitioners&nbsp;[1], a detailed analysis was lacking.
+</p>
+
+<p>
+In&nbsp;[3], we show for which matrix functions \(f\) and matrices \(A\) the standard deviation of the stochastic probing estimator can be bounded by quantities of the form \(\sqrt {n} \,\cdot \eta _d\), where
+\(\eta _d\) has the same asymptotic behavior as the deterministic case. This significantly improves on the linear scaling with the size of the error in the deterministic case, even if just one stochastic vector is
+associated to any color. As a by-product of our analysis, we refined classical results on sign patterns in the entries of \(f(A)\).
+</p>
+
+<p>
+Our theoretical findings are illustrated and confirmed by a variety of numerical experiments, where we observed the scaling of the error with the size and compared the performance with other known estimators,
+indicating when stochastic probing can be the method of choice.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E.&nbsp;Aune, D.&nbsp;P. Simpson, and J.&nbsp;Eidsvik. Parameter estimation in high dimensional Gaussian distributions. <i>Stat. Comput.</i>, 24:247–263, 2014.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> E.&nbsp;N. Epperly, J.&nbsp;A. Tropp, and R.&nbsp;J. Webber. XTrace: making the most of every sample in stochastic trace estimation. <i>SIAM J. Matrix Anal. Appl.</i>,
+45(1):1–23, 2024.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> A.&nbsp;Frommer, M.&nbsp;Rinelli, and M.&nbsp;Schweitzer. Analysis of stochastic probing methods for estimating the trace of functions of sparse symmetric matrices.
+<i>Math. Comp.</i>, Published online, 2024.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> A.&nbsp;Frommer, C.&nbsp;Schimmel, and M.&nbsp;Schweitzer. Analysis of probing techniques for sparse approximation and trace estimation of decaying matrix functions.
+<i>SIAM J. Matrix Anal. Appl.</i>, 42(3):1290–1318, 2021.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M.&nbsp;F. Hutchinson. A stochastic estimator of the trace of the influence matrix for Laplacian smoothing splines. <i>Commun. Stat. Simul.</i>, 19(2):433–450, 1990.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> R.&nbsp;A. Meyer, C.&nbsp;Musco, C.&nbsp;Musco, and D.&nbsp;P. Woodruff. Hutch++: Optimal stochastic trace estimation. In <i>Symposium on Simplicity in Algorithms
+(SOSA)</i>, 142–155. SIAM, 2021.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> J.&nbsp;M. Tang and Y.&nbsp;Saad. A probing method for computing the diagonal of a matrix inverse. <i>Numer. Linear Algebra Appl.</i>, 19(3):485–501, 2012.
+</p>
+<p>
+
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

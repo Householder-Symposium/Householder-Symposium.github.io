@@ -1,0 +1,54 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+GMRES upper bound based on \(\epsilon -\)pseudospectra for preconditioned Toeplitz systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Razan Abu-Labdeh</span>, Jennifer Pestana
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+PDE models, generated from real-world applications, typically require numerical discretisation with meshes fine enough to capture the features of the solution. This numerical discretisation transforms the problem into the solution of one or more
+systems of linear equations, \(Ax=b\), \(A\in \mathbb {R}^{n\times n}\), \(b\in \mathbb {R}^n\). Due to the properties of the original PDEs, boundary conditions, and/or the numerical discretisation scheme, these systems are often large and
+often nonsymmetric and indeed are typically highly nonnormal,.<br />
+
+</p>
+
+<p>
+Krylov subspace methods have proven to be a widely used and powerful tool for solving sparse linear systems arising from the discretisation of PDEs. As is well known, preconditioning is typically required to solve such linear systems in an acceptable
+time. However, although there is descriptive convergence theory to guide the choice of preconditioner when the coeﬀicient matrix \(A\) is normal, this is no longer the case when \(A\) is nonnormal. GMRES, which minimises the Euclidean norm of
+the residual, has the best-understood convergence theory, but even for this method bounds based on eigenvalues, the field of values and pseudospectra can fail to be descriptive [?]. Consequently, preconditioners for nonnormal problems are usually
+chosen heuristically. Despite this, there are many effective preconditioners for non-symmetric linear systems arising from the discretisation of PDEs. These preconditioners may take some trial and error to develop, but their success usually comes from
+taking into account the underlying PDEs and discretisation method.<br />
+
+</p>
+
+<p>
+The aim of this work is to also utilise these underlying PDE and discretisation properties to better understand the convergence of GMRES applied to these problems. For unpreconditioned problems, our starting point is the simplest case of constant
+coeﬀicient ODEs that are discretised by finite difference methods on uniform meshes. The resulting coeﬀicient matrices, \(A\), are Toeplitz, and can be characterised by a scalar-valued function known as the symbol. Trefethen and Reichel [?]
+connected the symbol of such a Toeplitz matrix to its pseudospectra, and this can be used in pseudospectral bounds for GMRES. We extend this approach to multilevel problems arising from PDEs and to problems that are no longer Toeplitz,
+because of variable coeﬀicients or non-uniform meshes. Such matrices are typically elements of generalized locally Toeplitz (GLT) sequences of matrices [?], which also possess a symbol that is related to a symbol.<br />
+
+</p>
+
+<p>
+Preconditioned (multilevel) Toeplitz and GLT matrices, on the other hand, can typically be decomposed into the identity matrix plus a low-rank perturbation and a small-norm perturbation. The resulting eigenvalue distribution exhibit a specific
+structure: there is a cluster of eigenvalues near 1, with a small number of outliers. This structure is also reflected in the pseudospectra which (except for large values of the pseudospectral parameter \(\epsilon \)) form disjoint sets. A GMRES
+bound based on localized pseudospectra can be applied, which depends on the condition number of the outlier eigenvalue(s). We also consider the sensitivity of GMRES to the presence of these outliers and show that there are cases when descriptive
+approximations to the true GMRES convergence curve can be obtained by removing these outliers.
+</p>
+

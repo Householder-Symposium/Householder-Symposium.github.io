@@ -1,0 +1,175 @@
+---
+layout: abstract
+absnum: 62
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Data-driven Numerical Methods for Kernel Matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Yuanzhe Xi</span>, Difeng Cai, Tianshi Xu, Hua Huang, Edmond Chow
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Kernel matrices play a pivotal role in various machine learning and scientific applications, with their structure critically influenced by both the parameters of the kernel function and the data distribution [2]. This talk will begin with a geometric
+analysis of the Schur complement of the kernel matrix, examining the effects of kernel bandwidth and data distribution on its structure. Building on these geometric insights, we design the Adaptive Factorized Nyström (AFN) preconditioner [1] for
+solving linear systems associated with the regularized kernel matrix. The AFN preconditioner enhances the Nyström approximation by constructing a sparse approximate inverse for the Schur complement, significantly improving robustness and
+eﬀiciency across a wide range of parameters. Finally, we will introduce HiGP [4], a high-performance Python package designed for Gaussian Process Regression (GPR) and Classification (GPC). HiGP integrates AFN and some preconditioned
+iterative methods [3] to boost the eﬀiciency and scalability of model training and inference across various datasets.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> <span class="textsc">S. Zhao, T. Xu, H. Huang, E. Chow, and Y. Xi</span>, <em>An Adaptive Factorized Nyström Preconditioner for Regularized Kernel Matrices</em>, SIAM J. Sci.
+Comput., 46(4), (2024), A2351-A2376.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> <span class="textsc">D. Cai, H. Huang, E. Chow, and Y. Xi</span>, <em>Data-Driven Construction of Hierarchical Matrices With Nested Bases</em>, SIAM Journal on Scientific Computing,
+46(2), (2024), S24-S50.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> <span class="textsc">D. Cai, E. Chow, and Y. Xi</span>, <em>Posterior Covariance Structures in Gaussian Processes</em>, arXiv preprint arXiv:2408.07379.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> <span class="textsc">H. Huang, T. Xu, Y. Xi, and E. Chow</span>, <em>HiGP: High-Performance Python Package for Gaussian Process Regression</em>, Retrieved from
+https://github.com/huanghua1994/HiGP
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,537 @@
+---
+layout: abstract
+absnum: 104
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\f }{\mathbf {f}}\)
+
+\(\newcommand {\x }{\mathbf {x}}\)
+
+\(\newcommand {\y }{\mathbf {y}}\)
+
+\(\newcommand {\z }{\mathbf {z}}\)
+
+\(\newcommand {\Koop }{\mathcal {U}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Numerical linear algebra for data driven analysis of nonlinear dynamics: Koopman-Schur Decomposition
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Zlatko Drmač</span>, Igor Mezić
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The Extended Dynamic Mode Decomposition (DMD/EDMD) has become a tool of trade in computational data driven analysis of complex nonlinear dynamical systems, e.g. fluid flows, where it can be used to reveal coherent structures by
+decomposing the flow field into component fluid structures, called DMD modes, that describe the evolution of the flow. The theoretical underpinning of the EDMD is the Koopman composition operator that can be used for spectral analysis of
+nonlinear dynamical system [6]. The numerical realization and software implementation pose several challenges to numerical linear algebra, and this contribution discusses few selected ones.
+</p>
+
+<p>
+To set the stage, consider the initial value problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                               F1 (x(t)) !
+
+                                                                                                                                    ẋ(t) = F (x(t)) ≡            ..          , x(t0 ) = x0 ,                                                          (1)--><a id="eq:CDS"></a><!--
+                                                                                                                                                                   .
+                                                                                                                                                             FN (x(t))
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:CDS} \dot \x (t)=F(\x (t)) \equiv \left (\begin{smallmatrix} F_1(\x (t))\cr \vdots \cr F_N(\x (t))\end {smallmatrix}\right ), \;\;\x (t_0)=\x _0,
+\end{equation}
+
+</p>
+
+<p>
+with state space \(\mathcal {X}\subset \mathbb {R}^N\) and vector-valued nonlinear function \(F: \mathcal {X}\rightarrow \mathbb {R}^N\). The corresponding flow map \(\phi ^t\) is defined as \(\phi ^t(\x (t_0))=\x (t_0+t)=\x (t_0)
++ \int _{t_0}^{t_0+t}F(\x (\tau ))d\tau .\)
+</p>
+
+<p>
+Instead of the states, consider observables (functions of the states) \(f:\mathcal {X}\rightarrow \mathbb {C}\), \(f\in \mathcal {F}\); e.g. \(\mathcal {F}=L^p(\mathcal {X},\mu )\) (\(1\leq p\leq \infty \)). Koopman operator
+semigroup \((\Koop _{\phi ^t})_{t\geq 0}\) is defined by \(\Koop _{\phi ^t} f = f\circ \phi ^t,\;\; f\in \mathcal {F}\). The Koopman (composition) operator \(\Koop _{\phi ^t}\) is linear operator that can be considered an infinite
+dimensional linearization of (<a href="paper.html#eq:CDS">1</a>) that takes the action into the space \(\mathcal {F}\) of observables.
+</p>
+
+<p>
+In the case of discrete dynamical system \(\x _{i+1}=T(\x _i)\), the Koopman operator \(\Koop \equiv \Koop _{T}\) is defined on a space of observables \(\mathcal {F}\) by \(\Koop f = f\circ T,\;\; f\in \mathcal {F}\). In practical
+computation, one always works with discrete systems. If we run a numerical simulation of the ODE’s (<a href="paper.html#eq:CDS">1</a>) in a time interval \([t_0,t_*]\), the numerical solution is obtained on a discrete equidistant grid with
+fixed time lag \(\Delta t\): \(t_0, \; t_1 = t_0+\Delta t,\; \ldots ,\; t_{i-1}=t_{i-2}+\Delta t,\; t_{i}=t_{i-1}+\Delta t,\; \ldots \) In this case, a black-box software toolbox acts as a discrete dynamical system \(\z _i=T(\z
+_{i-1})\) that produces the discrete sequence of \(\z _i \approx \x (t_i)\). For \(t_i = t_0+i\Delta t\) we have \(f(\x (t_0+i\Delta t)) = (f\circ \phi ^{i\Delta t})(\x (t_0)) = (\Koop _{\phi ^{i\Delta t}}f)(\x (t_0)) =
+(\Koop _{\phi ^{\Delta t}}^i f)(\x (t_0))\), where \(\Koop _{\phi ^{\Delta t}}^i = \Koop _{\phi ^{\Delta t}} \circ \ldots \circ \Koop _{\phi ^{\Delta t}}.\)
+</p>
+
+<p>
+On the other hand, using \(\Koop f = f\circ T\), \(\z _i \approx \x (t_i)\), \(T^{2}=T\circ T\), \(T^i = T\circ T^{i-1}\), \(f(\z _i) = f(T(\z _{i-1})) = \ldots = f(T^i(\z _{0})) = (\Koop ^i f)(\z _0)\). Hence, in a software
+simulation of (<a href="paper.html#eq:CDS">1</a>) with the initial condition \(\z _0 = \x (t_0)\), we have an approximation \((\Koop ^i f)(\z _0) \approx (\Koop _{\phi ^{\Delta t}}^i f)(\z _0), \;\;f\in \mathcal {F},\; \z
+_0\in \mathcal {X},\;\;i=0, 1, 2, \ldots , m\). Such a sequence of values from the trajectory of the system may be also obtained by experimental measurements (e.g. high speed camera recording, wind tunnel measurements, particle image
+velocimetry/thermometry), without using/knowing the governing equations. In general, the observables are vector valued, \(\f =(f_1,\ldots , f_n)^T\), and \(\Koop \f =(\Koop f_1,\ldots , \Koop f_n)^T\) is defined component-wise. Often
+\(n\gg m\). The acquired numerical values of the observables (data snapshots) are assembled column-wise into the matrix (column index corresponds to discrete time step)
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                           f (x ) ... f (x                                
+                                                                                                 1   0        1   m−1 ) f1 (xm )
+
+                                                                                               f2 (x0 ) ... f2 (xm−1 ) f2 (xm )
+                                                                                                                                           
+                                                       F = (f (x0 ) ... f (xm−1 ) f (xm )) =       ..       ..          ..          ..    , f (xi+1 ) = f (T (xi )) = (Uf )(xi ) = f (T (T (xi−1 ))).--><a id="eq:data-matrix"></a><!--
+                                                                                                     .        .           .           .
+                                                                                                fn (x0 ) ... fn (xm−1 ) fn (xm )
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:data-matrix} F\! =\! \left (\!\begin{smallmatrix} \f (\x _0) &amp; \ldots \, \f (\x _{m-1}) &amp; \f (\x _{m}) \end {smallmatrix}\!\right )\! = \!\! \left (\begin{smallmatrix} f_1(\x _0) &amp; \ldots
+&amp; f_1(\x _{m-1}) &amp; f_1(\x _{m}) \cr f_2(\x _0) &amp; \ldots &amp; f_2(\x _{m-1}) &amp; f_2(\x _{m}) \cr \vdots &amp; \vdots &amp; \vdots &amp; \vdots \cr f_n(\x _0) &amp; \ldots &amp; f_n(\x _{m-1}) &amp;
+f_n(\x _{m}) \cr \end {smallmatrix}\right )\!\!, \f (\x _{i+1})\!=\!\f (T(\x _i))\! =\! (\Koop \f )(\x _i)\! =\! \f (T(T(\x _{i-1}))) .
+\end{equation*}
+
+</p>
+
+<p>
+The columns of the data snapshot matrix \(F\) can be interpreted as the Krylov sequence \(\f , \Koop \f , \ldots , \Koop ^m\f \), evaluated at \(\x _0\), which motivates looking for approximate eigenvalues and eigenvectors of \(\Koop \).
+</p>
+
+<p>
+Why is spectral data of \(\Koop \) interesting? If \((\Koop \phi _i)(s)\approx \lambda _i \phi _i(s)\), \(i=1,\ldots , m\), and if for some carefully and judiciously selected \(\lambda _{i_1}, \ldots , \lambda _{i_\ell }\) and vector
+coeﬀicients \(\z _{i_j}\) (that must be computed)
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                                                  
+                                                                                                                                                      (U k f1 )(s)
+                                                                                                             X
+                                                                                                             ℓ
+                                                                                                                                                           ..      X
+                                                                                                                                                                      ℓ
+                                                                                                f (s) ≈             zij ϕij (s), then (U k f )(s) =         .     ≈   zij ϕij (s)λkij , k = 0, 1, . . .                                              (2)--><a id="eq:KMD"></a><!--
+                                                                                                             j=1                                                                      j=1
+                                                                                                                                                             (U k fn )(s)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:KMD} \f (s)\approx \sum _{j=1}^\ell {\z _{i_j}} \phi _{i_j}(s), \;\mbox {then}\; (\Koop ^k \f )(s) = \begin{pmatrix} (\Koop ^k f_1)(s)\cr \vdots \cr (\Koop ^k f_n)(s) \end {pmatrix} \approx \sum
+_{j=1}^\ell {\z _{i_j}} \phi _{i_j}(s) \lambda _{i_j}^k, \; k=0, 1, \ldots
+\end{equation}
+
+</p>
+
+<p>
+This decomposition (called the Kopman Mode Decomposition, KMD) reveals the latent structure of the dynamics (in particular when \(\ell \) is relatively small) and allows for forecasting future values, because applying the powers of \(\Koop \) in
+(<a href="paper.html#eq:KMD">2</a>) means pushing the dynamics forward in time.
+</p>
+
+<p>
+In this decomposition, the vector coeﬀicients \(\z _i\)’s are approximate eigenvectors of a matrix \(A\) such that \(A \f (\x _i)=\f (T(\x _i))\) for all \(i\). The matrix \(A\) is the DMD matrix – it may not be uniquely determined by the data
+and only certain Ritz pairs can be computed by a data driven version of the classical Rayleigh-Ritz extraction procedure, as in the DMD algorithm [8] and its enhancement [5] that provides computable residuals and uses them to select physically
+meaningful eigenvalues and modes, and to guide sparse representation of the snapshot in the KMD.
+</p>
+
+<p>
+But, there is a problem. One of the computational/numerical challenges in the Koopman/DMD framework is the case of non-normal operators, when the computed (Ritz) eigenvectors of the DMD matrix become severely ill-conditioned. High
+non-normality of the eigenmodes is not just a mathematically manufactured and for the sake of academic exercise contrived misfortune. It does occur in important applications. For instance, Schmid [7] discusses examples of non-normal operators in
+fluid flows, and the impact of non-normality on treatment of stability of such flows. A well-known and intensively studied example is the formulation of the viscous stability problem for parallel shear flows, in which linearization of the Navier-Stokes
+equation leads to the Orr-Sommerfeld linear partial differential equation whose solutions exhibit highly non-normal behavior.
+</p>
+
+<p>
+The severity of the problem can be easily demonstrated by running a numerical simulation and visualizing the pseudospectrum and computing the angles between the eigenvectors. This issue is mostly ignored in the DMD literature, but the
+practitioners have experienced the problem in applications, and it is listed in [10] as one of the challenges in applications of the DMD.
+</p>
+
+<p>
+To alleviate the problem of ill-conditioned eigenvectors in the existing implementations of the Dynamic Mode Decomposition (DMD) and the Extended Dynamic Mode Decomposition (EDMD, [9]), in [4] we introduce a Koopman-Schur decomposition
+– Schur decomposition of a data driven compression of the Koopman operator onto a subspace \(\mathcal {F}_N\) defined by a given dictionary \(\psi _1, \ldots , \psi _N\).
+</p>
+
+<p>
+The first step in this approach is as follows. As in the EDMD, compute the data driven compression
+</p>
+
+<p>
+\[ P_{\mathcal {F}_N}\Koop _{|\mathcal {F}_N}\! (\begin {pmatrix} \psi _1(x) &amp; \ldots &amp; \psi _N(x)\end {pmatrix}\!\! \begin {pmatrix}\mathsf {f}_1 \cr \vdots \cr \mathsf {f}_N\end {pmatrix})\! =\! \begin
+{pmatrix} \psi _1(x) &amp; \ldots &amp; \psi _N(x)\end {pmatrix} (U_N\!\! \begin {pmatrix}\mathsf {f}_1 \cr \vdots \cr \mathsf {f}_N\end {pmatrix}), \]
+</p>
+
+<p>
+where \(P_{\mathcal {F}_N}\) stands for the algebraic least squares projection using the available data, and \(U_N\) is the matrix of the compression. With the notation \(\Psi (x)=( \psi _1(x),\ldots , \psi _N(x))^T\in \mathbb {C}^N\),
+the action of \(\Koop \) on \(\mathcal {F}_N\) can be compactly written as \(\Koop (\Psi (\x )^T \z ) = \Psi (\x )^T U_N \z + R(\x )^T \z ,\;\;\x \in \mathbb {C}^n,\; \z \in \mathbb {C}^N\), where \(R(x)=( \rho _1(x), \ldots
+, \rho _N(x))^T\in \mathbb {C}^N\) is the residual that has been minimized over the available data. In this setting, a well defined object is, instead of \(U_N\), another compression – \(U_N\) is compressed onto a \(N\times r\) POD basis \(V\)
+(computed using the SVD of a data snapshot matrix, with \(r&lt;N\)) and replaced with the \(r\times r\) Rayleigh quotient \(\widehat U\). In the proposed approach [4], we compute a Schur decomposition of \(\widehat U\), \(\widehat U = Q
+T Q^*\), and \(U_N Z = Z T\) becomes a partial Schur form with \(Z=VQ\). On the operator level, this becomes
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+                                                                                                                             
+                                                           U( ψ1 (x) . . . ψN (x) Z)            =        ψ1 (x) . . .  ψN (x) UN Z + R(x)T Z
+                                                                                                                                                              
+                                                                                                =        ψ1 (x) . . . ψN (x) ZT + R(x)T Z ⋍ ψ1 (x) . . . ψN (x) ZT.--><a id="eq:residual-rhoTZ"></a><!--                                                                         (3)
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\!\!\!\!\!\Koop (\begin{pmatrix} \psi _1(x) \; \ldots \; \psi _N(x) \end {pmatrix} Z) &amp;=&amp; \begin{pmatrix} \psi _1(x) \; \ldots &amp;\;\psi _N(x) \end {pmatrix} U_N Z +R(x)^T Z \nonumber \\ &amp;=&amp;
+\begin{pmatrix} \psi _1(x) \; \ldots \; \psi _N(x) \end {pmatrix} Z T +R(x)^T Z \backsimeq \begin{pmatrix} \psi _1(x) \; \ldots \; \psi _N(x) \end {pmatrix} Z T .\label {eq:residual-rhoTZ}
+\end{eqnarray}
+
+</p>
+
+<p>
+If we define a new sequence \(\begin {pmatrix} \zeta _1(x) \, \ldots \, \zeta _r(x) \end {pmatrix} = \begin {pmatrix} \psi _1(x) \, \ldots \, \psi _N(x) \end {pmatrix} Z , \) then (<a
+href="paper.html#eq:residual-rhoTZ">3</a>) reads
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                                                                   
+                                                              U ζ1 (x)      ...   ζr (x) = ζ1 (x)                  ...         ζr (x) T + R(x)T Z ⋍ ζ1 (x)             ...     ζr (x) T.                                                    (4)--><a id="eq:Uzeta=zetaT(x)"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Uzeta=zetaT(x)} \!\!\!\! \Koop \begin{pmatrix} \zeta _1(x) &amp; \ldots &amp; \zeta _r(x) \end {pmatrix} = \begin{pmatrix}\zeta _1(x) &amp; \ldots &amp; \zeta _r(x) \end {pmatrix} T +R(x)^T Z \backsimeq
+\begin{pmatrix} \zeta _1(x) &amp; \ldots &amp; \zeta _r(x) \end {pmatrix} T .
+\end{equation}
+
+</p>
+
+<p>
+Since \(T\) is upper triangular, (<a href="paper.html#eq:Uzeta=zetaT(x)">4</a>) contains a nested sequence of partial triangulations
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                                                                                                        
+                                                                                                                  U ζ1         ζ2   ...    ζ i ⋍ ζ1    ζ2      ...     ζi T (1 : i, 1 : i), i = 1, . . . , r.                                    (5)--><a id="eq:U-Schur-i"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:U-Schur-i} \Koop \begin{pmatrix} \zeta _1 &amp; \zeta _2 &amp; \ldots &amp; \zeta _i \end {pmatrix} \backsimeq \begin{pmatrix} \zeta _1 &amp; \zeta _2 &amp; \ldots &amp; \zeta _i \end {pmatrix}
+T(1:i,1:i) , \;\;i=1, \ldots , r.
+\end{equation}
+
+</p>
+
+<p>
+This Schur form can be reordered – with a suitable unitary matrix \(\Theta \), \(\widetilde {T} = \Theta ^* T \Theta \) is again upper triangular with diagonal entries corresponding to the eigenvalues in any given order. The new partial Schur
+form of \(U_N\) becomes \(U_N (VQ\Theta ) = (VQ\Theta ) \widetilde {T} ,\;\;\widetilde {T}=\Theta ^* T \Theta , \) and we replace (<a href="paper.html#eq:Uzeta=zetaT(x)">4</a>) with
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                                                                                                  
+                                                                                                         U ζ1 (x)              ζ2 (x)     ...   ζr (x) Θ ⋍ ζ1 (x)            ζ2 (x)    ...   ζr (x) Θ(Θ∗ T Θ),                                                                   (6)
+
+-->
+
+<p>
+
+\begin{equation}
+\Koop \begin{pmatrix} \zeta _1(x) &amp; \zeta _2(x) &amp; \ldots &amp; \zeta _r(x) \end {pmatrix}\Theta \backsimeq \begin{pmatrix} \zeta _1(x) &amp; \zeta _2(x) &amp; \ldots &amp; \zeta _r(x) \end {pmatrix}\Theta
+(\Theta ^* T \Theta ) ,
+\end{equation}
+
+</p>
+
+<p>
+i.e. the new functions are generated using \(\widetilde {Z}=Z\Theta = VQ\Theta \) (\(\widetilde {Z}^*\widetilde {Z}=I_r\)),
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                                                                                       
+                                                                                                             ζe1 (x)          ...   ζer (x) = ζ1 (x)     ...     ζr (x) Θ = ψ1 (x)            ...           e
+                                                                                                                                                                                                    ψN (x) Z.                                                                    (7)
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{pmatrix} \widetilde {\zeta }_1(x) &amp; \ldots &amp; \widetilde {\zeta }_r(x) \end {pmatrix} = \begin{pmatrix} \zeta _1(x) &amp; \ldots &amp; \zeta _r(x) \end {pmatrix}\Theta = \begin{pmatrix} \psi _1(x)
+&amp; \ldots &amp; \psi _N(x) \end {pmatrix} \widetilde {Z} .
+\end{equation}
+
+</p>
+
+<p>
+In this framework, the spectral analysis of the snapshots, including the KMD (<a href="paper.html#eq:KMD">2</a>), is entirely based on unitary transformations. The analysis in terms of the eigenvectors as modes of a Koopman operator
+compression is replaced with a modal decomposition in terms of a flag of invariant subspaces that correspond to selected eigenvalues – the partial ordered Schur decomposition provides convenient orthonormal bases for subspaces determined by any
+given selection \(\lambda _{i_1}, \ldots , \lambda _{i_\ell }\) of the eigenvalues.
+</p>
+
+<p>
+From this point, we proceed in two direction. First, we analyze the convergence (as the size of the dictionary and the number of data snapshots become infinite) to obtain results analogous to the EDMD. Then, to have the same functionality as the
+existing EDMD (snapshot reconstruction using selected eigenvalues, dynamically changed data window in online applications, forecasting, formulation with the kernel trick etc.), many technical (algorithms and software related) details have to be
+worked out. For instance, in the case of real data, a real ordered partial Schur form is used and the computation is based on real orthogonal transformations, even when the spectrum is complex. Other details include e.g. streaming data with
+dynamically changing data windows. Numerical experiments show superior performances in the numerically diﬀicult non-normal cases.
+</p>
+
+<p>
+The second topic that will be discussed is numerical implementation of the Hermitian case of the physic informed DMD [1], [3] – if it is a priori known that the underlying operator is Hermitian, how to ensure that the numerical implementation of the
+DMD guarantees real spectrum and orthonormal eigenvectors? What are the other issues when it comes to software implementation [2] e.g. in the framework of the LAPACK library?
+</p>
+
+<p>
+These themes are excellent case study examples that demonstrate the importance of numerical linear algebra and of the power of numerical analysis of an algorithm – it precisely predicts in what way it may fail and indicates what has to be done to
+provably fix the problem.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P.&nbsp;J. Baddoo, B.&nbsp;Herrmann, B.&nbsp;J. McKeon, J.&nbsp;N. Kutz, and S.&nbsp;L. Brunton. Physics–informed dynamic mode decomposition (piDMD). <i>arXiv e-prints</i>, page
+arXiv:2112.04307, December 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Zlatko Drmač. A LAPACK implementation of the Dynamic Mode Decomposition. <i>ACM Trans. Math. Softw.</i>, jan 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Zlatko Drmač. Hermitian Dynamic Mode Decomposition – numerical analysis and software solution. <i>ACM Trans. Math. Softw.</i>, jan 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Zlatko Drmač and Igor Mezić. A data driven Koopman–Schur decomposition for computational analysis of nonlinear dynamics. <i>arXiv e-prints</i>, page arXiv:2312.15837, December 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Zlatko Drmač, Igor Mezić, and Ryan Mohr. Data driven modal decompositions: Analysis and enhancements. <i>SIAM Journal on Scientific Computing</i>, 40(4):A2253–A2285, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Clarence&nbsp;W. Rowley, Igor Mezić, Shervin Bagheri, PhilippP Schlatter, and Dan&nbsp;S. Henningson. Spectral analysis of nonlinear flows. <i>Journal of Fluid Mechanics</i>, 641:115–127, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Peter&nbsp;J Schmid. Nonmodal stability theory. <i>Annual review of fluid mechanics</i>, 39(1):129–162, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Peter&nbsp;J. Schmid. Dynamic mode decomposition of numerical and experimental data. <i>Journal of Fluid Mechanics</i>, 656:5–28, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> M.O. Williams, I.G. Kevrekidis, and C.W. Rowley. A data–driven approximation of the Koopman operator: extending dynamic mode decomposition. <i>Journal of Nonlinear Science</i>,
+25(6):1307–1346, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Ziyou Wu, Steven&nbsp;L. Brunton, and Shai Revzen. Challenges in dynamic mode decomposition. <i>Journal of The Royal Society Interface</i>, 18(185):20210686, 2021.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

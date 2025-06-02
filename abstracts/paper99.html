@@ -1,0 +1,389 @@
+---
+layout: abstract
+absnum: 99
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Absorbing boundary conditions form Padé approximants (sometimes): continued fractions are the key
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Michal Outrata</span>, Lukáš Jakabčin, Martin J. Gander
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The solution process of problems on unbounded domains usually require a domain truncation and therefore artificial boundary conditions, leading to techniques such as <em>perfectly matched layers</em> (PML) or <em>absorbing boundary
+conditions</em> (ABC), see&nbsp;[1, 2] for references. To be concrete, taking \(\Omega \subset \mathbb {R}^2\) as an infinite strip (sometimes called a <em>waveguide</em>), then the original problem (or its discretization)
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                       Lu = f       in Ω,
+                                                                                                                                 (or   L∞ u = f ∞ )
+                                                                                                       Bu = g       on ∂Ω,
+
+-->
+
+<p>
+
+\begin{equation*}
+\begin{aligned} \mathcal {L}u &amp;= f \quad \mathrm {in} \; \Omega , \\ \mathcal {B}u &amp;= g \quad \mathrm {on} \; \partial \Omega , \end {aligned} \qquad \left (\mathrm {or} \quad L^{\infty } \mathbf {u} =
+\mathbf {f}^{\infty } \right )
+\end{equation*}
+
+</p>
+
+<p>
+is truncated to
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                         Lv = f      in Ωtrunc
+                                                                                                                                        (or   Lv = f )
+                                                                                                     Btrunc v = g    on ∂Ωtrunc ,
+
+-->
+
+<p>
+
+\begin{equation*}
+\begin{aligned} \mathcal {L}v &amp;= f \quad \mathrm {in} \; \Omega ^{\mathrm {trunc}} \\ \mathcal {B}^{\mathrm {trunc}}v &amp;= g \quad \mathrm {on} \; \partial \Omega ^{\mathrm {trunc}}, \end {aligned} \qquad
+\left (\mathrm {or} \quad L \mathbf {v} = \mathbf {f} \right )
+\end{equation*}
+
+</p>
+
+<p>
+where \(\hat { \Omega }\) is the region in which we want to approximately compute \(u\), \(\Omega ^{\mathrm {ABC}}\) is a the bounded region with which we replace the (originally unbounded) \(\Omega \backslash \hat { \Omega }\) and
+\(\Omega ^{\mathrm {trunc}} = \hat { \Omega } \cup \Omega ^{\mathrm {ABC}}\) is bounded. We have \(\mathcal {B}^{\mathrm {trunc}} = \mathcal {B}\) wherever \(\partial \Omega ^{\mathrm {trunc}}\) coincide with \(\partial
+\Omega \) and usually introduce a simple boundary condition along the remainder of \(\partial \Omega ^{\mathrm {trunc}}\), e.g., Dirichlet. Naturally, this is also reflected at the discrete level where the infinite matrix \(L^{\infty }\) is
+replaced by a finite matrix \(L\), which is identical with \(L^{\infty }\) for the unknowns of the interior of \(\Omega ^{\mathrm {trunc}}\) and those where \(\partial \Omega ^{\mathrm {trunc}}\) coincide with \(\partial \Omega \).
+Domain truncation is also important in domain decomposition methods where a given computational domain is decomposed into many smaller subdomains, and then subdomain solutions are computed independently in parallel. The solutions on the
+smaller subdomains can naturally be interpreted as solutions on truncated domains, and thus it is of interest to use ABC or PML techniques at the interfaces between the subdomains. The classical Schwarz method uses Dirichlet transmission
+conditions between subdomains and an overlap to achieve convergence&nbsp;[2]. The overlap coupled with the Dirichlet boundary condition can be thus interpreted as a specific ABC once the unknowns of the overlap are folded onto the interface – an
+idea that inspired number of iterative solvers, see&nbsp;[1] and the references therein.
+</p>
+
+<p>
+An interesting question of a <em>discrete optimized ABC/PML</em> for problems with finite difference grids has been discussed in&nbsp;[3] for \(\mathcal {L}\) being the Laplacian and then extended to the Helmholtz equation in&nbsp;[4] – in
+both of these, the authors answer the question: &#x202f;&nbsp;
+</p>
+<div class="center">
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:374pt ; ">
+
+<a id="paper-autopage-6"></a>
+
+<p>
+<em>Having \(\Omega ^{\mathrm {ABC}}\) fixed, what is the best mesh for finite difference discretization (possibly staggered) so that \(v|_{\widehat {\Omega }} \approx u|_{\widehat {\Omega }}\)?</em>
+</p>
+
+
+</div>
+
+</div>
+
+<p>
+&#x202f;&nbsp;
+</p>
+
+<p>
+Here, we are interested in the complementary question: &#x202f;&nbsp;
+</p>
+<div class="center">
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:374pt ; ">
+
+<a id="paper-autopage-8"></a>
+
+<p>
+<em>If the discretization method is fixed, what is the effect of prolonging the truncation domain \(\Omega ^{\mathrm {ABC}}\) on \(v|_{\widehat {\Omega }} \approx u|_{\widehat {\Omega }}\)?</em>
+</p>
+
+
+</div>
+
+</div>
+
+<p>
+&#x202f;&nbsp;
+</p>
+
+<p>
+We also start with \(\mathcal {L}\) being the Laplacian and, after discertization, start with the known correspondence of the discrete ABC and the Schur complement, see&nbsp;[1, Remark 14 and below]. We use its eigendecomposition, which is
+closely linked with its Fourier analysis (sometimes also called the frequency domain analysis), and show that in the spectral domain the ABC is naturally represented as the \(i\)-th convergent of a particular <em>continued fraction</em>, namely
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                      1
+                                                                                                       ABC(z) ∼ 2 + z −                                    ,
+                                                                                                                           2+z−             1
+                                                                                                                                                ..
+                                                                                                                                    2+z−
+                                                                                                                                                     .
+                                                                                                                                           2+z−       1
+                                                                                                                                                     2+z
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\mathrm {ABC}(z) \; \sim \; 2+z - \frac {1}{2+z-\frac {1}{2+z-\frac {\ddots }{2+z-\frac {1}{2+z}}}},
+\end{equation*}
+
+</p>
+
+<p>
+where the fraction has “\(i\) levels” and \(z\) corresponds to the Fourier frequency. After relating \(i\) to the prolongation of \(\Omega ^{\mathrm {ABC}}\), as posed in our question, we also show that the <em>infinite</em> continued fraction (i.e.,
+without stopping after \(i\) levels) gives a natural representation of the <em>optimal</em> ABC for the infinite problem \(L\mathbf {u} = \mathbf {f}\), hence obtaining the first part of the answer: &#x202f;&nbsp;
+</p>
+<div class="center">
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:374pt ; ">
+
+<a id="paper-autopage-10"></a>
+
+<p>
+<em>Prolonging \(\Omega ^{\mathrm {ABC}}\) corresponds, in the spectral domain, to approximation of the optimal ABC in the sense of truncation of its continued fraction expansion.</em>
+</p>
+
+
+</div>
+
+</div>
+
+<p>
+&#x202f;&nbsp;
+</p>
+
+<p>
+Thanks to the deep results connecting continued fractions and approximation theory, namely Padé approximation (see&nbsp;[6]), we expand on this by concluding &#x202f;&nbsp;
+</p>
+<div class="center">
+<div class="minipage" style="vertical-align:bottom ; justify-content:flex-start ; width:374pt ; ">
+
+<a id="paper-autopage-12"></a>
+
+<p>
+<em>In the spectral domain, the ABC approximates the optimal one in the sense of Padé approximation about the right endpoint of the spectrum of \(L\). Prolonging (shrinking) \(\Omega ^{\mathrm {ABC}}\) corresponds to increasing (decreasing)
+the order of the Padé approximant.</em>
+</p>
+
+
+</div>
+
+</div>
+
+<p>
+&#x202f;&nbsp;
+</p>
+
+<p>
+This suggest that for \(i\) not too large the approximation quality is rather poor around the left endpoint of the spectrum of \(L\), showing us some room for improvement. One such improvement corresponds to considering different boundary
+conditions where we can, i.e., along what we above called “the remainder of \(\partial \Omega ^{\mathrm {trunc}}\)”, e.g., Robin boundary condition. Using the free parameters well, e.g., the Robin parameter, we can decrease the approximation
+error. Another, different, to improve on the above ABC is to change the Padé expansion point, hence introducing a new ABC/PML technique. Notice that in such case, we still obtain a different PML to these in&nbsp;[3, 4] as we do not change the
+discretization. Both of these improvements can be optimized so as to decrease the approximation error \(v|_{\hat {\Omega }} \approx u|_{\hat {\Omega }}\). We demonstrate all of our results also numerically and then comment on possible
+generalizations. Some of these results have been published in&nbsp;[5].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-13">References</h4>
+<a id="paper-autopage-13"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M.&nbsp;J.&nbsp;Gander, H.&nbsp;Zhang. A class of iterative solvers for the Helmholtz equation: factorizations, sweeping preconditioners, source transfer, single layer potentials, polarized traces, and
+optimized Schwarz methods. <i>SIAM Review</i>, volume (61): 3–76, 2019
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M.&nbsp;M.&nbsp;Rana, V.&nbsp;E.&nbsp;Howle, K.&nbsp;Long, A.&nbsp;Meek, W.&nbsp;Milestone. A New Block Preconditioner for Implicit Runge-Kutta Methods for Parabolic PDE Problems.
+<i>SIAM Journal on Scientific Computing</i>, volume (43): S475–S495, 2021
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D.&nbsp;Ingerman, V.&nbsp;Druskin, L.&nbsp;Knizhnerman.Optimal finite difference grids and rational approximations of the square root : I. Elliptic problems. <i>Communications on Pure and
+Applied Mathematics</i>, volume (53): 1039–1066, 2000
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> V.&nbsp;Druskin, S.&nbsp;Güttel, L.&nbsp;Knizhnerman. Near-optimal perfectly matched layers for indefinite Helmholtz problems. <i>SIAM Review</i>, volume (58): 90–116, 2016
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> L.&nbsp;Lorentzen, H.&nbsp;Waadeland. Continued Fractions with Applications. <i>Elsevier, North Holland</i>, in series <i>Studies in Computational Mathematics 3</i>, 1992
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M.&nbsp;J.&nbsp;Gander, L.&nbsp;Jakabčin, M.&nbsp;Outrata. Domain truncation, absorbing boundary conditions, Schur Complements, and Padé approximation. <i>Electronic Transactions on
+Numerical Analysis</i>, volume (59): 319–341, 2024
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,210 @@
+---
+layout: abstract
+absnum: 205
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Quantum Computing in MATLAB
+</h2>
+</div>
+<div class="center">
+
+<p>
+Matt Bowring, Steve Grikschat, Paul Kerr-Delworth, Patrick Quillen, <span class="underline">Christine Tobler</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We present the new MATLAB Support Package for Quantum Computing, which provides utilities to build, simulate, and visualize quantum circuits. Additionally, it is possible to connect to hardware providers and run circuits on their quantum
+computers.
+</p>
+
+<p>
+The capabilities of this software package include
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Constructing a circuit from a set of quantum gates, which are applied to specific qubits. In addition to a set of standard simple gates, more complex gates are available: mcxGate [1]; initGate, unitaryGate,
+ucrxGate, ucryGate, and ucrzGate [2, 3].
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Verifying the quantum algorithm by simulating it on the local computer or sending it to a remote simulator through cloud services.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Executing the circuit by connecting to quantum computing hardware through cloud services (specifically, IBM Qiskit Runtime Services and Amazon Web Services). This involves sending hardware-specific
+quantum assembly (OpenQASM) code to these services.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Creating quadratic unconstrained binary optimization (QUBO) problems and solving them on the local computer using Tabu search [4].
+</p>
+</li>
+</ul>
+
+<p>
+This package enables the prototyping of quantum algorithms that have applications in optimization, scenario simulation, machine learning, as well as chemistry and material simulations.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Barenco et al. Elementary Gates for Quantum Computation. <i>Physical Review A</i>, 52(5):3457–3467, 1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> V.&nbsp;V.&nbsp;Shende, S.&nbsp;S.&nbsp;Bullock, and I.&nbsp;L.&nbsp;Markov. Synthesis of Quantum–Logic Circuits. <i>IEEE Transactions on Computer-Aided Design of Integrated Circuits and
+Systems</i>, 25(6):1000–1010, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> D.&nbsp;Camps and R.&nbsp;Van Beeumen. FABLE: Fast Approximate Quantum Circuits for Block Encodings. <i>2022 IEEE International Conference on Quantum Computing and Engineering
+(QCE)</i>, 104–113. 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> G.&nbsp;Palubeckis. Iterated Tabu Search for the Unconstrained Binary Quadratic Optimization Problem. <i>Informatica</i> 17(2), 279–296, 2006.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

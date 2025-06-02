@@ -1,0 +1,299 @@
+---
+layout: abstract
+absnum: 183
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Variable Projection Methods for Regularized Separable Nonlinear Inverse Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Malena I. Español</span> and Gabriela Jeronimo
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider discrete ill-posed inverse problems of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                  A(y)x ≈ b = btrue + ϵ     with A(ytrue )xtrue = btrue ,                                                      (1)--><a id="eq: nonlinear"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: nonlinear} \mathbf {A}(\mathbf {y})\mathbf {x} \approx \mathbf {b} = \mathbf {b}_{\rm true} + \mathbf {\epsilon } \quad \mbox { with } \mathbf {A}(\mathbf {y}_{\rm true}) \mathbf {x}_{\rm true} =
+\mathbf {b}_{\rm true},
+\end{equation}
+
+</p>
+
+<p>
+where the vector \(\mathbf {b}_{\rm true} \in \mathbb {R}^m\) denotes an unknown error-free vector associated with available data and \(\mathbf {\epsilon } \in \mathbb {R}^m\) is an unknown vector that represents the noise/errors in
+\(\mathbf {b}\). The matrix \(\mathbf {A}(\mathbf {y}) \in \mathbb {R}^{m \times n}\) with \(m\geq n\) models a forward operator and is typically severely ill-conditioned. We assume that \(\mathbf {A}\) is unknown but can be
+parametrized by a vector \(\mathbf {y}\in \mathbb {R}^r\) with \(r \ll n\) in such a way that the map \(\mathbf {y}\mapsto \mathbf {A}(\mathbf {y})\) is differentiable. We aim to compute good approximations of \(\mathbf {x}_{\rm
+true}\) and \(\mathbf {y}_{\rm true}\), given a data vector \(\mathbf {b}\) and a matrix function that maps the unknown vector \(\mathbf {y}\) to an \(m \times n\) matrix \(\mathbf {A}\). To accomplish this task, we could solve
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                 1                 λ2
+                                                                                                             min   ∥A(y)x − b∥22 +    ∥Lx∥22 ,                                                                       (2)--><a id="eq: nsl2"></a><!--
+                                                                                                             x,y 2                 2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: nsl2} \min _{\mathbf {x}, \mathbf {y}} \frac {1}{2}\left \|\mathbf {A}(\mathbf {y})\mathbf {x} - \mathbf {b} \right \|_2^2 + \frac {\lambda ^2}{2} \left \|\mathbf {L} \mathbf {x}\right \|^2_2,
+\end{equation}
+
+</p>
+
+<p>
+where \(\lambda &gt;0\) is a <em>regularization parameter</em> and \(\mathbf {L} \in \mathbb {R}^{q\times n}\) is a <em>regularization operator</em>. We assume that \(\mathbf {L}\) satisfies that \(\mathcal {N}(\mathbf {A}(\mathbf
+{y})) \cap \mathcal {N} (\mathbf {L}) = \{0\}\) for all feasible values of \(\mathbf {y}\), so that the minimization problem <span class="textup">(<a href="paper.html#eq: nsl2">2</a>)</span> has a unique solution for \(\mathbf
+{y}\) fixed. We call problems of the form <span class="textup">(<a href="paper.html#eq: nsl2">2</a>)</span> regularized <em>separable</em> nonlinear inverse problems since the observations depend nonlinearly on the vector of unknown
+parameters \(\mathbf {y}\) and linearly on the solution vector&nbsp;\(\mathbf {x}\).
+</p>
+
+<p>
+The Variable Projection (VarPro) method was originally developed in the 1970s by Golub and Pereyra [3] to solve <span class="textup">(<a href="paper.html#eq: nsl2">2</a>)</span> for \(\lambda =0\) and has been widely recognized for its
+eﬀiciency in solving separable nonlinear least squares problems. VarPro eliminates the linear variables \(\mathbf {x}\) through projection and reduces the original problem to a smaller nonlinear least squares problem in the parameters \(\mathbf
+{y}\). This reduced nonlinear least squares problem can be solved using the Gauss-Newton Method.
+</p>
+
+<p>
+In [1], Español and Pasha extended VarPro to solve inverse problems with general-form Tikhonov regularization for general matrices \(\mathbf {L}\). They named this method GenVarPro. For special cases where computing the generalized singular
+value decomposition (GSVD) of the pair \(\{\mathbf {A}(\mathbf {y}),\mathbf {L}\}\) for a fixed value of \(\mathbf {y}\) is feasible or a joint spectral decomposition exists, they provided eﬀicient ways to compute the Jacobian matrix and the
+solution of the linear subproblems. For large-scale problems, where matrix decompositions are not an option, they proposed computing a reduced Jacobian and applying projection-based iterative methods and generalized Krylov subspace methods to
+solve the linear subproblems. Following on this theme, Español and Jeronimo introduced in [2], the Inexact-GenVarPro that considers a new approximate Jacobian where iterative methods such as LSQR and LSMR are used to solve the linear
+subproblems. Furthermore, specific stopping criteria were proposed to ensure Inexact-GenVarPro’s local convergence.
+</p>
+
+<p>
+In this talk, we will show how to extend GenVarPro and Inexact-GenVarPro to solve
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                           1                 λ2
+                                                                                                       min   ∥A(y)x − b∥22 +    ∥Lx∥22 + µR(y),                                                                (3)--><a id="eq: nlls_regy"></a><!--
+                                                                                                       x,y 2                 2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq: nlls_regy} \min _{\mathbf {x}, \mathbf {y}} \frac {1}{2}\left \|\mathbf {A}(\mathbf {y})\mathbf {x} - \mathbf {b} \right \|_2^2 + \frac {\lambda ^2}{2} \left \|\mathbf {L} \mathbf {x}\right \|^2_2 +
+\mu \mathcal {R}(\mathbf {y}),
+\end{equation}
+
+</p>
+
+<p>
+where \(\mu &gt;0\) is another regularization parameter and \(\mathcal {R}(\mathbf {y})\) plays the role of regularization on the parameter vector&nbsp;\(\mathbf {y}\). Similar variational formulations have appeared in recent papers in the
+context of training neural networks&nbsp;[4] and computerized tomographic reconstruction&nbsp;[5]. We will motivate the need to incorporate this regularization term on \(\boldsymbol {y}\) in the context of a semi-blind image deblurring problem
+by showing some examples where, without it, the solution of the reduced problem does not exist (i.e., no minimizer exists) or is trivial (e.g., \(\boldsymbol {y}=\boldsymbol {0}\) and \(\boldsymbol {A}(\boldsymbol {y})\) becomes the identity
+matrix). We will show in particular, how to extend GenVarPro and Inexact-GenVarPro to the case when \(\mathcal {R(\mathbf {y})}=\|\mathbf {y}-\mathbf {y}_0\|^2_2\) and \(\mathcal {R(\mathbf {y})}=-\sum _{j}\log (y_j)\) in the
+context of a large-scale semi-blind image deblurring problem. Furthermore, we will present theoretical results with suﬀicient conditions on the matrices involved to ensure local convergence. Numerical experiments will also be presented to illustrate
+their eﬀiciency and confirm the theoretical results.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> M. I. Español and M. Pasha. Variable projection methods for separable nonlinear inverse problems with general-form Tikhonov regularization. <i>Inverse Problems</i>, 39(8):084002, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M. I. Español and G. Jeronimo. Convergence analysis of a variable projection method for regularized separable nonlinear inverse problems. <i>arXiv preprint arXiv:2402.08568</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> G. H. Golub and V. Pereyra. The differentiation of pseudo-inverses and nonlinear least squares problems whose variables separate. <i>SIAM Journal on Numerical Analysis</i>, 10(2):413–432, 1973.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> E. Newman, L. Ruthotto, J. Hart, and B. van Bloemen Waanders. Train like a (Var) Pro: Eﬀicient training of neural networks with variable projection. <i>SIAM Journal on Mathematics of Data
+Science</i>, 3(4):1041–1066, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> F. Uribe, J. M. Bardsley, Y. Dong, P. C. Hansen, and N. A. B. Riis. A hybrid Gibbs sampler for edge-preserving tomographic reconstruction with uncertain view angles. <i>SIAM/ASA Journal on
+Uncertainty Quantification</i>, 10(3):1293–1320, 2022.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

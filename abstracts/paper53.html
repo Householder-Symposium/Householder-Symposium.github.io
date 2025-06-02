@@ -1,0 +1,176 @@
+---
+layout: abstract
+absnum: 53
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Towards understanding Krylov subspace methods through examples
+</h2>
+</div>
+<div class="center">
+
+<p>
+Erin Carson, <span class="underline">Jörg Liesen</span>, and Zdeněk Strakoš
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Taking the 1952 landmark paper of Hestenes and Stiefel on the conjugate gradient method (CG) as their historical starting point, Krylov subspace methods for solving linear algebraic systems have been around for more than 70 years. Tens of
+thousands of research articles on Krylov subspace methods and their applications have been published by authors coming from the most diverse scientific backgrounds. Nevertheless, many questions about the behavior of Krylov subspace methods
+both in exact arithmetic and finite precision computations remain open.
+</p>
+
+<p>
+Based on the recent paper&nbsp;[1], which focusses on CG and the generalized minimal residual method (GMRES), this talk will discuss mathematically important as well as practically relevant phenomena in the context of Krylov subspace methods.
+Rather than giving yet another technical and algorithmic overview or taxonomy of the methods, we will present a sequence of computed examples that are organized around what we consider <em>the main points for the understanding</em> of Krylov
+subspace methods.
+</p>
+
+<p>
+Both CG and GMRES, and Krylov subspace methods in general, are characterized by a nontrivial nonlinear behavior, which is their main mathematical asset as well as their beauty. This nonlinear behavior with respect to the given matrix and initial
+vector comes from using projections onto Krylov subspaces, which is equivalent to enforcing some form of optimality of the approximate solution, and which requires adaptation of the method to the given data (matrix and initial vector) at each
+iteration step. Adaptation to the hidden inner structure of the problem to be solved can lead to a significant speedup of the convergence in comparison with linear iterative methods that do not adapt to the problem. Moreover, nonlinear adaptation
+to the problem can not be captured by linear convergence bounds. The mathematical and practical consequences of this main point about Krylov subspace methods will appear in several of the examples in this talk.
+</p>
+
+<p>
+In particular, it will be demonstrated and explained that CG adapts in a significant (and nonlinear) way to the eigenvalue distribution of the given matrix, how eigenvalue clusters and their positions affect the convergence of CG, that a smaller
+condition number not necessarily leads to faster convergence of CG, and how outlying eigenvalues can cause delay of convergence in finite precision computations. For the GMRES method we will discuss similar topics, including the role of the
+eigenvalue distribution and the influence of the initial residual on the convergence. But here we will see that the mathematical understanding is less developed than for CG.
+</p>
+
+<p>
+Our main goal is to argue that, despite their long history and widespread use in practical applications, Krylov subspace methods should still be seen as not yet fully understood mathematical objects that are worth studying. Any progress in their
+understanding, even of their mathematical fundamentals, will bring us a step further in exploiting their full nonlinear computational potential.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E. Carson, J. Liesen and Z. Strakoš, <em>Towards understanding CG and GMRES through examples</em>, Linear Algebra and its Applications, 692 (2024), pp. 241-291.
+</p>
+</li>
+</ul>
+
+{% endraw %}

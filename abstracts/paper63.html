@@ -1,0 +1,104 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+On Exploiting Low Precision Arithmetic When Solving Sparse Linear Systems and Least Squares Problems using Preconditioned Iterative Methods
+</h2>
+</div>
+<div class="center">
+
+<p>
+Jennifer Scott and <span class="underline">Miroslav Tůma</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In recent years there has been significant interest in computing approximate matrix factorizations using low precision arithmetic and employing them as preconditioners within iterative solvers. This interest is not new. It extends the traditional
+considerations of replacing more expensive double precision (fp64) arithmetic by the potentially cheaper but less precise single precision (fp32) arithmetic for solving problems in scientific computing. This approach flourished when mainframe
+computers that had what we now regard as limited fast memory were the dominating computational tool for large-scale computations. Throughout most of the 1990’s, the key advantage of using fp32 was the resultant memory savings. A
+breakthrough at the end of the 20th century started with Intel SSE units, and later GPU accelerators that encouraged exploiting low precision arithmetic that, on some machines, was many times faster than standard f64 precision. In 2008, the IEEE
+standard adopted half precision (fp16). Since then the effort to analyse, understand, test, and use computational algorithms that mix the use of different precisions within a single solution method while still achieving the desired accuracy in the
+computed solution become ubiquitous within numerical linear algebra. This is evident in the excellent and comprehensive surveys [1, 2].
+</p>
+
+<p>
+There are many indications nowadays that using lower precision arithmetic when solving large-scale problems can be worthwhile (savings in computational time, memory, data movement, energy). However, employing fp16 is particularly challenging
+because, in this case, the precision offers a very limited range of floating point numbers to work with (the largest positive number in fp16 can be \(6.55\times 10^4\)). This limited range imposes an upper bound on the magnitudes of eligible values
+that may not be satisfied by the initial data. Scaling the data before “squeezing” it into fp16 can reduce the number of entries that underflow but if the original matrix was symmetric positive definite, the squeezed scaled matrix may not be positive
+definite, and this poses further challenges. As entries are lost through underflow, any factorization of the resulting matrix corresponds to an approximate (incomplete) factorization of the original matrix and the factors generally need to be employed
+with an iterative solver.
+</p>
+
+<p>
+Our interest is in the potential to use fp16 arithmetic when solving (a) systems of sparse symmetric positive definite linear equations and (b) sparse linear least squares problems. We are particularly interested in ill-conditioned problems and the
+challenge of recovering double precision accuracy in the computed solution. Even for well-conditioned problems, incomplete factorizations of symmetric positive definite matrices can break down when small entries occur on the diagonal during the
+factorization. When using half precision arithmetic, overflows are an additional possible source of breakdown. Although the occurrence of overflows may be infrequent, when it is does occur it inevitably leads to serious computational problems and so
+must be accounted for when developing robust algorithm implementations that can be safely employed by non experts. We examine how breakdowns can be avoided and we implement our strategies within new half precision Fortran sparse incomplete
+Cholesky factorization software. Results for a range of problems from practical applications demonstrate that, even for highly ill-conditioned problems, half precision level-based incomplete factorization preconditioners can potentially replace double
+precision preconditioners, although unsurprisingly this may be at the cost of additional iterations of a Krylov solver [3].
+</p>
+
+<p>
+Encouraged by this success, our ongoing work looks at using a memory-limited approach to computing incomplete factorization preconditioners [4]. Such preconditioners have proved highly effective for both (a) and (b) when the computation is
+performed exclusively using fp64 arithmetic. The current challenge is replace fp64 by fp16 in the factor computation while maintaining robustness. For least square problems, we will exploit the incomplete factorization code HSL\(\_\)MI35 from the
+HSL mathematical software library [5] and explore recovering high accuracy through through the use of inner-outer iterative methods.
+</p>
+
+<p>
+Our software is written in Fortran, allowing the use of large-scale test problems from real applications. In this presentation, numerical results obtained with the NAG Fortran compiler that correctly simulates the half precision arithmetic will illustrate
+the potential effectiveness of fp16 incomplete factorization preconditioners.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;Abdelfattah, H.&nbsp;Anzt, E.&nbsp;G. Boman, E.&nbsp;Carson, T.&nbsp;Cojean, J.&nbsp;Dongarra, A.&nbsp;Fox, M.&nbsp;Gates, N.&nbsp;J. Higham, X.&nbsp;S. Li, J.&nbsp;Loe,
+P.&nbsp;Luszczek1, S.&nbsp;Pranesh, S.&nbsp;Rajamanickam, T.&nbsp;Ribizel, B.&nbsp;F. Smith, K.&nbsp;Swirydowicz, S.&nbsp;Thomas, S.&nbsp;Tomov, Y.&nbsp;M. Tsai1, and U.&nbsp;Meier&nbsp;Yang. A survey of numerical linear algebra
+methods utilizing mixed-precision arithmetic. <i>International J. High Performance Computing Applications</i>, 35(4):344–369, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> N.&nbsp;J. Higham and T.&nbsp;Mary. Mixed precision algorithms in numerical linear algebra. <i>Acta Numerica</i>, 31:347–414, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.&nbsp;A. Scott and M. Tůma. Avoiding breakdown in incomplete factorizations in low precision arithmetic, <i>ACM Trans. Math. Software</i> 50: no.&nbsp;2, Art. 9, 25 pp, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.&nbsp;A. Scott and M.&nbsp;Tůma. On positive semidefinite modification schemes for incomplete Cholesky factorization. <i>SIAM J. on Scientific Computing</i>, 36(2):A609–A633, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> HSL. A collection of Fortran codes for large-scale scientific computation, accessed 2024. http://www.hsl.rl.ac.uk.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

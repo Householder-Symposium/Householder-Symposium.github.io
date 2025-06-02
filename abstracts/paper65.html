@@ -1,0 +1,411 @@
+---
+layout: abstract
+absnum: 65
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Preconditioning Weak-Constraint 4D-Var: A Parallelisable Implementation in Firedrake
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Jemima M. Tabeart</span>, David Ham, Josh Hope-Collins
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Data assimilation refers to a class of methods which seek to find the most likely state of a dynamical system by combining information from a (numerical) model of the system of interest with measurements of the system [2]. The most mature
+application of data assimilation is to numerical weather prediction, where large dimensional problems (\(10^9\) dimensional states and \(10^7\) measurements) need to be solved in a very short amount of time. Algorithms also need to be highly
+parallelisable in order to exploit high performance computing resources available at meteorological centres.
+</p>
+
+<p>
+In variational data assimilation methods, a non-linear least squares problem is solved via a Gauss-Newton approach [5]. One computationally expensive component of this implementation consists of approximately solving large linear systems.
+Preconditioners can help to speed up the convergence of iterative methods, but it can be challenging to design effective and eﬀicient preconditioning methods. This is particularly true for the weak-constraint 4D-Var problem, which accounts for the
+fact that the numerical model itself is imperfect. Relaxing the assumption of a perfect model increases the size of the state space, but introduces the possibility of using parallel-in-time [3] methods, compared to the strong constraint method where
+model evaluations must be performed in serial.
+</p>
+
+<p>
+For a fixed time window \([t_0,t_N]\), \(\mathbf {x}^t_i\in \mathbb {R}^s\) denotes the true state of a dynamical system of interest at time \(t_i\), with observations \(\mathbf {y}_i\in \mathbb {R}^{p_i}\) made at times \(t_i\). Prior
+information obtained from a numerical model, \(\mathbf {x}_b \in \mathbb {R}^s\), is then combined with the observation information to find \(\mathbf {x}_i\in \mathbb {R}^s\), the most likely state of the system at time \(t_i\). The prior,
+or background state, is valid at initial time \(t_0\) and can be written as an approximation to the true state via \(\mathbf {x}_b = \mathbf {x}^t_0 + \epsilon ^b\). We assume that the background errors \(\epsilon ^b\sim \mathcal {N}
+(0,B) \). We define a, possibly non-linear, observation operator \(\mathcal {H}_i:\mathbb {R}^{s} \rightarrow \mathbb {R}^{p_i}\) which maps from state variable space to observation space at time \(t_i\). Observations are written as
+\(\mathbf {y}_i = \mathcal {H}_i[\mathbf {x}^t_i]+\epsilon _i \in \mathbb {R}^{p_i}\), for \(i=0,1,\dots ,N\), where the observation error \(\epsilon _i\sim \mathcal {N}(0,R_i)\) for \(R_i\in \mathbb {R}^{p_i\times p_i}\).
+</p>
+
+<p>
+This weak constraint 4D-Var problem then leads to a non-linear objective function of the form:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                                  1∑
+                                                                                                                                     N
+                                                                                                     1
+                                                                                               J(x) = (x − x0 )T B −1 (x − x0 ) +       (yi − Hi [xi ])T Ri−1 (yi − Hi [xi ])
+                                                                                                     2                            2 i=0
+
+                                                                                                                 1∑
+                                                                                                                   N
+                                                                                                             +         (xi − Mi (xi−1 ))⊤ Q−1
+                                                                                                                                           i (xi − Mi (xi−1 )),
+                                                                                                                 2 i=1
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\label {eq:CostFn} J(\mathbf {x})=&amp;\frac {1}{2}(\mathbf {x}-\mathbf {x}_0)^T{{B}^{-1}}(\mathbf {x}-\mathbf {x}_0)+\frac {1}{2}\sum _{i=0}^{N}(\mathbf {y}_i-\mathcal {H}_i[\mathbf {x}_i])^T{R}_i^{-1}(\mathbf
+{y}_i-\mathcal {H}_i[\mathbf {x}_i])\\&amp; +\frac {1}{2}\sum _{i=1}^N(\mathbf {x}_{i}-\mathcal {M}_i(\mathbf {x}_{i-1}))^\top {Q}_{i}^{-1}(\mathbf {x}_{i}-\mathcal {M}_i(\mathbf {x}_{i-1})),
+\end{align*}
+
+</p>
+
+<p>
+Within each outer loop, the inner loop minimises a quadratic objective function to find \(\boldsymbol \delta \mathbf {x}^{(l)}\in \mathbb {R}^{s( N+1)}\), where \(\boldsymbol \delta \mathbf {x}^{(l)} = \mathbf {x}^{(l+1)}-\mathbf
+{x}^{(l)}\). Writing \(\boldsymbol \delta \mathbf {x} = (\boldsymbol \delta \mathbf {x}_0^\top ,\boldsymbol \delta \mathbf {x}_1^\top ,\dots ,\boldsymbol \delta \mathbf {x}_N^\top )^\top \), the full non-linear observation
+operator \(\mathcal {H}_i\) (similarly the model operator \(\mathcal {M}_i\)) is linearised about the current best guess \(\mathbf {x}_i^{(l)}\) to obtain the linearised operator \(H^{(l)}_i\) (respectively \(M^{(l)}_i\)). The updated initial
+guess \(\boldsymbol \delta \mathbf {x}_0^{(l)}\) is propagated forward between observation times by \(M^{(l)}_i\) to obtain \(\boldsymbol \delta \mathbf {x}^{(l)}_{i+1} = M^{(l)}_i\boldsymbol \delta \mathbf {x}^{(l)}_{i}\).
+</p>
+
+<p>
+The aim of the inner loop is to solve the symmetric positive definite system given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                         Sδx = LT D−1 b + HT R−1 d,        S = LT D−1 L + HT R−1 H                                                                         (1)                                                      --><a id="eq:Primal"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:Primal} \mathbf {S}\delta \mathbf {x} = \mathbf {L}^T\mathbf {D}^{-1}\mathbf {b}+\mathbf {H}^T\mathbf {R}^{-1}\mathbf {d}, \quad \quad \mathbf {S} = \mathbf {L}^T\mathbf {D}^{-1}\mathbf {L}+\mathbf
+{H}^T\mathbf {R}^{-1}\mathbf {H}
+\end{equation}
+
+</p>
+
+<p>
+where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                B                                        I                             R0                             H0                      
+                                                                                     Q1                                    −M1   I                               R1                               H1
+                                                                           D=            ..            ,       L=             ..       ..       ,   R=           ..            ,   H=           ..            ,
+                                                                                               .                                      .        .                           .                                .
+                                                                                                   QN                                     −MN I                                RN                               HN
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\mathbf {D}=\left (\begin{smallmatrix} B &amp; &amp; &amp; \\ &amp; Q_1 &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; Q_{N}\\ \end {smallmatrix}\right ), \quad \mathbf {L}=\left (\begin{smallmatrix}
+I &amp; &amp; &amp; \\ -M_1&amp; I &amp; &amp; \\ &amp;\ddots &amp; \ddots &amp; \\ &amp; &amp; -M_N&amp;I\\ \end {smallmatrix}\right ), \quad \mathbf {R}=\left (\begin{smallmatrix} R_0 &amp; &amp; &amp; \\ &amp;
+R_1 &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; R_{N}\\ \end {smallmatrix}\right ), \quad \mathbf {H}=\left (\begin{smallmatrix} H_0 &amp; &amp; &amp; \\ &amp; H_1 &amp; &amp; \\ &amp; &amp; \ddots
+&amp; \\ &amp; &amp; &amp; H_{N}\\ \end {smallmatrix}\right ),
+\end{align*}
+with \(M_i,H_i\) being the linearisations of \(\mathcal {M}_i\) and \(\mathcal {H}_i\) about the current solution.
+</p>
+
+<p>
+However, the primal formulation, <span class="textup">(<a href="paper.html#eq:Primal">1</a>)</span>, has limited potential for acceleration via preconditioning approaches. In particular, it is diﬀicult to exploit the inherent parallelism in the
+forward problem when designing preconditioners. Recent work has focused on a reformulation of the linearised objective function as a saddle point system [6] which takes the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                  
+                                   D     0    L   δη      b
+                                  0    R     H δν  = d .                                                   (2)                                                                                                      --><a id="eq:saddlepointsystem"></a><!--
+                                  L⊤    H⊤    0   δx      0
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:saddlepointsystem} \begin{pmatrix} \mathbf {D} &amp; \mathbf {0} &amp; \mathbf {L} \\ \mathbf {0} &amp; {\mathbf {R}} &amp; \mathbf {H} \\ \mathbf {L}^{\top } &amp; \mathbf {H}^{\top } &amp; \mathbf
+{0}\end {pmatrix} \begin{pmatrix}\boldsymbol \delta \boldsymbol \eta \\ \boldsymbol \delta \boldsymbol {\nu } \\ \boldsymbol \delta \mathbf {x} \end {pmatrix}=\begin{pmatrix} \mathbf {b} \\ \mathbf {d} \\ \mathbf
+{0} \end {pmatrix}.
+\end{equation}
+
+</p>
+
+<p>
+A number of approaches to precondition the model term, \(\mathbf {L}\), have been proposed (see e.g. [6, 7, 12, 11]), many of which impose parallel-in-time structure on \(\widehat {\mathbf {L}}^{-1} \approx \mathbf {L}^{-1}\). However,
+testing and comparing these new preconditioners in realistic frameworks is not straightforward. Variational data assimilation requires access to linearised model and adjoint operators. The time cost of implementing these for a new problem means
+that researchers often test their new approaches on a limited number of toy problems, such as the Lorenz 96 problem [9] or the shallow water equations. If available (and accessible to the researchers), the next step is a full scale implementation within
+an operational code, meaning that even in the best case there is a gap in test problems. Data assimilation methods are also increasingly being applied to other dynamical systems, and the properties of the usual toy models that make them
+appropriate for weather applications may no longer be desirable or relevant for other applications.
+</p>
+
+<p>
+In this project we integrate both weak- and strong-constraint 4D-Var algorithms within the Firedrake [8] and PETSc [1] frameworks, for both the primal <span class="textup">(<a href="paper.html#eq:Primal">1</a>)</span> and saddle point
+<span class="textup">(<a href="paper.html#eq:saddlepointsystem">2</a>)</span> problems. Firedrake is an automated system for the solution of partial differential equations using the finite element method. In particular, this means that
+tangent linear and adjoint operators are available automatically, significantly reducing the implementational burden of applying variational data assimilation methods to new models. For the user, the cost of setting up the 4D-Var system is not
+substantially higher than the cost of a single run of the forward model \(\mathcal {M}_{i}\) and application of the observation operators \(\mathcal {H}_{i}\). This implementation is also done in parallel.
+</p>
+
+<p>
+In this talk I will present the integration of variational data assimilation problems within Firedrake, and demonstrate how this ‘plug-and-play’ approach allows users to focus on the numerical linear algebra aspects of their problem rather than the
+implementation of test problems. In particular I will present a theoretical and practical comparison of existing and new preconditioners for the model term, \(\mathbf {L}\), including the block Toeplitz approaches of [6, 11], block diagonal
+approximations as studied in [12], and block (\(\alpha \))-circulant preconditioners as used in the all-at-once setting (see e.g&nbsp;[10, 4]).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> S. Balay, S. Abhyankar, M.&nbsp;F. Adams, S. Benson, J. Brown, P. Brune, K. Buschelman, E. Constantinescu, L. Dalcin, A. Dener, V. Eijkhout, J. Faibussowitsch, W.&nbsp;D. Gropp, V. Hapla, T.
+Isaac, P. Jolivet, D. Karpeev, D. Kaushik, M.&nbsp;G. Knepley, F. Kong, S. Kruger, D.&nbsp;A. May, L. Curfman McInnes, R. Tran Mills, L. Mitchell, T. Munson, J.&nbsp;E. Roman, K. Rupp, P. Sanan, J. Sarich, B.&nbsp;F. Smith, H. Suh, S.
+Zampini, H. Zhang, H. Zhang and J. Zhang, <i>PETSc/TAO Users Manual</i>, Argonne National Laboratory, ANL-21/39 - Revision 3.22, = 10.2172/2205494, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> A. Carrassi, M. Bocquet, Marc, L. Bertino, and G. Evensen.<i> Data assimilation in the geosciences: An overview of methods, issues, and perspectives.</i> Wiley Interdisciplinary Reviews: Climate
+Change, 9 (5): e535, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M. J. Gander, <i>50 Years of Time Parallel Time Integration</i> Multiple Shooting and Time Domain Decomposition Methods: MuS-TDD, Heidelberg, May 6-8, 2013. Cham: Springer International
+Publishing, 69-113, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M. J. Gander, and S. L. Wu. <i>Convergence analysis of a periodic-like waveform relaxation method for initial-value problems via the diagonalization technique</i>. Numerische Mathematik, 143,
+489-527, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> S. Gratton, A. S. Lawless, and N. K. Nichols. <i>Approximate Gauss-Newton Methods for Nonlinear Least Squares Problems.</i> SIAM Journal on Optimization, 18(1):106–132, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M. Fisher and S. Gürol. <i>Parallelization in the time dimension of four- dimensional variational data assimilation.</i> Quarterly Journal of the Royal Meteorological Society, 143(703):1136–1147,
+2017.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M. A. Freitag and D. L. H. Green. <i>A low-rank approach to the solution of weak constraint variational data assimilation problems.</i> Journal of Computational Physics, 357:263–281, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> D. A. Ham, P. H. J. Kelly, L. Mitchell, C. J. Cotter, R. C. Kirby, K. Sagiyama, N. Bouziani, S. Vorderwuelbecke, T. J. Gregory, J. Betteridge, D. R. Shapero, R. W. Nixon-Hill, C. J. Ward, P. E.
+Farrell, P. D. Brubeck, I. Marsden, T. H. Gibson, M. Homolya, T. Sun, A. T. T. McRae, F. Luporini, A. Gregory, M. Lange, S. W. Funke, F. Rathgeber, G.-T. Bercea and G. R. Markall. <i>Firedrake User Manual</i>. First edition,
+doi:10.25561/104839, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> E. N. Lorenz, <i>Predictability: a problem partly solved</i>, in Seminar on Predictability, 4–8 September 1995, ECMWF, Reading, 1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> E. McDonald, J. Pestana, and A. J. Wathen. <i>Preconditioning and Iterative Solution of All-at-Once Systems for Evolutionary Partial Differential Equations</i>. SIAM J. Sci. Comput., 40, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> D. Palitta and J. M. Tabeart. <i>Stein-based preconditioners for weak-constraint 4D-Var</i>. Journal of Computational Physics, 482:112068, 2023.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> J. M. Tabeart and J. W. Pearson. <i>Saddle point preconditioners for weak-constraint 4D-Var</i>. ETNA - Electronic Transactions on Numerical Analysis, 60:197–220, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

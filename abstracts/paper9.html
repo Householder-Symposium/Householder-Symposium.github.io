@@ -1,0 +1,199 @@
+---
+layout: abstract
+absnum: 9
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Krylov Subspace Recycling With Randomized Sketching For Matrix Functions
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Liam Burke</span>, Stefan Güttel
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+I will discuss the importance of randomization in the development of <i>Krylov subspace recycling</i> algorithms for the eﬀicient evaluation of a sequence of matrix function applications on a set of vectors [5]. Recycling methods are a special class of
+augmented Krylov subspace methods where the augmentation subspace for each problem is constructed or <i>recycled</i> from the Krylov subspace used to solve a previous problem in the sequence [4]. If selected appropriately, the presence of the
+recycled subspace can aid in accelerating the convergence of the iterative solver, thereby reducing the overall computational cost and runtime required to solve the full sequence of problems.
+</p>
+
+<p>
+I will present the work in [1], where the <i>recycled Full Orthogonalization Method</i> (rFOM) for functions of matrices was shown to reduce the computational overhead and runtime required to evaluate a sequence of matrix function applications,
+when compared to the standard FOM approximation. I will discuss the development of rFOM, and show how it is not possible to develop a restarted implementation, resulting in excessive storage and orthogonalization costs as the number of
+iterations grows large.
+</p>
+
+<p>
+As an alternative to restarts, I will introduce <i>sketched-recycled FOM (srFOM)</i>, which incorporates randomized sketching [2, 3] into rFOM in order to avoid excessive orthogonalization costs when working with non-Hermitian matrices. I will
+show results of numerical experiments which demonstrate the kind of performance gains we can achieve through sketching.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker">[1]</span> L. Burke and S. Güttel, <i>Krylov subspace recycling with randomized sketching for matrix functions</i>, Technical Report arXiv:2308.02290, arXiv, (2023) (To appear in <i>SIAM J. Matrix Anal. Appl.</i>,
+(2024)).
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[2]</span> Y. Nakatsukasa and J. A. Tropp, <i>Fast &amp; Accurate Randomized Algorithms for Linear Systems and Eigenvalue Problems</i>, <i>SIAM J. Matrix Anal. Appl.</i> <b>45</b> (2024), no.&nbsp;2,
+1183–1214.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[3]</span> S. Güttel and M. Schweitzer, <i>Randomized sketching for Krylov approximations of large-scale matrix functions</i>, <i>SIAM J. Matrix Anal. Appl.</i> <b>44</b> (2023), no.&nbsp;3, 1073–1095.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[4]</span> M. L. Parks and E. de Sturler and G. Mackey and D. D. Johnson and S. Maiti, <i>Recycling Krylov subspaces for sequences of linear systems</i>, <i>SIAM J. Sci. Comput.</i> <b>28</b> (2006), no.&nbsp;5,
+1651–1674.
+</p>
+</li>
+<li>
+
+
+<p>
+<span class="listmarker">[5]</span> L. Burke and A. Frommer and G. Ramirez-Hidalgo and K. M. Soodhalter, <i>Krylov subspace recycling For matrix functions</i>, Technical Report arXiv:2209.14163, (2022).
+</p>
+<p>
+
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

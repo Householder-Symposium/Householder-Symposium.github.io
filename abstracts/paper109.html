@@ -1,0 +1,93 @@
+---
+layout: abstract
+---
+
+
+<a id="paper-autopage-2"></a>
+<div class="center">
+
+<h2>
+Generating functions of non-backtracking walks on weighted digraphs
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">María C. Quintana</span>, Vanni Noferini
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Let \(G\) be a finite graph, possibly directed and/or weighted, and let \(A\) be its adjacency matrix, i.e., \(A_{ij}&gt;0\) is the weight of the edge \((i,j)\) in \(G\) whereas \(A_{ij}=0\) if \((i,j)\) is not an edge in \(G\). In this case, it is known that the \((i,j)\) entry of \(A^k\)
+counts the weighted enumeration of distinct walks of length \(k\) from node \(i\) to node \(j\), where the weight of a walk is given by the product of the weigths of its edges. Then the \((i,j)\) entry of the generating function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                             ∞
+                                                                                                                                             ∑
+                                                                                                                                                   𝑡 𝑘 𝐴𝑘                                                                                               (1)--><a id="eq:powers"></a><!--
+                                                                                                                                             𝑘=0
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:powers} \sum _{k=0}^\infty t^k A^k
+\end{equation}
+
+</p>
+
+<p>
+records the weighted sum of all walks from \(i\) to \(j\), where each walk of length \(k\) is counted by its weight times the attenuation factor \(t^k\). Katz centrality [2] establishes that the importance of a node \(i\) can be quantified by the sum over all \(j\) of this weighted sum of
+walks starting from \(i\). It is also known that <span class="textup">(<a href="paper.html#eq:powers">1</a>)</span> converges to \((I-tA)^{-1}\) with radius of convergence \(\rho (A)^{-1}\), where \(\rho (A)\) denotes the spectral radius of \(A\). Then, the
+centrality of node \(i\) is the entry \(x_i\) of the vector \(x:=(I-tA)^{-1}\mathbf {1}\), where \(\mathbf {1}\) denotes the vector whose entries are all equal to \(1\). This leads to the linear system \((I-tA)x=\mathbf {1}\).
+</p>
+
+<p>
+In this talk, we generalize <span class="textup">(<a href="paper.html#eq:powers">1</a>)</span> to non-backtracking walks. A walk on a graph is called non-backtracking if it does not contain any node subsequence of the form \(iji\). The combinatorics of
+non-backtracking walks has recently received substantial attention in the area of complex network analysis, since it leads to the definition and study of certain non-backtracking centrality measures that have some novel features and potential advantages with respect to more
+traditional ones [1].
+</p>
+
+<p>
+It is known that the generating function associated with the enumeration of non-backtracking walks on finite graphs is a rational matrix-valued function of the parameter; such function is also closely related to graph-theoretical results such as Ihara’s theorem and the zeta function on
+graphs. In [1], the radius of convergence of the generating function was studied for simple (i.e., undirected, unweighted and with no loops) graphs, and shown to depend on the number of cycles in the graph. In this talk, we greatly extend these results by studying the radius of
+convergence of the corresponding generating function for general, possibly directed and/or weighted, graphs. For that, we use technologies from the theory of polynomial and rational matrices. In particular, we give an analogous characterization of the radius of convergence for
+directed (unweighted or weighted) graphs, showing that it depends on the number of cycles in the undirectization of the graph. We also consider backtrack-downweighted walks on unweighted digraphs, and we prove a version of Ihara’s theorem in that case. Finally, for weighted
+directed graphs, we provide for the first time an exact formula for the radius of convergence, improving a previous result that exhibited a lower bound, and we also provide a version of Ihara’s theorem in that case.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P. Grindrod, D. J. Higham, V. Noferini. <i>The deformed graph Laplacian and its applications to network centrality analysis</i>. SIAM J. Matrix Anal. Appl. 39 (1), 310–341, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> L. Katz. <i>A new status index derived from sociometric data analysis</i>. Psychometrika 18, 39–43, 1953.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

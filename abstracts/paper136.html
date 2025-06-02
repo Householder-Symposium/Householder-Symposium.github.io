@@ -1,0 +1,542 @@
+---
+layout: abstract
+absnum: 136
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\renewcommand \vec [1]{{\ensuremath {\bm {#1}}}}\)
+
+\(\newcommand \Real {{\ensuremath {\mathbb {R}}}}\)
+
+\(\newcommand \BigO [1]{{\ensuremath {\mathcal {O}(#1)}}}\)
+
+\(\newcommand \RigidBodyVel {{\ensuremath {\vec {V}}}}\)
+
+\(\newcommand \Nobj {{\ensuremath {N_{\Omega }}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Interpolated Compressed Inverse Preconditioning:<br />
+Fast and Accurate Simulation of Close-to-Touching Discs in Stokes Flow
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Daniel Fortunato</span>, Mariana Martínez Aguilar, Dhairya Malhotra
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the flow of dense suspensions of rigid bodies in a Stokesian fluid. Such flows are diﬀicult to compute numerically due to the presence of close-to-touching interactions, which may require a large number of unknowns to resolve sharply
+peaked surface forces, a large number of GMRES iterations to solve the discretized PDE, and an extremely small time step. A common way of dealing with these diﬀiculties is to introduce a repulsion force between particles to prevent them from
+getting too close. However, this additional repulsion force is non-physical and may fundamentally alter the results of a simulation.
+</p>
+
+<p>
+For suspensions of identical discs in 2D, we present a fast and accurate boundary integral method that mitigates these challenges without introducing artificial forces. Through precomputation, compression and interpolation of the close-to-touching
+part of the interaction operator, our method—termed <em>interpolated compressed inverse preconditioning</em>—eﬀiciently handles close-to-touching interactions down to distances of \(10^{-10}\) with only a coarse discretization of the boundary.
+Additionally, we present a preconditioner that significantly reduces the number of GMRES iterations required to solve the Stokes mobility problem at each time step by effectively reusing the Krylov subspace from previous time steps. Coupled with
+high-order, adaptive time-stepping using spectral deferred correction, we are able to take larger time steps, mitigating the temporal stiffness resulting from close-to-touching interactions.
+</p>
+
+<p>
+For a graphical description of this work, see: <a href="https://danfortunato.com/talks/ICIP-poster.pdf" target="_blank" ><span class="uline">https://danfortunato.com/talks/ICIP-poster.pdf</span></a>.
+</p>
+<!--
+...... section Stokes mobility problem ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Stokes mobility problem</h4>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+We consider \(\Nobj \) rigid discs \(\Omega = \{\Omega _1, \cdots , \Omega _{\Nobj }\}\) embedded in a Stokesian fluid. The fluid velocity in the exterior of \(\Omega \) is governed by the Stokes equations,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                          −∆u + ∇p = 0                                                                            in R2 \ Ω,         (1)                        --><a id="e:stokes-eq0"></a><!--
+                                                                                ∇·u=0                                                                             in R \ Ω,
+                                                                                                                                                                      2
+                                                                                                                                                                                     (2)                        --><a id="e:stokes-eq1"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+-\Delta \vec {u} + \nabla p &amp;= 0 &amp; \text {in } \Real ^2 \setminus \Omega , \label {e:stokes-eq0} \\ \nabla \cdot \vec {u} &amp;= 0 &amp; \text {in } \Real ^2 \setminus \Omega , \label {e:stokes-eq1}
+\end{align}
+where \(\vec {u}\) is the fluid velocity and \(p\) is the fluid pressure. Equations&nbsp;<span class="textup">(<a href="paper.html#e:stokes-eq0">1</a>)</span> and <span class="textup">(<a
+href="paper.html#e:stokes-eq1">2</a>)</span> denote the momentum balance and incompressibility constraints, respectively. In addition, we also assume that the fluid velocity at infinity decays to zero,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                           u(x) → 0                                                                           as |x| → ∞.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\vec {u}(\vec {x}) &amp;\rightarrow 0 &amp; \text {as } |\vec {x}| \rightarrow \infty .
+\end{align*}
+Each disc has a net force \(\vec {F}_k\) and a net torque \(T_k\) acting about a point \(\vec {x}^c_k\). The discs undergo rigid body motion with the velocity \(\RigidBodyVel \) given by,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                     V (x) = vk + ωk (x − xck )⊥                                                                  for all x ∈ Ωk ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\RigidBodyVel (x) &amp;= \vec {v}_k + \omega _k (\vec {x} - \vec {x}^c_k)^{\perp } &amp; \text {for all } \vec {x} \in \Omega _k,
+\end{align*}
+where \(\vec {v}_k\) is the translational velocity and \(\omega _k\) is the angular velocity of \(\Omega _k\) about the point \(\vec {x}^c_k\). A slip velocity boundary condition \(\vec {u}_s\) between the rigid bodies and the fluid is
+prescribed. Therefore, the fluid velocity on the boundary \(\partial \Omega \) is given by,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                            u = V + us                                                                             on ∂Ω.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\vec {u} &amp;= \RigidBodyVel + \vec {u}_s &amp; \text {on } \partial \Omega .
+\end{align*}
+In the mobility problem, we are given \(\vec {u}_s\), \(\vec {F}_k\), and \(T_k\) about \(\vec {x}^c_k\) for each \(\Omega _k\). The rigid body motion \(\RigidBodyVel \) (i.e., \(\vec {v}_k\) and \(\omega _k\) for each \(\Omega _k\)) is
+not known and must be determined.
+</p>
+
+<p>
+Using the Stokes single- and double-layer potentials to represent the fluid velocity \(\vec {u}\) in terms of an unknown surface density \(\vec {\sigma }\), a boundary integral equation (BIE) for the Stokes mobility problem can be formulated as
+given in [1]:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                              Kσ = g                                                                             on ∂Ω,                              (3)                --><a id="e:bie"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\mathcal {K} \vec {\sigma } &amp;= g &amp; \text {on } \partial \Omega , \label {e:bie}
+\end{align}
+where \(\mathcal {K}\) is a second-kind boundary integral operator and \(g\) encodes the given slip velocity, net force, and net torque.
+</p>
+<!--
+...... section Close-to-touching interactions ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">2&#x2003;</span>Close-to-touching interactions</h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+Consider the model problem of two discs separated by a distance \(d\), with each disc discretized into a set of high-order Gauss–Legendre panels. The two disc problem serves as an effective pairwise preconditioner in a simulation with many
+close-touching discs. When the distance \(d\) between two discs gets small, the solution \(\sigma \) to the BIE in <span class="textup">(<a href="paper.html#e:bie">3</a>)</span> becomes highly peaked. This requires an extremely fine
+discretization of the boundary in the close-to-touching region. We label the close-to-touching region as \(\Gamma _{2}\) and the remaining boundary as \(\Gamma _1 = \partial \Omega \setminus \Gamma _2\). Then, <span class="textup">(<a
+href="paper.html#e:bie">3</a>)</span> can be discretized as a block linear system,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                                            (                )(        )        ( )
+                                                                                                                K11    K12        σ1             g1
+                                                                                                                                            =       ,                     (4)                            --><a id="e:bie-block-lin"></a><!--
+                                                                                                                K21    K22        σ2             g2
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\begin{pmatrix} K_{11} &amp; K_{12} \\ K_{21} &amp; K_{22} \end {pmatrix} \begin{pmatrix} \sigma _1 \\ \sigma _2 \end {pmatrix} = \begin{pmatrix} g_1 \\ g_2 \end {pmatrix}, \label {e:bie-block-lin}
+\end{align}
+where \(g_1\) and \(\sigma _1\) are the boundary conditions and unknowns on \(\Gamma _1\), \(g_2\) and \(\sigma _2\) are the boundary conditions and unknowns on \(\Gamma _2\), and \(K_{ij}\) represents a sub-block of the discretized
+operator \(\mathcal {K}\) that computes interactions from sources on \(\Gamma _j\) to targets on \(\Gamma _i\). Right preconditioning <span class="textup">(<a href="paper.html#e:bie-block-lin">4</a>)</span> with the block diagonal
+preconditioner \(\smash {\big (\begin {smallmatrix} I &amp; 0 \\ 0 &amp; K_{22}^{-1} \end {smallmatrix}\big )}\) yields the system
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+
+<!--
+
+
+                                                                                                        (                  −1
+                                                                                                                                )(          )       ( )
+                                                                                                            K11       K12 K22          σ1            g1
+                                                                                                                                                =       ,        (5)                                --><a id="e:bie-right-precond"></a><!--
+                                                                                                            K21          I             σ2            g2
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\begin{pmatrix} K_{11} &amp; K_{12} K_{22}^{-1} \\ K_{21} &amp; I \end {pmatrix} \begin{pmatrix} \sigma _1 \\ \overline {\sigma }_2 \end {pmatrix} = \begin{pmatrix} g_1 \\ g_2 \end {pmatrix} , \label
+{e:bie-right-precond}
+\end{align}
+where \(\overline {\sigma }_{2} = K_{22} \sigma _{2}\) is a new unknown on \(\Gamma _2\). While <span class="textup">(<a href="paper.html#e:bie-right-precond">5</a>)</span> may require fewer GMRES iterations to solve than
+<span class="textup">(<a href="paper.html#e:bie-block-lin">4</a>)</span>, it still requires an excessively fine discretization in the close-to-touching region \(\Gamma _2\). Additionally, computing \(K_{22}^{-1}\) on the fly can be
+expensive, especially for problems with moving boundaries. However, one may show that \(\overline {\sigma }_{2}\) can be discretized on a coarse mesh and that the off-diagonal block \(K_{12} K_{22}^{-1}\) is low rank.
+</p>
+<!--
+...... subsection Compressing close-to-touching interactions ......
+-->
+<h5 id="autosec-7"><span class="sectionnumber">2.1&#x2003;</span>Compressing close-to-touching interactions</h5>
+<a id="paper-autopage-7"></a>
+
+
+<a id="ss:compr-close"></a>
+
+<p>
+Since \(\Gamma _1\) and \(\Gamma _2\) are disjoint, the discretized boundary integral operators \(K_{12}\) and \(K_{21}\) are low rank, with the numerical rank independent of the distance \(d\). Hence, the column space of \(K_{21}\) is
+comprised of smooth functions that can be discretized using piecewise polynomials on a coarse mesh. From <span class="textup">(<a href="paper.html#e:bie-right-precond">5</a>)</span>, we have \(\overline {\sigma }_{2} = g_{2} -
+K_{21} \sigma _{1}\); therefore, \(\overline {\sigma }_2\) is smooth whenever \(g_{2}\) is smooth and it can be discretized on a coarse mesh. Since \(K_{12}\) is low rank, so is \(K_{12} K_{22}^{-1}\) (with numerical rank independent of
+\(d\)). There are several ways of constructing a compressed representation for \(K_{12} K_{22}^{-1}\). To retain the boundary integral structure and allow for acceleration by the fast multipole method (FMM), we use a representation of the form
+\(K_{12} R\) where \(R\) is a low-rank operator such that \(K_{12} R \approx K_{12} K_{22}^{-1}\), up to a given numerical tolerance. We now describe the numerical construction of \(R\).
+</p>
+
+<p>
+Consider two different panelizations of \(\Gamma _2\): a fine mesh where the panels on each disc are refined dyadically towards the closest point between the discs, and a coarse mesh with a small number of uniformly sized panels on each disc. We
+denote quantities on the coarse mesh with a superscript “\(c\)”; all other quantities are assumed to live on the fine mesh. Define the prolongation operator \(P\) that interpolates data from the coarse mesh to the fine mesh, and diagonal matrices
+\(W_f\) and \(W_c\) containing the weights for smooth integration on the fine and coarse meshes, respectively. Then, \(W_c^{-1} P^{T} W_f\) computes an \(L^2\) projection from the fine mesh to the coarse mesh.
+</p>
+
+<p>
+Assuming that the boundary data \(g_2\) is smooth and therefore representable on the coarse mesh, we have
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                        g2 = P g2c ,                                                                     (6)         --><a id="e:coarse-g"></a><!--
+                                                                                                                        σ 2 = P σ c2 .                                                             (7)          --><a id="e:coarse-sigma"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+g_{2} &amp;= P \, g^{c}_{2}, \label {e:coarse-g} \\ \overline {\sigma }_{2} &amp;= P \, \overline {\sigma }^{c}_{2}. \label {e:coarse-sigma}
+\end{align}
+Since \(K_{12}\) and \(K_{21}\) are low rank, they can be approximated accurately by their coarse discretizations,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+
+<!--
+
+
+                                                                                                                         c
+                                                                                                                  K12 = K12 Wc−1 P T Wf ,                                                (8)                       --><a id="e:coarse-k12"></a><!--
+                                                                                                                           c
+                                                                                                                  K21 = P K21 ,                                                          (9)                       --><a id="e:coarse-k21"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+K_{12} &amp;= K^{c}_{12} W_c^{-1} P^{T} W_f, \label {e:coarse-k12} \\ K_{21} &amp;= P K^{c}_{21}, \label {e:coarse-k21}
+\end{align}
+Substituting <span class="textup">(<a href="paper.html#e:coarse-g">6</a>)–(<a href="paper.html#e:coarse-k21">9</a>)</span> in <span class="textup">(<a href="paper.html#e:bie-right-precond">5</a>)</span>, we obtain
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{9}\)</span>
+
+
+<!--
+
+
+                                                                                                             (          c
+                                                                                                                               )(          )       ( )
+                                                                                                                 K11   K12 R        σ1              g1
+                                                                                                                  c                            =                                                                                                    (10)
+                                                                                                                 K21    I           σ c2            g2c
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\begin{pmatrix} K_{11} &amp; K^{c}_{12} R \\ K^{c}_{21} &amp; I \end {pmatrix} \begin{pmatrix} \sigma _1 \\ \overline {\sigma }^{c}_2 \end {pmatrix} = \begin{pmatrix} g_1 \\ g^{c}_2 \end {pmatrix}
+\end{align}
+where \(R = W_c^{-1} P^{T} W_f K_{22}^{-1} P\). This definition of \(R\) is used in the RCIP (recursively compressed inverse preconditioning) method&nbsp;[2]. For an order-\(p\) fine mesh with \(\BigO {\log d}\) levels of refinement, direct
+construction of \(R\) takes \(\BigO {p^3 (\log d)^3}\) operations; the RCIP method provides a faster algorithm to construct \(R\) without directly computing \(K_{22}^{-1}\), taking \(\BigO {p^3 \log d}\) operations. Our main
+result—termed ICIP (interpolated compressed inverse preconditioning)—instead constructs \(R\) through precomputation and interpolation, requiring only \(\BigO {p^2}\) work.
+</p>
+<!--
+...... subsection Interpolated compressed inverse preconditioning (ICIP) ......
+-->
+<h5 id="autosec-8"><span class="sectionnumber">2.2&#x2003;</span>Interpolated compressed inverse preconditioning (ICIP)</h5>
+<a id="paper-autopage-8"></a>
+
+
+<p>
+Constructing \(R = R(d)\) each time for a different value of \(d\) can be expensive since it requires computing \(K_{22}^{-1}\). Instead, we construct a polynomial interpolant for \(R(d)\) over a range \(d \in [d_\text {min}, \, d_\text
+{max}]\) (where \(0&lt;d_\text {min}&lt;d_\text {max}\)). Then for any value of \(d\) in the interval, we construct \(R(d)\) through entrywise interpolation. We use Chebyshev polynomials in \(\log d\) as our interpolation basis, i.e.,
+</p>
+
+<p>
+\[ [R(d)]_{ij} \approx \sum _{k=0}^q [R_k]_{ij} T_k(\log d) \]
+</p>
+
+<p>
+where \([R_k]_{ij}\) is the \(k\)th Chebyshev coeﬀicient for the \(ij\)th entry of \(R(d)\). For accurate interpolation of \(R(d)\) over a large dynamic range of \(10^{-10} &lt; d &lt; 10^{-1}\), only a moderate interpolation order of \(q=32\)
+is required. After an offline precomputation to generate \(\{R_k\}_{k=0}^q\), constructing \(R(d)\) at each time step costs \(\BigO {p^2 q}\) operations.
+</p>
+<!--
+...... section Accelerating timestepping with subspace recycling ......
+-->
+<h4 id="autosec-9"><span class="sectionnumber">3&#x2003;</span>Accelerating timestepping with subspace recycling</h4>
+<a id="paper-autopage-9"></a>
+
+
+<p>
+While the two-disc preconditioner is effective at lowering the number of GMRES iterations induced by close-to-touching interactions, a significant number of GMRES iterations may still be required at each time step for problems with many discs. To
+ameliorate this effect, we propose a preconditioner which effectively reuses the Krylov subspace from previous time steps.
+</p>
+
+<p>
+After the \(k\)th iteration of GMRES, the Krylov matrix is given by \(X = [b \; Ab \; \cdots \; A^{k-1}b]\). Let \(QR = AX\) be the QR decomposition of \(AX\). Then the matrix \(P\) given by
+</p>
+
+<p>
+\[ P = I - QQ^T + XR^{-1}Q^T \]
+</p>
+
+<p>
+has the following properties:
+</p>
+
+<p>
+\[ \begin {aligned} PAx = x &amp; \text { for all } x \in \operatorname {span}(X), \\ Py = y &amp; \text { for all } y \perp \operatorname {span}(X). \end {aligned} \]
+</p>
+
+<p>
+Hence, \(P\) effectively reuses the given Krylov subspace \(X\) when used as a preconditioner in a Krylov method. In a high-order time-stepping scheme based on spectral deferred corrections, this preconditioner can drastically reduce the number
+GMRES iterations by recycling the Krylov subspace between time steps.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> C. Pozrikidis, <em>Boundary Integral and Singularity Methods for Linearized Viscous Flow</em>, Cambridge University Press, 1992.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J. Helsing, <em>Solving integral equations on piecewise smooth boundaries using the RCIP method: a tutorial</em>, 2022.
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,441 @@
+---
+layout: abstract
+absnum: 174
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\R }{\mathbb R}\)
+
+\(\newcommand {\C }{\mathbb C}\)
+
+\(\newcommand {\E }{\mathbb E}\)
+
+\(\newcommand {\tFo }{{}_2F_1}\)
+
+\(\newcommand {\cN }{\mathcal {N}}\)
+
+\(\newcommand {\im }{\mathrm {i}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+When does the randomized SVD actually compute an SVD?<br />
+Randomized subspace approximation beyond singular value gaps
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Christopher Wang</span>, Alex Townsend
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The randomized SVD (rSVD) is excellent at constructing a low-rank approximation to a matrix with rapidly decaying singular values, and its theoretical behavior as such was thoroughly explained in [6]. However, the singular values and singular
+subspaces of a good low-rank approximation may not accurately approximate the true singular values and singular subspaces, even with oversampling. The following example illustrates the problem.
+</p>
+
+<p>
+Let \(A\) be a \(1000\times 1000\) matrix, where five of its eigenvalues are 1 and the remaining 995 eigenvalues are \(0.05\). We aim to estimate the 5-dimensional dominant eigenspace corresponding to the 1’s using the rSVD with standard
+Gaussian test vectors and oversampling by 10. A simple numerical experiment returns the following results, over 1000 iterations of the rSVD:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> Average relative low-rank error in the Frobenius norm \(\frac {\|A-\tilde A\|_\mathrm {F}}{\|A-A_5\|_\mathrm {F}}\): 1.176969 \(\qquad \)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> Average relative low-rank error in the spectral norm \(\frac {\|A-\tilde A\|_2}{\|A-A_5\|_2}\): 12.152447 \(\qquad \)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> Average maximum relative error for eigenvalues \(\displaystyle \max _{j=1,\dots ,5}\)\(\frac {|\sigma _j-\tilde \sigma _j|}{|\sigma _j|}\): 0.209691 \(\qquad \)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4.</span> Average principal angle error for dominant eigenspace \(\|\Theta (\mathcal U_5,\tilde {\mathcal U_5})\|_2\): 0.654832 \(\qquad \)
+</p>
+</li>
+</ul>
+
+<p>
+Here, \(\tilde A\) is the rank-5 truncated approximant generated by the rSVD, \(A_5\) is the best rank-5 approximant to \(A\) (that is, the diagonal matrix with five 1’s in the top left corner), \(\sigma _j,\tilde \sigma _j\) are the eigenvalues
+of \(A,\tilde A\) respectively, and \(\mathcal U_5,\tilde {\mathcal U}_5\) are the 5-dimensional dominant eigenspaces of \(A,\tilde A\) respectively. Observe that \(\tilde A\) is only a small factor away from being the optimal rank-5
+approximant to \(A\) in the Frobenius norm, but it is much further from optimality in the spectral norm. Additionally, the rSVD has a hard time distinguishing between the eigenvalue 1 and the eigenvalue 0.1, and the rSVD’s estimate for the
+dominant eigenspace is off by nearly 40 degrees, for the largest principal angle between the subspaces, on average. In short, the rSVD fails to be an SVD, even though it gives a good low-rank approximation in the Frobenius norm.
+</p>
+
+<p>
+Therefore, we ask: for what matrices \(A\) does the rSVD actually compute an accurate SVD? We approach the question by considering how well the rSVD approximates the \(k\)th dominant singular subspaces (indeed, if the rSVD manages to
+accurately capture the dominant singular subspaces, then it must be accurate in the singular values as well [7]). This problem has received considerable attention over the past decade, especially through the lens of perturbation theory. The
+Davis–Kahan theorem, and its generalization by Wedin to nonsymmetric matrices, provides bounds, dependent on the size of the singular value gap between \(\sigma _k\) and \(\sigma _{k+1}\), on the angular change of eigenvectors under a
+deterministic perturbation of a matrix. Building on these two early results, gap-dependent bounds on the accuracy of singular subspace approximations by projection-based methods, such as the rSVD, were derived for both deterministic and random
+settings by [5, 13, 14, 15]. Gap-independent bounds have also appeared in the works of [2, 9, 12]. While such bounds tell us when we expect to have a hard time determining the singular subspaces of a given matrix, they may fail to tell us whether a
+matrix is in fact conducive to singular subspace approximation. In fact, we observe in practice matrices with small or nonexistent singular value gaps whose singular subspaces are nevertheless well-approximated by the rSVD with high probability.
+</p>
+
+<p>
+Our contribution is an exact, relatively straightforward formula for the cumulative distribution function of the largest principal angle between the true and the approximate dominant singular subspace, when using the rSVD with Gaussian test
+vectors. Our formula encapsulates the advantages of previous works in that (a) it is computable, interpretable, and a priori in the sense that it is space-agnostic, meaning it does not depend on prior knowledge of the singular subspaces; (b) it applies
+for any power of subspace iteration, with any amount of oversampling (including none at all); and (c) it can be used to derive existing bounds for the largest principal angle. Since our result is exact, it is certainly gap-independent. More importantly,
+it helps explain why a large singular value gap improves subspace estimates, but it also explains when and why the rSVD succeeds at singular subspace approximation even when the singular value gap is small. We show that the gap-dependent
+bounds of [15] assume the worst-case scenario given a gap, and we show that that worst-case scenario is when the singular values of \(A\) are \(\sigma _1=\dots =\sigma _k&gt;\sigma _{k+1}=\dots =\sigma _n\)—the dominant singular values
+are as small as possible, while the tail is as large as possible.
+</p>
+
+<p>
+To be precise, let \(N\ge n\) and fix the target rank \(k\ge 1\) and oversampling \(p\ge 0\) such that \(k+p&lt;\frac n2\). Let \(M\in \R ^{N\times n}\) and let \(\Sigma _1,\Sigma _2\) be \(k\times k\) and \((n-k)\times (n-k)\)
+diagonal matrices of the dominant and tail singular values of \(M\), respectively. If \(\theta _1\) denotes the largest principal angle between the \(k\)th dominant left singular subspace of \(M\) and the \((k+p)\)-dimensional column space of
+\(M\Omega \), where \(\Omega \) is an \(n\times (k+p)\) standard Gaussian matrix, then the cumulative distribution function of \(\theta _1\) is given, for \(0\le \theta \le \tfrac \pi 2\), by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                           [                         n−k−p
+                                                                                                                                                               ]
+                                                              P(θ1 < θ) = E det(S(θ, Σ, Q, H1 , Q1 )) 2 2 F1 ( −p+1
+                                                                                                                2
+                                                                                                                    , n−k−p
+                                                                                                                        2
+                                                                                                                            ; −p+1
+                                                                                                                               2
+                                                                                                                                   ; Ik − S(θ, Σ, Q, H1 , Q1 )) --><a id="eq:cdf-E"></a><!--
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {eq:cdf-E} \P (\theta _1&lt;\theta ) = \E \left [\det (S(\theta ,\Sigma ,Q,H_1,Q_1))^{\frac {n-k-p}2} \tFo (\tfrac {-p+1}2, \tfrac {n-k-p}2; \tfrac {-p+1}2; I_k-S(\theta ,\Sigma ,Q,H_1,Q_1)) \right ]
+\end{equation*}
+
+</p>
+
+<p>
+where
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> \(S(\theta ,\Sigma ,Q,H_1,Q_1)\) is the \(k\times k\) matrix
+</p>
+<p>
+\[\sin ^2(\theta )\Sigma _1\left (\sin ^2(\theta )\Sigma _1^2 + \cos ^2(\theta )QQ_1&apos;(H_1&apos;\Sigma _2^{-2}H_1)^{-1}Q_1Q&apos;\right )^{-1}\Sigma _1;\]
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> \(Q\), \(H_1\), and \(Q_1\) are random matrices which are respectively the Q factors in the QR decomposition of a \(k\times k\) standard Gaussian matrix, an \((n-k)\times (k+p)\) matrix whose columns
+are independently sampled from the multivariate Gaussian \(\cN (0,\Sigma _2^2)\), and a \((k+p)\times k\) matrix whose columns are independently sampled from \(\cN (0,H_1^\top \Sigma _2^{-2}H_1)\); and
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> \(\tFo (a,b;c;X)\) is the Gaussian hypergeometric function of matrix argument.
+</p>
+</li>
+</ul>
+
+<p>
+All of these quantities are computable given the singular values of \(M\); the expectation can be computed by Monte–Carlo simulation, while the hypergeometric function can be evaluated extremely quickly via [8]. Numerical experiments demonstrate
+excellent agreement between our formula and empirical observations.
+</p>
+
+<p>
+The primary tools used to derive our formula for the cumulative distribution function come from the statistical side of random matrix theory [4, 11]. Our result and proof generalizes those of [1, 3], the latter of which plays a major role in the
+theoretical guarantees of [6, 15]. We expect that our formula and techniques can be used to explain, in more detail, empirically observed phenomena in randomized methods for computing SVDs, including randomized Krylov iteration. We also expect
+that our formula can be used to analyze the possibility of using the rSVD as a test for low-rank structure, which has come up in [10, 16], or as a rank revealer. Finally, we hope to use our result to distinguish the classes of matrices for which
+randomized subspace methods succeed or fail at different tasks, including singular value and singular subspace approximation.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Absil, P.-A., Edelman, A., and Koev, P. On the largest principal angle between random subspaces. <i>Linear Algebra its Appl. 414</i> (2006), 288–294.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Allen-Zhu, Z., and Li, Y. First eﬀicient convergence for streaming \(k\)-PCA: A global, gap-free, and near-optimal rate. In <i>IEEE 58th Annual Symposium on Foundations of Computer
+Science</i> (2017), pp.&nbsp;487–492.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Chen, Z., and Dongarra, J. Condition numbers of Gaussian random matrices. <i>SIAM J. Matrix Anal. Appl. 26</i>, 3 (2005), 1389–1404.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Chikuse, Y. <i>Statistics on Special Manifolds</i>. Springer, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Dong, Y., Martinsson, P.-G., and Nakatsukasa, Y. Eﬀicient bounds and estimates for canonical angles in randomized subspace approximations. <i>SIAM J. Matrix Anal. Appl. 45</i>, 4
+(2024), 1978–2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Halko, N., Martinsson, P.-G., and Tropp, J.&nbsp;A. Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions. <i>SIAM Rev. 53</i>, 2
+(2011), 217–288.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Knyazev, A.&nbsp;V. Sharp a priori error estimates of the Rayleigh–Ritz method without assumptions of fixed sign or compactness. <i>Math. Notes 38</i> (1985), 998–1002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Koev, P., and Edelman, A. The eﬀicient evaluation of the hypergeometric function of a matrix argument. <i>Math. Comput. 75</i>, 254 (2006), 833–846.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Massey, P. Admissible subspaces and the subspace iteration method. <i>BIT Numer. Math. 64</i>, 1 (2024).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Meier, M., and Nakatsukasa, Y. Fast randomized numerical rank estimation for numerically low-rank matrices. <i>Linear Algebra its Appl. 686</i> (2024), 1–32.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Muirhead, R.&nbsp;J. <i>Aspects of Multivariate Statistical Theory</i>. John Wiley &amp; Sons, 1982.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Musco, C., and Musco, C. Randomized block Krylov methods for stronger and faster approximate singular value decomposition. In <i>Advances in Neural Information Processing Systems</i>
+(2015), vol.&nbsp;28.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Nakatsukasa, Y. Accuracy of singular vectors obtained by projection-based SVD methods. <i>BIT Numer. Math. 57 </i> (2017), 1137–1152.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Nakatsukasa, Y. Sharp error bounds for Ritz vectors and approximate singular vectors. <i>Math. Comput. 89</i>, 324 (2020), 1843–1866.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> Saibaba, A.&nbsp;K. Randomized subspace iteration: Analysis of canonical angles and unitarily invariant norms. <i>SIAM J. Matrix Anal. Appl. 40</i>, 1 (2019), 23–48.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> Wang, C., and Townsend, A. Operator learning for hyperbolic partial differential equations. <i><span class="textnormal">Preprint arXiv:2312.17489</span></i> (2023).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,180 @@
+---
+layout: abstract
+absnum: 25
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Numerical Linear Algebra on Quantum Computers Made Simple
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Haim Avron</span>, Lior Horesh, Liron Mor-Yosef, Shashanka Ubaru
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The field of quantum computing offers a unique opportunity to revolutionize numerical linear algebra and scientific computing. This is due to the capability of quantum computers to eﬀiciently model complex structures, and their ability to represent
+and act on high dimensional vectors and matrices using exponentially fewer qubits. These advantages arise due to the principles of superposition and entanglement inherent to qubits.
+</p>
+
+<p>
+However, the current landscape of quantum computing research emphasizes intricate, tailor-made circuit designs, created in an adhoc manner for specific mathematical challenges. While such state-of-the-art quantum algorithms offer a powerful
+approach by translating various computations into circuits, their development not straightforward. Development often requires significant “circuit engineering” to achieve the desired mathematical outcomes. In this talk, I will discuss our recent
+progress on developing a unified and systemic approach to utilizing quantum computing for numerical linear algebra. Our research centers around a novel Quantum Linear Algebra (qLA) framework offering fundamental matrix algebra building
+blocks, akin to BLAS – but for Quantum Computers.
+</p>
+
+<p>
+The motivation is to make progress toward harnessing the power of quantum computing to perform linear algebra operations eﬀiciently, while enabling seamless development of numerical linear algebra algorithms utilizing quantum computers. Even
+though quantum computing offers, in principle, the potential for exponential improvements in runtime and storage complexity, for linear algebra operations even modest gains are valuable and seemingly much more realistic. Indeed, even seemingly
+minor eﬀiciency improvements, such as reducing from \(O(n^{3})\) to \(O(n^{2})\) the complexity of core operations like matrix-matrix product, can have significant real-world impact. This makes quantum numerical linear algebra a highly
+promising area for exploration. Developing a high-level framework for quantum linear algebra algorithms is key to unlocking qNLA’s potential in scientific computing and machine learning. Such a framework would empower developers by hiding
+low-level circuit complexities, ultimately accelerating progress in this exciting field.
+</p>
+
+<p>
+The qLA framework is designed to provide a high-level interface for writing and executing linear algebra subroutines by translating mathematical formulas directly into quantum circuits. While qLA-based algorithms are classical to classical, they will
+produce circuits specifically intended for eﬀicient execution on quantum computers. The framework enables a wide range input models, a broad range of matrix algebra operations, and facilitate seamless circuit design. Beyond its core functionalities,
+the framework is developed so that it can be leveraged to design quantum algorithms for scientific computing and machine learning problems, particularly those problems involving computationally intensive linear algebra operations. The talk will
+discuss both the algorithms and functionalities within the qLA framework, and how they can be leveraged to design novel quantum algorithms.
+</p>
+
+<p>
+An initial version of the qLA framework, called quantum Matrix States Linear Algebra (qMSLA), is described in our accepted manuscript [1]. qMSLA focuses on a single input model: state preparation circuits (the term will be explained in the talk),
+and provides a minimal set of linear algebra operations that can be used to design quantum algorithm for estimating multivariate traces, i.e. the trace of products of matrices. In the talk, I will discuss our recent work on expanding this framework
+with additional input models (block encoding and density preparation circuits), a comprehensive list of foundational matrix algebra operations, and the relation between input models.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Liron Mor Yosef, Shashanka Ubaru, Lior Horesh, Haim Avron Multivariate Trace Estimation Using Quantum State Space Linear Algebra <i>SIAM Journal on Matrix Analysis and Applications</i>,
+to appear.
+</p>
+</li>
+</ul>
+
+{% endraw %}

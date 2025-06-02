@@ -1,0 +1,177 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+The \(\omega \)-Condition Number:<br />
+Applications to Error Analysis and Optimal Preconditioning
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Henry Wolkowicz</span>, Woosuk L. Jung, David Torregrosa-Belén
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Preconditioning is essential in iterative and direct solutions of linear systems e.g.,&nbsp;[?]. It is also the implicit objective in low rank updating of approximate Jacobians in optimization, e.g.,&nbsp;in quasi-Newton methods&nbsp;[?]. In this paper
+we study the \(\omega \)-condition number (abbreviated as \(\omega \)), a nonclassic matrix condition number that, for a positive definite matrix, is the ratio of the arithmetic and geometric means of the eigenvalues, rather than the largest and
+smallest eigenvalues of the classical \(\kappa \)-condition number (abbreviated as \(\kappa \)). We emphasize that \(\omega \) provides a more average indication rather than a worst case measure of conditioning. Moreover, unlike \(\kappa \),
+\(\omega \) is <em>not</em> invariant under inversion. This important property allows one to recall and exploit that it is the conditioning of the inverse that is important.
+</p>
+
+<p>
+In particular, our original motivation is to find well conditioned, \(\omega \)-optimal, low rank updates of the positive definite generalized Jacobian that arises in nonsmooth Newton methods e.g.,&nbsp;[?]. We use optimality conditions to find
+<em>explicit formulae</em> for these low rank updates. As well our work includes explicit formulae for \(\omega \)-optimal diagonal and sparse upper triangular preconditioners. We see that these latter relate to a sparse incomplete Cholesky
+factorization, i.e.,&nbsp;we modify the iterates of the Cholesky factorization by including the entire diagonal at each iteration. We then illustrate both the eﬀiciency and effectiveness of using \(\omega \) compared to \(\kappa \) when solving
+positive definite linear systems. In particular, our empirics show that \(\omega \) is more effective in promoting the important property of clustering of eigenvalues.
+</p>
+
+<p>
+In addition, we show that \(\omega \) can be evaluated exactly following a Cholesky or LU factorization; and that it is a better indication of the conditioning of a problem when compared to \(\kappa \).
+</p>
+<!--
+...... subsection Background ......
+-->
+<h5 id="autosec-5">Background</h5>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+In numerical analysis, a condition number of a matrix \(A\) is the main tool in the study of error propagation in the problem of solving the linear equation \(Ax=b\). The linear system \(Ax=b\) is said to be well-conditioned when \(A\) has a low
+condition number. In particular, in the literature \(\kappa (A)\) is used as a (worst case) measure of the conditioning of a linear system \(Ax=b\), i.e.,&nbsp;how much a solution \(x\), the output, will change with respect to changes in the
+right-hand side \(b\), the input:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                        ∥∆x∥/∥x∥
+                                                                                                                   \(\cond (A)\) :=              ,                                                           (1)--><a id="eq:condArelerrelinput"></a><!--
+                                                                                                                                        ∥∆b∥/∥b∥
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:condArelerrelinput} \textdef {$\cond (A)$} := \frac {\|\Delta x\|/\|x\|}{\|\Delta b\|/\|b\|},
+\end{equation}
+
+</p>
+
+<p>
+e.g.,&nbsp;[?, Sect. 1.3]. In general, iterative algorithms that solve \(Ax=b\) require a large number of iterations to achieve a solution with suﬀicient accuracy if the problem is not well-conditioned, i.e.,&nbsp;is ill-conditioned. For simplicity, we
+restrict ourselves to \(A\) positive definite and so \(\kappa (A) = \lambda _1(A)/\lambda _n(A) \, (=\kappa (A^{-1}))\).
+</p>
+
+<p>
+In order to improve the conditioning of a problem, preconditioners are employed for obtaining equivalent systems with better condition number. For example, in&nbsp;[?] a preconditioner that minimizes \(\kappa \) is obtained in the Broyden family
+of rank-two updates. Also, for applications to inexact Newton methods see&nbsp;[?, ?], where it is emphasized that the goal is to improve the <em>clustering of eigenvalues</em> around \(1\). The \(\omega \)-condition number in particular uses
+<em>all</em> the eigenvalues, rather than just the largest and smallest as in the classical \(\kappa \). A recent survey on preconditioning is given in&nbsp;[?]. We emphasize that though many heuristics are given, the main measure of conditioning,
+e.g.&nbsp;[?], is \(\kappa \).<sup>1</sup> However, in our view, \(\kappa \) has the misleading property that it is <i>inverse invariant</i>.<sup>2</sup>
+</p>
+
+<a id="page:mainaim"></a>
+
+<p>
+From the discussions in&nbsp;[?, ?], the (<em>worst case</em>) condition number for the linear system \(Ax=b\) is
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                  ∥(A+∆A)−1 (b+∆b)−A−1 b∥
+                                                                                                 cond(A, b)   :=    lim    sup           ϵ∥A−1 b∥
+                                                                                                                    ϵ↓0 ∥∆A∥≤ϵ∥A∥
+                                                                                                                        ∥∆b∥≤ϵ∥b∥        (                         )                                                 (2)--><a id="eq:condABworst"></a><!--
+                                                                                                                              −1                           −1
+                                                                                                              =     κ(A) + ∥A    ∥∥b∥
+                                                                                                                             ∥A−1 b∥
+                                                                                                                                             = κ(A−1 ) + ∥A   ∥∥b∥
+                                                                                                                                                          ∥A−1 b∥
+                                                                                                                                                                     ,
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:condABworst} \begin{array}{rcl} \cond (A,b) &amp;:=&amp; \lim \limits _{\epsilon \downarrow 0} \sup \limits _{\stackrel {\|\Delta A\|\leq \epsilon \|A\|} {\|\Delta b\|\leq \epsilon \|b\|}} \frac
+{\|(A+\Delta A)^{-1}(b+\Delta b)- A^{-1}b\|} {\epsilon \|A^{-1}b\|} \\&amp;=&amp; \kappa (A) + \frac {\| A^{-1}\|\|b\|} {\|A^{-1}b\|} \quad \left (=\kappa (A^{-1}) + \frac {\| A^{-1}\|\|b\|} {\|A^{-1}b\|}\right ),
+\end {array}
+\end{equation}
+
+</p>
+
+<p>
+where we have added the equivalence for the inverse invariance for emphasis. The nonstandard condition number \(\omega \) was proposed in&nbsp;[?]. Interestingly enough, the authors show that the inverse-sized BFGS and sized DFP&nbsp;[?] are
+obtained as optimal quasi-Newton updates with respect to this measure. In contrast to the worst case condition number \(\kappa \), we argue that \(\omega \) is a more average type condition number and provides a better measure for improving
+conditioning. Moreover, it distinguishes between the conditioning of \(A\) and \(A^{-1}\). We illustrate that \(\omega \) presents advantages with respect to the classic \(\kappa \). Both are pseudoconvex over the open convex cone of positive
+definite matrices, \(\Snpp \); thus a local minimum is a global minimum. But, \(\kappa \) is differentiable if, and only if, both largest and smallest eigenvalues are singletons, while \(\omega \) is differentiable on all of \(\Snpp \). This facilitates
+obtaining explicit formulae for optimal preconditioners and avoids expensive calculations, see e.g.,&nbsp;[?]. We extend these results in this paper. Moreover, it is expensive to evaluate the classic condition number&nbsp;[?] as it uses both
+\(\|A\|,\|A^{-1}\|\). For large scale, one often uses the \(\ell _1\) approximation in&nbsp;[?]. We show that we can find the exact value of the \(\omega \)-condition number when a Cholesky or LU factorization is done. In particular, in
+comparison to \(\kappa \), we show empirically that: \(\omega \) is better for preconditioning for solving linear systems and for low rank updating; and particularly \(\sqrt {\omega (A^{-2})}\), denoted <i>\(\omegatwo \)</i>, provides a
+significantly better estimates for error analysis. (Though \(\omegatwo \) is currently for theoretical purposes only as we do not yet have an eﬀicient way of exploiting it without calculating \(A^{-1}\).)
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-6"></a>
+<p>
+<sup>1</sup>&nbsp;Links: <a href="https://nhigham.com/2019/01/23/who-invented-the-matrix-condition-number/" target="_blank" >Who Invented the Matrix Condition Number?</a> and <a
+href="https://blogs.mathworks.com/cleve/2017/07/17/what-is-the-condition-number-of-a-matrix/" target="_blank" >What is the Condition Number of a Matrix?</a>
+</p>
+
+<p>
+<sup>2</sup>&nbsp; In <a href="https://blogs.mathworks.com/cleve/2017/07/17/what-is-the-condition-number-of-a-matrix/" target="_blank" >What is the Condition Number of a Matrix?</a>, the derivation for \(\kappa \) for
+\(Ax=b\) with \(\sigma _{\max },\sigma _{\min }\) largest and smallest singular values for \(A\), respectively, is that \(\|b\|\leq \sigma _{\max } \|x\|, \| \Delta b\|\geq \sigma _{\min }\|\Delta x\|\). However, one can equally argue
+using \(\|\Delta x\|\leq \sigma _{\max }(A^{-1}) \|\Delta b\|, \| x\|\geq \sigma _{\min }(A^{-1}) \|b\|\) to get \(\frac { \| \Delta x\| \|b \|}{\|x\| \|\Delta b\|} \leq \kappa (A^{-1})\).
+</p>
+
+
+</div>
+<!--
+...... subsection Outline and Main Results ......
+-->
+<h5 id="autosec-7"><span class="sectionnumber">0.1&#x2003;</span>Outline and Main Results</h5>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+The goal of this paper is to show the eﬀicacy of using \(\omega \) when compared to \(\kappa \), i.e.,&nbsp;to illustrate that \(\omega \) outperforms \(\kappa \) as a condition number. And in particular, we illustrate this on preconditioning and
+low rank updating, and in estimating errors.
+</p>
+
+<p>
+We begin with basic and new properties of \(\omega \) as well as <em>new</em> explicit formulae for \(\omega \)-optimal preconditioners of special structure: a new \(\omega \)-optimal diagonal preconditioner is introducuced; and various
+triangular types are included. Eﬀiciency and accuracy of computing \(\omega \) is included. Indeed <em>the condition number of the condition number is the condition number</em> holds for \(\kappa \) but not for \(\omega \) indicating that
+numerical calculations of ill-conditioned \(\kappa \) can be very inaccurate in contrast to \(\omega \).
+</p>
+
+<p>
+We include connections to preserving sparsity and to incomplete Cholesky preconditioners. And, we empirically illustrate that \(\omega \) is a better indicator of conditioning for iterative solutions of linear equations. Moreover, we provide
+justification for using <i>\(\omegatwo :=\sqrt {\omega (A^{-2})}\)</i> as a measure and emphasizing the advantage over \(\kappa \) of not being inverse invariant. We also include empirical results for better clustering of eigenvalues,
+</p>
+
+<p>
+In addition, we derive explicit formulae for \(\omega \)-optimal conditioning for low rank updates of positive definite matrices. These updates often arise in the construction of generalized Jacobians. We include extensive numerical tests for these
+updates.
+</p>
+<!--
+...... section ......
+-->
+<h4 id="autosec-8"></h4>
+<a id="paper-autopage-8"></a>
+
+

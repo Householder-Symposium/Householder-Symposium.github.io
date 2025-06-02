@@ -1,0 +1,335 @@
+---
+layout: abstract
+absnum: 80
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Fast Solvers for the Runge–Kutta Integration of the Instationary Incompressible Navier–Stokes Equations
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Santolo Leveque</span>, Yunhui He, and Maxim Olshanskii
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Time-dependent PDEs arise very often in many scientific areas, such as mechanics, biology, economics, or chemistry, just to name a few. The lack of a closed form solution for general time-dependent PDEs requires one to employ numerical methods
+in order to find an approximation of it. These methods consider suitable discretizations of the quantity involved; in particular, they employ suitable time-stepping schemes as discretization of the time derivative. The majority of the solvers for
+time-dependent PDEs is based on classical linear multistep methods. Within this framework, the approximation of the solution at time \(t_n\) is evaluated as a linear combination of the \(s\) previous steps. The wide use of multistep methods is due
+to their simplicity; in fact, the structure of the discretized problem allows one to employ solvers for the corresponding stationary PDE as a solver for the time-dependent one. Despite this favourable quality, multistep methods have a drowback: they
+are (in general) not A-stable, a property that allows one to choose an arbitrary time-step for the integration. In fact, as stated by the second Dahlquist barrier, see for example [4, Theorem&#x202f;6.6], an A-stable linear multistep method cannot
+have order of convergence greater than two. By contrast, one can devise an implicit Runge–Kutta method so that not only it is A-stable, but also such that the method possesses more desirable stability properties (e.g., L- or B-stability, see for
+instance [2, 3, 4]). However, the better stability properties of Runge–Kutta methods come to a price: the discretization results in a non-linear block system, to be solved for the so called <em>stages</em> of the method at each time step. For this
+reason, in recent years researchers have devoted their effort in devising eﬀicient and robust linear solvers for the solution of block systems arising from the Runge–Kutta discretization of a time-dependent PDE, see for example [1, 5, 6, 7].
+</p>
+
+<p>
+Consider the integration of an ODE of the form \(v&apos;(t)=f(v(t),t)\) between \(0\) and a final time \(t_f&gt;0\), given the initial condition \(v(0)=v_0\). By employing a constant time-step \(\tau \), an \(s\)-stage Runge–Kutta
+time-stepping scheme applied to \(v&apos;(t)=f(v(t),t)\) reads as follows:
+</p>
+
+<p>
+\[v_{n+1}= v_{n} + \tau \sum _{i=1}^{s} b_i k_{i,n}, \quad n = 0, \ldots , n_t-1,\]
+</p>
+
+<p>
+where the stages \(k_{i,n}\) are given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                            (                                          )
+                                                                                                                         ∑
+                                                                                                                         s
+                                                                                                 ki,n = f       vn + τ         ai,j kj,n , tn + ci τ       ,   i = 1, . . . , s,                                         (1)--><a id="stages"></a><!--
+                                                                                                                         j=1
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {stages} k_{i,n} = f\left (v_n + \tau \sum _{j=1}^{s} a_{i,j} k_{j,n}, t_n + c_i \tau \right ), \qquad i=1,\ldots ,s,
+\end{equation}
+
+</p>
+
+<p>
+with \(t_n=n \tau \). The Runge–Kutta method is uniquely defined by the coeﬀicients \(a_{i,j}\), the weights \(b_{i}\), and the nodes \(c_{i}\), for \(i,j=1,\ldots ,s\). For this reason, an \(s\)-stage Runge–Kutta method is represented by
+the following Butcher tableau:
+</p>
+
+<p>
+\[\def \arraystretch {1.2} \begin {array}{c|c} \mathbf {c}_{\mathrm {RK}} &amp; A_{\mathrm {RK}}\\ \hline &amp; \mathbf {b}_{\mathrm {RK}}^\top \end {array}\]
+</p>
+
+<p>
+where \(A_{\mathrm {RK}} =\{a_{i,j} \}_{i,j=1}^s\), \(\mathbf {b}_{\mathrm {RK}} =[b_1, \ldots , b_s ]^\top \), and \(\mathbf {c}_{\mathrm {RK}} =[c_1, \ldots , c_s ]^\top \).
+</p>
+
+<p>
+In this talk, we consider the following instationary incompressible Navier–Stokes equations
+</p>
+
+<p>
+\[ \left \{ \begin {array}{rl} \frac {\partial \vec {v}}{\partial t} - \nu \nabla ^2 \vec {v} + \vec {v} \cdot \nabla \vec {v} + \nabla {p} = \vec {f}(\mathbf {x},t) &amp; \quad \mathrm {in} \; \Omega \times
+(0,t_{f}), \\ - \nabla \cdot \vec {v} = 0 &amp; \quad \mathrm {in} \; \Omega \times (0,t_{f}), \\ \vec {v}(\mathbf {x},t) = \vec {g}(\mathbf {x},t) &amp; \quad \mathrm {on} \; \partial \Omega \times (0,t_{f}),\\
+\vec {v}(\mathbf {x},0) = \vec {v}_0(\mathbf {x}) &amp; \quad \mathrm {in} \; \Omega . \end {array} \right . \]
+</p>
+
+<p>
+The functions \(\vec {f}\) and \(\vec {g}\) as well as the initial condition \(\vec {v}_0(\mathbf {x})\) are known. Further, \(\nu \) is the viscosity of the fluid. We integrate the problem with a Runge–Kutta scheme in time. The time
+discretization results in a non-linear system to be solved for the stages of the method at each time step. Specifically, introducing the variables
+</p>
+
+<p>
+\[\begin {array}{l} \vec {w}^{\,v}_{n,i}= \vec {v}_n + \tau \sum _{j=1}^s a_{i,j} \vec {k}^{\, v}_{j,n}, \quad i = 1, \ldots , s,\\ w^p_{n,i}= p_n + \tau \sum _{j=1}^s a_{i,j} k^p_{j,n}, \quad i = 1, \ldots , s,
+\end {array}\]
+</p>
+
+<p>
+at each time step the non-linear system <span class="textup">(<a href="paper.html#stages">1</a>)</span> that characterizes the stages of the Runge–Kutta method reads as follows:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                          {
+                                                                                              w v
+                                                                                              ⃗ n,i − ν∇2 w v
+                                                                                                          ⃗ n,i +w v
+                                                                                                                 ⃗ n,i · ∇w v
+                                                                                                                          ⃗ n,i + ∇wn,i
+                                                                                                                                    p
+                                                                                                                                        = f⃗(x, t)                    i = 1, . . . , s,
+                                                                                                                                                                                                              (2)--><a id="RK_NavierStokes"></a><!--
+                                                                                                                                   −∇ · w v
+                                                                                                                                        ⃗ n,i =0                      i = 1, . . . , s.
+
+-->
+
+<p>
+
+\begin{equation}
+\label {RK_NavierStokes} \left \{ \begin{array}{rl} \vec {w}^{\,v}_{n,i} - \nu \nabla ^2 \vec {w}^{\,v}_{n,i} + \vec {w}^{\,v}_{n,i} \cdot \nabla \vec {w}^{\,v}_{n,i} + \nabla w^p_{n,i} = \vec {f}(\mathbf {x},t)
+&amp; \quad i = 1, \ldots , s, \\ - \nabla \cdot \vec {w}^{\,v}_{n,i} = 0 &amp; \quad i = 1, \ldots , s. \end {array} \right .
+\end{equation}
+
+</p>
+
+<p>
+Then, the solutions at time \(t_n + \tau \) are given by
+</p>
+
+<p>
+\[\begin {array}{l} \vec {v}_{n+1} = \vec {v}_n + \tau \sum _{i=1}^{s} b_i \vec {k}^{\,v}_{i,n},\\ p_{n+1} = p_n + \tau \sum _{i=1}^{s} b_i k^p_{i,n}. \end {array}\]
+</p>
+
+<p>
+In order to find a numerical solution, we consider a Newton linearization of the non-linear problem in <span class="textup">(<a href="paper.html#RK_NavierStokes">2</a>)</span>, which is then discretized with suitable finite elements. The
+resulting linear system presents a saddle-point block structure, and can be very large and sparse in real-life applications. For this reason, in order to find a solution one requires the use of preconditioned iterative methods. We adopt an augmented
+Lagrangian-based preconditioner, and employ saddle-point theory for deriving approximations of the \((1,1)\)-block and the Schur complement. Numerical experiments show the effectiveness and robustness of our approach, for a range of problem
+parameters.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> O.&nbsp;Axelsson, I.&nbsp;Dravins, and M.&nbsp;Neytcheva, <i>Stage-parallel preconditioners for implicit Runge–Kutta methods of arbitrarily high order. Linear problems</i>, Numer. Linear
+Algebra Appl., 31 (2024), p.&nbsp;e2532.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;C. Butcher, <i>Numerical methods for ordinary differential equations</i>, John Wiley &amp; Sons, Ltd, 3rd&nbsp;ed., 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> E.&nbsp;Hairer and G.&nbsp;Wanner, <i>Solving ordinary differential equations II: stiff and differential-algebraic problems</i>, Springer Berlin, Heidelberg, 2nd&nbsp;ed., 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.&nbsp;D. Lambert, <i>Numerical method for ordinary differential systems: the initial value problem</i>, John Wiley &amp; Sons, Ltd, New York, 1991.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> K.-A. Mardal, T.&nbsp;K. Nilssen, and G.&nbsp;A. Staff, <i>Order-optimal preconditioners for implicit Runge–Kutta schemes applied to parabolic PDEs</i>, SIAM J. Sci. Comput., 29 (2007),
+pp.&nbsp;361–375.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M.&nbsp;M. Rana, V.&nbsp;E. Howle, K.&nbsp;Long, A.&nbsp;Meek, and W.&nbsp;Milestone, <i>A new block preconditioner for implicit Runge–Kutta methods for parabolic PDE
+problems</i>, SIAM J. Sci. Comput., 43 (2021), pp.&nbsp;S475–S495.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> J.&nbsp;Van Lent and S.&nbsp;Vandewalle, <i>Multigrid methods for implicit Runge–Kutta and boundary value method discretizations of parabolic PDEs</i>, SIAM J. Sci. Comput., 27 (2005),
+pp.&nbsp;67–92.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,427 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+The Resurgence of Stochastic Rounding
+</h2>
+</div>
+<div class="center">
+
+<p>
+Christos Boutsikas<sup>1</sup><a id="paper-autopage-3"></a>, Gregory Dexter<sup>1</sup>, <span class="underline">Petros Drineas</span><sup>1</sup>, Ilse Ipsen<sup>2</sup>, and Linkai Ma<sup>1</sup>.
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Stochastic Rounding (SR), proposed over 70 years ago, is a probabilistic approach to rounding. According to&nbsp;[8], the earliest proposal for SR appeared in a one-paragraph abstract of a communication presented by Forsythe&nbsp;[12, 13] in
+1950 at the 52nd meeting of the <i>American Mathematical Society</i>, in the context of reducing the accumulation of round-off errors in solving systems of ordinary differential equations. Relatedly, the idea of modelling rounding errors as random
+variables in order to handle imprecise data in exact arithmetic, goes back to 1949 and the work of von Neumann and Goldstine&nbsp;[19].
+</p>
+
+<p>
+Despite its illustrious beginnings, stochastic rounding has been largely overlooked by the numerical analysis community. Over the past few years, SR has enjoyed a resurgence in popularity, mainly due to the increasing interest for low-precision
+floating-point arithmetic in the context of machine learning applications and the training of large-scale deep neural network models. Currently, major chip designers own numerous SR-related patents, which seems to indicate that we might soon reach
+an inflection point for a wider adoption of SR in hardware and software. A non-exhaustive list includes GraphCore IPUs that support stochastic rounding in binary32 and binary16&nbsp;[1]; the Loihi Chip&nbsp;[9]; AMD&nbsp;[18]; NVDIA&nbsp;[3];
+IBM&nbsp;[6, 7]; VIA Technologies&nbsp;[15]; DensBits Technologies&nbsp;[16]; and GSI Technology&nbsp;[17]. A detailed discussion of the history of SR and probabilistic error analysis, as well as devices and patents for SR can be found in [8].
+</p>
+
+<p>
+Recall that, given a number \(x \in \mathbb {R}\) and a finite set of numbers \(\Fcal \subset \R \), rounding refers to the process of matching \(x\) to a number \(\tilde {x} \in \Fcal \). This can be done deterministically or
+<i>stochastically</i>: a common modality for stochastic rounding is to round with a probability that depends on the distance of \(x\) from the two points<sup>3</sup><a id="paper-autopage-4"></a> that enclose it in \(\Fcal \). This version of
+SR is sometimes called <i>SR-nearness</i> or <i>mode-1 SR</i>, which is an unbiased estimator of \(x\). Of particular interest is the case where \(\Fcal \) is the set of <i>normalized floating point</i> numbers.
+</p>
+
+<p>
+<b>Notation.</b> We use bold uppercase letters to denote matrices and bold lower-case letters to denote vectors. Given a matrix \(\Ab \in \mathbb {R}^{n \times d}\), \(n \geq d\), its singular values are denoted by \(\sigma _1(\Ab )\geq
+\ldots \geq \sigma _d(\Ab )\geq 0\). We will also use standard notation for matrix and vector norms. For a random variable \(X\), \(\EE [X]\) denotes its expectation; given an event \(\cal E\), \(0\leq \Pr [{\cal E}] \leq 1\) denotes the
+probability of \(\cal E\). Finally, recall the definition of little-oh \(\smallO (\cdot )\): The statement \(f(n) = \smallO (g(n))\) is equivalent to \(\lim _{n \rightarrow \infty } \nicefrac {f(n)}{g(n)} =0\).
+</p>
+
+<p>
+<b>Stochastic rounding and its properties.</b> We present the stochastic rounding model, following the lines of prior work&nbsp;[4]. Let \(\Fcal \subset \R \) be a fixed, finite set of numbers. Given a number \(x \in \mathbb {R}\) in the
+interval \([\min \Fcal , \max \Fcal ]\), define
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                              VxW = min{y ∈ F : y ≥ x}        and TxU = max{y ∈ F (1)
+                                                                                                                                                   : y ≤ x}.                                                       --><a id="eqn:floorceil"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eqn:floorceil} \nceil {x} = \min \{y \in \Fcal : y \geq x\} \quad \text {and}\quad \nfloor {x} = \max \{y \in \Fcal : y \leq x\}.
+\end{align}
+For \(\nceil {x}\neq \nfloor {x}\), <i>SR-nearness</i> of \(x \in \R \) is defined as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                                                          (
+                                                                                                                              VxW with probability VxW−TxU
+                                                                                                                                                    x−TxU
+                                                                                                                                                           ,
+                                                                                                StochasticRound(x) =
+                                                                                                                              TxU otherwise.
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\roundfunc (x) = \begin{cases}\nceil {x}&amp; \text {with probability}\ \frac {x - \nfloor {x}}{\nceil {x} - \nfloor {x}},\\ \nfloor {x} &amp; \text {otherwise}. \end {cases}
+\end{align*}
+If \(\nfloor {x} = \nceil {x}\), then \(\roundfunc (x) = x\). SR-nearness produces an unbiased estimator of \(x\), namely \(\EE [\roundfunc (x)] = x\). The generalization of SR-nearness to matrices is immediate. If \(\Ab \in \R ^{n
+\times d}\), then SR-nearness produces the random matrix \(\Abtil \in \R ^{n \times d}\) with elements \(\Abtil _{ij} = \roundfunc (\Ab _{ij})\) for all \(i,j\). The random matrix of absolute errors due to rounding is \(\Eb = \Abtil
+- \Ab \). The entries of \(\Eb \) are independent random variables, and the matrix-valued expectation is \(\EE [\Eb ] = \zero \).
+</p>
+
+<p>
+<b>Normalized floating point numbers.</b> In the context of a basis \(\beta \) and working precision \(p\), a <i>normalized</i> floating point number \(x\) can be uniquely represented as [2]
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                     x = s · m · β e−p ,
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+x = s \cdot m\cdot \beta ^{e-p},
+\end{align*}
+where \(s = \pm 1\) is the sign, \(e\) is the exponent, and the <i>significand</i> \(m\) is an integer in the interval
+</p>
+
+<p>
+\[\beta ^{p-1}\leq m &lt; \beta ^p.\]
+</p>
+
+<p>
+Let \(\Fcal \) denote the set of normalized floating point numbers. In this setting, our rounding model is the SR-nearness model from&nbsp;[4], and as in&nbsp;[4], we ignore numerical overflow and underflow.
+</p>
+
+<p>
+Suppose \(x\in \R \) is not in \(\Fcal \), that is, \(x \in \mathbb {R}-\Fcal \). As defined in&nbsp;(<a href="paper.html#eqn:floorceil">1</a>), the two floating point numbers enclosing \(x\) are \(\nfloor {x}\) and \(\nceil {x}\). As
+in deterministic floating point arithmetic, the floating point version of a real number&nbsp;\(x\) in SR-nearness is either \(\nfloor {x}\) or \(\nceil {x}\). The error of the floating point approximation equals<sup>4</sup> \(\max \{|x-\nfloor
+{x}|,|x-\nceil {x}|\} \leq \beta ^{1-p} |x|. \) The distance between the two floating numbers enclosing \(x\) is equal to&nbsp;[4, Section II.A, Figure 1] \(\nceil {x} - \nfloor {x} \leq \beta ^{e-p}\).
+</p>
+
+<p>
+<b>Proposed Talk.</b> We will start by discussing the history of SR and its recent resurgence since SR raises both challenges and opportunities for the numerical linear algebra community. Most of the talk will focus on our recent results
+in&nbsp;[10, 5], highlighting how SR implicitly regularizes tall-and-thin matrices.
+</p>
+
+<p>
+<b>Our results.</b> Let \(\Ab \) be a tall-and-thin real \(n \times d\) matrix with \(n\gg d\). We present novel theoretical evidence, supported by extensive experimental evaluation, that guarantees with high probability that, after SR, the
+smallest singular value of the rounded matrix <i>is bounded away from zero</i>. This holds regardless of how close to rank-deficient \(\Ab \) might be, or even if \(\Ab \) is rank-deficient, assuming that the rounding process has access to enough
+randomness. If the stochastically rounded \(\Ab \) were to be used in a downstream regression or classification problem, this is akin to saying that SR&nbsp;<i>implicitly regularizes</i>&nbsp;\(\Ab \). Such regularization effects are often beneficial
+in downstream machine learning algorithms and, in particular, in training Deep Neural Network (DNN) models and Large Language Models (LLMs)&nbsp;[14, 20]. Thus, SR could serve as an implicit regularizer in modern machine learning
+applications, and might bypass the need for explicit regularization. The references in [8, Section 8.2] point to a long list of machine learning applications that could benefit from properties of SR.
+</p>
+
+<p>
+To give a taste of our results, let \(\Fcal \) be the set of normalized floating point numbers. Applying SR entry-wise \(\Ab \in \R ^{n\times d}\) gives the stochastically rounded version \(\Abtil \in \Fcal ^{n \times d}\). For simplicity of
+exposition, we assume here that all entries of \(\Ab \) are in the interval \([-1,1]\) but our bounds generalize to settings without any constraints on the individual elements \(\Ab _{ij}\) or the set \(\Fcal \).
+</p>
+
+<p>
+Our main result proves a lower bound for the smallest singular value of \(\Abtil \). Formally, let \(\sigma _d(\cdot )\) denote the smallest singular value of a \(n\times d\) matrix where \(n\geq d\); and let \(\beta \) be the basis and \(p\) be
+the working precision of the floating point representation. We prove that SR guarantees, with high probability, the following absolute bound for the smallest singular value of the stochastically rounded&nbsp;\(\Ab \),
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                                                           √ √        
+                                                                                                                  e ≥ β 1−p n ν − εn,d .
+                                                                                                              σd (A)                                                                  (2)                               --><a id="eq:maineq"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:maineq} \sigma _d(\Abtil ) \geq \beta ^{1-p}\sqrt {n}\left (\sqrt {\nu } - \varepsilon _{n,d}\right ).
+\end{align}
+Here \(0\leq \nu \leq 1\) is the <i>minimum normalized variance</i> of the stochastic rounding process over all columns of \(\Ab \), and \(\epsilon _{n,d}\) captures <i>lower-order</i> terms that depend only on the dimensions \(n\) and
+\(d\) of&nbsp;\(\Ab \).
+</p>
+
+<p>
+We discuss the parameters in order to interpret the above bound.
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> As the ‘tall’ dimension \(n\) of the matrices \(\Ab \) and \(\Abtil \) grows, the smallest singular value of the rounded matrix \(\Abtil \) increases. This is because the columns of&nbsp;\(\Abtil \) have
+more opportunities to be linearly independent, as the number of rows \(n\) grows.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> The parameter \(\nu \) captures how much stochasticity exists when rounding the entries of \(\Ab \). To intuitively understand the importance of&nbsp;\(\nu \), consider the special case when&nbsp;\(\Ab
+\) consists of two identical columns whose entries are elements of \(\Fcal \). Any rounding process, including SR, keeps the matrix intact so that \(\Abtil =\Ab \) has two identical columns. Therefore, the smallest singular values of \(\Ab \) and
+\(\Abtil \) are equal to zero, since both matrices are rank-deficient. In that case, \(\nu =0\), since there is no flexibility in the rounding process.
+</p>
+<p>
+Indeed, SR is most powerful when the two points in \(\Fcal \) that enclose the entry to be rounded have meaningful probabilities associated with them.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> The parameter \(\epsilon _{n,d}\) captures <i>lower-order</i> terms that depend only on the dimensions \(n\) and \(d\) of the input matrix. If \(\Ab \) is suﬀiciently tall and thin, that is \(d = \smallO
+(\left (\nicefrac {n}{\log {n}}\right )^{\nicefrac {1}{4}})\), then
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                         lim εn,d = 0.
+                                                                                                                         n→∞
+
+
+
+-->
+
+<p>
+
+\begin{align*}
+\lim _{n \rightarrow \infty }\varepsilon _{n,d} = 0.
+\end{align*}
+Thus, we can drop \(\varepsilon _{n,d}\) from the bound (<a href="paper.html#eq:maineq">2</a>), to get
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                                 √
+                                                                                                                        e ≥ β 1−p nν.
+                                                                                                                    σd (A)                                                                  (3)                  --><a id="eq:maineqapprox"></a><!--
+
+
+-->
+
+<p>
+
+\begin{align}
+\label {eq:maineqapprox} \sigma _d(\Abtil ) \geq \beta ^{1-p}\sqrt {n \nu }.
+\end{align}
+This bound is strongly supported by our empirical evaluations <i>and</i> essentially matches a lower bound that we also prove in our work. We conjecture that&nbsp;(<a href="paper.html#eq:maineqapprox">3</a>) characterizes the true
+behavior of SR on essentially all tall-and-thin matrices.
+</p>
+</li>
+</ul>
+
+<p>
+An interesting aspect of the bounds (<a href="paper.html#eq:maineq">2</a>) and&nbsp;(<a href="paper.html#eq:maineqapprox">3</a>) is that they <i>do not</i> depend on the closeness of \(\Ab \) to rank-deficiency. Thus, SR guarantees
+that the stochastically rounded matrix invariably has its smallest singular value bounded away from zero, thus has full column rank.
+</p>
+
+<p>
+Our proof techniques build upon results from Random Matrix Theory (RMT). Of particular importance are the results of&nbsp;[11], which bound the smallest singular value of matrices whose entries are independent but not identically distributed
+random variables. Our proof first decomposes the matrix of rounding errors into two components, and then bounds the smallest singular value of the first component via RMT, and the norm of the second component with a scalar concentration
+inequality. The idea is that there is no concentration of error in low-dimensional subspaces.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;Department of Computer Science, Purdue University, West Lafayette IN, 47906
+</p>
+
+
+<p>
+<sup>2</sup>&nbsp;Department of Mathematics, North Carolina State University, Raleigh NC, 27607
+</p>
+
+
+<p>
+<sup>3</sup>&nbsp;For example, if \(\Fcal = \{0,1\}\), the value \(x=0.7\) is rounded to \(\tilde {x}=1\) with probability .7 and to \(\tilde {x}=0\) with probability .3.
+</p>
+
+<p>
+<sup>4</sup>&nbsp;We note that the RN mode (round-to-nearest, ties to even) of IEEE-754 satisfies a tighter bound by a factor of \(\nicefrac {1}{2}\); this is not the case for SR-nearness.
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Mixed-Precision Arithmetic for AI: A Hardware Perspective. <a href="https://docs.graphcore.ai/projects/ai-float-white-paper/en/latest/ai-float.html" target="_blank"
+>https://docs.graphcore.ai/projects/ai-float-white-paper/en/latest/ai-float.html</a>. Accessed: 2024-02-20.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> IEEE Standard for Floating-Point Arithmetic. <i>IEEE Std 754-2019 (Revision of IEEE 754-2008)</i>, pages 1–84, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Jonah&nbsp;M. Alben, Paulius Micikevicius, Hao Wu, and Ming&nbsp;Yiu Siu. Stochastic rounding of numerical values, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> El-Mehdi&nbsp;El Arar, Devan Sohier, Pablo de&nbsp;Oliveira&nbsp;Castro, and Eric Petit. The positive effects of stochastic rounding in numerical algorithms. In <i>2022 IEEE 29th Symposium on
+Computer Arithmetic (ARITH)</i>, pages 58–65, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Christos Boutsikas, Petros Drineas, and Ilse C.&nbsp;F. Ipsen. Small singular values can increase in lower precision. <i>SIAM Journal on Matrix Analysis and Applications</i>, 45(3):1518–1540, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Jonathan&nbsp;D. Bradbury, Steven&nbsp;R. Carlough, Brian&nbsp;R. Prasky, and Eric&nbsp;M. Schwarz. Reproducible stochastic rounding for out of order processors, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Jonathan&nbsp;D. Bradbury, Steven&nbsp;R. Carlough, Brian&nbsp;R. Prasky, and Eric&nbsp;M. Schwarz. Stochastic rounding floating-point multiply instruction using entropy from a register, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Matteo Croci, Massimiliano Fasi, Nicholas&nbsp;J. Higham, Theo Mary, and Mantas Mikaitis. Stochastic rounding: implementation, error analysis and applications. <i>Royal Society Open
+Science</i>, 9(3), mar 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Mike Davies, Narayan Srinivasa, Tsung-Han Lin, Gautham Chinya, Yongqiang Cao, Sri&nbsp;Harsha Choday, Georgios Dimou, Prasad Joshi, Nabil Imam, Shweta Jain, et&nbsp;al. Loihi: A
+neuromorphic manycore processor with on-chip learning. <i>IEEE Micro</i>, 38(1):82–99, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Gregory Dexter, Christos Boutsikas, Linkai Ma, Ilse C.&nbsp;F. Ipsen, and Petros Drineas. Stochastic rounding implicitly regularizes tall-and-thin matrices, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Ioana Dumitriu and Yizhe Zhu. Extreme singular values of inhomogeneous sparse random rectangular matrices. <i>arXiv preprint arXiv:2209.12271</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> GE&nbsp;Forsythe. Round-off errors in numerical integration on automatic machinery. <i>Bull. Amer. Math. Soc.</i>, 56(1):55–65, jan 1950.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> George&nbsp;E Forsythe. Reprint of a note on rounding-off errors. <i>SIAM Review</i>, 1:66–67, 1959.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Suyog Gupta, Ankur Agrawal, Kailash Gopalakrishnan, and Pritish Narayanan. Deep learning with limited numerical precision. In <i>International conference on machine learning</i>, pages
+1737–1746. PMLR, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> G.&nbsp;Glenn Henry and Douglas&nbsp;R. Reed. Processor with memory array operable as either cache memory or neural network unit memory, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> Ofir&nbsp;Avraham Kanter and Ilan Bar. Apparatus and methods for hardware-eﬀicient unbiased rounding, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> Samuel Lifsches. In-memory stochastic rounder, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> Gabriel&nbsp;H. Loh. Stochastic rounding logic, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> John von Neumann and H.&nbsp;H. Goldstine. Numerical inverting of matrices of high order. <i>Bull. Amer. Math. Soc.</i>, 53(11):1021 – 1099, 1947.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> Naigang Wang, Jungwook Choi, Daniel Brand, Chia-Yu Chen, and Kailash Gopalakrishnan. Training deep neural networks with 8-bit floating point numbers. <i>Advances in neural information
+processing systems</i>, 31, 2018.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

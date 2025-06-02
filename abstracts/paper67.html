@@ -1,0 +1,1051 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+On computing simultaneous Gaussian quadrature rules for Multiple Orthogonal Polynomials
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Nicola Mastronardi</span>, Teresa Laudadio, Walter Van Assche, Paul Van Dooren
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Simultaneous Gaussian quadrature rules associated with multiple orthogonal polynomials (MOPs) were first introduced in [1] to model computer graphics illumination, where the computation of different weighted integrals with the same integrand
+function was needed. The aim was to minimize the evaluations of the integrand function and maximize the order of the quadrature rules based on the same set of nodes.
+</p>
+
+<p>
+MOPs are a generalization of orthogonal polynomials. They originally appeared in Hermite-Padé approximation (simultaneous rational approximation) and number theory. Recently, they turned out to be very useful in random matrix theory,
+combinatorics and Markov chains.
+</p>
+
+<p>
+MOPs can be divided into two classes: type I and type II [2]. Here, we focus on MOPs of type II.
+</p>
+
+<p>
+Given \(r \) weight functions \(w^{(i)}(x) \ge 0,\) with support \(\Delta ^{(i)}, \; i=1,\ldots ,r,\) on the real line, the sequence of MOPs \(\left \{p_n(x)\right \}_{ n=0}^{\infty } \) of type II satisfies the following orthogonality
+conditions [2]:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                             ∫
+                                                                                     --><a id="eq:exactp"></a><!--                      pn (x)xk w(i) (x)dx = 0,                        0 ≤ k ≤ ni − 1,                                               (1)
+                                                                                                                                 ∆(i)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:exactp} \int _{\Delta ^{(i)}} p_{n}(x) x^k w^{(i)}(x)dx = 0, \quad 0\le k \le n_{i}-1,
+\end{equation}
+
+</p>
+
+<p>
+with \(n= \sum _{i=1}^r n_i. \)
+</p>
+
+<p>
+Let \(\Delta = \bigcup _{i=1}^{r}\Delta ^{(i)}. \) Two different systems of MOPs of type II can be considered [7]:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> Angelesco system, where the open intervals \(\Delta ^{(i)}\), \(\; i=1,\ldots ,r,\) are disjoint, i.e., \(\Delta ^{(i)}\bigcap \Delta ^{(j)}= \emptyset \), for \(i \ne j,\) and the closed intervals
+\(\Delta ^{(i)}\) are allowed to touch.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> algebraic Chebyshev system (AT system), where \(\Delta ^{(i)} =\Delta , \; i=1, \ldots ,r. \)
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+<p>
+It is known that \(p_n(x)\) of type II has exactly \(n \) zeros in \(\Delta \) [7, Th.&nbsp;2].
+</p>
+
+<p>
+A set of MOPs satisfies an \((r+2)\)–term recurrence relation. Without loss of generality, we focus on the case \(r=2.\) Therefore, the set of monic MOPs satisfies a \(4\)–term recurrence relation
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                     --><a id="eq:MOP"></a><!--xpi (x) = ai pi+1 (x) + bi pi (x) + ci pi−1 (x) + di pi−2 (x),                                  ai = 1, i = 0, . . . , n − 1,                          (2)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:MOP} xp_{i}(x) = a_i p_{i+1}(x) + b_i p_{i}(x) + c_i p_{i-1}(x) + d_i p_{i-2}(x), \quad a_i=1,\;\; i=0, \ldots , n-1,
+\end{equation}
+
+</p>
+
+<p>
+with \(p_{-2}(x)=p_{-1}(x)=0.\) Writing (<a href="paper.html#eq:MOP">2</a>) in a matrix form, we obtain
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                                                                                                               
+                                                                                                                     p0 (x)              0         p0 (x)
+                                                                                                                   p1 (x)            ..      p1 (x) 
+                                                                                --><a id="eq:MOPzeros"></a><!--Hn 
+                                                                                                                       ..    + an−1  .  = x 
+                                                                                                                                      0           ..   ,
+                                                                                                                                                                                                                                                     (3)
+                                                                                                                         .                             .
+                                                                                                                    pn−1 (x)           pn (x)     pn−1 (x)
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:MOPzeros} H_n \left [\begin{array}{c} p_0(x) \\ p_1 (x) \\ \vdots \\ p_{n-1}(x) \end {array}\right ] + a_{n-1} \left [\begin{array}{c} 0 \\ \vdots \\ 0 \\p_n (x) \end {array}\right ] = x \left
+[\begin{array}{c} p_0(x) \\ p_1 (x) \\ \vdots \\ p_{n-1}(x) \end {array}\right ],
+\end{equation}
+
+</p>
+
+<p>
+where \(H_n \) is the \(n\times n\) banded lower Hessenberg matrix with 2 sub–diagonals and one upper-diagonal&nbsp;:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                                                                                                                          
+                                                                                                                          b0            a0     0        0                 0          ...          0
+                                                                                                                         c1            b1     a1       0                 0          ...          0        
+                                                                                                                         d                                                                                
+                                                                                                                         2             c2     b2       a2                0          ...          0        
+                                                                                                                                                                                                          
+                                                                                                                                                                                    ..                    
+                                                                                     --><a id="H"></a><!--Hn :=  0                     d3     c3       b3               a3             .         0        .                                         (4)
+                                                                                                                 .                                                                                        
+                                                                                                                 .                     ..     ..       ..               ..          ..                    
+                                                                                                                 .                        .      .        .                .           .         0        
+                                                                                                                 0                  ...        0      dn−2          cn−2           bn−2        an−2       
+                                                                                                                  0                  ...        0        0           dn−1           cn−1        bn−1
+
+-->
+
+<p>
+
+\begin{equation}
+\label {H} H_n := \left [\begin{array} {ccccccc} b_0 &amp; a_0 &amp; 0 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\ c_1 &amp; b_1 &amp; a_1 &amp; 0 &amp; 0 &amp; \ldots &amp; 0 \\ d_2 &amp; c_2 &amp; b_2 &amp; a_2 &amp;
+0 &amp; \ldots &amp; 0 \\ 0 &amp; d_3 &amp; c_3 &amp; b_3 &amp; a_3 &amp; \ddots &amp; 0 \\ \vdots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \ddots &amp; \ddots &amp; 0 \\ 0 &amp; \ldots &amp; 0 &amp; d_{n-2}
+&amp; c_{n-2} &amp; b_{n-2} &amp; a_{n-2} \\ 0 &amp; \ldots &amp; 0 &amp; 0 &amp; d_{n-1} &amp; c_{n-1} &amp; b_{n-1} \\ \end {array} \right ].
+\end{equation}
+
+</p>
+
+<p>
+By (<a href="paper.html#eq:MOPzeros">3</a>), it follows that \(\lambda \) is a zero of \(p_n(x)\) iff \(\lambda \) is an eigenvalue of \(H_n. \)
+</p>
+
+<p>
+Simultaneous Gaussian quadrature rules associated with MOPs [2],
+</p>
+
+<p>
+\[ \sum _{k=1}^{n}\omega _{k}^{(j)} f(x_j) =\int _{\Delta ^{(i)}} f(x) w^{(j)}(x)dx +E_{n}^{(j)}(f), \quad j=1,2, \]
+</p>
+
+<p>
+with \(E_{n}^{(j)}(f)=0\), if \(f \) is a polynomial of degree \(n+n_j-1, \) can be retrieved from the eigenvalue decomposition of the matrix \(H_n \) [2, Th.&nbsp;3.2], [6]. In fact, the following Theorem holds.<br />
+Theorem The nodes \(x_{j}, \; j=1,\ldots ,n, \) of the simultaneous Gaussian quadrature rule are given by the eigenvalues of the banded Hessenberg matrix \(H_n\) (<a href="paper.html#H">4</a>). Moreover, let us denote by \(\mathbf
+{u}^{(j)}=[u_1^{(j)}, u_2^{(j)},\ldots , u_n^{(j)} ]^T, \) and \(\mathbf {v}^{(j)}=[v_1^{(j)}, v_2^{(j)},\ldots , v_n^{(j)} ]^T \) the left and right eigenvectors of \(H_n \) associated with \(x_{j}, \) respectively. Then,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+                                                                                                                                                                     (                                 )
+                                                                                                                                                               (j)              (j)              (j)
+                                                                                                              (j)
+                                                                                                             v f1,1 u
+                                                                                                                      (j)                                  v1            f2,1 u1 + f2,2 u2
+                                                                                                         (1)                                     (2)
+                                                                        --><a   id="eq:weights"></a><!--ωj = 1 T 1 ,                           ωj      =                            T
+                                                                                                                                                                                                           ,    j = 1, . . . , n,                     (5)
+                                                                                                                (j) (j)
+                                                                                                                     u           v                                         u(j) v(j)
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:weights} {\displaystyle \omega _j^{(1)}}=\frac {\displaystyle v_1^{(j)} f_{1,1}u_1^{(j)}}{\displaystyle \mathbf {u}^{(j)^T} \mathbf {v}^{(j)}},\quad {\displaystyle \omega _j^{(2)}}=\frac {\displaystyle
+v_1^{(j)}\left ( f_{2,1}u_1^{(j)}+f_{2,2}u_2^{(j)}\right )}{\displaystyle \mathbf {u}^{(j)^T} \mathbf {v}^{(j)}}, \quad j=1,\ldots ,n,
+\end{equation}
+
+
+</p>
+
+<p>
+where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                                                        ∫
+                                                                                                               f1,1 =              p0 (x)w(1) (x)dx,
+                                                                                                                            ∆(1)
+                                                                                 --><a id="eq:D"></a><!--                                                                                                                                             (6)
+                                                                                                                        ∫                                                       ∫
+                                                                                                               f2,1 =              p0 (x)w(2) (x)dx,             f2,2 =                     p1 (x)w(2) (x)dx.
+                                                                                                                            ∆(2)                                                    ∆(2)
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eq:D} \begin{array}{ll} f_{1,1}={\displaystyle \int _{\Delta ^{(1)}}} p_0(x) w^{(1)}(x)dx, &amp; \\ &amp;\\ f_{2,1}= {\displaystyle \int _{\Delta ^{(2)}}} p_0(x) w^{(2)}(x)dx, &amp; f_{2,2}= {\displaystyle
+\int _{\Delta ^{(2)}}} p_1(x)w^{(2)}(x)dx. \end {array}
+\end{equation}
+
+
+</p>
+
+<p>
+Hence, simultaneous Gaussian quadrature rules associated with MOPs reduces to the computation of the eigendecomposition of the Hessenberg matrix \(H_n,\) which, unfortunately, turns out to be strongly ill–conditioned [6, 8]. Furthermore, the
+Matlab function balance.m applied to the Hessenberg matrix \(H_n\) does not improve the condition of the eigenvalue problem [6] and, then, the Matlab function eig.m yields unreliable results. Therefore, procedures for computing simultaneous
+Gaussian quadrature rules are implemented with variable precision arithmetic [8].
+</p>
+
+<p>
+In this talk we describe a new algorithm for computing simultaneous Gaussian quadrature rules.
+</p>
+
+<p>
+The first step of the algorithm is to construct a balancing matrix that, applied to \(H_n, \) drastically reduces the condition of the Hessenberg eigenvalue problem, thereby allowing to compute the associated simultaneous Gaussian quadrature rule in
+floating point arithmetic in a reliable way (see [6], https://doi.org/10.1016/j.cam.2024.116109). Specifically, this step consists of determining a diagonal matrix \(\Delta _n= {\tt diag}(\delta _1,\ldots ,\delta _n)\), balancing \(H_n,\) i.e.,
+\(\hat {H}_n= \Delta _n^{-1} H_n\Delta _n, \) such that \({\tt triu}(\hat {H}_n,-1) \) is symmetric, where triu\((A, k)\) denotes the elements on and above the \(k\)th diagonal of \(A.\)
+</p>
+
+<p>
+The second step of the algorithm consists of computing the eigenvalue decomposition of \(\hat {H}_n\). This can be done by applying the \(QR\) algorithm to \(\hat {H}_n\), requiring \(\mathcal {O} (n^3) \) floating point operations and
+\(\mathcal {O} (n^2) \) memory.
+</p>
+
+<p>
+In order to reduce complexity and memory, for the second step we propose an alternative procedure based on a variant of the Aberth–Ehrlich method to compute the eigenvalues and associated left and right eigenvectors, requiring only \({\mathcal
+O}(n)\) memory and \({\mathcal O}(n^2)\) floating point operations [6].
+</p>
+
+<p>
+As a numerical example, we consider the computation, carried out in Matlab R2022a, with machine precision \(\varepsilon \approx 2.22\times 10^{-16}\), of
+</p>
+
+<p>
+\[\int _{\Delta ^{(i)}}f(x) w_i^{(1)}(x)dx,\quad \int _{\Delta ^{(i)}}f(x) w_i^{(2)}(x)dx, \]
+</p>
+
+<p>
+where the integrand function is \(f(x)= x e^{-x}, \) and \(w_i^{(1)}, w_i^{(2)},\; i=1,\ldots , 9, \) are the weight functions associated with the MOPs described in [6], whose corresponding simultaneous Gaussian quadrature rules are
+denoted by \({\bf MOP}_i, \; i=1,\ldots , 9, \) in Tables&nbsp;<a href="paper.html#tab:ExNum1.0">1</a>, <a href="paper.html#tab:ExNum1.1">2</a>, and <a href="paper.html#tab:ExNum1.t">3</a>.
+</p>
+
+<p>
+The quadrature rules \({\bf MOP}_i, \; i=1,\ldots , 9, \) with \(n \) nodes, for \(n=10,20,\ldots ,50, \) are compared to those obtained by using the Matlab function integral.m applied in two ways: without setting the absolute error,
+denoted by \(I_1, \) and imposing the absolute error equal to \(10^{-13} \) , denoted by \(I_2.\) The same integrals were also computed by the Mathematica 13.0 function Integrate, setting the precision to \(80 \) digits. These values, rounded
+to floating point numbers by means of the Matlab function double.m, are assumed to be the exact ones and compared with the results of \({\bf MOP}_i, \; i=1,\ldots , 9, \) \(I_1, \) and \(I_2.\)
+</p>
+
+<p>
+The absolute errors are displayed in Table&nbsp;<a href="paper.html#tab:ExNum1.0">1</a> and Table&nbsp;<a href="paper.html#tab:ExNum1.1">2</a> for \(w^{(1)}\) and \(w^{(2)}\), respectively. Moreover, in the last two rows of these
+tables, the results obtained applying the Matlab function integral.m (\(I_1\) and \(I_2 \)), are reported as well.
+</p>
+
+<p>
+Observe that, in some cases, the functions \(I_1\) and \(I_2 \) yield NaN as results, displaying the message “Warning: Inf or NaN value encountered”.
+</p>
+<figure id="autoid-1" class="table ">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Absolute errors of the integrals, with weight \(w^{(1)}\), computed by \({\bf MOP}_i, \; i=1,\ldots , 9, \) for \(n=10, 20,\ldots , 50, \) and by \(I_1\) and \(I_2\).
+</p>
+</div>
+
+<a id="tab:ExNum1.0"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td colspan="20" class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(\int _{\Delta ^{(i)}}f(x) w^{(1)}(x)dx, \quad f(x)= xe^{-x}\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(n\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_1\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_2\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_3\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_4\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_5\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_6\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_7\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_8\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_9\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.23 (-9)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.17 (-4)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.23 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.23 (-10)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.88 (-4)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.75 (-5)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.16 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.79 (-10)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(20\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.99 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.10 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.59 (-8)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.34 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.22 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.86 (-6)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.47 (-10)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.94 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.99 (-16)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(30\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.77 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.05 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.18 (-12)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.45 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.61 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.47 (-7)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.33 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.80 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.55 (-17)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(40\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.10 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.24 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.54 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.92 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.78 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.97 (-8)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.99 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.80 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.88 (-16)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(50\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.32 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.58 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.98 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.35 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.49 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.07 (-10)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.21 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.93 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black">\(I_2\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(2.17 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(1.11 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mbox {\tt NaN} \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mbox {\tt NaN} \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mbox {\tt NaN} \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.96 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.55 (-17)\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(I_1\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(8.74 (-10)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.11 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\tt NaN} \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\tt NaN} \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.77 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\tt NaN} \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.38 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0\)</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdat"></td>
+<td class="tdr"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</figure>
+
+<figure id="autoid-2" class="table ">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;2:&nbsp;Absolute errors of the integrals, with weight \(w^{(2)}\), computed by \({\bf MOP}_i, \; i=1,\ldots , 9, \) for \(n=10, 20,\ldots , 50, \) and by \(I_1\) and \(I_2\).
+</p>
+</div>
+
+<a id="tab:ExNum1.1"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td colspan="20" class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(\int _{\Delta ^{(i)}}f(x) w^{(2)}(x)dx, \quad f(x)= xe^{-x}\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(n\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_1\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_2\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_3\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_4\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_5\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_6\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_7\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_8\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_9\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.11 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.35 (-8)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.33 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.32 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.103 (-11)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.97 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.21 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.11 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.64 (-10)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(20 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.99 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.05 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.19 (-7)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.37 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.93 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.61 (-5)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.90 (-9)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.22 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.44 (-16)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(30 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.10 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.11 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.64 (-10)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(8.31 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.41 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.85 (-7)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.22 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.60 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(40 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.99 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.19 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.72 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.36 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.76 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.36 (-7)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.21 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.05 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.22 (-16)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(50 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.32 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.06 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.81 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.02 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(9.65 (-15)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.92 (-8)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.37 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.94 (-16)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.11 (-16)\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black">\(I_2\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.58 (-14)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mbox {\tt NaN}\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.55 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.55 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(\mbox {\tt NaN}\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(2.77 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.55 (-17)\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(I_1 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.06 (-13)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.55 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\tt NaN}\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\tt NaN}\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.77 (-17)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(0 \)</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdat"></td>
+<td class="tdr"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</figure>
+
+<figure id="autoid-3" class="table ">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;3:&nbsp;Executuion times in seconds required for computing both integrals, with weights \(w^{(1)}\) and \(w^{(2)},\) by \({\bf MOP}_i, \; i=1,\ldots , 9, \) for \(n=10,20,\ldots , 50, \) and by \(I_1\) and \(I_2\).
+</p>
+</div>
+
+<a id="tab:ExNum1.t"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td colspan="20" class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">Execution time in seconds</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(n\)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_1\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_2\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_3\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_4\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_5\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_6\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_7\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_8\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(\mbox {\bf MOP}_9\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(10 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.51 (-2)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.00 (-2)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.21 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.47 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.07 (-2)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(4.11 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.95 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.77 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.37 (-2)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(20 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.27 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.00 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.56 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.01 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.49 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.55 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.44 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.38 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.85 (-3)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(30 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.94 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.93 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.83 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.89 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.33 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.85 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.94 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.00 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.15 (-3)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(40 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.00 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.97 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.93 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.03 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.89 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.91 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.83 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.99 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.00 (-3)\)</td>
+</tr>
+
+<tr>
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(50 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.38 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(5.95 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.01 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.14 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.02 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.98 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.32 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(6.65 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.29 (-3)\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black">\(I_1 \)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(2.68 (-2)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(1.10 (-2)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.64 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.12 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(5.65 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(3.28 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(3.96 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(2.49 (-1)\)</td>
+<td class="tdat tvertbarr" style="border-top: 4px double; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-top: 4px double; border-right: 1px solid black">\(2.61 (0)\)</td>
+</tr>
+
+<tr class="hline">
+<td class="tdat tvertbarl" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdr tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">\(I_2 \)</td>
+<td class="tdat tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(3.11 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.31 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(9.91 (-4)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(2.26 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.79 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(7.18 (-4)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.60 (-3)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(9.82 (-2)\)</td>
+<td class="tdat tvertbarr" style="border-right: 1px solid black"><span style="width:1.13809pt; display:inline-block"><!----></span></td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">\(1.39 (0)\)</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdat"></td>
+<td class="tdr"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+<td class="tdat"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</figure>
+
+<p>
+In Table&nbsp;<a href="paper.html#tab:ExNum1.t">3</a> the execution times (in seconds) required by \({\bf MOP}_i, \; i=1,\ldots , 9, \) for different values of \(n\), and by the Matlab functions \(I_1\) and \(I_2 \), applied for
+computing both integrals with weights \(w^{(1)} \) and \(w^{(2)}\), are reported. Although the code for \({\bf MOP}_i, \) is interpreted by Matlab, \({\bf MOP}_i, \) \(I_1\) and \(I_2\), exhibit comparable execution times, except for \(\mbox
+{\bf MOP}_8\) and \(\mbox {\bf MOP}_9\), for which \({\bf MOP}_i, \) is significantly faster than \(I_1\) and \(I_2\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> C.F. Borges, <em>On a class of Gauss–like quadrature rules</em>, Numer. Math. 67 (1994) 271–288.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;Coussement, W.&nbsp;Van Assche, <em>Gaussian quadrature for multiple orthogonal polynomials</em>, J. Comput. Appl. Math. 178 (2005) 131–145.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> G.H.&nbsp;Golub, J.H.&nbsp;Welsch, <em>Calculation of Gauss quadrature rules</em>, Mathematics of Computation 23 (1969) 221–230.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> T. Laudadio, N. Mastronardi, P. Van Dooren, <em>Computational aspects of simultaneous Gaussian quadrature</em>, Numer. Algor. (2024). https://doi.org/10.1007/s11075-024-01785-0
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> T. Laudadio, N. Mastronardi, P. Van Dooren, <em>Fast and reliable algorithms for computing the zeros of Althammer polynomials</em>, Applied Numerical Mathematics 207 (2025) 210–221.
+https://doi.org/10.1016/j.apnum.2024.09.004
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> T. Laudadio, N. Mastronardi, P. Van Dooren, W. Van Hassche, <em>A Matlab package computing simultaneous Gaussian quadrature rules for Multiple Orthogonal Polynomials</em>, J. Comput. Appl.
+Math. 451 (2024) 116109. https://doi.org/10.1016/j.cam.2024.116109
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> W.&nbsp;Van Assche, E. Coussement, <em>Some classical multiple orthogonal polynomials</em>, J. Comput. Appl. Math. 127 (2001) 317–347.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> W.&nbsp;Van Assche, <em>A Golub–Welsch version for simultaneous Gaussian quadrature</em>, Numer. Algor. (2024). https://doi.org/10.1007/s11075-024-01767-2
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

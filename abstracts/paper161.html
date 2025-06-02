@@ -1,0 +1,696 @@
+---
+layout: abstract
+absnum: 161
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\matA }{\ensuremath {\mathbf {A}}}\)
+
+\(\newcommand {\matI }{\ensuremath {\mathbf {I}}}\)
+
+\(\newcommand {\matX }{\ensuremath {\mathbf {X}}}\)
+
+\(\newcommand {\matY }{\ensuremath {\mathbf {Y}}}\)
+
+\(\newcommand {\matE }{\ensuremath {\mathbf {E}}}\)
+
+\(\newcommand {\matU }{\ensuremath {\mathbf {U}}}\)
+
+\(\newcommand {\matM }{\ensuremath {\mathbf {M}}}\)
+
+\(\newcommand {\matZ }{\ensuremath {\mathbf {Z}}}\)
+
+\(\newcommand {\x }{\ensuremath {\mathbf {x}}}\)
+
+\(\newcommand {\w }{\ensuremath {\mathbf {w}}}\)
+
+\(\newcommand {\C }{\ensuremath {\mathbb {C}}}\)
+
+\(\newcommand {\R }{\ensuremath {\mathbb {R}}}\)
+
+\(\newcommand {\cirU }{\ensuremath {\mathcal {U}}}\)
+
+\(\def \BE #1#2{{\bf BE}_{#2}\left (#1\right )}\)
+
+\(\def \kket #1{\left \vert \left \vert #1\right \rangle \right \rangle }\)
+
+\(\def \calW {{\cal W}}\)
+
+\(\def \diag #1{{\bf diag}\left (#1\right )}\)
+
+\(\def \MS #1#2{{\bf MS}_{#2}\left (#1\right )}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Eﬀicient Classical-Quantum Algorithms for Matrix Encoding
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Liron Mor Yosef</span>, Haim Avron
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We introduce an eﬀicient classical-quantum algorithm for encoding arbitrary dense Hermitian matrices as Block Encoding circuits (\(\matU _{\matA }\in \BE {\matA }{\alpha ,\theta }\)). Our work is motivated by Block Encoding’s
+fundamental role as the leading paradigm for quantum linear algebra, providing a unified framework for leveraging quantum computing to accelerate numerical linear algebra operations. Our algorithms, accepts four distinct input representations: (1)
+classical matrix description \(\matA \in \C ^{n\times n}\), (2) an \(4\times 4\times \cdots \times 4\) (\(\log n\) times) Pauli coeﬀicients tensor \(\matA _{P}\), (3) matrix state preparation circuit \(\cirU _{\matA }\), or (4) matrix state
+preparation circuit for the Pauli tensor \(\cirU _{\matA _{P}}\). This flexibility optimizes performance across different data availability scenarios, with the classical matrix input achieving \(O(n^{2}\log n)\) run-time complexity in the worst case.
+Moreover, the third input model demonstrates a significant breakthrough: the first known method to construct a Block Encoding circuit directly from a matrix state preparation circuit without requiring additional classical information (such as row
+norms) or additional quantum hardware (such as QRAM). This establishes a new bidirectional equivalence between block encoding and matrix state preparation input models, providing a unified framework for matrix encoding in quantum algorithms.
+</p>
+<!--
+...... section Introduction ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Introduction</h4>
+<a id="paper-autopage-5"></a>
+<!--
+...... subsection Motivation and problem statement ......
+-->
+<h5 id="autosec-6"><span class="sectionnumber">1.1&#x2003;</span>Motivation and problem statement</h5>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+Quantum computers hold hope for significant speedups in scientific computing and machine learning due to their ability to handle matrix operations eﬀiciently&nbsp;[3]. However, unlocking this potential hinges the algorithm’s ability to eﬀiciently
+access classical data within the quantum system. The mechanism in which classical input is fed into a quantum algorithm is known as the algorithm’s <em>input model</em>.
+</p>
+
+<p>
+Leveraging breakthroughs in quantum linear algebra, researchers have proposed many quantum algorithms for scientific computing and machine learning. However, the feasibility of their input model assumptions remains critical to their effectiveness.
+As shown by Chakraborty et al.&nbsp;[4], these assumptions often significantly impact the performance and eﬀiciency of such algorithms. Prime examples of quantum linear algebra algorithms include the HHL <span
+    class="textcolor"
+    style="color:#000000"
+>algorithm&nbsp;[8], and others&nbsp;[5, 7, 14, 2, 11].</span>
+</p>
+
+<p>
+Given the essential role of the input model in defining how classical data interacts with the quantum system, researchers have explored various approaches. Two noteworthy examples include the sparse-data access model&nbsp;[1, 5] and various
+quantum data structure based models&nbsp;[9, 10].
+</p>
+
+<p>
+In this work, we study the use of Pauli decomposition in developing eﬀicient algorithms to encode arbitrary dense or sparse Hermitian matrices into Block Encoding circuits, either provided as classical data or as quantum circuits, into Block Encoding
+circuits.
+</p>
+<!--
+...... subsection Brief overview of Block Encoding and State preparation ......
+-->
+<h5 id="autosec-7"><span class="sectionnumber">1.2&#x2003;</span>Brief overview of Block Encoding and State preparation</h5>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+Chakraborty et al.&nbsp;[4] showed that a variety of the aforementioned widely used input models can be reduced to an input model in which matrices are inputed using <em>block encodings </em>and vectors are inputed as <em>state preparation
+circuits</em>:
+</p>
+<div class="amsthmbodydefinition">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-8"></a>
+<span class="amsthmnamedefinition">Definition</span><span class="amsthmnumberdefinition"> <span class="textup">1</span></span><span class="amsthmnotedefinition"> (State preparation Circuit)</span>. </span> <a
+id="def:state-prep-circ"></a> We say that a \(\log _{2}n\)-qubit circuit \(\cal U\) is a <em>state preparation circuit</em> for a vector \(\x \in \C ^{n}\) if applying \(\cal U\) to the state \(\Ket 0_{\log _{2}n}\) results in the state
+\(\Ket {\x }_{\log _{2}n}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-9"></a>
+<span class="amsthmnamedefinition">Definition</span><span class="amsthmnumberdefinition"> <span class="textup">2</span></span><span class="amsthmnotedefinition"> (Block encoding of a matrix)</span>. </span> For \(\alpha
+\geq 0\) and \(\theta \in [0,2\pi )\), a circuit \(\cirU \) is a \((\alpha ,\theta )\)<em>-Block Encoding</em> of \(\matA \in \C ^{m\times n}\), denoted as \(\cirU \in \BE {\matA }{\alpha ,\theta }\), if
+</p>
+
+<p>
+\[ \alpha e^{i\theta }\matM ({\cal U})=\left [\begin {array}{cc} \matA &amp; *\\* * &amp; * \end {array}\right ] \]
+</p>
+
+<p>
+where \(*\) denotes arbitrary entries, and \(\matM ({\cal U})\) denote the unique unitary matrix of the circuit \(\cal U\). We refer to \(\alpha \) as the <em>scale</em> and \(\theta \) as the <em>phase</em>.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We refer to the input model in which matrices are accessed using block encodings and vectors are accessed as state preparation circuits as the <em>block encoding input model</em>. There are powerful algorithms that operate under the block encoding
+model. In particular, in the block encoding model we can perform Quantum Singular Value Transformation&nbsp;[7], a powerful technique that leads to eﬀicient algorithms for solving linear equations, amplitude amplification, quantum simulation,
+and more&nbsp;[12].
+</p>
+
+<p>
+Another relevant input model is the <i>state preparation input model</i>. In this model, matrices accessed via <em>matrix state preparation circuit</em> and vectors are accessed via state preparation circuits. Mor-Yosef et al.&nbsp;[15] recently
+introduced an algorithm for multivariate trace estimation and spectral sums estimation under this model.
+</p>
+<div class="amsthmbodydefinition">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-10"></a>
+<span class="amsthmnamedefinition">Definition</span><span class="amsthmnumberdefinition"> <span class="textup">3</span></span><span class="amsthmnotedefinition"> (Matrix state preparation circuit)</span>. </span> <a
+id="def:matrix-circ-1"></a>We say that a \((\log _{2}n+\log _{2}m)\)-qubit circuit \(\cal U\) is a <em>matrix state preparation circuit</em> for a matrix \(\matA \in \C ^{m\times n}\) if applying \(\cal U\) to the state \(\Ket 0_{\log
+_{2}mn}\) results in the state \(\kket {\matA }\coloneqq \Ket {\vec {\matA }}\). Equivalently, the first column of \(\matM ({\cal U})\) is \(\vec {\matA }\).
+</p>
+
+<p>
+For convenience, where appropriate, we add the matrix as sub-index when denoting state preparation circuits, e.g. \({\cal U}_{\matA }\). In such cases, with an abuse of notation, the number of gates in \({\cal U}_{\matA }\) is denoted by
+\(g_{\matA }\), and the depth by \(d_{\matA }\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... subsection Statement of main results ......
+-->
+<h5 id="autosec-11"><span class="sectionnumber">1.3&#x2003;</span>Statement of main results</h5>
+<a id="paper-autopage-11"></a>
+
+
+<p>
+While existing block encoding methods typically exploit specific matrix properties like structure, sparsity, or rank, we introduces an eﬀicient general-purpose technique for arbitrary matrices (dense and sparse) through Pauli decomposition. These
+techniques will utilize the principles of Pauli decomposition, and the use of a quantum multiplexer.
+</p>
+
+<p>
+The Pauli decomposition represents matrices as a sum of tensor products of Pauli matrices. Formally, let \(\Sigma =\{\matI =0,\matX =1,\matY =2,\matZ =3\}\) represent a set of indices corresponding to the four \(2\times 2\) Pauli matrices:
+\(\sigma _{I},\sigma _{X},\sigma _{Y},\sigma _{Z}\). Assume that \(n=2^{q}\). Given a <em>word</em> (i.e., sequence) \(\calW =(w_{1},w_{2},\dots ,w_{q})\in \Sigma ^{q}\), we define the corresponding <em>\(q\)-wise Pauli
+matrix</em> as \(\sigma _{\calW }\coloneqq \sigma _{w_{1}}\otimes \sigma _{w_{2}}\otimes \cdots \otimes \sigma _{w_{q}}\). Then, the Pauli decomposition of matrix \(\matA \) can be expressed mathematically as:
+</p>
+
+<p>
+\[ \matA =\sum _{\calW \in \Sigma ^{q}}\alpha _{{\cal W}}\sigma _{{\cal W}} \]
+</p>
+
+<p>
+where \(\alpha _{\calW }\in \R \) are real coeﬀicients.
+</p>
+
+<p>
+The quantum multiplexer&nbsp;[13] acts like a switch within a quantum circuit. It uses control qubits to selectively apply different unitary operations to a target qubit. Given a set of quantum circuits \({\cal U}_{0},\dots ,{\cal U}_{k-1}\) the
+\(\log k\)-qubit multiplexer is defined as:
+</p>
+
+<p>
+\[ {\cal MX}_{\log k}\coloneqq \sum _{i=0}^{k-1}\Ket i\Bra i\otimes {\cal U}_{i}. \]
+</p>
+
+<p>
+Importantly, \({\cal MX}_{\log k}\) acts as a multiplexer. In other words:
+</p>
+
+<p>
+\[ {\cal MX}_{\log k}(\underbrace {\Ket i}_{control}\underbrace {\Ket {\psi }}_{input})=\underbrace {\Ket i}_{control}\underbrace {{\cal U}_{i}\Ket {\psi }}_{output}. \]
+</p>
+
+<p>
+The matrix that represents the multiplexer is a block diagonal matrix of the corresponding operators:
+</p>
+
+<p>
+\[ \matM ({\cal MX}_{\log k})=\diag {\matM ({\cal U}_{0}),\ldots ,\matM ({\cal U}_{k-1})} \]
+</p>
+
+<p>
+Once we have obtained the Pauli coeﬀicients of the matrix, we can utilize a multiplexer to construct a block-diagonal matrix composed of the corresponding q-wise Pauli matrices. By employing a state preparation circuit for the coeﬀicients, we can
+eﬀiciently implement linear combinations of coeﬀicients multiplied by matrices, effectively creating a block encoding of the matrix \(\matA \).
+</p>
+
+<p>
+To eﬀiciently determine the Pauli coeﬀicients classically, we require some theoretical groundwork.
+</p>
+<!--
+...... subsection Contribution ......
+-->
+<h5 id="autosec-12"><span class="sectionnumber">1.4&#x2003;</span>Contribution</h5>
+<a id="paper-autopage-12"></a>
+
+
+<p>
+This work makes three key contributions: (a) the first bidirectional equivalence between block encoding and matrix state preparation input models, (b) a novel classical Pauli decomposition algorithm with \(O(n^{2}\log n)\) run-time complexity,
+and (c) an eﬀicient quantum circuit implementation for multiplexed Pauli tensor products with \(O(n^{2})\) gate complexity. This general-purpose approach improves upon existing techniques for arbitrary matrix encoding, achieving particular
+eﬀiciency when the Pauli decomposition is sparse.
+</p>
+<!--
+...... section Block encoding equivalence ......
+-->
+<h4 id="autosec-13"><span class="sectionnumber">2&#x2003;</span>Block encoding equivalence</h4>
+<a id="paper-autopage-13"></a>
+
+
+<p>
+Given a matrix state preparation circuit for \(\matA \) and a state preparation circuit for a vector \(\w \) whose entries are the row norms of \(\matA \), it is possible to construct a block encoding of \(\matA \)&nbsp;[6, Section I.D]. We are unaware
+of any eﬀicient algorithm that given <em>only</em> a matrix state preparation circuit for \(\matA \) constructs a block encoding of \(\matA \). In this section we will show a way to create block encoding from state preparation circuits and vise versa.
+</p>
+<!--
+...... subsection Block encoding matrix state preparation circuit ......
+-->
+<h5 id="autosec-14"><span class="sectionnumber">2.1&#x2003;</span>Block encoding \(\to \) matrix state preparation circuit</h5>
+<a id="paper-autopage-14"></a>
+
+
+<p>
+Mor-Yosef et al.&nbsp;[15] show that given<span
+    class="textcolor"
+    style="color:#FF0000"
+> </span>a circuit \(\cal U\) we can construct a matrix state preparation of \(\matM ({\cal U})\). Thus, given a block encoding of \(\matA \) we can immediately construct a matrix state preparation circuit for a matrix that contains \(\matA \).
+</p>
+
+<p>
+The following provides a proof for creating a state preparation circuit, including auxiliary (garbage) quantum states, from Block Encoding.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-15"></a>
+<span class="amsthmnameplain">Proposition</span><span class="amsthmnumberplain"> <span class="textup">4</span></span>. </span> <em>Suppose that \(\cirU \in \BE {\matA }{\alpha ,\theta }\). Applying the \(&apos;\textrm
+{qml.matrix}&apos;\) results \({\cal U}_{\matM ({\cal U})}\) s.t \({\cal U}_{\matM ({\cal U})}\in \MS {\matA }{\alpha ,\theta }\)</em>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmproof">
+
+<a id="paper-autopage-16"></a>
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"> <span class="amsthmproofname">Proof.</span></span> We have that,
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+
+<!--
+
+
+                                                                                                        [                          ]
+                                                                                             UM(U ) =       vec (M(U)) ∗
+                                                                                                                 [    ([                       ])       ]
+                                                                                                            −1 −iθ                 A       ∗
+                                                                                                   =α         e          vec                        ∗
+                                                                                                                                   ∗       ∗
+                                                                                                                     [                     ]
+                                                                                                            −1 −iθ       vec (A)       ∗
+                                                                                                   =α         e
+                                                                                                                           ψ           ∗
+
+
+
+-->
+
+
+
+<p>
+
+
+\begin{align*}
+{\cal U}_{\matM ({\cal U})} &amp; =\left [\begin{array}{cc} \vec {\matM ({\cal U})} &amp; *\end {array}\right ]\\ &amp; =\alpha ^{-1}e^{-i\theta }\left [\begin{array}{cc} \vec {\left [\begin{array}{cc} \matA &amp;
+*\\* * &amp; * \end {array}\right ]} &amp; *\end {array}\right ]\\ &amp; =\alpha ^{-1}e^{-i\theta }\left [\begin{array}{cc} \vec {\matA } &amp; *\\ \psi &amp; * \end {array}\right ]
+\end{align*}
+<span class="theoremendmark">&#x25A1;</span>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... subsection Matrix state preparation circuit block encoding ......
+-->
+<h5 id="autosec-17"><span class="sectionnumber">2.2&#x2003;</span>Matrix state preparation circuit \(\to \) block encoding</h5>
+<a id="paper-autopage-17"></a>
+
+
+<p>
+We introduce a method to create block encoding solely from a matrix state preparation circuit. Preliminary examples are provided to illustrate this approach, with the full methodology detailed in the paper. At a high level, we construct \({\cal
+U}_{\matA _{p}}\) from \({\cal U}_{\matA }\), and then apply the technique from the previous section to block encode \(\matA \).
+</p>
+
+<p>
+In high level, we construct \({\cal U}_{\matA _{p}}\) from \({\cal U}_{\matA }\), then use the technique from the previous section to block encode \(\matA \). We will now demonstrate how to compute \({\cal U}_{\matA _{p}}\) in the
+following section.
+</p>
+<!--
+...... subsubsection Construct from ( Warm-up: and Real ) ......
+-->
+<h6 id="autosec-18"><span class="sectionnumber">2.2.1&#x2003;</span>Construct \({\cal U}_{\protect \matA _{p}}\) from \({\cal U}_{\protect \matA }\)( Warm-up: \(q=1\) and Real \(\protect \matA \))</h6>
+<a id="paper-autopage-18"></a>
+
+
+<p>
+As a warm-up, let us first consider the case of \(q=1\), i.e. the \(\matA \in \R ^{n\times n}\) a \(2\) by \(2\) real and Hermitian matrices. To keep notation simple, we use the 1 base index, i.e.
+</p>
+
+<p>
+\[ \matA =\left [\begin {array}{cc} a_{11} &amp; a_{12}\\ a_{21} &amp; a_{22} \end {array}\right ]\,\,\,\,a_{12}=a_{21} \]
+</p>
+
+<p>
+Note that we can write \(\matA \) as a linear combination of the following matrices,
+</p>
+
+<p>
+\[ \matE _{11}=\left [\begin {array}{cc} 1 &amp; 0\\ 0 &amp; 0 \end {array}\right ],\,\matE _{12}=\left [\begin {array}{cc} 0 &amp; 1\\ 0 &amp; 0 \end {array}\right ],\,\matE _{21}=\left [\begin {array}{cc} 0 &amp;
+0\\ 1 &amp; 0 \end {array}\right ],\,\matE _{22}=\left [\begin {array}{cc} 0 &amp; 0\\ 0 &amp; 1 \end {array}\right ] \]
+</p>
+
+<p>
+Indeed we have that
+</p>
+
+<p>
+\[ \matA =\sum _{i,j}a_{ij}\matE _{i,j}=a_{11}\matE _{11}+a_{12}\matE _{12}+a_{21}\matE _{21}+a_{22}\matE _{22} \]
+</p>
+
+<p>
+From linearity of \(\left (\cdot \right )_{p}\)we have that
+</p>
+
+<p>
+\[ \matA _{p}=\left (\sum _{i,j}a_{ij}\matE _{ij}\right )_{p}=\matA =\sum _{i,j}a_{ij}\left (\matE _{ij}\right )_{p} \]
+</p>
+
+<p>
+Note that we can create state preparation circuits \(\{{\cal U}_{\left (\matE _{ij}\right )_{p}}\}_{i,j}\), using the standard state prepartion operation ([13]). Now we can create the \({\cal U}_{\matA _{p}}\) as follow:
+</p>
+
+<p>
+This observation can easily be used to implement, via qMSLA operations, an algorithm that takes \({\cal U}_{\matA }\) and outputs \({\cal U}_{\matA _{p}}\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-19">References</h4>
+<a id="paper-autopage-19"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Andris Ambainis. Variable time amplitude amplification and quantum algorithms for linear algebra problems. In <i>STACS’12 (29th Symposium on Theoretical Aspects of Computer Science)</i>,
+volume&nbsp;14, pages 636–647. LIPIcs, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Dong An and Lin Lin. Quantum linear system solver based on time-optimal adiabatic quantum computing and quantum approximate optimization algorithm. <i>ACM Transactions on Quantum
+Computing</i>, 3(2):1–28, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Jacob Biamonte, Peter Wittek, Nicola Pancotti, Patrick Rebentrost, Nathan Wiebe, and Seth Lloyd. Quantum machine learning. <i>Nature</i>, 549(7671):195–202, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Shantanav Chakraborty, András Gilyén, and Stacey Jeffery. The Power of Block-Encoded Matrix Powers: Improved Regression Techniques via Faster Hamiltonian Simulation. In Christel Baier,
+Ioannis Chatzigiannakis, Paola Flocchini, and Stefano Leonardi, editors, <i>46th International Colloquium on Automata, Languages, and Programming (ICALP 2019)</i>, volume 132 of <i>Leibniz International Proceedings in Informatics
+(LIPIcs)</i>, pages 33:1–33:14, Dagstuhl, Germany, 2019. Schloss Dagstuhl – Leibniz-Zentrum für Informatik.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Andrew&nbsp;M Childs, Robin Kothari, and Rolando&nbsp;D Somma. Quantum algorithm for systems of linear equations with exponentially improved dependence on precision. <i>SIAM Journal
+on Computing</i>, 46(6):1920–1950, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> B&nbsp;David Clader, Alexander&nbsp;M Dalzell, Nikitas Stamatopoulos, Grant Salton, Mario Berta, and William&nbsp;J Zeng. Quantum resources required to block-encode a matrix of classical
+data. <i>IEEE Transactions on Quantum Engineering</i>, 3:1–23, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> András Gilyén, Yuan Su, Guang&nbsp;Hao Low, and Nathan Wiebe. Quantum singular value transformation and beyond: exponential improvements for quantum matrix arithmetics. In
+<i>Proceedings of the 51st Annual ACM SIGACT Symposium on Theory of Computing</i>, pages 193–204, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Aram&nbsp;W Harrow, Avinatan Hassidim, and Seth Lloyd. Quantum algorithm for linear systems of equations. <i>Physical Review Letters</i>, 103(15):150502, 2009.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Iordanis Kerenidis and Anupam Prakash. Quantum Recommendation Systems. In Christos&nbsp;H. Papadimitriou, editor, <i>8th Innovations in Theoretical Computer Science Conference (ITCS
+2017)</i>, volume&nbsp;67 of <i>Leibniz International Proceedings in Informatics (LIPIcs)</i>, pages 49:1–49:21, Dagstuhl, Germany, 2017. Schloss Dagstuhl – Leibniz-Zentrum für Informatik.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Iordanis Kerenidis and Anupam Prakash. Quantum gradient descent for linear systems and least squares. <i>Physical Review A</i>, 101(2):022316, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Lin Lin and Yu&nbsp;Tong. Optimal polynomial based quantum eigenstate filtering with application to solving quantum linear systems. <i>Quantum</i>, 4:361, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> John&nbsp;M Martyn, Zane&nbsp;M Rossi, Andrew&nbsp;K Tan, and Isaac&nbsp;L Chuang. Grand unification of quantum algorithms. <i>PRX Quantum</i>, 2(4):040203, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Vivek&nbsp;V Shende, Stephen&nbsp;S Bullock, and Igor&nbsp;L Markov. Synthesis of quantum logic circuits. In <i>Proceedings of the 2005 Asia and South Pacific Design Automation
+Conference</i>, pages 272–275, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Yigit Subasi, Rolando&nbsp;D Somma, and Davide Orsucci. Quantum algorithms for systems of linear equations inspired by adiabatic quantum computing. <i>Physical Review Letters</i>,
+122(6):060504, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> Liron&nbsp;Mor Yosef, Shashanka Ubaru, Lior Horesh, and Haim Avron. Multivariate trace estimation using quantum state space linear algebra. <i>arXiv preprint arXiv:2405.01098</i>, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

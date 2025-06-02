@@ -1,0 +1,604 @@
+---
+layout: abstract
+absnum: 20
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\veclistbf }[3]{\mbf {#1}_{#2}, \ldots , \mbf {#1}_{#3}}\)
+
+\(\newcommand {\svdmat }[1]{ \left ( \begin {array}{cc} 0 &amp; #1 \\ #1^* &amp; 0 \end {array} \right )}\)
+
+\(\newcommand {\numlist }[3]{#1=#2, \ldots , #3}\)
+
+\(\newcommand {\diaglist }[3]{\diag ({#1}_{#2},\ldots ,{#1}_{#3})}\)
+
+\(\newcommand {\normt }[1]{\|#1\|}\)
+
+\(\newcommand {\normF }[1]{\|#1\|_F}\)
+
+\(\newcommand {\cmat }[2]{{\bf C}^{#1 \times #2}}\)
+
+\(\newcommand {\ysqrt }[1]{\left ( #1 \right )^{1/2}}\)
+
+\(\newcommand {\ysqrtn }[1]{\left (#1 \right )^{-1/2}}\)
+
+\(\newcommand {\mat }[2]{\Real ^{#1 \times #2}}\)
+
+\(\newcommand {\rvec }[1]{\Real ^#1}\)
+
+\(\newcommand {\normtwo }[1]{\|#1\|_2}\)
+
+\(\newcommand {\normtwol }[1]{\left \|#1 \right \|_2}\)
+
+\(\newcommand {\normFl }[1]{\left \|#1 \right \|_F}\)
+
+\(\newcommand {\norminf }[1]{\|#1\|_{\infty }}\)
+
+\(\newcommand {\normal }[1]{#1^T\!~#1}\)
+
+\(\newcommand {\co }[2]{#1\colon #2}\)
+
+\(\newcommand {\gbf }[1]{\mbox {\boldmath {$#1$}}}\)
+
+\(\newcommand {\eqref }[1]{{\normalfont (\ref {#1})}}\)
+
+\(\newcommand {\matgen }[2]{(\mbf {#1}_1, \ldots , \mbf {#1}_{#2} )}\)
+
+\(\newcommand {\veclist }[3]{#1_{#2}, \ldots , #1_{#3}}\)
+
+\(\newcommand {\XXT }[1]{#1#1^T}\)
+
+\(\newcommand {\macheps }{\varepsilon _M}\)
+
+\(\newcommand {\bear }{\left (\begin {array}}\)
+
+\(\newcommand {\enar }{\end {array}\right )}\)
+
+\(\newcommand {\bigosquare }{\mathcal O(\eps ^2)}\)
+
+\(\newcommand {\hot }{+ {\mathcal O(\macheps ^2 )}}\)
+
+\(\newcommand {\ciut }{+ {\mathcal O(\macheps )}}\)
+
+\(\newcommand {\Real }{\mbf {R}}\)
+
+\(\newcommand {\range }{\mathrm {Range}}\)
+
+\(\newcommand {\mbf }{\mathbf }\)
+
+\(\newcommand {\tbf }{\textbf }\)
+
+\(\newcommand {\sign }{\mathrm {sign}}\)
+
+\(\newcommand {\lbrac }{\mathrm {[}}\)
+
+\(\newcommand {\rbrac }{\mathrm {]}}\)
+
+\(\newcommand {\what }{\widehat }\)
+
+\(\newcommand {\wtilde }{\widetilde }\)
+
+\(\newcommand {\fbf }[1]{$\mbf {#1}$}\)
+
+\(\newcommand {\mcO }[1]{\mathcal {O}(#1)}\)
+
+\(\newcommand {\nth }[1]{$#1$th}\)
+
+\(\newcommand {\st }[1]{$#1$st}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Deflation for the Half-Arrow Singular Value Decomposition
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Jesse L. Barlow</span>, Stanley Eisenstat, Nevena Jakovčević Stor, and Ivan Slapničar
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+A half-arrow matrix \(F\) has the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                (              )
+                                                                                                    Ψ      g
+                                                                                    F    =                         ,   g ∈ Rn ,    ρ ∈ R, --><a id="eq:Fdef"></a><!--                                                                                      (1)
+                                                                                                    0T     ρ
+                                                                                    Ψ    =      diag(ψ1 , . . . , ψn ),    ψ1 ≥ ψ2 ≥ . . . ≥ ψn ≥ 0.--><a id="eq:psij"></a><!--                                                                            (2)
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+F &amp;= &amp;\bear {cc} \Psi &amp; \mbf {g} \\ \mbf {0}^T &amp; \rho \enar ,\quad \mbf {g} \in \rvec {n},\quad \rho \in \Real , \label {eq:Fdef} \\ \Psi &amp;=&amp;\mathrm {diag}(\psi _1, \ldots ,\psi _n), \quad
+\psi _1 \geq \psi _2 \geq \ldots \geq \psi _n \geq 0 . \label {eq:psij}
+\end{eqnarray}
+
+</p>
+
+<p>
+We consider the problem of determining which of the diagonals of \(\Psi \) are close to singular values of \(F\) and how these values can be deflated eﬀiciently. Such deflation techniques were explored in the “conquer” stage of the
+divide-and-conquer bidiagonal SVD algorithms given by Jessup and Sorensen [9] and Gu and Eisenstat [7].
+</p>
+
+<p>
+A version of the algorithm in [9] is coded in the LAPACK [1] subroutine <b>dlasd2.f</b> [10] as a part of the bidiagonal SVD subroutine <b>dbdsbc.f</b> [1, p.208].
+</p>
+
+<p>
+The SVD version of the Cauchy interlace theorem [6, Corollary 8.6.3] states that the singular values \(\veclist {\sigma }{1}{n+1}\) of \(F\) satisfy
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                               σj ≥ ψj ≥ σj+1 ,           j = 1, . . . , n.--><a id="eq:interlace"></a><!--                                                                                (3)
+
+-->
+
+<p>
+
+\begin{equation}
+\sigma _j \geq \psi _j \geq \sigma _{j+1}, \quad \numlist {j}{1}{n}. \label {eq:interlace}
+\end{equation}
+
+</p>
+
+<p>
+Interpretating a result in [13, p.95], Jessup and Sorensen [9] point to three cases where \(\psi _j\) is a singular value of \(F\):
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> <b>Case I:</b> \(g_j =\mbf {e}_j^T \mbf {g} =0\), then \((\psi _j,\mbf {e}_j,\mbf {e}_j)\) is a singular triplet of \(F\);
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> <b>Case II:</b> \(\psi _j=0\), so we let \(G_{n+1,j}\) be a Givens rotation affecting rows \(j\) and \(n+1\) whose non-trivial part is defined by
+</p>
+<p>
+\[ \bear {cc} c &amp; -s \\ s &amp; c \enar \bear {c} g_j \\ \rho \enar =\bear {c} 0 \\ \hat {\rho }\enar , \quad \begin {array}{ll} c^2+s^2=1, \\ \hat {\rho }=\pm \sqrt {g_j^2+\rho ^2}, \end {array} \]
+</p>
+<p>
+and we have that
+</p>
+<p>
+\[ \tilde {F} = G_{n+1,j} F \]
+</p>
+<p>
+has the singular triplet \((0,\mbf {e}_{j},\mbf {e}_j)\);
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> <b>Case III:</b> \(\psi _i = \psi _j\) for some \(i\neq j\), so we let \(G_{ij}\) be a Givens rotation affecting rows \(i\) and \(j\) where the non-trivial part of \(G_{ij}\) is defined by
+</p>
+<p>
+\[ \bear {cc} c &amp; s \\ -s &amp; c \enar \bear {c} g_i \\ g_j \enar =\bear {c} \hat {g}_j \\ 0 \enar , \quad \begin {array}{ll} c^2+s^2=1 \\ \hat {g}_j =\pm \sqrt {g_j^2+g_{j+1}^2} \end {array} \]
+</p>
+<p>
+and we have that
+</p>
+<p>
+\[ \tilde {F} = G_{ij} F G_{ij}^T \]
+</p>
+<p>
+has the singular triplet \((\psi _{j}, \mbf {e}_{j},\mbf {e}_{j})\).
+</p>
+</li>
+</ul>
+
+<p>
+In all three cases, the computation of the SVD of \(F\) is reduced to that of computing the SVD of a lower dimensional half-arrow matrix. If none of these deflations is possible for any \(j\), then from [13, p.95], we have the strict interlacing property
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                             σj > ψj > σj+1 ,          j = 1, . . . , n.--><a id="eq:sinterlaceF"></a><!--                                                                                 (4)
+
+-->
+
+<p>
+
+\begin{equation}
+\sigma _j &gt; \psi _j &gt; \sigma _{j+1}, \quad \numlist {j}{1}{n}. \label {eq:sinterlaceF}
+\end{equation}
+
+</p>
+
+<p>
+The deflation strategies in [9, 7] are based upon the idea that one of these three cases applies to a matrix near \(F\). We model these strategies as follows: we compute a value \(\gamma _F\) such that \(\normtwo {F}\leq \gamma _F \leq \sqrt
+{2}\normtwo {F}\), and let \(\tau \) be a small value, usually \(\mcO {\macheps }\) where \(\macheps \) is the machine unit. In some applications, \(\tau \) may be an acceptable level of error.
+</p>
+
+<p>
+Corresponding to the three cases for when \(\psi _j\) is a singular value of \(F\), we can deflate \(g_j\) in the following three cases:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> If
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+<!--
+
+                                                                                                               |gj | ≤ τ γF --><a id="eq:gjsmall"></a><!--                                                                                                 (5)
+-->
+<p>
+
+\begin{equation}
+|g_j| \leq \tau \gamma _F \label {eq:gjsmall}
+\end{equation}
+
+</p>
+<p>
+we simply set \(g_j\) to zero;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> If
+</p>
+<p>
+\[ \frac {\psi _j |g_j|}{\sqrt {g_j^2+\rho ^2}} \leq \tau \gamma _F, \]
+</p>
+<p>
+then we apply the Givens rotation \(G_{n+1,j}\) to rows \(n+1\) and \(j\) setting \(g_j\) to zero producing
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+<!--
+                                                                                                                                           √
+                                                                                   F̃ + δFn+1,j = Gn+1,j F,            ∥δFn+1,j ∥2 ≤           2τ γF --><a id="eq:np1jdeflate"></a><!--                                                                    (6)
+-->
+<p>
+
+\begin{equation}
+\tilde {F} +\delta F_{n+1,j} = G_{n+1,j} F , \quad \normtwo {\delta F_{n+1,j}} \leq \sqrt {2} \tau \gamma _F \label {eq:np1jdeflate}
+\end{equation}
+
+</p>
+<p>
+where \(\tilde {F}\) is a half-arrow matrix with \(\Psi \) unchanged;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> If
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+<!--
+                                                                                                                             gj gi
+                                                                                             |δij | ≤ τ γF ,   δij =                (ψi − ψj )--><a id="eq:gigjtau"></a><!--                                                                               (7)
+                                                                                                                          gi2 + gj2
+-->
+<p>
+
+\begin{equation}
+|\delta _{ij}| \leq \tau \gamma _F, \quad \delta _{ij}= \frac {g_j g_i}{g_i^2+g_j^2}(\psi _i-\psi _j) \label {eq:gigjtau}
+\end{equation}
+
+</p>
+<p>
+and \(|g_j| \leq |g_i|\), then we apply the Givens rotation \(G_{ij}\) to rows \(i\) and \(j\) setting \(g_j\) to zero producing
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+<!--
+                                                                                                                                       √
+                                                                                        F̃ + δFij = Gij F GTij ,          ∥δFij ∥2 ≤       2τ γF --><a id="eq:ijdeflate"></a><!--                                                                          (8)
+-->
+<p>
+
+\begin{equation}
+\tilde {F}+\delta F_{ij} = G_{ij} F G_{ij}^T, \quad \normtwo {\delta F_{ij}} \leq \sqrt {2}\tau \gamma _F \label {eq:ijdeflate}
+\end{equation}
+
+</p>
+<p>
+where \(\tilde {F}\) is again a half-arrow matrix with \(\Psi \) unchanged. If (<a href="paper.html#eq:gigjtau">7</a>) holds and \(|g_j| &gt; |g_i|\), we set \(g_i\) to zero in an analogous manner.
+</p>
+</li>
+</ul>
+
+<p>
+The deflations (<a href="paper.html#eq:gjsmall">5</a>) and (<a href="paper.html#eq:ijdeflate">8</a>) are discussed in [9, 7] and the deflation (<a href="paper.html#eq:np1jdeflate">6</a>) is discussed in [9].
+</p>
+
+<p>
+We enhance the appproach in [9, 7] and in the LAPACK routine <b>dlasd2.f</b> [10] by producing a better deflation algorithm that is still \(\mcO {n}\) operations. We also show that if for a particular value of \(j\), \(g_j\) cannot be deflated by
+(<a href="paper.html#eq:gjsmall">5</a>) or by (<a href="paper.html#eq:np1jdeflate">6</a>) or by (<a href="paper.html#eq:ijdeflate">8</a>) for any \(i \neq j\), then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                            √
+                                                                                          σj − σj+1 > τ γF / 2n + 1.--><a id="eq:perfectseparation"></a><!--                                                                                               (9)
+
+-->
+
+<p>
+
+\begin{equation}
+\sigma _j -\sigma _{j+1} &gt; \tau \gamma _F/\sqrt {2n+1}. \label {eq:perfectseparation}
+\end{equation}
+
+</p>
+
+<p>
+However, the only algorithm we give with that guarantee for all \(j\) has a worst case complexity proportional to \(n^2\). If we weaken these conditions, so that there is no index \(i\) such that \(|i-j| &lt; q\), and we have (<a
+href="paper.html#eq:ijdeflate">8</a>), then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{9}\)</span>
+
+<!--
+
+                                                                                                     √
+                                                                                     σj − σj+1 >         2τ 2 qγF + O(τ 4 q 2 γF ).--><a id="eq:neighborseparation"></a><!--                                                                             (10)
+
+-->
+
+<p>
+
+\begin{equation}
+\sigma _j -\sigma _{j+1} &gt; \sqrt {2}\tau ^2 q \gamma _F + \mcO {\tau ^4 q^2 \gamma _F}. \label {eq:neighborseparation}
+\end{equation}
+
+</p>
+
+<p>
+The algorithm we recommend is a hueristic proposed here with worst case complexity proportional to \(n\), the same asymtotic complexity as the LAPACK procedure, but with better deflation guarantees. It acheives (<a
+href="paper.html#eq:neighborseparation">10</a>) with \(q=2\) for all \(j\). Bounds similar to (<a href="paper.html#eq:perfectseparation">9</a>) and (<a href="paper.html#eq:neighborseparation">10</a>) are not possible for the
+singular values of deflated structure matrices, for instance, there are no such bounds for bidiagonal matrices.
+</p>
+
+<p>
+In light of work by Demmel and Gragg [4] that formulated an algorithm to compute the nonzero singular values of \(F\) to near relative accuracy, we formulate and analyze versions of the deflations in (<a href="paper.html#eq:gjsmall">5</a>) and
+(<a href="paper.html#eq:ijdeflate">8</a>) that preserve relative accuracy in the singular values.
+</p>
+
+<p>
+By choosing \(\gamma _F\) to be within a constant factor of \(\normtwo {F}\), these deflations produce no more error in the singular values than would be expected of a normwise backward stable algorithm for finding the SVD of \(F\). However, for
+algorithms to compute the SVD of \(F\), deflation gives us dimension reduction and speeds up the algorithms in [9] and [7]. The LAPACK routine <b>dlasd2.f</b> uses only the first and third types of deflation.
+</p>
+
+<p>
+Two other applications for this kind of deflation have been investigated. The first is in is SVD-based regularization approaches given in [8, §4.3] and [11]. The second is in the implementation of a Krylov-Schur implementation [2, 12] of the
+Golub-Kahan-Lanczos SVD algorithm [5].
+</p>
+
+<p>
+This is a continuation of work in [3].
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> E.&nbsp;Anderson, Z.&nbsp;Bai, C.&nbsp;Bischof, S.&nbsp;Blackford, J.&nbsp;Demmel, J.&nbsp;Dongarra, J.&nbsp;Du Croz, A.&nbsp;Greenbaum, S.&nbsp;Hammarling, A.&nbsp;McKenney, and
+D.&nbsp;Sorensen. <i>LAPACK User’s Guide: Third Edition</i>. SIAM Publications, Philadelphia, PA, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;Baglama and L.&nbsp;Reichel. Augmented implicitly restarted Lanczos bidiagonalization methods. <i>SIAM J. Sci. Computing</i>, 27(1):19–42, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.&nbsp;Barlow, S.C. Eisenstat, N.&nbsp;Jakovčević Stor, and I.&nbsp;Slapničar. Deflation for the symmetric arrowhead and diagaonal-plus-rank-one eigenvalue problems. <i>SIAM J. Matrix Anal.
+Appl.</i>, 43(2):681–709, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J.W. Demmel and W.B. Gragg. On computing accurate singular values and eigenvalues of matrices with acyclic graphs. <i>Linear Algebra and Its Applications</i>, 185:203–217, 1993.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> G.H. Golub and W.M. Kahan. Calculating the singular values and pseudoinverse of a matrix. <i>SIAM J. Num. Anal. Ser. B</i>, 2:205–224, 1965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> G.H. Golub and C.F.&nbsp;Van Loan. <i>Matrix Computations</i>. The Johns Hopkins Press, Baltimore, MD, Fourth edition, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> M.&nbsp;Gu and S.C. Eisenstat. A divide-and-conquer algorithm for the bidiagonal svd. <i>SIAM Journal on Matrix Analysis and Applications</i>, 16(1):79–92, 1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> P.C. Hansen. <i>Discrete Inverse Problems: Insight and Algorithms</i>. SIAM Publications, Philadelphia, PA, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> E.&nbsp;Jessup and D.&nbsp;Sorensen. A parallel algorithm for computing the Singular Value Decomposition of a matrix. <i>SIAM J. Matrix Anal. Appl.</i>, 15(2):530–548, 1994.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> LAPACK Project. Lapack subroutine dlasd2.f. URL Page. <span class="verb">https://netlib.org/lapack/explore-html/d1/d83/dlasd2_8f_source.html</span>.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> B.W. Rust. Truncating the singular value decomposition for ill-posed problems. Technical NISTIR, Mathematical and Computational Sciences Division, NIST, Gaithersburg, MD, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> M.&nbsp;Stoll. A Krylov-Schur approach to the truncated SVD. <i>Linear Algebra and Its Applications</i>, 436(8):2795–2806, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> J.H. Wilkinson. <i>The Algebraic Eigenvalue Problem</i>. Oxford University Press, London, 1965.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,457 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Dodging Discretization Pitfalls in Nonlinear Eigenvalue Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Matthew Colbrook</span>, Alex Townsend
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Many nonlinear eigenvalue problems (NEPs) arise from discretizing an infinite-dimensional problem. In fact, 25 out of the 52 NEPs from the benchmark NLEVP collection arise from discretizing a continuous problem such as a differential eigenvalue
+problem&nbsp; [1]. Traditional analysis typically focuses on solving the resulting finite-dimensional NEP after discretization. However, as I will reveal in this talk with many examples (including the NLEVP), discretizing an infinite-dimensional NEP
+can introduce fundamental issues, often overlooked, that impact the core of eigenvalue computations. Discretization may distort, destabilize, or even destroy the essential eigenvalues, leading to inaccurate representations of the continuous problem.
+</p>
+
+<p>
+I will show how to overcome these dangers and present simple, yet general, stable, and practical convergent algorithms [2]. This includes methods for computing pseudospectra with error control and, in regions of discrete spectra, for computing
+eigenvalues and eigenvectors of holomorphic infinite-dimensional NEPs. Additionally, I will prove the optimality of these algorithms, employing a rigorous unified framework that proves what can and cannot be achieved.
+</p>
+
+<p>
+The dangers described also apply to linear problems, so here is a warm-up example:
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Example 1 (The bilateral shift - a minimal example) </span></span> Consider the Hilbert space \(l^2(\mathbb {Z})\) with standard basis \(\{e_n\}_{n=-\infty }^\infty \), which
+could, for instance, represent the Fourier coeﬀicients of a function. The bilateral shift operator \(S\) is defined by \(Se_n=e_{n-1}\) and serves as a fundamental building block in applications such as signal processing, dynamical systems, and iterative
+methods. The operator \(S\) is unitary, and hence normal, and its spectrum is the unit circle. If we truncate this operator to \(\mathrm {span}\{e_{-n},\ldots ,e_n\}\), corresponding to partial Fourier series, we obtain a \((2n+1)\times
+(2n+1)\) Jordan block. This truncated matrix is nilpotent, its spectrum is \(\{0\}\), and is severely unstable (even for mild \(n\)) due to non-normality. Hence, discretization has completely destroyed the properties of \(S\)!
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... subsubsection What is an infinite-dimensional NEP? ......
+-->
+<h6 id="autosec-6">What is an infinite-dimensional NEP?</h6>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+Given a domain (a non-empty, open, and connected subset) \(\Omega \subset \mathbb {C}\) and a matrix-valued function \(F:\Omega \rightarrow \mathbb {C}^{n\times n}\), the matrix NEP consists of finding eigenvalues \(\lambda \in
+\Omega \) and nonzero eigenvectors \(v\in \mathbb {C}^n\) so that \(F(\lambda )v=0\). Many of these matrix NEPs are derived from discretizing the following type of infinite-dimensional NEP. Consider two separable Hilbert spaces \(\mathcal
+{H}_1\) and \(\mathcal {H}_2\) with inner products \(\langle \cdot ,\cdot \rangle _{\mathcal {H}_j}\) and norms \(\|\cdot \|_{\mathcal {H}_j}\), and a scalar-dependent operator
+</p>
+
+<p>
+\[ T(\lambda ):\mathcal {D}(T)\supseteq \mathcal {H}_1\rightarrow \mathcal {H}_2, \quad \lambda \in \Omega . \]
+</p>
+
+<p>
+For each fixed \(\lambda \), \(T(\lambda )\) is a closed and densely-defined linear operator acting on the Hilbert space \(\mathcal {H}_1\). However, we allow nonlinear dependence on the parameter \(\lambda \). We assume that \(T(\lambda
+)\) has a fixed densely-defined domain \(\mathcal {D}(T)\subset \mathcal {H}_1\) and the map \(\Omega \ni \lambda \mapsto T(\lambda )u\in \mathcal {H}_2\) is holomorphic for each fixed \(u\in \mathcal {D}(T)\). The
+<i>spectrum</i> of \(T\), denoted by \(\Lambda (T)\), is the set of points \(\lambda \in \Omega \) such that \(T(\lambda ):\mathcal {D}(T)\rightarrow \mathcal {H}_2\) is not boundedly invertible. Often, we wish to find eigenvalues
+\(\lambda \in \mathbb {C}\) and nonzero eigenfunctions \(u\in \mathcal {D}(T)\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                  T (λ)u = 0.                                                              (1)--><a id="eq:NonlinearEigenproblem"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:NonlinearEigenproblem}\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} T(\lambda ) u = 0.
+\end{equation}
+
+</p>
+
+<p>
+These assumptions extend the usual assumptions for matrix NEPs&nbsp; [3] and allow us to develop a contour-based eigensolver for&nbsp;Equation&nbsp;<span class="textup">(<a href="paper.html#eq:NonlinearEigenproblem">1</a>)</span>.
+Many families of NEPs satisfy these assumptions, such as boundary NEPs for partial differential equations, where the variable coeﬀicients and boundary conditions depend holomorphically on the eigenvalue parameter \(\lambda \).
+</p>
+<!--
+...... subsubsection Computing pseudospectra with projections on the right (and not the left!) ......
+-->
+<h6 id="autosec-7">Computing pseudospectra with projections on the right (and not the left!)</h6>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+Pseudospectra provide insight into the stability of linear and nonlinear eigenvalue problems&nbsp; [4]. Consider the set of bounded holomorphic perturbations of \(T\) of norm at most \(\epsilon &gt;0\), i.e.,
+</p>
+
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \mathcal {A}(\epsilon )=\left \{E:\Omega \rightarrow \mathcal {B}(\mathcal {H}_1,\mathcal {H}_2) \text { holomorphic}\, \Big \vert \, \sup
+_{z\in \Omega }\|E(z)\|&lt;\epsilon \right \}, \]
+</p>
+
+<p>
+where \(\mathcal {B}(\mathcal {H}_1,\mathcal {H}_2)\) denotes the space of bounded linear maps from \(\mathcal {H}_1\) to \(\mathcal {H}_2\). The \(\epsilon \)-pseudospectrum of \(T\) is the following union of spectra of perturbed
+operators:
+</p>
+
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \Lambda _{\epsilon }(T)= \bigcup _{E\in \mathcal {A}(\epsilon )}\Lambda (T+E). \]
+</p>
+
+<p>
+Alternatively, we have
+</p>
+
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \Lambda _{\epsilon }(T)=\left \{z\in \Omega \, \big \vert \, \|T(z)^{-1}\|^{-1}&lt;\epsilon \right \}, \]
+</p>
+
+<p>
+where we define \(\|T(z)^{-1}\|^{-1}=0\) if \(z\in \Lambda (T)\). This leads to a method for computing \(\Lambda _{\epsilon }(T)\) that avoids discretization issues. Let \(\{\mathcal {P}_n\}\) and \(\{\mathcal {Q}_n\}\) be sequences of
+increasing finite-rank orthogonal projections on \(\mathcal {H}_1\) and \(\mathcal {H}_2\), respectively, such that \(\lim _{n\rightarrow \infty }\mathcal {P}_n^*\mathcal {P}_nu=u\) for any \(u\in \mathcal {H}_1\) and \(\lim
+_{n\rightarrow \infty }\mathcal {Q}_n^*\mathcal {Q}_nv=v\) for any \(v\in \mathcal {H}_2\). We consider the following function:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                    γn (z, T ) := min {σinf (T (z)Pn∗ ), σinf (T (z)∗ Q∗n )} ,                                                     (2)--><a id="def_gamma_n"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \label {def_gamma_n} \gamma _n(z,T):=\min \left \{\sigma _{\mathrm {inf}}(T(z)\mathcal {P}_n^*),\sigma _{\mathrm {inf}}(T(z)^*\mathcal
+{Q}_n^*)\right \},
+\end{equation}
+
+</p>
+
+<p>
+where \(\sigma _{\mathrm {inf}}\) denotes the smallest singular value. The following theorem shows how these functions approximate \(\|T(z)^{-1}\|^{-1}\) and hence can be used to compute pseudospectra.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 1 (Convergence to pseudospectra) </span></span> <a id="injection_moduli_theorem"></a> The functions \(\gamma _n\) satisfy
+</p>
+
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \gamma _n(z,T)\geq \|T(z)^{-1}\|^{-1}\quad \text {and}\quad \lim _{n\rightarrow \infty }\gamma _n(z,T)=\|T(z)^{-1}\|^{-1}, \]
+</p>
+
+<p>
+where the convergence is monotonic from above and uniform on compact subsets of \(\Omega \). Hence,
+</p>
+
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \left \{z\in \Omega \, \big \vert \, \gamma _n(z,T)&lt;\epsilon \right \}\subset \Lambda _{\epsilon }(T), \]
+</p>
+
+<p>
+and these sets converge to \(\Lambda _{\epsilon }(T)\) as \(n\rightarrow \infty \) without spurious spectra or missing regions of spectra.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Remark 2 (Warning for standard truncations) </span></span> This theorem is false if we replace \(T(z)\mathcal {P}_n^*\) and \(T(z)^*\mathcal {Q}_n^*\) by \(\mathcal
+{P}_nT(z)\mathcal {P}_n^*\) and \(\mathcal {Q}_nT(z)^*\mathcal {Q}_n^*\), respectively. These operators would correspond to standard discretizations that can suffer severely from the dangers of discretization.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+There are generally two ways to practically compute \(\gamma _n(z,T)\):
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> If we have discretizations of the finite-rank operators \(T(z)\mathcal {P}_n^*\) and \(T(z)^*\mathcal {Q}_n^*\) that have finite lower bandwidths (or are well approximated by such matrices), we take
+rectangular truncations capturing the full range&nbsp; [5]. Discretizations with finite lower bandwidths for the differential operators studied in this talk are provided by the ultraspherical spectral method&nbsp; [6].
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> If we have discretizations of \(\mathcal {P}_nT(z)^*T(z)\mathcal {P}_n^*\) and \(\mathcal {Q}_nT(z)T(z)^*\mathcal {Q}_n^*\), then we can compute their smallest singular values and take square roots
+to compute \(\gamma _n\).
+</p>
+</li>
+</ul>
+
+<p>
+The first method should be preferred over the second wherever possible since it avoids the loss of precision owing to the square root. In some situations, the second method seems unavoidable&nbsp; [7].
+</p>
+
+<p>
+In addition to stability, pseudospectra have several other uses. For example, we use them to prove convergence of the contour method described in the next section, and one can use pseudospectra to compute spectra by taking the additional limit
+\(\epsilon \downarrow 0\).
+</p>
+<!--
+...... subsubsection Contour methods near discrete spectra: A general stable and convergent method ......
+-->
+<h6 id="autosec-10">Contour methods near discrete spectra: A general stable and convergent method</h6>
+<a id="paper-autopage-10"></a>
+
+
+<p>
+Contour methods provide a powerful tool for computing the spectrum of \(T\) in regions containing only eigenvalues, i.e., where the spectrum is discrete. I will introduce an infinite-dimensional analog of Beyn’s method [8], InfBeyn, which is based on
+contour integration and adaptively discretizes only linear equations. The driver of this method is the following theorem of Keldysh.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 3 </span></span> Let \(\Omega \subset \mathbb {C}\) be a domain and \(T\) in&nbsp;Equation&nbsp;<span class="textup">(<a
+href="paper.html#eq:NonlinearEigenproblem">1</a>)</span> be such that \(\Omega \ni \lambda \mapsto T(\lambda )u\) is holomorphic for each \(u\in \mathcal {D}(T)\), \(T(\lambda )\) is Fredholm for all \(\lambda \in \Omega \),
+and \(\Lambda (T)\neq \Omega \). Suppose the set of eigenvalues \(\Lambda (T)=\{\lambda _1,\ldots ,\lambda _s\}\) is finite and \(m\) is the sum of their algebraic multiplicities. Then
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+
+                                                                                                   T (z)−1 = V (zI − J)−1 W ∗ + R(z)   ∀z ∈ Ω\Λ(T ).                                                              (3)--><a id="eq:Keldysh"></a><!--
+
+-->
+
+<p>
+
+
+\begin{equation}
+\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} T(z)^{-1} = V(zI-J)^{-1}W^*+R(z)\quad \forall z\in \Omega \backslash \Lambda (T). \label {eq:Keldysh}
+\end{equation}
+
+
+</p>
+
+<p>
+Here \(V\) is a quasimatrix with \(m\) columns of suitably normalized generalized right eigenvectors in \(\mathcal {H}_1\), \(W\) is a quasimatrix with \(m\) columns of suitably normalized generalized left eigenvectors in \(\mathcal {H}_2\), \(J\in
+\mathbb {C}^{m\times m}\) is a block diagonal matrix of the Jordan blocks of each eigenvalue inside \(\Omega \), and \(R(z):\mathcal {H}_2\rightarrow \mathcal {H}_1\) is a holomorphic remainder. <a id="thm:Keldysh"></a>
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<p>
+<b>Input:</b> Nonlinear eigenvalue problem \(T(z)u = 0\), contour \(\Gamma \) enclosing \(m\) eigenvalues.
+</p>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Draw a \(\mathcal {X}\times (m+p)\) quasimatrix \(\mathcal {G}\) with columns drawn from a Gaussian process.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span>Approximate the quasimatrices
+</p>
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} A_0 = \frac {1}{2\pi i}\int _{\Gamma } T(z)^{-1} \mathcal {G}\, \mathrm {d}z, \qquad A_1 = \frac {1}{2\pi i}\int _{\Gamma } zT(z)^{-1} \mathcal
+{G}\, \mathrm {d}z, \]
+</p>
+<p>
+with quadrature rule (nodes \(z_1,\ldots ,z_\ell \) and weights \(w_1,\ldots ,w_\ell \)):
+</p>
+<p>
+\[\setlength \abovedisplayskip {6pt}\setlength \belowdisplayskip {6pt} \tilde {A}_0 = \frac {1}{2\pi i}\sum _{k=1}^\ell w_kT(z_k)^{-1}\mathcal {G}\approx A_0, \qquad \tilde {A}_1 = \frac {1}{2\pi i}\sum _{k=1}^\ell
+w_kz_kT(z_k)^{-1}\mathcal {G}\approx A_1. \]
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span>Compute the \(m\)-truncated SVD of \(\tilde {A}_0 = \tilde {\mathcal {U}} \tilde {\Sigma }_0 \tilde {V}_0^*\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> <span style="width:0pt; display:inline-block;"></span>Form and solve the \(m\times m\) generalized eigenvalue problem in \(\tilde {\mathcal {U}}^*\tilde {A}_1\tilde {V}_0x = \lambda
+\tilde {\Sigma }_0 x, x\neq 0\) for eigenvalues \(\lambda _j\) and eigenvectors \(x_j\in \mathbb {C}^{m}\).
+</p>
+</li>
+</ul>
+
+<p>
+<b>Output:</b> Eigenvalues \(\lambda _1,\dots ,\lambda _m\) in \(\Omega \) and eigenfunctions \(u_j=\tilde {\mathcal {U}} \tilde {\Sigma }_0 x_j\).
+</p>
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;InfBeyn: Our infinite-dimensional Beyn’s method for NEPs on \(L^2(\mathcal {X})\).
+</p>
+</div>
+
+<a id="alg:Beyn's method"></a>
+
+</figure>
+
+<p>
+This theorem allows us to compute eigenvalues inside a region in the complex plane by integrating along the region’s boundary. Let \(\Gamma \) be a closed rectifiable Jordan curve inside \(\Omega \) enclosing \(m\) eigenvalues of \(T(z)\) (counted
+via algebraic multiplicity). The approach is summarized&nbsp;Algorithm&nbsp;<a href="paper.html#alg:Beyn's method">1</a> for the case of simple eigenvalues. In the general case, InfBeyn recovers an \(m\times m\) linear pencil with the same
+spectral properties as \(T\) inside \(\Gamma \). While previous approaches to infinite-dimensional NEPs are predominantly problem-specific, InfBeyn provides a general method that converges for any holomorphic NEP in regions where the spectrum
+is discrete. Moreover, we use techniques from infinite-dimensional randomized numerical linear algebra to prove that the method converges and is stable. Proving convergence and stability is a well-known problem for contour-based methods for
+finite-dimensional problems, but it is manageable in infinite dimensions. The following theorem provides the first general convergence theorem for infinite-dimensional NEPs.
+</p>
+<div class="theoremcontents">
+
+<ul class="list" style="list-style-type:none">
+
+
+<li>
+<p>
+<span class="listmarker"><span class="theoremlabel">Theorem 4 (Convergence and stability of InfBeyn) </span></span> <a id="bigthm"></a> Let \({C}(z) = \tilde {\mathcal {U}}^*(\tilde {A}_1 - z \tilde {A}_0)\tilde {V}_0\)
+be the generalized eigenvalue problem from Algorithm&nbsp;<a href="paper.html#alg:Beyn's method">1</a>, \(V\) and \(W\) the quasimatrices from Theorem&nbsp;<a href="paper.html#thm:Keldysh">3</a> and \(M=\sup _{z\in \Omega
+}\|R(z)\|\), where \(R\) is the holomorphic remainder from Equation&nbsp;<span class="textup">(<a href="paper.html#eq:Keldysh">3</a>)</span>. Let \(\epsilon &gt;0\). Suppose that \(\|A_j-\tilde {A}_0\|\leq \epsilon \), then
+\(\Lambda _{\frac {\epsilon }{\|VW^*\|\|VW^*\mathcal {G}\|+M\epsilon }}(T)\subset \Lambda _\epsilon (C)\subset \Lambda _{\frac {\epsilon }{\sigma _m(VW^*)\sigma _m(VW^*\mathcal {G})-M\epsilon }}(T). \)
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Hence, InfBeyn robustly computes the eigenvalues of \(T\) provided that the following conditions hold: (1) \(VW^*\) is well-conditioned, (2) \(VW^*\mathcal {G}\) is well-conditioned, (3) the holomorphic remainder is not too large, i.e., \(M\) is not
+too big, and (4) \(\epsilon \) is small. The NEP intrinsically determines condition (1). Once condition (1) holds, condition (2) follows in practice, provided that the sketching performed by InfBeyn is adequate at capturing the range of \(A_0\) and
+\(A_1\). This can be made precise using tools from randomized numerical linear algebra. Condition (3) measures the regularity of \(T\) inside \(\Omega \). Finally, (4) suggests that InfBeyn’s quadrature rules should be relatively accurate.
+</p>
+
+<p>
+In short,&nbsp;Theorem&nbsp;<a href="paper.html#bigthm">4</a> establishes that InfBeyn is a robust method for computing the eigenvalues of an NEP within a compact region of the complex plane. I will sketch the proof of this result and show
+how it provides a general strategy for analyzing contour methods in both finite and infinite dimensions, along with a variety of examples demonstrating this algorithm in action.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-13">References</h4>
+<a id="paper-autopage-13"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Betcke, Timo, Nicholas J. Higham, Volker Mehrmann, Christian Schröder, and Françoise Tisseur “NLEVP: A collection of nonlinear eigenvalue problems.” <i>ACM Transactions on Mathematical
+Software (TOMS)</i> 39.2 (2013): 1-28.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Colbrook, Matthew J., and Alex Townsend. “Avoiding discretization issues for nonlinear eigenvalue problems.” arXiv preprint arXiv:2305.01691 (2023).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Güttel, Stefan, and Françoise Tisseur. “The nonlinear eigenvalue problem.” <i>Acta Numerica</i> 26 (2017): 1-94.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> L. N. Trefethen and M. Embree. <i>Spectra and Pseudospectra: The Behavior of Nonnormal Matrices and Operators.</i> Princeton University Press, 2005.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Colbrook, Matthew J., Bogdan Roman, and Anders C. Hansen. “How to compute spectra with error control.” <i>Physical Review Letters</i> 122.25 (2019): 250201.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Olver, Sheehan, and Alex Townsend. “A fast and well-conditioned spectral method.” <i>Siam Review</i> 55.3 (2013): 462-489.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Colbrook, Matthew J., and Alex Townsend. “Rigorous data‐driven computation of spectral properties of Koopman operators for dynamical systems.” <i>Communications on Pure and Applied
+Mathematics</i> 77.1 (2024): 221-283.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Beyn, Wolf-Jürgen. “An integral method for solving nonlinear eigenvalue problems.” <i>Linear Algebra and its Applications</i> 436.10 (2012): 3839-3863.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

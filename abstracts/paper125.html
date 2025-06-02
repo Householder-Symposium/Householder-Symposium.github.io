@@ -1,0 +1,204 @@
+---
+layout: abstract
+absnum: 125
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Some Modified Matrix Eigenvalue Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Zhaojun Bai</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+This is the title of well-known numerical linear algebra survey article by Gene Golub published in 1973 [1]. The article covers a range of matrix eigenvalue problems which require some manipulations before the standard algorithms may be used. I am
+using the same title to consider a new set of modified matrix eigenvalue problems. This includes constrained and bi-level optimizations arising from algorithms for fairness in machine learning, such as spectral clustering with group fairness [2] and fair
+principal component analysis [3]. We also consider eigenvalue optimization via 2D eigenvalue problem with applications to the calculation of the distance to instability among others [4], and stationary values of a quadratic form subject to
+non-homogeneous linear constraints for applications such as image segmentation with constraints [5]. I will discuss how to explore the underlying structures of these problems to turn them into our familiar eigenvalue problems and algorithms. This
+talk is based on joint work with Ian Davidson, Aaron Davis, Ren-Cang Li, Ding Lu, Tianyi Lu, Junhui Shen, Yangfeng Su, Ji Wang, and Yunshen Zhou.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> G. H. Golub, Some modified matrix eigenvalue problems, SIAM Review, 15(2), pp.318–334, 1973.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J. Wang, D. Lu, I. Davidson and Z. Bai, <i>Scalable spectral clustering with group fairness constraints</i>, Proceedings of The 26th International Conference on Artificial Intelligence and Statistics
+(AISTAT), PMLR 206:6613-6629, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J. Shen, A. Davis, D. Lu and Z. Bai <i>Fair and eﬀicient: hidden convexity of fair PCA and fast solution via eigenvalue optimization</i>, submitted, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> T. Lu, Y. Su and Z. Bai, <i>Variational characterization and Rayleigh quotient iteration of 2D eigenvalue problem with Applications</i>, SIAM J. Matrix. Anal. Appl. Vol.45, No.3, pp.1455-1468, 2024
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Y. Zhou, Z. Bai and R.-C. Li, <i>Linear constrained Rayleigh quotient optimization: theory and algorithms</i>, CSIAM Trans. Appl. Math., 2(2), pp.195-262, 2021
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,231 @@
+---
+layout: abstract
+absnum: 196
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomization techniques for solving eigenvalue problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Laura Grigori</span>, Jean-Guillaume de Damas
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+In this talk we will discuss randomization techniques for computing a few eigenpairs of a large, sparse, non-symmetric matrix \(A\). We consider Krylov subspace methods and the Rayleigh-Ritz process that relies on projection onto the Krylov
+subspace \(\mathcal {K}_k (A, v_1) = span\{ v_1, A v_1, A^2 v_1,..., A^{k-1} v_1 \}\) formed after \(k\) iterations for a given starting vector \(v_1\).
+</p>
+
+<p>
+Randomization for Krylov subspace methods was introduced in the recent years, in particular for solving linear systems of equations [1, 7, 8]. Randomized Arnoldi introduced in [1] relies on a randomized orthogonalization process that produces a well
+conditioned basis of the Krylov subspace and thus can be eﬀiciently used in a randomized version of GMRES. It is shown in [1] that randomized GMRES is quasi-optimal since it relies on solving a sketched least squares problem to minimize the
+residual and obtain a new solution. A different approach consists in using sketching independently of the construction of the Krylov basis, as in sketched GMRES [7], or sketch and select [5]. Restarting in the context of linear systems is discussed in
+[2, 6].
+</p>
+
+<p>
+We first discuss the usage of randomization for orthogonalizing a set of vectors that are of very large dimension. This operation that occurs in many computations is very often the bottleneck in terms of communication. Indeed, when the vectors to be
+orthogonalized are distributed over many processors and are obtained one by one as in Krylov subspace methods, the orthogonalization of each vector with respect to the previous ones requires synchronizing all processors, and this hinders drastically
+the scalability of a parallel algorithm. Two different methods are in general used. The first one is classical Gram-Schmidt (CGS), which requires one synchronization to orthogonalize a new vector against the previous ones and thus can be considered
+to be eﬀicient, but suffers from numerical stability issues since it depends quadratically on the condition number of the vectors. The second one is modified Gram-Schmidt (MGS) which has better numerical stability with linear dependency on the
+condition number, but is ineﬀicient since it relies on vector-vector operations and requires \(j\) synchronizations for orthogonalizing a new vector against the previous \(j\) orthogonalized vectors. Householder QR is a highly accurate process for
+orthogonalizing a set of vectors, but is in general used for orthogonalizing a set of vectors that are given all at once.
+</p>
+
+<p>
+Several different algorithms have been introduced in the literature, as randomized Gram-Schmidt [1] and randomized Householder QR [4]. The main idea is to use randomization to sketch the vectors that need to be orthogonalized, obtain a smaller
+problem for which a highly accurate orthogonalization algorithm can be used as Householder QR, and then use the orthogonalized sketch vectors to obtain a well conditioned basis for the vectors of very large dimension. This approach is suitable for
+the usage of mixed precision, since after the random projection, a smaller problem is obtained that can be solved in higher precision. This leads to obtaining a basis for the Krylov subspace whose sketch is orthogonal, but not the basis itself. We will
+discuss in particular a reorthogonalization process that allows to improve the stability of randomized Gram-Schmidt.
+</p>
+
+<p>
+We then discuss the usage of such an orthogonalization process that produces a well conditioned basis within an eigenvalue solver, that leads to a randomized Rayleigh-Ritz process. We introduce the randomized Implicitly Restarted Arnoldi
+(randomized IRA) method, that relies on a sketched orthonormal basis and a restarting scheme that allows to seek a specific subset of eigenpairs of a non-symmetric matrix \(A\). We provide a theoretical analysis that shows that some of the results
+defining the convergence behavior of IRA hold for randomized IRA, up to a factor of \(1 + O(\epsilon )\) and with high probability. More details can be found in [3].
+</p>
+
+<p>
+Finally, we will discuss one of the challenges that arises when using randomization for symmetric matrices, that is related to the fact that randomization destroys symmetry. Thus the Hessenberg matrix associated with the Arnoldi process is not
+symmetric as in the case of deterministic methods. We discuss implications and possible solutions to this problem.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Oleg Balabanov and Laura Grigori. Randomized gram–schmidt process with application to gmres. <i>SIAM Journal on Scientific Computing</i>, 44(3):A1450–A1474, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Liam Burke, Stefan Güttel, and Kirk&nbsp;M. Soodhalter. GMRES with randomized sketching and deflated restarting, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Jean-Guillaume de&nbsp;Damas and Laura Grigori. Randomized implicitly restarted arnoldi method for the non-symmetric eigenvalue problem, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Laura Grigori and Edouard Timsit. Randomized householder qr, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Stefan Güttel and Igor Simunec. A sketch-and-select Arnoldi process, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Yongseok Jang, Laura Grigori, Emeric Martin, and Cédric Content. Randomized flexible GMRES with deflated restarting. <i>Numerical Algorithms</i>, March 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Yuji Nakatsukasa and Joel&nbsp;A. Tropp. Fast and accurate randomized algorithms for linear systems and eigenvalue problems. <i>SIAM Journal on Matrix Analysis and Applications</i>,
+45(2):1183–1214, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Edouard Timsit, Laura Grigori, and Oleg Balabanov. Randomized orthogonal projection methods for Krylov subspace solvers, 2023.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

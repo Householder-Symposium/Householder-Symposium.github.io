@@ -1,0 +1,356 @@
+---
+layout: abstract
+absnum: 11
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\mathlarger }[1]{#1}\)
+
+\(\newcommand {\mathsmaller }[1]{#1}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Randomized small-block Lanczos for null space computations
+</h2>
+</div>
+<div class="center">
+
+<p>
+Daniel Kressner and <span class="underline">Nian Shao</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Computing the null space of a large matrix \(A\), having no particular structure beyond being sparse, is a challenging computational problem, especially if the nullity \(N\)—the dimension of the null space—is large.
+</p>
+
+<p>
+When \(N = 1\), standard choices include the Lanczos method for computing the smallest eigenvalue and eigenvector of \(A^{\mathsf {T}}A\). When \(N&gt;1\), the Lanczos method (with a single starting vector) becomes unreliable and prone to
+miss components of the null space. In fact, in exact arithmetic only a one-dimensional subspace of the null space can be extracted via Lanczos. Block Lanczos methods address this issue by utilizing a block of \(d&gt;1\) starting vectors instead of a
+single starting vector. Common wisdom and existing convergence analyses all suggest to choose \(d\) not smaller than the size of the eigenvalue cluster of interest. Applied to null space computation this would require \(d \ge N\) and in exact
+arithmetic this condition is indeed necessary. The presence of round-off error blurs the situation. As an example, consider the \(420\times 420\) diagonal matrix
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                             A = diag(0, . . . , 0, 1, 2, . . . , 399),                                                            (1)--><a id="eq:matrixA"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:matrixA} A = \mathrm {diag}(0,\dotsc ,0,1,2,\dotsc ,399),
+\end{equation}
+
+</p>
+
+<p>
+that is, the first \(21\) diagonal entries are zero. When applying block Lanczos to \(A\) in order to compute its null space and choosing a block of \(d\) (Gaussian) random starting vectors, one would expect to obtain no more than \(d\)
+(approximate) zero eigenvalues and corresponding eigenvectors. However, when executing block Lanczos in double precision arithmetic without breakdown and declaring eigenvalues less than \(10^{-4}\) as zero, we obtain the results reported in
+Table&nbsp;<a href="paper.html#tabintro">1</a>.
+</p>
+<figure id="autoid-1" class="table ">
+<div class="center">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Null space dimension obtained when applying block Lanczos with \(d\) random starting vectors to the matrix from&nbsp;<span class="textup">(<a href="paper.html#eq:matrixA">1</a>)</span>.
+</p>
+</div>
+
+<a id="tabintro"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">Block size \(d\)</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">1</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">2</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">3</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">4</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">5</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">6</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">7</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">10</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">12</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">14</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">15</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">20</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+</tr>
+
+<tr class="hline">
+<td class="tdc tvertbarl tvertbarr" style="border-left: 1px solid black; border-right: 1px solid black">Dimension</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">11</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">11</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">16</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">12</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">15</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">15</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">20</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+<td class="tdc tvertbarr" style="border-right: 1px solid black">21</td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</div>
+
+</figure>
+
+<p>
+While the null space dimension estimated by block Lanczos for small values of \(d\) is erratic and smaller than \(21\), it is always larger than \(d\). In fact, already for \(d = 12\), the correct null space dimension is detected. Experiments with
+other matrices lead to similar findings, suggesting that round-off error breaks some of the curse incurred by eigenvalue clusters, but it does not fully address the convergence issues of single-vector or small-block Lanczos methods either.
+</p>
+
+<p>
+The situation described above is reminiscent of recent work&nbsp;[MMM2024] on the single-vector Lanczos method for low-rank approximation. Taking the randomness of the starting vector into account they establish a convergence result that still
+requires the (large) singular values to be distinct but the dependence of the complexity on the gaps between singular values is very mild, in fact logarithmic. Although single-vector or small-block Krylov subspace methods do not satisfy
+gap-independent convergence bounds, small random perturbations of \(A\) can easily break the adverse role of repeated singular values. As we have seen, perturbations due to round-off are not suﬀicient to achieve this effect, but (slightly larger)
+random perturbations will do, thanks to eigenvalue repulsion results.
+</p>
+
+<p>
+In this work&nbsp;[KS2024], we propose a randomized small-block Lanczos method for null space calculation, sketched as Algorithm&nbsp;<a href="paper.html#algo">1</a>. Compared to the task of low-rank approximation, there are two major
+differences. First, in low-rank approximation, the largest few singular values are usually unknown and, in most applications, they do not form tight large clusters. In the context of null spaces, the desired singular values form one large cluster of zeros.
+Second, while convergence to the relevant invariant subspace is not necessary for low-rank approximation, such convergence is imperative to obtain a good null space approximation.
+</p>
+
+<figure id="autoid-2" class="algocf ruled">
+
+<div class="figurecaption">
+<p>
+<span class="textnormal"><b><span class="textnormal"><b>Algorithm&nbsp;1</b></span>:</b></span>&nbsp;<span class="textnormal">Randomized small-block Lanczos for null space computations<br />
+</span>
+</p>
+</div>
+
+<a id="algo"></a>
+
+<p>
+                                                      <span class="textnormal"><b>Input:</b></span> Matrix \(A\in \mathbb {R}^{m \times n}\) with \(m\geq n\) and \(N\) zero singular values. Block size \(d\). Perturbation parameter
+                                                      \(\epsilon &gt;0\). Number of iterations \(\ell \).
+                                                      </p>
+
+<p>
+                                                        <span class="textnormal"><b>Output:</b></span> Orthonormal basis \(V\) approximating null space of \(A\).
+                                                        </p>
+
+<p>
+ Set \(B=A^{\mathsf {T}}A+\epsilon D\), with a diagonal matrix \(D\) having diagonal entries uniformly i.i.d. in \([0,1]\);&#x2003;&#x2003;
+ </p>
+
+<p>
+ Draw a Gaussian random matrix \(\Omega \in \mathbb {R}^{n\times d}\);&#x2003;&#x2003;
+ </p>
+
+<p>
+ Perform block Lanczos to compute the decomposition \(BZ_{\ell }=Z_{\ell }T_{\ell }+Q_{\ell +1}E_{\ell +1}\), where \(Z_{\ell }\) is an orthonormal basis of Krylov subspace \(\mathrm {span}\{\Omega ,B\Omega ,\dotsc ,B^{\ell
+ -1}\Omega \}\) and \(T_{\ell }\) is block tridiagonal;&#x2003;&#x2003;
+ </p>
+
+<p>
+ Compute an orthonormal basis \(V_{Z}\) for the invariant space of the \(N\) smallest eigenvalues of \(T_{\ell }\). <span class="textnormal"><b>return</b></span> <span class="textnormal"><em>\(V=Z_{\ell
+ }V_{Z}\)</em></span>;&#x2003;&#x2003;
+ </p>
+
+</figure>
+
+<p>
+In the theoretical part, we examine the impact of the random perturbation \(\epsilon D\). In particular, we present a new eigenvalue repulsion result for the perturbed zero eigenvalues of \(A^{\mathsf {T}}A\). At the same time, the perturbation
+incurs a limit on the attainable accuracy of the null space approximation, and we quantify this effect by a perturbation analysis. For the single-vector case (\(d = 1\)), we achieve more refined results by analyzing the convergence of individual Ritz
+vectors and establish sharp bounds on the accuracy of the null space approximation.
+</p>
+
+<p>
+In the numerical part, we incorporate several practical improvements, including preconditioning, restarting, and partial reorthogonalization, and provide various numerical results for applications such as the computation of connected graph
+components and cohomology. These numerical experiments not only validate our theoretical findings regarding the randomized single-vector Lanczos method but also highlight the eﬀiciency of the small-block Lanczos method. Notably, it highlights
+when our method is preferable compared to other null space solvers, particularly when the nullity is substantial and memory constraints are a limiting factor.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-7">References</h4>
+<a id="paper-autopage-7"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[KS2024]&#x2003;</span> Daniel Kressner and Nian Shao. “A randomized small-block Lanczos method for large-scale null space computations.” arXiv preprint: 2407.04634.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[MMM2024]&#x2003;</span> Meyer, Raphael, Cameron Musco, and Christopher Musco. “On the unreasonable effectiveness of single vector krylov methods for low-rank approximation.” Proceedings of the 2024 Annual
+ACM-SIAM Symposium on Discrete Algorithms (SODA).
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,0 +1,300 @@
+---
+layout: abstract
+absnum: 50
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Rational Krylov methods for exponential Runge-Kutta integrators on networks
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Martin Stoll</span>,Kai Bergermann
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+We consider the solution of large stiff systems of ordinary differential equations with explicit exponential Runge–Kutta integrators [2] for systems of the form
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                  ∂u(t)
+                                                                                                        = F (t, u(t)) = −Au(t) + g(t, u(t)),           u(0) = u0 ,                                                 (1)--><a id="eq:ode_system"></a><!--
+                                                                                                   ∂t
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ode_system} \frac {\partial \bm {u}(t)}{\partial t} = F(t,\bm {u}(t)) = - \bm {A} \bm {u}(t) + g(t, \bm {u}(t)), \quad \bm {u}(0) = \bm {u}_0,
+\end{equation}
+
+</p>
+
+<p>
+where we view them as being semi-discretized semi-linear parabolic partial differential equations on continuous domains or on inherently discrete graph domains. This results in \(\bm {A}=\Delta \) (the continuour case) or \(\bm {A}=\bm {L}\) the
+graph case.
+</p>
+
+<p>
+We suggest the use computing linear combinations of \(\varphi \)-functions in exponential integrators [1] to solve the above problem. State-of-the-art computational methods use polynomial Krylov subspaces of adaptive size for this task. These
+methods often suffer from that the required number of Krylov subspace iterations to obtain a desired tolerance increase drastically with the spectral radius of the system matrix \(\bm {A}\).
+</p>
+
+<p>
+We present an approach that leverages rational Krylov subspace methods for this task (cf. [5]). The main workhorse are Runge-Kutta schemes. For these, one can now employ the scheme with \(s\) internal stages \(t+c_1 h_i, \dots , t+c_s
+h_i\) with \(c_j\in [0,1]\) for \(1 \leq j \leq s\) into the time interval \([t,t+h_i]\) leading to schemes of the form
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+                                                                                                                                   X
+                                                                                                                                   s
+                                                                                                        ui+1 = χ(−hi A)ui + hi           bj (−hi A)Gij .                   (2)                                            --><a id="eq:exprk1"></a><!--
+                                                                                                                                   j=1
+
+                                                                                                                                       X
+                                                                                                                                       s
+                                                                                                         Uij = χj (−hi A)ui + hi             ajk (−hi A)Gik ,              (3)                                            --><a id="eq:exprk2"></a><!--
+                                                                                                                                       k=1
+
+                                                                                                         Gik = g(ti + ck hi , Uik ),                                       (4)                                            --><a id="eq:exprk3"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\bm {u}_{i+1} &amp; = \chi (-h_i\bm {A})\bm {u}_i + h_i \sum _{j=1}^s b_j(-h_i \bm {A})\bm {G}_{ij}.\label {eq:exprk1}\\ \bm {U}_{ij} &amp; = \chi _j(-h_i\bm {A})\bm {u}_i + h_i \sum _{k=1}^s a_{jk}(-h_i \bm
+{A})\bm {G}_{ik},\label {eq:exprk2}\\ \bm {G}_{ik} &amp; = g(t_i + c_k h_i, \bm {U}_{ik}),\label {eq:exprk3}
+\end{align}
+where \(\chi \), \(\chi _j\), \(a_{jk}\), and \(b_j\) are \(\varphi \)-functions (cf. [4]).
+</p>
+
+<p>
+Our exponential integrator approach relies on the use of rational Krylov approximations to the matrix functions via
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                e c ≈ ∥e
+                                                             f (A)e                  −1
+                                                                       c∥2 Vm f (Hm Km  )e1 ,                                                                        (5)                                   --><a id="eq:fAb_rational_krylov"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:fAb_rational_krylov} f(\widetilde {\bm {A}})\widetilde {\bm {c}} \approx \|\widetilde {\bm {c}}\|_2 \bm {V}_m f(\bm {H}_m\bm {K}_m^{-1})\bm {e}_1,
+\end{equation}
+
+</p>
+
+<p>
+where \(\bm {H}_m\) and \(\bm {K}_m\) are small matrices coming from the rational Arnoldi method. We then give a novel a-posteriori error estimate of the rational Krylov approximation to the action of the matrix exponential on vectors for single
+time points. This bound allows for an adaptive approach similar to existing polynomial Krylov techniques. We then briefly discuss the selection of poles and the need for solving linear systems eﬀiciently. The key to the convincing performance is to
+construct preconditioners that lead to approximately constant iteration numbers.
+</p>
+
+<p>
+Numerical experiments show that our method outperforms the state of the art for suﬀiciently large spectral radii of the discrete linear differential operators [3]. We focus on well-known nonlinear partial differential equation models allowing the fast
+simulations of examples including Turing patterns. Additionally, we show that this approach allows the fast simulation of nonlinear network dynamical systems.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> A.&nbsp;H. Al-Mohy and N.&nbsp;J. Higham, <i>Computing the action of the matrix exponential, with an application to exponential integrators</i>, SIAM J. Sci. Comput., 33 (2011),
+pp.&nbsp;488–511.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> R.&nbsp;Alexander, <i>Diagonally implicit Runge–Kutta methods for stiff ODE’s</i>, SIAM J. Numer. Anal., 14 (1977), pp.&nbsp;1006–1021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> S.&nbsp;M. Allen and J.&nbsp;W. Cahn, <i>A microscopic theory for antiphase boundary motion and its application to antiphase domain coarsening</i>, Acta Metallurgica, 27 (1979),
+pp.&nbsp;1085–1095.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> K.&nbsp;Bergermann and M.&nbsp;Stoll, <i>Adaptive rational Krylov methods for exponential Runge–Kutta integrators</i>, SIAM J. Matrix Anal. Appl., 45 (2023), pp.&nbsp;744–770.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> S.&nbsp;Massei and L.&nbsp;Robol, <i>Rational Krylov for Stieltjes matrix functions: Convergence and pole selection</i>, BIT, 61 (2021), pp.&nbsp;237–273.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

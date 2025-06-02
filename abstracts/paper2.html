@@ -1,0 +1,294 @@
+---
+layout: abstract
+absnum: 2
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Recent Results on Improving Performance of Sparse Cholesky Factorization by Reordering Columns within Supernodes
+</h2>
+</div>
+<div class="center">
+
+<p>
+M.&nbsp;Ozan Karsavuran, <span class="underline">Esmond G. Ng</span>, Barry W. Peyton
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Let&nbsp;\(A\) be an \(n\)&nbsp;by&nbsp;\(n\) sparse symmetric positive definite matrix, and let \(A=LL^T\) be the Cholesky factorization of&nbsp;\(A\), where&nbsp;\(L\) is a lower triangular matrix. It is well known that&nbsp;\(L\) suffers fill
+during such a factorization; that is, \(L\) will have nonzero entries in locations occupied by zeros in&nbsp;\(A\). As a practical matter, it is important to limit the number of such fill entries in&nbsp;\(L\). Consequently, software for solving a sparse
+symmetric positive definite linear system \(Ax=b\) via sparse Cholesky factorization requires the following four steps.
+</p>
+
+<p>
+First, compute a fill-reducing ordering of&nbsp;\(A\) using either the nested dissection&nbsp;[5, 11] or the minimum degree&nbsp;[1, 6, 12, 15] ordering heuristic (the ordering step). Second, compute the needed information concerning and data
+structures for the sparse Cholesky factor matrix (the symbolic factorization step). Third, compute the sparse Cholesky factor within the data structures computed during the symbolic factorization step (the numerical factorization step).
+Fourth, solve the linear system by performing in succession a sparse forward solve and a sparse backward solve using the sparse Cholesky factor and its transpose, respectively (the solve step).
+</p>
+
+<p>
+The authors of this work, along with J.&nbsp;L.&nbsp;Peyton, presented a thorough look&nbsp;[10] at some serial algorithms for the third step in the solution process (the numerical factorization step). Our goal was to improve the performance of
+serial sparse Cholesky factorization algorithms on multicore processors when only the multithreaded BLAS are used to parallelize the computation. Essentially, our first paper&nbsp;[10] explored what can be done for serial sparse Cholesky
+factorization using the techniques and methodology used in LAPACK.
+</p>
+
+<p>
+Our primary contribution in&nbsp;[10] is the factorization method that we called right-looking blocked (RLB). Like all of the other factorization methods studied in&nbsp;[10], RLB relies on supernodes to obtain eﬀiciency, where supernodes are,
+roughly speaking, sets of consecutive columns in the factor matrix sharing the same zero-nonzero structure. RLB, however, is unique among the factorization methods studied in&nbsp;[10] in that it requires no floating-point working storage or
+assembly operations; that is, the computation is performed in place within the data structures computed for the factor matrix during the symbolic factorization step. RLB is also unique among the factorization methods studied in&nbsp;[10] in that it
+is entirely dependent for eﬀiciency on the existence of few and large dense blocks joining together pairs of supernodes in the factor matrix. Furthermore, the number of and size of these dense blocks are crucially dependent on how the columns of the
+factor matrix are ordered within supernodes. As a result, RLB is perfectly suited for studying the quality of algorithms for reordering columns within supernodes. It is precisely a study of this sort that will occupy our attention in this work. It should
+be noted that reordering the columns (and the corresponding rows) within each supernode does not change the number of nonzeros in the Cholesky factor.
+</p>
+
+<p>
+Pichon, Faverge, Ramet, and Roman&nbsp;[14] were the first to take seriously the problem of reordering columns within supernodes, in that they were the first to treat it in a highly technical manner. They ingeniously formulated the underlying
+optimization problem as a traveling salesman problem, for which there exist powerful and effective heuristics. We will refer to their approach as&nbsp;TSP. The problem with their approach was not ordering quality; it was the cost, in time, of
+computing the needed&nbsp;TSP distances&nbsp;[8, 14]. In&nbsp;2021, Jacquelin, Ng, and Peyton&nbsp;[9] devised a much faster way to compute the needed distances, which greatly reduces the runtimes for the&nbsp;TSP method.
+</p>
+
+<p>
+In&nbsp;2017, Jacquelin, Ng, and Peyton&nbsp;[8] proposed a simpler heuristic for reordering columns within supernodes based on partition refinement&nbsp;[13]. In their paper, they report faster runtimes for their method than&nbsp;TSP, while
+obtaining similar ordering quality. We will refer to their method as&nbsp;PR.
+</p>
+
+<p>
+In this work, we perform a careful comparison of&nbsp;TSP and&nbsp;PR; we compare them, primarily, by measuring the impact of&nbsp;TSP and&nbsp;PR on&nbsp;RLB factorization times using Intel’s MKL multithreaded BLAS on&nbsp;48
+cores of our test machine. This approach is justifiable since, as alluded to above, the performance of RLB depends on the quality of the TSP or PR reorderings.
+</p>
+
+<p>
+The comparisons are conducted using a set of large matrices from the SuiteSparse collection&nbsp;[3]. In our experiments, certain small supernodes are merged together to create a coarser supernode partition. This idea was first introduced by
+Ashcraft and Grimes&nbsp;[2], and was demonstrated to reduce the factorization time at the expense of a relatively small increase in the size of the data structures. Merging supernodes has become a standard practice in software for sparse
+symmetric factorization, such as MA57&nbsp;[4] and MA87&nbsp;[7].
+</p>
+
+<p>
+In this presentation, we will describe two techniques for improving the quality of the&nbsp;TSP reorderings; we will show that the best results for&nbsp;TSP are obtained when the two techniques are combined. We will also introduce a new way to
+reorganize the&nbsp;PR reordering algorithm to make it much more time and storage eﬀicient. In addition, we will introduce a single technique for modestly improving the quality of the&nbsp;PR reorderings. We will further show that the enhanced
+PR and enhanced TSP produce orderings of virtually equal quality. However, the former requires significantly less storage to implement and runs much faster than the latter.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Patrick&nbsp;R. Amestoy, Timothy&nbsp;A. Davis, and Iain&nbsp;S. Duff. An approximate minimum degree ordering algorithm. <i>SIAM J.&nbsp;Matrix Anal.&nbsp;Appl.</i>, 17(4):886–905,
+1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Cleve&nbsp;C. Ashcraft and Roger&nbsp;G. Grimes. The influence of relaxed supernode partitions on the multifrontal method. <i>ACM Trans. Math. Softw.</i>, 15(4):291–309, 1989.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Timothy&nbsp;A. Davis and Yifan Hu. The University of Florida sparse matrix collection. <i>ACM Trans. Math. Softw.</i>, 38(1):1–28, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Iain&nbsp;S. Duff. MA57—a code for the solution of sparse symmetric definite and indefinite systems. <i>ACM Trans. Math. Softw.</i>, 30:118–144, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Alan George. Nested dissection of a regular finite element mesh. <i>SIAM J.&nbsp;Numer.&nbsp;Anal.</i>, 10(2):345–363, 1973.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Alan George and Joseph W.&nbsp;H. Liu. The evolution of the minimum degree ordering algorithm. <i>SIAM Rev.</i>, 31(1):1–19, 1989.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Jonathan&nbsp;D. Hogg, John&nbsp;K. Reid, and Jennifer&nbsp;A. Scott. Design of a multicore sparse Cholesky factorization using DAGs. <i>SIAM J.&nbsp;Sci.&nbsp;Comput.</i>,
+32(6):3627–3649, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Mathias Jacquelin, Esmond&nbsp;G. Ng, and Barry&nbsp;W. Peyton. Fast and effective reordering of columns within supernodes using partition refinement. In <i>2018 Proceedings of the Eighth
+SIAM Workshop on Combinatorial Scientific Computing</i>, pages 76–86, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Mathias Jacquelin, Esmond&nbsp;G. Ng, and Barry&nbsp;W. Peyton. Fast implementation of the Traveling-Salesman-Problem method for reordering columns within supernodes. <i>SIAM
+J.&nbsp;Matrix Anal.&nbsp;Appl.</i>, 42(3):1337–1364, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> M.&nbsp;Ozan Karsavuran, Esmond&nbsp;G.&nbsp;Ng, Barry&nbsp;W.&nbsp;Peyton, and Jonathan&nbsp;L.&nbsp;Peyton. Some new techniques to use in serial sparse Cholesky factorization
+algorithms. Submitted to TOMS, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> George Karypis and Vipin Kumar. A fast and high quality multilevel scheme for partitioning irregular graphs. <i>SIAM J.&nbsp;Sci.&nbsp;Comput.</i>, 20(1):359–392, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Joseph W.&nbsp;H. Liu. Modification of the minimum-degree algorithm by multiple elimination. <i>ACM Trans. Math. Softw.</i>, 11(2):141–153, 1985.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Robert Paige and Robert&nbsp;E. Tarjan. Three partition refinement algorithms. <i>SIAM J. Comput.</i>, 16(6):973–989, 1987.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Gregoire Pichon, Mathieu Faverge, Pierre Ramet, and Jean Roman. Reordering strategy for blocking optimization in sparse linear solvers. <i>SIAM J.&nbsp;Matrix Anal.&nbsp;Appl.</i>,
+38(1):226–248, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> W.&nbsp;F. Tinney and J.&nbsp;W. Walker. Direct solution of sparse network equations by optimally ordered triangular factorization. <i>Proc. IEEE</i>, 55:1801–1809, 1967.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

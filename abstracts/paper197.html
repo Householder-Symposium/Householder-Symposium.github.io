@@ -1,0 +1,784 @@
+---
+layout: abstract
+absnum: 197
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand \vecv {\boldsymbol {\mathrm {v}}}\)
+
+\(\newcommand \matA {\boldsymbol {\mathrm {A}}}\)
+
+\(\newcommand \matB {\boldsymbol {\mathrm {B}}}\)
+
+\(\newcommand {\fl }{\boldsymbol {\mathsf {fl}}}\)
+
+\(\newcommand {\umach }{\textbf {\textup {u}}}\)
+
+\(\newcommand {\cmark }{Y}\)
+
+\(\newcommand {\xmark }{N}\)
+
+\(\newcommand {\flopcost }{\mathcal {F}}\)
+
+\(\newcommand {\lpar }{\left (}\)
+
+\(\newcommand {\rpar }{\right )}\)
+
+\(\DeclareMathOperator {\poly }{poly}\)
+
+\(\DeclareMathOperator {\polylog }{polylog}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Algorithms for Hermitian eigenproblems and their complexity
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Aleksandros Sobczyk</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Hermitian eigenproblems, and, more broadly, Hermitian-definite pencils, arise naturally in many real world applications in Machine Learning, Scientific Computing, and Engineering. Given a Hermitian matrix \(\matA \) and a Hermitian
+positive-definite matrix \(\matB \), the goal is to compute (a subset of) the eigenvalues \(\lambda \) and/or the eigenvectors \(\vecv \), which satisfy
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                       Av = λBv.
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+\matA \vecv = \lambda \matB \vecv .
+\end{align*}
+In data science and machine learning, for example, they arise in Spectral Clustering [31, 39], Language Models [22], Image Processing [36, 1], Principal Components Analysis [11, 24, 37], and many others [12, 29, 14, 9, 28, 2]. A ubiquitous application
+in Scientific Computing is the computation of the density matrices and the electron densities in Density Functional Theory (DFT) [27].
+</p>
+
+<p>
+Algorithms for eigenproblems have been studied since at least the nineteenth century, some early references being attributed to Jacobi [23, 16]. In this work we revisit algorithms from the computational complexity point of view, targeting \((i)\)
+<i>eigenvalue problems</i>, which involve the approximation of eigenvalues, singular values, spectral gaps, and condition numbers, \((ii)\) <i>eigenspace problems</i>,such as the approximation of eigenvectors, spectral projectors, and invariant
+subspaces, and \((iii)\) <i>diagonalization problems</i>, which refer to the computation of all the eigenvalues and eigenvectors of a matrix, for example, a full spectral factorization, or the SVD.
+</p>
+
+<p>
+This work is a summary of the results in [41, 40] for some variants of the aforementioned problems, which were part of the corresponding authors’ doctoral dissertation. All of the algorithms and complexity bounds are in the following three <i>models
+of computation</i>:
+</p>
+<dl class="description" >
+
+<dt><span class="listmarker">Exact real arithmetic (Real RAM),</span></dt>
+<dd>
+<p>
+where a processor can execute the following operations: \(\{+,-,\times ,/,\sqrt \cdot ,&gt;\},\) on real numbers, in constant time, without any rounding errors;
+</p>
+
+</dd>
+<dt><span class="listmarker">Rational arithmetic,</span></dt>
+<dd>
+<p>
+where numbers are represented as rationals consisting of an integral numerator and denominator of finite (but variable bit length, and each arithmetic operation does not introduce errors but takes time proportional to the number of bits;
+</p>
+</dd>
+<dt><span class="listmarker">Floating point,</span></dt>
+<dd>
+<p>
+where any real number \(\alpha \in \mathbb {R}\) is rounded to a floating point number \(\fl (\alpha ) = s\times 2^{e-t} \times m,\) and each arithmetic operation \(\odot \in \{+,-,\times ,/,\sqrt {\cdot }\}\) introduces also some
+errors that satisfy \(\fl (\alpha \odot \beta ) = (1+\theta )(\alpha \odot \beta ), \qquad \fl (\sqrt {a})=(1+\theta )\sqrt {a},\) where \(|\theta |\leq \umach \). Assuming a total of \(b\) bits for each number, every floating
+point operation costs \(\flopcost (b)\) bit operations, where typically it is assumed that \(\flopcost (b)\in \widetilde O(b)\) [19].
+</p>
+</dd>
+</dl>
+<!--
+...... paragraph Algorithms in Real RAM. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Algorithms in Real RAM.</span>
+<a id="paper-autopage-5"></a>
+In the Real RAM model, we analyze the following problems: <a id="problem:problems_in_exact_arithmetic"></a>
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> Symmetric arrowhead/tridiagonal diagonalization,
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> Hermitian diagonalization,
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> Singular Value Decomposition.
+</p>
+</li>
+</ul>
+
+<p>
+We first provide an end-to-end complexity analysis of the divide-and-conquer algorithm of Gu and Eisenstat [18] for the diagonalization of tridiagonal and arrowhead matrices, when accelerated with the Fast Multipole Method [35]. By carefully
+analyzing all of the steps of the algorithm, we show that it provides provable approximation guarantees with the claimed nearly-\(O(n^2)\) arithmetic complexity, which significantly improves classic (dense) eigensovlers such as the QR algorithm.
+</p>
+
+<p>
+The tridiagonal diagonalization algorithm can be eﬀiciently combined with the (rather overlooked) tridiagonal reduction algorithm of Schönhage [38], who proved that a Hermitian matrix can be reduced to tridiagonal form with unitary similarity
+transformations in \(O(n^\omega )\) arithmetic operations. Here \(\omega \lesssim 2.371\) is the current best known upper bound for the matrix multiplication exponent. This way, we can diagonalize a Hermitian matrix in nearly matrix
+multiplication time, improving the \(O(n^3)\) arithmetic complexity of classic algorithms [30, 17], as well as the more recent \(O(n^{\omega }\log ^2(\tfrac {n}{\epsilon }))\) complexity of the randomized algorithm of [3]. Similar bounds are
+obtained for the deterministic complexity of the SVD. Many theoretical works assume the exact computation of an SVD as “black-box” subroutine; see e.g. [34, 15, 13, 7, 9, 8], to name a few. However, its complexity and approximation guarantees are
+often unspecified. Our main results and comparisons with existing algorithms are outlined in Table <a href="paper.html#table:main_results_exact_arithmetic_diagonalization">1</a>.
+</p>
+
+<figure id="autoid-1" class="table ">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;1:&nbsp;Complexities for diagonalization problems in the Real RAM model. The randomized algorithms succeed with high probability (at least \(1-1/\poly (n)\)). \(O(n^{\omega (a,b,c)})\) denotes the complexity of multiplying two
+matrices with sizes \(n^a\times n^b\) and \(n^b\times n^c\), respectively.
+</p>
+</div>
+
+<a id="table:main_results_exact_arithmetic_diagonalization"></a>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdl"></td>
+<td class="tdc">Arithmetic Complexity</td>
+<td class="tdc">Deterministic</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline">
+<td class="tdl" style="border-top:   4px double">Arrowhead/Tridiagonal diagonalization</td>
+<td class="tdc" style="border-top:   4px double"></td>
+<td class="tdc" style="border-top:   4px double"></td>
+<td class="tdc" style="border-top:   4px double"></td>
+</tr>
+
+<tr>
+<td class="tdl">[10, 32, 18]</td>
+<td class="tdc">\(O(n^3)+\widetilde O(n^2)\)</td>
+<td class="tdc">Y</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">Our results</td>
+<td class="tdc">\(O\lpar n^2\polylog (\tfrac {n}{\epsilon })\rpar \)</td>
+<td class="tdc">Y</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline">
+<td class="tdl">Hermitian diagonalization</td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">[3, 25]</td>
+<td class="tdc">\(O\lpar n^{\omega }\log ^2(\tfrac {n}{\epsilon })\rpar \)</td>
+<td class="tdc">N</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">[4]</td>
+<td class="tdc">\(\widetilde O\lpar n^{\omega +1}\rpar \)</td>
+<td class="tdc">N</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">[30]</td>
+<td class="tdc">\(O\lpar n^{3}\rpar \)</td>
+<td class="tdc">Y</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">Our results</td>
+<td class="tdc">\(O\lpar n^\omega \log (n) + n^2\polylog (\tfrac {n}{\epsilon })\rpar \)</td>
+<td class="tdc">Y</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline">
+<td class="tdl">SVD</td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">Fast MM + [30]</td>
+<td class="tdc">\(O\lpar n^{\omega (1,k,1)}\rpar + \widetilde O \lpar n^3 \rpar \)</td>
+<td class="tdc">Y</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">[3, 25]</td>
+<td class="tdc">\(O\lpar n^{\omega (1,k,1)} + n^{\omega }\log ^2(\tfrac {n}{\epsilon }) \rpar \)</td>
+<td class="tdc">N</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">Our results</td>
+<td class="tdc">\(O\lpar n^{\omega (1,k,1)} + n^\omega \log (n)+ n^2\polylog (\tfrac {n\kappa (\matA )}{\epsilon })\rpar \)</td>
+<td class="tdc">Y</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdl"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+</figure>
+<!--
+...... paragraph Algorithms in finite precision. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">Algorithms in finite precision.</span>
+<a id="paper-autopage-7"></a>
+Similar deterministic complexity upper bounds are obtained for several problems in finite precision. We will present a stability analysis of the tridiagonal reduction algorithm of Schönhage, and its combination with the tridiagonal eigenvalue solver of
+[5, 6] (in rational arithmetic), to compute all the eigenvalues of a Hermitian matrix in nearly \(O(n^{\omega })\) bit operations, deterministically.
+</p>
+
+<p>
+Our main results, which are summarized in Table <a href="paper.html#table:fp_results">2</a>, improve several existing algorithms in different aspects. Pan and Chen [33] showed how to achieve additive errors in the eigenvalues in
+\(O(n^\omega )\) arithmetic operations, but this increases to \(O(n^{\omega +1})\) boolean operations in rational arithmetic. The algorithm of [30] achieves \(\widetilde O(n^3)\) bit operations for all the eigenvalues. In the randomized setting,
+[3] also provides forward errors for the approximate eigenvalues in the Hermitian case, by exploiting a perturbation bound by Kahan [26, 41] in \(O(n^\omega \polylog (n/\epsilon ))\) boolean operations, but the logarithm power is fairly large.
+We also provide the analysis for several other useful subroutines related to eigenvalue computations, including singular values, condition numbers, Hermitian-definite pencil eigenvalues, spectral gaps, and spectral projectors.
+</p>
+<figure id="autoid-2" class="table ">
+
+<div class="figurecaption">
+<p>
+Table&nbsp;2:&nbsp;Boolean complexity comparison in finite precision. Here \(\epsilon ,\in (0,\tfrac {1}{2})\). FP stands for Floating Point and RA for Rational Arithmetic.
+</p>
+</div>
+
+<a id="table:problems_in_finite_precision"></a>
+
+<p>
+
+</p>
+<table>
+
+<tr style="display:none"><th>.</th></tr>
+
+<tr class="hline">
+<td class="tdl"></td>
+<td class="tdc">Boolean Complexity</td>
+<td class="tdc">Success probability</td>
+<td class="tdc">Model</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline">
+<td class="tdl" style="border-top: 4px double">Tridiagonal Reduction</td>
+<td class="tdc" style="border-top: 4px double"></td>
+<td class="tdc" style="border-top: 4px double"></td>
+<td class="tdc" style="border-top: 4px double"></td>
+<td class="tdc" style="border-top: 4px double"></td>
+</tr>
+
+<tr>
+<td class="tdl">[21, 20]</td>
+<td class="tdc">\(O\lpar n^3 \flopcost \lpar \log (\tfrac {n}{\epsilon }) \rpar \rpar \)</td>
+<td class="tdc">Deterministic</td>
+<td class="tdc">FP</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">Our results</td>
+<td class="tdc">\(O\lpar n^{\omega }\log (n) \flopcost \lpar \log (\tfrac {n}{\epsilon }) \rpar \rpar \)</td>
+<td class="tdc">Deterministic</td>
+<td class="tdc">FP</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline">
+<td class="tdl">Hermitian Eigenvalues</td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">[30]</td>
+<td class="tdc">\(O\lpar n^{3}\flopcost \Big (\log (\tfrac {n}{\epsilon }) \Big )\rpar \)</td>
+<td class="tdc">Deterministic</td>
+<td class="tdc">FP</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">[3]+[26]</td>
+<td class="tdc">\(O\lpar n^{\omega }\log ^2(\tfrac {n}{\epsilon }) \flopcost \Big ( \log ^4(\tfrac {n}{\epsilon })\log (n) \Big ) \rpar \)</td>
+<td class="tdc">\(1-O(1/n)\)</td>
+<td class="tdc">FP</td>
+<td class="tdc"></td>
+</tr>
+
+<tr>
+<td class="tdl">Our results</td>
+<td class="tdc">\(O\lpar n^{\omega }\flopcost \Big ( \log (\tfrac {n}{\epsilon }) \Big ) + n^2\polylog (\tfrac {n}{\epsilon }) \rpar \)</td>
+<td class="tdc">Deterministic</td>
+<td class="tdc">FP+RA</td>
+<td class="tdc"></td>
+</tr>
+
+<tr class="hline" aria-hidden="true">
+<td class="tdl"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+<td class="tdc"></td>
+</tr>
+</table>
+
+<a id="table:fp_results"></a>
+
+</figure>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-9">References</h4>
+<a id="paper-autopage-9"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Gökhan&nbsp;H Bakır, Jason Weston, and Bernhard Schölkopf. Learning to find pre-images. <i>Advances in neural information processing systems</i>, 16:449–456, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Pierre Baldi and Kurt Hornik. Neural networks and principal component analysis: Learning from examples without local minima. <i>Neural networks</i>, 2(1):53–58, 1989.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, Archit Kulkarni, and Nikhil Srivastava. Pseudospectral Shattering, the Sign Function, and Diagonalization in Nearly Matrix Multiplication Time. <i>Foundations of
+Computational Mathematics</i>, pages 1–89, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Michael Ben-Or and Lior Eldar. A Quasi-Random Approach to Matrix Spectral Analysis. In <i>Proc. 9th Innovations in Theoretical Computer Science Conference</i>, pages 6:1–6:22. Schloss
+Dagstuhl–Leibniz-Zentrum fuer Informatik, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Dario Bini and Victor Pan. Parallel complexity of tridiagonal symmetric eigenvalue problem. In <i>Proc. of the Second Annual ACM-SIAM Symposium on Discrete Algorithms</i>, pages 384–393,
+1991.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Dario Bini and Victor&nbsp;Y Pan. Computing matrix eigenvalues and polynomial zeros where the output is real. <i>SIAM Journal on Computing</i>, 27(4):1099–1115, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Christos Boutsidis and David&nbsp;P Woodruff. Optimal cur matrix decompositions. In <i>Proc. of the forty-sixth Symposium on Theory of Computing</i>, pages 353–362, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Kenneth&nbsp;L Clarkson and David&nbsp;P Woodruff. Low-rank approximation and regression in input sparsity time. <i>Journal of the ACM (JACM)</i>, 63(6):1–45, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Michael&nbsp;B Cohen, Sam Elder, Cameron Musco, Christopher Musco, and Madalina Persu. Dimensionality reduction for k-means clustering and low rank approximation. In <i>Proc. 47th
+Symposium on Theory of Computing</i>, pages 163–172, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Jan&nbsp;JM Cuppen. A divide and conquer method for the symmetric tridiagonal eigenproblem. <i>Numerische Mathematik</i>, 36:177–195, 1980.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Konstantinos&nbsp;I Diamantaras and Sun&nbsp;Yuan Kung. <i>Principal component neural networks: theory and applications</i>. John Wiley &amp; Sons, Inc., 1996.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Petros Drineas, Iordanis Kerenidis, and Prabhakar Raghavan. Competitive recommendation systems. In <i>Proc. Thiry-Fourth Annual ACM Symposium on Theory of Computing</i>, pages 82–90,
+2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Petros Drineas, Michael&nbsp;W Mahoney, and Shan Muthukrishnan. Relative-error cur matrix decompositions. <i>SIAM Journal on Matrix Analysis and Applications</i>, 30(2):844–881, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Dan Feldman, Melanie Schmidt, and Christian Sohler. Turning big data into tiny data: Constant-size coresets for k-means, pca, and projective clustering. <i>SIAM Journal on Computing</i>,
+49(3):601–657, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> Alan Frieze, Ravi Kannan, and Santosh Vempala. Fast monte-carlo algorithms for finding low-rank approximations. <i>Journal of the ACM (JACM)</i>, 51(6):1025–1041, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> Gene&nbsp;H Golub and Henk&nbsp;A Van&nbsp;der Vorst. Eigenvalue computation in the 20th century. <i>Journal of Computational and Applied Mathematics</i>, 123(1-2):35–65, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> Gene&nbsp;H Golub and Charles&nbsp;F Van&nbsp;Loan. <i>Matrix Computations</i>. Johns Hopkins University Press, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> Ming Gu and Stanley&nbsp;C Eisenstat. A divide-and-conquer algorithm for the symmetric tridiagonal eigenproblem. <i>SIAM Journal on Matrix Analysis and Applications</i>, 16(1):172–191,
+1995.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> David Harvey and Joris Van Der&nbsp;Hoeven. Integer multiplication in time O(nlogn). <i>Annals of Mathematics</i>, 193(2):563–617, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> Nicholas&nbsp;J Higham. <i>Accuracy and stability of numerical algorithms</i>. SIAM, 2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[21]&#x2003;</span> Alston&nbsp;S Householder. Unitary triangularization of a nonsymmetric matrix. <i>Journal of the ACM</i>, 5(4):339–342, 1958.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[22]&#x2003;</span> Edward&nbsp;J Hu, yelong shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu&nbsp;Wang, and Weizhu Chen. LoRA: Low-rank adaptation of large language models. In
+<i>International Conference on Learning Representations</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[23]&#x2003;</span> C.G.J. Jacobi. Über ein leichtes verfahren die in der theorie der säcularstörungen vorkommenden gleichungen numerisch aufzulösen. <i>Journal für die reine und angewandte Mathematik</i>,
+30:51–94, 1846.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[24]&#x2003;</span> Ian&nbsp;T Jolliffe. <i>Principal component analysis for special types of data</i>. Springer, 2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[25]&#x2003;</span> Praneeth Kacham and David&nbsp;P Woodruff. Faster algorithms for schatten-p low rank approximation. In <i>Approximation, Randomization, and Combinatorial Optimization. Algorithms and
+Techniques (APPROX/RANDOM 2024)</i>. Schloss Dagstuhl–Leibniz-Zentrum für Informatik, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[26]&#x2003;</span> W&nbsp;Kahan. Spectra of nearly hermitian matrices. <i>Proc. of the American Mathematical Society</i>, 48(1):11–17, 1975.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[27]&#x2003;</span> Walter Kohn and Lu&nbsp;Jeu Sham. Self-consistent equations including exchange and correlation effects. <i>Physical Review</i>, 140(4A):A1133, 1965.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[28]&#x2003;</span> Arnaz Malhi and Robert&nbsp;X Gao. Pca-based feature selection scheme for machine defect classification. <i>IEEE transactions on instrumentation and measurement</i>, 53(6):1517–1525, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[29]&#x2003;</span> Olvi&nbsp;L Mangasarian and Edward&nbsp;W Wild. Multisurface proximal support vector machine classification via generalized eigenvalues. <i>IEEE transactions on pattern analysis and machine
+intelligence</i>, 28(1):69–74, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[30]&#x2003;</span> Yuji Nakatsukasa and Nicholas&nbsp;J Higham. Stable and eﬀicient spectral divide and conquer algorithms for the symmetric eigenvalue decomposition and the svd. <i>SIAM Journal on Scientific
+Computing</i>, 35(3):A1325–A1349, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[31]&#x2003;</span> Andrew Ng, Michael Jordan, and Yair Weiss. On spectral clustering: Analysis and an algorithm. <i>Advances in Neural Information Processing Systems</i>, 14, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[32]&#x2003;</span> Dianne&nbsp;P O’Leary and Gilbert&nbsp;W Stewart. Computing the eigenvalues and eigenvectors of symmetric arrowhead matrices. <i>Journal of Computational Physics</i>, 90(2):497–505, 1990.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[33]&#x2003;</span> Victor&nbsp;Y Pan and Zhao&nbsp;Q Chen. The complexity of the matrix eigenproblem. In <i>Proc. 31st Annual ACM Symposium on Theory of Computing</i>, pages 507–516, 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[34]&#x2003;</span> Christos&nbsp;H Papadimitriou, Hisao Tamaki, Prabhakar Raghavan, and Santosh Vempala. Latent semantic indexing: A probabilistic analysis. In <i>Proc. of the seventeenth ACM
+SIGACT-SIGMOD-SIGART symposium on Principles of database systems</i>, pages 159–168, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[35]&#x2003;</span> Vladimir Rokhlin. Rapid solution of integral equations of classical potential theory. <i>Journal of computational physics</i>, 60(2):187–207, 1985.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[36]&#x2003;</span> Awwal&nbsp;Mohammed Rufai, Gholamreza Anbarjafari, and Hasan Demirel. Lossy image compression using singular value decomposition and wavelet difference reduction. <i>Digital signal
+processing</i>, 24:117–123, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[37]&#x2003;</span> Bernhard Schölkopf, Alexander Smola, and Klaus-Robert Müller. Nonlinear component analysis as a kernel eigenvalue problem. <i>Neural computation</i>, 10(5):1299–1319, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[38]&#x2003;</span> Arnold Schönhage and Volker Strassen. Fast multiplication of large numbers. <i>Computing</i>, 7:281–292, 1971.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[39]&#x2003;</span> Jianbo Shi and Jitendra Malik. Normalized cuts and image segmentation. <i>IEEE Transactions on pattern analysis and machine intelligence</i>, 22(8):888–905, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[40]&#x2003;</span> Aleksandros Sobczyk. Deterministic complexity analysis of Hermitian eigenproblems. <i>arXiv preprint arXiv:2410.21550</i>, Under review, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[41]&#x2003;</span> Aleksandros Sobczyk, Marko Mladenović, and Mathieu Luisier. Invariant subspaces and PCA in nearly matrix multiplication time, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

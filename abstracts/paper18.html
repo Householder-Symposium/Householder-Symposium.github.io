@@ -1,0 +1,543 @@
+---
+layout: abstract
+absnum: 18
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Recent Advances in Mixed-Precision (Hybrid) Iterative Methods
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Eda Oktay</span>, Erin Carson
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Mixed-precision hardware has recently become commercially available, and more than \(25\%\) of the supercomputers in the TOP500 list now have mixed-precision capabilities. Using lower precision in algorithms can be beneficial in terms of
+reducing both computation and communication costs. According to the recently developed mixed-precision benchmark, HPL-MxP, multiple supercomputers today already exceed exascale (\(10^{18}\) floating-point operations per second)
+performance through the use of mixed-precision computations. Many current efforts are focused on developing mixed-precision numerical linear algebra algorithms, which will lead to speedups in real applications. These new algorithms are
+increasingly being implemented in libraries, such as the MAGMA library.
+</p>
+
+<p>
+Motivated by this, the aim of this talk is to discuss recent advances in developing and analyzing mixed-precision variants of iterative methods. Iterative methods for solving linear systems and least squares problems are useful in practice when the
+coeﬀicient matrix is large and sparse or not explicitly stored and/or when accuracy less than machine precision is suﬀicient. An iterative method starts with an initial guess and then iteratively improves the solution to the desired accuracy. One can
+use stationary methods, Krylov subspace methods, or some hybrid approach, depending on the problem. We focus on <i>hybrid methods</i>, where we use a Krylov subspace method as an inner solver of a variant of Newton’s approach (stationary
+method), such as RQI and iterative refinement.
+</p>
+
+<p>
+Iterative methods can be used to improve the accuracy of solutions to least squares (LS) problems \(min_x\|b-Ax\|_2\), where \(A\in \mathbb {R}^{m\times n}\). Using the QR factorization \(A = [Q_1\quad Q_2][R\quad 0]^T,\) the solution to
+the LS problem is given by \(x=U^{-1}Q_1^Tb\) and the residual by \(r =\|b-Ax\|_2=\|Q_2^Tb\|_2.\) The LS problem can also be solved via the normal equations, \(A^TAx=A^Tb\), which are equivalent to the augmented system [1]
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                           m×m                
+                                                                                                            I        A      r     b
+                                                                                                                               =           or Ãx̃ = b̃.
+                                                                                                              AT     0      x     0
+                                                                                                          |     {z       } |{z} |{z}
+                                                                                                                Ã         x̃         b̃
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\underbrace {\begin{bmatrix} I^{m\times m} &amp; A\\ A^T &amp; 0 \end {bmatrix}}_{\tilde {A}} \underbrace {\begin{bmatrix} r \\ x \end {bmatrix}}_{\tilde {x}} = \underbrace {\begin{bmatrix} b \\ 0 \end
+{bmatrix}}_{\tilde {b}} \quad \text {or} \quad \tilde {A}\tilde {x} = \tilde {b}.
+\end{equation*}
+
+</p>
+
+<p>
+If \(m&gt; n\), then the system is called overdetermined, and if \(m&lt;n\), it is underdetermined. Weighted LS (WLS) is used when there are discrepant rows in \(A\). In this case, weights can be assigned to these rows to minimize discrepancy. In
+classical least squares, there is an assumption that perturbations are confined to the vector \(b\). This is not necessarily realistic in practice. If \(A\) and \(b\) may both be perturbed (\(\hat {A}, \hat {b}\), respectively) so that \(\hat {b}\) is
+in column space of \(\hat {A}\), this problem is called total LS (TLS).
+</p>
+
+<p>
+Krylov subspace methods work by selecting approximate solutions from a Krylov subspace. The search space is formed via nested Krylov subspaces, and the solution is obtained from a sequence of projections onto the search space. Although these
+solvers can be fast and/or stable, for large problems, they may not be memory eﬀicient and slow down performance. To speed up and exploit parallelism, techniques such as mixed-precision can be used.
+</p>
+
+<p>
+Error analysis is important for determining how rounding errors propagate in computations and identifying potential sources of amplification. For a function \(f:\mathbb {R}^n\rightarrow \mathbb {R}^n\), the backward error in the approximation
+\(y\) to \(f(x)\) is the smallest \(\Delta x\) such that \(y=f(x+\Delta x)\), i.e., [10]
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                      η(y) = min{ϵ : y = f (x + ∆x), ∥∆x∥ ≤ ϵ∥x∥}.
+
+-->
+
+<p>
+
+\begin{equation*}
+\eta (y) = \text {min}\{\epsilon : y=f(x+\Delta x), \|\Delta x\| \leq \epsilon \|x\|\}.
+\end{equation*}
+
+</p>
+
+<p>
+Backward error analysis [9] aims to derive a bound on the backward error. If the backward error is small, then we say the algorithm is backward stable. The forward error measures the difference between the computed and the exact solution. As
+defined in [10], the relative forward error of \(y \approx f(x)\) can bounded in terms of the relative backward error \(\eta (y)\) by
+</p>
+
+<p>
+\[ \dfrac {\|y-f(x)\|}{\|f\|}\leq cond(f,x)\eta (y) + O(\eta (y))^2, \]
+</p>
+
+<p>
+where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                     ∥f (x + ∆x) − f (x)∥
+                                                                                                    cond(f, x) = limϵ→0         sup
+                                                                                                                           ∥∆x∥≤ϵ∥x∥        ϵ∥f (x)∥
+
+-->
+
+<p>
+
+\begin{equation*}
+cond(f,x) = lim_{\epsilon \rightarrow 0}\sup _{\|\Delta x\|\leq \epsilon \|x\|}\dfrac {\|f(x+\Delta x) - f(x)\|}{\epsilon \|f(x)\|}
+\end{equation*}
+
+</p>
+
+<p>
+is the condition number, which measures the sensitivity of the solution to small perturbations in the input data.
+</p>
+<!--
+...... subsection Mixed-precision Rayleigh quotient iteration for total least squares problems ......
+-->
+<h5 id="autosec-5">Mixed-precision Rayleigh quotient iteration for total least squares problems</h5>
+<a id="paper-autopage-5"></a>
+
+
+<p>
+We first focus on the use of Rayleigh quotient iteration (RQI) to solve the TLS problem, which is the approach advocated in [2] for large-scale problems, and introduce a mixed-precision variant of the RQI-PCGTLS algorithm (RQI-PCGTLS-MP) [8].
+This approach solves the eigenvalue problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                   
+                                                                                           AT A   AT b        x        x
+                                                                                                                   =λ     --><a id="eq:RQIsystem"></a><!--
+                                                                                           bT A   bT b        −1       −1
+
+-->
+
+<p>
+
+\begin{equation*}
+{\begin{bmatrix} A^TA &amp;\quad A^Tb\\ b^TA &amp;\quad b^Tb \end {bmatrix}} \begin{bmatrix} x\\ -1 \end {bmatrix}=\lambda \begin{bmatrix} x\\ -1 \end {bmatrix} \label {eq:RQIsystem}
+\end{equation*}
+
+</p>
+
+<p>
+to find \(x = x_{TLS}\), where \(\lambda =\sigma ^2_{n+1}\), and \(\sigma ^2_{n+1}\) is the smallest singular value of \([A,b]\). Our approach potentially decreases the computational cost of RQI-PCGTLS by using up to three different
+precisions in the algorithm. Moreover, to enable the use of lower precision for more ill-conditioned systems, we use the R-factor from the Householder QR factorization of \(A\) instead of the Cholesky factorization of \(A^TA\) within
+RQI-PCGTLS-MP. We discuss the convergence and accuracy of our algorithm and derive two theoretical constraints on the precision that can be used for the construction of the preconditioner within the inner solver. To evaluate to what extent the
+computational cost can be reduced by using the mixed-precision variant with Householder QR factorization, we construct a performance model. Our numerical experiments and performance model show that one can get up to \(4\times \) speedup
+while keeping the working precision accuracy when fp16 is used in computing QR factors.
+</p>
+<!--
+...... subsection GMRES-based iterative refinement and its variants ......
+-->
+<h5 id="autosec-6">GMRES-based iterative refinement and its variants</h5>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+Another variant of Newton’s method is the iterative refinement (IR) algorithm. As RQI, IR algorithms require a linear solver in each outer iteration. The standard IR (we refer to as SIR) algorithm in [9] first computes the initial approximation using
+Gaussian elimination with partial pivoting and uses approximate LU factors of \(A\) to solve for the correction term which then refines the current solution. To increase the range of problems that can be solved with IR, a Krylov subspace method,
+such as preconditioned GMRES, can be used to solve the linear systems as in RQI-PCGTLS; this three-precision approach is called GMRES-IR [3]. GMRES-IR uses precisions with unit round-off \(u_f\) for LU factorization, \(u_r\) for residual
+computation, and \(u\) for storing data and solution. For stability analysis of methods such as IR variants, we can derive forward and error bounds under a constraint on the conditioning of the coeﬀicient matrix, \(\kappa (A)\). For a non-singular
+square matrix, the condition number is defined as \(\kappa _p(A) = \|A\|_p\|A^{-1}\|_p\) with the associated norm \(p\). As long as \(\kappa _\infty (A) \leq u^{-1/2}u_f^{-1}\) and \(u_r = u^2\), GMRES-IR provides accurate solutions
+with the forward and (normwise) backward errors
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                     ∥x̂ − x∥∞                                 ∥b − Ax̂∥∞
+                                                                                                               ≈ O(u)         and                            ≈ O(u),
+                                                                                                       ∥x∥∞                                 ∥A∥∞ ∥x∥∞ + ∥b∥∞
+
+-->
+
+<p>
+
+\begin{equation*}
+\dfrac { \|\hat {x}-x\|_\infty }{\|x\|_\infty }\approx \mathcal {O}(u) \quad \text {and} \quad \dfrac { \|b-A\hat {x}\|_\infty }{\|A\|_\infty \|x\|_\infty +\|b\|_\infty }\approx \mathcal {O}(u),
+\end{equation*}
+
+</p>
+
+<p>
+respectively, while SIR is guaranteed to have this forward error only if \(\kappa _\infty (A) \leq u_f^{-1}\) and \(u_r = u^2\).
+</p>
+
+<p>
+GMRES-IR can be much more expensive than SIR, depending on the number of iterations performed. One way to speed up the convergence of the GMRES solver is using recycling. In an effort to reduce the overall computational cost of the GMRES
+solves within GMRES-IR, we introduce a recycled GMRES-based iterative refinement algorithm called RGMRES-IR [6]. The algorithm starts with computing the LU factors of \(A\) and computing the initial approximate solution in the same
+manner as GMRES-IR. Instead of preconditioned GMRES, however, the algorithm uses preconditioned GCRO-DR to solve the correction equation. In the RGMRES-IR algorithm, as in GMRES-IR, we use three precisions. Numerical experiments
+show that RGMRES-IR decreases the total GMRES iterations performed, especially when the matrix is badly conditioned. Even when GMRES-IR cannot converge, we observe that our variant can still converge.
+</p>
+
+<p>
+Overdetermined standard least squares problems can be solved by using mixed-precision within the iterative refinement approach. It has been shown that mixed-precision GMRES-IR can also be used, in an approach termed GMRES-LSIR [4].
+GMRES-LSIR solves the augmented system using GMRES preconditioned by a preconditioner \(M\) computed using the QR factors of \(A\):
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                    
+                                                                                                                                        αI      Q1 U
+                                                                                                                             M=                        ,
+                                                                                                                                       U QT1
+                                                                                                                                        T
+                                                                                                                                                 0
+
+-->
+
+<p>
+
+\begin{equation*}
+M = \begin{bmatrix} \alpha I &amp; Q_1U\\ U^TQ_1^T &amp; 0 \end {bmatrix},
+\end{equation*}
+
+</p>
+
+<p>
+where \(A = Q_1U\) is the thin QR factorization of \(A\). As long as \(\kappa _\infty (A) \leq u^{-1/2}u_f^{-1}\), and assuming \(u_r = u^2\), GMRES-LSIR provides \(\mathcal {O}(u)\) backward and forward error. Furthermore, using
+the left preconditioner \(M\), the conditioning of the preconditioned augmented matrix can be bounded by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                √ f                                                  cmn
+                                                                                          κ∞ (M −1 Ã) ≲ (1 + 2m nγ̃mn κ∞ (A))2 ,                          f
+                                                                                                                                                   where γ̃mn =            ,
+                                                                                                                                                                  1 − mnuf
+
+-->
+
+<p>
+
+\begin{equation*}
+\kappa _\infty (M^{-1}\tilde {A}) \lesssim (1+2m\sqrt {n}\tilde {\gamma }_{mn}^f\kappa _\infty (A))^2, \quad \text {where} \quad \tilde {\gamma }_{mn}^f = \dfrac {cmn}{1-mnu_f},
+\end{equation*}
+
+</p>
+
+<p>
+and \(c\) is a small constant. In practice, we often encounter types of least squares problems beyond standard least squares, including the WLS problem \(\min _x\|D^{1/2}(b-Ax)\|_2\), where \(D^{1/2}\) is a diagonal matrix of weights, which is
+possibly ill-conditioned. WLS problems can be solved via the normal equations or the corresponding augmented system,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                   −1   
+                                                                                                                     αD −1    A      α y    b
+                                                                                AT DAx = AT Db             and                            =    , --><a id="eq:augwls"></a><!--
+                                                                                                                      AT      0       x     0
+
+-->
+
+<p>
+
+\begin{equation*}
+A^T D A x = A^T D b \quad \text {and} \quad \begin{bmatrix} \alpha D^{-1} &amp; A \\ A^T &amp; 0 \end {bmatrix} \begin{bmatrix} \alpha ^{-1} y \\ x \end {bmatrix} = \begin{bmatrix} b \\ 0 \end {bmatrix}, \label
+{eq:augwls}
+\end{equation*}
+
+</p>
+
+<p>
+respectively, where \(y=D(b-Ax)\), \(\alpha \) is the scaling factor for stability. We present the FGMRES-WLSIR algorithm, a variant of GMRES-LSIR for solving WLS problems using flexible GMRES (FGMRES), and discuss and analyze two
+different preconditioners [5]; a left preconditioner and a block diagonal split preconditioner,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                                 
+                                                                                                  αD −1      QR̂                αD −1            0
+                                                                                       Ml =                        , and Mb =                         , --><a id="eq:M"></a><!--
+                                                                                                  R̂T QT      0                  0               Ĉ
+
+-->
+
+<p>
+
+\begin{equation*}
+M_l=\begin{bmatrix} \alpha D^{-1} &amp; Q\hat {R} \\ \hat {R} ^TQ^T &amp; 0 \end {bmatrix}, \text { and } M_b = \begin{bmatrix} \alpha D^{-1} &amp; 0\\ 0 &amp; \Hat {C} \end {bmatrix}, \label {eq:M}
+\end{equation*}
+
+</p>
+
+<p>
+respectively, where \(\Hat {C} \approx \alpha ^{-1}A^TDA\) is a symmetric positive definite approximation to the Schur complement.
+</p>
+<!--
+...... subsection Multistage mixed-precision iterative refinement ......
+-->
+<h5 id="autosec-7">Multistage mixed-precision iterative refinement</h5>
+<a id="paper-autopage-7"></a>
+
+
+<p>
+In some cases, SIR can fail depending on the conditioning of the matrix and the precisions used. However, using GMRES-IR can be more expensive since one GMRES-IR iteration is more expensive than one SIR iteration. To benefit from both
+approaches and their variants, we propose a multistage IR approach (MSIR) to reduce the computation cost while improving applicability [7]. Our approach automatically switches between solvers and precisions if slow convergence (of the refinement
+scheme itself or of the inner GMRES solves) is detected using stopping criteria. With MSIR we attempt to use “stronger” solvers before resorting to increasing the precision of the factorization, and when executing a GMRES-based refinement
+algorithm, we modify the stopping criteria to also restrict the number of GMRES iterations per refinement step. Our experiments show that since the algorithmic variants often outperform what is dictated by the theoretical condition number
+constraints there can be an advantage to first trying other solvers before resorting to increasing the precision and refactorizing.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Åke Björck (1967) <em>Iterative refinement of linear least squares solutions i</em>. BIT Numerical Mathematics, 7(4):257–278.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Åke Björck, Pinar Heggernes, and Pontus Matstoms (2000) <em>Methods for large scale total least squares problems</em>. SIAM Journal on Matrix Analysis and Applications, 22(2):413–429.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Erin Carson and Nicholas J. Higham (2017) <em>A new analysis of iterative refinement and its application to accurate solution of ill-conditioned sparse linear systems</em>. SIAM Journal on Scientific
+Computing, 39(6):A2834–A2856.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Erin Carson, Nicholas J. Higham, and Srikara Pranesh (2020) <em>Three-precision GMRES-based iterative refinement for least squares problems</em>. SIAM Journal on Scientific Computing,
+42(6):A4063–A4083.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Erin Carson and Eda Oktay (2024) <em>Mixed precision FGMRES-based iterative refinement for weighted least squares</em>. arXiv preprint arXiv:2401.03755.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Eda Oktay and Erin Carson (2022) <em>Mixed precision GMRES-based iterative refinement with recycling</em>. In Jan Chleboun and Pavel Kůs and Jan Papež and Miroslav Rozložník and Karel
+Segeth and Jakub Šístek, editors, Programs and Algorithms of Numerical Mathematics, Proceedings of Seminar, pp.149–162. Institute of Mathematics CAS.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Eda Oktay and Erin Carson (2022) <em>Multistage mixed precision iterative refinement</em>. Numerical Linear Algebra with Applications, 29(4):e2434.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Eda Oktay and Erin Carson (2024) <em>Mixed precision Rayleigh quotient iteration for total least squares problems</em>. Numerical Algorithms, 96: 777–798.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> James Hardy Wilkinson (1963) <em>Rounding errors in algebraic processes</em>. Prentice-Hall.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Nicholas J. Higham (2002) <em>Accuracy and stability of numerical algorithms</em>. SIAM.
+</p>
+</li>
+</ul>
+
+{% endraw %}

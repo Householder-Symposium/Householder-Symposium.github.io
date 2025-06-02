@@ -1,0 +1,367 @@
+---
+layout: abstract
+absnum: 211
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Inverse Eigenvalue Difference Problems Arising in Quantum Sensing
+</h2>
+</div>
+<div class="center">
+
+<p>
+Boaz Ilan, <span class="underline">Roummel Marcia</span>, Michael Scheibner, and Kyle Wright
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+This research is motivated by the emerging field of quantum sensing, which facilitates high-resolution sensing of gravitation, acoustic waves, and electromagnetic fields [1, 3, 4]. The discrete energy levels of coupled quantum dots (QDs) can be
+represented as eigenvalues of a quantum Hamiltonian matrix, whose entries are defined as polynomials of an applied electric field [2, 5]. Our aim is to recover the coeﬀicients of these polynomials, which correspond to intrinsic physical constants, such
+as spin-coupling strength. The eigenvalue differences can be obtained from experimental measurements for varying electric field values. Standard inverse eigenvalue problems (IEP) seek to recover a constant matrix from the eigenvalues. In contrast,
+here the matrix elements are functions of a “tunable” parameter (the applied electric field) and only the <em>differences</em> between the eigenvalues are known. We formulate this as an inverse eigenvalue difference problem (IEDP).
+</p>
+
+<p>
+<b>Problem formulation.</b> The steady-state energy levels of coupled QDs correspond to eigenvalues of quantum Hamiltonians. Specifically, the ground state of this system can be described by a \(3\times 3\) real symmetric matrix [2] of the
+form
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                     
+                                                                                                                      g1 (F )       y0          y1
+                                                                                                             G(F ) =  y0         g2 (F )       y2  ,                        (1)                                   --><a id="eq:general_G(F)"></a><!--
+                                                                                                                        y1          y2        g3 (F )
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:general_G(F)} G(F) = \begin{bmatrix} g_1(F) &amp; y_0 &amp; y_1 \\ y_0 &amp; g_2(F) &amp; y_2 \\ y_1 &amp; y_2 &amp; g_3(F) \end {bmatrix},
+\end{align}
+where the diagonal elements depend quadratically on the applied electric field, \(F \in \mathbb {R}\), as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+
+<!--
+
+
+
+                                                                                                           gi (F ) = αi + βi F + γi F 2 ,    i = 1, 2, 3 ,                          (2)                                        --><a id="eq:g_i"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:g_i} g_i(F) = \alpha _i + \beta _i F + \gamma _i F^2, \quad i=1,2,3~,
+\end{align}
+where the coeﬀicients \(\{\alpha _i,\beta _i,\gamma _i\}\) are real. We note that the assumption that the off-diagonal elements are independent of \(F\) is a good approximation for weak electric fields and for weak tunnel coupling between the
+QDs. We shall further assume that \(y_1 = y_0\) and \(y_2 = 0\), which corresponds to symmetries between QDs.
+</p>
+
+<p>
+Since \(G(F)\) is symmetric, its eigenvalues are real. We denote its eigenvalues by \(\{ \xi _1(F), \xi _2(F), \xi _3(F) \}\). The physical measurements can be used to determine the <em>differences</em> between the eigenvalues of \(G\).
+Thus, the measured data is provided over a set of \(n\) values of \(F\in \mathbb {R}\), denoted by \(\{F_k\}_{k=1}^n\). The eigenvalue differences are denoted by
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                  D2,1 (F ) ≡ ξ2 (F ) − ξ1 (F ),                                                  (3)                          --><a id="eq:D21"></a><!--
+                                                                                                                  D3,1 (F ) ≡ ξ3 (F ) − ξ1 (F ),                                                  (4)                          --><a id="eq:D31"></a><!--
+                                                                                                                  D3,2 (F ) ≡ ξ3 (F ) − ξ2 (F ).                                                  (5)                          --><a id="eq:D32"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:D21} D_{2,1}(F) \equiv \xi _2(F) - \xi _1(F), \\ \label {eq:D31} D_{3,1}(F) \equiv \xi _3(F) - \xi _1(F),\\ \label {eq:D32} D_{3,2}(F) \equiv \xi _3(F) - \xi _2(F).
+\end{align}
+Note that \(D_{3,2}(F) = D_{3,1}(F) - D_{2,1}(F).\) Hence, we consider the measured dataset to be
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+
+<!--
+
+
+                                                                                                                {                           }n
+                                                                                                             M = Fk , D2,1 (Fk ), D3,1 (Fk ) k=1 .                                         (6)                                   --><a id="eq:M"></a><!--
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:M} M &amp;= \big \{ F_k, D_{2,1}(F_k), D_{3,1}(F_k) \big \}_{k=1}^{n}~.
+\end{align}
+
+</p>
+
+<p>
+Our objective is to recover the coeﬀicients that define \(G(F)\). We can prove that, without loss of generality, one can set \(g_1(F) = 0\). This has the effect of eliminating an arbitrary shift in the diagonal elements and in the eigenvalues of \(G(F)\)
+that would satisfy the dataset \(M\). We shall do so henceforth and redefine \(G\) as
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                   
+                                                                                                                        0         y0          y0
+                                                                                                               G(F ) = y0      g2 (F )        0  .                                      (7)                               --><a id="eq:G3(F)"></a><!--
+                                                                                                                        y0         0        g3 (F )
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\label {eq:G3(F)} G(F) = \begin{bmatrix} 0 &amp; y_0 &amp; y_0 \\ y_0 &amp; g_2(F) &amp; 0 \\ y_0 &amp; 0 &amp; g_3(F) \end {bmatrix}~.
+\end{align}
+We denote the vector of coeﬀicients as \(\mathbf {p} = [ y_0, \alpha _2, \beta _2, \gamma _2, \alpha _3, \beta _3, \gamma _3 ]\in \mathbb {R}^7\). In this work, we seek to solve the following:
+</p>
+
+<div class="mdframed"
+style="
+background: #FFFFFF ;
+border: 1pt solid #000000 ;
+border-radius: 0pt ;
+box-shadow: none ;
+">
+<p>
+Inverse Eigenvalue Difference Problem (IEDP)
+</p>
+<p>
+Given the eigenvalue difference dataset \(M\) in <span class="textup">(<a href="paper.html#eq:M">6</a>)</span>, find coeﬀicients \(\mathbf {p}\), such that \(G(F)\) in <span class="textup">(<a
+href="paper.html#eq:G3(F)">7</a>)</span> generates \(M\).
+</p>
+
+</div>
+
+<p>
+In particular, our work addresses two inter-related questions:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> What optimization approach is eﬀicient for solving this IEDP, especially in the presence of noisy data?
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> What domain knowledge can we utilize to improve the eﬀicacy of the proposed approach?
+</p>
+</li>
+</ul>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Stefano Pirandola, B&nbsp;Roy Bardhan, Tobias Gehring, Christian Weedbrook, and Seth Lloyd. Advances in photonic quantum sensing. <i>Nature Photonics</i>, 12(12):724–733, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Michael Scheibner, MF&nbsp;Doty, Ilya&nbsp;V Ponomarev, Allan&nbsp;S Bracker, Eric&nbsp;A Stinaff, VL&nbsp;Korenev, TL&nbsp;Reinecke, and Daniel Gammon. Spin fine structure of optically
+excited quantum dot molecules. <i>Physical Review B</i>, 75(24):245318, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Ben Stray, Andrew Lamb, Aisha Kaushik, Jamie Vovrosh, Anthony Rodgers, Jonathan Winch, Farzad Hayati, Daniel Boddice, Artur Stabrawa, Alexander Niggebaum, et&nbsp;al. Quantum sensing
+for gravity cartography. <i>Nature</i>, 602(7898):590–594, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> SP&nbsp;Walborn, AH&nbsp;Pimentel, L&nbsp;Davidovich, and RL&nbsp;de&nbsp;Matos&nbsp;Filho. Quantum-enhanced sensing from hyperentanglement. <i>Physical Review A</i>,
+97(1):010301, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Kyle Wright, Roummel Marcia, Michael Scheibner, and Boaz Ilan. Parameterized inverse eigenvalue problem for quantum sensing. In <i>2023 IEEE 9th International Workshop on Computational
+Advances in Multi-Sensor Adaptive Processing (CAMSAP)</i>, pages 351–355. IEEE, 2023.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

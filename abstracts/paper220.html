@@ -1,0 +1,181 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Hybrid Covariance Representations and Generalized Regression Problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Christopher Beattie</span> and Dave Higdon
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+As observation systems attain both greater capacity and greater accuracy, regression problems making use of acquired data must take into account the effect of coupling and correlations among observation errors, leading potentially to ill-conditioned
+weighted regression problems for which standard orthogonalization approaches become problematic. These diﬀiculties may be further compounded when models of error covariance are adopted that are designed to capture structural features of
+underlying statistics as commonly occur in geospatial applications (e.g., Vecchia models, variogram-based models, process-convolution models, and Gauss-Markov random fields).
+</p>
+
+<p>
+The problem of interest has a usual formulation as a weighted least squares problem:
+</p>
+
+<p>
+\[ \min _{\boldsymbol {\beta }} (\mathbf {y}-\mathbf {X}\boldsymbol {\beta })^T\boldsymbol {\Sigma }^{-1}(\mathbf {y}-\mathbf {X}\boldsymbol {\beta })=\min _{\boldsymbol {\beta }}\|\mathbf {F}^{-1}(\mathbf
+{y}-\mathbf {X}\boldsymbol {\beta })\| \]
+</p>
+
+<p>
+where \(\mathbf {y}\in \mathbb {R}^m\) is a vector of observations, \(\boldsymbol {\beta }\in \mathbb {R}^n\) is a vector of parameters to be determined, \(\mathbf {X}\in \mathbb {R}^{m\times n}\) is a (known) <em>observation
+matrix</em>, and \(\boldsymbol {\Sigma }=\mathbf {F}\mathbf {F}^T\) is a (nominally) positive-definite matrix with a Cholesky factor \(\mathbf {F}\). \(\|\ \cdot \ \|\) denotes here the usual Euclidean norm.
+</p>
+
+<p>
+Our approach extends a program initiated by Paige and collaborators, who observed that the least squares problem as formulated above may be artificially ill-conditioned if \(\boldsymbol {\Sigma }\) is poorly conditioned or in the extreme possibly
+even ill-posed in the case that \(\boldsymbol {\Sigma }\) is only semi-definite (see [1, 2, 3, 4]). Paige noted that even in the extreme case of singularity of \(\boldsymbol {\Sigma }\) (and hence of \(\mathbf {F}\)), the underlying estimation
+problem may still be well-defined and indeed, often well-conditioned so long as \(\mathbf {y}\in \mathsf {Ran}([\mathbf {X}\ \mathbf {F}])\). One then considers instead an equivalent observation model specified as \(\mathbf {y}=\mathbf
+{X}\boldsymbol {\beta }+\mathbf {F}\boldsymbol {\eta }\) where \(\boldsymbol {\eta }\sim N(\mathbf {0},\sigma \mathbf {I})\) and \(\sigma &gt;0\) is a (yet to be determined) dispersion scaling. Paige developed corresponding
+backward stable algorithms to produce minimum variance unbiased estimators for \(\boldsymbol {\beta }\) in this setting. These approaches are well known (e.g., [6, §6.1.2]) though generally they have not been broadly adopted.
+</p>
+
+<p>
+In the intervening years since the introduction of these ideas, geospatial data sources have been providing ever greater volumes of densely spaced observations, requiring associated statistical models that have become progressively more sophisticated.
+As a consequence, we believe the viewpoint pioneered by Paige provides tools that are especially well suited to current geospatial statistical models and we propose a modest extension of Paige’s formulation based on an observation model that can be
+expressed in its most simple form as
+</p>
+
+<p>
+\[ \mathbf {y}=\mathbf {X}\boldsymbol {\beta }+\mathbbm {w} \ \mbox { where }\mathbf {G}\mathbbm {w}=\mathbf {F}\boldsymbol {\eta } \ \mbox { and } \boldsymbol {\eta }\sim N(\mathbf {0},\sigma \mathbf {I}). \]
+</p>
+
+<p>
+Significantly, neither \(\mathbf {G}\) nor \(\mathbf {F}\) need be invertible for this model to be consistent and the associated computational problem can be formulated as
+</p>
+
+<p>
+\[ \min _{\boldsymbol {\beta },\boldsymbol {\zeta }} \left \{\ \|\boldsymbol {\zeta }\|\ \left |\ \mathbf {G}\left (\mathbf {y}-\mathbf {X}\boldsymbol {\beta }\right )=\mathbf {F}\boldsymbol {\zeta } \right .\right
+\}. \]
+</p>
+
+<p>
+When \(\mathbf {G}\) is invertible, this corresponds to assuming a form for the error covariance that appears as \(\boldsymbol {\Sigma }= \left (\mathbf {G}^{-1}\mathbf {F}\right )\left (\mathbf {G}^{-1}\mathbf {F}\right )^T\).
+Notice that when \(\mathbf {F}=\mathbf {I}\), \(\mathbf {G}\) then is a factor of the <em>precision</em> matrix \(\boldsymbol {\Sigma }^{-1}=\mathbf {G}^T\mathbf {G}\) (when \(\mathbf {G}\) is lower triangular, often termed a “reverse
+Cholesky factorization” of the precision matrix). Of particular interest however is the case that neither \(\mathbf {G}\) nor \(\mathbf {F}\) is the identity and possibly neither \(\mathbf {G}\) nor \(\mathbf {F}\) is invertible or even square. We
+term such covariance models “hybrid covariance models” and note that Paige had recognized the possible utility of such a mix of precision/covariance models specifically in the context covariance updates in Kalman filtering [4].
+</p>
+
+<p>
+For many classes of covariance models used in geospatial statistical modeling, covariance matrices tend not to be sparse, since a covariance element that is exactly zero suggests that the associated variables are statistically independent, which can
+rarely be justified. On the other hand, sparsity in a precision matrix is far more plausible and relates to <em>conditional</em> independence of the associated random variables, which can be viewed as a local effect. This sparsity makes estimation of
+covariance models that focus on elements of the precision matrix (or its factors) often more effective. We are able to effect estimation of covariance models that can combine both direct estimation of elements of the covariance matrix simultaneously
+with estimation of elements of the precision (or their factors).
+</p>
+
+<p>
+We describe briefly one approach that exploits this property arising in geospatial estimation using “Vecchia approximation” (see [7]). (We note that Vecchia approximations are more usual in the context of imputation of a prior covariance; we
+introduce them here in the context of an observation covariance in order to simplify the exposition.) Structured sparsity in the precision matrix is an important feature also of other methods such as Gaussian Markov Random Field models and of
+process convolution models, making them similarly amenable to approaches related to hybrid covariance models. Suppose the covariance \(\boldsymbol {\Sigma }\) is partitioned as \(\boldsymbol {\Sigma }= \begin {bmatrix} \boldsymbol
+{\Sigma }_{11} &amp; \boldsymbol {\Sigma }_{12} \\ \boldsymbol {\Sigma }_{21} &amp; \boldsymbol {\Sigma }_{22} \end {bmatrix} \) and that we are able to obtain reliable estimates for \(\boldsymbol {\Sigma }_{11} =\mathbf
+{L}_{11}\mathbf {L}_{11}^T\) and its Cholesky factor \(\mathbf {L}_{11}\). If we consider a complementary triangular factorization for the precision: \(\boldsymbol {\Sigma }^{-1}=\mathbf {U}\mathbf {U}^T\) with \(\mathbf {U}=\begin
+{bmatrix} \mathbf {U}_{11} &amp; \mathbf {U}_{12} \\ \mathbf {0} &amp; \mathbf {U}_{22} \end {bmatrix}, \) then one may arrive at a natural hybrid covariance representation for \(\boldsymbol {\Sigma }\) that appears as
+</p>
+
+<p>
+\[ \boldsymbol {\Sigma }=\left (\begin {bmatrix} \mathbf {I} &amp; \mathbf {0} \\ \mathbf {U}_{12}^T &amp; \mathbf {U}_{22}^T \end {bmatrix}^{-1}\begin {bmatrix} \mathbf {L}_{11} &amp; \mathbf {0} \\ \mathbf {0}
+&amp; \mathbf {I} \end {bmatrix}\right ) \left (\begin {bmatrix} \mathbf {I} &amp; \mathbf {0} \\ \mathbf {U}_{12}^T &amp; \mathbf {U}_{22}^T \end {bmatrix}^{-1}\begin {bmatrix} \mathbf {L}_{11} &amp; \mathbf {0}
+\\ \mathbf {0} &amp; \mathbf {I} \end {bmatrix}\right )^T \]
+</p>
+
+<p>
+The <em>hybrid covariance model</em> specifically, is given by: \(\mathbf {G}=\begin {bmatrix} \mathbf {I} &amp; \mathbf {0} \\ \mathbf {U}_{12}^T &amp; \mathbf {U}_{22}^T \end {bmatrix}\) and \(\mathbf {F}=\begin {bmatrix}
+\mathbf {L}_{11} &amp; \mathbf {0} \\ \mathbf {0} &amp; \mathbf {I} \end {bmatrix}\). This splitting of factors allows one, for example, to take advantage of the ability to estimate (independently) the covariance of a (usually small) subset
+of random variables associated with \(\boldsymbol {\Sigma }_{11} \) (and so, with \(\mathbf {L}_{11} \)), while leaving the (usually much larger) complementary set of random variables with precision components modeled by \(\mathbf
+{U}_{12}\) and \(\mathbf {U}_{22}\). These components are likely to be much more sparse (or certainly can be modeled in that way) and so, they may be eﬀiciently estimated from current problem data.
+</p>
+
+<p>
+An illustrative application in Earth Sciences that reflects many of the features described above comes from next-generation wide-swath satellite altimetry. The Surface Water and Ocean Topography (SWOT) mission is a satellite mission launched in
+December 2022, as a joint mission between NASA and the Centre National d’Etudes Spatiales (CNES), the French space agency. The satellite is designed to measure (as its name suggests) the surface water and ocean topography of Earth. In
+particular, it is believed capable of providing detailed measurements having unprecedented accuracy of <em>sea surface height</em> and ocean topography on a global scale. These measurements promise to contribute significantly to our understanding
+of Earth’s water cycle and aid in monitoring the effects of climate change on our ocean and freshwater systems.
+</p>
+
+<p>
+The SWOT mission provides valuable information for a wide range of applications, including weather forecasting, climate research, and resource management. It should improve our ability to forecast floods, droughts, and potential effects of extreme
+weather events, and add to our capacity to monitor (and possibly anticipate) the impacts of sea-level rise on coastal communities. It will also provide important data that supports ocean and coastal modeling, which in turn plays a central role in
+understanding the circulation and transport of heat, salt, and nutrients in the oceans.
+</p>
+
+<p>
+These new capabilities are fundamentally tied to the ability to solve regression problems using observations that are contaminated with errors caused by uncertainties in the configuration and orientation of the satellite interferometer as well as
+environmental conditions that include sea surface roughness and atmospheric state. Observation errors associated with sea surface height are significantly correlated. We can connect the SWOT mission application with the hybrid approximation
+discussed above by supposing that \(\boldsymbol {\Sigma }_{11} \) is associated with sea surface height at locations within the satellite swath. We may wish to use these observations to make the prior dependent on the complementary random
+variables associated with \(\mathbf {U}_{22}\).
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> C. C. Paige, Computer solution and perturbation analysis of generalized linear least squares problems,<em>Mathematics of Computation</em>, <b>33</b>(145), pp. 171–183, (1979)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C. C. Paige, Fast numerically stable computations for generalized linear least squares problems, <em>SIAM Journal on Numerical Analysis</em>, <b>16</b>(1), pp. 165–171, (1979)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> S. Kourouklis and C. C. Paige, A constrained least squares approach to the general Gauss-Markov linear model,<em>Journal of the American Statistical Association</em>, <b>76</b>(375), pp.
+620–625, (1981)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> C. C. Paige, Covariance matrix representation in linear filtering, <em>Special Issue of Contemporary Mathematics on Linear Algebra and its Role in Systems Theory, AMS</em>, <b>8</b>, (1985)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> C. C. Paige, Some aspects of generalized QR factorizations, <em>Reliable Numerical Computation</em>, pp. 71–91, Clarendon Press Oxford (1990)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> G. H. Golub and C, F. van Loan, <em>Matrix Computations</em>, 4th edition, Johns Hopkins University Press, (2013)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> A. V. Vecchia, Estimation and Model Identification for Continuous Spatial Processes, <em>J. Royal Stat. Soc.: Series B (Methodological)</em>, <b>50</b>(2), pp. 297—312 (Jan 1988)
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+

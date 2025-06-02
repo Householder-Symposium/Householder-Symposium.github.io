@@ -1,0 +1,698 @@
+---
+layout: abstract
+absnum: 110
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\bs }[1]{\ensuremath {\boldsymbol {#1}}}\)
+
+\(\newcommand {\rank }{\ensuremath {\operatorname {rank}}}\)
+
+\(\newcommand {\argmin }{\text {\ensuremath {\arg \min }}}\)
+
+\(\newcommand {\argmax }{\text {\ensuremath {\arg \max }}}\)
+
+\(\newcommand {\xx }{\ensuremath {{\times }}}\)
+
+\(\newcommand {\dbr }[1]{\ensuremath {\llbracket #1 \rrbracket }}\)
+
+\(\newcommand {\tens }[1]{\ensuremath {\bs {\mathscr #1}}}\)
+
+\(\newcommand {\tA }{\tens {A}}\)
+
+\(\newcommand {\thA }{\widehat {\tA }}\)
+
+\(\newcommand {\tB }{\tens {B}}\)
+
+\(\newcommand {\thB }{\widehat {\tB }}\)
+
+\(\newcommand {\tV }{\tens {V}}\)
+
+\(\newcommand {\thV }{\widehat {\tV }}\)
+
+\(\newcommand {\tU }{\tens {U}}\)
+
+\(\newcommand {\thU }{\widehat {\tU }}\)
+
+\(\newcommand {\tX }{\tens {X}}\)
+
+\(\newcommand {\thX }{\ensuremath {\widehat {\tX }}}\)
+
+\(\newcommand {\tY }{\tens {Y}}\)
+
+\(\newcommand {\thY }{\widehat {\tY }}\)
+
+\(\newcommand {\tS }{\tens {S}}\)
+
+\(\newcommand {\thS }{\widehat {\tS }}\)
+
+\(\newcommand {\tI }{\tens {I}}\)
+
+\(\newcommand {\thI }{\widehat {\tI }}\)
+
+\(\newcommand {\tC }{\tens {C}}\)
+
+\(\newcommand {\thC }{\widehat {\tC }}\)
+
+\(\newcommand {\tG }{\tens {G}}\)
+
+\(\newcommand {\thG }{\widehat {\tG }}\)
+
+\(\newcommand {\tE }{\tens {E}}\)
+
+\(\newcommand {\thE }{\widehat {\tE }}\)
+
+\(\newcommand {\tQ }{\tens {Q}}\)
+
+\(\newcommand {\thQ }{\widehat {\tQ }}\)
+
+\(\newcommand {\tZ }{\tens {Z}}\)
+
+\(\newcommand {\thZ }{\widehat {\tZ }}\)
+
+\(\newcommand {\tW }{\tens {W}}\)
+
+\(\newcommand {\thW }{\widehat {\tW }}\)
+
+\(\newcommand {\slice }[1]{\ensuremath {\vec {\mat {#1}}}}\)
+
+\(\newcommand {\mat }[1]{\ensuremath {\mathbf {#1}}}\)
+
+\(\newcommand {\matA }{\mat {A}}\)
+
+\(\newcommand {\matX }{\mat {X}}\)
+
+\(\newcommand {\matR }{\mat {R}}\)
+
+\(\newcommand {\matQ }{\mat {Q}}\)
+
+\(\newcommand {\matE }{\mat {E}}\)
+
+\(\newcommand {\wh }[1]{\widehat {#1}}\)
+
+\(\newcommand {\matSigma }{\boldsymbol {\Sigma }}\)
+
+\(\newcommand {\matM }{\mathbf {M}}\)
+
+\(\newcommand {\matMi }{\matM ^{-1}}\)
+
+\(\newcommand {\RR }{\mathbb {R}}\)
+
+\(\newcommand {\NN }{\mathbb {N}}\)
+
+\(\newcommand {\CC }{\mathbb {C}}\)
+
+\(\newcommand {\FFF }{\mathbb {F}}\)
+
+\(\newcommand {\EE }{\mathbb {E}}\)
+
+\(\newcommand {\ZZ }{\mathbb {Z}}\)
+
+\(\newcommand {\dotp }[1]{\langle #1 \rangle }\)
+
+\(\newcommand {\TNorm }[1]{\|#1\|_{2}}\)
+
+\(\newcommand {\TNormS }[1]{\TNorm {#1}^2}\)
+
+\(\newcommand {\GNorm }[1]{\|#1\|}\)
+
+\(\newcommand {\GNormS }[1]{\GNorm {#1}^2}\)
+
+\(\newcommand {\FNorm }[1]{\|#1\|_{F}}\)
+
+\(\newcommand {\FNormS }[1]{\FNorm {#1}^2}\)
+
+\(\newcommand {\trace }[1]{\ensuremath {\operatorname {Tr}\left (#1 \right )}}\)
+
+\(\newcommand {\mx }[1]{\ensuremath {\times _{#1}}}\)
+
+\(\newcommand {\tsub }[1]{\ensuremath {\times _{#1}}}\)
+
+\(\newcommand {\tsM }{\ensuremath {\tsub {3}\matM }}\)
+
+\(\newcommand {\tsMinv }{\ensuremath {\tsub {3}\matM ^{-1}}}\)
+
+\(\newcommand {\ttprod }[1]{{\star }_{{\scriptscriptstyle {\hspace {-1pt}#1}\hspace {1pt} }}}\)
+
+\(\newcommand {\Mprod }{\ttprod {\matM }}\)
+
+\(\newcommand {\mm }{\ttprod {\matM }}\)
+
+\(\newcommand {\ff }{\ttprod {{F}}}\)
+
+\(\newcommand {\pp }{\ttprod {{\Phi }}}\)
+
+\(\newcommand {\rnk }{\ensuremath {\operatorname {rank}}}\)
+
+\(\newcommand {\alg }[1]{\ensuremath {\mathcal {#1}} }\)
+
+\(\newcommand {\TA }{\alg {A}}\)
+
+\(\newcommand {\TB }{\alg {B}}\)
+
+\(\newcommand {\TM }{\alg {M}}\)
+
+\(\newcommand {\TE }{\alg {E}}\)
+
+\(\newcommand {\FT }{\alg {T}}\)
+
+\(\newcommand {\FQ }{\alg {Q}}\)
+
+\(\newcommand {\FR }{\alg {R}}\)
+
+\(\newcommand {\hspc }[1]{\ensuremath {\boldsymbol { #1}}}\)
+
+\(\newcommand {\cH }{\ensuremath {{\alg H}}}\)
+
+\(\newcommand {\cE }{\ensuremath {{\hspc E}}}\)
+
+\(\newcommand {\chH }{\ensuremath {\widehat {\cH }}}\)
+
+\(\newcommand {\chHp }{\ensuremath {\widehat {\cH }^p}}\)
+
+\(\newcommand {\hhat }[1]{\hat {\hspace {-1pt}{#1}}}\)
+
+\(\newcommand {\dotmp }[1]{\left \llangle #1 \right \rrangle }\)
+
+\(\newcommand {\dotph }[1]{\dotp {#1}_{\cH }}\)
+
+\(\newcommand {\dotphh }[1]{\dotp {#1}_{\chH }}\)
+
+\(\newcommand {\dotphhp }[1]{\dotp {#1}_{\chH ^p}}\)
+
+\(\newcommand {\cHNorm }[1]{\GNorm {#1}_{\cH }}\)
+
+\(\newcommand {\cHNormS }[1]{\cHNorm {#1}^2}\)
+
+\(\newcommand {\HSNorm }[1]{\GNorm {#1}_{\operatorname {HS}}}\)
+
+\(\newcommand {\HSNormS }[1]{\HSNorm {#1}^2}\)
+
+\(\newcommand {\dotphs }[1]{\dotp {#1}_{\operatorname {HS}}}\)
+
+\(\newcommand {\ltNorm }[1]{\GNorm {#1}_{\ell _2}}\)
+
+\(\newcommand {\ltNormS }[1]{\ltNorm {#1}^2}\)
+
+\(\newcommand {\dotplt }[1]{\dotp {#1}_{\ell _2}}\)
+
+\(\newcommand {\infNorm }[1]{\GNorm {#1}_{\infty }}\)
+
+\(\newcommand {\infNormS }[1]{\infNorm {#1}^2}\)
+
+\(\newcommand {\chHNorm }[1]{\GNorm {#1}_{\chH }}\)
+
+\(\newcommand {\chHNormS }[1]{\chHNorm {#1}^2}\)
+
+\(\newcommand {\chHpNorm }[1]{\GNorm {#1}_{\chHp }}\)
+
+\(\newcommand {\chHpNormS }[1]{\chHpNorm {#1}^2}\)
+
+\(\newcommand {\op }{\ensuremath {{\operatorname {op}}}}\)
+
+\(\newcommand {\opNorm }[1]{\GNorm {#1}_{\op }}\)
+
+\(\newcommand {\opNormS }[1]{\opNorm {#1}^2}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+QUASITUBAL TENSOR Framework with APPLICATIONS TO MULTIWAY FUNCTIONAL DATA
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Uria Mor</span>, Haim Avron
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Multiway arrays, commonly referred to as higher-order tensors, are a natural data structure for representing multi-dimensional data and modeling processes consisting of composite interactions between factors. The tubal tensor
+framework&nbsp;[6, 1, 5] views a tensor as a ‘matrix of tubes’, where tubes are elements of a vector space supplemented with a binary, bilinear tubal multiplication, thus endowing the set of tubes with scalar-like properties that enable matrix mimetic
+tensor-tensor multiplication. From this perspective, tensors represent t-(tube-) linear mappings between Hilbert C*-modules over the algebra of tubes&nbsp;[3, 2], for example, a 3rd order tensor \(\smash {\tX \in \RR ^{m \xx p \xx n}}\)
+represents a t-linear mapping from \(\smash {\RR ^{p \xx 1 \xx n}}\) to \(\smash {\RR ^{m \xx 1 \xx n}}\), and the t-product of \(\smash {\tX }\) with a tensor \(\smash {\tY \in \RR ^{p \xx q \xx n}}\) is a tensor \(\smash {\tX *
+\tY \in \RR ^{m \xx q \xx n}}\) that represents the composition of the two mappings. The matrix mimetic nature of the t-product enables an almost direct translation of many matrix computations to the tensor setting in a way that preserve, to
+some extent, the theoretical properties of the original operations, e.g., perhaps most notable, the t-SVD which is a straightforward extension of the matrix SVD, and enjoys an Eckart-Young like optimality result for rank truncations of a
+tensor[2, 4, 5]. The extensive, still-growing set of matrix algorithms and tools, and the ease of their extension to tensors via the tubal framework, make it a powerful tool for dealing with multi-dimensional problems.
+</p>
+
+<p>
+In many applications, tensor data is obtained by a finite set of observations of a multi-dimensional process evolving over a domain such as time or space. These processes are often modeled as elements within an infinite-dimensional Hilbert
+space.However, when tubes reside in an infinite-dimensional Hilbert space, the associated tubal algebra lacks certain properties present in the finite-dimensional case, such as a multiplicative identity and von Neumann regularity. This limitation
+hinders any direct extension of the tubal tensor framework to infinite-dimensional spaces, and, in particular, the tubal SVD is no longer viable.
+</p>
+
+<p>
+In this work, we introduce the quasitubal tensor framework, an extension of the tubal tensor framework to tubal algebras defined on infinite-dimensional separable Hilbert spaces. Notably, we establish the existence of a quasitubal SVD and prove
+Eckart-Young optimality results for low-rank truncations of quasitubal SVD. With a strong theoretical basis, the quasitubal framework offers attractive approach for tackling multi-way problems in infinite-dimensional spaces.
+</p>
+<!--
+...... paragraph Background. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Background.</span>
+<a id="paper-autopage-5"></a>
+An order-\(N\) tensor \(\smash {\tX }\) over a field \(\FFF \) (either \(\CC \) or \(\RR \)) is an object in \(\smash {\FFF ^{d_1 \xx \cdots \xx d_N}}\). The line of research on tubal tensor algebra &nbsp;[5, 1, 6, 4] views tensors ‘matrices of
+tubes’. For example, a 3rd order tensor \(\smash {\tX \in \FFF ^{m \xx p \xx n}}\) is considered as an \(m \xx p\) matrix over \(\smash {\FFF ^{n}}\) whose \(j,k\) (tubal) entry is \(\smash {\bs {x}_{jk} \in \FFF ^{n}}\). The
+<i>t-product</i>&nbsp;[6, 1, 5] of two tubes \(\smash {\bs {x},\bs {y} \in \FFF ^{n}}\) is defined as \(\smash {\bs {x} * \bs {y} = \mathtt {ifft}(\wh {\bs {x}} \odot \wh {\bs {y}})}\), where \(\smash {\wh {\bs {x}} = \mathtt
+{fft}(\bs {x})}\) is the Fourier transform of \(\bs {x}\), and \(\odot \) is the Hadamard product.
+</p>
+
+<p>
+The <i>mode-3 multiplication</i> of \(\tX \) by a matrix \(\smash {\mat {A} \in \FFF ^{r \xx n}}\) is the tensor \(\smash {\tX \times _3 \mat {A} \in \FFF ^{m \xx p \xx r}}\) whose \(j,k\) tube fiber is given by \(\smash {\mat {A}
+\bs {x}_{jk} \in \FFF ^r}\). In particular, let \(\mat {F}\) be the \(n\xx n\) DFT matrix and define \(\smash {\wh {\tX } = \tX \xx _3 \mat {F}}\). The <i>tensor-tensor t-product</i> of \(\smash {\tX \in \FFF ^{m \xx p \xx n},
+\tY \in \FFF ^{p \xx q \xx n}}\) is defined by \(\smash {\tX {*} \tY = (\wh {\tX } {\triangle } \wh {\tY })\xx _3 \mat {F}^{-1} }\) with \(\smash {\tZ = \tX \triangle \tY }\) a tensor such that \(\smash {\tZ _{:,:,j} = \tX
+_{:,:,j} \tY _{:,:,j} } \). Note that the t-product of two tubal-tensors is in-fact the multiplication of matrices over the tubal ring. More general version of the t-product is obtained by replacing \(\mat {F}\) with any invertible matrix \(\matM
+\)&nbsp;[2, 4] (so \(\smash {\wh {\tX } = \tX \xx _3 \matM }\)), resulting in the <i>\(\mm \)-product</i>, \(\smash {\tX \mm \tY = (\wh {\tX } \triangle \wh {\tY }) \xx _3 \matMi }\).
+</p>
+
+<p>
+The \(p \xx p\) identity tensor \(\smash {\tI _p \in \FFF ^{p \xx p \xx n}} \) is such that \(\smash {\tX \mm \tI _p = \tX , \tI _p \mm \tY = \tY }\). The <i>Hermitian adjoint</i> of \(\smash {\tX \in \FFF ^{m \xx p \xx n}}\)
+is the tensor \(\smash {\tX ^H \in \FFF ^{p \xx m \xx n}}\) with \(\smash {\wh {\tX ^H}_{j,k,h} = \overline {\wh {x}_{k,j,h}}}\). A <i>slice</i> \(\smash {\slice {A} \in \FFF ^{p \xx 1 \xx n}}\) is <i>\(\mm \) unit
+normalized</i> if \(\smash {\slice {A}^H \mm \slice {A} = \bs {1}}\), and we say that \(\smash {\slice {A},\slice {B} \in \FFF ^{p \xx 1 \xx n}}\) are <i>\(\mm \)-orthogonal</i> if \(\smash {\slice {A}^H \mm \slice {B} = \bs
+{0}}\). A tensor \(\smash {\tU }\) is said to be <i>\(\mm \)-unitary</i> if \(\smash {\tU ^H * \tU = \tU \mm \tU ^H = \tI }\). The <i>t-SVDM</i> of \(\smash {\tX \in \FFF ^{m \xx p \xx n}}\) is a decomposition \(\smash {\tX =
+\tU \mm \tS \mm \tV ^H}\) where \(\smash {\tU \in \FFF ^{m \xx m \xx n}, \tV \in \FFF ^{p \xx p \xx n}}\) are \(\mm \)-unitary, and \(\smash {\tS \in \FFF ^{m \xx p \xx n}}\) is f-diagonal, i.e., \(\smash {\tS _{:,:,k}}\) are
+diagonal for all \(k\). The <i>t-rank of \(\smash {\tX }\) under \(\mm \)</i> [5, 2] is the number of non-zero diagonal tubes in \(\smash {\tS }\), and the <i>multi-rank of \(\smash {\tX }\) under \(\mm \)</i>[3, 4] is a vector \(\bs {\rho
+}\) of integers \(\rho _k = \rank (\thX _{:,:,k})\). Given \(r\leq \min (m,p)\), the <i>t-rank \(r\) truncation</i> of \(\smash {\tX }\) under \(\mm \) is the tensor \(\smash {\tX _r = \tU _{:,1:r,:} \mm \tS _{1:r,1:r,:} \mm {\tV
+_{:,1:r,:}}^H = \sum _{j=1}^r \slice {\tU }_j \mm \tS _{j,j,:} \mm {\slice {\tV }_{j}}^H }\) with \(\smash {\slice {\tU }_j = \tU _{:,j,:}}\) being the \(j\)th ‘column’ slice of \(\smash {\tU }\). For \(\bs {\rho } = (\rho
+_1,\ldots ,\rho _n)\) with \(\rho _k \leq \min (m,p)\), the <i>multi-rank \(\bs {\rho }\) truncation</i> of \(\smash {\tX }\) under \(\mm \) is the tensor \(\smash {\tX _{\bs {\rho }}}\) such that \(\smash {[\wh {\tX _{\bs {\rho
+}}}]_{:,:,k} = \wh {\tU }_{:,1:\rho _k,:} \triangle \wh {\tS }_{1:\rho _k,1:\rho _k,:} \triangle {\wh {\tV }_{:,1:\rho _k,:}}^H }\). The central result of the tubal framework is that the above truncations are optimal in the
+sense of Frobenius norm error, provided that \(\matM \) is a nonzero multiple of a unitary matrix. Formally, let \(\matM \) be a nonzero multiple of a unitary matrix and \(\smash {\tX \in \FFF ^{m \xx p \xx n}}\). If \(\smash {\tens {Y} \in
+\FFF ^{m \xx p \xx n}}\) is of t-rank \(r\) (respectively, multirank \(\bs {\rho }\)) under \(\mm \) then \(\smash {\FNorm {\tX - \tY } \geq \FNorm {\tX - \tX _r} }\)[5, 2] (respectively, \(\smash {\FNorm {\tX - \tY } \geq \FNorm
+{\tX - \tX _{\bs {\rho }}} }\)[4]).
+</p>
+
+<p>
+In the above 3rd order example, each entry \(\smash {\bs {x}_{jk} \in \FFF ^{n}}\) of \(\smash {\tX }\) represents a <b><i>function</i></b> \(\smash {\bs {x}_{jk}\colon \Omega \to \FFF }\), where \(\Omega = [n] = \{1,\ldots
+,n\}\) and \(\smash {x_{j,k,t} = \bs {x}_{jk}(t)}\). A common assumption in practice, is that the domain \(\Omega \) of \(\smash {\bs {x}_{jk}}\) is actually a compact subset of \(\RR \) and the values \(\smash {x_{j,k,h}}\) are point
+evaluations of \(\smash {\bs {x}_{jk}}\) on a grid \(\smash {t_1 \leq t_2 \leq \cdots \leq t_n \in \Omega }\) such that \(\smash {x_{j,k,h} = \bs {x}_{jk}(t_h)}\). Furthermore, it is possible to consider the functions \(\smash {\bs
+{x}_{jk}}\) as elements of a Hilbert space \(\smash {(\cH ,\dotph {\cdot ,\cdot })}\) in which vector addition and scalar multiplication are defined pointwise. In this case, we have a ‘matrix of functions’ in \(\smash {\cH }\) and we write
+\(\smash {\tX \in \cH ^{m \xx p}}\).
+</p>
+<!--
+...... paragraph Matrices over Hilbert Spaces. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Matrices over Hilbert Spaces.</span>
+<a id="paper-autopage-6"></a>
+Suppose that \(\smash {\cH }\) is a separable Hilbert space over \(\smash {\FFF }\), and let \(\smash {\{\bs {\phi }_j\}_{j \in \ZZ }}\) be an orthonormal basis in \(\smash {\cH }\). Then, the mapping \(\smash {\bs {x} \mapsto \Phi
+{\bs {x}} = \sum _j \dotph {\bs {x},\bs {\phi }_j} \bs {e}_j}\) where \(\smash {\bs {e}_j}\) is the \(j\)th standard basis vector in the space \(\smash {\ell _2}\) of square summable sequences with the usual dot product, is an
+isometry. Note that if \(\bs {a}, \bs {b} \in \ell _2\) then the elementwise multiplication \(\bs {a} \odot \bs {b} \) is also in \(\ell _2\). A natural extension of the \(\mm \) product to \(\smash {\cH }\) is given by \(\smash {\bs {x}
+\pp \bs {y} = \Phi ^{*}(\Phi {\bs {x}} \odot \Phi {\bs {y}})}\) where \(\smash {\Phi ^{*}}\) is the adjoint (and inverse) of \(\smash {\Phi }\). Let \(\smash {\tX \in \cH ^{m \xx p}}\) and define the mode-3 operation of \(\smash
+{\Phi }\) on \(\smash {\tX }\) as the tensor \(\smash {\thX = \tX \xx _3 \Phi \in \ell _2^{m \xx p}}\) with \(\smash {\wh {\bs {x}}_{jk} = \Phi {\bs {x}_{jk}}}\). Correspondingly, the <i>the tensor-tensor \(\pp \)-product</i> of
+\(\smash {\tX \in \cH ^{m \xx p}, \tY \in \cH ^{p \xx q}}\) is \(\smash {\tX \pp \tY = (\wh {\tX } \triangle \wh {\tY }) \xx _3 \Phi ^* }\).
+</p>
+<!--
+...... paragraph The Challenge of Defining Tubal SVD in Infinite Dimensional Hilbert Space . ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">The Challenge of Defining Tubal SVD in Infinite Dimensional Hilbert Space .</span>
+<a id="paper-autopage-7"></a>
+Let \(\smash {\bs {x} \in \cH }\), then the operation \(T_{\bs {x}}\) defined by \(T_{\bs {x}} \bs {y} = \bs {x} \pp \bs {y}\) is a bounded linear operator on \(\smash {\cH }\). Furthermore, \(\smash {T_{\bs {x}}}\) is
+Hilbert-Schmidt operator since \(\sum _j \cHNormS {T_{\bs {x}} \bs {\phi }_j} = \sum _j \ltNormS {\wh {\bs {x}} \odot \bs {e}_j } = \sum _j |\wh {x}_j|^2 = \sum _j |\dotph {\bs {x},\bs {\phi }_j}|^2 = \cHNormS {\bs
+{x}} \). Thus, the a multiplicative identity in \(\smash {\cH }\) is impossible since it would imply that the identity operator is a Hilbert-Schmidt operator, in contradiction to the infinite-dimensionality of \(\smash {\cH }\). Direct consequences
+of this are that 1) there are no unit normalized slices in \(\smash {\cH ^p}\) 2) there are no \(\pp \)-unitary tensors in \(\smash {\cH ^{m \xx m}}\). Most importantly, no decomposition of the form \(\smash {\tX = \tU \pp \tS \pp \tV
+^H}\) can be defined in \(\smash {\cH ^{m \xx p}}\) such that \(\smash {\tU \in \cH ^{m \xx m}, \tV \in \cH ^{p \xx p}}\) are isometries.
+</p>
+<!--
+...... paragraph Quasitubal Framework. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-8">Quasitubal Framework.</span>
+<a id="paper-autopage-8"></a>
+Consider the set \(\smash {\cH ^p \coloneqq \bigoplus _{j=1}^p \cH }\) of slices \(\smash {\slice {X} = (\bs {x}_1,\ldots ,\bs {x}_p)}\) with elementwise addition and \(\pp \)-product by \(\cH \) elements, e.g., \(\smash {\slice
+{X} \pp \bs {a} = \bs {a} \pp \slice {X} = (\bs {a} \pp \bs {x}_1,\ldots ,\bs {a} \pp \bs {x}_p)}\) and \(\smash {\slice {X} + \slice {Y} = (\bs {x}_1 + \bs {y}_1,\ldots ,\bs {x}_p + \bs {y}_p)}\) for \(\smash {\slice
+{X},\slice {Y} \in \cH ^p}\) and \(\smash {\bs {a} \in \cH }\). An operator \(T\colon \cH ^p \to \cH ^m\) is said to be <b>t-linear</b> (or \(\cH \)-linear) if \(T(\bs {a} \pp \slice {X}) = \bs {a} \pp T\slice {X}\) for all
+\(\smash {\bs {a} \in \cH , \slice {X} \in \cH ^p}\). Let \(\smash {L(\cH ^p,\cH ^m)}\) be the set of t-linear operators from \(\smash {\cH ^p}\) to \(\smash {\cH ^m}\). Note that such operators are necessarily bounded and linear over
+\(\FFF \), hence \(\smash {L(\cH ^p,\cH ^m) \subset B(\cH ^p,\cH ^m)}\).
+</p>
+
+<p>
+Our theory is based on the following fundamental observations
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-9"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">0.1</span></span>. </span> <a id="autoid-1" ></a >An operator \(T\) is in \(\smash {L(\cH )}\) if and only if there exists a
+bounded sequence \(\smash {\wh {\bs {\tau }} \in \ell _\infty }\) such that \(\smash {T\bs {a} = \Phi ^*(\wh {\bs {\tau }} \odot \wh {\bs {a}})}\) for all \(\smash {\bs {a} \in \cH }\). If in addition, \(\smash {T}\) is
+Hilbert-Schmidt then \(\smash {\wh {\bs {\tau }} \in \ell _2}\) and there exists \(\smash {\bs {\tau } \in \cH }\) such that \(\smash {T\bs {a} = \bs {\tau } \pp \bs {a}}\) for all \(\smash {\bs {a} \in \cH }\).
+</p>
+
+<p>
+As a consequence, \(\smash {T \in L(\cH ^p,\cH ^m)}\) if and only if there exists \(\smash {\wh {\tens {T}} \in \ell _\infty ^{m \xx p}}\) such that \(\smash {T \slice {X} = \Phi ^* (\wh {\tens {T}} \triangle \wh {\slice
+{X}})}\) for all \(\smash {\slice {X} \in \cH ^{p}}\). If in addition, \(\smash {T}\) is Hilbert-Schmidt then \(\smash {\wh {\tens {T}} \in \ell _2^{m \xx p}}\) and there exists \(\smash {\tens {T} \in \cH ^{m \xx p}}\) such that
+\(\smash {T \slice {X} = \tens {T} \pp \slice {X}}\) for all \(\smash {\slice {X} \in \cH ^{p}}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+We call \(\smash {L(\cH )}\) elements <b>quasitubes</b> due to their tubal representation in \(\smash {\ell _\infty }\). Respectively, operators in \(\smash {L(\cH ^p,\cH ^m)}\) are called <b>quasitubal tensors</b> as they retain a
+tubal tensor structure in the coordinates of the transform domain. We use the same notation for \(\smash {L(\cH )}\) and \(\smash {L(\cH ^p,\cH ^m)}\) operators as for elements in \(\smash {\cH ,\cH ^{m \xx p}}\), therefore, the \(\pp \)
+product of quasitubal tensors reads as composition of t-linear operators. While it is not possible to identify the space \(\smash {L(\cH ^p,\cH ^m)}\) with \(\smash {\cH ^{m \xx p}}\) (as in the finite-dimensional case), the notation is still
+compatible, valid and useful.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-10"></a>
+<span class="amsthmnameplain">Lemma</span><span class="amsthmnumberplain"> <span class="textup">0.2</span></span>. </span> <a id="autoid-2" ></a >The set \(\smash {L(\cH )}\) with the usual operator addition, scaling,
+composition, adjoint and norm, is the smallest commutative, unital C*-algebra in which \(\smash {\cH }\) is embedded as a *-ideal. And it follows that \(\smash {L(\cH , \cH ^p) \cong L(\cH )^p }\) together with the \(L(\cH )\)-valued
+inner-product \(\smash {\dotmp {\slice {X},\slice {Y}} = \sum _{j=1}^p \bs {x}_j^* \pp \bs {y}_j} \) is a Hilbert C*-module over \(\smash {L(\cH )}\), in which \(\smash {\cH ^p}\) is embedded as a *-invariant submodule.
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Given \(\smash {\slice {X} \in L(\cH )^p}\) we have \(\smash {|\slice {X}|_{L(\cH )^p}^2 = \dotmp {\slice {X},\slice {X}} }\) which is a non-negative element in a C*-algebra, hence has a unique square root \(\smash {|\slice
+{X}|_{L(\cH )^p}}\), and the real valued norm \(\smash {\GNorm {\slice {X}}_{L(\cH )^p} = \GNorm {|\slice {X}|_{L(\cH )^p}}}\). The induced “operator norm” of an \(\smash {m \xx p}\) quasitubal tensors is then \(\smash {\GNorm
+{\tX } = \sup _{|\slice {Y}|_{L(\cH )^p} = 1} \GNorm {\tX \pp \slice {Y}}_{L(\cH )^m}}\). Another consequence of the Hilbert C*-module structure over a unital C*-algebra, is the ability to define \(\pp \)-orthogonality and \(\pp
+\)-unitarity for quasitubal tensors similarly to the finite-dimensional case. With the above, the ground is set for construction of a quasitubal SVD:
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-11"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">0.3</span></span>. </span> <a id="autoid-3" ></a >Let \(\smash {\tX }\) be an \(m \xx p\) quasitubal tensor, then there exists
+a decomposition \(\smash {\tX = \tU \pp \tS \pp \tV ^*}\) with \(\smash {\tU \in L(\cH ^m), \tV \in L(\cH ^p)}\) being \(\pp \)-unitary, and \(\smash {\tS \in L(\cH ^m,\cH ^p)}\) an f-diagonal tensor with diagonal entries
+\(\smash {\bs {s}_{1} \geq _{L(\cH )} \bs {s}_2 \geq _{L(\cH )} \cdots \geq _{L(\cH )} \bs {s}_{\min (m,p)} \geq _{L(\cH )} \bs {0}}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The t-rank and multirank of a quasitensor \(\smash {\tX }\) under \(\pp \), as well as t-rank and multi-rank truncations, are defined similarly to the finite-dimensional case. And we have the main result:
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-12"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">0.4</span></span>. </span> <a id="autoid-4" ></a >Given an \(m \xx p\) quasitubal tensor \(\smash {\tX }\), if \(\smash
+{\tens {Y} \in L(\cH ^p, \cH ^m)}\) is of t-rank \(r\) (respectively, multirank \(\bs {\rho }\)) under \(\pp \) then \(\smash {\GNorm {\tX - \tY } \geq \GNorm {\tX - \tX _r} }\) (respectively, \(\smash {\GNorm {\tX - \tY } \geq
+\GNorm {\tX - \tX _{\bs {\rho }}} }\)).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Objects in \(\smash {\cH ^{m \xx p}}\) have the elementwise \(\cH \) norm: \(\smash {\cHNormS {\tX } = \sum _{j,k} \cHNormS {\bs {x}_{jk}}}\), which is an equivalent to the Frobenius norm in the finite-dimensional case. Consider
+\(\smash {\tX = \tU \pp \tS \pp \tV ^* \in \cH ^{m \xx p}}\), then \(\smash {\tS \in \cH ^{m \xx p}}\) and \(\smash {\cHNorm {\tX } = \cHNorm {\tS }}\). Importantly
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-13"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">0.5</span></span>. </span> <a id="autoid-5" ></a >Given \(\smash {\tX \in \cH ^{m \xx p}}\), if \(\smash {\tens {Y} \in
+L(\cH ^p, \cH ^m)}\) is of t-rank \(r\) (respectively, multirank \(\bs {\rho }\)) under \(\pp \) then \(\smash {\cHNorm {\tX - \tY } \geq \cHNorm {\tX - \tX _r} }\) (respectively, \(\smash {\cHNorm {\tX - \tY } \geq \cHNorm {\tX -
+\tX _{\bs {\rho }}} }\)). In particular \(\smash {\tX _r, \tX _{\bs {\rho }} \in \cH ^{m \xx p}}\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... paragraph Possible Applications. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-14">Possible Applications.</span>
+<a id="paper-autopage-14"></a>
+Due to the strong theoretical foundation of the quasitubal SVD, a promising line of research is the development of multivariate functional PCA, in a similar spirit to our previous work on the finite-dimensional settings&nbsp;[7]. Furthermore, the
+matrix mimetic nature of the platform, combined with the optimality results for low-rank truncations suggest that direct extensions of randomized algorithms for low-rank matrix approximations to the quasitubal setting are possible and should offer
+theoretical guarantees. This opens the door to computational speedups in modeling and simulations of multi-input multi-output dynamical systems where the quality of the approximation is about as crucial as the computational cost. We provide
+numerical examples for the application of the quasitubal framework to multivariate functional data analysis and signal processing, and demonstrate the potential of the framework for developing eﬀicient tensor-based algorithms for such settings.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-15">References</h4>
+<a id="paper-autopage-15"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> K.&nbsp;Braman. Third-Order Tensors as Linear Operators on a Space of Matrices. <i>Linear Algebra and its Applications</i>, 433(7):1241–1253, 12 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> E.&nbsp;Kernfeld, M.&nbsp;Kilmer, and S.&nbsp;Aeron. Tensor–tensor products with invertible linear transforms. <i>Linear Algebra and its Applications</i>, 485:545–570, Nov. 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M.&nbsp;E. Kilmer, K.&nbsp;Braman, N.&nbsp;Hao, and R.&nbsp;C. Hoover. Third-Order Tensors as Operators on Matrices: A Theoretical and Computational Framework with Applications in
+Imaging. <i>SIAM Journal on Matrix Analysis and Applications</i>, 34(1):148–172, 2 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M.&nbsp;E. Kilmer, L.&nbsp;Horesh, H.&nbsp;Avron, and E.&nbsp;Newman. Tensor-tensor algebra for optimal representation and compression of multiway data. <i>Proceedings of the National
+Academy of Sciences</i>, 118(28):e2015851118, July 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> M.&nbsp;E. Kilmer and C.&nbsp;D. Martin. Factorization strategies for third-order tensors. <i>Linear Algebra and its Applications</i>, 435(3):641–658, 8 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> M.&nbsp;E. Kilmer and C.&nbsp;D.&nbsp;M. Martin. Decomposing a tensor - are there analogues to the svd, lu, qr, and other matrix decompositions for tensors?, 11 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> U.&nbsp;Mor, Y.&nbsp;Cohen, R.&nbsp;Valdés-Mas, D.&nbsp;Kviatcovsky, E.&nbsp;Elinav, and H.&nbsp;Avron. Dimensionality reduction of longitudinal ’omics data using modern tensor
+factorizations. <i>PLOS Computational Biology</i>, 18(7):e1010212, July 2022.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

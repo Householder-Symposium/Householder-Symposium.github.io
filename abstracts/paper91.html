@@ -1,0 +1,341 @@
+---
+layout: abstract
+absnum: 91
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\bm }[1]{\boldsymbol {#1}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Eﬀicient sample average approximation techniques for hyperparameter estimation in Bayesian inverse problems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Julianne Chung</span>, Malena Sabaté Landman, Scot M. Miller, Arvind K. Saibaba
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Inverse problems arise in many important applications, where the aim is to estimate some unknown inverse parameters from given observations. For large-scale problems where the number of unknowns can be large (e.g., due to the desire to
+reconstruct high-resolution images or dynamic image reconstructions) or for problems where observational datasets are huge, estimating the inverse parameters can be a computationally challenging task. Although there have been significant
+advancements in solving inverse problems, many of these approaches rely on a pre-determined, carefully-tuned set of hyperparameters (e.g., that define the noise and prior models) that must be estimated from the data. The need to estimate these
+hyperparameters further exacerbates the problem, often requiring repeated solves for many combinations of hyperparameters. In this work, we propose a sample average approximation (SAA) method that couples a Monte Carlo estimator with a
+preconditioned Lanczos method for the eﬀicient estimation of hyperparameters in Bayesian inverse problems.
+</p>
+
+<p>
+We are interested in linear inverse problems that involve recovering the parameters \(\mathbf {s} \in \mathbb {R}^n\) from measurements \(\mathbf {d}\in \mathbb {R}^m\), which have been corrupted by additive Gaussian measurement noise,
+\(\boldsymbol {\eta } \in \mathbb {R}^{m}\), and takes the form
+</p>
+
+<p>
+\[ \mathbf {d} = \mathbf {A} \mathbf {s} + \boldsymbol {\eta }, \qquad \boldsymbol {\eta } \sim \mathcal {N}(\mathbf {0}, \mathbf {R}(\boldsymbol {\theta }))\]
+</p>
+
+<p>
+where \(\mathbf {A} \in \mathbb {R}^{m \times n}\) represents the forward map and \(\boldsymbol {\theta } \in \mathbb {R}_+^{K}\), represents the (nonnegative) hyperparameters. In the hierarchical Bayes approach, we treat
+\(\boldsymbol {\theta }\) as a random variable, which we endow with prior density \(\pi _{\rm hyp}(\boldsymbol {\theta })\). We assume that the noise covariance matrix \(\mathbf {R} : \mathbb {R}_+^{K} \, \to \mathbb {R}^{m
+\times m},\) where \(\mathbf {R}(\cdot )\) is symmetric and positive definite (SPD), and has an inverse and square root that is computationally easy to obtain for any input (e.g., a diagonal matrix or a scalar times the identity). We assume that
+the prior distribution for the parameters \(\mathbf {s}\) is also Gaussian of the form \(\mathcal {N} (\boldsymbol {\mu }(\boldsymbol {\theta }), \mathbf {Q}(\boldsymbol {\theta })),\) where \(\boldsymbol {\mu }: \mathbb
+{R}_+^{K} \, \to \mathbb {R}^{n}\) and \(\mathbf {Q} : \mathbb {R}_+^{K} \, \to \mathbb {R}^{n \times n},\) where \(\mathbf {Q}(\cdot )\) is assumed to be SPD.
+</p>
+
+<p>
+With the above assumptions, we obtain the marginal posterior density,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+                                                                                                                                             (                     )
+                                                                                                                                               1
+                                                                         --><a id="eq:marginal"></a><!--π(θ | d) ∝ πhyp (θ) det(Ψ(θ))−1/2 exp − ∥Aµ(θ) − d∥2Ψ−1 (θ) ,                                                                               (1)
+                                                                                                                                               2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:marginal} \pi (\boldsymbol {\theta } \, | \, \mathbf {d}) \propto \pi _{\rm hyp}(\boldsymbol {\theta }) \det (\mathbf {\Psi }(\boldsymbol {\theta }))^{-1/2} \exp \left ( - \frac {1}{2} \| \mathbf {A}
+\boldsymbol {\mu }(\boldsymbol {\theta }) - \mathbf {d} \|^{2}_{\mathbf {\Psi }^{-1}(\boldsymbol {\theta })} \right ),
+\end{equation}
+
+</p>
+
+<p>
+where \(\boldsymbol {\Psi }(\boldsymbol {\theta }) = \mathbf {A}\mathbf {Q}(\boldsymbol {\theta })\mathbf {A}^\top + \mathbf {R}(\boldsymbol {\theta }).\) One goal would be to draw samples (e.g., using Markov Chain Monte
+Carlo) from (1), and using the samples to quantify the uncertainty in the hyperparameters. However, this may be prohibitive for large-scale problems because evaluating the density function (or its logarithm) requires evaluating the determinant of
+and multiple solves with the matrix \(\boldsymbol {\Psi }\) that depends on \(\boldsymbol {\theta }\), which can be expensive. To compound matters, hundreds of samples are required to get accurate statistics, which can involve several
+hundred thousand density function evaluations.
+</p>
+
+<p>
+Instead, we follow an empirical Bayes approach and focus on computing the maximum a posteriori (MAP) estimate, that is, the point estimate that maximizes the marginal posterior distribution or, equivalently, minimizes the negative log of the
+marginal posterior. That is, the problem of hyperparameter estimation becomes solving an optimization problem:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+                                                                                                                                        1               1
+                                                                        --><a id="eq:fullopt"></a><!-- min F (θ) ≡ − log πhyp (θ) +       logdet(Ψ(θ)) + ∥Aµ(θ) − d∥2Ψ(θ)−1 .                                                                       (2)
+                                                                                                          θ∈RK
+                                                                                                             +
+                                                                                                                                        2               2
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:fullopt} \min _{\boldsymbol {\theta } \in \mathbb {R}^K_+} \mathcal {F}(\boldsymbol {\theta }) \equiv -\log \pi _{\rm hyp}(\boldsymbol {\theta }) + \frac {1}{2} {\rm logdet}(\boldsymbol {\Psi
+}(\boldsymbol {\theta })) + \frac 12 \|\mathbf {A} \boldsymbol {\mu }(\boldsymbol {\theta }) - \mathbf {d}\|_{\mathbf {\Psi }(\boldsymbol {\theta })^{-1}}^2.
+\end{equation}
+
+</p>
+
+<p>
+Notice that solving (2) is a computationally intensive task since it involves computing log determinants. To address this challenge, we consider an SAA method for computing the MAP estimate of the marginalized posterior distribution that combines
+a stochastic average approximation of the objective function and the preconditioned Lanczos method to compute eﬀicient approximations of the function and gradient evaluations. The novel contributions of this work are as follows.
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1.</span> The method to estimate the objective function combines a Monte Carlo estimator for the log-determinant of the matrix with a preconditioned Lanczos approach to apply the matrix logarithm. We analyze the
+impact of the number of Monte Carlo samples and Lanczos iterations on the accuracy of the log-determinant estimator.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2.</span> We use a novel preconditioner to accelerate the Lanczos iterations. The preconditioner is based on a parametric low-rank approximation of the prior covariance matrix, that is easy to update for new values of
+the hyperparameters. In particular, no access to the forward/adjoint solver is needed to update the preconditioner, and only a modest amount of precomputation is needed as a setup cost (independent of the optimization).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3.</span> We also use a trace estimator to approximate the gradient that has two features: first, it works with a symmetric form of the argument inside the trace, and second, it is able to reuse Lanczos iterates from the
+objective function computations. Therefore, the gradient can be computed essentially for free (i.e., requiring no additional forward/adjoint applications).
+</p>
+</li>
+</ul>
+<!--
+...... paragraph Related works. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Related works.</span>
+<a id="paper-autopage-5"></a>
+The methods we describe here have some similarity to existing literature and share certain techniques in common. The problem of optimizing for hyperparameters is closely related to parameter estimation in Gaussian processes on maximum
+likelihood (we may think of it as setting the forward operator as the identity matrix). The literature on this topic is vast, but we mention a few key references that are relevant to our approach. In&nbsp;[3], the authors propose a matrix-free approach
+to estimate the hyperparameters and also use an SAA for optimization. In&nbsp;[2], the authors propose a reformulation of the problem that avoids computing the inversion of the (prior) covariance matrix. Approaches based on hierarchical matrices
+are considered in&nbsp;[8, 10, 1]. Preconditioned Lanczos methods for estimating the log-determinant and its gradient are considered in&nbsp;[6, 7]. However, the main difference is that the Gaussian process methods do not involve forward
+operators. This raises two issues: first, we have to account for the problem structure which is different from Gaussian processes, and second, we have to account for the computational cost of the forward operator (and its adjoint), which may be
+comparable or greater than the cost of the covariance matrices.
+</p>
+
+<p>
+On the inverse problem side, there have been relatively few works on computing the hyperparameters by optimization. Several works (e.g.,&nbsp;[4]) instead use sampling methods (e.g., Markov Chain Monte Carlo), but these methods are extremely
+expensive since they require several thousand evaluations of the likelihood to achieve accurate uncertainty estimates. In&nbsp;[9], we developed eﬀicient methods for hyperparameter estimation based on low-rank approximations using the generalized
+Golub-Kahan iterative method. A brief review of other techniques is also given in the same paper.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> S. Ambikasaran, A. K. Saibaba, E. F. Darve, and P. K. Kitanidis. Fast algorithms for Bayesian inversion. In Computational Challenges in the Geosciences, pages 101–142. Springer, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> M. Anitescu, J. Chen, and M. L. Stein. An inversion-free estimating equations approach for Gaussian process models. Journal of Computational and Graphical Statistics, 26(1):98–107, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> M. Anitescu, J. Chen, and L. Wang. A matrix-free approach for solving the parametric Gaussian process maximum likelihood problem. SIAM Journal on Scientific Computing, 34(1):A240–A262, 2012.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> J. M. Bardsley. Computational uncertainty quantification for inverse problems, volume 19 of Computational Science &amp; Engineering. Society for Industrial and Applied Mathematics (SIAM),
+Philadelphia, PA, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> E.&nbsp;Chow and Y.&nbsp;Saad. Preconditioned Krylov subspace methods for sampling multivariate Gaussian distributions. <i>SIAM Journal on Scientific Computing</i>, 36(2):A588–A608, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> K. Dong, D. Eriksson, H. Nickisch, D. Bindel, and A. G. Wilson. Scalable log determinants for Gaussian process kernel learning. Advances in Neural Information Processing Systems, 30, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> J. Gardner, G. Pleiss, K. Q. Weinberger, D. Bindel, and A. G. Wilson. Gpytorch: Blackbox matrix-matrix Gaussian process inference with GPU acceleration. Advances in neural information
+processing systems, 31, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> C. J. Geoga, M. Anitescu, and M. L. Stein. Scalable Gaussian process computations using hierarchical matrices. Journal of Computational and Graphical Statistics, 29(2):227–237, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> K. A. Hall-Hooper, A. K. Saibaba, J. Chung, and S. M. Miller. Eﬀicient iterative methods for hyperparameter estimation in large-scale linear inverse problems. arXiv preprint arXiv:2311.15827, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> V. Minden, A. Damle, K. L. Ho, and L. Ying. Fast spatial Gaussian process maximum likelihood estimation via skeletonization factorizations. Multiscale Modeling &amp; Simulation, 15(4):1584–1611,
+2017.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

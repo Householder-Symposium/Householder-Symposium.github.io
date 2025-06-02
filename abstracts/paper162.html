@@ -1,0 +1,251 @@
+---
+layout: abstract
+absnum: 162
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Eﬀicient Iterative Methods for the Solution of Sparse Tree-Coupled Saddle-Point Systems
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Bernhard Heinzelreiter</span>, John W. Pearson, Christoph Hansknecht, Andreas Potschka
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+The eﬀicient solution of huge-scale sparse systems of linear or linearized equations poses a pivotal question in many applications of optimization and, with that, in numerical linear algebra. In particular, the design of bespoke iterative solvers is often
+invaluable, in order to mitigate the large storage requirements that may be required by off-the-shelf methods for systems of very high dimensions. In order to make a numerical solver feasible and effective, information about the linear system and the
+structure of the optimization problem from which it is obtained must frequently be taken into account when designing the solver.
+</p>
+
+<p>
+A broad class of optimization problems with numerous applications involves sparsely-connected optimization problems. These consist of a series of constrained subproblems linked through a relatively small subset of variables. A general form of such
+problems can be written as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                                     ∑
+                                                                                                                     N
+                                                                                                          min            ϕi (ζi )
+                                                                                                        ζ1 ,...,ζN
+                                                                                                                     i=1
+                                                                                                                                                                                                                             (1)--><a id="eq:nlp"></a><!--
+                                                                                                                                −
+                                                                                                             s.t.     +
+                                                                                                                     Ci,j ζi + Ci,j ζj = 0 for all (i, j) ∈ A,
+                                                                                                                              ci (ζi ) = 0 for all i ∈ V,
+
+-->
+
+<p>
+
+\begin{equation}
+\begin{alignedat}{3} \min _{\zeta _1, \dots , \zeta _N}\quad &amp; \sum _{i=1}^N \phi _i\left (\zeta _i\right )\span \span \\ \text {s.t.}\quad &amp;&amp; C_{i, j}^+ \zeta _i + C_{i, j}^- \zeta _j &amp;= 0 \text {
+for all } (i, j) \in \mathbb {A}, \\ &amp;&amp; c_i\left (\zeta _i\right ) &amp;= 0 \text { for all } i \in \mathbb {V}, \end {alignedat} \label {eq:nlp}
+\end{equation}
+
+</p>
+
+<p>
+where \(\mathbb {V} = \{1, \dots , N\}\) with \(N \in \mathbb {N}\) is an index set for the subproblems, and \(\mathbb {A} \subseteq \mathbb {V} \times \mathbb {V}\) represent the connecting graph. The functions \(\phi _i\) denote
+the optimization functionals, \(c_i\) the constraint for each subproblem, and the vectors \(\zeta _i \in \mathbb {R}^{n_i}\) are to be determined. These problems play a crucial role in engineering applications, including stochastic programming,
+robust nonlinear model predictive control, and optimal control of networks (e.g., gas pipelines). They are also relevant in domain decomposition methods for partial differential equations (PDEs) and parallel-in-time approaches. Upon discretization
+and linearization, problem&nbsp;<span class="textup">(<a href="paper.html#eq:nlp">1</a>)</span> reduces to a large-scale sparse linear system of saddle-point structure of which the eﬀicient solution is desirable.
+</p>
+
+<p>
+In this talk, we derive a suite of direct and (in particular) iterative solvers for saddle-point systems with a tree-coupled structure [2], corresponding to a special case of a linearization of <span class="textup">(<a
+href="paper.html#eq:nlp">1</a>)</span>. Specifically, we extend well-studied structure-exploiting approaches for saddle-point systems [1] by incorporating the graph-based coupling structure, where interactions between the individual and
+otherwise isolated subsystems are expressed via generic coupling constraints. This allows us to make use of the special, sparse structure of the resulting Schur complement. We develop a range of structured preconditioners which may be embedded
+within suitable Krylov subspace methods, including block preconditioners, recursive preconditioners, and multi-level approaches. The majority of these methods are vastly parallelizable, allowing them to be applied in a real-time fashion. We prove a
+range of results relating to the convergence, complexity, and spectral properties of our algorithms. The performance of the preconditioners is showcased by applying them to an array of model problems. This includes model predictive control, multiple
+shooting for optimal control, and domain decomposition for PDEs. The numerical experiments validate our theoretical results and show improved performance over direct methods. Additionally, the experiments show that our methods are capable of
+coping with very large regimes of \(N\).
+</p>
+
+<p>
+We, furthermore, outline future work on the analysis of coupled systems with an even more general graph-based structure, including cyclic dependencies and the derivation of methods to automatically detect this exploitable structure within given
+linear systems. There is also the potential to combine this with parallel-in-time methodologies derived by the author for fluid flow control problems [3]. Moreover, we discuss the potential of this method to be embedded within the sequential
+homotopy method [4], which leads to global convergence for a number of nonlinear optimization problems.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Jacek Gondzio and Andreas Grothey. Parallel interior-point solver for structured quadratic programs: Application to financial planning problems. <i>Annals of Operations Research</i>, 152:319–339,
+2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Christoph Hansknecht, Bernhard Heinzelreiter, John&nbsp;W. Pearson, and Andreas Potschka. A framework for the solution of tree-coupled saddle-point systems. arXiv:2410.23385. 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Bernhard Heinzelreiter and John&nbsp;W. Pearson. Diagonalization-based parallel-in-time preconditioners for instationary fluid flow control problems. arXiv:2405.18964. 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Andreas Potschka and Hans&nbsp;Georg Bock. A sequential homotopy method for mathematical programming problems. <i>Mathematical Programming, Series A</i>, 187(1–2):459–486, 2021.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

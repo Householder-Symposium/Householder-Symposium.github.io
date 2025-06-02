@@ -1,0 +1,272 @@
+---
+layout: abstract
+absnum: 108
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Numerically generating Sobolev orthogonal polynomials
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Niel Van Buggenhout</span>, Francisco Marcellán, Nicola Mastronardi
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Based on structured matrix techniques, we propose new numerical algorithms to generate a sequence \(\{S_0(x),S_1(x),\dots , S_{K-1}(x) \}\) of Sobolev orthogonal polynomials (SOPs). In this sequence, the polynomial \(S_k(x)\) of degree
+\(k\) satisfies orthogonality conditions with respect to a Sobolev inner product \(( .,. )\), namely
+</p>
+
+<p>
+\[ ( S_k,S_\ell ) \left \{\begin {array}{c} = 0 \textrm { if } k\neq \ell ,\\ \neq 0 \textrm { if } k = \ell . \end {array} \right .\]
+</p>
+
+<p>
+A Sobolev inner product is a linear functional where the functions themselves and their derivatives, up to order \(M\), appear with (possibly different) weight functions \(w_m(x)\), i.e.,
+</p>
+
+<p>
+\[ (p,q) = \sum _{m=0}^{M} \int _{\Omega } p^{(m)}(x) q^{(m)}(x) w_m(x) dx. \]
+</p>
+
+<p>
+Sobolev orthogonal polynomials were first studied in approximation theory, when solving interpolation problems where values of the function and its derivatives are known [1]. The study of their analytical properties, e.g., the behavior of zeros, is an
+active area of research [4]. Moreover, since the weak form of differential equations gives rise to a Sobolev inner product, SOPs can be used to develop spectral methods [2]. The generation of sequences of SOPs is central to these applications.
+</p>
+
+<p>
+<span
+    class="fbox"
+    style="display:inline-block ; border:1pt solid #000000; padding:3pt ; color:#000000"
+> <b>Main problem</b>:<br />
+Given a Sobolev inner product \((.,.)\), generate the sequence \(\{S_0(x),S_1(x),\dots , S_{K-1}(x) \}\) such that<br />
+      <span class="listmarker">•</span> \(S_k(x)\) is a polynomial of exact degree \(k\), <br />
+      <span class="listmarker">•</span> \(( S_k,S_\ell ) = 0\), for \(k\neq \ell \), and \(( S_k,S_\ell ) \neq 0\), for \(k=\ell \).<br />
+ </span>
+</p>
+
+<p>
+Our proposed algorithms can be used for general Sobolev inner products, in this presentation we focus on a particular, interesting family of SOPs. Gegenbauer-Sobolev polynomials are orthogonal with respect to the continuous Sobolev inner product
+</p>
+
+<p>
+\[ (p,q )_{\mu } = \int _{-1}^{1} p(x) q(x) (1-x^2)^\mu dx + \lambda \int _{-1}^{1} p&apos;(x) q&apos;(x) (1-x^2)^\mu dx. \]
+</p>
+
+<p>
+A finite sequence of SOPs \(\{S_0(x),S_1(x),\dots ,S_{K-1}(x)\}\) is also orthogonal to a discrete Sobolev inner product. For Gegenbauer-Sobolev polynomials this discrete inner product can be obtained by applying the Gauss-Jacobi quadrature
+rule with weights \(\{\alpha _n\}_{n=1}^K\) and nodes \(\{x_n\}_{n=1}^K\) to \((.,.)_\mu \):
+</p>
+
+<p>
+\[ (S_k,S_\ell )_{\mu } \approx \langle S_k,S_\ell \rangle _{\mu } = \sum _{n=1}^K \alpha _{n} S_k(x_n) S_\ell (x_n) + \lambda \sum _{n=1}^K \alpha _{n} S_k&apos;(x_n) S_\ell &apos;(x_n). \]
+</p>
+
+<p>
+For \(\langle .,.\rangle _\mu \), a Hessenberg matrix \(H_K\) of size \(K\times K\) represents the recurrence relation of the SOPs,
+</p>
+
+<p>
+\[ x \left [\begin {array}{ccccc} S_0(x) &amp; S_1(x) &amp; S_2(x) &amp; \dots &amp;S_{K-1}(x) \end {array}\right ] = \left [\begin {array}{cccccc} S_0(x) &amp; S_1(x) &amp; S_2(x) &amp; \dots &amp;S_{K-1}(x) \end
+{array}\right ] H_K. \]
+</p>
+
+<p>
+We show that the matrix \(H_K\) can be computed by solving the following inverse eigenvalue problem&nbsp;[5], where \(H_K\) appears as the \(K\times K\) leading principal submatrix of the solution \(\tilde {H}\).
+</p>
+
+<p>
+<span
+    class="fbox"
+    style="display:inline-block ; border:1pt solid #000000; padding:3pt ; color:#000000"
+> <b>Inverse eigenvalue problem:</b><br />
+Given a discrete Sobolev inner product \(\langle .,. \rangle \), construct the \(2K\times 2K\) matrices \(\tilde {H}\), \(\tilde {Q}\) such that<br />
+      <span class="listmarker">•</span> \(\tilde {H}\) is a Hessenberg matrix and \(\tilde {Q}\) is unitary, \(\tilde {Q}^\ast \tilde {Q} = I \). <br />
+      <span class="listmarker">•</span> The first entries of the unitary matrix \(\tilde {Q}\) are determined by the weights \(\{\alpha _n\}_{n=1}^K\) in the discrete inner product, i.e., \(\tilde {Q} e_1 = w/\Vert w\Vert _2\), where
+      the vector \(w\) contains the weights \(\alpha _n\). <br />
+      <span class="listmarker">•</span> The matrix \(\tilde {H}\) satisfies the decomposition \(\tilde {H} = \tilde {Q}^\ast J \tilde {Q}\), for a Jordan-like matrix \(J\) determined by the nodes \(\{x_n\}_{n=1}^K\) and their
+      multiplicity, as they appear in the discrete inner product.<br />
+ </span>
+</p>
+
+<p>
+For the Gegenbauer-Sobolev polynomials, the vector of weights \(w\) and Jordan-like matrix \(J\) are
+</p>
+
+<p>
+\[ w = \left [\begin {array}{c} 0\\ \sqrt {\alpha _1}\\ \vdots \\ 0\\ \sqrt {\alpha _K}\\ \end {array}\right ] \qquad \textrm {and} \qquad J = \left [\begin {array}{ccccccc} x_1 &amp; \sqrt {\lambda }\\ &amp; x_1\\
+&amp; &amp; \ddots \\ &amp; &amp; &amp; x_K&amp; \sqrt {\lambda }\\ &amp; &amp; &amp; &amp; x_K\\ \end {array}\right ]. \]
+</p>
+
+<p>
+Thanks to this reformulation as a Hessenberg inverse eigenvalue problem, we can use structured matrix techniques to compute \(H_K\). Our proposed numerical algorithm is based on plane rotations and constructs \(H_K\) by employing unitary
+similarity transformations to the Jordan-like matrix \(J\). It does not require the storage of the whole matrix \(Q_k\), only its first column and is, therefore, more eﬀicient than the state-of-the-art algorithms [3]. Under mild assumptions on the
+Sobolev inner product, our numerical algorithm can be applied to any sequence of SOPs.
+</p>
+
+<p>
+For certain families of SOPs, specialized algorithms can be developed that exploit their properties. For Gegenbauer-Sobolev polynomials we exploit the fact that the Gegenbauer measure forms a symmetrical coherent pair with itself and use
+properties of (classical) Gegenbauer polynomials to obtain a factorization of \(H_K\) as the product of three structured matrices. The entries of all three matrices are given analytically by closed form expressions, which could reduce the accumulation
+of rounding error in \(H_K\). We discuss numerical experiments in which we compare the general purpose, specialized, and state-of-the-art algorithms [3] for Gegenbauer-Sobolev polynomials.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> P.&nbsp;Althammer, <i>Eine Erweiterung des Orthogonalitätsbegriffes bei Polynomen und deren Anwendung auf die beste Approximation</i>, J. Reine Angew. Math., 211 (1962), pp.&nbsp;192–204.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> L.&nbsp;Fernández, F.&nbsp;Marcellán, T.&nbsp;E. Pérez, and M.&nbsp;A. Piñar, <i>Sobolev orthogonal polynomials and spectral methods in boundary value problems</i>, Appl. Numer.
+Math., 200 (2024), pp.&nbsp;254–272.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> W.&nbsp;Gautschi and M.&nbsp;Zhang, <i>Computing orthogonal polynomials in Sobolev spaces</i>, Numer. Math., 71 (1995), pp.&nbsp;159–183.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> F.&nbsp;Marcellán and Y.&nbsp;Xu, <i>On Sobolev orthogonal polynomials</i>, Expo. Math., 33 (2015), pp.&nbsp;308–352.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> N.&nbsp;Van&nbsp;Buggenhout, <i>On generating Sobolev orthogonal polynomials</i>, Numer. Math., 155 (2023), pp.&nbsp;415–443.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

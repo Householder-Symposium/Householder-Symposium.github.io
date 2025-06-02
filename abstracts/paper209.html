@@ -1,0 +1,419 @@
+---
+layout: abstract
+absnum: 209
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+A hybrid method for computing a few singular triplets<br />
+of very large sparse matrices
+</h2>
+</div>
+<div class="center">
+
+<p>
+James Baglama, Jeniffer Picucci, <span class="underline">Vasilije Perović</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Ability to eﬀiciently compute a (partial) Singular Value Decomposition (SVD) of a matrix is essential in a wide range of problems, including data mining, genomics, machine learning, PCA, and signal processing. In such applications matrices tend to
+be very large and sparse and one is typically interested in computing only a few of the largest singular triplets. Over the last several decades this problem has led to a considerable amount of research and software development, see e.g.,
+[4, 6, 7, 9, 10, 11, 15] and the references therein.
+</p>
+
+<p>
+In this talk, for a large and sparse \(A \in \mathbb {R}^{\ell \times n}\), we present a new hybrid restarted Lanczos bidiagonalization method for the computation of a small number, \(k\), of its extreme singular triplets, i.e., we compute
+\(\left \{ \sigma _j, u_j, v_j\right \}_{j=1}^{k}\) such that
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                             Avj = σj uj ,      A T u j = σ j vj ,       j = 1, 2, . . . , k .--><a id="svd-via-rank-one-def"></a><!--
+
+-->
+
+<p>
+
+\begin{equation*}
+\label {svd-via-rank-one-def} A v_j \, = \, \sigma _j u_j, \qquad \ A^T u_j = \sigma _j v_j, \qquad j = 1,2,\ldots , k \, .
+\end{equation*}
+
+</p>
+
+<p>
+At the core of our proposed algorithm [3], as in many of the above listed ones, is the Golub-Kahan-Lanczos (GKL) bidiagonalization procedure which at step \(m\) results in the \(m\)-GKL factorization
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                     --><a id="bidiagA"></a><!--APm                 =    Qm B m ,                                    [            ]                                                         (1)
+                                                                                                                           T                  T                    [             ]        BmT
+                                                                                  --><a id="bidiagAT"></a><!--A Qm                  =    Pm B m + f eTm       =        Pm pm+1                        ,                                                     (2)
+                                                                                                                                                                                         βm eTm
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {bidiagA} AP_m &amp; = &amp; Q_m B_m \, , \\[-1mm] \label {bidiagAT} A^T Q_m &amp; = &amp; P_m B_m^T + f e_m^T \, = \, \big [ \, P_m \,\,\, p_{m+1} \, \big ] \left [ \begin{array}{c} B_m^T \\ \beta _m e_m^T
+\end {array} \right ] ,
+\end{eqnarray}
+
+</p>
+
+<p>
+where \(P_m = [p_1, \ldots ,p_m] \in {\mathbb {R}}^{n \times m}\) and \(Q_{m} = [q_1, \ldots ,q_{m}]~\in ~ {\mathbb {R}}^{\ell \times m}\) have orthonormal columns, the residual vector \(f\in \mathbb {R}^n\) satisfies
+\(P_{m}^Tf = 0\), \(\beta _m = \|f\|\), and \(p_{m+1} = f/\beta _m\), and \(B_m\) is an \(m \times m\) upper bidiagonal matrix.
+</p>
+
+<p>
+Approximations of the singular triplets of \(A\) can then be obtained from the singular triplets of \(B_m\), and in the case when the norm of the residual vector \(f\) is small, the singular values of \(B_m\) are close to the singular values of \(A\). But
+for modest values of \(m\) these approximations are typically poor (assuming limited memory makes increasing \(m\) not an option) and thus leaving one with an option to modify, explicitly or implicitly, the starting vector \(p_1\) and <i>restart the
+GKL process</i>. In [4] the authors exploited the mathematical equivalence for symmetric eigenvalue computations of the implicitly restarted Arnoldi (Lanczos) method of Sorensen [13] and the thick–restarting scheme of Wu and Simon [14], and
+applied it to a restarted GKL procedure. The resulting thick–restarted GKL routine, irlba, turns out to be a simple and computationally fast method for computing a few of the extreme singular triplets that is less sensitive to propagated round-off
+errors.
+</p>
+
+<p>
+However, the irlba routine [4] often struggles when the dimension, \(m\), of the Krylov subspaces is memory limited and kept relatively small in relationship to the number of desired singular triplets \(k\). Very recently, in the context of symmetric
+eigenvalue computation, we were able to overcame this memory restriction by creating a hybrid restarted Lanczos method that combines thick–restarting with Ritz vectors with a new technique, <i>iteratively refined Ritz vectors</i> [1]. We recall
+that in [8] Jia proposed to use <i>refined Ritz</i> vectors in place of Ritz vectors as eigenvector approximations of a square matrix \(M\) [8]. More specifically, for a given approximate eigenvalue \(\mu _j\) of \(M\), Jia’s method looks to minimize
+\(\| M z_j - \mu _j z_j \| \) for a unit vector \(z_j\) from a given subspace \(\mathcal {W}\). Moreover, in [8] it was shown that on the subspace \(\mathcal {W}\) an approximate eigenpair using the refined Ritz vector produced a “smaller”
+residual norm than an eigenpair approximation with the Ritz pair. More recently, in [1] we were able to extend this idea to <i>iterative refined Ritz</i> values/vectors for the symmetric eigenvalue problem that produces an even smaller residual norm
+than refined Ritz – this resulted in a better converging method that outperformed using Ritz or refined Ritz vectors. But this comes at the price as working with iteratively refined Ritz vectors is more challenging, in comparison to just Ritz vectors,
+due to the fact that the scheme of thick–restarting of Wu and Simon is not available [1]. However, not all is lost and in [1] we introduce an alternate scheme in which, based on the relationships first proposed by Sorensen [13] and later outlined in
+detail by Morgan [12], the iteratively refined Ritz vectors are linearly combined and then used to restart the process. We choose the constants in a way that the linear combination of the iteratively refined Ritz vectors resembles a restart, in a
+somewhat asymptotic sense, of thick–restarting, see [1] for details.
+</p>
+
+<p>
+In our most recent work [3], we applied the earlier results from [1] by making a natural connection between the symmetric eigenvalue problem and the SVD of \(A\in \mathbb {R}^{\ell \times n}\) and considered both the normal matrix
+\(A^TA\in \mathbb {R}^{n \times n}\) and the augmented matrix \(C=\big [\begin {smallmatrix} 0 &amp; A\\ A^T &amp; 0 \end {smallmatrix}\big ]\in \mathbb {R}^{(\ell +n) \times (\ell +n)}\). Multiplying <span
+class="textup">(<a href="paper.html#bidiagA">1</a>)</span> from the left by \(A^T\) produces the Lanczos tridiagonal decomposition of \(A^TA\), namely
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+                                                                                                                                                               [                 ]
+                                                                                                                                             [             ]         T
+                                                                                                                                                                    Bm Bm
+                                                                                              AT APm = Pm Bm
+                                                                                                           T
+                                                                                                             Bm + αm fm eTm =                    Pm pm+1                             .                                         (3)--><a id="norA"></a><!--
+                                                                                                                                                                   αm βm eTm
+
+-->
+
+<p>
+
+\begin{equation}
+\label {norA} A^TAP_m \,=\, P_m B_m^TB_m + \alpha _{m}f_m e_m^T \, = \, \big [ \, P_m \,\,\, p_{m+1} \, \big ] \, \left [ \begin{array}{c} B_m^TB_m \\ \alpha _m \beta _m e_m^T \end {array} \right ] .
+\end{equation}
+
+</p>
+
+<p>
+Similarly, in the case of matrix \(C\), after performing \(2m\) steps of the standard Lanczos algorithm with the starting vector \([0 \,;\, p_1] \in \mathbb {R}^{\ell +n}\) we have a \(2m \times 2m\) tridiagonal projection matrix, which when
+followed by an odd-even permutation gives the following Lanczos factorization [10]
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+
+<!--
+
+
+                                                                                                                                                                                                        
+                                                                                                          [              ][              ]           [                           ]       0            Bm
+                                                                                                               0     A         Qm    0                   Qm        0       0          Bm
+                                                                           --><a id="augA"></a><!--                                              =                                        T
+                                                                                                                                                                                                       0 .                                                 (4)
+                                                                                                              AT     0          0   Pm                    0       Pm     pm+1
+                                                                                                                                                                                       βm eTm          0
+
+-->
+
+
+<p>
+
+\begin{eqnarray}
+\label {augA} \left [ \begin{array}{cc} 0 &amp; A \\ A^T &amp; 0 \end {array} \right ] \left [ \begin{array}{cc} Q_m &amp; 0 \\ 0 &amp; P_m \end {array} \right ] &amp; = &amp; \left [ \begin{array}{ccc} Q_m &amp; 0
+&amp; 0 \\ 0 &amp; P_m &amp; p_{m+1} \end {array} \right ] \left [ \begin{array}{cc} 0 &amp; B_m \\ B_m^T &amp; 0 \\ \beta _m e_m^T &amp; 0 \end {array} \right ] \, .
+\end{eqnarray}
+
+</p>
+
+<p>
+With the two Lanczos factorization relationships <span class="textup">(<a href="paper.html#norA">3</a>)</span> and <span class="textup">(<a href="paper.html#augA">4</a>)</span>, the theoretical results and properties related to the
+hybrid iterative refined Ritz (eigenvalue) scheme in [1] are carried over resulting into two hybrid routines capable of computing few extreme singular triplets \(A\) based on either \(A^TA\) or \(C=\big [\begin {smallmatrix} 0 &amp; A\\ A^T
+&amp; 0 \end {smallmatrix}\big ]\). While this extension seems straightforward its implementation on <span class="textup">(<a href="paper.html#augA">4</a>)</span>, as well as the new development of iterative refined Ritz working on the
+normal system, is nontrivial.
+</p>
+
+<p>
+Through numerical examples, we have observed in [1, 3] that when memory was limited and only iterative refined Ritz vectors were used to restart the method there was potential for either slow or no convergence. In order to overcome this challenge,
+we developed a hybrid method that, based on extensive numerical tests and existing heuristics, switches between thick–restarted with Ritz vectors and under certain criteria it restarts with a linear combination of iterative refined Ritz vectors. We
+note that a careful balance is needed here, since on the one side the iterative refined Ritz vectors can give a better approximation but with possible stagnation, while on the other side thick–restarted is a more eﬀicient restarting scheme, but with not
+as good of approximations.
+</p>
+
+<p>
+In the rest of the talk we discuss multiple criteria we used to determine when to make a switch and provide some justification along with several useful heuristics. We also describe a simple yet powerful variant of our proposed hybrid algorithm
+(\(\approx \) 100 lines of MATLAB code) where the Krylov basis size is \(m=2\) and which requires a nontrivial purging of converged vectors. This simplified code, with potential for extensions [2], does not require calls to any LAPACK routines,
+thus making it portable and at the same time very competitive on a number of large matrices. For instance, in [3] we computed the largest singular triplet of a \(214\) million \(\times \) \(214\) million matrix (1.2GB) from the kmerV1r dataset on
+a laptop in just \(31\) minutes, whereas the irlba method [4] took \(75\) minutes, and MATLAB’s internal svds function required \(4\) hours. We conclude with several additional examples that illustrate the proposed hybrid scheme is competitive
+with other publicly available code when there are limited memory requirements.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Baglama, J., Bella, T., Picucci, J.: Hybrid iterative refined method for computing a few extreme eigenpairs of a symmetric matrix. SIAM J. Sci. Comput. <b>43</b>(5), S200–S224 (2021)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Baglama, J., Perović, V.: Explicit deflation in Golub-Kahan-Lanczos bidiagonalization methods. ETNA, <b>58</b> (2023)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Baglama, J., Perović, V., Picucci, J.: Hybrid iterative refined restarted Lanczos bidiagonalization methods. Numer. Algorithms, <b>92</b>(2) (2023)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Baglama, J., Reichel, L.: Augmented implicitly restarted Lanczos bidiagonalization methods. SIAM J. Sci. Comput. <b>27</b>(1), 19–42 (2005)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Baglama, J., Reichel, L.: An implicitly restarted block Lanczos bidiagonalization method using Leja shifts. BIT Numer. Math. <b>53</b>(2), 285–310 (2013)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Goldenberg, S., Stathopoulos, A., Romero, E.: A Golub–Kahan Davidson method for accurately computing a few singular triplets of large sparse matrices. SIAM J. Sci. Comput. <b>41</b>(4),
+A2172–A2192 (2019)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Hochstenbach, M.E.: Harmonic and refined extraction methods for the singular value problem, with applications in least squares problems. BIT Numer. Math. <b>44</b>(4), 721–754 (2004)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Jia, Z.: Refined iterative algorithms based on Arnoldi’s process for large unsymmetric eigenproblems. Linear Algebra Appl. <b>259</b>, 1–23 (1997)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Jia, Z., Niu, D.: An implicitly restarted refined bidiagonalization Lanczos method for computing a partial SVD. SIAM J. Matrix Anal. Appl. <b>25</b>(1), 246–265 (2003)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Kokiopoulou, E., Bekas, C., Gallopoulos, E.: Computing smallest singular triplets with implicitly restarted Lanczos bidiagonalization. Applied Numer. Math. <b>49</b>, 39–61 (2004).
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Lehoucq, R.B., Sorensen, D.C., Yang, C.: ARPACK users’ guide: Solution of large-scale eigenvalue problems with implicitly restarted Arnoldi methods. SIAM (1998)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Morgan, R.B.: On restarting the Arnoldi method for large nonsymmetric eigenvalue problems. Math. Comp. <b>65</b>(215), 1213–1230 (1996)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> Sorensen, D.C.: Implicit application of polynomial filters in a \(k\)-step Arnoldi method. SIAM J. Matrix Anal. Appl. <b>13</b>(1), 357–385 (1992)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> Wu, K., Simon, H.: Thick-restart Lanczos method for large symmetric eigenvalue problems. SIAM J. Matrix Anal. Appl. <b>22</b>(2), 602–616 (2000)
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> Wu, L., Romero, E., Stathopoulos, A.: Primme_svds: A high-performance preconditioned svd solver for accurate large-scale computations. SIAM J. Sci. Comput. <b>39</b>(5), S248–S271 (2017)
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

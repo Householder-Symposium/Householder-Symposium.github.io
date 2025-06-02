@@ -1,0 +1,840 @@
+---
+layout: abstract
+absnum: 182
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\newcommand {\R }{\mathbb {R}}\)
+
+\(\newcommand {\Ab }{\mathbf {A}}\)
+
+\(\newcommand {\bv }[1]{\mathbf {#1}}\)
+
+\(\newcommand {\vb }{\bv {v}}\)
+
+\(\newcommand {\E }{\mathbb {E}}\)
+
+\(\newcommand {\W }{\text {W}}\)
+
+\(\newcommand {\norm }[1]{\|#1\|}\)
+
+\(\DeclareMathOperator {\poly }{poly}\)
+
+\(\DeclareMathOperator {\tr }{tr}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Improved Spectral Density Estimation via Explicit and Implicit Deﬂation <sup>1</sup><a id="paper-autopage-2"></a>
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Rajarshi Bhattacharjee</span>, Rajesh Jayaram, Cameron Musco, Christopher Musco, Archan Ray
+</p>
+</div>
+<div class="abstract">
+
+
+<div class="abstracttitle">Abstract</div>
+
+<p>
+We study algorithms for approximating the spectral density of a symmetric matrix \(\Ab \in \R ^{n \times n}\) that is accessed through matrix-vector products. By combining an existing Chebyshev polynomial moment matching method with a
+deﬂation step that approximately projects oﬀ the largest magnitude eigendirections of \(\Ab \) before estimating the spectral density, we give an \(\epsilon \sigma _\ell (\Ab )\) error approximation in the Wasserstein-\(1\) metric using
+\(O(\ell \log n+1/\epsilon )\) matrix-vector products, where \(\sigma _\ell (\Ab )\) is the \(\ell ^{th}\) largest singular value of \(\Ab \). When \(\Ab \) exhibits fast singular value decay, this can be much stronger than prior work, which
+gives error \(\epsilon \sigma _1(\Ab )\) using \(O(1/\epsilon )\) matrix-vector products. We also show that our bound is nearly tight: \(\Omega (\ell +1/\epsilon )\) matrix-vector products are required to achieve error \(\epsilon \sigma
+_\ell (\Ab )\).
+</p>
+
+<p>
+We further show that the popular Stochastic Lanczos Quadrature (SLQ) method matches the above bound, even though SLQ itself is parameter-free and performs no explicit deﬂation. This explains the strong practical performance of SLQ, and
+motivates a simple variant that achieves an even tighter error bound. Our error bound for SLQ leverages an analysis that views it as an implicit polynomial moment matching method, along with recent results on low-rank approximation with
+single-vector Krylov methods. We use these results to show that SLQ can perform implicit deﬂation as part of moment matching.
+</p>
+</div>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;Based on paper to appear at SODA 2025. Preprint available at&nbsp;[BJM\(^{+}\)24]
+</p>
+
+
+</div>
+<!--
+...... section Introduction ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">1&#x2003;</span>Introduction</h4>
+<a id="paper-autopage-6"></a>
+
+
+<p>
+Given a symmetric matrix \(\Ab \in \R ^{n \times n}\) with eigenvalues \(\lambda _1(\Ab ), \ldots \lambda _n(\Ab )\), the <em>spectral density</em> of \(\Ab \) is deﬁned as:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                     1∑
+                                                                                                                        n
+                                                                                                          sA (x) =         δ(x − λi (A)),
+                                                                                                                     n i=1
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+s_{\Ab }(x)=\frac {1}{n}\sum _{i=1}^n \delta (x-\lambda _i(\Ab )),
+\end{align*}
+where \(\delta (.)\) is the Dirac delta function. The spectral density \(s_{\bv A}\) can be computed directly by performing a full eigendecomposition of \(\bv A\) in \(O(n^\omega )\) time, for \(\omega \approx 2.37\) being the exponent of
+fast matrix multiplication. However, when \(\Ab \) is very large or where \(\bv A\) can only be accessed through a small number of queries, we often want to approximate \(s_{\Ab }\) by some \(\tilde s_{\bv A}\) such that \(\tilde s_{\bv
+A}\) and \(s_{\bv A}\) are close in some metric. Spectral density estimation is applied throughout the sciences [Ski89, SR94, STBB17, SRS20], network science [FDBV01, EG17, DBB19], machine learning and deep learning in particular
+[RL18, PSG18, MM19, GKX19], numerical linear algebra [DNPS16, LXES19], and beyond. In this work, we focus on the Wasserstein-\(1\) (i.e., earth mover’s) distance, \(W_1(s_{\bv A}, \tilde s_{\bv A})\), which has been studied in a number
+of recent works giving formal approximation guarantees for SDE [CTU21, BKM22, CTU22]. Moreover, \(\Ab \) will be accessed only through matrix vector queries of the form \(\Ab \vb \) for any query vector \(\vb \). Most state-of-the-art
+matrix-vector query algorithms for SDE are based on Krylov subspace methods that fall into two general classes.
+</p>
+
+<p>
+<b>Moment Matching.</b> The ﬁrst class of methods approximates \(s_{\bv A}\) by approximating its polynomial moments. I.e., \(\E _{s_\bv {A}} [p(x)] = \frac {1}{n} \sum _{i=1}^n p(\lambda _i(\bv A)) = \frac {1}{n}\tr
+(p(\bv A))\), where \(p\) is a low-degree polynomial. We can employ stochastic trace estimation methods like Hutchinson’s method [Gir87, Hut90] to approximate this trace using just a small number of matrix-vector products with \(p(\bv A)\)
+and in turn \(\bv A\), since if \(p\) has degree \(k\), a single matrix-vector product with \(p(\bv A)\) can be performed using \(k\) matrix vector products with \(\bv A\). After approximating the moments for a set of low-degree polynomials
+(e.g., the ﬁrst \(k\) monomials, or the ﬁrst \(k\) Chebyshev polynomials), we can let \(\tilde s_{\bv A}\) be a distribution that matches these moments as closely as possible, and thus should closely match \(s_{\bv A}\). Moment matching
+methods include the popular Kernel Polynomial Method (KPM) [SR94, Wan94, WWAF06] and its variants [CPB10, LSY16, BKM22, Che23]. Braverman et al. [BKM22] analyze a Chebyshev Moment Matching method, which can be thought of as a
+simple variant of KPM, showing that the method can compute \(\tilde s_{\bv A}\) satisfying \(W_1(s_{\bv A},\tilde s_{\bv A}) \le \epsilon \cdot \norm {\bv A}_2\) with probability \(\ge 1-\delta \) using just \(O(b/\epsilon )\)
+matrix vector products, where \(b = \max (1, \frac {1}{n \epsilon ^2} \log ^2 \frac {1}{\epsilon \delta } \log ^2 \frac {1}{\epsilon })\). Note that \(b = 1\) in the common case when \(\epsilon = \tilde \Omega (1/\sqrt
+{n})\). Here \(\norm {\bv A}_2\) denotes the spectral norm of \(\bv A\) – i.e., its largest eigenvalue magnitude. They prove a similar guarantee for KPM itself, but with a worse dependence on \(\epsilon \).
+</p>
+
+<p>
+<b>Lanczos-Based Methods.</b> This class of methods computes a small number of approximate eigenvalues of \(\bv A\) using the Lanczos method, and lets \(\tilde s_{\bv A}\) be a distribution supported on these eigenvalues, with
+appropriately chosen probability mass placed at each. The canonical method of this form is Stochastic Lanczos Quadrature (SLQ) [CTU21, GM09]. Many other variants have also been studied. Some place probability mass not just at the
+approximate eigenvalues, but on Gaussian or other simple distributions centered at these eigenvalues [LG82, BRP92, LSY16, HHK72]. Chen et al. [CTU21, CTU22] prove that the Lanczos-based SLQ method gives essentially the same approximation
+bound as&nbsp;[BKM22]: error \(\epsilon \cdot \norm {\bv A}_2\) using \(O(1/\epsilon )\) matrix-vector products when \(\epsilon = \tilde \Omega (1/\sqrt {n})\)<sup>2</sup>.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-7"></a>
+<p>
+<sup>2</sup>&nbsp;The notations \(\Tilde {O}\) and \(\Tilde {\Omega }\) means some logarithmic factors are present.
+</p>
+
+
+</div>
+<!--
+...... section Our Results ......
+-->
+<h4 id="autosec-8"><span class="sectionnumber">2&#x2003;</span>Our Results</h4>
+<a id="paper-autopage-8"></a>
+
+
+<p>
+Our main contribution is to show that both moment matching and Lanczos based methods for SDE can achieve improved bounds on \(W_1(s_{\bv A},\tilde s_{\bv A})\) that depend on \(\sigma _{l+1}(\bv A)\), the \((l+1)^{st}\) largest
+singular value of \(\bv A\) for some parameter \(l\), instead of \(\norm {\bv A}_2\). For matrices that exhibit spectral decay and thus have \(\sigma _{l+1}(\bv A) \ll \sigma _1(\bv A) = \norm {\bv A}_2\), our bounds can be much
+stronger than the bound \(W_1(s_{\bv A},\tilde s_{\bv A}) \le \epsilon \cdot \norm {\bv A}_2\) achieved in prior work, which roughly corresponds to estimating each eigenvalue to average error \(\epsilon \cdot \norm {\bv A}_2\). We
+also provide a lower bound showing that our bounds are near optimal upto some logarithmic factors.
+</p>
+<!--
+...... subsection Improved SDE via Moment Matching with Explicit Deflation ......
+-->
+<h5 id="autosec-9"><span class="sectionnumber">2.1&#x2003;</span>Improved SDE via Moment Matching with Explicit Deﬂation</h5>
+<a id="paper-autopage-9"></a>
+
+
+<a id="sec:initialDeflation"></a>
+
+<p>
+Our ﬁrst contribution is a modiﬁcation of the moment matching method of [BKM22] that ﬁrst ‘deﬂates’ oﬀ any eigenvalue of \(\bv {A}\) with magnitude signiﬁcantly larger than \(\sigma _{l+1}(\bv {A})\), before estimating the spectral density.
+Eigenvalue deﬂation is widely applied throughout numerical linear algebra to problems like linear system solving [BEPW98, FV01, GOSS16, FTU23], trace estimation [GSO17, Lin17, MMMW21], norm estimation [MNS\(^{+}\)18], and beyond
+[CS97]. Speciﬁcally, the method uses a block Krylov subspace method to ﬁrst compute highly accurate approximations to the \(p\) largest magnitude eigenvalues of \(\bv {A}\), for some \(p \le l\), along with an orthonormal matrix \(\bv Z \in
+\R ^{n \times p}\) with columns approximating the corresponding eigenvectors. It uses moment matching to estimate the spectral density of \(\bv {A}\) projected away from these approximate eigendirections \((\bv I - \bv {ZZ}^T)\bv {A}
+(\bv I-\bv {ZZ}^T)\), achieving error \(\epsilon \sigma _{l+1}(\bv {A})\) since this matrix has spectral norm bounded by \(O(\sigma _{p+1}(\bv {A})) = O(\sigma _{l+1}(\bv {A}))\) if \(\bv Z\) is suﬃciently accurate. It then modiﬁes
+this approximate density to account for the probability mass at the top \(p\) eigenvalues. While block Krylov methods are well understood for related tasks like eigenvalue and eigenvector computation [Par98, Tro18], low-rank approximation
+[HMT11, MM15], singular value approximation [MM15, MNS\(^{+}\)18, BN23], linear system solving [LSY98, Saa03], our work requires a careful analysis of eigenvalue/eigenvector approximation with these methods that may be of independent
+interest. Overall, the above approach gives the following result:
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-10"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">1</span></span><span class="amsthmnoteplain"> (SDE with Explicit Deﬂation)</span>. </span> <a id="autoid-1" ></a ><a
+id="thm:sde1"></a> For any \(\epsilon \in (0,1)\), \(l \in [n]\), and any constants \(c_1,c_2 &gt; 0\), Algorithm 1 of&nbsp;[BJM\(^{+}\)24] performs \(O\left (l\log n+\frac {b}{\epsilon } \right )\) matrix-vector products with
+\(\Ab \) where \(b=\max \left (1,\frac {1}{n\epsilon ^2}\log ^2 \frac {n}{\epsilon }\log ^2 \frac {1}{\epsilon } \right )\) and computes a probability density function \(\tilde s_{\bv {A}}\) such that, with probability at least
+\(1-\frac {1}{n^{c_1}}\),
+</p>
+
+<p>
+\[\W _1(s_{\Ab },\tilde s_{\bv {A}}) \leq \epsilon \cdot \sigma _{l+1}(\Ab ) +\frac {\|\Ab \|_2}{n^{c_2}}.\]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The additive error \(\frac {\|\Ab \|_2}{n^{c_2}}\) can be thought of as negligible – comparable e.g., to round-oﬀ error when directly computing \(s_{\bv {A}}\) using a full eigendecomposition in ﬁnite precision arithmetic [BGVKS22].
+</p>
+
+<p>
+We further show that our algorithm is optimal amongst all matrix-vector query algorithms, up to logarithmic factors and the negligible additive error term. Our proof leverages an existing lower bound for distinguishing Wishart matrices of diﬀerent
+ranks, previously used to give matrix-vector query lower bounds for the closely related problem of eigenvalue estimation [SW23]. Formally:
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-11"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">2</span></span><span class="amsthmnoteplain"> (SDE Lower Bound)</span>. </span> <a id="autoid-2" ></a ><a
+id="thm:lower_bound"></a> Any (possibly randomized) algorithm that given symmetric \(\bv {A} \in \R ^{n \times n}\) outputs \(\tilde s_{\bv {A}}\) such that, with probability at least \(1/2\), \(W_1(s_\bv {A},\tilde s_{\bv {A}}) \le
+\epsilon \sigma _{l+1}(\Ab )\) for \(\epsilon \in (0,1)\) and \(l \in [n]\) must make \(\Omega \left (l +\frac {1}{\epsilon } \right )\) (possibly adaptively chosen) matrix-vector queries to \(\Ab \).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... subsection Implicit Deflation Bounds for Stochastic Lanczos Quadrature ......
+-->
+<h5 id="autosec-12"><span class="sectionnumber">2.2&#x2003;</span>Implicit Deﬂation Bounds for Stochastic Lanczos Quadrature</h5>
+<a id="paper-autopage-12"></a>
+
+
+<p>
+Our second contribution is to show that the popular Stochastic Lanczos Quadrature (SLQ) method for SDE [LSY16, CTU21] nearly matches the improved error bound of Theorem <a href="paper.html#thm:sde1">1</a> <em>for any choice of
+\(l\)</em>, even though SLQ is ‘parameter-free’ and performs no explicit deﬂation step. This result helps to justify the strong practical performance of SLQ and the observed ‘spectrum adaptive’ nature of this method as compared to standard
+moment matching-based methods like KPM [CTU21].
+</p>
+
+<p>
+A key idea used to achieve this bound is to view SLQ as an implicit moment matching method as in [CTU21, CTU22], and to analyze it similarly to KPM and other explicit moment matching methods. We combine this analysis approach with recent
+work on low-rank approximation with single-vector (i.e., non-block) Krylov methods [MMM24] to show that SLQ can perform ‘implicit deﬂation’ as part of moment matching to achieve the improved error bound. Formally, we have:
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-13"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">3</span></span><span class="amsthmnoteplain"> (SDE with SLQ)</span>. </span> <a id="autoid-3" ></a ><a
+id="thm:slq"></a> Let \(l \in [n]\), and \(\epsilon , \delta \in (0,1)\). Let \(g_{\min }=\min _{i \in [l]} \frac {\sigma _i(\Ab )-\sigma _{i+1}(\Ab )}{\sigma _i(\Ab )}\) and \(\kappa =\frac {\|\Ab \|_2}{\sigma
+_{l+1}(\bv {A})}\). SLQ run for \(m = O(l\log \frac {1}{g_{\min }}+\frac {1}{\epsilon }\log \frac {n \cdot \kappa }{\delta })\) iterations performs \(m\) matrix vector products with \(\bv {A}\) and outputs a probability density
+function \(\tilde s_{\bv {A}}\) such that, with probability at least \(1-\delta \),
+</p>
+
+<p>
+\[W_1(s_{\Ab },\tilde s_{\bv {A}}) \leq \Tilde {O}\left (\epsilon \cdot \sigma _{l+1}(\bv {A}) + \frac {\sigma _{l+1}(\Ab )}{\sqrt {n}}+\frac {l}{n}\|\Ab \|_2 \right ).\]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Theorem <a href="paper.html#thm:slq">3</a> essentially matches our result for moment matching with explicit deﬂation (Theorem <a href="paper.html#thm:sde1">1</a>) up to some small caveats, discussed below. First, the number of matrix
+vector products has a logarithmic dependence on the minimum gap \(g_{\min }\) amongst the top \(l\) singular values as well as the condition number \(\kappa =\frac {\| \Ab \|_2}{\sigma _{l+1}(\bv {A})}\). The dependence on the
+minimum gap is inherent, as non-block Krylov methods like SLQ require a dependence on \(g_{\min }\) in order to perform deﬂation/low-rank approximation [MMM24]. We note that, in practice, \(g_{\min }\) is generally not too small. Also, by
+adding a random perturbation to \(\bv {A}\) with spectral norm bounded by \(\frac {\norm {\bv {A}}_2}{\poly (n)}\), one can ensure that both \(g_{\min } \ge \frac {1}{\poly (n)}\) and \(\kappa \leq \poly (n)\) with high
+probability, and thus replace the \(O(l \log \frac {1}{g_{\min }})\) term with an \(O(l \log n)\) and the \(O(\frac {\log (n \kappa )}{\epsilon })\) term with \(O(\frac {\log n}{\epsilon })\), matching Theorem <a
+href="paper.html#thm:sde1">1</a>. See e.g., [MMM24].
+</p>
+
+<p>
+Second, Theorem <a href="paper.html#thm:slq">3</a> has an additional error term of size \(\tilde O(\sigma _{l+1}(\bv {A})/\sqrt {n})\). This term is lower order whenever \(\epsilon = \tilde \Omega (1/\sqrt {n})\). Further, we
+believe that this term, along with the dependence on \(g_{\min }\) can be removed by using a variant on SLQ that is popular in practice, where the densities output by multiple independent runs of the method are averaged together to produce
+\(\tilde s(\bv {A})\).
+</p>
+
+<p>
+Finally, Theorem <a href="paper.html#thm:slq">3</a> has an additional error term of size \(\tilde O(\norm {\bv {A}}_2 \cdot l/n)\). In the natural case when we run for \(m \ll n\) iterations and thus \(l \ll n\), this term will be small.
+However, it cannot be avoided: even for a matrix with rank \(\le l\) with well-separated eigenvalues, while the Lanczos method will converge to near-exact approximations to these eigenvalues (with error bounded by \(\frac {\norm {\bv
+{A}}_2}{n^c}\)), the probability distribution output by SLQ will not place mass exactly \(1/n\) at these approximate eigenvalues and thus will not achieve SDE error \(O(\frac {\norm {\bv {A}}_2}{n^c})\).
+</p>
+
+<p>
+This limitation motivates us to introduce a simple variant of SLQ, which we call <em>variance reduced SLQ</em>, which places mass exactly \(1/n\) at any eigenvalue computed by Lanczos that has converged to suﬃciently small error. This variant
+gives the following stronger error bound:
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-14"></a>
+<span class="amsthmnameplain">Theorem</span><span class="amsthmnumberplain"> <span class="textup">4</span></span><span class="amsthmnoteplain"> (SDE with Variance Reduced SLQ)</span>. </span> <a id="autoid-4" ></a
+><a id="thm:varslq"></a> Let \(l \in [n]\), and \(\epsilon ,\delta \in (0,1)\). Let \(g_{\min }=\min _{i \in [l]} \frac {\sigma _i(\Ab )-\sigma _{i+1}(\Ab )}{\sigma _i(\Ab )}\) and \(\kappa =\frac {\|\Ab \|_2}{\sigma
+_{l+1}(\bv {A})}\). Algorithm 5 of&nbsp;[BJM\(^{+}\)24] run for \(m = O(l\log \frac {1}{g_{\min }}+\frac {1}{\epsilon }\log \frac {n \cdot \kappa }{\delta })\) iterations performs \(m\) matrix vector products with \(\bv {A}\)
+and outputs a probability density function \(\tilde s_{\bv {A}}\) such that, with probability at least \(1-\delta \), for some ﬁxed constant \(c&gt;0\),
+</p>
+
+<p>
+\[W_1(s_{\Ab },\tilde s_{\bv {A}}) \leq \Tilde {O}\left (\epsilon \cdot \sigma _{l+1}(\bv {A}) +\frac {\sigma _{l+1}(\Ab )}{\sqrt {n}}+ \frac {l}{n}\sigma _{l+1}(\Ab ) \right )+\frac {\| \Ab \|_2}{n^c}.\]
+</p>
+
+<p>
+
+
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<!--
+...... section Future Work ......
+-->
+<h4 id="autosec-15"><span class="sectionnumber">3&#x2003;</span>Future Work</h4>
+<a id="paper-autopage-15"></a>
+
+
+<p>
+There are a number of directions inspired by our work which can be pursued in the future.
+</p>
+
+<p>
+<b>Lanczos based Matrix Function Approximation.</b> Variants of SLQ and Lanczos have been used to obtain algorithms for estimating general functions of the trace of \(\Ab \), \(\tr (f(A))\)&nbsp;[UCS17, CTU22, CH23]. The Lanczos
+method itself can approximate diﬀerent matrix functions like rational functions very accurately&nbsp;[ACG\(^{+}\)24]. Our deﬂation based analysis, particularly that of the variance reduced SLQ, could be used to give improved spectrum adaptive
+bounds for all these methods.
+</p>
+
+<p>
+<b>Numerical stability.</b> The Lanczos algorithm is known to suﬀer from numerical stability issues when implemented in ﬁnite precision arithmetic&nbsp;[Che24]. A more careful analysis of how the algorithms perform under ﬁnite precision
+arithmetic will be interesting. However, we note that our experiments (Section 6 of&nbsp;[BJM\(^{+}\)24]) show that our algorithms work pretty well in practice.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-16">References</h4>
+<a id="paper-autopage-16"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[ACG\(^{+}\)24]&#x2003;</span> Noah Amsel, Tyler Chen, Anne Greenbaum, Cameron Musco, and Chris Musco. Nearly optimal approximation of matrix functions by the lanczos method. In <i>NeuRIPS</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BEPW98]&#x2003;</span> Kevin Burrage, Jocelyne Erhel, Bert Pohl, and Alan Williams. A deﬂation technique for linear systems of equations. <i>SIAM Journal on Scientiﬁc Computing</i>, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BGVKS22]&#x2003;</span> Jess Banks, Jorge Garza-Vargas, Archit Kulkarni, and Nikhil Srivastava. Pseudospectral shattering, the sign function, and diagonalization in nearly matrix multiplication time.
+<i>Foundations of Computational Mathematics</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BJM\(^{+}\)24]&#x2003;</span> Rajarshi Bhattacharjee, Rajesh Jayaram, Cameron Musco, Christopher Musco, and Archan Ray. Improved spectral density estimation via explicit and implicit deﬂation. <a
+href="https://arxiv.org/abs/2410.21690" target="_blank" >https://arxiv.org/abs/2410.21690</a>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BKM22]&#x2003;</span> Vladimir Braverman, Aditya Krishnan, and Christopher Musco. Sublinear time spectral density estimation. In <i>Proceedings of the 54th Annual ACM Symposium on Theory of Computing
+(STOC)</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BN23]&#x2003;</span> Ainesh Bakshi and Shyam Narayanan. Krylov methods are (nearly) optimal for low-rank approximation. In <i>Proceedings of the 64th Annual IEEE Symposium on Foundations of Computer
+Science (FOCS)</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BRP92]&#x2003;</span> C&nbsp;Benoit, E&nbsp;Royer, and G&nbsp;Poussigue. The spectral moments method. <i>Journal of Physics: Condensed Matter</i>, 1992.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[CH23]&#x2003;</span> Tyler Chen and Eric Hallman. Krylov-aware stochastic trace estimation. <i>SIAM Journal on Matrix Analysis and Applications</i>, 44(3):1218–1244, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Che23]&#x2003;</span> Tyler Chen. A spectrum adaptive kernel polynomial method. <i>The Journal of Chemical Physics</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Che24]&#x2003;</span> Tyler Chen. The lanczos algorithm for matrix functions: a handbook for scientists, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[CPB10]&#x2003;</span> L&nbsp;Covaci, FM&nbsp;Peeters, and M&nbsp;Berciu. Eﬃcient numerical approach to inhomogeneous superconductivity: The Chebyshev-Bogoliubov–de Gennes method. <i>Physical review
+letters</i>, 2010.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[CS97]&#x2003;</span> Andrew Chapman and Yousef Saad. Deﬂated and augmented Krylov subspace techniques. <i>Numerical linear algebra with applications</i>, 1997.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[CTU21]&#x2003;</span> Tyler Chen, Thomas Trogdon, and Shashanka Ubaru. Analysis of stochastic Lanczos quadrature for spectrum approximation. In <i>Proceedings of the 38th International Conference on Machine
+Learning (ICML)</i>, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[CTU22]&#x2003;</span> Tyler Chen, Thomas Trogdon, and Shashanka Ubaru. Randomized matrix-free quadrature for spectrum and spectral sum approximation. <i><a href="http://arxiv.org/abs/2204.01941"
+target="_blank" >arXiv:2204.01941</a></i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DBB19]&#x2003;</span> Kun Dong, Austin&nbsp;R Benson, and David Bindel. Network density of states. In <i>Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery and Data
+Mining (KDD)</i>, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DNPS16]&#x2003;</span> Edoardo Di&nbsp;Napoli, Eric Polizzi, and Yousef Saad. Eﬃcient estimation of eigenvalue counts in an interval. <i>Numerical Linear Algebra with Applications</i>, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[EG17]&#x2003;</span> Nicole Eikmeier and David&nbsp;F Gleich. Revisiting power-law distributions in spectra of real world networks. In <i>Proceedings of the 23rd ACM SIGKDD International Conference on
+Knowledge Discovery and Data Mining (KDD)</i>, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[FDBV01]&#x2003;</span> Illés&nbsp;J Farkas, Imre Derényi, Albert-László Barabási, and Tamas Vicsek. Spectra of “real-world” graphs: Beyond the semicircle law. <i>Physical Review E</i>, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[FTU23]&#x2003;</span> Zachary Frangella, Joel&nbsp;A Tropp, and Madeleine Udell. Randomized Nyström preconditioning. <i>SIAM Journal on Matrix Analysis and Applications</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[FV01]&#x2003;</span> Jason Frank and Cornelis Vuik. On the construction of deﬂation-based preconditioners. <i>SIAM Journal on Scientiﬁc Computing</i>, 2001.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Gir87]&#x2003;</span> Didier Girard. Un algorithme simple et rapide pour la validation croisee géenéralisée sur des problémes de grande taille. Technical report, 1987.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GKX19]&#x2003;</span> Behrooz Ghorbani, Shankar Krishnan, and Ying Xiao. An investigation into neural net optimization via Hessian eigenvalue density. In <i>Proceedings of the 36th International Conference on
+Machine Learning (ICML)</i>, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GOSS16]&#x2003;</span> Alon Gonen, Francesco Orabona, and Shai Shalev-Shwartz. Solving ridge regression using sketched preconditioned SVRG. In <i>Proceedings of the 33rd International Conference on Machine
+Learning (ICML)</i>, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GSO17]&#x2003;</span> Arjun&nbsp;Singh Gambhir, Andreas Stathopoulos, and Kostas Orginos. Deﬂation as a method of variance reduction for estimating the trace of a matrix inverse. <i>SIAM Journal on Scientiﬁc
+Computing</i>, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[HHK72]&#x2003;</span> R&nbsp;Haydock, V&nbsp;Heine, and M&nbsp;J Kelly. Electronic structure based on the local atomic environment for tight-binding bands. <i>Journal of Physics C: Solid State Physics</i>,
+1972.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[HMT11]&#x2003;</span> Nathan Halko, Per-Gunnar Martinsson, and Joel&nbsp;A Tropp. Finding structure with randomness: Probabilistic algorithms for constructing approximate matrix decompositions. <i>SIAM
+Review</i>, 2011.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Hut90]&#x2003;</span> Michael&nbsp;F. Hutchinson. A stochastic estimator of the trace of the inﬂuence matrix for Laplacian smoothing splines. <i>Communications in Statistics-Simulation and Computation</i>, 1990.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[LG82]&#x2003;</span> P&nbsp;Lambin and J-P. Gaspard. Continued-fraction technique for tight-binding systems. A generalized-moments method. <i>Physical Review B</i>, 1982.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Lin17]&#x2003;</span> Lin Lin. Randomized estimation of spectral densities of large matrices made accurate. <i>Numerische Mathematik</i>, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[LSY98]&#x2003;</span> Richard&nbsp;B Lehoucq, Danny&nbsp;C Sorensen, and Chao Yang. <i>ARPACK users’ guide: solution of large-scale eigenvalue problems with implicitly restarted Arnoldi methods</i>. SIAM,
+1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[LSY16]&#x2003;</span> Lin Lin, Yousef Saad, and Chao Yang. Approximating spectral densities of large matrices. <i>SIAM Review</i>, 2016.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[LXES19]&#x2003;</span> Ruipeng Li, Yuanzhe Xi, Lucas Erlandson, and Yousef Saad. The eigenvalues slicing library (EVSL): Algorithms, implementation, and software. <i>SIAM Journal on Scientiﬁc Computing</i>,
+2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[MM15]&#x2003;</span> Cameron Musco and Christopher Musco. Randomized block Krylov methods for stronger and faster approximate singular value decomposition. In <i>Advances in Neural Information Processing
+Systems 28 (NIPS)</i>, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[MM19]&#x2003;</span> Michael Mahoney and Charles Martin. Traditional and heavy tailed self regularization in neural network models. In <i>Proceedings of the 36th International Conference on Machine Learning
+(ICML)</i>, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[MMM24]&#x2003;</span> Raphael Meyer, Cameron Musco, and Christopher Musco. On the unreasonable eﬀectiveness of single vector Krylov methods for low-rank approximation. In <i>Proceedings of the 35th Annual
+ACM-SIAM Symposium on Discrete Algorithms (SODA)</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[MMMW21]&#x2003;</span> Raphael&nbsp;A Meyer, Cameron Musco, Christopher Musco, and David&nbsp;P Woodruﬀ. Hutch++: Optimal stochastic trace estimation. In <i>Symposium on Simplicity in Algorithms
+(SOSA)</i>, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[MNS\(^{+}\)18]&#x2003;</span> Cameron Musco, Praneeth Netrapalli, Aaron Sidford, Shashanka Ubaru, and David&nbsp;P. Woodruﬀ. Spectrum approximation beyond fast matrix multiplication: Algorithms and
+hardness. In <i>Proceedings of the 9th Conference on Innovations in Theoretical Computer Science (ITCS)</i>, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Par98]&#x2003;</span> Beresford&nbsp;N Parlett. <i>The symmetric eigenvalue problem</i>. SIAM, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[PSG18]&#x2003;</span> Jeﬀrey Pennington, Samuel Schoenholz, and Surya Ganguli. The emergence of spectral universality in deep networks. In <i>Proceedings of the 21st International Conference on Artiﬁcial
+Intelligence and Statistics (AISTATS)</i>, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[RL18]&#x2003;</span> Aditya Ramesh and Yann LeCun. Backpropagation for implicit spectral densities. <i><a href="http://arxiv.org/abs/1806.00499" target="_blank" >arXiv:1806.00499</a></i>, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Saa03]&#x2003;</span> Yousef Saad. <i>Iterative methods for sparse linear systems</i>. SIAM, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Ski89]&#x2003;</span> John Skilling. The eigenvalues of mega-dimensional matrices. <i>Maximum Entropy and Bayesian Methods</i>, 1989.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[SR94]&#x2003;</span> RN&nbsp;Silver and H&nbsp;Röder. Densities of states of mega-dimensional Hamiltonian matrices. <i>International Journal of Modern Physics C</i>, 1994.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[SRS20]&#x2003;</span> Jürgen Schnack, Johannes Richter, and Robin Steinigeweg. Accuracy of the ﬁnite-temperature Lanczos method compared to simple typicality-based estimates. <i>Physical Review Research</i>,
+2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[STBB17]&#x2003;</span> Björn Sbierski, Maximilian Trescher, Emil&nbsp;J Bergholtz, and Piet&nbsp;W Brouwer. Disordered double Weyl node: Comparison of transport and density of states calculations.
+<i>Physical Review B</i>, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[SW23]&#x2003;</span> William Swartworth and David&nbsp;P Woodruﬀ. Optimal eigenvalue approximation via sketching. In <i>Proceedings of the 55th Annual ACM Symposium on Theory of Computing
+(STOC)</i>, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Tro18]&#x2003;</span> Joel&nbsp;A. Tropp. Analysis of randomized block Krylov methods. Technical report, California Institute of Technology , Pasadena, CA, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[UCS17]&#x2003;</span> Shashanka Ubaru, Jie Chen, and Yousef Saad. Fast estimation of \(tr(f(a))\) via stochastic Lanczos quadrature. <i>SIAM Journal on Matrix Analysis and Applications</i>, 2017.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Wan94]&#x2003;</span> Lin-Wang Wang. Calculating the density of states and optical-absorption spectra of large quantum systems by the plane-wave moments method. <i>Physical Review B</i>, 1994.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[WWAF06]&#x2003;</span> Alexander Weiße, Gerhard Wellein, Andreas Alvermann, and Holger Fehske. The kernel polynomial method. <i>Reviews of Modern Physics</i>, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GM09]&#x2003;</span> Gene&nbsp;H Golub and Gérard Meurant. <i>Matrices, moments and quadrature with applications</i>. Princeton University Press, 2009.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

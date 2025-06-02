@@ -1,0 +1,629 @@
+---
+layout: abstract
+absnum: 215
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\def \hinf {\mathcal {H}_\infty }\)
+
+\(\def \linf {\mathcal {L}_\infty }\)
+
+\(\def \R {\mathbb {R}}\)
+
+\(\def \C {\mathbb {C}}\)
+
+\(\def \bigO {\mathcal {O}}\)
+
+\(\renewcommand {\Re }{\operatorname {Re}}\)
+
+\(\renewcommand {\Im }{\operatorname {Im}}\)
+
+\(\def \iunit {\mathsf {i}}\)
+
+\(\def \p {\mathsf {p}}\)
+
+\(\def \P {\mathcal {P}}\)
+
+\(\def \Ep {E(\p )}\)
+
+\(\def \Ap {A(\p )}\)
+
+\(\def \Bp {B(\p )}\)
+
+\(\def \Cp {C(\p )}\)
+
+\(\def \Dp {D(\p )}\)
+
+\(\def \Rp {R(\p )}\)
+
+\(\def \Sp {S(\p )}\)
+
+\(\def \Mp {M_\gamma (\p )}\)
+
+\(\def \Np {N_\gamma (\p )}\)
+
+\(\def \hs {h_\star }\)
+
+\(\def \ps {\p _\star }\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Interpolation-Based Algorithms to Compute the \(\hinf \) Norm<br />
+of a Parametric System
+</h2>
+</div>
+<div class="center">
+
+<p>
+Peter Benner, <span class="underline">Tim Mitchell</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Consider the following continuous-time linear time-invariant parametric system:       <a id="eq:lti_cont"></a>
+</p>
+<span class="hidden"> \(\seteqnumber{1}{1}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                      E(p)ẋ = A(p)x + B(p)u                                                                                                              (1a)
+                                                                                                                            y = C(p)x + D(p)u,                                                                                                            (1b)
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\Ep \dot x &amp;= \Ap x + \Bp u \\ y &amp;= \Cp x + \Dp u,
+\end{align}
+where matrices&nbsp;\(\Ep ,\Ap \in \C ^{n \times n}\), \(\Bp \in \C ^{n \times m}\), \(\Cp \in \C ^{p \times n}\), and \(\Dp \in \C ^{p \times m}\) describe the dynamics and vary continuously with respect to the real-valued scalar
+parameter \(\p \in \P \subset \R \), while the vectors \(x \in \C ^n\), \(u \in \C ^m\), and \(y \in \C ^p\) respectively describe the state, input, and output. The \(\hinf \) norm of <span class="textup">(<a
+href="paper.html#eq:lti_cont">1</a>)</span> is an important quantity in many domains. In engineering applications, it measures how robust the system remains in the presence of noise, while in model order reduction, it is used to measure how
+well a reduced-order model mimics the dynamical behavior of a large-scale system. For a fixed value of \(\p \in \P \), globally convergent methods for computing the&nbsp;\(\hinf \) norm go back to&nbsp;[BB90, BS90], but here we are interested
+in eﬀiciently computing the worst (highest) value of \(\hinf \) norm of <span class="textup">(<a href="paper.html#eq:lti_cont">1</a>)</span> that occurs over the parameter domain \(\P \), which we denote&nbsp;\(h_\star \), or said
+another way, the parameter(s) \(\p _\star \in \P \) where \(h_\star \) is attained and <span class="textup">(<a href="paper.html#eq:lti_cont">1</a>)</span> is the least robust to noise.
+</p>
+
+<p>
+We begin with some preliminaries. We assume that the matrix pencil \(\lambda \Ep - \Ap \) is regular and rank&nbsp;1 for all values of&nbsp;\(\p \in \P \), all the matrices are differentiable with respect to \(\p \) (except for possibly on a
+subset of \(\P \) of measure zero), and that the parameter domain consists of a finite number of intervals. The associated transfer function for&nbsp;<span class="textup">(<a href="paper.html#eq:lti_cont">1</a>)</span> is
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                           G(s; p) = C(p) (sE(p) − A(p))−1 B(p) + D(p),                                                                                                    (2)
+
+-->
+
+<p>
+
+\begin{equation}
+G(s; \p ) = \Cp \left (s \Ep - \Ap \right )^{-1}\Bp + \Dp ,
+\end{equation}
+
+</p>
+
+<p>
+where \(s \in \C \), and for a fixed value of \(\p \), its \(\hinf \) norm is defined as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                         ∥G(·; p)∥∞ = max ∥C(p) (sE(p) − A(p))−1 B(p) + D(p)∥2 =: max g(s; p),                                                              (3)                         --><a id="eq:hinf_norm"></a><!--
+                                                                       s∈C+                                                 s∈C+
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:hinf_norm} \|G (\cdot ; \p ) \|_\infty = \max _{s \in \C _+} \| \Cp \left (s \Ep - \Ap \right )^{-1}\Bp + \Dp \|_2 \eqqcolon \max _{s \in \C _+} g(s;\p ),
+\end{equation}
+
+</p>
+
+<p>
+where \(\C _+\) is the closed right half of the complex plane. If the system is known to be asymptotically stable, then the \(\hinf \) norm coincides with the \(\linf \) norm, i.e., the maximization of the norm of the transfer function can be
+limited to the imaginary axis instead of all \(\C _+\). For fixed \(\p \), let \(\lambda \) be such that \(\det (\lambda \Ep - \Ap )=0\) and let \(x\) and \(y\) respectively be its right and left eigenvectors. Then eigenvalue \(\lambda \) is
+controllable if \(\Bp ^* y \neq 0\) and it is observable if \(\Cp x \neq 0\). Then \(\|G (\cdot ; \p )\|_\infty &lt; \infty \) provided that all the eigenvalues of \(\lambda \Ep - \Ap \) that are both controllable and observable are finite
+and in the open left half plane. In sum, our quantities of interest are given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+
+                                                                                                      h⋆ = max ∥G(·; p)∥∞      and      p⋆ = arg max ∥G(·; p)∥∞ .                                                                                          (4)
+                                                                                                           p∈P                                   p∈P
+
+
+-->
+
+<p>
+
+\begin{equation}
+\hs = \max _{\p \in \P } \|G(\cdot ; \p )\|_\infty \qquad \text {and} \qquad \ps = \arg \max _{\p \in \P } \|G(\cdot ; \p )\|_\infty .
+\end{equation}
+
+</p>
+
+<p>
+One direct way to estimate&nbsp;\(\hs \) would be to simply evaluate <span class="textup">(<a href="paper.html#eq:hinf_norm">3</a>)</span> using the standard level-set method&nbsp;[BB90, BS90] over a grid on the parameter domain
+\(\P \), but doing so provides no guarantee that&nbsp;\(\hs \) will be estimated to even moderate accuracy. A more refined yet still rather direct approach would be to globally approximate the value of \(\|G(\cdot ; \p )\|_\infty \) as it
+varies with&nbsp;\(\p \) over&nbsp;\(\P \), say, by using Chebfun&nbsp;[DHT14], and then simply extract \(\hs \) and \(\ps \) from the resulting interpolant<sup>1</sup><a id="paper-autopage-4"></a>, but this is likely to be unnecessarily
+expensive. For each evaluation of \(\|G(\cdot ; \p )\|_\infty \), of which many will be needed, the standard level-set method generally needs several iterations of computing the&nbsp;\(\gamma \)-level set points of \(g(\iunit \omega )\),
+which involves computing all imaginary eigenvalues of the matrix pencil&nbsp;\(\Mp - \lambda \Np \), where
+</p>
+<span class="hidden"> \(\seteqnumber{1}{5}{0}\)</span>
+
+
+<!--
+
+
+                                                                                                  [                                                                      ]
+                                                                                                  A(p) − B(p)R(p)−1 D(p)∗ C(p)                −γB(p)R(p)−1 B(p)∗
+                                                                                      Mγ (p) :=                                                                            ,                                                                              (5a)
+                                                                                                        γC(p)S(p)−1 C(p)                −(A(p) − B(p)R(p)−1 D(p)∗ C(p))∗
+                                                                                                [              ]
+                                                                                                  E(p)     0
+                                                                                      Nγ (p) :=                  ,                                                                                                                                        (5b)
+                                                                                                   0     E(p)∗
+                                                                                       R(p) := D(p)∗ D(p) − γ 2 I,                                                                                                                                        (5c)
+                                                                                                             ∗
+                                                                                        S(p) := D(p)D(p) − γ I.   2
+                                                                                                                                                                                                                                                          (5d)
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\Mp &amp; \coloneqq \begin{bmatrix} \Ap - \Bp \Rp ^{-1}\Dp ^*\Cp &amp; -\gamma \Bp \Rp ^{-1} \Bp ^* \\ \gamma \Cp \Sp ^{-1} \Cp &amp; -(\Ap - \Bp \Rp ^{-1} \Dp ^* \Cp )^* \end {bmatrix}, \\ \Np &amp; \coloneqq
+\begin{bmatrix} \Ep &amp; 0 \\ 0 &amp; \Ep ^* \end {bmatrix}, \\ \Rp &amp; \coloneqq \Dp ^* \Dp - \gamma ^2 I, \\ \Sp &amp; \coloneqq \Dp \Dp ^* - \gamma ^2 I.
+\end{align}
+The cost can be significantly reduced by instead using the \(\hinf \)-norm method of&nbsp;[BM18], as it typically reduces the number of eigenvalue computations of \(\Mp - \lambda \Np \) to just one or two values of \(\gamma \). However, if the
+system&nbsp;<span class="textup">(<a href="paper.html#eq:lti_cont">1</a>)</span> is unstable for some values of&nbsp;\(\p \in \P \), then \(\hs = \infty \), but many eigenvalue computations of \(\Mp - \lambda \Np \) may be
+incurred to ascertain that fact in the process interpolating&nbsp;\(\|G(\cdot ; \p )\|_\infty \) over \(\P \). This suggests that in order to be eﬀicient, a new algorithm that first separately addresses the question of stability and then only
+proceeds with further computation when&nbsp;\(\hs &lt; \infty \) is needed.
+</p>
+
+<p>
+For any \(\p \in \P \), define
+</p>
+<span class="hidden"> \(\seteqnumber{1}{6}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                Λ(p) := {λ ∈ C : det(λE(p) − A(p)) = 0, \(\lambda \) is both controllable and observable},                                                                                (6a)
+                                                                                α(p) := max{Re λ : λ ∈ Λ(p)},                                                                                                                                             (6b)
+
+
+
+-->
+
+
+<p>
+
+\begin{align}
+\Lambda (\p ) &amp;\coloneqq \{ \lambda \in \C : \det (\lambda \Ep - \Ap ) = 0, \text {$\lambda $ is both controllable and observable} \}, \\ \alpha (\p ) &amp;\coloneqq \max \{ \Re \lambda : \lambda \in \Lambda
+(\p ) \},
+\end{align}
+where we take \(\Re \lambda = +\infty \) for any non-finite \(\lambda \in \Lambda (\p )\). Then the system&nbsp;<span class="textup">(<a href="paper.html#eq:lti_cont">1</a>)</span> is asymptotically stable if
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+
+                                                                                                                        α⋆ := max α(p) < 0,                                                                                                                (7)
+                                                                                                                               p∈P
+
+
+-->
+
+<p>
+
+\begin{equation}
+\alpha _\star \coloneqq \max _{\p \in \P } \alpha (\p ) &lt; 0,
+\end{equation}
+
+</p>
+
+<p>
+and so we can determine if \(\hs &lt; \infty \) by approximating function \(\alpha \) over \(\P \) using Chebfun, as has been done in&nbsp;[HMMS22] to check stability when constructing stable \(\mathcal {H}_2 \otimes \mathcal {L}_2\)
+reduced order models for parametric systems via optimization. Although \(\alpha \) may be discontinuous, either because \(\P \) consists of more than one interval or an eigenvalue becomes or ceases to be controllable or observable as \(\p \)
+varies, Chebfun can reliably approximate functions with jumps&nbsp;[PPT10].
+</p>
+
+<p>
+Although we propose using global approximation of \(\alpha \) to ascertain \(\hs &lt; \infty \), we do not suggest globally approximating \(\|G(\cdot ; \p )\|_\infty \) to compute \(\hs \) when it is finite. Instead, we propose an
+optimization-with-restarts method that directly computes local maximizers of the two-real variable optimization problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+
+                                                                                                                       h⋆ =    max g(iω; p),                                                                                                               (8)
+                                                                                                                              ω∈R,p∈P
+
+
+-->
+
+<p>
+
+\begin{equation}
+\hs = \max _{\omega \in \R , \p \in \P } g(\iunit \omega ; \p ),
+\end{equation}
+
+</p>
+
+<p>
+and then uses an interpolation-based globality certificate to either certify that the local maximizer is in fact a global maximizer where \(\hs \) is attained or provides new starting points on the \(\gamma \)-level set of&nbsp;\(g\) to restart the local
+optimization phase, where \(\gamma = g(\iunit \hat \omega ,\hat \p )\) for a computed local maximizer&nbsp;\((\hat \omega ,\hat \p )\). Interpolation-based globality certificates were first conceived in&nbsp;[Mit21] to develop faster and
+more reliable algorithms for computing Kreiss constants and the distance to uncontrollability and have since been extended to computing the quantity sep-lambda&nbsp;[Mit23].
+</p>
+
+<p>
+Even though \(g\) may have points where it is a nonsmooth, the subset of such points has measure zero, so obtaining local maximizers of \(g\) can be done with relative ease and eﬀiciency using gradient-based methods such as BFGS&nbsp;[LO13] or
+gradient sampling&nbsp;[BCL\(^{+}\)20], particularly since there are only two optimization variables and often \(m,p \ll n\). Then, with a candidate local maximizer \((\hat \omega ,\hat \p )\) of&nbsp;\(g\) in hand and \(\gamma =
+g(\iunit \hat \omega ,\hat \p )\), we check whether it is a global maximizer by approximating the one-variable function
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+
+                                                                                                  cγ (p) := min{(Re λ)2 : det(Mγ (p) − λNγ (p)) = 0, Re λ ≥ 0},                                                                                            (9)
+
+-->
+
+<p>
+
+\begin{equation}
+c_\gamma (\p ) \coloneqq \min \{ (\Re \lambda )^2 : \det (\Mp - \lambda \Np ) = 0, \Re \lambda \geq 0 \},
+\end{equation}
+
+</p>
+
+<p>
+which is continuous on each interval in \(\P \) and where the squaring acts to smooth out non-Lipschitz behavior when a double imaginary eigenvalues bifurcates into a pair of eigenvalues with imaginary axis symmetry. Function \(c_\gamma \) is
+analogous to the eigenvalue-based functions that are globally approximated in the interpolation-based globality certificates used in&nbsp;[Mit21, Mit23], and in our setting here, has the following key properties:
+</p>
+<ul class="enumerate" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">(i)</span> \(c_\gamma (\p ) \geq 0\) for all \(\p \in \P \).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(ii)</span> If \(\gamma &gt; \hs \), then \(c_\gamma (\p ) &gt; 0\) for all \(\p \in \P \).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">(iii)</span> If \(\gamma &lt; \hs \), then \(c_\gamma (\p ) = 0\) holds on subset of \(\P \) with positive measure.
+</p>
+</li>
+</ul>
+
+<p>
+By approximating \(c_\gamma \) globally on \(\P \), we can determine whether or not \(\gamma \) is above or below \(\hs \). When it is below, we need only find zeros of \(c_\gamma \), which are relatively easy to find by Property&nbsp;(iii).
+Meanwhile, if \(\gamma &gt; \hs \), which will be true if \((\hat \omega ,\hat \p )\) is a global maximizer and we perturb the value&nbsp;\(\gamma = g(\iunit \hat \omega ,\hat \p )\) slightly upward by a tolerance, then globally
+approximating&nbsp;\(c_\gamma \) determines that it is strictly positive on \(\P \), thus certifying that \((\hat \omega ,\hat \p )\) is indeed a global maximizer and \(\hs \) has been attained. A practical benefit of approximating \(c_\gamma
+\) is cost; evaluating \(c_\gamma (\p )\) always only requires a single eigenvalue computation with \(\Mp - \lambda \Np \) and negligible amount of constant-time additional work, while evaluating \(\|G(\cdot ;\p )\|_\infty \) may require
+more than one eigenvalue computation and also does other non-constant-time work on top of that.
+</p>
+
+<p>
+In general, only a handful of restarts are needed by our method and the overall work is almost entirely dominated by approximating the function \(c_\gamma \) for the final value of \(\gamma \approx \hs \), properties which we have also observed
+in our prior work with interpolation-based globality certificates&nbsp;[Mit21, Mit23]. In total, the algorithm requires \(\bigO (kn^3)\) work, where \(k\) is the total number of evaluations of&nbsp;\(c_\gamma \) over all values of \(\gamma \).
+Although \(k\) may be large, it often is not strongly correlated with the number of system states&nbsp;\(n\), and it corresponds to a task that is embarrassingly parallel and so its effect can be significantly diminished on multi-core machines.
+Consequently, our method tends to act like a cubically scaling method that has a large constant term. We have also extended this approach to compute the worst-case \(\hinf \) norm of parametric discrete-time systems. In contrast, while it might
+be possible to extend 2D level-set tests&nbsp;[Gu00, GMO\(^{+}\)06, GO06, Mit20] to finding a global maximizer of \(g\) or its discrete-time analogue, at least in some cases, based on our past experience with that technique, we believe the
+resulting methods would likely be both much slower and less reliable due to rounding error.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;Chebfun can do this extraction phase exceptionally fast as it produces a piecewise Chebyshev polynomial.
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[BB90]&#x2003;</span> S.&nbsp;Boyd and V.&nbsp;Balakrishnan. A regularity result for the singular values of a transfer matrix and a quadratically convergent algorithm for computing its \({L}_\infty \)-norm.
+<i>Systems Control Lett.</i>, 15(1):1–7, 1990.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BCL\(^{+}\)20]&#x2003;</span> J.&nbsp;V. Burke, F.&nbsp;E. Curtis, A.&nbsp;S. Lewis, M.&nbsp;L. Overton, and L.&nbsp;E.&nbsp;A. Simões. Gradient sampling methods for nonsmooth optimization. In
+A.&nbsp;M. Bagirov, M.&nbsp;Gaudioso, N.&nbsp;Karmitsa, M.&nbsp;M. Mäkelä, and S.&nbsp;Taheri, editors, <i>Numerical Nonsmooth Optimization: State of the Art Algorithms</i>, pages 201–225, Cham, 2020. Springer International Publishing.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BM18]&#x2003;</span> P.&nbsp;Benner and T.&nbsp;Mitchell. Faster and more accurate computation of the \(\mathcal {H}_\infty \) norm via optimization. <i>SIAM J. Sci. Comput.</i>, 40(5):A3609–A3635,
+October 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[BS90]&#x2003;</span> N.&nbsp;A. Bruinsma and M.&nbsp;Steinbuch. A fast algorithm to compute the \(\mathcal {H}_{\infty }\)-norm of a transfer function matrix. <i>Systems Control Lett.</i>, 14(4):287–293,
+1990.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DHT14]&#x2003;</span> T.&nbsp;A Driscoll, N.&nbsp;Hale, and L.&nbsp;N. Trefethen. <i>Chebfun Guide</i>. Pafnuty Publications, Oxford, UK, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GMO\(^{+}\)06]&#x2003;</span> M.&nbsp;Gu, E.&nbsp;Mengi, M.&nbsp;L. Overton, J.&nbsp;Xia, and J.&nbsp;Zhu. Fast methods for estimating the distance to uncontrollability. <i>SIAM J. Matrix Anal. Appl.</i>,
+28(2):477–502, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[GO06]&#x2003;</span> M.&nbsp;Gu and M.&nbsp;L. Overton. An algorithm to compute \(\mathrm {Sep}_\lambda \). <i>SIAM J. Matrix Anal. Appl.</i>, 28(2):348–359, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Gu00]&#x2003;</span> M.&nbsp;Gu. New methods for estimating the distance to uncontrollability. <i>SIAM J. Matrix Anal. Appl.</i>, 21(3):989–1003, 2000.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[HMMS22]&#x2003;</span> M.&nbsp;Hund, T.&nbsp;Mitchell, P.&nbsp;Mlinarić, and J.&nbsp;Saak. Optimization-based parametric model order reduction via \(\mathcal {H}_2 \otimes \mathcal {L}_2\) first-order
+necessary conditions. <i>SIAM J. Sci. Comput.</i>, 44(3):A1554–A1578, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[LO13]&#x2003;</span> A.&nbsp;S. Lewis and M.&nbsp;L. Overton. Nonsmooth optimization via quasi-Newton methods. <i>Math. Program.</i>, 141(1–2, Ser. A):135–163, 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Mit20]&#x2003;</span> T.&nbsp;Mitchell. Computing the Kreiss constant of a matrix. <i>SIAM J. Matrix Anal. Appl.</i>, 41(4):1944–1975, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Mit21]&#x2003;</span> T.&nbsp;Mitchell. Fast interpolation-based globality certificates for computing Kreiss constants and the distance to uncontrollability. <i>SIAM J. Matrix Anal. Appl.</i>, 42(2):578–607, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[Mit23]&#x2003;</span> T.&nbsp;Mitchell. Fast computation of sep\(_\lambda \) via interpolation-based globality certificates. <i>Electron. Trans. Numer. Anal.</i>, 58:402–431, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[PPT10]&#x2003;</span> R.&nbsp;Pachón, R.&nbsp;B. Platte, and L.&nbsp;N. Trefethen. Piecewise-smooth chebfuns. <i>IMA J. Numer. Anal.</i>, 30(4):898–916, July 2010.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

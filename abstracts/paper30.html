@@ -1,0 +1,614 @@
+---
+layout: abstract
+---
+
+<div class="center">
+
+<h2>
+Can We Successfully Approximate Large Sparse Hessian Matrices?
+</h2>
+</div>
+<div class="center">
+
+<p>
+Jaroslav Fowkes, Nick I.&nbsp;M. Gould and <span class="underline">Jennifer A. Scott</span>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Can we improve the eﬀiciency of large-scale optimization algorithms by employing ideas from numerical linear algebra and, in particular, by exploiting the underlying sparsity? While the number of parameters involved in practical optimization
+problems is frequently large, the problems can generally be structured so that their interactions are local; this leads to sparsity.
+</p>
+
+<p>
+Access to the objective and optimization model is almost always via function calls, and practitioners are well aware that optimization methods work best when derivatives are available. If we are extremely fortunate, an analytic expression for entries
+of Hessian matrices (second derivatives) may be available. But this is not generally the case and it is frequently diﬀicult to provide such derivatives. Therein lies our challenge. The importance of approximating sparse Hessian matrices has recently
+been emphasised by the explosion of interest in machine learning and data science algorithms that involve optimizing a function.
+</p>
+
+<p>
+To define our problem, consider the large sparse optimization problem
+</p>
+
+<p>
+\[ \min _x f(x), \]
+</p>
+
+<p>
+where \(f(x)\) is a suﬀiciently smooth function of \(n\) variables. The Hessian matrix is
+</p>
+
+<p>
+\[H(x) \eqdef \nabla ^2 f(x) \in \mathbb {R}^{n \times n}.\]
+</p>
+
+<p>
+We seek to build approximations \(B^{(k)} = \{b^{(k)}_{ij}\}\) of \(H(x)\) at a sequence of iterates \(x^{(k)}\). The matrix \(H^{(k)} \eqdef H(x^{(k)})\) is symmetric and we assume its sparsity pattern \(\calS (H^{(k)})\) is known.
+</p>
+
+<p>
+Interest in methods for building approximations to Hessian matrices dates back to the 1960s. The focus at that time was on problems involving a small number of variables and consequently on small dense matrices. Extensions to the sparse case were
+unsuccessful because either the formulae used generated dense matrices that were impractical for large problems, or imposing sparsity led to potential numerical instability in the approximation algorithms. Attention subsequently turned to
+limited-memory strategies. These did not seek to reproduce the Hessian matrix but to incorporate the curvature observed at a number of previous iterates. No attempt was made to impose sparsity.
+</p>
+
+<p>
+We propose two new methods for approximating sparse Hessian matrices. Both are based on using the data from a sequence of \(m\) previous iterate to build the approximation \(B^{(k)}\). Let \(g(x) \eqdef \nabla f(x)\) denote the gradient of
+\(f(x)\). The idea of using recent difference pairs
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                          s(l) := x(l) − x(l−1)          and      y (l) := g(x(l) ) − g(x(l−1) ),                 l = k − m + 1, . . . , k,        (1)--><a id="eq:diff pairs"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:diff pairs} s^{(l)} \eqdef x^{(l)} - x^{(l-1)} \quad \mbox {and} \quad y^{(l)} \eqdef g(x^{(l)}) - g(x^{(l-1)}), \quad l = k - m + 1, \ldots , k,
+\end{equation}
+
+</p>
+
+<p>
+to approximate \(H^{(k)}\) was initially proposed in [1]. This introduced the objective of constructing the \(B^{(k)}\) that best satisfies the multiple secant conditions given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                                     B (k) s(l) = y (l) ,              l = k − m + 1, . . . , k.                                       (2)--><a id="eq:secant"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:secant} B^{(k)}s^{(l)} = y^{(l)}, \qquad l = k-m+1, \dotsc , k.
+\end{equation}
+
+</p>
+
+<p>
+This was achieved by solving the so-called Constrained Procrustes Problem
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                          ∑
+                                                                                          k
+                                                                                min                ∥B (k) s(l) − y (l) ∥2F       such that             B (k) = (B (k) )T          and   S(B (k) ) = S(H(x(k) )).
+                                                                                B (k)
+                                                                                        l=k−m+1
+
+
+-->
+
+<p>
+
+\begin{equation*}
+\min _{B^{(k)}} \sum _{l = k - m + 1}^k \|B^{(k)} s^{(l)} - y^{(l)}\|_F^2 \quad \text {such that} \quad B^{(k)} = (B^{(k)})^T \quad \text {and} \quad \calS (B^{(k)}) = \calS (H(x^{(k)})).
+\end{equation*}
+
+</p>
+
+<p>
+However, for large-scale problems, this is computationally prohibitively expensive and thus we seek more eﬀicient solutions.
+</p>
+
+<p>
+The least squares approach<br />
+Our first approach stacks the (unknown) nonzero entries in the upper triangular part of \(B^{(k)}\) row-by-row above each other in a vector \(b^{(k)}\) of size equal to the number \(nz(B^{(k)})\) of nonzero entries in the upper triangular part of
+\(B^{(k)}\). In this way, we redefine the problem as a large sparse linear system of equations of size \(mn \times nz(B^{(k)})\) given by
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                                                           A(k) b(k) = c(k) .                                                          (3)--><a id="eq:system"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:system} A^{(k)} b^{(k)} = c^{(k)}.
+\end{equation}
+
+</p>
+
+<p>
+Here the matrix \(A^{(k)}\) and the vector \(c^{(k)}\) are known and depend on the secant conditions <span class="textup">(<a href="paper.html#eq:secant">2</a>)</span>. To illustrate this formulation, let \(n=3\) and consider the
+approximate Hessian matrix
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                                                            (k)           (k)
+                                                                                                                                             
+                                                                                                             b11          b12          0
+                                                                                                                                   (k)                       (k)          (k)         (k)    (k)
+                                                                                                   B (k) = b(k)
+                                                                                                              21           0       b23  ,          with      b12 = b21 and b23 = b32 .                                   (4)--><a id="eq:ex1"></a><!--
+                                                                                                                           (k)      (k)
+                                                                                                              0           b32      b33
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:ex1} B^{(k)} = \begin{pmatrix} b^{(k)}_{11} &amp; b^{(k)}_{12} &amp; 0 \\ b^{(k)}_{21} &amp; 0 &amp; b^{(k)}_{23} \\ 0 &amp; b^{(k)}_{32} &amp; b^{(k)}_{33} \end {pmatrix}, \quad \text {with} \quad
+b^{(k)}_{12} = b^{(k)}_{21} \;\mbox {and}\; b^{(k)}_{23} = b^{(k)}_{32}.
+\end{equation}
+
+</p>
+
+<p>
+For \(m=2\), the linear system <span class="textup">(<a href="paper.html#eq:system">3</a>)</span> is
+</p>
+
+<p>
+\[ \underbrace { \begin {pmatrix} s^{(k)}_1 &amp; s^{(k)}_2 &amp; 0 &amp; 0 \\ s^{(k-1)}_1 &amp; s^{(k-1)}_2 &amp; 0 &amp; 0 \\ 0 &amp; s^{(k)}_1 &amp; s^{(k)}_3 &amp; 0 \\ 0 &amp; s^{(k-1)}_1 &amp; s^{(k-1)}_3
+&amp; 0 \\ 0 &amp; 0 &amp; s^{(k)}_2 &amp; s^{(k)}_3 \\ 0 &amp; 0 &amp; s^{(k-1)}_2 &amp; s^{(k-1)}_3 \\ \end {pmatrix} }_{A^{(k)}} \underbrace { \begin {pmatrix} b^{(k)}_{11} \\ b^{(k)}_{12} \\ b^{(k)}_{23} \\
+b^{(k)}_{33} \end {pmatrix} }_{b^{(k)}} = \underbrace { \begin {pmatrix} y^{(k)}_1 \\ y^{(k-1)}_1 \\ y^{(k)}_2 \\ y^{(k-1)}_2 \\ y^{(k)}_3 \\ y^{(k-1)}_3 \end {pmatrix} }_{c^{(k)}}. \]
+</p>
+
+<p>
+Key observations on this new approach are:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> \(A^{(k)}\) is rectangular and sparse with a block structure.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The row dimension of \(A^{(k)}\) depends on \(m\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The system <span class="textup">(<a href="paper.html#eq:system">3</a>)</span> can be computed using sparse methods for solving large-scale linear least squares problems.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The approach naturally imposes symmetry in \(B^{(k)}\).
+</p>
+</li>
+</ul>
+
+<p>
+Parallel secant-based approach<br />
+The main disadvantage of the least squares approach is that <span class="textup">(<a href="paper.html#eq:system">3</a>)</span> can be huge for large Hessian matrices and thus potentially expensive to solve. Thus our second approach seeks
+to exploit the secant equations while being more computationally eﬀicient. Assume initially that each row of the Hessian matrix has only a small number of nonzero entries. Rather than imposing the full secant conditions <span class="textup">(<a
+href="paper.html#eq:secant">2</a>)</span> for the previous \(m\) steps, for each row \(i\) in the approximate Hessian \(B^{(k)}\) we aim to satisfy as many componentwise equations as are necessary to define the row, that is,
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                            eTi B (k) s(l) = eTi y (l) ,         l = k, k − 1, . . . , k − nzi + 1,                                      (5)--><a id="eq:cms1"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:cms1} e_i^T B^{(k)} s^{(l)} = e_i^Ty^{(l)}, \quad l = k, k-1, \dotsc ,k-nz_i+1,
+\end{equation}
+
+</p>
+
+<p>
+where \(nz_i\) is the number of entries in row \(i\). Equation <span class="textup">(<a href="paper.html#eq:cms1">5</a>)</span> can be rewritten as
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+                                                                                         ∑       (k) (l)      (l)                      (k)
+                                                                                                 bij sj = yi ,         where Si              := {j : h(k)
+                                                                                                                                                      ij ̸= 0}             l = k, k − 1, . . . , k − nzi + 1.             (6)--><a id="eq:cms"></a><!--
+                                                                                           (k)
+                                                                                        j∈Si
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:cms} \sum _{j \in \calS ^{(k)}_i} b^{(k)}_{ij} s^{(l)}_j = y^{(l)}_i, \quad \mbox {where} \;\; \calS ^{(k)}_i \eqdef \{j: h^{(k)}_{ij} \neq 0 \} \quad l = k, k-1, \dotsc ,k-nz_i+1.
+\end{equation}
+
+</p>
+
+<p>
+If \(z^{(k)}_i\) denotes the vector of entries in row \(i\) then \(z^{(k)}_i\) is the solution of the \(nz_i \times nz_i\) dense system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{6}\)</span>
+
+<!--
+
+                                                                                                                                             (k) (k)         (k)
+                                                                                                                                           A i zi       = ci ,                                                       (7)--><a id="eq:rowindep"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:rowindep} A^{(k)}_i z^{(k)}_i = c^{(k)}_i,
+\end{equation}
+
+</p>
+
+<p>
+where \(A^{(k)}_i\) is the matrix in which row \(l\) consists of the entries \(s^{(l)}_j\) indexed by \(j \in \calS ^{(k)}_i\) and \(c^{(k)}_i\) is the vector with entries \(y^{(l)}_i\) (\(l = k, k - 1, \dotsc , k - nz_i + 1\)). For the
+example in equation&nbsp;<span class="textup">(<a href="paper.html#eq:ex1">4</a>)</span> and row \(i=2\), \(\calS ^{(k)}_2 = \{1,3\}\), \(nz_2 = 2\) and the system <span class="textup">(<a
+href="paper.html#eq:rowindep">7</a>)</span> becomes
+</p>
+
+<p>
+\[ \underbrace { \begin {pmatrix} s^{(k)}_1 &amp; s^{(k)}_3 \\ s^{(k-1)}_1 &amp; s^{(k-1)}_3 \\ \end {pmatrix} }_{A^{(k)}_2} \underbrace { \begin {pmatrix} b^{(k)}_{21} \\ b^{(k)}_{23} \end {pmatrix} }_{z^{(k)}_2}
+= \underbrace { \begin {pmatrix} y^{(k)}_2 \\ y^{(k-1)}_2 \end {pmatrix} }_{c^{(k)}_2}. \]
+</p>
+
+<p>
+Using <span class="textup">(<a href="paper.html#eq:rowindep">7</a>)</span>, we can compute the sparse Hessian approximation \(B^{(k)}\) as outlined in Algorithm&nbsp;<a href="paper.html#alg:rowindep">1</a>. Both the
+off-diagonal entries \(b^{(k)}_{ij}\) and \(b^{(k)}_{ji}\) are computed, and then, in the final step, the average is taken to obtain a symmetric approximate Hessian matrix \(B^{(k)}\). If both the upper and lower triangles of \(B^{(k)}\) are
+stored, then the rows can be computed in parallel in any order.
+</p>
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Sparse Hessian approximation (row-wise independent)
+</p>
+</div>
+
+<a id="alg:rowindep"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(i = 1, \ldots , n\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span>   <span style="width:14pt; display:inline-block;"></span>Compute the \(nz_i\) entries in row \(i\) by constructing and solving linear system <span class="textup">(<a
+href="paper.html#eq:rowindep">7</a>)</span>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> <span style="width:0pt; display:inline-block;"></span>Symmetrise \(B^{(k)} \gets (B^{(k)} + (B^{(k)})^T)/2\).
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+Taking an average of the two off-diagonal entries does not truly account for symmetry. Instead, from <span class="textup">(<a href="paper.html#eq:cms">6</a>)</span>
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{7}\)</span>
+
+<!--
+
+                                                                                                   ∑       (k) (l)        (l)
+                                                                                                                                       ∑         (k) (l)
+                                                                                                           bij sj = yi −                      bij sj ,        l = k, k − 1, . . . , k − nui + 1                          (8)--><a id="eq:cmss"></a><!--
+                                                                                                     (k)                             (k)
+                                                                                                  j∈Ui                            j∈Ki
+
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:cmss} \sum _{j \in \calU ^{(k)}_i} b^{(k)}_{ij} s^{(l)}_j = y^{(l)}_i - \sum _{j \in \calK ^{(k)}_i} b^{(k)}_{ij} s^{(l)}_j, \quad l = k, k-1, \dotsc ,k-nu_i+1
+\end{equation}
+
+</p>
+
+<p>
+where
+</p>
+
+<p>
+\[ \calK ^{(k)}_i \eqdef \{ j : h^{(k)}_{ij} \neq 0 \;\mbox {and}\; b^{(k)}_{ij} \;\mbox {is already known} \} \;\; \mbox {and} \;\; \calU ^{(k)}_i \eqdef \{j: h^{(k)}_{ij} \neq 0 \} \setminus \calK ^{(k)}_i, \]
+</p>
+
+<p>
+are the column indices of the known and unknown entries, respectively, in row \(i\) of the Hessian and \(nu_i = |\calU ^{(k)}_i|\). It follows that data from \(nu_i\) previous steps is required and \(i\)-th componentwise equation <span
+class="textup">(<a href="paper.html#eq:cmss">8</a>)</span> can be rewritten as the (smaller) dense linear system
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{8}\)</span>
+
+<!--
+
+                                                                                                                                 (k) (k)            (k)        (k)    (k)
+                                                                                                                                U i zi        = ci        − Ki w i ,                                                   (9)--><a id="eq:rowdep"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:rowdep} U^{(k)}_i z^{(k)}_i = c^{(k)}_i - K^{(k)}_i w^{(k)}_i ,
+\end{equation}
+
+</p>
+
+<p>
+where \(w^{(k)}_i\) holds the entries in row \(i\) of \(B^{(k)}\) that are already known, \(z^{(k)}_i\) holds the remaining entries in the row, and \(K^{(k)}_i\) and \(U^{(k)}_i\) are the corresponding sub-matrices of \(A^{(k)}_i\). For this
+approach, the order in which the rows are computed is crucial. In particular, the sparsest rows should be processed first. This observation motivates Algorithm&nbsp;<a href="paper.html#alg:rowdep">2</a>.
+</p>
+<figure id="autoid-2" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;2:&nbsp;Sparse Hessian approximation (row-wise dependent)
+</p>
+</div>
+
+<a id="alg:rowdep"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>Compute the adjacency graph \(\calG (B^{(k)})\) and the (current) degree of each vertex.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(i = 1, \ldots , n\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span>         <span style="width:14pt; display:inline-block;"></span>Select vertex \(v\) of current minimum degree; assign the corresponding row as row \(i\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span>   <span style="width:14pt; display:inline-block;"></span>Compute the \(nu_i\) unknown entries in row \(i\) by solving the linear system <span class="textup">(<a
+href="paper.html#eq:rowdep">9</a>)</span>.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span>         <span style="width:14pt; display:inline-block;"></span>Remove \(v\); decrement the current degree of each of its remaining neighbours by 1.
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+While Algorithm&nbsp;<a href="paper.html#alg:rowdep">2</a> generally requires fewer floating-point operations than Algorithm&nbsp;<a href="paper.html#alg:rowindep">1</a>, it has two related disadvantages. The first is that it is largely
+sequential. Secondly, inaccurate estimates from earlier steps can be magnified when solving <span class="textup">(<a href="paper.html#eq:rowdep">9</a>)</span>, leading to error growth. This can be particularly pernicious for Hessian
+matrices in which some rows have a large number of entries. To overcome these issues, we propose a block parallel approach. We start by assuming \(B^{(k)}\) has been symmetrically permuted to
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{9}\)</span>
+
+<!--
+
+                                                                                                                          (                        )
+                                                                                                                                 (k)         (k)
+                                                                                                                              B11          B12                       (k)          (k)
+                                                                                                              B (k) =          (k)          (k)        , with B21 = (B12 )T ,                                         (10)--><a id="eq:blockh"></a><!--
+                                                                                                                              B21          B22
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:blockh} B^{(k)} = \begin{pmatrix} B_{11}^{(k)} &amp; B_{12}^{(k)} \\ B_{21}^{(k)} &amp; B_{22}^{(k)} \end {pmatrix}, \;\; \mbox {with} \;\; B_{21}^{(k)} = (B_{12}^{(k)})^T,
+\end{equation}
+
+</p>
+
+<p>
+where the blocks \(B_{11}^{(k)}\) and \(B_{22}^{(k)}\) are square symmetric matrices, the \(n_1 &lt; n\) rows of \(( B_{11}^{(k)} \; B_{12}^{(k)} )\) are sparse and the remaining \(n_2 = n - n_1 \ll n_1\) rows of \((B_{21}^{(k)} \;
+B_{22}^{(k)})\) are classified as dense. The are computed using <span class="textup">(<a href="paper.html#eq:rowindep">7</a>)</span> from Algorithm&nbsp;<a href="paper.html#alg:rowindep">1</a>; \(B_{21}^{(k)}\) is set by
+symmetry and then crucially the small \(n_2 \times n_2\) block \(B_{22}^{(k)}\) is computed using a variant of <span class="textup">(<a href="paper.html#eq:rowdep">9</a>)</span> in which only the entries in the \(B_{21}^{(k)}\) block
+are assumed known. This leads to Algorithm&nbsp;<a href="paper.html#alg:new">3</a>. Here both the sparse rows and the dense rows can be handled in parallel if the full sparse Hessian approximation is stored.
+</p>
+<figure id="autoid-3" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;3:&nbsp;Sparse-dense Hessian approximation (block parallel)
+</p>
+</div>
+
+<a id="alg:new"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span><b>parallel for</b> \(i = 1, \ldots , n_1\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span>         <span style="width:14pt; display:inline-block;"></span>Compute the entries in row \(i\) of \(( B_{11}^{(k)} \; B_{12}^{(k)} )\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span><b>end parallel for</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> <span style="width:0pt; display:inline-block;"></span>Set \(B_{21}^{(k)} \gets (B_{12}^{(k)})^T\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span> <span style="width:0pt; display:inline-block;"></span><b>parallel for</b> \(i = 1, \ldots , n_2\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span>         <span style="width:14pt; display:inline-block;"></span>Compute the entries in row \(i\) of \(B_{22}^{(k)}\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7:</span> <span style="width:0pt; display:inline-block;"></span><b>end parallel for</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">8:</span> <span style="width:0pt; display:inline-block;"></span>Symmetrise \(B^{(k)} \gets (B^{(k)} + (B^{(k)})^T)/2\).
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+Numerical experiments<br />
+In this talk, we will present numerical results for the proposed new approaches using problems from the CUTEst test collection<sup>1</sup><a id="paper-autopage-4"></a>. This will lead to a discussion of future research directions.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;https://github.com/ralna/CUTEst
+</p>
+
+
+</div>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> R.&nbsp;Fletcher, A.&nbsp;Grothey, and S.&nbsp;Leyffer. Computing sparse Hessian and Jacobian approximations with optimal hereditary properties. In A.R. Conn, L.T. Biegler, T.F. Coleman, and
+F.N. Santosa, editors, <i>Large-scale Optimization with Applications, Part II: Optimal Design and Control,</i>, volume&nbsp;93 of <i>IMA Vol. Math. Appl.</i>, pages 37–52. Springer, New York, 1997.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> J.&nbsp;M. Fowkes, J.&nbsp;A. Scott, and N.&nbsp;I.&nbsp;M. Gould. Approximating sparse Hessian matrices using large-scale linear least squares. <i>Numerical Algorithms</i>, pages 1–24, 2023.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> J.&nbsp;M. Fowkes, J.&nbsp;A. Scott, and N.&nbsp;I.&nbsp;M. Gould. Approximating large-scale Hessian matrices using secant equations. <i>ACM TOMS</i>, under review, 2024.
+</p>
+</li>
+</ul>
+

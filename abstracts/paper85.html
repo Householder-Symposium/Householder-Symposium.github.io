@@ -1,0 +1,383 @@
+---
+layout: abstract
+absnum: 85
+---
+{% raw %}
+
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Eﬀicient tensor network contraction algorithms
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Linjian Ma</span>, Edgar Solomonik
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Tensors are multidimensional arrays that generalize the vector and matrix concepts. Formally-speaking, an \(N\)-way or \(N\)th-order tensor is an element of the tensor product of \(N\) vector spaces. A scalar, vector, and matrix correspond to
+tensors of order zero, one, and two, respectively. One of the key challenges in working with high-order tensors is called the “curse of dimensionality”, where tensors with large dimensionality can have an extremely large number of components, making
+it diﬀicult to analyze and extract meaningful information from them. <i>Tensor networks</i> are powerful techniques for addressing this challenge. A tensor network&nbsp;[14] employs a collection of small tensors, where some or all of their
+dimensions are contracted according to some pattern, to implicitly represent a high-dimensional tensor. Tensor networks have been originally used in computational quantum physics&nbsp;[23, 22, 24, 21, 20, 19], where low-rank tensor networks can
+be used eﬀiciently and accurately to represent quantum states and operators based on the area law. Recently, tensor networks are also widely used in simulating quantum computers&nbsp;[11, 25, 18, 17] and neural networks&nbsp;[13].
+</p>
+
+<p>
+Tensor network contraction explicitly evaluates the single tensor represented by a given tensor network. When each tensor in the network is dense, tensor network contraction is typically achieved through a sequence of pairwise tensor contractions.
+This sequence, known as the <i>contraction path</i>, is determined by a topological sort of the underlying <i>contraction tree</i>. The contraction tree is a rooted binary tree that depicts the complete contraction of the tensor network. In this tree,
+the leaves correspond to the tensors in the network, and each internal vertex represents the tensor contraction of its two children.
+</p>
+
+<p>
+Tensor network contraction has found diverse applications in different fields of research. For instance, in quantum computing, each quantum algorithm can be viewed as a tensor network contraction, making this method a useful tool for simulating
+quantum computers&nbsp;[11, 25, 18, 17]. In statistical physics, tensor network contraction has been used to evaluate the classical partition function of physical models defined on specific graphs&nbsp;[8]. Tensor network contraction has also been
+used for counting satisfying assignments of constraint satisfaction problems (#CSPs)&nbsp;[7]. In this approach, an arbitrary #CSP formula is transformed into a tensor network, where its full contraction yields the number of satisfying assignments
+of that formula.
+</p>
+
+<p>
+Contracting tensor networks with arbitrary structure is #P-hard in the general case&nbsp;[3, 16, 1], even when the network represents a scalar. The reason for this is that during the contraction of general tensor networks, intermediate tensors with
+high orders or large dimension sizes can emerge, leading to a substantial computational cost for precise contraction. Nonetheless, in some applications such as many-body physics, it has been observed that tensor networks built on top of specific
+models can often be approximately contracted with satisfactory accuracy, without incurring exponential costs&nbsp;[15]. A common approach is to represent or approximate large intermediate tensors as (low-rank) tensor networks, which reduces the
+memory usage and computational overhead for downstream contractions. Common tensor networks used for approximation include the matrix product states (MPS) and the tree tensor networks (TTN) [20].
+</p>
+
+<p>
+Eﬀicient approximate contraction algorithms based on MPSs have been proposed for tensor network contractions defined on regular structures such as the Projected Entangled Pair States (PEPS) [21, 22, 10, 9], which has a 2D lattice structure.
+However, these methods are not easily extendable to other general tensor network structures.
+</p>
+
+<p>
+Recent works have proposed approximation algorithms for contracting tensor networks with more general graph structures. For example, [6] approximates each intermediate tensor produced during the contraction path as a binary tree tensor network,
+while [17] approximates each intermediate tensor as an MPS. In [2], each intermediate tensor is also approximated as an MPS, but the system is designed for the specific unbalanced contraction paths and only targets the approximate contraction of
+tensor networks defined on planar graphs. Another approach proposed in [5] is to perform low-rank approximation on the remaining tensor network after contractions, rather than on the intermediate tensors. The experimental results demonstrate
+that this framework is more eﬀicient and accurate than [17].
+</p>
+
+<p>
+We introduce two approximate tensor network contraction algorithms. First of all, we present a swap-based algorithm named Contracting Arbitrary Tensor Network with Global Ordering (CATN-GO) that can eﬀiciently approximate the contraction
+of arbitrary tensor networks. Our algorithm builds on the approach outlined in [17], which approximates each intermediate tensor generated during the contraction as an MPS with a bounded rank. When contracting two tensors, the algorithm
+merges two MPSs, with swaps of adjacent dimensions in the MPS being the bottleneck for complexity.
+</p>
+
+<p>
+For a tensor network defined on \(G = (V,E)\), we prove that the minimum number of swaps required during contraction is lower bounded by the least number of edge crossings in any vertex linear ordering of the tensor network graph, denoted by
+\(\min _{\sigma }\text {cr}(G, \sigma )\). A vertex linear ordering \(\sigma : V \to \{1, \ldots , |V|\}\) assigns each vertex a unique number, and two edges with adjacent vertex orders \((i,j), (k, l)\) cross if \(i &lt; k &lt; j
+&lt; l\). Hence, we reduce the problem of finding the minimum number of swaps to the problem of finding a vertex linear ordering that minimizes the number of edge crossings. In addition, for a fixed vertex ordering \(\sigma ^V\), the number of
+swaps used in CATN-GO equals the lower bound, \(\text {cr}(G,\sigma ^V)\), implying optimality for this metric. Furthermore, CATN-GO includes a dynamic programming algorithm to select the contraction tree under a given vertex ordering.
+This algorithm aims to minimize the overall computational cost, under the assumption that all MPSs have a uniform rank. The uniform rank assumption makes the problem equivalent to minimizing the total length of the MPSs generated during the
+contractions and has a time complexity of \(O(|V|^3|E|)\). Experimental results demonstrate that when contracting tensor networks defined on 3D lattices using the Ising model, our algorithm is more eﬀicient than the algorithm proposed in [17] in
+terms of speed, and achieves a 5.9X speed-up while maintaining the same accuracy.
+</p>
+
+<p>
+We propose another approximate tensor network contraction method named Partitioned Contract. Like similar methods proposed in [6, 17, 2], our algorithm approximates each intermediate tensor as a binary tree tensor network. Compared to
+previous works, the proposed algorithm has the flexibility to incorporate a larger portion of the environment when performing low-rank approximations. Here, the environment refers to the remaining set of tensors in the network, and low-rank
+approximations with larger environments can generally provide higher accuracy. In addition, our proposed algorithm includes a cost-eﬀicient density matrix algorithm&nbsp;[12, 4] for approximating a tensor network with a general graph structure
+into a tree structure. The computational cost of the density matrix algorithm is asymptotically upper-bounded by that of the standard algorithm that uses canonicalization (the process of orthogonalizing all tensors except one in the tenosr network).
+Experimental results indicate that the proposed algorithm outperforms both algorithms proposed in [17] and [2] when considering tensor networks defined on lattices using the Ising model. Specifically, our approach achieves a 9.2X speed-up while
+maintaining the same level of accuracy.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> J.&nbsp;D. Biamonte, J.&nbsp;Morton, and J.&nbsp;Turner. Tensor network contractions for # SAT. <i>Journal of Statistical Physics</i>, 160(5):1389–1404, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> C.&nbsp;T. Chubb. General tensor network decoding of 2D Pauli codes. <i>arXiv preprint arXiv:2101.04125</i>, 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> C.&nbsp;Damm, M.&nbsp;Holzer, and P.&nbsp;McKenzie. The complexity of tensor calculus. <i>computational complexity</i>, 11(1-2):54–89, 2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> M.&nbsp;Fishman, S.&nbsp;White, and E.&nbsp;Stoudenmire. The ITensor software library for tensor network calculations. <i>SciPost Physics Codebases</i>, page 004, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> J.&nbsp;Gray and G.&nbsp;K. Chan. Hyper-optimized compressed contraction of tensor networks with arbitrary geometry. <i>arXiv preprint arXiv:2206.07044</i>, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> A.&nbsp;Jermyn. Automatic contraction of unstructured tensor networks. <i>SciPost Physics</i>, 8(1):005, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> S.&nbsp;Kourtis, C.&nbsp;Chamon, E.&nbsp;Mucciolo, and A.&nbsp;Ruckenstein. Fast counting with tensor networks. <i>SciPost Physics</i>, 7(5):060, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> M.&nbsp;Levin and C.&nbsp;P. Nave. Tensor renormalization group approach to two-dimensional classical lattice models. <i>Physical review letters</i>, 99(12):120601, 2007.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> M.&nbsp;Lubasch, J.&nbsp;I. Cirac, and M.-C. Banuls. Algorithms for finite projected entangled pair states. <i>Physical Review B</i>, 90(6):064425, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> M.&nbsp;Lubasch, J.&nbsp;I. Cirac, and M.-C. Banuls. Unifying projected entangled pair state contractions. <i>New Journal of Physics</i>, 16(3):033014, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> L.&nbsp;Ma and C.&nbsp;Yang. Low rank approximation in simulations of quantum algorithms. <i>Journal of Computational Science</i>, page 101561, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Tensornetwork.org contributors. Density matrix algorithm - tensornetwork.org. 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[13]&#x2003;</span> A.&nbsp;Novikov, D.&nbsp;Podoprikhin, A.&nbsp;Osokin, and D.&nbsp;P. Vetrov. Tensorizing neural networks. In <i>Advances in neural information processing systems</i>, pages 442–450, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[14]&#x2003;</span> R.&nbsp;Orús. A practical introduction to tensor networks: Matrix product states and projected entangled pair states. <i>Annals of Physics</i>, 349:117–158, 2014.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[15]&#x2003;</span> R.&nbsp;Orús. Tensor networks for complex quantum systems. <i>Nature Reviews Physics</i>, 1(9):538–550, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[16]&#x2003;</span> B.&nbsp;O’Gorman. Parameterization of tensor network contraction. In <i>14th Conference on the Theory of Quantum Computation, Communication and Cryptography</i>, 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[17]&#x2003;</span> F.&nbsp;Pan, P.&nbsp;Zhou, S.&nbsp;Li, and P.&nbsp;Zhang. Contracting arbitrary tensor networks: general approximate algorithm and applications in graphical models and quantum circuit
+simulations. <i>Physical Review Letters</i>, 125(6):060503, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[18]&#x2003;</span> Y.&nbsp;Pang, T.&nbsp;Hao, A.&nbsp;Dugad, Y.&nbsp;Zhou, and E.&nbsp;Solomonik. Eﬀicient 2D tensor network simulation of quantum systems. In <i>SC20: International Conference for High
+Performance Computing, Networking, Storage and Analysis</i>, pages 1–14. IEEE, 2020.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[19]&#x2003;</span> U.&nbsp;Schollwöck. The density-matrix renormalization group. <i>Reviews of modern physics</i>, 77(1):259, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[20]&#x2003;</span> Y.-Y. Shi, L.-M. Duan, and G.&nbsp;Vidal. Classical simulation of quantum many-body systems with a tree tensor network. <i>Physical review A</i>, 74(2):022320, 2006.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[21]&#x2003;</span> F.&nbsp;Verstraete and J.&nbsp;I. Cirac. Renormalization algorithms for quantum-many body systems in two and higher dimensions. <i>arXiv preprint cond-mat/0407066</i>, 2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[22]&#x2003;</span> F.&nbsp;Verstraete, V.&nbsp;Murg, and J.&nbsp;I. Cirac. Matrix product states, projected entangled pair states, and variational renormalization group methods for quantum spin systems.
+<i>Advances in physics</i>, 57(2):143–224, 2008.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[23]&#x2003;</span> G.&nbsp;Vidal. Eﬀicient classical simulation of slightly entangled quantum computations. <i>Physical review letters</i>, 91(14):147902, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[24]&#x2003;</span> S.&nbsp;R. White. Density matrix formulation for quantum renormalization groups. <i>Physical review letters</i>, 69(19):2863, 1992.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[25]&#x2003;</span> Y.&nbsp;Zhou, E.&nbsp;M. Stoudenmire, and X.&nbsp;Waintal. What limits the simulation of quantum computers? <i>Physical Review X</i>, 10(4):041038, 2020.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}
