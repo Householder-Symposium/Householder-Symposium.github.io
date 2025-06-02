@@ -1,4 +1,626 @@
----
-layout: abstract
----
+<div data-nosnippet
+    style="display:none"
+>
 
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Subspace methods with asymptotic Krylov convergence for bounded variable problems.
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Wim Vanroose</span>, Bas Symoens
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+<!--
+...... paragraph Introduction. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-5">Introduction.</span>
+<a id="paper-autopage-5"></a>
+
+</p>
+
+<p>
+Krylov subspace methods are highly effective in solving problems with sparse matrices at scale. Many large-scale problems in mechanics and fluid dynamics can be addressed using preconditioned Krylov solvers, and numerous specialized algorithms
+based on subspace methods have been developed that scale to the largest supercomputers. However, many scientific and engineering problems impose bounds on variables. Examples include nonnegative matrix factorization, contact problems in
+mechanics, and planning problems with resource and capacity constraints. Data science problems often have \(\|\cdot \|_\infty \)- or \(\|\cdot \|_1\)-norms. In these cases, active bounds manifest as boundary conditions, but it is often
+unknown in advance which bounds will be active.
+</p>
+
+<p>
+Each bound on a variable is expressed as an inequality. In the optimality conditions, each inequality leads to a nonlinear complementarity condition that couples the variable and the corresponding Lagrange multiplier. The traditional approach is to
+linearize the system of optimality conditions and solve the resulting saddle point system. Each linearization is solved within a subspace with a iterative method for the saddle point problems&nbsp;[1]. However, this subspace is not reused in the next
+linearization; a new subspace is built in the subsequent outer iteration. This is ineﬀicient.
+</p>
+
+<p>
+We propose using a single subspace that is kept over all the iterations. Let us summarize how subspace methods reduce the problem and how we can generalize this.
+</p>
+
+<p>
+A Krylov subspace for a square matrix \(A\in \mathbb {R}^{n\times n}\) and a vector \(v\in \mathbb {R}^n\) is defined as \(\mathcal {K}_k(A,v) := \text {span}\{v, Av, A^2 v, \ldots , A^{k-1}v \}\). Equivalently, this subspace can
+be written \(\text {span}\{r_0, r_1, r_2, \ldots , r_{k-1}\}\), where \(r_i\) are the residuals, which are mutually orthogonal.
+</p>
+
+<p>
+The <i>conjugate gradients</i> methods (CG) minimizes the error in the \(A\)-norm over the Krylov subspace for a symmetric and positive definite matrix \(A\). Specifically, it solves \(\min _{x \in x_0 + \mathcal {K}_k(A,r_0)} \|x -
+x^*\|^2_A\). Expanding the solution as \(x_k=x_0+ V_k y_k\) and writing down the optimality conditions leads to <b>a small linear system</b>: \((V_k^T A V_k) y_k = \|r_0\|_2 e_1\). Since \(A\) is symmetric, the matrix \(V_k^T A V_k\)
+is a tridiagonal. If we have found the solution for a basis \(V_k\), the solution for the next iteration can be warm-started from the previous solution.
+</p>
+
+<p>
+In the <i>generalized minimal residual</i> (GMRES), we minimize the 2-norm of the residual over the Krylov subspace. It is \(\min _{x \in x_0 + \mathcal {K}(A,r_0)} \|b-Ax\|_2\), for a general square matrix \(A\). The optimality
+conditions correspond to <b>a small least-squares problem</b>: \(\min _{y \in \mathbb {R}^k } \left \| \left \|r_0\right \|_2 e_1 -(V_{k+1}^TAV_k) y_k \right \|_2\). Here, the matrix \(V_{k+1}^T A V_{k}\) has a Hessenberg
+structure. Again, if we have found the solution for iteration \(k\), the next solution is easily found using warm-starting.
+</p>
+
+<p>
+In this talk, we generalize this approach to a bounded variable least squares problem:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+<!--
+
+
+                                                                                                         min ∥Ax − b∥2    subject to ℓ ≤ x ≤ u,                                                                     (1)--><a id="eq:problem"></a><!--
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:problem} \min \|Ax-b\|^2 \quad \text {subject to} \quad \ell \leq x \leq u,
+\end{equation}
+
+</p>
+
+<p>
+where \(A \in \mathbb {R}^{m \times n}\), \(b \in \mathbb {R}^m\) and \(\ell ,u \in \mathbb {R}^n\), lower and upper bounds.
+</p>
+
+<p>
+We will restrict the solution of <span class="textup">(<a href="paper.html#eq:problem">1</a>)</span> to a subspace, leading to a small projected problem. <b>Instead of a small linear system as in CG or a small least-squares
+problem as in GMRES, this will now result in a small quadratic programming (QP) problem.</b> This system will solve for the optimal coeﬀicients of the solution and for the Lagrange multipliers. With these, we will calculate a
+residual that will be added to the basis.
+</p>
+<!--
+...... paragraph Optimality conditions. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-6">Optimality conditions.</span>
+<a id="paper-autopage-6"></a>
+Let us start with the optimality conditions for problem <span class="textup">(<a href="paper.html#eq:problem">1</a>)</span>. These are
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{1}\)</span>
+
+<!--
+
+
+                                                                                                     AT (Ax − b) − λ + µ = 0,
+                                                                                                                λi (xi − ℓi ) = 0,    i ∈ {1, . . . , m}
+                                                                                                               µi (ui − xi ) = 0,     i ∈ {1, . . . , m}                                               (2)--><a id="eq:optimality"></a><!--
+                                                                                                                    ℓi ≤ x i ≤ ui ,   i ∈ {1, . . . , m}
+                                                                                                                  λ≥0      µ ≥ 0.
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:optimality} \begin{aligned} A^T(Ax-b) - \lambda + \mu &amp;=0, \\ \lambda _i(x_i - \ell _i) &amp;= 0, &amp;&amp;i\in \{1,\ldots ,m\}\\ \mu _i(u_i - x_i) &amp;= 0, &amp;&amp;i\in \{1,\ldots ,m\} \\ \ell
+_i \leq x_i &amp;\leq u_i, &amp;&amp;i\in \{1,\ldots ,m\}\\ \lambda \geq 0 \quad \mu &amp;\geq 0. \end {aligned}
+\end{equation}
+
+</p>
+
+<p>
+We now expand the solution in a orthogonal basis \(V_k\) as \(x_k = V_k y_k\). The problem <span class="textup">(<a href="paper.html#eq:problem">1</a>)</span> then becomes
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{2}\)</span>
+
+<!--
+
+
+                                                                                                     min ∥AVk yk − b∥22      subject to    l ≤ Vk y ≤ u.                                                                                   (3)
+
+-->
+
+<p>
+
+\begin{equation}
+\min \|A V_ky_k-b\|^2_2 \quad \text {subject to} \quad l \le V_k y \le u.
+\end{equation}
+
+</p>
+
+<p>
+The corresponding optimality conditions are now:
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{3}\)</span>
+
+<!--
+
+                                                                     (                         )
+                                                                  VkT AT (AVk yk − b) − λk + µk = 0,
+                                                                                  λi ([Vk yk ]i − ℓi ) = 0,   i ∈ {1, . . . , m}
+                                                                                  µi (ui − [Vk yk ]i ) = 0,   i ∈ {1, . . . , m}                                                           (4)--><a id="eq:projected_optimality"></a><!--
+                                                                                      ℓi ≤ [Vk yk ]i ≤ ui ,   i ∈ {1, . . . , m}
+                                                                                         λ≥0       µ ≥ 0.
+
+-->
+
+<p>
+
+\begin{equation}
+\label {eq:projected_optimality} \begin{aligned} V_k^T\left ( A^T(A V_ky_k-b) - \lambda _k + \mu _k \right )&amp;=0, \\ \lambda _i([V_ky_k]_i - \ell _i) &amp;= 0, &amp;&amp;i\in \{1,\ldots ,m\}\\ \mu _i(u_i -
+[V_ky_k]_i) &amp;= 0, &amp;&amp;i\in \{1,\ldots ,m\} \\ \ell _i \leq [V_ky_k]_i &amp;\leq u_i, &amp;&amp;i\in \{1,\ldots ,m\}\\ \lambda \geq 0 \quad \mu &amp;\geq 0. \end {aligned}
+\end{equation}
+
+</p>
+
+<p>
+These are very similar to <span class="textup">(<a href="paper.html#eq:optimality">2</a>)</span> but now the first equation is a projection of the residual onto the basis \(V_k\). The number of complementarity conditions is the same as in
+the original problem.
+</p>
+<!--
+...... paragraph Residual Quadratic Programming Active Set Subspace (ResQPASS)). ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-7">Residual Quadratic Programming Active Set Subspace (ResQPASS)).</span>
+<a id="paper-autopage-7"></a>
+We are now in a position to define the ResQPASS iteration. It solves a series of small projected optimalisation problems that can be warm-started with the previous solution.
+</p>
+<div class="amsthmbodyplain">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-8"></a>
+<span class="amsthmnameplain">Definition</span><span class="amsthmnumberplain"> <span class="textup">1</span></span>. </span> <a id="def:resqpas"></a> The <em>residual quadratic programming active-set subspace
+(ResQPASS)</em> [2] iteration for \(A \in \mathbb {R}^{m \times n}\), \(b \in \mathbb {R}^m\) and \(\ell ,u \in \mathbb {R}^n\), lower and upper bounds such that \(\ell \leq 0 \leq u\) with associated Lagrange multipliers \(\lambda
+_k, \mu _k \in \mathbb {R}^n\), generates a series of approximations \(\{x_k\}_{k \in \mathbb {N}}\) that solve
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{4}\)</span>
+
+<!--
+
+
+                                                                                                 xk =         argmin            ∥Ax − b∥22   subject to   ℓ ≤ x ≤ u,                                                   (5)--><a id="eqn:xk"></a><!--
+                                                                                                        x∈span{r0 ,...,rk−1 }
+
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eqn:xk} \begin{aligned} x_k = \argmin _{x \in \vct \{r_0,\ldots , r_{k-1}\}} &amp; \|Ax-b\|_2^2 \quad \text {subject to} \quad \ell \leq x \leq u, \end {aligned}
+\end{equation}
+
+
+</p>
+
+<p>
+where
+</p>
+
+<span class="hidden"> \(\seteqnumber{0}{}{5}\)</span>
+
+<!--
+
+
+
+                                                                                                                   rk := AT (Axk − b) − λk + µk .                                                                      (6)--><a id="eqn:rk"></a><!--
+
+-->
+
+<p>
+
+
+\begin{equation}
+\label {eqn:rk} r_k := A^T (Ax_k-b) - \lambda _k +\mu _k.
+\end{equation}
+
+
+</p>
+
+<p>
+The feasible initial guess is \(x_0=0\), with \(\lambda _0=\mu _0=0\) and \(r_0 :=-A^Tb\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+The definition of the residual, <span class="textup">(<a href="paper.html#eqn:rk">6</a>)</span>, includes the current guess for the Lagrange multiplier \(\lambda _k\) and \(\mu _k\). A non-zero Lagrange multiplier indicates where the
+solution in the subspace touches the bounds.
+</p>
+
+<p>
+Note that the residual, as defined in Eq.&nbsp;<span class="textup">(<a href="paper.html#eqn:rk">6</a>)</span>, also appears in the first equation of the optimality conditions, <span class="textup">(<a
+href="paper.html#eq:optimality">2</a>)</span> and <span class="textup">(<a href="paper.html#eq:projected_optimality">4</a>)</span>.
+</p>
+
+<p>
+The restriction \(\ell \leq 0 \leq u\) does not limit the applicability, we can use an initial guess \(x_0\) to shift to problem such that this is satisfied.
+</p>
+
+<p>
+This definition is translated in the algorithm described in Algorithm&nbsp;<a href="paper.html#alg:resBasis">1</a>, which has a very similar structure as Krylov subspace methods.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Residual quadratic programming active-set subspace (ResQPASS)
+</p>
+</div>
+
+<a id="alg:resBasis"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"><b>Require:</b></span> \(A \in \mathbb {R}^{m \times n},b \in \mathbb {R}^m\), \(\ell ,u \in \mathbb {R}^n, tol&gt;0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span>\(r_0 =A^Tb\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span>\(V_1 =r_0/\|r_0\|\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span> <span style="width:0pt; display:inline-block;"></span>\(y_1 = 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span> <span style="width:0pt; display:inline-block;"></span>\(\mathcal {W}_1 = \emptyset \)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span> <span style="width:0pt; display:inline-block;"></span><b>for</b> \(k=1,2,\ldots ,m\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span>   <span style="width:14pt; display:inline-block;"></span>\(y_k^*, \mathcal {W}_k^*,\lambda _k, \mu _k \gets \) Solve Eq.&nbsp;<span class="textup">(<a
+href="paper.html#eq:projected_optimality">4</a>)</span> using <span class="textsc">qpas</span>, with initial guess \(y_k\) and initial working set \(\mathcal {W}_{k}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7:</span>         <span style="width:14pt; display:inline-block;"></span>\(r_k = A^T\left (AV_ky_k^* - b\right )-\lambda _k+\mu _k\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">8:</span>         <span style="width:14pt; display:inline-block;"></span><b>if</b> \(\|r_k\|_2 \le tol\) <b>then</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">9:</span>             <span style="width:27pt; display:inline-block;"></span>\(x = V_k y_k,\) break;
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">10:</span>          <span style="width:14pt; display:inline-block;"></span><b>end</b> <b>if</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">11:</span>          <span style="width:14pt; display:inline-block;"></span>\(V_{k+1} \gets \begin {bmatrix} V_k &amp; r_k/\|r_k\| \end {bmatrix}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">12:</span>          <span style="width:14pt; display:inline-block;"></span>\(y_{k+1} \gets \begin {bmatrix} (y_k^*)^T &amp; 0 \end {bmatrix}^T\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">13:</span>          <span style="width:14pt; display:inline-block;"></span>\(\mathcal {W}_{k+1} \gets \mathcal {W}_k^*\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">14:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+If we solve the system of the projected optimality conditions <span class="textup">(<a href="paper.html#eq:projected_optimality">4</a>)</span> only to feasibility (i.e., not all Lagrange multipliers are positive), we obtain an orthogonal
+series of residuals \(r_k\). Indeed, the first equation of <span class="textup">(<a href="paper.html#eq:projected_optimality">4</a>)</span> shows the current residual projected on the previous residuals. Thus, achieving feasibility means
+that the current residual will be orthogonal to all previous residuals.
+</p>
+
+<p>
+Another observation is that when the bounds, \(\ell \) and \(u\), do not restrict the problem (i.e none of the bounds are active), the corresponding Lagrange multipliers \(\mu \) and \(\lambda \) will be zero, due to the complementarity
+conditions. In this case, the residual simplifies to the classical form \(A^T(AV_ky_k-b)\), as in LSQR or CG. The method ResQPASS will then corresponds to a classical Krylov method.
+</p>
+
+<p>
+However, when there are active bounds, the residuals will differ — but not significantly. When only a few bounds are active, the vectors of Lagrange multipliers are sparse, meaning that only a few of the elements \(\lambda _i\) and \(\mu _j\) are
+non-zero.
+</p>
+
+<p>
+In figure&nbsp;<a href="paper.html#fig:maxConstr">1</a>, we studied model problems where the number of active constraints in the solution can be adjusted. What we observe is that, in the initial iterations, progress is slow because the bounds
+prevent a full step. However, once the limiting bounds are discovered, regular Krylov convergence sets in due to the orthogonality of the residuals.
+</p>
+
+<p>
+This observation is explained by a convergence analysis [2], which reveals that after a certain number of iterations, the residuals can be expressed as polynomials of the normal matrix on some subspace, \(p(A^T A)V_0\). At this point, regular Krylov
+convergence occurs. This connection to Krylov subspaces suggests superlinear convergence for problems with a small number of active constraints.
+</p>
+<!--
+...... paragraph Numerical implementation. ......
+-->
+
+
+<p>
+<span class="paragraph" id="autosec-9">Numerical implementation.</span>
+<a id="paper-autopage-9"></a>
+In the numerical implementation, we solve a series of QP problems that grow in size. Similar to CG and GMRES, solving the next problem becomes easier if the previous problem has already been solved. We can warm-start with the previous solution
+as the initial guess, along with the working set from the previous problem. Additionally, the factorisation of the saddle point system can be reused, as the active set changes one element at a time, and the matrices only change by a rank-1 update.
+</p>
+
+<p>
+We use a Cholesky factorization of the projected Hessian \(V_k^TA^TAV_k\) or a orthogonalisation \(AV_k=U_kB_k\), which gives asymptocally the bidiagonalisation. These factorisations ar eﬀiciently updated as the subspace expands. Similarly, in the
+inner QP iterations, we use a QR factorization of the Cholesky factors applied to the active constraints, which further improves the eﬀiciency.
+</p>
+
+<p>
+By limiting the inner iterations we can choose to solve only for feasibility. In the early iterations, it is beneficial to prioritize subspace expansion over achieving full optimality within each subspace. This control over the number of inner iterations
+balances solution accuracy and speed. We also incorporate additional recurrence relations to avoid redundant computations, similar to techniques used in the CG method.
+</p>
+
+<p>
+This results in an algorithm that performs very well in problems with a limited number of active constraints such as contact problems, offering significantly faster convergence compared to traditional methods like interior-point methods. However, the
+performance degrades as the number of active constraints becomes too large.
+</p>
+
+<p>
+It is important to note that ResQPASS is a matrix-free method, as it primarily relies on matrix-vector products, making it suitable for problems where explicit matrix storage is impractical.
+</p>
+
+<figure id="autoid-2" class="figure ">
+
+<p>
+
+<a href="imageWS_new.png" target="_blank" ><img
+    src="imageWS_new.png"
+    style="
+    width:434pt;
+    "
+    class="inlineimage"
+    alt="(image)"
+></a>
+</p>
+
+<div class="figurecaption">
+<p>
+Figure&nbsp;1:&nbsp;This figure illustrates the convergence behavior for different number of active constraints. The residual and objective behave similar to the unbounded (\(i_{\max }=0\), Krylov convergence) case, with a delay that is roughly
+equal to \(i_{\max }\), the number of active constraints in the problem. \(\tilde {x}\) is an ‘exact’ solution found by applying MATLAB’s <kbd>quadprog</kbd> with a tolerance of \(10^{-15}\).
+</p>
+</div>
+
+<a id="fig:maxConstr"></a>
+
+</figure>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-10">References</h4>
+<a id="paper-autopage-10"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Michele Benzi, Gene&nbsp;H Golub, and Jörg Liesen. Numerical solution of saddle point problems. <i>Acta numerica</i>, 14:1–137, 2005.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Bas Symoens and Wim Vanroose. ResQPASS: an algorithm for bounded variable linear least squares with asymptotic Krylov convergence. <i>arXiv preprint arXiv:2302.13616</i>, 2023.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}
