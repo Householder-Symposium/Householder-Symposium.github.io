@@ -91,7 +91,7 @@ Tuesday:
     speakers:
       - iipsen
       - jlangou
-      - rschneider
+      - dszyld
   - title: Lunch Break
     from: "12:00"
     until: "13:30"
@@ -183,7 +183,7 @@ Thursday:
     from: "9:00"
     until: "10:45"
     speakers:
-      - dszyld
+      - rschneider
       - jtabeart
       - ftisseur
       - ntrefethen
