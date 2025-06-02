@@ -222,8 +222,8 @@ this perspective is far from complete. In the talk, I will discuss several recen
 
 
 <p>
-It is expected that the sketching matrices \(S \in R^{k \times m}\) with larger sketch size \(k\) improve per-iteration convergence of the solver but clearly they become more computationally expensive within every step. In [?], we have quantified
-the advantage of increasing the sketch size and connected it to the <em>tail condition number</em> of the system, that is, singular values of \(A\) excluding the top \(k\) of them.
+It is expected that the sketching matrices \(S \in R^{k \times m}\) with larger sketch size \(k\) improve per-iteration convergence of the solver but clearly they become more computationally expensive within every step. In [DR24], we have
+quantified the advantage of increasing the sketch size and connected it to the <em>tail condition number</em> of the system, that is, singular values of \(A\) excluding the top \(k\) of them.
 </p>
 
 <p>
@@ -236,7 +236,7 @@ regularized, such as ridge regression.
 </p>
 
 <p>
-Another consequence of these results, obtained in [?], is that the sketch-and-project approach can be also viewed as implicit preconditioning by the iterative sparse sketching (or sampling) procedure.
+Another consequence of these results, obtained in [DLNR24], is that the sketch-and-project approach can be also viewed as implicit preconditioning by the iterative sparse sketching (or sampling) procedure.
 </p>
 <!--
 ...... subsection 2. Subspace constrained iterative methods for linear solvers with prior information ......
@@ -246,7 +246,7 @@ Another consequence of these results, obtained in [?], is that the sketch-and-pr
 
 
 <p>
-The adaptive nature of the sketch-and-project iteration can be also used to guide the iterations when additional information is available about the system. In [?], we propose a version of the randomized Kaczmarz algorithm for solving systems of
+The adaptive nature of the sketch-and-project iteration can be also used to guide the iterations when additional information is available about the system. In [LR24], we propose a version of the randomized Kaczmarz algorithm for solving systems of
 linear equations where the iterates are confined to the solution space of a selected subsystem. We show that the subspace constraint leads to an accelerated convergence rate, especially when the system has approximately low-rank structure that can
 be estimated before solving the system. Another natural place for a subspace constraint appears if only a part of a linear system changes with time or one is solving a sequence of otherwise connected linear systems. On Gaussian-like random data, we
 show that the proposed Subspace Constrained Randomized Kaczmarz method results in a form of dimension reduction that effectively increases the aspect ratio of the system.
@@ -261,8 +261,47 @@ show that the proposed Subspace Constrained Randomized Kaczmarz method results i
 <p>
 Finally, the adaptivity of the considered iterative framework gives another prominent application to solving linear systems contaminated with sparse corruptions. This setting models applications where some measurements are corrupted by arbitrarily
 large errors, which may occur during the data collection, transmission, and storage process due to malfunctioning sensors or faulty components. For suﬀiciently tall and regular systems \(A \in R^{m\times n}, m \ge O(n)\), the iterates of a simple
-data-aware method based on the Randomized Kaczmarz algorithm converge to \(x_*\) avoiding a significant portion of arbitrary corruptions [?]. Moreover, the subspace constraining approach discussed above allows to eﬀiciently utilize external
-knowledge about corruption-free equations and achieve convergence in diﬀicult settings, such as not very overdetermined (\((1 + \alpha ) n \times n\)) linear systems [?].
+data-aware method based on the Randomized Kaczmarz algorithm converge to \(x_*\) avoiding a significant portion of arbitrary corruptions [HNRS22]. Moreover, the subspace constraining approach discussed above allows to eﬀiciently utilize
+external knowledge about corruption-free equations and achieve convergence in diﬀicult settings, such as not very overdetermined (\((1 + \alpha ) n \times n\)) linear systems [LR24].
 </p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-8">References</h4>
+<a id="paper-autopage-8"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[DLNR24]&#x2003;</span> Michał Dereziński, Daniel LeJeune, Deanna Needell, and Elizaveta Rebrova. Fine-grained analysis and faster algorithms for iteratively solving linear systems. <i>arXiv preprint
+arXiv:2405.05818</i>, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[DR24]&#x2003;</span> Michał Dereziński and Elizaveta Rebrova. Sharp analysis of sketch-and-project methods via a connection to randomized singular value decomposition. <i>SIAM Journal on Mathematics of Data
+Science</i>, 6(1):127–153, 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[HNRS22]&#x2003;</span> Jamie Haddock, Deanna Needell, Elizaveta Rebrova, and William Swartworth. Quantile-based iterative methods for corrupted systems of linear equations. <i>SIAM Journal on Matrix
+Analysis and Applications</i>, 43(2):605–637, 2022.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[LR24]&#x2003;</span> Jackie Lok and Elizaveta Rebrova. A subspace constrained randomized kaczmarz method for structure or external knowledge exploitation. <i>Linear Algebra and its Applications</i>, 2024.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
 
 {% endraw %}
