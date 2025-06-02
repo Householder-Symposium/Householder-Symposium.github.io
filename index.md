@@ -6,7 +6,7 @@ layout: home
 
 ![Cornell University campus with Cayuga lake in the background](images/UP_2016_1413_089_select.jpg)
 
-The XXII Householder Symposium on Numerical Linear Algebra will be held June 8 - June 13, 2025 at the [Statler Hotel](https://statlerhotel.cornell.edu) on [Cornell University](https://www.cornell.edu/)'s campus in Ithaca, NY. The local organizing committee is [Anil Damle](mailto:damle@cornell.edu) (chair), [Alex Townsend](mailto:ajt253@cornell.edu), and [David Bindel](mailto:bindel@cornell.edu). The Householder Committee seeks a team to organize the 2028 Householder Symposium on Numerical Linear Algebra. The deadline for submitting a proposal is June 1, 2025. Details may be found [here](/organize).
+The XXII Householder Symposium on Numerical Linear Algebra will be held June 8 - June 13, 2025 at the [Statler Hotel](https://statlerhotel.cornell.edu) on [Cornell University](https://www.cornell.edu/)'s campus in Ithaca, NY. The local organizing committee is [Anil Damle](mailto:damle@cornell.edu) (chair), [Alex Townsend](mailto:ajt253@cornell.edu), and [David Bindel](mailto:bindel@cornell.edu). The schedule for the meeting is now [available](/schedule); in addition to the talks it includes a list of posters.
 
 #### Sponsors
 
