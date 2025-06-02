@@ -11,10 +11,10 @@ description: >
 show_excerpts: false
 
 header_pages:
- - history.md
- - organize.md
+ - schedule.html 
  - travel.md
  - local.md
+ - history.md
  - prize.md
  - policies.md
 
