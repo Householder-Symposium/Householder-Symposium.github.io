@@ -1,4 +1,582 @@
 ---
 layout: abstract
+absnum: 144
 ---
+{% raw %}
 
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\newcommand {\LWRsubmultirow }[2][]{#2}\)
+
+\(\newcommand {\LWRmultirow }[2][]{\LWRsubmultirow }\)
+
+\(\newcommand {\multirow }[2][]{\LWRmultirow }\)
+
+\(\newcommand {\mrowcell }{}\)
+
+\(\newcommand {\mcolrowcell }{}\)
+
+\(\newcommand {\STneed }[1]{}\)
+
+\(\newcommand {\toprule }[1][]{\hline }\)
+
+\(\let \midrule \toprule \)
+
+\(\let \bottomrule \toprule \)
+
+\(\def \LWRbooktabscmidruleparen (#1)#2{}\)
+
+\(\newcommand {\LWRbooktabscmidrulenoparen }[1]{}\)
+
+\(\newcommand {\cmidrule }[1][]{\ifnextchar (\LWRbooktabscmidruleparen \LWRbooktabscmidrulenoparen }\)
+
+\(\newcommand {\morecmidrules }{}\)
+
+\(\newcommand {\specialrule }[3]{\hline }\)
+
+\(\newcommand {\addlinespace }[1][]{}\)
+
+\(\def \gL {{\mathcal {L}}}\)
+
+\(\def \gU {{\mathcal {U}}}\)
+
+\(\def \gS {{\mathcal {S}}}\)
+
+\(\def \sN {{\mathbb {N}}}\)
+
+\(\newcommand {\mat }[1]{\boldsymbol {#1}}\)
+
+\(\renewcommand {\vec }[1]{\boldsymbol {\mathrm {#1}}}\)
+
+\(\newcommand {\vecalt }[1]{\boldsymbol {#1}}\)
+
+\(\newcommand {\va }{\ensuremath {\vec {a}}}\)
+
+\(\newcommand {\mA }{\ensuremath {\mat {A}}}\)
+
+\(\newcommand {\wpar }[1]{\ensuremath {\left (#1\right )}}\)
+
+\(\newcommand {\wcur }[1]{\ensuremath {\left \{#1\right \}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+Parallel Incomplete Factorization Preconditioners
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Erik G Boman</span><sup>1</sup><a id="paper-autopage-3"></a>, Marc A. Tunnell<sup>2</sup>
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Incomplete factorizations are popular preconditioners and are well known to be effective for a wide range of problems. Additionally, these preconditioners can be used as a “black box” and do not rely on any <i>a priori</i> knowledge of the problem.
+However, traditional algorithms for computing these incomplete factorizations are based on Gaussian elimination and do not parallelize well. Recently, a more parallel incomplete factorization algorithm was proposed by Chow and Patel&nbsp;[4],
+where the factors are computed iteratively. Here we propose a new iterative approach that is based on alternating triangular solves of \(L\) and \(U\). We develop two versions: ATS-ILU for a static sparsity pattern, and ATS-ILUT for a dynamic
+pattern (using thresholding). We show that this new method is similar to the fine-grained iterative ILU method by Chow but has the added advantage that it allows greater reuse of memory and is fully deterministic in parallel, meaning the results do
+not depend on scheduling. We evaluate the new method on several test matrices from the SuiteSparse collection and show that it is competitive with current ILU methods. When short setup time is important, it is typically better than other methods.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-5"></a>
+<p>
+<sup>1</sup>&nbsp;Sandia National Labs, <kbd>egboman@sandia.gov</kbd>
+</p>
+
+
+<p>
+<sup>2</sup>&nbsp;Purdue University, <kbd>mtunnell@purdue.edu</kbd>
+</p>
+
+
+</div>
+<!--
+...... section Introduction ......
+-->
+<h4 id="autosec-6"><span class="sectionnumber">1&#x2003;</span>Introduction</h4>
+<a id="paper-autopage-6"></a>
+
+
+<a id="sec:intro"></a>
+
+<p>
+Preconditioning is well known to be essential for improving the speed of convergence of Krylov methods such as Conjugate Gradient (CG) and Generalized Minimal Residual (GMRES)&nbsp;[8]. Incomplete Lower-Upper (ILU) factorizations are a
+popular class of preconditioners as they can be used as a “black box” on a wide range of problems. There are two main types of ILU factorizations, level-based ILU(k)&nbsp;[3, 6, 7] and threshold-based ILUT&nbsp;[9]. However, these methods are
+inherently sequential and do not parallelize well.
+</p>
+
+<p>
+There has been interest in the parallelization of these more classical interpretations of ILU, largely through graph partitioning schemes. These graph partition-based methods, such as&nbsp;[5], offer a promising approach to parallelizing classical ILU
+methods. By decomposing the graph corresponding to the matrix and determining variables that can be eliminated in parallel, these methods aim to distribute the computational load more evenly across processors. While these strategies have shown
+effectiveness for certain types of problems&nbsp;[3], their implementation can be highly complex. Additionally, their performance can be problem-dependent, requiring consideration of the underlying graph structure when choosing a parallelization
+strategy.
+</p>
+
+<p>
+More recently, there have been strides into methods of computing ILU factors iteratively, potentially giving up some of the robustness of the classical methods for better parallel properties&nbsp;[4]. Iterative ILU methods, such as those introduced by
+Chow&nbsp;[4], offer significant advantages in terms of scalability on modern parallel architectures. For the remainder of this paper, we refer to the method introduced by Chow as ParILU and its thresholded counterpart as ParILUT&nbsp;[1, 4].
+These methods approximate the ILU factors through a series of iterative updates, which can be more easily distributed across multiple processors or offloaded to accelerators.
+</p>
+
+<p>
+By breaking down each iterative update into smaller approximate subproblems and solving them independently, different parts of the factorization can be computed in parallel without the need for complex graph-partitioning algorithms. This
+approach allows for the use of iterative ILU methods on a wide range of problems, including those with complex or irregular graph structures that may preclude high levels of parallelism in the graph-partitioned classical ILU methods.
+</p>
+
+<p>
+Furthermore, iterative ILU methods are adaptable to various hardware accelerators such as graphics processing units (GPUs)&nbsp;[2], which are increasingly important for high-performance computing. By leveraging the parallel processing
+capability of these accelerators, iterative ILU methods can significantly reduce the real-world time required to compute the ILU factors for large-scale problems, thereby speeding up the overall solution process.
+</p>
+
+<p>
+In this paper, we propose a new class of iteratively-computed ILU preconditioners, which we call Alternating triangular Solves ILU (ATS-ILU). This method builds upon the strengths of existing iterative ILU approaches while leveraging improved
+memory reuse and determinism in parallel. We provide an analysis of the method and evaluate its performance compared to the state of the art on a variety of test matrices. We show that our method is competitive with current ILU methods and has
+the potential to be a powerful tool for solving large-scale problems on modern parallel architectures.
+</p>
+<!--
+...... section Alternating Triangular Solves Method ......
+-->
+<h4 id="autosec-7"><span class="sectionnumber">2&#x2003;</span>Alternating Triangular Solves Method</h4>
+<a id="paper-autopage-7"></a>
+
+
+<a id="sec:alt"></a>
+
+<p>
+In this section, we introduce our new method for computing ILU factors, ATS-ILU. This method is based on the idea of alternating iterative updates to the \(L\) and \(U\) factors of the matrix \(A\). The basic idea is the same as before, where we
+iteratively update the factors \(L\) and \(U\) until convergence, but where the updates are performed in an alternating manner. This general process is a common method for solving bilinear systems and is outlined in <a
+href="paper.html#alg:altILU">1</a>.
+</p>
+
+<figure id="autoid-1" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;1:&nbsp;Alternating ILU
+</p>
+</div>
+
+<a id="alg:altILU"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span>\(U^{(0)} \gets \texttt {triu}(A)\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span>\(k \gets 0\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>while</b> not converged <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>          <span style="width:14pt; display:inline-block;"></span>Solve \(L^{(k)} U^{(k)} \approx A\) for \(L^{(k)}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>          <span style="width:14pt; display:inline-block;"></span>Solve \(L^{(k)} U^{(k+1)} \approx A\) for \(U^{(k+1)}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>          <span style="width:14pt; display:inline-block;"></span>Check convergence
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span>          <span style="width:14pt; display:inline-block;"></span>\(k \gets k + 1\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker"></span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>while</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+One way to perform this procedure would be to perform a triangular solve with the entirety of \(U^{(k)}\) and let \(A\) be the right-hand side vector to solve for \(L^{(k+1)}\), and similar to solve for \(U^{(k+1)}\). This entire process can largely
+be performed in parallel as each row of \(L\) and column of \(U\) can be solved independently. Despite the potential for high levels of parallelism, it is still extremely computationally expensive and likely suffers from significant levels of fill-in during
+intermediate steps. The computational cost could be reduced by using an approximation.
+</p>
+
+<p>
+Additionally, the algorithm as stated above does not guarantee that \(L\) and \(U\) remain lower and upper triangular, respectively. One method to address this issue would be to solve for \(L\) only in the lower triangular part of \(A\) and for \(U\)
+only in the upper triangular part of \(A\). This would ensure that the factors remain lower and upper triangular, respectively, but would still leave the problem of significant levels of fill-in. Instead, we suggest a more practical approach where we
+impose a sparsity pattern on \(L\) and \(U\), namely \(\gL \) and \(\gU \), respectively. This sparsity pattern can be chosen to be the same as the sparsity pattern of \(A\), which is the choice we make in this paper.
+</p>
+
+<p>
+In order to get around the issue of fill-in, we propose a method where we approximately solve for \(L\) and \(U\) along their given sparsity patterns, which we discuss next.
+</p>
+<!--
+...... subsection Alternating Triangular Solves ILU Algorithm ......
+-->
+<h5 id="autosec-8"><span class="sectionnumber">2.1&#x2003;</span>Alternating Triangular Solves ILU Algorithm</h5>
+<a id="paper-autopage-8"></a>
+
+
+<a id="sec:ILUK"></a>
+
+<p>
+The ATS-ILU algorithm is based on the idea of approximately solving for \(L\) and \(U\) in an alternating fashion along only their given sparsity patterns. Again, the rows of \(L\) and the columns of \(U\) can be solved independently, allowing for a
+high level of parallelism. The algorithm is shown in <a href="paper.html#alg:ATSILU">2</a>. We present the algorithm for a general pattern \(\gS \) but in practice, this will correspond to the pattern of \(A^k\) for some small power \(k\).
+</p>
+
+<figure id="autoid-2" class="algorithm ruled">
+
+<div class="figurecaption">
+<p>
+Algorithm&nbsp;2:&nbsp;ATS-ILU
+</p>
+</div>
+
+<a id="alg:ATSILU"></a>
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">1:</span> <span style="width:0pt; display:inline-block;"></span><b>Input:</b> Sparse matrix \(A\), sparsity pattern \(\gS \), starting factors \(L\) and \(U\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">2:</span> <span style="width:0pt; display:inline-block;"></span><b>while</b> not converged <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">3:</span>         <span style="width:14pt; display:inline-block;"></span><b>for</b> \(i \in \wcur {1~2~\dots ~n}\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">4:</span>            <span style="width:27pt; display:inline-block;"></span>\(\text {idx} \gets \wcur {j \in \sN ~|~ \wpar {i,j} \in \gS , j \leq i}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">5:</span>            <span style="width:27pt; display:inline-block;"></span>\(\ell _{i, \text {idx}} \gets a_{i, idx}\wpar {U_{\text {idx},\text {idx}}}^{-1}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">6:</span>         <span style="width:14pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">7:</span>         <span style="width:14pt; display:inline-block;"></span><b>for</b> \(j \in \wcur {1~2~\dots ~n}\) <b>do</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">8:</span>            <span style="width:27pt; display:inline-block;"></span>\(\text {idx} \gets \wcur {i \in \sN ~|~ \wpar {i,j} \in \gS , i \geq j}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">9:</span>            <span style="width:27pt; display:inline-block;"></span>\(u_{\text {idx}, j} \gets \wpar {L_{\text {idx},\text {idx}}}^{-1} a_{\text {idx},j}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">10:</span>         <span style="width:14pt; display:inline-block;"></span><b>end</b> <b>for</b>
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">11:</span> <span style="width:0pt; display:inline-block;"></span><b>end</b> <b>while</b>
+</p>
+</li>
+</ul>
+
+</figure>
+
+<p>
+In this algorithm, we solve for each row of \(L\) and each column of \(U\) independently. Recall that the notation \(\va _{i, idx}\) refers to the \(i\)<sup>th</sup> row of \(\mA \) restricted to the indices in \(\text {idx}\), and similarly for
+\(U_{\text {idx},\text {idx}}\) and \(L_{\text {idx},\text {idx}}\). These submatrices can be viewed as the (dense) non-contiguous submatrices of \(L\) and \(U\) that correspond to the sparsity pattern \(\gS \) along the given row or
+column.
+</p>
+
+<p>
+Our method can be extended to do thresholding to maintain a certain fill level. We call this extension ATS-ILUT, and defer the details to the full paper.
+</p>
+<!--
+...... section Results ......
+-->
+<h4 id="autosec-9"><span class="sectionnumber">3&#x2003;</span>Results</h4>
+<a id="paper-autopage-9"></a>
+
+
+<p>
+We implemented the ATS-ILUT algorithm in C++ with Kokkos for parallel performance portability. We show some preliminary results in Table&nbsp;3 (<a href="paper144.pdf" target="_blank" >PDF abstract only</a>).
+</p>
+<!--
+...... section Conclusions ......
+-->
+<h4 id="autosec-10"><span class="sectionnumber">4&#x2003;</span>Conclusions</h4>
+<a id="paper-autopage-10"></a>
+
+
+<p>
+We have developed a new parallel iterative ILU algorithm ATS-ILU and a thresholded version ATS-ILUT. Experiments show it performs similarly to the ParILU(T) method, but it often provides a better quality preconditioner after just one or two
+steps (updates) of the setup. This is an advantage if setup time is important, e.g., when solving a sequence of linear systems. Also, it is naturally deterministic (though an asynchronous version is also possible).
+</p>
+<!--
+...... section Acknowledgments ......
+-->
+<h4 id="autosec-11">Acknowledgments</h4>
+<a id="paper-autopage-11"></a>
+
+
+<p>
+Sandia National Laboratories is a multimission laboratory managed and operated by National Technology and Engineering Solutions of Sandia, LLC., a wholly owned subsidiary of Honeywell International, Inc., for the U.S. Department of Energy’s
+National Nuclear Security Administration under contract DE-NA-0003525.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-12">References</h4>
+<a id="paper-autopage-12"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Hartwig Anzt, Edmond Chow, and Jack Dongarra. Parilut—a new parallel threshold ILU factorization. <i>SIAM Journal on Scientific Computing</i>, 40(4):C503–C519, 2018.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Hartwig Anzt, Tobias Ribizel, Goran Flegar, Edmond Chow, and Jack Dongarra. Parilut - a parallel threshold ILU for GPUs. In <i>2019 IEEE International Parallel and Distributed Processing
+Symposium (IPDPS)</i>. IEEE, May 2019.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Michele Benzi. Preconditioning techniques for large linear systems: A survey. <i>Journal of Computational Physics</i>, 182(2):418–477, November 2002.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Edmond Chow and Aftab Patel. ”A fine-grained parallel ILU factorization”. <i>SIAM Journal on Scientific Computing</i>, 37(2):C169–C197, 2015.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> David Hysom and Alex Pothen. Eﬀicient parallel computation of ILU(k) preconditioners. In <i>Proceedings of the 1999 ACM/IEEE conference on Supercomputing</i>, SC ’99. ACM, January 1999.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Na&nbsp;Li, Yousef Saad, and Edmond Chow. Crout versions of ilu for general sparse matrices. <i>SIAM Journal on Scientific Computing</i>, 25(2):716–728, January 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Y&nbsp;Saad. <i>Iterative methods for sparse linear systems</i>. SIAM, Philadelphia, MS, 2 edition, 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Youcef Saad and Martin&nbsp;H. Schultz. GMRES: A generalized minimal residual algorithm for solving nonsymmetric linear systems. <i>SIAM Journal on Scientific and Statistical Computing</i>,
+7(3):856–869, July 1986.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> Yousef Saad. ILUT: A dual threshold incomplete lu factorization. <i>Numerical Linear Algebra with Applications</i>, 1(4):387–402, July 1994.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}
