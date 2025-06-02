@@ -1,7 +1,164 @@
 ---
 layout: abstract
+absnum: 137
 ---
+{% raw %}
 
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
 <div class="center">
 
 <h2>
@@ -46,7 +203,7 @@ eigenvalue (or phase) corresponding to an eigenvector of a unitary operator. In 
 
 
 
-                                                                                                                     U |ψ⟩ = e2πiθ |ψ⟩,
+                                                                                                                   U |ψ⟩ = e2πiθ |ψ⟩,
 
 
 
@@ -93,366 +250,11 @@ involves the following three key components:
 A common way of representing those three components is a so-called <em>quantum circuit</em>. A Quantum circuit is an intuitive visual way to track the evolution and measurement of a quantum state. QCLAB, based on this circuit model, offers a
 user-friendly interface for constructing, simulating, and visualizing quantum circuits, in line with most modern quantum hardware platforms.
 </p>
-
-<p>
-<span style="width:11pt; display:inline-block"><!----></span><b>Quantum states and qubits:</b> A quantum circuit acts on a register of <em>qubits</em>, which hold quantum information. Qubits are the quantum counterpart to
-classical bits. While a classical bit is either 0 or 1, a qubit can exist in a linear combination, called <em>superposition</em>, of two <em>basis states</em> \(|0\rangle \) and \(|1\rangle \). To represent a state \(|\phi \rangle \) of a single qubit
-as vector in \(\mathbb {C}^2\), we choose the standard basis \(|0\rangle = [1,0]^T\), \(|1\rangle = [0,1]^T\). This leads to
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-
-                                                                                                                                [ ]    [ ] [ ]
-                                                                                                                                 1      0   α
-                                                                                                        |ϕ⟩ = α|0⟩ + β|1⟩ = α       +β    =    ,
-                                                                                                                                 0      1   β
-
-
--->
-
-
-<p>
-
-\begin{align*}
-|\phi \rangle = \alpha |0\rangle + \beta |1\rangle = \alpha \begin{bmatrix} 1 \\ 0 \end {bmatrix} + \beta \begin{bmatrix} 0 \\ 1 \end {bmatrix} = \begin{bmatrix} \alpha \\ \beta \end {bmatrix},
-\end{align*}
-where \(\alpha \) and \(\beta \) are complex numbers, called <em>amplitudes</em>, and \(|\alpha |^2 + |\beta |^2 = 1\). For multiple qubits, the state space grows exponentially. Consequently, the state of a \(n\)-qubit register corresponds
-to a vector in \(\mathbb {C}^{2^n}\) and is described by a linear combination of \(2^n\) basis states. These basis states are formed as tensor products of the 1-qubit basis states, i.e., \(|b_1 b_2 \cdots b_n\rangle = |b_1\rangle \otimes
-|b_2\rangle \otimes \cdots \otimes |b_n\rangle \) with \(b_i \in \{0, 1\}\). Note that \(b_1 b_2 \cdots b_n\) are bit strings that can be interpreted as the binary representation of the integers from \(0\) to \(2^n-1\). The \(n\)-qubit
-state can thus be represented as \(\sum _{b=0}^{2^n-1} \alpha _b |b\rangle , \) with normalization \(\sum _{b=0}^{2^n-1} |\alpha _b|^2 = 1 \). For instance, a 2-qubit register has the four basis states \(|00\rangle \), \(|01\rangle \),
-\(|10\rangle \), \(|11\rangle \) with \(|00\rangle = |0\rangle \otimes |0\rangle = [1,0,0,0]^T\) and analogous expressions for the rest.
-</p>
-
-<p>
-To set up a 2-qubit quantum circuit in QCLAB, we use the following code:<br />
-
-</p>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:235pt ; ">
-
-<a id="paper-autopage-5"></a>
-<div class="fancyvrb">
-<pre class="verbatim">
-   &gt;&gt; circuit = qclab.QCircuit(2);
-</pre>
-</div>
-
-</div>
-<div class="minipage" style="vertical-align:top ; justify-content:flex-start ; width:235pt ; ">
-
-<a id="paper-autopage-7"></a>
-
-<span style="width:57pt; display:inline-block"><!----></span>
-
-<p>
-\(\begin {myqcircuit} \lstick {q_{0}} &amp; \qw &amp; \qw \\ \\ \\ \\ \\ \\ \lstick {q_{1}} &amp; \qw &amp; \qw \\ \end {myqcircuit} \)
-</p>
-
-
-</div>
-
-<p>
-<br />
-<br />
-where the circuit diagram on the right represents the empty qubits \(q_0\) and \(q_1\).
-</p>
-
-<p>
-<span style="width:11pt; display:inline-block"><!----></span><b>State evolution:</b> Once we have prepared an \(n\)-qubit register in a certain state \(|\psi \rangle \in \mathbb {C}^{2^n}\), we can evolve it over time. To ensure
-that the quantum state remains normalized, this evolution is achieved by applying unitary transformations \(|\psi \rangle \rightarrow |\psi &apos;\rangle \), known as quantum gates, which are represented by unitary matrices \(U \in
-\mathbb {C}^{2^n \times 2^n}\) and are depicted in circuit formulas as blocks:
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-
-                <span
-                   id="lateximage-paper-1"
-                   class="lateximagesource"
-                ><!--
-
-          |ψ⟩      U       |ψ ′ ⟩
-  ′
-|ψ ⟩ = U |ψ⟩,
-                --><img
-                   src="paper-images/image-1.svg"
-                   alt="(-xy- diagram)"
-                   style=""
-                   class="lateximage"
-                ></span>
-
-
--->
-
-
-<p>
-
-\begin{align*}
-\lstick {|\psi \rangle } &amp; \qw &amp; \gate {U} &amp; \qw &amp; \qw &amp; {\;\;\;\;\;|\psi &apos;\rangle } \\
-\end{align*}
-In theory, any unitary \(U\) can serve as quantum gate. However, in practice, the implementation of these gates is constrained by the underlying hardware, which determines which gates can actually be realized. An important 1-qubit gate is the
-Hadamard gate \(H\), which transforms the basis states into equal superpositions, i.e. a linear combination with equal amplitudes.
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-
-                                                                           1                                                                                        1
-                                                                   H|0⟩ = √ (|0⟩ + |1⟩) ,                                                                   H|1⟩ = √ (|0⟩ − |1⟩) .
-                                                                            2                                                                                        2
-
-
--->
-
-
-<p>
-
-\begin{align*}
-H|0\rangle &amp;= \frac {1}{\sqrt {2}} \left ( |0\rangle + |1\rangle \right ), &amp; H|1\rangle &amp;= \frac {1}{\sqrt {2}} \left ( |0\rangle - |1\rangle \right ).
-\end{align*}
-A common 2-qubit gate is the controlled NOT gate, abbreviated to CNOT. This gate flips the state of the target qubit if and only the control qubit is in state \(|1\rangle \). The unitary matrix representations of these two gates are
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-
-                                                                             [            ]                                                                             [1 0 0 0]
-                                                                        1        1    1
-                                                                    H= √                      ,                                                               CNOT =      0 1 0 0
-                                                                                                                                                                                    .
-                                                                         2       1   −1                                                                                   0 0 0 1
-                                                                                                                                                                          0 0 1 0
-
-
-
--->
-
-
-<p>
-
-\begin{align*}
-H &amp;= \frac {1}{\sqrt {2}} \left [\begin{array}{cr} 1 &amp; 1 \\ 1 &amp; -1 \end {array}\right ], &amp; \text {CNOT} &amp;= \begin{bsmallmatrix} 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp;
-0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ \end {bsmallmatrix}.
-\end{align*}
-QCLAB natively implements a wide variety of commonly used quantum gates as well as the option to implement your own gate based on its matrix representation. Going back to our example circuit, we can add a Hadamard gate to the first qubit
-(qubit 0) and a CNOT gate with control qubit 0 and target qubit 1 using the <kbd>push_back</kbd> function. On the right you see that our quantum circuit grows from left to right, which reflects the order the gates are applied to the state.
-</p>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:235pt ; ">
-
-<a id="paper-autopage-8"></a>
-<div class="fancyvrb">
-<pre class="verbatim">
-   &gt;&gt; circuit.push_back(qclab.qgates.Hadamard(0));
-   &gt;&gt; circuit.push_back(qclab.qgates.CNOT(0,1));
-</pre>
-</div>
-
-</div>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:235pt ; ">
-
-<a id="paper-autopage-10"></a>
 <div class="center">
 
 <p>
-\(\begin {myqcircuit} \lstick {q_{0}} &amp; \gate {H} &amp; \ctrl {1} &amp; \qw \\ \lstick {q_{1}} &amp; \qw &amp; \targ &amp; \qw \\ \end {myqcircuit} \)
+Because the QCLAB circuits are rendered with the qcircuit package, which does not work well with lwarp, please see the <a href="paper137.pdf" target="_blank" >PDF version</a> for further details.
 </p>
-</div>
-
-</div>
-
-<span style="width:11pt; display:inline-block"><!----></span>
-
-<p>
-<b>Measurement:</b> In contrast to classical bits, it is not possible to observe the quantum state directly. Instead, we can only gain information through measurements, which inherently affect the state itself since they collapse the state to one of
-the basis states. In a 1-qubit state \(\alpha |0\rangle + \beta |1\rangle \), the probability of measuring \(0 \) is \(|\alpha |^2 \), while the probability of measuring \(1 \) is \(|\beta |^2 \). After measurement, the state collapses to either
-\(|0\rangle \) or \(|1\rangle \), based on the observed outcome. For a general state \(|\psi \rangle = \sum _b \alpha _b |b\rangle \), the probability of measuring a basis state \(|b\rangle \) is
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-
-
-                                                                                                                      P (b) = |αb |2 .
-
-
-
--->
-
-
-<p>
-
-\begin{align*}
-P(b) = |\alpha _b|^2.
-\end{align*}
-Since \(|\psi \rangle \) is normalized, this defines a valid probability distribution over the possible measurement outcomes. For instance, for a 2-qubit register in the state \(\alpha _{00} |00\rangle + \alpha _{01} |01\rangle + \alpha
-_{10} |10\rangle + \alpha _{11} |11\rangle \), the probability of measuring 0 for both qubits is \(|\alpha _{00}|^2\), and the system collapses to \(|00\rangle \) after the measurement.
-</p>
-
-<p>
-Let us add measurements to both qubits in our QCLAB example circuit:
-</p>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:235pt ; ">
-
-<a id="paper-autopage-12"></a>
-<div class="fancyvrb">
-<pre class="verbatim">
-   &gt;&gt; circuit.push_back(qclab.Measurement(0));
-   &gt;&gt; circuit.push_back(qclab.Measurement(1));
-</pre>
-</div>
-
-</div>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:235pt ; ">
-
-<a id="paper-autopage-14"></a>
-<div class="center">
-
-<p>
-\(\begin {myqcircuit} \lstick {q_{0}} &amp; \gate {H} &amp; \ctrl {1} &amp; \meter &amp; \qw \\ \lstick {q_{1}} &amp; \qw &amp; \targ &amp; \meter &amp; \qw \\ \end {myqcircuit} \)
-</p>
-</div>
-
-</div>
-
-<p>
-<br />
-
-</p>
-
-<p>
-<span style="width:11pt; display:inline-block"><!----></span><b>Simulating quantum circuits:</b> After constructing a circuit, the next step is to execute it and observe the results. Here, we set up a 2-qubit circuit consisting of a
-Hadamard gate on the first qubit, a CNOT gate with control qubit 0 and target qubit 1, and two measurements. Let us see what the circuit does on the initial state \(|00\rangle = |0\rangle \otimes |0\rangle \). Applying the Hadamard gate
-to the first qubit yields
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-
-                                                                                                          1                     1        1
-                                                                                            H|0⟩ ⊗ |0⟩ = √ (|0⟩ + |1⟩) ⊗ |0⟩ = √ |00⟩ + √ |10⟩.
-                                                                                                           2                     2        2
-
-
--->
-
-
-<p>
-
-\begin{align*}
-H|0\rangle \otimes |0\rangle = \frac {1}{\sqrt {2}} \left ( |0\rangle + |1\rangle \right )\otimes |0\rangle = \frac {1}{\sqrt {2}}|00\rangle + \frac {1}{\sqrt {2}}|10\rangle .
-\end{align*}
-Next, the CNOT gate flips the bit of the second qubit whenever the first qubit is 1, so
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-
-
-<!--
-
-                                                                                                     (                     )
-                                                                                                          1        1              1        1
-                                                                                              CNOT       √ |00⟩ + √ |10⟩       = √ |00⟩ + √ |11⟩.
-                                                                                                           2        2              2        2
-
-
--->
-
-
-<p>
-
-\begin{align*}
-\text {CNOT}\left (\frac {1}{\sqrt {2}}|00\rangle + \frac {1}{\sqrt {2}}|10\rangle \right ) = \frac {1}{\sqrt {2}}|00\rangle + \frac {1}{\sqrt {2}}|11\rangle .
-\end{align*}
-Finally, by measuring both qubits, we measure \(|00\rangle \) and \(|11\rangle \) both with probability \(|\frac {1}{\sqrt {2}}|^2 = 0.5\). To simulate the circuit in QCLAB, we use the <kbd>simulate</kbd> function with the initial state
-as input:
-</p>
-<div class="fancyvrb">
-<pre class="verbatim">
-    &gt;&gt; simulation = circuit.simulate('00');
-</pre>
-</div>
-
-<p>
-For all measurements we can get the possible measurement results together with the corresponding probabilities and collapsed states by
-</p>
-<div class="center">
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:157pt ; ">
-
-<a id="paper-autopage-18"></a>
-<div class="fancyvrb">
-<pre class="verbatim">
-&gt;&gt; simulation.results
-    ans =   2x1 cell
-         '00'
-         '11'
-</pre>
-</div>
-
-</div>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:157pt ; ">
-
-<a id="paper-autopage-20"></a>
-<div class="fancyvrb">
-<pre class="verbatim">
-&gt;&gt; simulation.probabilities
-    ans =   2x1 cell
-         0.5000
-         0.5000
-</pre>
-</div>
-
-</div>
-<div class="minipage" style="vertical-align:middle ; justify-content:flex-start ; width:157pt ; ">
-
-<a id="paper-autopage-22"></a>
-<div class="fancyvrb">
-<pre class="verbatim">
-    &gt;&gt; simulation.states
-         ans =   2x1 cell
-             [1;0;0;0]
-             [0;0;0;1]
-</pre>
-</div>
-
-</div>
-
-</div>
-
-<p>
-QCLAB provides a full state simulation, meaning it accurately represents the entire quantum state vector, allowing precise tracking of amplitudes and phase information for each qubit throughout the computation. The straightforward simulation of
-quantum circuits in QCLAB makes it a valuable tool for rapid prototyping of quantum algorithms. This capability allows researchers to eﬀiciently experiment with and refine their algorithms prior to moving on to more advanced stages.
-</p>
-
-<p>
-<span style="width:11pt; display:inline-block"><!----></span><b>Additional features:</b> Other than the computational tasks, QCLAB enables the visualization of quantum circuits directly in the MATLAB command window and
-supports saving a circuit diagram to LaTeX source files, as demonstrated in the diagrams presented within this abstract. Both can be done using the following commands:
-</p>
-<div class="fancyvrb">
-<pre class="verbatim">
-    &gt;&gt; circuit.draw;
-    &gt;&gt; circuit.toTex;
-</pre>
-</div>
-
-<p>
-This functionality makes it particularly useful for research documentation and presentations. QCLAB also provides input/output compatibility with openQASM, a low-level programming language used to describe quantum circuits, which is
-compatible with quantum hardware. This allows users to test their quantum circuits on real quantum computers and is achieved by the command:
-</p>
-<div class="fancyvrb">
-<pre class="verbatim">
-    &gt;&gt; circuit.toQASM;
-</pre>
 </div>
 
 <p>
@@ -471,8 +273,8 @@ This talk is designed for both researchers in numerical linear algebra seeking a
 <!--
 ...... section References ......
 -->
-<h4 id="autosec-26">References</h4>
-<a id="paper-autopage-26"></a>
+<h4 id="autosec-6">References</h4>
+<a id="paper-autopage-6"></a>
 
 
 <ul class="list" style="list-style-type:none">
@@ -532,3 +334,4 @@ SIGACT Symposium on Theory of Computing (pp. 193-204), (2019).
 </li>
 </ul>
 
+{% endraw %}
