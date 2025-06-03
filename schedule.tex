@@ -1,0 +1,57 @@
+---
+title: Schedule
+---
+
+{%- assign days="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday" | split: "," -%}
+{%- assign tracks="A,B,C" | split: "," -%}
+
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{longtable}
+
+\begin{document}
+
+{% for day in days %}
+\section*{ {{ day }} }
+
+\begin{longtable}{| p{0.15\textwidth} | p{0.80\textwidth} |}
+    {% for item in site.data.schedule[day] %}
+    {%- if item.title -%}
+    \hline
+    {{ item.from }}--{{ item.until }} & 
+    {% if item.textitle %}{{ item.textitle }}{% else %}{{ item.title }}{% endif %} \\
+    {%- endif -%}
+    {%- if item.type -%}
+    {%-   if item.type == "plenary" -%}
+    \hline
+    & {\bf Plenary session} ({{ item.from }}--{{ item.until }}) \\
+    {%-     assign t = item.from | date: '%s' -%}
+    {%-     for s in item.speakers -%}
+    {%-       assign tnext = t | plus: 1500 -%}
+    {%-       assign speaker = site.data.speakers[s] -%}
+    {%-       include talk-slot.tex -%}
+    {%-       assign t = tnext -%}
+    {%-     endfor -%}
+    {%-   endif -%}
+    {%-   if item.type == "parallel" -%}
+    \hline
+    & {\bf Parallel session} ({{ item.from }}--{{ item.until }}) \\
+    {%    for track in tracks %}
+    & {\bf \em Track {{ track }} } \\
+    {%-     assign t = item.from | date: '%s' -%}
+    {%-     for s in item[track] -%}
+    {%-       assign tnext = t | plus: 1500 -%}
+    {%-       assign speaker = site.data.speakers[s] -%}
+    {%-       include talk-slot.tex -%}
+    {%-       assign t = tnext -%}
+    {%-     endfor -%}
+    {%-   endfor -%}
+    {%-   endif -%}
+    {%- endif -%}
+    {% endfor %}
+    \hline
+\end{longtable}
+
+{% endfor %}
+
+\end{document}
