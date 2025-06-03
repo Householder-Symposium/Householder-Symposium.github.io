@@ -2,14 +2,17 @@ Sunday:
   - title: Welcome Reception
     from: "7:00"
     until: "9:00"
-    
+    where: Statler Ballroom
+
 Monday:
   - title: Breakfast
     from: "8:00"
     until: "8:50"
+    where: Statler Ballroom
   - title: Opening Remarks
     from: "8:50"
     until: "9:00"
+    where: Statler Auditorium
   - type: plenary
     speakers:
       - havron
@@ -20,6 +23,7 @@ Monday:
   - title: Coffee Break
     from: "10:15"
     until: "10:45"
+    where: Statler Atrium
   - type: plenary
     speakers:
       - nboulle
@@ -30,6 +34,7 @@ Monday:
   - title: Lunch Break
     from: "12:00"
     until: "13:30"
+    where: Statler Ballroom
   - type: parallel
     A:
       - mderezinski
@@ -51,6 +56,7 @@ Monday:
   - title: Coffee Break
     from: "15:10"
     until: "15:40"
+    where: Statler Atrium
   - type: parallel
     A:
       - aantoulas
@@ -75,11 +81,13 @@ Monday:
   - title: Dinner
     from: "18:00"
     until: "20:00"
+    where: Statler Ballroom
 
 Tuesday:
   - title: Breakfast
     from: "8:00"
     until: "9:00"
+    where: Statler Ballroom
   - type: plenary
     from: "9:00"
     until: "10:15"
@@ -90,6 +98,7 @@ Tuesday:
   - title: Coffee Break
     from: "10:15"
     until: "10:45"
+    where: Statler Atrium
   - type: plenary
     from: "10:45"
     until: "11:50"
@@ -100,6 +109,7 @@ Tuesday:
   - title: Lunch Break
     from: "12:00"
     until: "13:30"
+    where: Statler Ballroom
   - type: parallel
     from: "13:30"
     until: "15:10"
@@ -121,6 +131,7 @@ Tuesday:
   - title: Coffee Break
     from: "15:10"
     until: "15:40"
+    where: Statler Atrium
   - type: parallel
     from: "15:40"
     until: "17:45"
@@ -145,15 +156,18 @@ Tuesday:
   - title: Dinner and Poster Blitz
     from: "18:00"
     until: "20:00"
+    where: Statler Ballroom
   - title: <a href="posters.html">Poster Session</a>
     textitle: Poster Session
     from: "20:00"
     until: "21:30"
+    where: Statler Terrace (Basement)
 
 Wednesday:
   - title: Breakfast
     from: "8:00"
     until: "9:00"
+    where: Statler Ballroom
   - type: plenary
     from: "9:00"
     until: "10:15"
@@ -164,6 +178,7 @@ Wednesday:
   - title: Coffee Break
     from: "10:15"
     until: "10:45"
+    where: Statler Atrium
   - type: plenary
     from: "10:45"
     until: "12:00"
@@ -174,17 +189,20 @@ Wednesday:
   - title: Lunch Break
     from: "12:00"
     until: "13:00"
+    where: Statler Ballroom
   - title: Excursion
     from: "13:15"
     until: "18:00"
   - title: Banquet
     from: "19:00"
     until: "22:00"
+    where: Statler Ballroom
 
 Thursday:
   - title: Breakfast
     from: "8:00"
     until: "9:00"
+    where: Statler Ballroom
   - type: plenary
     from: "9:00"
     until: "10:45"
@@ -196,6 +214,7 @@ Thursday:
   - title: Coffee Break
     from: "10:40"
     until: "11:10"
+    where: Statler Atrium
   - type: parallel
     from: "11:10"
     until: "12:00"
@@ -211,6 +230,7 @@ Thursday:
   - title: Lunch Break
     from: "12:00"
     until: "13:30"
+    where: Statler Ballroom
   - type: parallel
     from: "13:30"
     until: "15:10"
@@ -232,6 +252,7 @@ Thursday:
   - title: Coffee Break
     from: "15:10"
     until: "15:30"
+    where: Statler Atrium
   - type: parallel
     from: "15:40"
     until: "17:45"
@@ -259,11 +280,13 @@ Thursday:
   - title: Dinner
     from: "18:30"
     until: "20:00"
+    where: Statler Ballroom
 
 Friday:
   - title: Breakfast
     from: "8:00"
     until: "9:00"
+    where: Statler Ballroom
   - type: plenary
     from: "9:00"
     until: "10:15"
@@ -274,6 +297,7 @@ Friday:
   - title: Coffee Break and check out
     from: "10:15"
     until: "11:00"
+    where: Statler Atrium and Hotel
   - type: plenary
     from: "11:00"
     until: "11:50"
@@ -283,9 +307,11 @@ Friday:
   - title: Closing Remarks
     from: "11:50"
     until: "12:00"
+    where: Statler Ballroom
   - title: To-go lunch available
     from: "12:00"
     until: "13:00"
+    where: Statler Ballroom
 
 posters:
  - mackermann
