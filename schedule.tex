@@ -1,17 +1,4 @@
----
-title: Schedule
----
 
-{%- assign days="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday" | split: "," -%}
-{%- assign tracks="A,B,C" | split: "," -%}
-
-\documentclass[10pt]{article}
-\usepackage{fullpage}
-\usepackage{longtable}
-
-\begin{document}
-
-{% for day in days %}
 \section*{ {{ day }} }
 
 \begin{longtable}{| p{0.15\textwidth} | p{0.80\textwidth} |}
