@@ -146,6 +146,7 @@ Tuesday:
     from: "18:00"
     until: "20:00"
   - title: <a href="posters.html">Poster Session</a>
+    textitle: Poster Session
     from: "20:00"
     until: "21:30"
 

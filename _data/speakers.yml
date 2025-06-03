@@ -164,7 +164,7 @@ list:
 nboulle:
   number: 1
   name: Nicolas Boullé
-  texname: Nicolas Boull\\'e
+  texname: "Nicolas Boull\\'e"
   title: Operator Learning without the Adjoint
 
 eng:
@@ -230,7 +230,7 @@ eoktay:
 fdopico:
   number: 19
   name: Froilán Dopico
-  texname: Froil\\'an Dopico
+  texname: "Froil\\'an Dopico"
   title: "Structured rational matrices: properties and strongly minimal linearizations"
 
 jbarlow:
@@ -251,7 +251,7 @@ vmehrmann:
 mlandman:
   number: 24
   name: Malena Sabaté Landman
-  texname: Malena Sabat\\'e Landman
+  texname: "Malena Sabat\\'e Landman"
   title: "Inner-product free Krylov subspace methods for inverse problems"
 
 havron:
@@ -452,7 +452,7 @@ amontoison:
 amiedlar:
   number: 82
   name: Agnieszka Międlar
-  texname: Agnieszka Mi\\k{e}dlar
+  texname: "Agnieszka Mi\\k{e}dlar"
   title: On the Convergence of the CROP-Anderson Acceleration Method
 
 rschneider:
@@ -488,7 +488,7 @@ kmeerbergen:
 jpapez:
   number: 96
   name: Jan Papež
-  texname: Jan Pape\\v{z}
+  texname: "Jan Pape\\v{z}"
   title: "Error estimate and stopping criteria for least-squares problems solved by CG-like algorithms CGLS and LSQR"
 
 ifurci:
@@ -510,13 +510,13 @@ moutrata:
 lgrubisic:
   number: 100
   name: Luka Grubišić
-  texname: Luka Grubi\\v{s}i\\'{c}
+  texname: "Luka Grubi\\v{s}i\\'{c}"
   title: "Subspace accelerated contour integration methods for eigenvalue problems"
 
 jzimmerling:
   number: 102
   name: Jörn Zimmerling
-  texname: J\\"orn Zimmerling
+  texname: "J\\\"orn Zimmerling"
   title: "Monotonicity, Bounds, and Averaging of Block-Gauss and Gauss-Radau Quadrature for Computing B^T f(A) B"
   textitle: "Monotonicity, Bounds, and Averaging of Block-Gauss and Gauss-Radau Quadrature for Computing $B^T f(A) B$"
 
@@ -528,7 +528,7 @@ sgazolla:
 zdrmac:
   number: 104
   name: Zlatko Drmač
-  texname: Zlatko Drma\\v{c}
+  texname: "Zlatko Drma\\v{c}"
   title: "Numerical linear algebra for data driven analysis of nonlinear dynamics: Koopman-Schur Decomposition"
 
 lrobol:
@@ -554,7 +554,7 @@ umor:
 ftisseur:
   number: 111
   name: Françoise Tisseur
-  texname: Fran\\c{c}oise Tisseur
+  texname: "Fran\\c{c}oise Tisseur"
   title: "Computing Accurate Eigenvalues of Symmetric Matrices With a Mixed Precision Jacobi Algorithm"
 
 ngovindarajan:
@@ -700,7 +700,7 @@ rluce:
 auschmajew:
   number: 150
   name: André Uschmajew
-  texname: Andr\\'e Uschmajew
+  texname: "Andr\\'e Uschmajew"
   title: Accelerating operator Sinkhorn iteration with overrelaxation
 
 shon:
@@ -816,7 +816,7 @@ cpenke:
 mderezinski:
   number: 178
   name: Michał Dereziński
-  texname: Micha{\\l} Derezi\\'nski
+  texname: "Micha{\\l} Derezi\\'nski"
   title: "Randomized Algorithms for Solving Linear Systems with Low-rank Structure"
 
 fchen:
@@ -837,7 +837,7 @@ rbhattacharjee:
 mespanol:
   number: 183
   name: Malena I. Español
-  texname: Malena I. Espa\\~nol
+  texname: "Malena I. Espa\\~nol"
   title: "Variable Projection Methods for Regularized Separable Nonlinear Inverse Problems"
 
 swerner:
@@ -913,7 +913,7 @@ astathopoulos:
 vperovic:
   number: 209
   name: Vasilije Perović
-  texname: Vasilije Perovi\\'{c}
+  texname: "Vasilije Perovi\\'{c}"
   title: "A hybrid method for computing a few singular triplets of very large sparse matrices"
 
 jurschel:
