@@ -1,4 +1,589 @@
 ---
 layout: abstract
+absnum: 221
 ---
+{% raw %}
 
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+\(\require {mathtools}\)
+
+\(\newenvironment {crampedsubarray}[1]{}{}\)
+
+\(\newcommand {\smashoperator }[2][]{#2\limits }\)
+
+\(\newcommand {\SwapAboveDisplaySkip }{}\)
+
+\(\newcommand {\LaTeXunderbrace }[1]{\underbrace {#1}}\)
+
+\(\newcommand {\LaTeXoverbrace }[1]{\overbrace {#1}}\)
+
+\(\newcommand {\LWRmultlined }[1][]{\begin {multline*}}\)
+
+\(\newenvironment {multlined}[1][]{\LWRmultlined }{\end {multline*}}\)
+
+\(\let \LWRorigshoveleft \shoveleft \)
+
+\(\renewcommand {\shoveleft }[1][]{\LWRorigshoveleft }\)
+
+\(\let \LWRorigshoveright \shoveright \)
+
+\(\renewcommand {\shoveright }[1][]{\LWRorigshoveright }\)
+
+\(\newcommand {\shortintertext }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\vcentcolon }{\mathrel {\unicode {x2236}}}\)
+
+\(\require {cancel}\)
+
+\(\newcommand {\iddots }{\mathinner {\unicode {x22F0}}}\)
+
+\(\let \fixedddots \ddots \)
+
+\(\let \fixedvdots \vdots \)
+
+\(\let \fixediddots \iddots \)
+
+\(\let \originalddots \ddots \)
+
+\(\let \originalvdots \vdots \)
+
+\(\let \originaliddots \iddots \)
+
+\(\let \originaldddot \dddot \)
+
+\(\let \originalddddot \ddddot \)
+
+\(\renewcommand {\stackrel }[3][]{\mathrel {\mathop {#3}\limits _{#1}^{#2}}}\)
+
+\(\newcommand {\stackbin }[3][]{\mathbin {\mathop {#3}\limits _{#1}^{#2}}}\)
+
+\(\require {mhchem}\)
+
+\(\def \id {\text {id}}\)
+
+\(\def \nnz {\text {nnz}}\)
+
+\(\def \all {\text {all}}\)
+
+\(\def \map {\ensuremath {\vec {\circ }}}\)
+
+</div>
+
+<a id="paper-autopage-1"></a>
+<div class="center">
+
+<h2>
+General Methods for Sparsity Structure Description and Cost Estimation
+</h2>
+</div>
+<div class="center">
+
+<p>
+<span class="underline">Grace Dinh</span>, James Demmel, Zhiru Zhang
+</p>
+</div>
+<div class="center">
+
+<p>
+Abstract
+</p>
+</div>
+
+<p>
+Sparse tensor operations (especially matrix multiplications and tensor contractions in general) can be used to represent many problems in diverse fields such as genomics, machine learning, network analysis, and electronic design automation. Casting
+a domain-specific problem as a sparse linear algebra operation allows domain experts to leverage existing optimized software libraries and hardware. However the cost (in terms of flops, data movement/accesses, or memory footprint) of a sparse
+operation can vary significantly depending on the sparsity structure of its input, making the development of <em>general</em> high-performance tools for sparse linear algebra challenging. Estimating and bounding these costs is important for many
+applications: coming up with a performance objective for optimizing a software or hardware implementation, developing a notion of “peak performance” to compare a benchmark against, determining how much space to allocate for scratch or for the
+output of an operation, load balancing, and many more.
+</p>
+
+<p>
+Cost estimation is straightforward for dense linear algebra, as the exact set of arithmetic instructions is always the same and known ahead of time. However, in the sparse case, this is not possible unless the <em>exact</em> sparsity structure (i.e. the
+locations of every nonzero) of the inputs is known. As a result, previous cost modeling approaches, e.g. [12], tend to either require that users provide a specific input matrix (precluding their use to develop and evaluate <em>general</em> tools) or
+provide results restricted to specific sparsity structures (e.g. uniformly distributed sparsity, block sparsity, band matrices). For input matrices that do not neatly fit into one of these predetermined categories, however, significant case-by-case work is
+required on the part of users to develop statistical models that both describe their matrices and provide good cost estimates and bounds.
+</p>
+
+<p>
+This abstract sketches out an approach to <em>generalize</em> and <em>automate</em> the construction of such sparsity models, and to build cost <em>estimates</em> and <em>bounds</em> that take them into account, building on techniques from
+database and information theory. In Section <a href="paper.html#sec:Characterizing-Matrix-Structure">1</a>, we describe a way to describe sparsity structure using <em>matrix statistics</em>. We then describe how to use these statistics to
+bound and estimate costs in Section <a href="paper.html#sec:Bounds-from-Matrix-Stats">2</a>, and to optimize storage formats for sparse matrices in Section <a href="paper.html#sec:Optimizations">3</a>.
+</p>
+<!--
+...... section Characterizing Sparsity Structure ......
+-->
+<h4 id="autosec-5"><span class="sectionnumber">1&#x2003;</span>Characterizing Sparsity Structure</h4>
+<a id="paper-autopage-5"></a>
+
+
+<a id="sec:Characterizing-Matrix-Structure"></a>
+
+<p>
+Our goal in this section is to describe a framework for <em>matrix statistics</em> - quantities describing the sparsity structure of a matrix that are (a) well-defined for any sparse matrix, regardless of structure, and (b) can be effectively used to
+predict the performance of a tensor operation. The most well known matrix statistic is the number of nonzeros (\(\nnz \)) of a matrix. However, nnz alone is clearly insuﬀicient for the cost estimation problem. Consider, for instance, the square
+matrix \(A\) whose first column is nonzero and whose other columns are all zero. Despite having the same input nnzs, \(A^{T}A\) and \(AA^{T}\) differ drastically in output memory footprint (and therefore data movement). As a result, accurate
+performance modeling requires additional statistics to describing a matrix’s sparsity structure in more detail.
+</p>
+
+<p>
+One way to do so is to count the number of nonzeros in each row and column, which we refer to as the <em>row</em> and <em>column counts</em>, as in [6]. These statistics require significantly more space to store than the nnzs (as they are vectors
+with length equal to the number of columns and rows, respectively, of a matrix), but provide significantly more information: taking the dot product the column count of \(A\) and row count of \(B\) gives the exact number of flops required to
+compute \(A\times B\) . Furthermore, row and column counts can be <em>summarized</em> using by taking \(L^{p}\) norms for a few small \(p\). These norms provide a compact, <em>easily generalizable</em> way to represent how “skewed” the
+sparsity structure of a matrix is (e.g. how heavy-tailed the distribution of connections is in a social network graph) which can also be used to derive bounds on the cost of a matrix multiplication, as we will briefly discuss in Section 2 (see [1] for a
+discussion of these bounds from a database point of view).
+</p>
+
+<p>
+However, row and column counts alone are insuﬀicient to describe many forms of commonly seen sparsity patterns, e.g. band and block-sparse matrices. To represent these patterns, we will extend the notion of<em> indices</em> to
+<em>functions</em> of the rows and column index. For a concrete example, consider a tridiagonal matrix \(A\) indexed by \((i,j)\). All of the locations of its nonzeros take on only three distinct values of \(i-j\); as a result, “number of distinct
+values of \(i-j\)” is a useful statistic that allows us to encapsulate tridiagonal matrices (and band matrices in general).
+</p>
+
+<p>
+To formalize and generalize, let us view a sparse matrix \(A\) indexed by \((i,j)\) as a <em>set</em> consisting of the location of its nonzeros: \(\{(i,j):A_{ij}\ne 0\}\). Let \(e_{1,...}:\mathbb {Z}^{2}\rightarrow \mathbb {Z}\) be some
+functions (such as \(i-j\) in the above example), which we will refer to as <em>index maps</em>. Define the following two operations:
+</p>
+<div class="amsthmbodydefinition">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-6"></a>
+<span class="amsthmnamedefinition">Definition</span><span class="amsthmnumberdefinition"> <span class="textup">1</span></span>. </span> The <em>projection</em> operation \(\pi _{e_{k}}\) projects its input onto dimension
+\(e_{k}\) - that is, \(\pi _{e_{k}}(A)\) has a nonzero at location \(l\) if there exists some nonzero value in \(A\) at location \(i,j\) such that \(e_{k}(i,j)=l\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+<div class="amsthmbodydefinition">
+
+<ul class="list" style="list-style-type:none">
+
+
+
+<li>
+<p>
+<span class="listmarker"><a id="paper-autopage-7"></a>
+<span class="amsthmnamedefinition">Definition</span><span class="amsthmnumberdefinition"> <span class="textup">2</span></span>. </span> The <em>selection</em> operation \(\sigma _{e_{k}=\eta }\) returns the subset of nonzero
+locations \((i,j)\) in \(A\) such that \(e_{k}(i,j)=\eta \). When no value for \(\eta \) is given, the selection operator \(\sigma _{e_{k}}\) will be used to represent the list \((\sigma _{e_{k}=\eta }:\eta \in \text {Im}(e_{k}))\).
+</p>
+
+</li>
+
+</ul>
+
+</div>
+
+<p>
+Let \(\circ \) represent function composition. If the output of \(g\) is a vector, let \(f\map g\) denote the <em>vector</em> obtained by applying \(f\) to every element of the output of \(g\). Then many natural matrix statistics can be
+represented by choosing appropriate index maps \(e_{k}\):
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> Row counts: first select each row (\(i\)), then count the number of nonzeros in each (\(\left |\cdot \right |\)): \(\left |\cdot \right |\map \sigma _{i}\). Column counts are identical, with \(j\)
+replacing \(i\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Band width of a band matrix: first project onto \(i-j\), then count: \(\left |\cdot \right |\circ \pi _{i-j}\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Number of nonzero blocks in a block-sparse matrix with block size \(b\): project onto blocks \(\left (\left \lfloor i/b\right \rfloor ,\left \lfloor j/b\right \rfloor \right )\), then count:
+\(\left |\cdot \right |\circ \pi _{\left \lfloor i/b\right \rfloor ,\left \lfloor j/b\right \rfloor }\)
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> Fine-grained structured sparsity (maximum number of nonzeros in each block): for each block (i.e. selection operator on \(\left \lfloor i/b\right \rfloor ,\left \lfloor j/b\right \rfloor \)), count
+the number of nonzeros, then take the max: \(\max \circ \left |\cdot \right |\map \sigma _{\left \lfloor x_{1}/b\right \rfloor ,\left \lfloor x_{2}/b\right \rfloor }\)
+</p>
+</li>
+</ul>
+
+<p>
+Furthermore, appropriately chosen index maps can be used to characterize matrices with sparsity structures that do not align with “standard” patterns. For example, the Tuma1<sup>1</sup> matrix could be decomposed into several components,
+each of which would have a very small value for \(\left |\cdot \right |\circ \pi _{\alpha i-j}\) (for some constant \(\alpha \)). Preliminary experiments show that computer vision methods such as Hough transforms [7] as well as modern
+machine learning methods such as symbolic regression [9] can be used to extract descriptive index maps from many real-world matrices that can be used to derive useful bounds; we leave further experimentation to future work.
+</p>
+<div role="note" class="footnotes">
+
+<a id="paper-autopage-8"></a>
+<p>
+<sup>1</sup>&nbsp;<a href="https://sparse.tamu.edu/GHS_indef/tuma1" target="_blank" >https://sparse.tamu.edu/GHS_indef/tuma1</a>
+</p>
+
+
+</div>
+<!--
+...... section Bounds from Matrix Statistics ......
+-->
+<h4 id="autosec-9"><span class="sectionnumber">2&#x2003;</span>Bounds from Matrix Statistics</h4>
+<a id="paper-autopage-9"></a>
+
+
+<a id="sec:Bounds-from-Matrix-Stats"></a>
+
+<p>
+This section describes approaches to deriving cost bounds from matrix statistics derived in Section <a href="paper.html#sec:Characterizing-Matrix-Structure">1</a>. While we focus on matrix multiplication here, our approach can generalize
+to most “nested loop” style programs acting on sparse data; we leave such generalization to future work. As in the previous section, we will view a sparse matrix as a set whose elements are its nonzero indices. Then a sparse matrix multiplication
+\(A\times B\), where \(A\) is indexed by \((i,j)\) and \(B\) by \((j,k)\), can be viewed as the set of nontrivial arithmetic instructions - that is, \(\{(i,j,k):A_{ij}\ne 0,B_{jk}\ne 0\}\), which we denote \(T\). Note that this matrix
+multiplication tensor can be viewed as the <em>database join</em> \(A(i,j)\wedge B(j,k)\). Several cost functions immediately fall from this representation:
+</p>
+<ul class="itemize" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">•</span> The <em>number of flops</em> required to compute \(A\times B\) is simply the cardinality of the matrix multiplication tensor \(\left |A(i,j)\wedge B(j,k)\right |\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The <em>size of the output</em> is the size of the <em>projection</em> of the matrix multiply tensor onto the \(i\), \(k\) face \(\left |\pi _{i,k}\left (A(i,j)\wedge B(j,k)\right )\right |\).
+</p>
+
+</li>
+<li>
+
+<p>
+<span class="listmarker">•</span> The <em>arithmetic intensity</em> of \(A\times B\) on a system with fast memory \(M\) can upper bounded by computing the maximum number of elements for any subset of of \(T\) subject to the constraint
+that the projections of that subset onto the \((i,j)\) and \((j,k)\) dimensions are bounded by \(M\). In previous work focusing on dense linear algebra [8, 5], this immediately provides a data movement lower bound of \(\left (M\times \text
+{\#total flops}\right )/\left (\text {max \ensuremath {T}-subset size}\right )\); however, the number of flops may not be exactly known in the sparse setting, so we will focus on upper bounding the arithmetic intensity instead.
+</p>
+</li>
+</ul>
+
+<p>
+One approach we can take to bounding these quantities is to transform the indices of the nested loops in such a way that the resulting loop nest, when treated as a dense operation, produces useful bounds. For instance, suppose we wish to multiply
+two band matrices \(A\) and \(B\), which have band width \(w_{1}\) and \(w_{2}\) respectively:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                                for i, j, k ∈ [0, N )3
+                                                                                                                   C(i, k)+ = A(i, j) × B(j, k)
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp; \text {for }i,j,k\in [0,N)^{3}\\ &amp; \quad C(i,k)+=A(i,j)\times B(j,k)
+\end{align*}
+As the two matrices are banded, we know that \(\left |\cdot \right |\circ \pi _{i-j}=w_{1}\) and \(\left |\cdot \right |\circ \pi _{k-j}=w_{2}\). As a result, if we let \(e_{1}=i-j\) and \(e_{2}=k-j\), we can rewrite this nested of
+loops as:
+</p>
+<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
+
+
+<!--
+
+
+
+                                                                                                    for e1 ∈ [0, w1 ), e2 ∈ [0, w2 ), j ∈ [0, N )
+                                                                                                         C(e1 + j, e2 + j)+ = A(e1 + j, j) × B(j, e2 + j)
+
+
+
+-->
+
+
+<p>
+
+\begin{align*}
+&amp; \text {for }e_{1}\in [0,w_{1}),e_{2}\in [0,w_{2}),j\in [0,N)\\ &amp; \quad \quad C(e_{1}+j,e_{2}+j)+=A(e_{1}+j,j)\times B(j,e_{2}+j)
+\end{align*}
+which provides an upper bound for flops of \(w_{1}w_{2}N\). Furthermore, using Brascamp-Lieb inequalities [5, 10, 4] provides an arithmetic intensity upper bound (on a system with cache size \(M\)) of \(\sqrt {M}/2\).
+</p>
+
+<p>
+Unfortunately, this method is not easily generalized: we were able to transform indices \(i\) and \(k\) into new indices that could easily be bounded using the given matrix statistics because \(A\) and \(B\) shared band structure; this would not be
+possible if they were not. To address this problem, we adapt information-theoretic techniques previously used for database cardinality estimation [3, 2]. Specifically, given <em>any</em> probability distribution over set of arithmetic instructions \(T\)
+in the sparse matrix multiplication, let \(h\) denote the Shannon entropies of its marginal distributions \(h\) (e.g. use \(h(ij)\) to denote the entropy of the marginal distribution over \(i\),\(j\)). Clearly, \(h(ijk)\) is upper bounded by \(\lg
+\left |T\right |\), the number of flops of the matrix multiplication. Furthermore, notice that for an instruction \((i,j,k)\) to be in \(T\), \(A_{ij}\) and \(B_{jk}\) must both be nonzero; as a result, the entropies \(h(ij)\) and \(h(jk)\) are
+upper bounded by \(\lg \nnz (A)\) and \(\lg \nnz (B)\) respectively. These inequalities can be combined with those inherent to entropy (nonnegativity, submodularity, and subadditivity) to produce bounds on cost.
+</p>
+
+<p>
+For example, it can be shown that for <em>any</em> distribution on \(i,j,k\):
+</p>
+
+<p>
+\[ 3h(ijk)\le h(i,j)+h(j,k)+h(i,k)+h(j|i)+h(k|j)+h(i|k) \]
+</p>
+
+<p>
+Letting the distribution be the uniform distribution over \(T\) sets the left side of the above inequality to \(\lg \left (\#\text {flops}^{3}\right )\), while \(h(i,j)\), \(h(j,i)\), and \(h(i,k)\) are upper bounded by \(\lg \nnz A\), \(\lg
+\nnz B\), and \(\lg \nnz C\) respectively. Furthermore, \(h(j|i)\) is upper bounded by the log of the maximum number of nonzero elements in any row of \(A\) (similarly for the remaining terms), giving an inequality that ties together
+computation cost, output size, and memory footprint. In this framework, all of the cost functions above can be described: number of flops and output size are immediately derivable from entropic inequalities, and arithmetic intensity can be found by
+adding constraints the entropies \(h(ij)\) and \(h(jk)\) are upper bounded by \(\lg M\). In order to adapt matrix statistics using arbitrary index maps (e.g. \(e_{1}=i-j\)), we can add additional constraints: specifically that
+\(h(e_{1}|ij)=h(i|je_{1})=h(j|ie_{1})=0\). This allows for the <em>automated</em> construction of new lower bounds for, say, the cost of multiplying of a band matrix by a block-sparse one, based on statistics such as the number of dense blocks
+sharing an index with a given band.
+</p>
+<!--
+...... section Matrix Format Optimizations ......
+-->
+<h4 id="autosec-10"><span class="sectionnumber">3&#x2003;</span>Matrix Format Optimizations</h4>
+<a id="paper-autopage-10"></a>
+
+
+<a id="sec:Optimizations"></a>
+
+<p>
+We also wish to find eﬀicient ways to <em>store</em> sparse matrices. Consider, for example, a band matrix with a small band width. Standard sparse matrix formats, such as CSR, would require significantly more storage for metadata (row pointers
+and column indices) than a similar format indexed by \(i-j\) and \(j\) [11]. Furthermore, the <em>order</em> in which the indices are stored can significantly affect size and performance too - just as \((i,j)\) (CSR) and \((j,i)\) (CSC) are
+significantly different formats, so would \((i-j,j)\) and \((j,i-j)\).
+</p>
+
+<p>
+The choice of data structures and layouts directly impacts computing performance. For instance, to eﬀiciently use the Gustavson algorithm, the operand tensors should ideally be stored in row-major formats. We will describe how entropic bounds
+(specifically, the chain bound) can suggest optimal <em>orderings</em> and <em>data structures</em> for sparse matrix storage formats.
+</p>
+
+<p>
+However, performance is often heavily affected by the underlying hardware architecture. For parallel processing systems like GPUs, maintaining workload balance often outweighs achieving a high compression ratio in terms of format selection. As a
+result, formats with zero padding, such as ELLPACK, are commonly preferred over those that store only non-zero elements. Blocking formats, while introducing additional memory access and metadata overhead on architectures with a unified
+memory model, are well-suited for many-core architectures with banked memory. Work is ongoing to extend our cost models to account for hardware-specific performance factors.
+</p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-11">References</h4>
+<a id="paper-autopage-11"></a>
+
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> Mahmoud Abo&nbsp;Khamis, Vasileios Nakos, Dan Olteanu, and Dan Suciu. Join Size Bounds using lp-Norms on Degree Sequences. <i>Proc. ACM Manag. Data</i>, 2(2):96:1–96:24, May 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> Mahmoud Abo&nbsp;Khamis, Hung&nbsp;Q. Ngo, and Dan Suciu. Computing Join Queries with Functional Dependencies. In <i>Proceedings of the 35th ACM SIGMOD-SIGACT-SIGAI Symposium
+on Principles of Database Systems</i>, PODS ’16, pages 327–342, New York, NY, USA, June 2016. Association for Computing Machinery.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[3]&#x2003;</span> Mahmoud Abo&nbsp;Khamis, Hung&nbsp;Q. Ngo, and Dan Suciu. What Do Shannon-type Inequalities, Submodular Width, and Disjunctive Datalog Have to Do with One Another? In
+<i>Proceedings of the 36th ACM SIGMOD-SIGACT-SIGAI Symposium on Principles of Database Systems</i>, PODS ’17, pages 429–444, New York, NY, USA, May 2017. Association for Computing Machinery.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[4]&#x2003;</span> Anthony Chen, James Demmel, Grace Dinh, Mason Haberle, and Olga Holtz. Communication bounds for convolutional neural networks. In <i>Proceedings of the Platform for Advanced Scientific
+Computing Conference</i>, PASC ’22, New York, NY, USA, 2022. Association for Computing Machinery.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[5]&#x2003;</span> Michael Christ, James Demmel, Nicholas Knight, Thomas Scanlon, and Katherine&nbsp;A. Yelick. Communication Lower Bounds and Optimal Algorithms for Programs that Reference Arrays - Part
+1:. Technical report, Defense Technical Information Center, Fort Belvoir, VA, May 2013.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[6]&#x2003;</span> Kyle Deeds, Willow Ahrens, Magda Balazinska, and Dan Suciu. Galley: Modern Query Optimization for Sparse Tensor Programs, August 2024.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[7]&#x2003;</span> Paul&nbsp;VC Hough. Method and means for recognizing complex patterns, December 1962.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[8]&#x2003;</span> Dror Irony, Sivan Toledo, and Alexander Tiskin. Communication lower bounds for distributed-memory matrix multiplication. <i>Journal of Parallel and Distributed Computing</i>, 64(9):1017–1026,
+2004.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[9]&#x2003;</span> William La&nbsp;Cava, Bogdan Burlacu, Marco Virgolin, Michael Kommenda, Patryk Orzechowski, Fabrício&nbsp;Olivetti de França, Ying Jin, and Jason&nbsp;H. Moore. Contemporary Symbolic
+Regression Methods and their Relative Performance. <i>Advances in Neural Information Processing Systems</i>, 2021(DB1):1–16, December 2021.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[10]&#x2003;</span> Auguste Olivry, Julien Langou, Louis-Noël Pouchet, P.&nbsp;Sadayappan, and Fabrice Rastello. Automated derivation of parametric data movement lower bounds for aﬀine programs. In
+<i>Proceedings of the 41st ACM SIGPLAN Conference on Programming Language Design and Implementation</i>, PLDI ’20, pages 808–822, New York, NY, USA, 2020. Association for Computing Machinery.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[11]&#x2003;</span> Yousef Saad. <i>Iterative Methods for Sparse Linear Systems</i>. Society for Industrial and Applied Mathematics, second edition, January 2003.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[12]&#x2003;</span> Yannan&nbsp;Nellie Wu, Po-An Tsai, Angshuman Parashar, Vivienne Sze, and Joel&nbsp;S. Emer. Sparseloop: An Analytical Approach To Sparse Tensor Accelerator Modeling. In <i>2022 55th
+IEEE/ACM International Symposium on Microarchitecture (MICRO)</i>, pages 1377–1395, Chicago, IL, USA, October 2022. IEEE.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}
