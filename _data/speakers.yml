@@ -988,5 +988,6 @@ xli:
   textitle: "Adaptive Sketching Based Construction of $\\mathcal{H}^2$ Matrices on GPUs"
 
 aedelman:
+  number: 230
   name: Alan Edelman
   title: "Julia, portable Numerical Linear Algebra, and beyond"
