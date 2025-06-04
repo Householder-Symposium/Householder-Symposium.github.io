@@ -10,10 +10,11 @@ Talks will be located in [Statler Hall](https://cornell.edu/short/y8d3t3h7). The
 
 While it is possible to get to Statler hall through the hotel, due to construction the easiest path is actually to exit the hotel through the main entrance and walk a short distance down Statler Drive to Statler Hall. Here is an illustration of the path:
 
-<img src="images/StatlerHallMap.png" alt="Map to Statler Hall" height="100">
-
+<img src="images/StatlerHallMap.png" alt="Map to Statler Hall" height="200">
 
 ## Posters
+
+The poster 
 
 ## Coffee
 
@@ -22,4 +23,5 @@ Coffee breaks will take place in the atrium of [Statler Hall](https://cornell.ed
 ## Meals
 
 All meals will take place in the ballroom on the second floor of the Statler Hotel. There is signage through the hotel.
+
 
