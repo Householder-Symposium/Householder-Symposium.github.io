@@ -1,7 +1,136 @@
 ---
 layout: abstract
+absnum: 154
 ---
+{% raw %}
 
+<div data-nosnippet
+    style="display:none"
+>
+
+\(\newcommand{\footnotename}{footnote}\)
+
+\(\def \LWRfootnote {1}\)
+
+\(\newcommand {\footnote }[2][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\newcommand {\footnotemark }[1][\LWRfootnote ]{{}^{\mathrm {#1}}}\)
+
+\(\let \LWRorighspace \hspace \)
+
+\(\renewcommand {\hspace }{\ifstar \LWRorighspace \LWRorighspace }\)
+
+\(\newcommand {\mathnormal }[1]{{#1}}\)
+
+\(\newcommand \ensuremath [1]{#1}\)
+
+\(\newcommand {\LWRframebox }[2][]{\fbox {#2}} \newcommand {\framebox }[1][]{\LWRframebox } \)
+
+\(\newcommand {\setlength }[2]{}\)
+
+\(\newcommand {\addtolength }[2]{}\)
+
+\(\newcommand {\setcounter }[2]{}\)
+
+\(\newcommand {\addtocounter }[2]{}\)
+
+\(\newcommand {\arabic }[1]{}\)
+
+\(\newcommand {\number }[1]{}\)
+
+\(\newcommand {\noalign }[1]{\text {#1}\notag \\}\)
+
+\(\newcommand {\cline }[1]{}\)
+
+\(\newcommand {\directlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\luatexdirectlua }[1]{\text {(directlua)}}\)
+
+\(\newcommand {\protect }{}\)
+
+\(\def \LWRabsorbnumber #1 {}\)
+
+\(\def \LWRabsorbquotenumber &quot;#1 {}\)
+
+\(\newcommand {\LWRabsorboption }[1][]{}\)
+
+\(\newcommand {\LWRabsorbtwooptions }[1][]{\LWRabsorboption }\)
+
+\(\def \mathchar {\ifnextchar &quot;\LWRabsorbquotenumber \LWRabsorbnumber }\)
+
+\(\def \mathcode #1={\mathchar }\)
+
+\(\let \delcode \mathcode \)
+
+\(\let \delimiter \mathchar \)
+
+\(\def \oe {\unicode {x0153}}\)
+
+\(\def \OE {\unicode {x0152}}\)
+
+\(\def \ae {\unicode {x00E6}}\)
+
+\(\def \AE {\unicode {x00C6}}\)
+
+\(\def \aa {\unicode {x00E5}}\)
+
+\(\def \AA {\unicode {x00C5}}\)
+
+\(\def \o {\unicode {x00F8}}\)
+
+\(\def \O {\unicode {x00D8}}\)
+
+\(\def \l {\unicode {x0142}}\)
+
+\(\def \L {\unicode {x0141}}\)
+
+\(\def \ss {\unicode {x00DF}}\)
+
+\(\def \SS {\unicode {x1E9E}}\)
+
+\(\def \dag {\unicode {x2020}}\)
+
+\(\def \ddag {\unicode {x2021}}\)
+
+\(\def \P {\unicode {x00B6}}\)
+
+\(\def \copyright {\unicode {x00A9}}\)
+
+\(\def \pounds {\unicode {x00A3}}\)
+
+\(\let \LWRref \ref \)
+
+\(\renewcommand {\ref }{\ifstar \LWRref \LWRref }\)
+
+\( \newcommand {\multicolumn }[3]{#3}\)
+
+\(\require {textcomp}\)
+
+\(\newcommand {\intertext }[1]{\text {#1}\notag \\}\)
+
+\(\let \Hat \hat \)
+
+\(\let \Check \check \)
+
+\(\let \Tilde \tilde \)
+
+\(\let \Acute \acute \)
+
+\(\let \Grave \grave \)
+
+\(\let \Dot \dot \)
+
+\(\let \Ddot \ddot \)
+
+\(\let \Breve \breve \)
+
+\(\let \Bar \bar \)
+
+\(\let \Vec \vec \)
+
+</div>
+
+<a id="paper-autopage-1"></a>
 <div class="center">
 
 <h2>
@@ -31,7 +160,7 @@ An approximate solution \(\hat x\) for a linear set of equations \(L x = b\) has
 
 
                                                                                                    1 ∥b − Lx̂∥   ∥x − x̂∥        ∥b − Lx̂∥
-                                                                                                               ⩽          ⩽ κ(L)              x, b ̸= 0
+                                                                                                               ⩽          ⩽ κ(L)              x, b ̸= 0        (1)                                                    --><a id="unif-stab"></a><!--
                                                                                                   κ(L)  ∥b∥        ∥x∥              ∥b∥
 
 
@@ -40,26 +169,51 @@ An approximate solution \(\hat x\) for a linear set of equations \(L x = b\) has
 
 <p>
 
-\begin{align*}
+\begin{align}
 \label {unif-stab} \frac {1}{\kappa (L)} \frac {\|b-L \hat {x} \|}{\|b\|} \leqslant \frac {\| x - \hat {x}\|}{\|x\|} \leqslant \kappa (L) \frac {\|b-L \hat {x} \|}{\|b\|}\quad x,b \neq 0
-\end{align*}
+\end{align}
 implies that the relative error is norm-equivalent to the relative residual error \(\|b-L \hat {x} \|/\|b\|\) with constants given by the condition number \(\kappa (L)\) and its reciprocal. For us, the matrix \(L\) is a graph Laplacian and the
-vector \(x\) represents a network centrality measure indicating the importance of the vertices, e.g., the PageRank&nbsp;[?] vector or the vector of mean hitting-times. Unfortunately, the condition number \(\kappa (L)\) increases with graph size or
-with the PageRank teleportation parameter rendering <span class="textup">(<a href="paper.html#??">??</a>)</span> useless in practice. We establish improved variants of the two-sided inequality and explore their profound computational
-implications.
+vector \(x\) represents a network centrality measure indicating the importance of the vertices, e.g., the PageRank&nbsp;[1] vector or the vector of mean hitting-times. Unfortunately, the condition number \(\kappa (L)\) increases with graph size or
+with the PageRank teleportation parameter rendering <span class="textup">(<a href="paper.html#unif-stab">1</a>)</span> useless in practice. We establish improved variants of the two-sided inequality and explore their profound
+computational implications.
 </p>
 
 <p>
 We focus our analysis on the relationship between the relative error and the relative residual. This relationship is key to assessing the quality of \(\hat {x}\) because it relates the observable quantity \(\|L\hat {x} -b\|\) with the unobservable
 quantity \(\|\hat {x} - x\|\). We show that the strength of this relationship is determined by the angle between \(b\) and the vector of all ones on an undirected graph. This relationship is also dependent on the so-called <em>Markov chain
 discount</em>, a classical concept that we find is equivalent to the PageRank teleportation parameter for undirected graphs. This provides an elegant probabilistic basis for the degree-normalized PageRank variant and the simple characterization of
-PageRank on an undirected graph sought by Gleich&nbsp;[?, p.356].
+PageRank on an undirected graph sought by Gleich&nbsp;[2, p.356].
 </p>
 
 <p>
-Our contributions are twofold: i) we establish a more informative variant of <span class="textup">(<a href="paper.html#??">??</a>)</span> using a <em>data-dependent condition number</em> and ii) we reframe graph centrality measures in the
-language of discrete potential theory and show how certain potentials can achieve asymptotically optimal accuracy. We discuss the application of these results to PageRank and conclude with numerical simulations highlighting the impact of our
+Our contributions are twofold: i) we establish a more informative variant of <span class="textup">(<a href="paper.html#unif-stab">1</a>)</span> using a <em>data-dependent condition number</em> and ii) we reframe graph centrality measures
+in the language of discrete potential theory and show how certain potentials can achieve asymptotically optimal accuracy. We discuss the application of these results to PageRank and conclude with numerical simulations highlighting the impact of our
 improved bounds. We refer the reader to the associated report <a href="https://arxiv.org/abs/2405.07877" target="_blank" >Optimal accuracy for linear sets of equations with the graph Laplacian</a> available at <a
 href="https://arxiv.org/" target="_blank" >https://arxiv.org/</a>.
 </p>
+<!--
+...... section References ......
+-->
+<h4 id="autosec-5">References</h4>
+<a id="paper-autopage-5"></a>
 
+
+<ul class="list" style="list-style-type:none">
+
+<li>
+<p>
+<span class="listmarker">[1]&#x2003;</span> S.&nbsp;Brin and L.&nbsp;Page. The anatomy of a large-scale hypertextual web search engine. <i>Comput. Netw. ISDN Syst.</i>, 30:107–117, 1998.
+</p>
+</li>
+<li>
+
+<p>
+<span class="listmarker">[2]&#x2003;</span> David&nbsp;F. Gleich. PageRank beyond the web. <i>SIAM Review</i>, 57(3):321–363, 2015.
+</p>
+<p>
+
+</p>
+</li>
+</ul>
+
+{% endraw %}

@@ -1,3 +1,17 @@
+---
+title: Schedule
+---
+
+{%- assign days="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday" | split: "," -%}
+{%- assign tracks="A,B,C" | split: "," -%}
+
+\documentclass[10pt]{article}
+\usepackage{fullpage}
+\usepackage{longtable}
+
+\begin{document}
+
+{% for day in days %}
 
 \section*{ {{ day }} }
 
@@ -6,7 +20,7 @@
     {%- if item.title -%}
     \hline
     {{ item.from }}--{{ item.until }} & 
-    {% if item.textitle %}{{ item.textitle }}{% else %}{{ item.title }}{% endif %} \\
+    {%   if item.textitle %}{{ item.textitle }}{% else %}{{ item.title }}{% endif %} \\
     {%- endif -%}
     {%- if item.type -%}
     {%-   if item.type == "plenary" -%}
@@ -23,16 +37,16 @@
     {%-   if item.type == "parallel" -%}
     \hline
     & {\bf Parallel session} ({{ item.from }}--{{ item.until }}) \\
-    {%    for track in tracks %}
+    {%      for track in tracks %}
     & {\bf \em Track {{ track }} } \\
-    {%-     assign t = item.from | date: '%s' -%}
-    {%-     for s in item[track] -%}
-    {%-       assign tnext = t | plus: 1500 -%}
-    {%-       assign speaker = site.data.speakers[s] -%}
-    {%-       include talk-slot.tex -%}
-    {%-       assign t = tnext -%}
+    {%-       assign t = item.from | date: '%s' -%}
+    {%-       for s in item[track] -%}
+    {%-         assign tnext = t | plus: 1500 -%}
+    {%-         assign speaker = site.data.speakers[s] -%}
+    {%-         include talk-slot.tex -%}
+    {%-         assign t = tnext -%}
+    {%-       endfor -%}
     {%-     endfor -%}
-    {%-   endfor -%}
     {%-   endif -%}
     {%- endif -%}
     {% endfor %}
@@ -40,5 +54,17 @@
 \end{longtable}
 
 {% endfor %}
+
+\newpage
+
+\section*{Posters}
+
+\begin{longtable}{p{0.95\textwidth}}
+    {% for sname in site.data.schedule.posters -%}
+    {%- assign speaker = site.data.speakers[sname] -%}
+    {\small
+    {\em {% if speaker.texname %}{{ speaker.texname }}{% else %}{{ speaker.name }}{% endif -%} },  {% if speaker.textitle %}{{ speaker.textitle }}{% else %}{{ speaker.title }}{% endif %} } \\
+    {% endfor %}
+\end{longtable}
 
 \end{document}
