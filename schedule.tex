@@ -19,13 +19,19 @@ title: Schedule
     {% for item in site.data.schedule[day] %}
     {%- if item.title -%}
     \hline
-    {{ item.from }}--{{ item.until }} & 
-    {%   if item.textitle %}{{ item.textitle }}{% else %}{{ item.title }}{% endif %} \\
+    {{ item.from }}--{{ item.until }} &
+    {% if item.textitle -%}
+      {\bf {{ item.textitle }} }
+    {%- else =%}
+      {\bf {{ item.title }} }
+    {%- endif %}
+    {% if item.where %}-- {{ item.where }}{% endif %} \\
     {%- endif -%}
     {%- if item.type -%}
     {%-   if item.type == "plenary" -%}
     \hline
-    & {\bf Plenary session} ({{ item.from }}--{{ item.until }}) \\
+    & {\bf Plenary session} ({{ item.from }}--{{ item.until }}) --
+    Statler Auditorium \\
     {%-     assign t = item.from | date: '%s' -%}
     {%-     for s in item.speakers -%}
     {%-       assign tnext = t | plus: 1500 -%}
@@ -38,7 +44,7 @@ title: Schedule
     \hline
     & {\bf Parallel session} ({{ item.from }}--{{ item.until }}) \\
     {%      for track in tracks %}
-    & {\bf \em Track {{ track }} } \\
+    & {\bf \em Track {{ track }} } -- {{ site.data.schedule.where[track] }} \\
     {%-       assign t = item.from | date: '%s' -%}
     {%-       for s in item[track] -%}
     {%-         assign tnext = t | plus: 1500 -%}
