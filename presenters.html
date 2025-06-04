@@ -15,7 +15,8 @@ layout: page
     {%- assign speaker = site.data.speakers[sname] -%}
     <tr>
       <td>{{ speaker.name }}</td>
-      <td><a href="abstracts/paper{{ speaker.number }}.html">{{ speaker.title }}</a></td>
+      <td><a href="abstracts/paper{{ speaker.number }}.html">{{ speaker.title }}</a><br/>
+      {{ site.data.slots[sname] }}
     </tr>
     {% endfor %}
   </tbody>
