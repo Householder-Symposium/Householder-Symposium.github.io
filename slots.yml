@@ -1,0 +1,34 @@
+---
+---
+
+{%- assign days="Sunday,Monday,Tuesday,Wednesday,Thursday,Friday" | split: "," -%}
+{%- assign tracks="A,B,C" | split: "," -%}
+{%- for day in days -%}
+{%- for item in site.data.schedule[day] -%}
+{%-   if item.type == "plenary" -%}
+{%-     assign t = item.from | date: '%s' -%}
+{%-     for s in item.speakers -%}
+{%-       assign tnext = t | plus: 1500 -%}
+{%-       assign speaker = site.data.speakers[s] %}
+{{ s }}: "{{ day}}, {{ t | date: "%H:%M" }}-{{ tnext | date: "%H:%M" }} (Statler Auditorium)"
+{%-       assign t = tnext -%}
+{%-     endfor -%}
+{%-   endif -%}
+{%-   if item.type == "parallel" -%}
+{%      for track in tracks %}
+{%-       assign t = item.from | date: '%s' -%}
+{%-       for s in item[track] -%}
+{%-         assign tnext = t | plus: 1500 -%}
+{%-         assign speaker = site.data.speakers[s] %}
+{{ s }}: "{{ day}}, {{ t | date: "%H:%M" }}-{{ tnext | date: "%H:%M" }} ({{ site.data.schedule.where[track] }})"
+{%-         assign t = tnext -%}
+{%-       endfor -%}
+{%-     endfor -%}
+{%-   endif -%}
+{%- endfor -%}
+{%- endfor %}
+
+{% for sname in site.data.schedule.posters -%}
+{%- assign speaker = site.data.speakers[sname] %}
+{{ sname }}: "Tuesday, 20:00-21:30 (Statler Terrace)"
+{%- endfor -%}

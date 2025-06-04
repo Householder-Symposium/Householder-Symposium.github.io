@@ -12,6 +12,7 @@ show_excerpts: false
 
 header_pages:
  - schedule.html 
+ - presenters.html
  - travel.md
  - local.md
  - history.md
