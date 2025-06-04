@@ -10,7 +10,7 @@
 {%-     for s in item.speakers -%}
 {%-       assign tnext = t | plus: 1500 -%}
 {%-       assign speaker = site.data.speakers[s] %}
-{{ s }}: "{{ day}}, {{ t | date: "%H:%M" }}-{{ tnext | date: "%H:%M" }} (plenary)"
+{{ s }}: "{{ day}}, {{ t | date: "%H:%M" }}-{{ tnext | date: "%H:%M" }} (Statler Auditorium)"
 {%-       assign t = tnext -%}
 {%-     endfor -%}
 {%-   endif -%}
@@ -20,7 +20,7 @@
 {%-       for s in item[track] -%}
 {%-         assign tnext = t | plus: 1500 -%}
 {%-         assign speaker = site.data.speakers[s] %}
-{{ s }}: "{{ day}}, {{ t | date: "%H:%M" }}-{{ tnext | date: "%H:%M" }} ({{ track }})"
+{{ s }}: "{{ day}}, {{ t | date: "%H:%M" }}-{{ tnext | date: "%H:%M" }} ({{ site.data.schedule.where[track] }})"
 {%-         assign t = tnext -%}
 {%-       endfor -%}
 {%-     endfor -%}
@@ -30,5 +30,5 @@
 
 {% for sname in site.data.schedule.posters -%}
 {%- assign speaker = site.data.speakers[sname] %}
-{{ sname }}: "Tuesday, 20:00-21:30 (poster)"
+{{ sname }}: "Tuesday, 20:00-21:30 (Statler Terrace)"
 {%- endfor -%}
