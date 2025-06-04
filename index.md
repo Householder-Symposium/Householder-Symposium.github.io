@@ -24,5 +24,7 @@ Householder Symposium XXII gratefully acknowledges support from Mathworks, Gurob
 
 <img src="images/Bowers.png" alt="Cornell Bowers College of Computing and Information Science logo" height="100">
 
+<img src="images/CornellCS.png" alt="Cornell Computer Science logo" height="100">
+
 <img src="images/CornellMath.png" alt="Cornell Math logo" height="100">
 
