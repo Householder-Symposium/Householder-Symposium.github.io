@@ -1,3 +1,8 @@
+where:
+  A: Statler Auditorium
+  B: Statler Hall 196
+  C: Statler Hall 198
+
 Sunday:
   - title: Welcome Reception
     from: "7:00"
@@ -277,6 +282,7 @@ Thursday:
   - title: Housholder Prize lecture(s)
     from: "18:00"
     until: "18:25"
+    where: Statler Auditorium
   - title: Dinner
     from: "18:30"
     until: "20:00"
