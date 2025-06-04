@@ -23,14 +23,14 @@ layout: page
     {%- if item.title -%}
     <tr>
       <td>{{ item.from }}-{{ item.until }}</td>
-      <td><b>{{ item.title }}</b></td>
+      <td><b>{{ item.title }}</b>{% if item.where %} - {{ item.where }}{% endif %}</td>
     </tr>
     {%- endif -%}
     {%- if item.type -%}
     {%-   if item.type == "plenary" -%}
     <tr>
       <td></td>
-      <td><b>Plenary session</b> ({{ item.from }}-{{ item.until }}) <td>
+      <td><b>Plenary session</b> ({{ item.from }}-{{ item.until }}) - Statler Auditorium<td>
     </tr>
     {%-     assign t = item.from | date: '%s' -%}
     {%-     for s in item.speakers -%}
@@ -48,7 +48,7 @@ layout: page
     {%    for track in tracks %}
     <tr>
       <td></td>
-      <td><em>Track {{ track }}</em></td>
+      <td><em>Track {{ track }}</em> - {{ site.data.schedule.where[track] }}</td>
     </tr>
     {%-     assign t = item.from | date: '%s' -%}
     {%-     for s in item[track] -%}
