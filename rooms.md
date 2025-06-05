@@ -12,7 +12,7 @@ While it is possible to get to Statler hall through the hotel, due to constructi
 
 <img src="/images/StatlerHallMap.png" alt="Map to Statler Hall" height="200">
 
-## Posters
+## Poster session
 
 The poster session will be located in the Terrace restaurant  in the Statler Hotel. This is located in the walk-out-basement” of the hotel and there are signs for how to get there from the hotel lobby; the hotel staff will also be happy to assist.
 
