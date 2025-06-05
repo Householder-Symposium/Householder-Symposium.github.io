@@ -196,45 +196,20 @@ the arithmetic and communication costs of Strassen-like matrix multiplication, i
 </p>
 <p>
 We first propose a “vanilla” recursive algorithm, in which we apply a divide-and-conquer strategy, where the algorithm recursively partitions the input \(n\)-by-\(n\) matrix into smaller \(2b\)-by-\(2b\) blocks, until the size of the to-be-rotated
-sub-matrices reach a certain threshold, where \(b=n^f\) and \(0 &lt; f &lt; 1\) is the block parameter. We show that under the assumption that the outermost sweep is executed \(O(1)\) times, the arithmetic complexity is \(F(n)=O(\frac {\log
-\log n}{-\log f}\cdot n^{3(1-f)+\omega _{0}f})\), which asymptotically approaches \(O(n^{\omega _{0}})\) as \(f\) approaches \(1\).
+sub-matrices reach a certain threshold, where \(b=n^f\) and \(0&lt; f &lt; 1\) is the block parameter. We show that under the assumption that the outermost sweep is executed \(O(1)\) times, the arithmetic complexity is
+\(F(n)=O(n^{3(1-f)+\omega _{0}f})\), which asymptotically approaches \(O(n^{\omega _{0}})\) as \(f\) approaches \(1\).
 </p>
 <p>
 Convergence analysis for Jacobi’s methods has been widely discussed, taking into account various pivoting strategies (such as rotation orderings and the choice between block and cyclic) as well as processing architectures (sequential or parallel). We
 refer readers to [7, 8, 10, 14] for further details. A key ingredient in [7] towards convergence of Classical Jacobi is to restrict the rotation angles of off-diagonal entries in a proper open subset of \((-\frac {\pi }{2},\frac {\pi }{2})\). An analog
-for block Jacobi is uniformly bounded cosine transformations [6]. By reordering the columns of the orthogonal rotation matrix \(\M {Q}\) via applying QR decomposition with column pivoting (QRCP for short) to the first-half leading rows of \(\M
-{Q}\), [6] successfully proved convergence for the block cyclic Jacobi. We leverage this idea and introduce our first variant of recursive Jacobi with convergence guarantee, the <b>Recursive Jacobi with QRCP</b>. With a slight trade-off between
-optimal arithmetic complexity lower bound and convergence guarantee, the recursive Jacobi with QRCP, within \(O(1)\) sweeps, can achieve
-</p>
-<span class="hidden"> \(\seteqnumber{0}{}{0}\)</span>
-<!--
-                                                                                                                 {
-                                                                                                                   O( log log n
-                                                                                                                       − log f
-                                                                                                                                · n3(1−f )+ω0 f ), 0 < f ≤ 4−ω
-                                                                                                                                                             1
-                                                                                                        F (n) =                                                0
-                                                                                                                   O( − log f · n
-                                                                                                                      log log n    2+f
-                                                                                                                                       ),            1
-                                                                                                                                                   4−ω0
-                                                                                                                                                        < f <  1
--->
-<p>
-
-\begin{equation*}
-F(n) = \begin{cases} O(\frac {\log \log n}{-\log f}\cdot n^{3(1-f)+\omega _{0}f}), &amp; 0&lt;f\leq \frac {1}{4-\omega _{0}} \\ O(\frac {\log \log n}{-\log f}\cdot n^{2+f}), &amp; \frac {1}{4-\omega _{0}}&lt;f&lt;1
-\end {cases}
-\end{equation*}
-
-</p>
-<p>
-due to the \(O(n^3)\) expensive complexity of QRCP.
+of this for block Jacobi is the uniformly bounded cosine transformations [6]. By reordering the columns of the orthogonal rotation matrix \(\M {Q}\) via applying QR decomposition with column pivoting (QRCP for short) to the first-half leading
+rows of \(\M {Q}\), [6] successfully addressed convergence proof for the block cyclic Jacobi. We leverage this idea and introduce our first variant of the recursive Jacobi method with a convergence guarantee, the <b>Recursive Jacobi with
+QRCP</b>. This approach achieves convergence at the expense of a slight trade-off between the optimal arithmetic complexity lower bound and the added cost of QRCP, which has an \(O(n^3)\) computational cost.
 </p>
 <p>
 The key of ensuring convergence in [6, 7] is to bound the cosines of rotation angles away from zero, which could also be done by applying LU decomposition with partial pivoting (LUPP for short). Unlike QRCP, LU decomposition can be
-implemented recursively with complexity of \(O(n^{\omega _0})\) [2, Section 4.2], and adding partial pivoting to the algorithm doesn’t increase the arithmetic complexity. By applying LUPP to the transpose of the first-half leading columns of \(\M
-{Q}\), we introduce the <b>Recursive Jacobi with LUPP</b> which enjoys both optimal arithmetic complexity and convergence.
+implemented recursively with complexity of \(O(n^{\omega _0})\) [2, Section 4.2], and adding partial pivoting to the algorithm won’t harm the arithmetic complexity. By applying LUPP to the transpose of the first-half leading columns of \(\M
+{Q}\), we introduce the <b>Recursive Jacobi with LUPP</b>, which enjoys both optimal \(O(n^{3(1-f)+\omega _{0}f})\) arithmetic complexity and convergence.
 </p>
 <p>
 In the sequential case, for \(2&lt;\omega _{0}\leq 3\), the recursive Jacobi is shown to analogously get close to attaining the expected communication lower bound \(\Omega (n^{\omega _{0}}/M^{\omega _{0}/2-1})\) [13]. In practical terms,
