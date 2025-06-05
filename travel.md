@@ -20,7 +20,7 @@ The most convenient choice if flying is to arrive/depart directly from the airpo
 
 ### Flying into Syracuse
 
-The airport in [Syracuse (SYR)](https://syrairport.org/) is located roughly one hour away from Ithaca and serves significantly more destinations than Ithaca, albeit still limited to the US. We will provide shuttles from Syracuse airport to Ithaca on Sunday evening and from Ithaca to Syracuse on Friday afternoon. Times will be determined once we collect flight information at a later date.
+The airport in [Syracuse (SYR)](https://syrairport.org/) is located roughly one hour away from Ithaca and serves significantly more destinations than Ithaca, albeit still limited to the US. We will provide shuttles from Syracuse airport to Ithaca on Sunday June 8 at 1pm , 5pm and 11pm. Details may be found on the [arrival information page](/arrival/).
 
 ### Bus from New York City
 
