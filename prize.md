@@ -4,6 +4,8 @@ title: Householder Prize
 permalink: /prize/
 ---
 
+[Donations for the Householder Prize at HH XXIII are now being accepted!](https://www.leetchi.com/en/c/householder-xxiii-prize-2070489)
+
 The Alston S. Householder Prize is awarded to the the author of the best dissertation in numerical linear algebra and is awarded at the symposium for dissertations submitted over the previous three years.
 
 ## Prize nominations
