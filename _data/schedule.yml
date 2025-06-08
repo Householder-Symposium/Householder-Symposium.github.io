@@ -42,7 +42,7 @@ Monday:
     where: Statler Ballroom
   - type: parallel
     A:
-      - mderezinski
+      - aedelman
       - ycho
       - lburke
       - eepperly
@@ -124,7 +124,7 @@ Tuesday:
       - xli
       - mlepilov
     B:
-      - aedelman
+      - mderezinski
       - shon
       - yjang
       - bheinzelreiter
