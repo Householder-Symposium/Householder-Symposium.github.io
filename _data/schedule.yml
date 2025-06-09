@@ -21,7 +21,7 @@ Monday:
   - type: plenary
     speakers:
       - havron
-      - gballard
+      - mfasi
       - pbenner
     from: "9:00"
     until: "10:15"
@@ -97,7 +97,7 @@ Tuesday:
     from: "9:00"
     until: "10:15"
     speakers:
-      - mfasi
+      - gballard
       - sgazolla
       - lgrigori
   - title: Coffee Break
