@@ -788,19 +788,17 @@ rmorgan:
 ycho:
   number: 173
   name: Younghyun Cho
-  title: "Surrogate-based Autotuning for Randomized Numerical Linear
-Algebra"
+  title: "Surrogate-based Autotuning for Randomized Numerical Linear Algebra"
 
 cwang:
   number: 174
   name: Christopher Wang
-  title: "Surrogate-based Autotuning for Randomized Numerical Linear
-Algebra"
+  title: "When does the randomized SVD actually compute an SVD? Randomized subspace approximation beyond singular value gaps"
 
 membree:
   number: 175
   name: Mark Embree
-  title: Spectral Computations for Quasicrystal Models
+  title: "Spectral Computations for Quasicrystal Models"
 
 mpasha:
   number: 176
@@ -944,7 +942,7 @@ ayesypenko:
 edesturler:
   number: 217
   name: Eric de Sturler
-  title: Sketched GCRODR and its Convergence Analysis
+  title: "Sketched GCRODR and its Convergence Analysis"
 
 gdinh:
   number: 221
@@ -964,7 +962,7 @@ ahorning:
 rshah:
   number: 224
   name: Rikhav Shah
-  title: Sparse Pseudospectral Shattering
+  title: "Sparse Pseudospectral Shattering"
 
 jgarzavargas:
   number: 226
@@ -974,7 +972,7 @@ jgarzavargas:
 fuhlig:
   number: 227
   name: Frank Uhlig
-  title: On the Unitary Block-Diagonalisation of General Matrices and Applications
+  title: "On the Unitary Block-Diagonalisation of General Matrices and Applications"
 
 dbindel:
   number: 228
