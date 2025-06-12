@@ -27,6 +27,7 @@ list:
  - jchung
  - mchung
  - acortinovis
+ - acortinovisprize
  - adamle
  - jdemmel
  - mderezinski
@@ -48,6 +49,7 @@ list:
  - dfortunato
  - ifurci
  - jgarzavargas
+ - jgarzavargasprize
  - sgazolla
  - mgnazzo
  - igosea
@@ -989,3 +991,13 @@ aedelman:
   number: 230
   name: Alan Edelman
   title: "Julia, portable Numerical Linear Algebra, and beyond"
+
+jgarzavargasprize:
+  number: 
+  name: Jorge Garza-Vargas
+  title: "Householder prize lecture"
+
+acortinovisprize:
+  number: 
+  name: Alice Cortinovis
+  title: "Householder prize lecture"
