@@ -279,14 +279,12 @@ Thursday:
       - mzaslavskiy
       - jzimmerling
       - fuhlig
-  - title: Alice Cortinovis (Housholder Prize lecture)
+  - type: plenary
     from: "18:00"
-    until: "18:25"
-    where: Statler Auditorium
-  - title: Jorge Garza-Vargas (Housholder Prize lecture)
-    from: "18:25"
     until: "18:50"
-    where: Statler Auditorium  
+    speakers:
+      - acortinovisprize
+      - jgvargasprize
   - title: Dinner
     from: "19:00"
     until: "20:30"
