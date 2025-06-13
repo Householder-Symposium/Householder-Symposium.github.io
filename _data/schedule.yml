@@ -317,9 +317,9 @@ Friday:
     until: "12:00"
     where: Statler Ballroom
   - title: To-go lunch available
-    from: "12:00"
+    from: "11:30"
     until: "13:00"
-    where: Statler Ballroom
+    where: Statler Atrium
 
 posters:
  - mackermann
