@@ -4,6 +4,4 @@ layout: home
 ---
 ### Summer 2028 &mdash; Switzerland
 
-![Cornell University campus with Cayuga lake in the background](images/UP_2016_1413_089_select.jpg)
-
 The XXIII Householder Symposium on Numerical Linear Algebra will take place in Switzerland in summer 2028. The local organizing committee is Martin Gander, Laura Grigori, Daniel Kressner, and Bart Vandereycken (chair).
