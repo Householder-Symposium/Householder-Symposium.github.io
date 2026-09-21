@@ -30,5 +30,5 @@
 
 {% for sname in site.data.schedule.posters -%}
 {%- assign speaker = site.data.speakers[sname] %}
-{{ sname }}: "Tuesday, 20:00-21:30 (Statler Terrace)"
+{{ sname }}: ""
 {%- endfor -%}

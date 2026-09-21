@@ -4,12 +4,7 @@ title: Organize
 permalink: /organize/
 ---
 
-The Householder Committee seeks a team to organize the 2028
-Householder Symposium on Numerical Linear Algebra. The deadline for
-submitting a proposal is June 1, 2025.
-
-Proposals should be submitted via email to [householderxxii@cornell.edu](mailto:householderxxii@cornell.edu).
-
+Information about proposals to organize the 2031 Householder symposium will be posted at a later date.
 
 Please note: Proposals by professional congress and convention bureaus
 will not be considered. No contact information about local members of
