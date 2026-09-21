@@ -22,13 +22,15 @@ hh:
     where: William and Mary, USA 
 
 loc:
-  - name: David Bindel
-    where: Cornell University, USA
-  - name: Anil Damle
-    where: Cornell University, USA
+  - name: Martin Gander
+    where: University of Geneva, Switzerland
+  - name: Laura Grigori
+    where: Ecole Polytechnique Federale de Lausanne, Switzerland    
+  - name: Daniel Kressner
+    where: Ecole Polytechnique Federale de Lausanne, Switzerland
+  - name: Bart Vandereycken
+    where: University of Geneva, Switzerland
     role: Chair
-  - name: Alex Townsend
-    where: Cornell University, USA
 
 prize:
   - name: Raymond Chan
